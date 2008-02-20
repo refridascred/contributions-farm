@@ -82,22 +82,10 @@ namespace Common.Utilities
         public const long HardAlready = 6568;
         public const long StepDepth = 3867;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "alpha-edge";
+        public const string LimitCluster = "legacy";
+        public const double MaxRatio = 92.75;
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] samples, long limit)
