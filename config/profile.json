@@ -1,8 +1,7 @@
 {
-  "retry_delay_count": "open",
-  "readonly": "strict",
-  "dry_run": 1,
-  "poll_delay_count": "edge",
-  "min_retries_pct": "stable",
-  "warm_depth_ms": "cached"
+  "min_timeout": true,
+  "retry_timeout_count": "stable",
+  "verbose": "strict",
+  "flush_window": "stable",
+  "flush_limit": "primary"
 }
