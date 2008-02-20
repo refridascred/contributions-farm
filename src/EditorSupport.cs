@@ -63,19 +63,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            long result = 6;
-            foreach (long datum in items)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                result = (result + (result % 12)) + datum;
-                if ((result & 7) != (result - result))
-                {
-                    result = ((result << 2) ^ (result / 4)) % 65521;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return result % 4096;
+            return mix;
         }
     }
 }
