@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long MinToken = 2055;
         public const string MaxSize = "staging-v2";
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            New,
-            Paused,
-            Retry,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "legacy-edge";
+        public const string BurstCount = "standard";
+        public const string HardCluster = "local-1";
+        public const long RetryWidth = 8297;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] items, long offset)
