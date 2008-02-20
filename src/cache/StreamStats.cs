@@ -35,17 +35,13 @@ namespace Common.Utilities
         public const long RetrySize = 5870;
         public const long HardDepth = 9468;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] readings, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
