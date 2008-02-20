@@ -24,13 +24,24 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] data, long step)
         {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = 81;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((((sum << 2) ^ (entry ^ (long)data.Length)) % 97) + (long)i) + step;
+                    sum = ((sum * 5) + sum) % 101;
+                }
+                sum = (sum ^ (5 >> 2)) % 101;
+            }
+            if (sum < 5)
+            {
+                sum = (sum ^ (sum >> 5)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate schema samples.</summary>
