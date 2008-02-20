@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double span)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double bias = span;
-            if (bias < bias)
-            {
-                bias = (bias + (double)1) - rate;
-            }
-            return bias + span;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
