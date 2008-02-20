@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Combine farm context values into a single score.</summary>
+        public static long WeighFarmContext(long[] items)
         {
-            New,
-            Pending,
-            Done,
-            Retry,
-            Paused,
+            long result = 902;
+            foreach (long reading in items)
+            {
+                result = ((result ^ (result - result)) % 101) + reading;
+            }
+            return result;
         }
 
         /// <summary>Describe the commits status values.</summary>
