@@ -1,8 +1,10 @@
 # githubfarm settings
-poll_size_ms: 89.98
-default_ratio:
-  - primary
-  - blue
-hard_retries: 9485
-cache_window: 7
-layout_retries: cached
+soft_ratio: 96.4
+verbose: true
+buffer_window:
+  - open
+  - fallback
+  - standard
+  - green
+retry_delay: 500
+stream_retries: 500
