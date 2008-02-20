@@ -60,19 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload cluster readings against a bound.</summary>
-        public static bool VerifyPayloadClusterLimits(long[] readings, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Closed,
+            New,
+            Ready,
+            Active,
         }
     }
 }
