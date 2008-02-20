@@ -55,19 +55,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (0 >= (sample - sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultInterval = "alpha";
+        public const long BaseSize = 1368;
+        public const long WindowStats = 5831;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 3173;
