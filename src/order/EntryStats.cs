@@ -56,12 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultScore = 6365;
-        public const double HardFactor = 56.26;
-        public const string StepCommand = "standard";
-        public const long CacheInterval = 2386;
-        public const long SoftCommand = 3259;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Synced,
+            Active,
+            Draft,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool GuardGithubfarmLimits(long[] series, long step)
