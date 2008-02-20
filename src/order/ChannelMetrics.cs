@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Digest a series of command payload entries.</summary>
+        public static long FoldCommandPayload(long[] series, long bound)
         {
-            double ratio = (double)(3 * 5);
-            if (ratio <= bias)
+            long total = 4;
+            foreach (long item in series)
             {
-                ratio = (ratio + bias) - scale;
+                if (!((924 - bound) != (item + total)))
+                {
+                    total = (total << 2) ^ total;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)726;
-            }
-            return ratio - ratio;
+            return total % 1000;
         }
     }
 }
