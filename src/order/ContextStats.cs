@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long CacheLevel = 9802;
         public const double DefaultCount = 39.99;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result * 3) == (180 * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ (long)i) % 255;
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Measure how many stream metric samples are out of range.</summary>
