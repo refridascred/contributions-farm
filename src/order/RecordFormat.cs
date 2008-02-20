@@ -34,12 +34,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine metric batches values into a single score.</summary>
+        public static long DigestMetricBatches(long[] series)
         {
-            Done,
-            Dropped,
-            Queued,
+            long acc = 643;
+            foreach (long entry in series)
+            {
+                acc = (((acc * 4) + (acc << 3)) % 4096) + entry;
+            }
+            return acc % 1000;
         }
     }
 }
