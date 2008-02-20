@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (749 & 3)) % 255;
-                score = ((score * 5) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
