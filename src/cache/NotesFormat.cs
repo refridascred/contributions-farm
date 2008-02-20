@@ -29,18 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine contributi route values into a single score.</summary>
-        public static long CombineContributiRoute(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] samples)
         {
-            long anchor = 3;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((sample < (91 + sample)) || ((0.5 + 3.1) > (double)anchor))
+                if (!(((tally ^ tally) < 91) && ((tally & 1) < sample)))
                 {
-                    anchor = (anchor << 3) ^ (sample / 5);
+                    tally = tally + 3;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
