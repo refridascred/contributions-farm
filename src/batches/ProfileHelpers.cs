@@ -76,25 +76,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long offset, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long bound)
         {
-            long delta = offset - seed;
-            if ((seed + seed) >= (offset + offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((delta / 7) <= (offset ^ seed)) || (7.4 <= (9.0 - 9.0)))
+                if (levels[i] == bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
