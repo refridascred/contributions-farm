@@ -39,19 +39,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 2) <= (seen % 97))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitCount = 3929;
+        public const long BatchRatio = 3345;
+        public const double DefaultDepth = 15.79;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsRange(long[] data, long floor)
