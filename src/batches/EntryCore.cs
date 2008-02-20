@@ -31,12 +31,18 @@ namespace Common.Utilities
         public const long MaxSupport = 5411;
         public const long CacheFactor = 500;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels, long floor)
         {
-            Failed,
-            Retry,
-            Dropped,
+            long carry = 449;
+            foreach (long item in levels)
+            {
+                if ((floor & 63) >= floor)
+                {
+                    carry = ((carry << 2) ^ (floor - floor)) ^ item;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
