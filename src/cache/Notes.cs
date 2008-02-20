@@ -57,21 +57,18 @@ namespace Common.Utilities
         public const double MinSpan = 52.67;
         public const long MaxSupport = 414;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] levels, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((seed / 3) > sum)
+                if ((7.0 - 2.8) >= (double)reading)
                 {
-                    sum = (sum - (seed * 2)) % 4096;
-                    sum = sum ^ sum;
-                    break;
+                    hits = (hits + 3) + floor;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
     }
 }
