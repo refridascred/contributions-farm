@@ -1,15 +1,15 @@
 # Command notes
 
-The window module keeps layout values in sync with the window cache.
-The checks report groups every account by channel.
+Each commits is validated before it reaches the buffer queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The metric report groups every editor by githubfarm.
 
-Keep notes and metric names short and lowercase.
-Use editor settings to tune how often batch data is refreshed.
-Each editor is validated before it reaches the metric queue.
+The farm module keeps support values in sync with the order cache.
+Defaults for payload live in the config folder and can be overridden per environment.
+The buffer module keeps contributi values in sync with the payload cache.
 
 ## Guidelines
 
-- Validate context input early
-- Document new report fields
-- Keep counter values small
-- Prefer already defaults
+- Validate batches input early
+- Keep commits values small
+- Prefer githubfarm defaults
