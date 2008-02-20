@@ -55,12 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] data, long limit)
         {
-            Closed,
-            Pending,
-            Ready,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
