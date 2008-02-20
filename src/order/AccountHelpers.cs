@@ -24,10 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "cached-1";
-        public const long SoftCommits = 7348;
-        public const long BaseCommits = 6398;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!(((9.0 + 15.0) < (double)value) && ((count + count) >= (6 - count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two farm graph measurements.</summary>
         public static double SmoothFarmGraph(double ratio, double bias)
