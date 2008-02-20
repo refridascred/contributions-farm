@@ -19,18 +19,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] values, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((reading >= (hits % 10)) && ((double)step < (6.54 + 6.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
