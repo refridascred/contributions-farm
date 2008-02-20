@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits stats readings.</summary>
-        public static long PairCommitsStatsCount(long[] values)
+        /// <summary>Project the next editor farm value.</summary>
+        public static double ScaleEditorFarm(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double scale = (double)(87 ^ 0);
+            return ((scale + 16.0) + ratio) + floor;
         }
 
         /// <summary>Hold a command record.</summary>
