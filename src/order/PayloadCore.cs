@@ -60,22 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route already entries.</summary>
-        public static long FoldRouteAlready(long[] samples, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long floor)
         {
-            long total = 6;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total - cell) > target)
+                if (series[i] <= floor)
                 {
-                    total = (total * 4) + (total % 3);
-                }
-                if ((target << 2) == (long)samples.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
