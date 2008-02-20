@@ -25,19 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] data, long origin)
+        /// <summary>Count the entry cluster entries that pass the check.</summary>
+        public static long AuditEntryClusterMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (datum != origin)
+                if (matches < (item * 3))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
