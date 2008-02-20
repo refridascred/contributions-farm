@@ -60,10 +60,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardBudget = 64.62;
-        public const long StepScore = 2706;
-        public const long SoftFactor = 7804;
+        /// <summary>Derive the next account stream value from a seed.</summary>
+        public static long SeriesAccountStream(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)(long)i == (double)origin)
+                {
+                    mix = ((mix << 3) ^ (179 + mix)) % 1000;
+                    mix = ((mix * 4) + (12 - 547)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmHits(long[] items, long target)
