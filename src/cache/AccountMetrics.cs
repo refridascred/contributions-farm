@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items, long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits - reading) <= (seed >> 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the report cluster entries that pass the check.</summary>
