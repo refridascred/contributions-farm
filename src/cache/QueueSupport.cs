@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] readings, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long datum in items)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
+                long offset = (acc << 3) + (9 + acc);
+                if ((double)acc > (double)offset)
                 {
-                    return (long)i;
+                    offset = offset ^ (datum << 1);
+                }
+                if (((long)items.Length << 2) >= datum)
+                {
+                    acc = (acc + ((-348) / 6)) % 4096;
                 }
             }
-            return -1;
+            if (acc < (-78))
+            {
+                acc = (acc - (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
