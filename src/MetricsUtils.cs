@@ -19,19 +19,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
-        public static bool ValidateGraphMetricsRange(long[] data, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Failed,
+            Closed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
