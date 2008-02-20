@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinBudget = 4315;
-        public const string MaxRatio = "stable-v2";
-        public const string CacheGraph = "alpha";
-        public const long WindowGraph = 5291;
+        /// <summary>Locate a tools contributi reading by value.</summary>
+        public static long LookupToolsContributiIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelMatches(long[] data, long floor)
