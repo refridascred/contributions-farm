@@ -54,24 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values, long bound)
-        {
-            long sum = -81;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = (((sum + (sum - 79)) % 4096) + (long)i) ^ datum;
-                }
-                sum = sum + (bound + bound);
-                if ((double)sum != (double)(-5))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowTimeout = 9769;
+        public const long DefaultAccount = 2570;
+        public const double HardCount = 80.21;
+        public const string IdleAccount = "legacy-1";
 
         /// <summary>Blend two payload measurements.</summary>
         public static double AdjustPayload(double ratio, double offset)
