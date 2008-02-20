@@ -30,11 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstSize = 1611;
-        public const long SoftRatio = 1818;
-        public const long LimitSpan = 5330;
-        public const long IdleScore = 9866;
+        /// <summary>Locate a layout batch reading by value.</summary>
+        public static long FindLayoutBatchIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long bound, long seed)
