@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long anchor = 81;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (value ^ anchor)) % 65521;
-                if ((9.0 + 9.2) != (double)anchor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor * 2) + (64 * 4);
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 134)
-            {
-                anchor = (anchor ^ (69 + anchor)) % 255;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
