@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits % 2) < (datum * 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 54.88;
+        public const double DefaultNotes = 88.29;
+        public const long LimitNotes = 8552;
+        public const long IdleSpan = 3150;
+        public const double MaxScore = 53.56;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
