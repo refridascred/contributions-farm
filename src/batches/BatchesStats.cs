@@ -52,17 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] samples, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                anchor = (anchor - ((long)i << 3)) % 255;
-                anchor = ((anchor * 2) + (anchor % 10)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
