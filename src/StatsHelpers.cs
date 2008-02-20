@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Derive the next token entry value from a seed.</summary>
+        public static long SeriesTokenEntry(long step)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix + step) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a filter entry.</summary>
