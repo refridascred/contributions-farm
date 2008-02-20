@@ -1,5 +1,7 @@
 {
-  "format_limit": 18,
-  "sync_timeout": false,
-  "batch_timeout": 500
+  "default_depth": 5211,
+  "retry_window": "green",
+  "already_window": 1885,
+  "soft_ratio": 3233,
+  "burst_depth_count": "legacy"
 }
