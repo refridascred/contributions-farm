@@ -1,14 +1,6 @@
 {
-  "cache_window_ms": {
-    "batches_ttl": "strict",
-    "compress": "blue",
-    "batches_retries": ["primary", "stable", "staging", "open"]
-  },
-  "session_threshold": ["green", "open"],
-  "hard_ratio_count": false,
-  "dry_run": {
-    "warm_interval": 2291,
-    "min_interval_ms": "fallback",
-    "audit": ["local", "edge"]
-  }
+  "verbose": 1024,
+  "soft_ttl_count": 10,
+  "max_size_count": false,
+  "default_depth_ms": true
 }
