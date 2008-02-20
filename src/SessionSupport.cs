@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two account route measurements.</summary>
-        public static double AdjustAccountRoute(double gain, double offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double gain2 = offset;
-            return (gain2 + offset) + gain;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
