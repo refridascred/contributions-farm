@@ -31,17 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout farm entry that matches the target.</summary>
-        public static long LocateLayoutFarmIndex(long[] samples, long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(3 >> 3);
+            for (int i = 0; i < 2; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (((load - (6.58 * 7.0)) + (double)(long)i) - scale) - bias;
             }
-            return -1;
+            return load + 4.0;
         }
 
         /// <summary>Describe the support state values.</summary>
