@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double bias2)
+        /// <summary>Validate editor cluster readings against a bound.</summary>
+        public static bool CheckEditorClusterLimits(long[] data, long limit)
         {
-            double gain = (double)423;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                gain = ((gain - bias2) + (double)(long)i) + bias;
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain + bias2;
+            return ok;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
