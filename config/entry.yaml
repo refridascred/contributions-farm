@@ -1,34 +1,18 @@
 # entry settings
-flush_capacity_count:
-  strict: false
-  min_retries_s:
-    batch_ratio_pct: 1024
-    stats_ratio:
-      - 119
-      - 130
-    notes_timeout: staging
-    burst_capacity_s: 6585
-    contributi_ttl: primary
-    audit: 100
-  context_threshold:
-    strict:
-      - 82
-      - 484
-      - 38
-    enabled:
-      - edge
-      - cached
-      - fallback
-    compress: 10
-  persist:
-    - standard
-    - strict
-  base_threshold: false
-  cluster_ttl:
-    - 417
-    - 355
-    - 14
-enabled: 22
-retry_size_count: true
-stream_limit: 925
-burst_threshold_count: true
+min_delay_s:
+  route_limit: false
+  record_delay: true
+  min_limit_pct: 1673
+  compress: 30
+  window_window: 3
+base_size_pct: 96.78
+graph_delay:
+  - open
+  - green
+retry_retries_ms:
+  idle_window: 500
+  compress: strict
+  base_window_pct: stable
+  readonly: 79.85
+  poll_limit_pct: 207
+  schema_ttl: fallback
