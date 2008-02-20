@@ -79,15 +79,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double rate = floor * 6.2;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + (3.7 - floor);
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
