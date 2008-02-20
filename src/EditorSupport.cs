@@ -32,24 +32,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a stats cache pair into a bucket.</summary>
-        public static long ClassifyStatsCache(long target, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if ((target & 15) <= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.11 / 8.0) == (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
