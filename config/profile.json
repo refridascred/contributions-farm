@@ -1,6 +1,5 @@
 {
-  "account_capacity": "green",
-  "soft_window_s": 29.33,
-  "base_threshold_ms": "edge",
-  "batch_window": 9436
+  "warm_size": 33.86,
+  "batch_ratio_pct": 28.26,
+  "commits_limit": 39.44
 }
