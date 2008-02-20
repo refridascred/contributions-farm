@@ -29,32 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format filter value against two limits.</summary>
-        public static long GradeFormatFilter(long seed, long bound)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long step = seed + bound;
-            if (8 >= (89 - seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (seed + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound / 9) > 101)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
