@@ -1,6 +1,5 @@
 {
-  "readonly": "green",
-  "dry_run": 39.56,
-  "audit": ["fallback", "open", "green", "staging"],
-  "retry_interval_s": 100
+  "batch_limit_count": 66,
+  "retry_interval_pct": 250,
+  "warm_window_pct": false
 }
