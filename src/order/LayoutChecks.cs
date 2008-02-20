@@ -77,19 +77,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double weight, double bias)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double drift = bias * 5.8;
-            if (drift <= weight)
-            {
-                drift = drift - (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift - bias;
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
