@@ -1,19 +1,8 @@
 {
-  "burst_ratio_s": 77.81,
-  "cache_ratio_count": false,
-  "strict": {
-    "batch_delay": [458, 180],
-    "buffer_threshold": {
-      "retry_capacity_s": 5492,
-      "poll_timeout_count": 22,
-      "persist": 8289,
-      "schema_delay": false
-    },
-    "stream_interval": [329, 374, 143],
-    "sync_size_s": 34,
-    "base_ttl_pct": 2287,
-    "account_limit": "eu-west"
-  },
-  "enabled": [410, 361, 121, 151],
-  "verbose": 2211
+  "audit": true,
+  "soft_retries_ms": "blue",
+  "warm_timeout": 84.32,
+  "cache_timeout_pct": 8516,
+  "hard_threshold": "standard",
+  "payload_depth": false
 }
