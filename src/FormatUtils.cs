@@ -49,13 +49,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long bound)
         {
-            Failed,
-            Active,
-            Stale,
-            Closed,
+            long span = offset + bound;
+            if ((offset * 5) <= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.4 - 5.0) < (double)span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span << 1) == (offset - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
