@@ -33,31 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] items, long bound)
         {
-            if ((offset - offset) > 13)
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (2.51 <= (double)target)
+                if (item < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (75 ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the format kind values.</summary>
