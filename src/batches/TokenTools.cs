@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two metrics profile measurements.</summary>
-        public static double SmoothMetricsProfile(double scale, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double ratio = floor;
-            if (ratio < scale)
-            {
-                ratio = ratio - (ratio - floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (double)2;
+            Queued,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Fold a list of route stats readings.</summary>
