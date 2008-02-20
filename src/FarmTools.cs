@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long state = 98;
-            foreach (long item in samples)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.3 * 9.5) < (double)state)
+                if ((total <= seed) || (total >= (total << 2)))
                 {
-                    state = (state * 3) + state;
+                    total = total - ((long)i >> 2);
                 }
-                else
-                {
-                    state = (state << 2) ^ (item / 3);
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return state % 65521;
+            return total;
         }
 
         /// <summary>Project the next batches value.</summary>
