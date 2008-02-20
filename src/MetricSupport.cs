@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long StepLevel = 3522;
         public const long MaxCount = 5109;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - (sum >> 3)) % 97;
+                if (!((1.96 / 8.0) < (double)(long)i))
+                {
+                    sum = ((sum << 2) ^ (sum - limit)) % 65521;
+                    sum = (sum ^ (limit ^ sum)) % 4096;
+                }
+                sum = (sum + ((-603) * 2)) % 101;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a command summary.</summary>
