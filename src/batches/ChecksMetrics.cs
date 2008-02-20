@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double bias, double span)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double gain = (double)(78 * 4);
-            if (gain <= gain)
-            {
-                gain = gain + (gain / 7.0);
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain - bias;
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
