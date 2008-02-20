@@ -1,5 +1,12 @@
 {
-  "payload_retries": 250,
-  "compress": 3470,
-  "readonly": "blue"
+  "commits_capacity": 51.78,
+  "base_delay_pct": ["green", "blue", "primary"],
+  "sync_size_count": {
+    "burst_ttl_ms": "legacy",
+    "dry_run": 100,
+    "warm_capacity": 80.95,
+    "max_ratio_count": 5355
+  },
+  "min_size": 49.05,
+  "retry_size": "fallback"
 }
