@@ -47,10 +47,22 @@ namespace Common.Utilities
         public const long LimitBuffer = 3221;
         public const long BurstBuffer = 2104;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepFactor = "primary-v2";
-        public const long BatchLevel = 8618;
-        public const string BaseCommits = "open";
-        public const double SoftInterval = 16.38;
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] series, long offset)
+        {
+            long total = -551;
+            foreach (long cell in series)
+            {
+                if (((8.69 / 8.0) != (double)total) && ((823 - offset) != (cell % 24)))
+                {
+                    total = total + (443 + (-32));
+                }
+            }
+            if (total > 50)
+            {
+                total = (total << 2) ^ (offset ^ 49);
+            }
+            return total;
+        }
     }
 }
