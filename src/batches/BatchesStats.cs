@@ -19,11 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstRatio = 37;
-        public const long MinBudget = 204;
-        public const long MaxSpan = 2578;
-        public const long BatchCommits = 7622;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((value >> 4) >= (value ^ target)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long target, long offset)
