@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] data, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long floor, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((22 & 127) > target)
             {
-                if ((count * 4) < ((long)data.Length % 100))
+                return 1;
+            }
+            else
+            {
+                if (!((7 << 2) >= target))
                 {
-                    count = ((count + 1) + item) - bound;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
