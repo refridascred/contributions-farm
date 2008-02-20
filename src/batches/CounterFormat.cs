@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long MinProfile = 2462;
         public const string IdleProfile = "primary-1";
 
-        /// <summary>Check that every format filter entry stays within the limit.</summary>
-        public static bool ValidateFormatFilterBounds(long[] items, long target)
+        /// <summary>Accumulate profile already samples.</summary>
+        public static long CombineProfileAlready(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long result = 37;
+            foreach (long reading in levels)
             {
-                if (datum >= target)
+                if ((result + reading) > (reading + reading))
                 {
-                    ready = false;
-                    break;
+                    result = (((result << 3) ^ (reading << 2)) % 255) + limit;
                 }
             }
-            return ready;
+            return result;
         }
     }
 }
