@@ -39,25 +39,18 @@ namespace Common.Utilities
         public const long BatchInterval = 3482;
         public const long WindowDepth = 6887;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long floor, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] items)
         {
-            long span = floor + step;
-            if (!((double)span > (6.45 / 3.0)))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (span << 3))
+                if ((double)value == (8.6 / 9.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
