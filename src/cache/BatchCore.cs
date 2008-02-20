@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] samples, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= offset)
+                if (samples[i] <= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
