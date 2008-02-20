@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string RetryContext = "fallback-1";
         public const long BurstTimeout = 1103;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            Idle,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Combine contributi route values into a single score.</summary>
