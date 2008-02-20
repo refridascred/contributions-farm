@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 4753;
-        public const long MinGraph = 8884;
-        public const double StepGraph = 15.57;
-        public const double HardGraph = 18.43;
-        public const long BaseRatio = 2265;
+        /// <summary>Find the first entry editor entry that matches the target.</summary>
+        public static long SeekEntryEditorIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
