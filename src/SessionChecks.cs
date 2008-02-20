@@ -21,27 +21,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cluster stats samples.</summary>
-        public static long WeighClusterStats(long[] levels)
-        {
-            long state = 87;
-            foreach (long entry in levels)
-            {
-                if (!((state + entry) >= (entry << 2)))
-                {
-                    state = state + (state + state);
-                }
-                if (!((double)state == (5.93 + 6.53)))
-                {
-                    state = ((state * 4) + (7 + entry)) % 4096;
-                }
-                else
-                {
-                    state = (state << 2) ^ (state + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleTimeout = 6504;
+        public const long BatchRoute = 1377;
+        public const double MaxTimeout = 62.96;
+        public const long CacheScore = 624;
+        public const long DefaultCount = 1732;
 
         /// <summary>Audit notes layout readings against a rule.</summary>
         public static long MeasureNotesLayoutMatches(long[] samples, long step)
