@@ -1,14 +1,15 @@
 # Command notes
 
-The checks module keeps contributi values in sync with the context cache.
-Use already settings to tune how often stats data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
+Run the stats check before changing any farm limits.
 
-Keep route and payload names short and lowercase.
-When a editor fails, the record handler retries a few times before giving up.
+The metric module keeps filter values in sync with the token cache.
+The command helpers are pure functions, so they are safe to call from any thread.
+A command that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Review already limits each release
-- Keep context values small
-- Validate counter input early
-- Document new githubfarm fields
+- Prefer session defaults
+- Document new session fields
+- Keep session values small
+- Log every profile change
