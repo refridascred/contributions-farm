@@ -29,19 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] levels, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias = weight - 8.89;
+            return (bias - 3.0) + offset;
         }
     }
 }
