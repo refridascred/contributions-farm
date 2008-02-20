@@ -32,38 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            if (!((offset + 105) == (step % 10)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (step >= (8 + offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset % 64) < 64)
+                    if ((items[i] + items[j]) != 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset - step) < offset) || ((step ^ offset) > (offset >> 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
