@@ -22,19 +22,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] readings, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = anchor ^ 56;
+                anchor = ((anchor * 4) + (anchor - anchor)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return ok;
+            return anchor;
         }
     }
 }
