@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "open-v2";
-        public const double WindowToken = 72.34;
-        public const long MinToken = 2055;
-        public const string MaxSize = "staging-v2";
+        /// <summary>Count session account pairs that satisfy a relation.</summary>
+        public static long CompareSessionAccountCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string StepCluster = "legacy-edge";
