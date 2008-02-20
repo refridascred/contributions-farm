@@ -32,13 +32,15 @@ namespace Common.Utilities
         public const string LimitTimeout = "strict-v2";
         public const long StepSpan = 3934;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double offset)
         {
-            Paused,
-            Failed,
-            Queued,
-            Dropped,
+            double weight2 = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = ((weight2 - 15.0) + (double)(long)i) + weight;
+            }
+            return weight2 - offset;
         }
 
         /// <summary>Blend two report measurements.</summary>
