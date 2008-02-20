@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Closed,
-            Queued,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 3180;
+        public const long BurstCounter = 3793;
+        public const long BaseScore = 5971;
+        public const double RetryInterval = 53.41;
+        public const long SoftCounter = 3952;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmOutliers(long[] items)
