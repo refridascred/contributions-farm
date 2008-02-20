@@ -1,6 +1,14 @@
 {
-  "retry_limit": false,
-  "batch_threshold_count": 25.14,
-  "compress": "open",
-  "soft_size": ["local", "green"]
+  "payload_depth": "edge",
+  "hard_capacity_count": {
+    "retry_depth_pct": 60,
+    "base_retries_pct": 6194,
+    "verbose": 1760,
+    "min_timeout": "primary",
+    "graph_threshold": [100, 308, 420]
+  },
+  "hard_window": "local",
+  "session_retries": "edge",
+  "min_capacity": 53.56,
+  "flush_ratio_ms": 15.06
 }
