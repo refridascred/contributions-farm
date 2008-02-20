@@ -1,12 +1,18 @@
 {
-  "support_window": true,
-  "retry_window": true,
-  "verbose": ["open", "blue", "strict", "cached"],
-  "enabled": false,
-  "idle_ratio_ms": 94.5,
-  "audit": {
-    "poll_retries_ms": true,
-    "account_retries": 60,
-    "support_timeout": 64.97
-  }
+  "filter_retries": false,
+  "strict": 54,
+  "default_interval": {
+    "dry_run": 16.27,
+    "readonly": {
+      "base_ttl": "blue",
+      "max_timeout": 100,
+      "enabled": 245,
+      "buffer_window": 250
+    },
+    "warm_threshold_pct": 500,
+    "burst_timeout_s": "cached",
+    "profile_delay": [152, 26],
+    "idle_window": 69.6
+  },
+  "readonly": [447, 12, 454, 381]
 }
