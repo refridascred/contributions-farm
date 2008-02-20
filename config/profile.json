@@ -1,7 +1,5 @@
 {
-  "contributi_ttl": 100,
-  "warm_threshold": 100,
-  "flush_depth": 100,
-  "poll_delay": 37,
-  "soft_ratio_ms": 14.58
+  "cache_size_count": "cached",
+  "sync_limit_count": 100,
+  "soft_delay_pct": "edge"
 }
