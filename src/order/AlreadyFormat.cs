@@ -28,17 +28,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long limit)
+        /// <summary>Roll a already profile counter forward.</summary>
+        public static long DeriveAlreadyProfile(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the counter class values.</summary>
