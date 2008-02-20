@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const double CacheEntry = 76.39;
         public const string BurstEntry = "standard-edge";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Locate a cluster order reading by value.</summary>
+        public static long SeekClusterOrderIndex(long[] items, long target)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
