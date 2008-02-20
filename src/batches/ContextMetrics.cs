@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] data, long floor)
         {
-            long sum = -814;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                sum = sum - (7 + entry);
-                if (sum >= (entry + sum))
+                if ((floor % 10) > item)
                 {
-                    sum = sum - (sum * 5);
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Adjust a tools queue reading.</summary>
