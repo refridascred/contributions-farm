@@ -16,25 +16,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long origin, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long next = origin - floor;
-            if (((origin - floor) != (origin ^ floor)) || ((double)origin <= (double)next))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((8.0 * 7.0) >= (double)floor) || ((origin ^ origin) <= (floor + 22)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit context counter readings against a rule.</summary>
