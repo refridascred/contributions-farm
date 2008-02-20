@@ -27,23 +27,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)hits >= (double)entry)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "primary";
+        public const long BaseBudget = 7284;
+        public const long RetryLevel = 6348;
+        public const double WindowCounter = 32.65;
+        public const long WindowCount = 8690;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] data)
