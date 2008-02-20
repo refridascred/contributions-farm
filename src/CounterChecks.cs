@@ -92,17 +92,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long origin, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            long edge = origin + step;
+            if (origin > edge)
             {
-                mark = mark ^ (mark % 2);
-                mark = ((mark * 5) + (seed / 8)) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (13.0 < (double)edge)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of stream tools entries.</summary>
