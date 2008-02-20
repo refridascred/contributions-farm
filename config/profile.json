@@ -1,7 +1,8 @@
 {
-  "poll_size_pct": "blue",
-  "min_ratio_s": 1159,
-  "default_timeout_s": 60,
-  "warm_window_pct": 5243,
-  "strict": "green"
+  "token_limit": "open",
+  "counter_ratio": [32, 496, 150, 27],
+  "sync_timeout": "staging",
+  "filter_threshold": "open",
+  "context_window": "strict",
+  "persist": 32
 }
