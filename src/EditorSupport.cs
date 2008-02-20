@@ -62,11 +62,11 @@ namespace Common.Utilities
         public const string LimitCluster = "legacy";
         public const double MaxRatio = 92.75;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 5648;
-        public const long CacheFarm = 574;
-        public const long MinBudget = 9399;
-        public const long MinFarm = 9161;
-        public const long MaxFarm = 4034;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
