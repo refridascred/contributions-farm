@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Active,
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
