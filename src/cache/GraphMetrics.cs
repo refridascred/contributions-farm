@@ -13,10 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleFactor = 6975;
-        public const double DefaultSession = 32.8;
-        public const long HardFactor = 9012;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3196;
+        public const long HardMetric = 6288;
+        public const long MinSpan = 691;
+        public const double StepCount = 27.67;
+        public const long DefaultMetric = 5418;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BaseCache = "cached";
