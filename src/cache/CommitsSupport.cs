@@ -25,19 +25,18 @@ namespace Common.Utilities
             return scale2 + (scale + 2.33);
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double bias)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            double drift = (scale + 17.0) / 8.0;
-            if (drift < 5.8)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                drift = drift - (bias / 8.0);
+                if ((7.0 - 0.72) < (double)reading)
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift - 3.4)) + (double)(long)i;
-            }
-            return drift - (bias + drift);
+            return count;
         }
 
         /// <summary>Describe the schema status values.</summary>
