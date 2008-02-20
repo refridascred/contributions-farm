@@ -19,26 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] samples, long step)
         {
-            long carry = 11;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((bound - 1) < entry)
+                if ((count + step) < reading)
                 {
-                    carry = (carry ^ entry) % 255;
-                }
-                if ((9.6 - 9.61) == (double)bound)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
