@@ -50,18 +50,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data, long seed)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!(seed > (value + value)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
