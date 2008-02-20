@@ -45,19 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] levels, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (cell < bound)
+                if (sample >= target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Blend two filter measurements.</summary>
