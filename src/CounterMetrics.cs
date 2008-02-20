@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account editor value.</summary>
-        public static double AdjustAccountEditor(double rate, double bias)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double rate2 = bias;
-            if (rate2 >= (rate - rate2))
-            {
-                rate2 = rate2 - 2.66;
-            }
-            else
-            {
-                rate2 = rate2 + (rate / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + (bias + rate)) + (double)(long)i;
-            }
-            return rate2 + (double)2;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
