@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=293
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-strict}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in blue edge; do
+for item in green edge primary; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=264
+log "limit is ${BUFFER_LIMIT}"
