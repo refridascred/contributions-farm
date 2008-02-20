@@ -1,10 +1,6 @@
 # already settings
-flush_window_ms:
-  - fallback
-  - open
-  - cached
-batch_retries: 11
-retry_depth_pct: 33.86
-flush_capacity: 4889
-verbose: 89.36
-default_size_pct: fallback
+default_threshold: strict
+burst_timeout_count: blue
+enabled: true
+report_timeout: 60
+batches_depth: latest
