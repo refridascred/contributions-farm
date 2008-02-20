@@ -1,7 +1,21 @@
 {
-  "commits_delay": ["blue", "open", "eu-west"],
-  "hard_threshold_pct": 4878,
-  "poll_ttl_s": false,
-  "cluster_size": [367, 407, 266, 319],
-  "min_depth_pct": 22.09
+  "sync_threshold_ms": 60,
+  "default_limit": {
+    "sync_size_s": {
+      "warm_limit_count": "legacy",
+      "payload_delay": "latest",
+      "persist": "eu-west",
+      "warm_window_count": 84,
+      "readonly": 250,
+      "hard_threshold": 3226
+    },
+    "idle_retries_count": {
+      "base_limit_s": true,
+      "min_depth_pct": [447, 407, 131, 190],
+      "persist": "latest"
+    },
+    "dry_run": 44.19
+  },
+  "min_ttl_pct": 11.87,
+  "min_ratio_count": false
 }
