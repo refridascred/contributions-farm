@@ -26,9 +26,31 @@ namespace Common.Utilities
         public const double RetrySize = 67.72;
         public const long MaxMetrics = 8072;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 2881;
-        public const long WindowEditor = 4231;
-        public const string MinFactor = "cached-edge";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long target2)
+        {
+            if ((target / 8) <= (target2 + target2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target & 15) > target) && ((3 - target) < (-80)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target2 + 557) >= (target2 + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
