@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 57.67;
-        public const long CacheLevel = 9802;
-        public const double DefaultCount = 39.99;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((target >= mix) && ((target >> 1) < 178))
+                {
+                    mix = (mix - target) % 101;
+                    break;
+                }
+                else
+                {
+                    mix = (mix - mix) % 4096;
+                }
+                mix = (mix ^ (target - target)) % 255;
+                mix = ((mix << 2) ^ (target << 1)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] levels)
