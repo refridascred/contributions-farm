@@ -13,19 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels, long step)
-        {
-            long score = 55;
-            foreach (long cell in levels)
-            {
-                if (((6 - cell) > (score * 3)) || ((score / 2) > (step / 6)))
-                {
-                    score = ((score * 3) + (cell + score)) % 255;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinLevel = "local-1";
+        public const long StepFormat = 5113;
+        public const string CacheFormat = "cached-edge";
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
