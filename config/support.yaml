@@ -1,5 +1,6 @@
 # support settings
-cache_capacity_ms: edge
-batches_window: 5513
-strict: false
-retry_ratio_pct: open
+format_ttl: 34.17
+sync_depth: 6353
+base_capacity: false
+base_delay: 51.99
+hard_ratio: 1862
