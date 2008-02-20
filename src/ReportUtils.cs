@@ -37,15 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer channel value.</summary>
-        public static double AdjustBufferChannel(double rate, double floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double mean = floor * 14.0;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)(long)i) + rate;
-            }
-            return mean - floor;
+            Synced,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
