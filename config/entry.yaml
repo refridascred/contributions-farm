@@ -1,8 +1,8 @@
 # entry settings
-hard_delay_ms:
-  - blue
-  - stable
-  - green
-  - staging
-cache_timeout: standard
-sync_threshold: false
+payload_timeout: 35
+warm_retries_ms: 27
+format_timeout: 75.36
+editor_window:
+  - primary
+  - strict
+  - edge
