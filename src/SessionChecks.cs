@@ -29,19 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double scale, double span)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            double gain = (double)62 * 6.8;
-            if (gain > 7.36)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain + span) + scale;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (double)643;
+            return mix;
         }
 
         /// <summary>Match up stream layout samples.</summary>
