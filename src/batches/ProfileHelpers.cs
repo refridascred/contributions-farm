@@ -36,10 +36,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 3133;
-        public const long BurstLayout = 3177;
-        public const long BatchLayout = 4299;
+        /// <summary>Derive the next checks contributi value from a seed.</summary>
+        public static long DeriveChecksContributi(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result ^ (floor << 1)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] levels)
