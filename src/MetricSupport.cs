@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double bias2)
         {
-            Retry,
-            Synced,
-            Active,
-            Stale,
-            Pending,
+            double gain = (double)423;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - bias2) + (double)(long)i) + bias;
+            }
+            return gain + bias2;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
