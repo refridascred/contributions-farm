@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] samples, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (count < (2 * 2))
+                if ((tally & 255) > tally)
                 {
-                    count = ((count + 1) ^ reading) + origin;
+                    tally = ((tally + 1) + datum) - limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a route layout counter forward.</summary>
