@@ -1,8 +1,13 @@
 {
-  "enabled": true,
-  "hard_window_s": 1687,
-  "session_retries": 253,
-  "strict": "latest",
-  "flush_interval_count": "blue",
-  "retry_threshold_s": ["eu-west", "latest", "stable"]
+  "soft_size_ms": "eu-west",
+  "sync_delay_pct": "green",
+  "min_depth": "green",
+  "min_retries": "fallback",
+  "audit": {
+    "persist": false,
+    "token_threshold": 51,
+    "channel_delay": "edge",
+    "idle_window_ms": 100,
+    "base_window": "cached"
+  }
 }
