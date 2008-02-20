@@ -21,18 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (tally < (value / 6))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheDepth = 3636;
+        public const long WindowReport = 93;
+        public const long HardRatio = 3676;
+        public const long IdleSize = 7878;
+        public const long MaxReport = 4381;
     }
 }
