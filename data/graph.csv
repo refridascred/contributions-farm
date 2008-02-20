@@ -1,8 +1,6 @@
-id,region,level,weight
-1,1.51,blue,607
-2,latest,882,248
-3,primary,98.46,623
-4,90.74,17.3,787
-5,25.12,74.46,80.32
-6,36,fallback,green
-7,24.3,40,eu-west
+id,rank,level,owner,count
+1,edge,725,189,268
+2,latest,79.42,strict,staging
+3,558,edge,182,744
+4,94.39,edge,986,133
+5,474,legacy,2,staging
