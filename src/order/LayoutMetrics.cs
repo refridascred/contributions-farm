@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] readings, long seed)
+        /// <summary>Locate a entry buffer reading by value.</summary>
+        public static long FindEntryBufferIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= seed)
+                if (items[i] <= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
