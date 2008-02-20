@@ -45,11 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell * 2) <= (seen % 97))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
