@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const double SoftSize = 47.33;
         public const double BurstRatio = 70.97;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] series, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
