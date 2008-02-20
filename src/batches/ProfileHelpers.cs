@@ -27,10 +27,20 @@ namespace Common.Utilities
             return scale + (weight * 0.1);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "alpha-v2";
-        public const string BurstBudget = "alpha";
-        public const long RetryRatio = 7685;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((2.51 + 2.0) > (double)score))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long RetryLayout = 3133;
