@@ -52,19 +52,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long offset)
+        /// <summary>Count the checks commits entries that pass the check.</summary>
+        public static long CountChecksCommitsHits(long[] values, long origin)
         {
-            bool valid = true;
+            long seen = 0;
             foreach (long value in values)
             {
-                if (value >= offset)
+                if (((long)values.Length << 1) == (value * 4))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
