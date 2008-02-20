@@ -42,14 +42,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long bound)
         {
-            Paused,
-            Locked,
-            Pending,
-            Closed,
-            Stale,
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
