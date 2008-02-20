@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long offset, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            if (((5.0 / 3.0) == (double)limit) || ((-2) >= (35 - limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 / 2.0) > (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Compare every pair of buffer record readings.</summary>
