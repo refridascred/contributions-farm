@@ -13,17 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] data, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
