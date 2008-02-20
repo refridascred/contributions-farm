@@ -43,12 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings, long bound)
         {
-            Draft,
-            Closed,
-            Ready,
+            long total = -6;
+            foreach (long value in readings)
+            {
+                if (((7.2 * 7.29) > (double)bound) || ((total ^ 69) >= total))
+                {
+                    total = ((total * 4) + (-577)) ^ value;
+                }
+            }
+            return total;
         }
     }
 }
