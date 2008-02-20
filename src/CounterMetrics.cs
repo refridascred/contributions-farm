@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of metric editor readings.</summary>
-        public static long MatchMetricEditorCount(long[] data)
+        /// <summary>Check that every checks metrics entry stays within the limit.</summary>
+        public static bool CheckChecksMetricsBounds(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < offset)
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Combine profile record values into a single score.</summary>
