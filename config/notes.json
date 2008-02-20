@@ -1,8 +1,14 @@
 {
-  "format_timeout": false,
-  "burst_retries": ["standard", "cached", "edge"],
-  "editor_interval": "standard",
-  "default_size": false,
-  "cache_window": "blue",
-  "min_timeout_count": "staging"
+  "min_limit_pct": 30,
+  "min_delay_count": "cached",
+  "min_interval_s": "local",
+  "idle_threshold": {
+    "cache_capacity_pct": true,
+    "default_size_s": 15.56,
+    "metric_delay": ["standard", "latest", "local"],
+    "sync_retries": ["eu-west", "standard", "green", "edge"],
+    "warm_ratio_s": 6614,
+    "batch_limit": 30
+  },
+  "commits_ttl": 49.65
 }
