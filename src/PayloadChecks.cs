@@ -47,18 +47,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((item * 4) <= (matches + 69))
+                if (entry < floor)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Accumulate format samples.</summary>
