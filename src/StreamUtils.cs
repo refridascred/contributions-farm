@@ -47,11 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            Idle,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
