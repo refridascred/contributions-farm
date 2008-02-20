@@ -33,15 +33,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples, long seed)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long carry = 762;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry + (carry + seed)) % 4096) ^ sample;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
