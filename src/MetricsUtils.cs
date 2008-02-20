@@ -46,22 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseWidth = 48.24;
+        public const string SoftFarm = "primary-edge";
+        public const long BurstFarm = 2148;
+        public const long CacheFarm = 1;
+        public const string HardFarm = "strict-1";
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] values, long seed)
