@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits / 5) > (hits + step))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstSpan = "strict-1";
+        public const string MaxCount = "local-1";
+        public const string RetryContributi = "primary-edge";
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] items, long floor)
