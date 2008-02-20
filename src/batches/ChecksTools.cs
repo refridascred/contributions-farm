@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const string IdleContributi = "standard-edge";
         public const long MaxContributi = 9126;
 
-        /// <summary>Measure how many window report samples are out of range.</summary>
-        public static long CountWindowReportMatches(long[] data)
+        /// <summary>Locate a format token reading by value.</summary>
+        public static long SeekFormatTokenIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - 693) == (tally - value))
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
