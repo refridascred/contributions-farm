@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long BurstFactor = 7053;
         public const double BurstSpan = 59.45;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Combine entry context values into a single score.</summary>
+        public static long FoldEntryContext(long[] readings, long origin)
         {
-            Idle,
-            Active,
-            Stale,
+            long total = 9;
+            foreach (long datum in readings)
+            {
+                total = (total + (total ^ (-8))) % 255;
+                total = ((total << 2) ^ (datum + origin)) % 97;
+            }
+            if (total > (-452))
+            {
+                total = ((total << 3) ^ (total * 2)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate channel samples.</summary>
