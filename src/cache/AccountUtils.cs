@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] series, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
             long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.14 - 2.73) > (double)item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) - offset;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
