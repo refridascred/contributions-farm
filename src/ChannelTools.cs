@@ -35,31 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support token value against two limits.</summary>
-        public static long BucketSupportToken(long offset, long seed)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            if (2.0 > (double)186)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset > (double)2)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed * 4) > (offset * 4))
+                    if ((values[i] ^ values[j]) == 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
