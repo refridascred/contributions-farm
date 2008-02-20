@@ -39,21 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
