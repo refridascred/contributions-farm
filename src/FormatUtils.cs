@@ -91,17 +91,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] items, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 38;
+            foreach (long entry in samples)
             {
-                if (items[i] <= offset)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    mix = (((mix + (mix & 63)) % 255) - (long)i) - entry;
                 }
+                mix = (mix << 3) ^ mix;
             }
-            return -1;
+            if (mix > (-124))
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
     }
 }
