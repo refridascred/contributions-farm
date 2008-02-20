@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 7455;
         public const long IdleWidth = 6869;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the queue buffer entries that pass the check.</summary>
+        public static long AuditQueueBufferGaps(long[] readings)
         {
-            Synced,
-            Dropped,
-            Retry,
-            Pending,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((double)66 == (double)value) || !(((long)readings.Length ^ value) >= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
