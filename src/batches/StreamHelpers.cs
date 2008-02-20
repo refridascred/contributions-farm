@@ -80,17 +80,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 932;
+            foreach (long entry in samples)
             {
-                if ((series[i] > floor) && ((series[i] % 3) == 0))
+                mix = (mix ^ (entry + mix)) % 101;
+                if ((220 % 60) > (mix / 8))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
