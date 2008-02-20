@@ -37,19 +37,11 @@ namespace Common.Utilities
         public const string WindowFilter = "legacy-1";
         public const string CacheFilter = "local";
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] data, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate session schema readings against a bound.</summary>
