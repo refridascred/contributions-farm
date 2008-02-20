@@ -16,20 +16,13 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Combine entry context values into a single score.</summary>
-        public static long FoldEntryContext(long[] readings, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = 9;
-            foreach (long datum in readings)
-            {
-                total = (total + (total ^ (-8))) % 255;
-                total = ((total << 2) ^ (datum + origin)) % 97;
-            }
-            if (total > (-452))
-            {
-                total = ((total << 3) ^ (total * 2)) % 101;
-            }
-            return total % 97;
+            Stale,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate channel samples.</summary>
