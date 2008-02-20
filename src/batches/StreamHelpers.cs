@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache metric samples.</summary>
-        public static long FoldCacheMetric(long[] series, long target)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            long total = 53;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total - target) <= (reading << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 2) + reading) % 97;
-                }
-                if (((0.58 - 10.0) == (double)target) && (reading <= (11 / 5)))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Describe the checks phase values.</summary>
