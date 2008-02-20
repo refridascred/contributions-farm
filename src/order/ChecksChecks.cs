@@ -31,19 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long origin)
         {
-            long acc = 73;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (((acc + (930 / 9)) % 1000) - sample) - target;
+                if ((values[i] >= origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 2)
-            {
-                acc = ((acc * 5) + (22 >> 4)) % 101;
-            }
-            return acc;
+            return -1;
         }
     }
 }
