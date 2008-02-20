@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            long mark = 9;
-            foreach (long datum in readings)
+            long mix = 2;
+            foreach (long cell in levels)
             {
-                if ((2.4 * 3.89) <= (double)datum)
+                if (!((mix + mix) <= (cell >> 3)))
                 {
-                    mark = ((mark * 5) + datum) - offset;
+                    mix = mix - (mix % 7);
                 }
-                if (((double)datum != (5.5 * 5.0)) && (datum > (mark + datum)))
+                if (((mix >> 1) == (cell + 26)) && ((double)mix <= 12.0))
+                {
+                    mix = ((mix << 2) ^ (cell + mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix + 885) % 1000;
+                }
+                if ((cell + cell) < (mix ^ mix))
                 {
                     break;
                 }
             }
-            return mark % 97;
+            return mix % 97;
         }
 
         /// <summary>Describe the commits status values.</summary>
