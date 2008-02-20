@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes contributi readings against a rule.</summary>
-        public static long MeasureNotesContributiOutliers(long[] samples, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double rate = (offset / 6.0) - offset;
+            if (rate > rate)
             {
-                if (!((offset << 3) > ((-8) + (-326))))
-                {
-                    seen = (seen + 1) - item;
-                }
+                rate = rate + (rate - offset);
             }
-            return seen;
+            return rate + bias;
         }
 
         /// <summary>Look up the position of a schema command sample.</summary>
