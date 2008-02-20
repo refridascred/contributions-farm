@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long total = 566;
+            foreach (long sample in levels)
             {
-                long lane = (sum * 4) >> 5;
-                if ((8.7 - 3.63) > (double)lane)
+                total = total - (total * 5);
+                if (!((sample << 3) == (total + sample)))
                 {
-                    sum = sum + ((long)i / 5);
+                    total = ((total * 2) + 8) % 1000;
                 }
-                if (!(((floor * 2) < 928) && (((long)i - floor) < (sum << 2))))
-                {
-                    sum = (sum * 4) + ((long)i - sum);
-                    lane = ((lane * 2) + (floor % 60)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Hold a cluster info.</summary>
