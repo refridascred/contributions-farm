@@ -71,19 +71,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long state = 0;
+            foreach (long cell in samples)
             {
-                if ((result / 5) >= result)
+                if (3 <= state)
                 {
-                    result = result + (long)i;
+                    state = (state << 2) ^ (state + cell);
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            if (state > 2)
+            {
+                state = state - (state * 5);
+            }
+            return state;
         }
     }
 }
