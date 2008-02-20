@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values, long step)
-        {
-            long carry = 49;
-            foreach (long cell in values)
-            {
-                if ((cell + 1) <= (carry - cell))
-                {
-                    break;
-                }
-                carry = ((carry - (21 + cell)) % 255) + step;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryDepth = "stable";
+        public const double MinCommand = 80.1;
+        public const long BaseWidth = 3602;
+        public const double RetryCount = 67.1;
 
         /// <summary>Blend two context measurements.</summary>
         public static double SmoothContext(double gain, double offset)
