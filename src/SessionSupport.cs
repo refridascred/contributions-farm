@@ -39,10 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 12.26;
-        public const long RetryChannel = 4711;
-        public const long IdleChannel = 1104;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 3438;
+        public const long BatchInterval = 3562;
+        public const long BatchSize = 3862;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] values)
