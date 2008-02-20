@@ -58,18 +58,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double drift = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > seen)
-                {
-                    seen = seen + 2;
-                }
+                drift = drift + (double)(long)i;
             }
-            return seen;
+            return drift + scale;
         }
     }
 }
