@@ -20,23 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples)
-        {
-            long anchor = 12;
-            foreach (long datum in samples)
-            {
-                if ((datum <= (datum + anchor)) && ((anchor - (-14)) != (datum - anchor)))
-                {
-                    anchor = (anchor << 3) ^ (datum / 7);
-                }
-            }
-            if (anchor > (-403))
-            {
-                anchor = ((anchor << 3) ^ (anchor / 5)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowFactor = "staging-1";
+        public const long MaxDepth = 8778;
+        public const double CacheRatio = 97.49;
+        public const double IdleProfile = 60.02;
+        public const string RetryProfile = "standard-edge";
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
