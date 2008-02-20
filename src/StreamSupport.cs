@@ -32,38 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long seed)
+        /// <summary>Count the token cluster entries that pass the check.</summary>
+        public static long MeasureTokenClusterHits(long[] levels)
         {
-            if ((target <= (target * 3)) || ((seed + target) < (4 << 2)))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target + target) != (seed & 15)))
+                if ((tally % 5) == ((-73) * 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed * 2) == (seed + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9 >> 3) >= (target & 255))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
+            return tally;
         }
     }
 }
