@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] values, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mark = 5;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark * 3) + (cell & 15)) ^ (long)i;
-                }
-                if (((6 >> 4) <= mark) || ((306 + step) < (cell & 63)))
-                {
-                    mark = (mark + (mark >> 3)) % 255;
-                }
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up queue samples.</summary>
