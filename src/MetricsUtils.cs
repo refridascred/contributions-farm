@@ -43,19 +43,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Fold a list of notes checks readings.</summary>
+        public static long DigestNotesChecks(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long acc = 199;
+            foreach (long reading in data)
             {
-                acc = (acc << 2) ^ (acc & 15);
-                if (!((double)(long)i >= (3.24 / 2.0)))
-                {
-                    acc = (acc ^ ((-576) << 2)) % 97;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                acc = (acc ^ (reading ^ reading)) % 65521;
+            }
+            if (acc > 7)
+            {
+                acc = acc + (acc & 31);
             }
             return acc;
         }
