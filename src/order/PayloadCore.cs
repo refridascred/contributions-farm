@@ -41,17 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 1;
+            foreach (long sample in samples)
             {
-                if (series[i] <= floor)
+                if ((sample / 5) <= (2 + anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + 10) - seed;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 5)) % 97;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
