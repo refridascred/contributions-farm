@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Idle,
+            Draft,
             Failed,
             Stale,
-            Paused,
-            Ready,
         }
 
         /// <summary>Hold a support summary.</summary>
