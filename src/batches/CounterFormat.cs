@@ -33,22 +33,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] samples, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = 762;
+            foreach (long sample in samples)
             {
-                if ((limit << 1) >= (item << 2))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry + (carry + seed)) % 4096) ^ sample;
             }
-            return seen;
+            return carry;
         }
     }
 }
