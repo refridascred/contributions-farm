@@ -32,10 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 56.69;
-        public const long LimitRoute = 9406;
-        public const long StepRoute = 2926;
-        public const long MinDepth = 5231;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values, long seed)
+        {
+            long mark = 3;
+            foreach (long value in values)
+            {
+                if ((mark << 3) < seed)
+                {
+                    mark = ((mark * 2) + value) % 4096;
+                }
+            }
+            if (mark < 931)
+            {
+                mark = (mark << 2) ^ (4 + seed);
+            }
+            return mark;
+        }
     }
 }
