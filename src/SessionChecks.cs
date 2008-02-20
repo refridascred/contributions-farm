@@ -45,15 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (tally < (value - tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up stream layout samples.</summary>
