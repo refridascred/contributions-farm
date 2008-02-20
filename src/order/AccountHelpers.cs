@@ -62,24 +62,11 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if (limit >= (-96))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor < (126 + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
