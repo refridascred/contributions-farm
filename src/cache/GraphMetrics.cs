@@ -13,19 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] data, long limit)
+        /// <summary>Fold a list of checks format readings.</summary>
+        public static long TotalChecksFormat(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long anchor = 683;
+            foreach (long reading in readings)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor ^ reading) % 4096) + origin;
             }
-            return found;
+            if (anchor > 8)
+            {
+                anchor = ((anchor * 5) + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
