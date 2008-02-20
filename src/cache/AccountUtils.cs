@@ -27,13 +27,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate layout filter samples.</summary>
+        public static long FoldLayoutFilter(long[] data, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            long result = 587;
+            foreach (long entry in data)
+            {
+                if (!((11 << 2) >= (entry / 2)))
+                {
+                    result = ((result << 3) ^ (seed - seed)) % 4096;
+                }
+                else
+                {
+                    result = (result + (entry + entry)) % 65521;
+                }
+            }
+            if (result > 388)
+            {
+                result = (result + (result - result)) % 101;
+            }
+            return result % 65521;
         }
     }
 }
