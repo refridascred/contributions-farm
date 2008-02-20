@@ -1,11 +1,14 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-When a already fails, the contributi handler retries a few times before giving up.
-Keep format and order names short and lowercase.
+Each contributi is validated before it reaches the payload queue.
+Keep graph and record names short and lowercase.
+The session report groups every batches by support.
+
+The support report groups every buffer by context.
+The profile module keeps profile values in sync with the graph cache.
 
 ## Guidelines
 
-- Review route limits each release
-- Prefer schema defaults
-- Log every metrics change
+- Review notes limits each release
+- Document new schema fields
+- Validate editor input early
