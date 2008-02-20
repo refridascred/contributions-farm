@@ -35,21 +35,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Ready,
         }
     }
 }
