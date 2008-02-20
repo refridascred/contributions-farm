@@ -29,17 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftSpan = 8983;
+        public const double LimitLevel = 93.67;
+        public const long IdleCommand = 3896;
+        public const long MaxCommand = 4491;
+        public const string WindowLevel = "primary";
     }
 }
