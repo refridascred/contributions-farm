@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long RetryDepth = 1539;
         public const long LimitStream = 273;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double gain, double floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double weight = gain * 3.3;
-            if (weight <= (weight / 5.0))
-            {
-                weight = weight - gain;
-            }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight + floor)) + (double)(long)i;
-            }
-            return weight + (double)88;
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
