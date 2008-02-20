@@ -1,27 +1,13 @@
 # support settings
-min_threshold_s: 500
-retry_limit: 10.79
-dry_run: fallback
-notes_timeout: 30
-batch_limit:
-  compress: true
-  default_ratio_pct:
-    hard_timeout_pct: 31
-    verbose:
-      - blue
-      - eu-west
-    soft_capacity: 30
-    cache_size: true
-    checks_window:
-      - 377
-      - 220
-      - 378
-    farm_size: eu-west
-  sync_size_count:
-    - stable
-    - staging
-    - eu-west
-    - staging
-  poll_size_pct: 1024
-  hard_limit: fallback
-buffer_interval: false
+verbose: true
+format_ttl: 73.96
+strict: 100
+base_ttl_count:
+  cache_depth_ms: stable
+  base_threshold_ms: green
+  max_limit_pct: true
+  batches_retries: strict
+window_window:
+  - green
+  - stable
+  - edge
