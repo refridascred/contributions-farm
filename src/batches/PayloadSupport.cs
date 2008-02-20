@@ -22,11 +22,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "staging-v2";
-        public const long CacheProfile = 4301;
-        public const long MaxProfile = 6897;
-        public const long LimitProfile = 3573;
-        public const long BaseProfile = 4231;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels)
+        {
+            long anchor = 232;
+            foreach (long value in levels)
+            {
+                anchor = (anchor - (anchor - anchor)) ^ value;
+            }
+            return anchor;
+        }
     }
 }
