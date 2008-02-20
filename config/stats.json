@@ -1,5 +1,21 @@
 {
-  "batch_limit_count": 66,
-  "retry_interval_pct": 250,
-  "warm_window_pct": false
+  "format_threshold": [269, 483],
+  "token_interval": ["fallback", "eu-west", "fallback"],
+  "contributi_ttl": ["eu-west", "fallback", "blue", "latest"],
+  "flush_depth": {
+    "burst_timeout_pct": {
+      "idle_interval": "cached",
+      "base_size": true,
+      "retry_threshold_count": 73,
+      "dry_run": false,
+      "batch_ratio_ms": 30.82,
+      "tools_timeout": 100
+    },
+    "burst_threshold": 76.01,
+    "burst_depth": "stable",
+    "persist": "strict",
+    "stream_limit": true
+  },
+  "default_capacity": 36,
+  "poll_depth_s": 86.96
 }
