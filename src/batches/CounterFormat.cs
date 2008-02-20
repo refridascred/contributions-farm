@@ -25,18 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry cluster entries that pass the check.</summary>
-        public static long AuditEntryClusterMatches(long[] readings)
+        /// <summary>Combine checks notes values into a single score.</summary>
+        public static long DigestChecksNotes(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mark = 528;
+            foreach (long entry in levels)
             {
-                if (matches < (item * 3))
+                mark = mark + entry;
+                if (((bound / 7) > ((-77) << 2)) || ((entry - mark) == (bound & 31)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            if (mark > 8)
+            {
+                mark = (mark << 3) ^ (mark - 2);
+            }
+            return mark;
         }
     }
 }
