@@ -14,15 +14,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double drift = 18.0 * 13.0;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift - (8.01 + 19.0)) - (double)(long)i) - bias;
-            }
-            return drift - offset;
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate cache context samples.</summary>
