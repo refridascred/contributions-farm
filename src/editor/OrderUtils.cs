@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Rank command tools input into a small class.</summary>
-        public static long GradeCommandTools(long bound, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long offset)
         {
-            if ((bound >= (bound * 5)) && (bound >= (seed - bound)))
+            long result = 2;
+            foreach (long cell in data)
             {
-                return 5;
+                result = (result + cell) + offset;
             }
-            else
+            if (result < 221)
             {
-                if ((seed & 1) != (bound & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (3 & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = result ^ 411;
             }
+            return result;
         }
 
         /// <summary>Combine record values into a single score.</summary>
