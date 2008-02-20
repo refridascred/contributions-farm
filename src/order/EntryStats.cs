@@ -36,11 +36,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
