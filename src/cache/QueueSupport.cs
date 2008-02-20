@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "latest-v2";
-        public const string WindowInterval = "primary";
-        public const long BatchTimeout = 2572;
-        public const long BatchSpan = 3945;
-        public const long HardRatio = 1391;
+        /// <summary>Combine metrics route values into a single score.</summary>
+        public static long WeighMetricsRoute(long[] items)
+        {
+            long score = 3;
+            foreach (long item in items)
+            {
+                if (((score / 8) < (item - score)) && (332 >= (score / 7)))
+                {
+                    score = (score << 3) ^ (59 >> 2);
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsOutliers(long[] readings, long limit)
