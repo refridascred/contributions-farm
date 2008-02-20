@@ -44,23 +44,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data)
-        {
-            long result = 155;
-            foreach (long sample in data)
-            {
-                if (47 > result)
-                {
-                    result = (result ^ (35 + result)) + sample;
-                }
-            }
-            if (result < (-2))
-            {
-                result = result + result;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 8424;
+        public const double LimitCount = 61.35;
+        public const long HardMetrics = 9994;
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] items)
