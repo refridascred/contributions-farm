@@ -46,15 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Draft,
+            Done,
+            Locked,
         }
     }
 }
