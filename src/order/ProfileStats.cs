@@ -35,10 +35,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxSpan = 9162;
-        public const long BurstFactor = 5164;
-        public const long LimitContributi = 8467;
-        public const string MaxDepth = "standard-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchFactor = 9937;
+        public const long BatchBudget = 1442;
+        public const string SoftPayload = "alpha-1";
     }
 }
