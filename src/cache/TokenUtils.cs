@@ -15,23 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
-        {
-            long total = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 7.3)
-                {
-                    total = total ^ (total ^ total);
-                }
-            }
-            if (total < 8)
-            {
-                total = total - (total * 5);
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 41.21;
+        public const long MaxSpan = 8338;
+        public const string DefaultCache = "staging-edge";
+        public const string LimitSize = "open-1";
+        public const long HardCache = 1468;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long DigestCommits(long[] values, long origin)
