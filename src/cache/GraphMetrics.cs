@@ -33,18 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a route layout counter forward.</summary>
-        public static long DeriveRouteLayout(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state - (seed % 8);
-                state = (state * 4) + (state - seed);
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 1666;
+        public const long LimitWidth = 5134;
+        public const long DefaultGraph = 9519;
+        public const long IdleSize = 6429;
+        public const double BatchGraph = 38.11;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double IdleFarm = 51.66;
