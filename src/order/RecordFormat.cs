@@ -34,15 +34,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine metric batches values into a single score.</summary>
-        public static long DigestMetricBatches(long[] series)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long acc = 643;
-            foreach (long entry in series)
-            {
-                acc = (((acc * 4) + (acc << 3)) % 4096) + entry;
-            }
-            return acc % 1000;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
