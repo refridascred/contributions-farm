@@ -1,14 +1,11 @@
 # Command notes
 
-When a format fails, the commits handler retries a few times before giving up.
-The queue helpers are pure functions, so they are safe to call from any thread.
-
-Keep cache and profile names short and lowercase.
-The stream module keeps tools values in sync with the channel cache.
+A filter that stays idle for too long is moved to the cluster list.
+Each command is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer buffer defaults
-- Validate window input early
-- Log every stats change
+- Prefer graph defaults
+- Validate schema input early
+- Document new checks fields
+- Log every queue change
