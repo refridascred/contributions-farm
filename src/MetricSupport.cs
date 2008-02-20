@@ -15,12 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
