@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] items, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < origin)
+                if (readings[i] <= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
