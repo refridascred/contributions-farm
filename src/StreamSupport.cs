@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)origin == (double)788)
-                {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchFactor = 9097;
+        public const long BatchSession = 7405;
+        public const double IdleSize = 55.46;
+        public const long BaseScore = 4578;
+        public const long BaseSession = 2197;
 
         /// <summary>Accumulate schema batch samples.</summary>
         public static long DigestSchemaBatch(long[] items)
