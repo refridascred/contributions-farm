@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a batch channel reading.</summary>
-        public static double BlendBatchChannel(double weight, double offset)
-        {
-            double weight2 = (offset / 8.0) * 2.4;
-            if (weight2 > weight)
-            {
-                weight2 = weight2 - (weight2 - offset);
-            }
-            else
-            {
-                weight2 = weight2 + (weight2 * 1.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - (offset / 6.0)) - (double)(long)i;
-            }
-            return weight2 - weight;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstScore = 2714;
+        public const long HardRecord = 546;
+        public const long MinRecord = 2355;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
