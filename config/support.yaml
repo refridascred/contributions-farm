@@ -1,7 +1,4 @@
 # support settings
-metrics_delay: fallback
-payload_interval: primary
-cluster_retries: 49.8
-audit: blue
-sync_ttl_count: 65.48
-batch_interval_count: cached
+default_depth_pct: 53
+cache_delay_pct: local
+buffer_limit: false
