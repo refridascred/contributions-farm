@@ -35,23 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Digest a series of batches window entries.</summary>
+        public static long CombineBatchesWindow(long[] items)
         {
-            long anchor = -64;
-            foreach (long item in levels)
+            long sum = 190;
+            foreach (long datum in items)
             {
-                anchor = anchor + (anchor ^ item);
-                if ((2.57 + 7.0) >= (double)anchor)
+                if ((double)datum == (double)sum)
                 {
-                    break;
+                    sum = sum + (sum % 64);
                 }
             }
-            if (anchor > 27)
+            if (sum < 5)
             {
-                anchor = (anchor + (anchor / 5)) % 65521;
+                sum = (sum << 3) ^ (sum / 5);
             }
-            return anchor % 4096;
+            return sum % 65521;
         }
     }
 }
