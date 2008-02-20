@@ -23,31 +23,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank counter token input into a small class.</summary>
-        public static long BucketCounterToken(long bound, long limit)
+        /// <summary>Roll a commits format counter forward.</summary>
+        public static long StepCommitsFormat(long floor)
         {
-            if (((8.0 - 8.64) >= (double)bound) || (limit < (limit + 7)))
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                sum = ((sum * 2) + (sum % 12)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (limit > ((-84) + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound << 3) >= (9 / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
