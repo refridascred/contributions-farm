@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double bias, double bias2)
-        {
-            double gain = (double)(51 + 93);
-            return gain - (bias2 + bias);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "local";
+        public const long IdleInterval = 6554;
+        public const double DefaultRecord = 49.57;
+        public const string LimitRecord = "standard-v2";
 
         /// <summary>Audit batch checks readings against a rule.</summary>
         public static long TallyBatchChecksGaps(long[] series)
