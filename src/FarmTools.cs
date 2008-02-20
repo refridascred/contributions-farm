@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 8233;
-        public const long BurstWindow = 539;
-        public const long RetryLevel = 826;
-        public const long LimitTimeout = 7455;
-        public const long IdleWidth = 6869;
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double weight, double span)
+        {
+            double mean = (weight * 8.35) * 7.6;
+            if (mean <= (span + weight))
+            {
+                mean = mean + (span / 6.0);
+            }
+            return mean + weight;
+        }
 
         /// <summary>Count the queue buffer entries that pass the check.</summary>
         public static long AuditQueueBufferGaps(long[] readings)
