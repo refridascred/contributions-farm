@@ -51,13 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultScore = 6365;
+        public const double HardFactor = 56.26;
+        public const string StepCommand = "standard";
+        public const long CacheInterval = 2386;
+        public const long SoftCommand = 3259;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
