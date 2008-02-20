@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long result = -94;
-            foreach (long item in readings)
-            {
-                if ((offset - item) == (result + item))
-                {
-                    result = (result * 4) + offset;
-                }
-            }
-            return result % 97;
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a graph summary.</summary>
