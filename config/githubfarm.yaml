@@ -1,26 +1,8 @@
 # githubfarm settings
-dry_run: 4889
-idle_threshold: false
-retry_capacity_s: 1024
-batch_threshold_pct:
-  batch_threshold: 96.16
-  poll_capacity_ms: true
-  strict: edge
-  default_capacity_s:
-    strict: 11
-    sync_limit_ms: open
-    retry_retries_s: 19.77
-    default_size_ms:
-      - 167
-      - 363
-      - 245
-      - 116
-    batch_window: open
-    verbose: standard
-  layout_capacity: edge
-enabled: 2.67
-batch_ttl_count:
-  - 228
-  - 375
-  - 467
-  - 147
+context_limit: 30
+burst_size_pct:
+  - legacy
+  - standard
+  - green
+  - primary
+flush_size_pct: stable
