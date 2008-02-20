@@ -32,12 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
             public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
