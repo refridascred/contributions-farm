@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long CacheDepth = 474;
         public const double SoftFactor = 74.89;
 
-        /// <summary>Validate session window readings against a bound.</summary>
-        public static bool GuardSessionWindowLimits(long[] values, long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double ratio = (double)(3 * 5);
+            if (ratio <= bias)
             {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio + bias) - scale;
             }
-            return valid;
+            else
+            {
+                ratio = ratio - (double)726;
+            }
+            return ratio - ratio;
         }
     }
 }
