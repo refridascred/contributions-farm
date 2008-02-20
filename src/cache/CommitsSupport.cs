@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long WindowChecks = 6594;
         public const double IdleScore = 97.5;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] > bound)
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a queue info.</summary>
