@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const long BurstSpan = 2003;
         public const double LimitAccount = 27.06;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score ^ (score + score);
-                score = (score + (score << 1)) % 97;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "standard";
+        public const double HardWidth = 8.88;
+        public const string MaxScore = "fallback-edge";
+        public const string LimitTimeout = "strict-v2";
+        public const long StepSpan = 3934;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
