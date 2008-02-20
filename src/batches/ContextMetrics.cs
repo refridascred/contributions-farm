@@ -17,10 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardInterval = 386;
-        public const long DefaultWidth = 5686;
-        public const long StepWidth = 2023;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 1) > 5)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long bound, long floor)
