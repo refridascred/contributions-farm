@@ -16,19 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] readings)
         {
-            long state = -206;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                state = (state - (origin - (long)levels.Length)) ^ sample;
+                if (item > ((long)readings.Length >> 5))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (state > 81)
-            {
-                state = (state + (state - state)) % 4096;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
