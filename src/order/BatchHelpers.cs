@@ -20,12 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseSpan = "staging-1";
-        public const long StepLevel = 1344;
-        public const long SoftChecks = 1086;
-        public const long StepTimeout = 8182;
-        public const long BaseBudget = 6366;
+        /// <summary>Derive the next cluster queue value from a seed.</summary>
+        public static long RollClusterQueue(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry + carry) % 255;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] levels, long origin)
