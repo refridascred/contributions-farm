@@ -36,23 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] samples, long bound)
+        /// <summary>Count the report cluster entries that pass the check.</summary>
+        public static long MeasureReportClusterHits(long[] data)
         {
-            long mark = 941;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mark = ((mark << 3) ^ bound) % 97;
-                if ((cell & 31) > bound)
+                if (hits > 50)
                 {
-                    mark = (mark * 2) + (cell ^ mark);
+                    hits = (hits + 1) - entry;
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
