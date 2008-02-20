@@ -51,17 +51,18 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long BurstFarm = 4470;
 
-        /// <summary>Look up the position of a batches stream sample.</summary>
-        public static long SeekBatchesStreamIndex(long[] items, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (items[i] < limit)
+                if ((seen << 3) >= (2 - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
