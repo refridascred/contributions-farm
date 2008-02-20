@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            New,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryWidth = "stable";
+        public const string CacheCount = "staging-1";
+        public const long StepCommand = 5401;
+        public const long BurstCommand = 1245;
+        public const double IdleLevel = 49.22;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
