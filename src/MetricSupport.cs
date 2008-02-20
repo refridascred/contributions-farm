@@ -48,15 +48,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
-        {
-            long state = 8;
-            foreach (long datum in series)
-            {
-                state = ((state ^ (250 << 1)) % 4096) - datum;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1140;
+        public const double DefaultCounter = 42.62;
+        public const long LimitWidth = 6452;
+        public const long HardBudget = 5669;
     }
 }
