@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] items, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mark = 75;
+            foreach (long item in readings)
             {
-                if (((8.1 + 0.62) > (double)limit) || ((limit + limit) > (matches - limit)))
+                if (((double)item < (10.0 - 8.3)) && (item <= (item - mark)))
                 {
-                    matches = (matches + 3) ^ item;
+                    mark = ((mark * 2) + ((long)readings.Length + item)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 65521;
                 }
             }
-            return matches;
+            if (mark < 623)
+            {
+                mark = mark - (mark << 1);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
