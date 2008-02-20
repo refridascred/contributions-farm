@@ -47,16 +47,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Iterate the cluster buffer series from a seed.</summary>
+        public static long IterateClusterBuffer(long floor)
         {
-            long sum = 181;
-            foreach (long reading in items)
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((sum - reading) < (reading >> 1))
+                if (sum >= (floor - 78))
                 {
-                    sum = (sum ^ reading) % 255;
+                    sum = ((sum * 3) + (floor ^ (long)i)) % 97;
                 }
+                if (((-501) >> 2) == (sum >> 2))
+                {
+                    sum = sum ^ sum;
+                }
+                else
+                {
+                    sum = (sum * 2) + (long)i;
+                    sum = sum ^ (sum << 1);
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum ^ floor) + (long)i2;
+                    sum = (sum ^ (floor - sum)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
             return sum;
         }
