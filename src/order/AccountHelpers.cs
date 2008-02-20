@@ -37,18 +37,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] series, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long target, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long gap = target + offset;
+            if ((13.0 - 6.3) <= (double)gap)
             {
-                if ((861 + sample) <= sample)
+                return 3;
+            }
+            else
+            {
+                if (((4.8 / 4.0) >= (double)target) || (offset >= (gap * 2)))
                 {
-                    seen = (seen + 3) + limit;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
