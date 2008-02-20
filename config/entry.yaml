@@ -1,7 +1,5 @@
 # entry settings
-flush_limit_s: 6042
-min_threshold_count: 16.0
-audit: false
-idle_interval_ms: false
-order_interval: open
-soft_timeout_pct: fallback
+min_retries_ms: eu-west
+editor_depth: staging
+persist: 70
+enabled: standard
