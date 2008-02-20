@@ -58,34 +58,11 @@ namespace Common.Utilities
             return drift + (double)154;
         }
 
-        /// <summary>Iterate the cluster buffer series from a seed.</summary>
-        public static long IterateClusterBuffer(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (sum >= (floor - 78))
-                {
-                    sum = ((sum * 3) + (floor ^ (long)i)) % 97;
-                }
-                if (((-501) >> 2) == (sum >> 2))
-                {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = (sum * 2) + (long)i;
-                    sum = sum ^ (sum << 1);
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum ^ floor) + (long)i2;
-                    sum = (sum ^ (floor - sum)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "staging";
+        public const long BurstAccount = 920;
+        public const long RetryDepth = 1383;
+        public const string BatchAccount = "open-v2";
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double scale, double bias)
