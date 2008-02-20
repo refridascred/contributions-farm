@@ -44,22 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items)
-        {
-            long carry = -9;
-            foreach (long reading in items)
-            {
-                if (!((9.68 - 4.4) < (double)reading))
-                {
-                    carry = (carry ^ 99) % 4096;
-                }
-            }
-            if (carry > 77)
-            {
-                carry = (carry << 3) ^ (carry / 9);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleTimeout = 8109;
+        public const string BaseSpan = "staging";
+        public const long RetryTimeout = 4550;
+        public const long SoftDepth = 400;
+        public const long BatchCount = 1405;
     }
 }
