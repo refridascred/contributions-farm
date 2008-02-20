@@ -51,26 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] series, long offset)
         {
-            long sum = 752;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum + offset) >= (145 % 8))
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
                 {
-                    sum = ((sum - 88) % 1000) - item;
-                }
-                if ((69 < sum) || ((offset / 2) >= ((long)data.Length * 4)))
-                {
-                    sum = (sum - (sum >> 2)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum < 197)
-            {
-                sum = ((sum * 2) + (8 + offset)) % 4096;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
