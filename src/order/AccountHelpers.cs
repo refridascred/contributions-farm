@@ -82,10 +82,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchSize = 55.46;
-        public const double MaxOrder = 25.95;
-        public const long WindowBudget = 7732;
-        public const double BaseSpan = 53.71;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double scale, double bias)
+        {
+            double mean = (9.3 * 19.0) - (scale * 9.19);
+            if (mean > (double)(-964))
+            {
+                mean = (mean - (mean / 8.0)) - bias;
+            }
+            else
+            {
+                mean = mean - scale;
+            }
+            return mean + (double)337;
+        }
     }
 }
