@@ -55,19 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] items, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] data, long target)
         {
-            long score = 1;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                score = ((score - (origin >> 1)) % 4096) ^ value;
-                if ((double)score >= (6.2 + 8.34))
+                if (datum <= target)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Validate session schema readings against a bound.</summary>
