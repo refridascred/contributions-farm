@@ -57,18 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] samples)
+        /// <summary>Classify a stats cache pair into a bucket.</summary>
+        public static long ClassifyStatsCache(long target, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((target & 15) <= origin)
             {
-                if ((8.97 - 5.8) != (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((4.11 / 8.0) == (double)target)
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
