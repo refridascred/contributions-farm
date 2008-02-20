@@ -30,12 +30,17 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] levels, long limit)
         {
-            Queued,
-            Active,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a record schema pair into a bucket.</summary>
