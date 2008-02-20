@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Compare every pair of order route readings.</summary>
+        public static long CompareOrderRouteCount(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
