@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 2430;
-        public const double DefaultTools = 4.55;
-        public const long BatchInterval = 6480;
-        public const string DefaultSize = "staging-v2";
-        public const long MinTools = 9231;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 3171;
+        public const string LimitFactor = "latest";
+        public const long BatchDepth = 6751;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
