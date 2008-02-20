@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long LimitLayout = 8704;
         public const long MinLayout = 8595;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum - (sum >> 3)) % 97;
-                if (!((1.96 / 8.0) < (double)(long)i))
-                {
-                    sum = ((sum << 2) ^ (sum - limit)) % 65521;
-                    sum = (sum ^ (limit ^ sum)) % 4096;
-                }
-                sum = (sum + ((-603) * 2)) % 101;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
