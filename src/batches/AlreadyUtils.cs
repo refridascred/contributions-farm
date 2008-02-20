@@ -27,31 +27,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            if ((bound + bound) == (bound + seed))
+            double scale = 17.0;
+            if (scale < (weight + 4.3))
             {
-                return 0;
+                scale = scale + bias;
             }
-            else
-            {
-                if (((seed / 6) >= (bound % 2)) || ((seed / 2) >= (bound + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 100) != (bound - 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return scale + (double)863;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
