@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
