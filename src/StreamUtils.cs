@@ -50,19 +50,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double weight, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data, long origin)
         {
-            double load = floor + (weight + weight);
-            if (load <= load)
+            long tally = 0;
+            foreach (long item in data)
             {
-                load = load - (weight * 18.0);
+                if ((tally / 2) <= tally)
+                {
+                    tally = ((tally + 3) + item) - origin;
+                }
             }
-            else
-            {
-                load = load + (floor + weight);
-            }
-            return load - (9.9 / 4.0);
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
