@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long SoftRoute = 5641;
         public const long LimitRoute = 2453;
 
-        /// <summary>Check that every stats tools entry stays within the limit.</summary>
-        public static bool CheckStatsToolsRange(long[] readings, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Queued,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
