@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] values, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)239 < (double)cell)
-                {
-                    tally = (tally + 2) + target;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
