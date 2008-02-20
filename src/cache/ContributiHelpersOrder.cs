@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const string BurstStream = "staging-v2";
         public const double CacheRatio = 87.29;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] levels, long floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mix = 77;
-            foreach (long value in levels)
-            {
-                if ((mix + mix) != (floor + floor))
-                {
-                    mix = (mix - (mix + value)) % 65521;
-                }
-            }
-            return mix;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
