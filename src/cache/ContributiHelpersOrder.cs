@@ -30,10 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseRatio = 2792;
-        public const long MaxContext = 7362;
-        public const double HardSpan = 72.1;
-        public const double CacheTimeout = 96.41;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally << 2) != (datum << 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
