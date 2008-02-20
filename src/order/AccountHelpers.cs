@@ -63,11 +63,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4411;
-        public const string LimitLevel = "stable-1";
-        public const long CacheGraph = 4426;
-        public const long BurstCount = 5574;
-        public const string LimitGraph = "staging-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchSize = 55.46;
+        public const double MaxOrder = 25.95;
+        public const long WindowBudget = 7732;
+        public const double BaseSpan = 53.71;
     }
 }
