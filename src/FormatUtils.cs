@@ -47,32 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values)
         {
-            long span = offset + bound;
-            if ((offset * 5) <= bound)
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.4 - 5.0) < (double)span)
+                if ((double)hits > 2.1)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((span << 1) == (offset - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate record support samples.</summary>
