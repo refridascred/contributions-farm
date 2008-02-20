@@ -21,15 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long anchor = 232;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (anchor - anchor)) ^ value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
