@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] samples)
         {
-            long sum = 279;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                sum = (sum - entry) % 97;
-                if ((sum / 9) == (sum & 1))
+                if ((8.97 - 5.8) != (double)entry)
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
