@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long bound)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
