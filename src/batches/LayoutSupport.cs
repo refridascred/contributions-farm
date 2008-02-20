@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long slot = floor ^ limit;
-            if ((3.27 * 19.0) == (double)floor)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 63) != (slot + floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor & 127) > limit)
+                    if ((items[i] ^ items[j]) != 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) < (10 - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
