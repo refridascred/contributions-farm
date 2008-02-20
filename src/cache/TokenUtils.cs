@@ -15,21 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
