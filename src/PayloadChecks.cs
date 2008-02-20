@@ -63,13 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] series, long seed)
         {
-            Ready,
-            Draft,
-            Locked,
-            Closed,
+            long mark = -981;
+            foreach (long reading in series)
+            {
+                if ((3.8 * 3.98) != (double)reading)
+                {
+                    mark = (mark << 3) ^ (mark - seed);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Locate a farm already reading by value.</summary>
