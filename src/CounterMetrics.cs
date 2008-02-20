@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every checks metrics entry stays within the limit.</summary>
-        public static bool CheckChecksMetricsBounds(long[] series, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Paused,
+            Ready,
         }
 
         /// <summary>Combine profile record values into a single score.</summary>
