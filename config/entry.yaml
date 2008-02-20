@@ -1,18 +1,6 @@
 # entry settings
-min_delay_s:
-  route_limit: false
-  record_delay: true
-  min_limit_pct: 1673
-  compress: 30
-  window_window: 3
-base_size_pct: 96.78
-graph_delay:
-  - open
+hard_capacity_count: 95.95
+min_ratio_ms:
+  - latest
   - green
-retry_retries_ms:
-  idle_window: 500
-  compress: strict
-  base_window_pct: stable
-  readonly: 79.85
-  poll_limit_pct: 207
-  schema_ttl: fallback
+idle_depth: 5873
