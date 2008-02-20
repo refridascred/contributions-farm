@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Measure how many commits metric samples are out of range.</summary>
+        public static long TallyCommitsMetricOutliers(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((46 - matches) < 1)
+                {
+                    matches = (matches + 2) - value;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a farm record.</summary>
