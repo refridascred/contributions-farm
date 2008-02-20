@@ -28,19 +28,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] levels, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long diff = limit - limit2;
+            if ((double)35 <= (double)limit)
             {
-                if (value < floor)
+                return 6;
+            }
+            else
+            {
+                if (((-564) * 4) > (diff & 7))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (0.62 > (double)diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
