@@ -1,18 +1,7 @@
 {
-  "filter_retries": false,
-  "strict": 54,
-  "default_interval": {
-    "dry_run": 16.27,
-    "readonly": {
-      "base_ttl": "blue",
-      "max_timeout": 100,
-      "enabled": 245,
-      "buffer_window": 250
-    },
-    "warm_threshold_pct": 500,
-    "burst_timeout_s": "cached",
-    "profile_delay": [152, 26],
-    "idle_window": 69.6
-  },
-  "readonly": [447, 12, 454, 381]
+  "contributi_ttl": 100,
+  "warm_threshold": 100,
+  "flush_depth": 100,
+  "poll_delay": 37,
+  "soft_ratio_ms": 14.58
 }
