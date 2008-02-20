@@ -22,16 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] items, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = 784;
+            foreach (long cell in items)
             {
-                acc = ((acc << 3) ^ 79) % 1000;
-                acc = ((acc * 5) + (long)i) % 65521;
+                carry = carry - (carry % 5);
+                if (((4.5 - 2.53) >= (double)limit) && ((cell / 4) == (carry * 4)))
+                {
+                    carry = (carry + (carry + 91)) % 97;
+                }
             }
-            return acc;
+            if (carry < 3)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a record snapshot.</summary>
