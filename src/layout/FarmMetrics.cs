@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-edge";
         public const string StepScore = "staging-edge";
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)(489 << 3);
+            if (bias <= (span / 9.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + (span / 8.0);
             }
-            return hits;
+            else
+            {
+                bias = bias + (bias * 0.18);
+            }
+            return bias - (ratio * 4.2);
         }
     }
 }
