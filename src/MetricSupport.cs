@@ -29,22 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] samples, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] items, long bound)
         {
-            long total = 9;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (((long)samples.Length % 5) > (0 ^ total))
+                if (reading > bound)
                 {
-                    total = total ^ (97 - 68);
-                }
-                if (((double)72 > (double)sample) && ((long)samples.Length < origin))
-                {
-                    total = (total << 2) ^ (total - 661);
+                    ok = false;
+                    break;
                 }
             }
-            return total % 97;
+            return ok;
         }
     }
 }
