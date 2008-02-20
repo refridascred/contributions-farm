@@ -26,12 +26,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] samples, long floor)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
