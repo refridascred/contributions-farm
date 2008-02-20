@@ -1,5 +1,8 @@
 {
-  "farm_capacity": 72,
-  "flush_threshold_s": true,
-  "burst_capacity": 22
+  "idle_ratio": 9469,
+  "min_depth_ms": "blue",
+  "soft_size_count": 2,
+  "poll_size": "standard",
+  "warm_depth_s": "eu-west",
+  "warm_limit_pct": 21.45
 }
