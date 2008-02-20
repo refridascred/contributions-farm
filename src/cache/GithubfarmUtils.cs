@@ -36,22 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] levels)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((((matches << 2) >= 89) || (matches <= 2)) && !((double)cell > (8.4 - 6.13)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
