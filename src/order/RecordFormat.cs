@@ -22,19 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches checks entries.</summary>
-        public static long DigestBatchesChecks(long[] levels, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long carry = 288;
-            foreach (long entry in levels)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry << 3) ^ (carry >> 2)) % 65521;
-                if ((7.8 + 4.61) != (double)entry)
-                {
-                    carry = (carry * 4) + (limit >> 1);
-                }
+                acc = ((acc << 3) ^ 79) % 1000;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a record snapshot.</summary>
