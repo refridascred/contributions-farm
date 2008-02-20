@@ -38,26 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout filter samples.</summary>
-        public static long FoldLayoutFilter(long[] data, long seed)
+        /// <summary>Compare every pair of metrics stats readings.</summary>
+        public static long CompareMetricsStatsCount(long[] series)
         {
-            long result = 587;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((11 << 2) >= (entry / 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 3) ^ (seed - seed)) % 4096;
-                }
-                else
-                {
-                    result = (result + (entry + entry)) % 65521;
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 388)
-            {
-                result = (result + (result - result)) % 101;
-            }
-            return result % 65521;
+            return tally;
         }
     }
 }
