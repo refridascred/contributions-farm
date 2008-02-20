@@ -23,10 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 1.68;
-        public const double CacheTimeout = 34.52;
-        public const double HardContext = 59.66;
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double bias, double floor)
+        {
+            double mean = bias;
+            if (mean > (8.1 - mean))
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (double)9;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double rate, double span)
