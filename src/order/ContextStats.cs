@@ -10,30 +10,19 @@ namespace Common.Utilities
         public const long CacheLevel = 9802;
         public const double DefaultCount = 39.99;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] samples, long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long mark = 53;
-            foreach (long reading in samples)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if ((result * 3) == (180 * 2))
                 {
-                    mark = ((mark << 2) ^ ((long)i % 64)) - offset;
+                    result = (result ^ (long)i) % 255;
                 }
-                if ((reading & 31) < ((long)samples.Length ^ reading))
-                {
-                    mark = (mark << 3) ^ (mark % 12);
-                }
-                else
-                {
-                    mark = ((mark * 5) + 7) % 65521;
-                }
-                if (mark <= (88 + reading))
-                {
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
