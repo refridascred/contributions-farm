@@ -1,5 +1,5 @@
 {
-  "batch_limit_count": [444, 234, 365],
-  "support_window": [52, 264, 281],
-  "profile_capacity": 26.68
+  "default_window_ms": "eu-west",
+  "min_retries_s": 93.7,
+  "sync_limit_count": "cached"
 }
