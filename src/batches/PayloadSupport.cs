@@ -46,21 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile already pairs that satisfy a relation.</summary>
-        public static long PairProfileAlreadyCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 6171;
+        public const long BurstChecks = 5284;
+        public const long RetryBudget = 7845;
+        public const long IdleChecks = 4860;
+        public const long RetryTimeout = 7566;
     }
 }
