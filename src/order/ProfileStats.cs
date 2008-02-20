@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values, long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long carry = 63;
-            foreach (long reading in values)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry - (carry % 100)) % 97) + origin;
-                if (reading >= (reading * 4))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
