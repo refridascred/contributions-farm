@@ -44,18 +44,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (item > (item * 4))
+                if (value > floor)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine account values into a single score.</summary>
