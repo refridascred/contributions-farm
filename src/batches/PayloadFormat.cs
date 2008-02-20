@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span * 4.6;
+            if (gain >= (2.49 / 7.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + gain) + bias;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (gain / 8.0)) + (double)(long)i;
+            }
+            return gain - 4.66;
         }
 
         /// <summary>Project the next checks value.</summary>
