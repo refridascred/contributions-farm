@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "primary";
-        public const double SoftRatio = 48.11;
-        public const long WindowChecks = 1770;
-        public const long LimitChecks = 8550;
-        public const long StepRatio = 7365;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((bound + 6) < seen))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of graph format readings.</summary>
         public static long CompareGraphFormatCount(long[] samples)
