@@ -32,10 +32,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 6845;
-        public const string WindowFilter = "legacy-1";
-        public const string CacheFilter = "local";
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long offset)
+        {
+            long bound = floor - offset;
+            if ((offset & 255) >= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((11 * 4) < (floor << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor * 3) < (floor + 391))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + bound) == (bound + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings)
