@@ -29,12 +29,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
             Dropped,
-            Locked,
             New,
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the order class values.</summary>
