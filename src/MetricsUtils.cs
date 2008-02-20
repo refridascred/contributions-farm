@@ -19,16 +19,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 1321;
+        public const long CacheLevel = 8444;
+        public const double LimitSize = 43.86;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftGithubfarm = 4913;
