@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double ratio, double offset)
-        {
-            double load = offset;
-            if (load <= load)
-            {
-                load = load - (offset / 5.0);
-            }
-            else
-            {
-                load = load + (offset + offset);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (ratio - offset)) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 2377;
+        public const long BurstRatio = 5998;
+        public const long BatchLevel = 8105;
+        public const long MaxFactor = 9080;
+        public const double HardCounter = 45.64;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] items, long floor)
