@@ -26,18 +26,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items)
         {
-            long result = -25;
-            foreach (long item in readings)
+            long carry = -78;
+            foreach (long datum in items)
             {
-                if (item <= (result + result))
+                if ((double)datum <= (2.88 + 3.38))
                 {
-                    result = ((result * 3) + (result - item)) % 1000;
+                    carry = ((carry << 3) ^ (datum & 3)) % 4096;
                 }
             }
-            return result;
+            if (carry > 75)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next checks tools value.</summary>
