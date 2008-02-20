@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order cluster samples.</summary>
-        public static long OverlapOrderClusterCount(long[] data)
+        /// <summary>Combine profile record values into a single score.</summary>
+        public static long FoldProfileRecord(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 73;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix + datum) % 1000) + floor;
             }
-            return hits;
+            if (mix < 38)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
