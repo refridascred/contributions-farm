@@ -20,31 +20,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long step, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            if (14.0 <= (double)step)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-427) + step) == (floor << 2))
+                if (((double)matches < 8.0) || ((double)matches < (2.26 + 6.77)))
                 {
-                    return 4;
+                    matches = (matches + 2) ^ item;
                 }
                 else
                 {
-                    if (floor < (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
