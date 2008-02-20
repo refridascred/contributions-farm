@@ -25,18 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Measure how many stream metric samples are out of range.</summary>
+        public static long TallyStreamMetricOutliers(long[] readings)
         {
-            long carry = 812;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((4.0 / 8.0) < (double)item)
+                if ((hits * 5) <= datum)
                 {
-                    carry = (carry + (item / 4)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next window checks value from a seed.</summary>
