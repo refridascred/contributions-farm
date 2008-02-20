@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long state = -958;
-            foreach (long value in samples)
-            {
-                state = (state + (origin % 5)) ^ value;
-            }
-            if (state < 79)
-            {
-                state = state - origin;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate entry samples.</summary>
