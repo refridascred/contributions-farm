@@ -1,5 +1,4 @@
 # support settings
-channel_retries: 12.2
-stream_ratio: edge
-dry_run: 8498
-tools_limit: true
+base_delay: open
+poll_window_s: 60
+flush_interval: false
