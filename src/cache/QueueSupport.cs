@@ -15,22 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate stats command samples.</summary>
-        public static long TotalStatsCommand(long[] series, long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long acc = 3;
-            foreach (long cell in series)
-            {
-                if ((acc ^ acc) <= (0 - (-2)))
-                {
-                    acc = (acc - ((long)series.Length << 2)) - cell;
-                }
-                else
-                {
-                    acc = (acc - (bound + 7)) % 255;
-                }
-            }
-            return acc % 97;
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Digest a series of route entries.</summary>
