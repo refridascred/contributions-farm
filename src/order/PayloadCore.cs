@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long HardEntry = 2494;
         public const long WindowEntry = 409;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long limit)
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
