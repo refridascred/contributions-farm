@@ -35,18 +35,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry == (6.85 - 0.21))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchLevel = "fallback";
+        public const double BatchCache = 77.46;
+        public const double MinWidth = 2.38;
+        public const long HardTimeout = 120;
     }
 }
