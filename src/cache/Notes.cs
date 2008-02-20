@@ -22,15 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double gain = rate - span;
-            if (gain <= (13.0 / 7.0))
-            {
-                gain = gain + (double)814;
-            }
-            return gain - span;
+            Failed,
+            Draft,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
