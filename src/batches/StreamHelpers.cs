@@ -36,14 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long MeasureContextLayoutGaps(long[] series)
         {
-            Active,
-            Synced,
-            Paused,
-            Idle,
-            Stale,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((datum / 8) != (tally - 19)) || ((tally & 127) < (tally + (-8))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer entry.</summary>
