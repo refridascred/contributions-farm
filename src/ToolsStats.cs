@@ -38,12 +38,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the order class values.</summary>
