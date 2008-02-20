@@ -14,11 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long offset)
         {
-            double mean = bias;
-            return (mean - (double)3) + ratio;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a report checks reading.</summary>
