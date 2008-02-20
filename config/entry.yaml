@@ -1,8 +1,7 @@
 # entry settings
-sync_size: 67.11
-cache_delay: 60
-poll_timeout_ms:
-  - 117
-  - 170
-flush_limit: stable
-default_depth_pct: strict
+burst_limit_s: 60
+burst_window_count: standard
+batch_retries_ms: 67.03
+poll_threshold: 250
+flush_ratio: stable
+context_depth: staging
