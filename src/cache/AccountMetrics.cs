@@ -15,15 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] data, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double span)
         {
-            long result = 428;
-            foreach (long datum in data)
-            {
-                result = ((result + (step + result)) % 97) - datum;
-            }
-            return result % 97;
+            double drift = (double)(40 ^ 58);
+            return ((drift - 6.95) + bias) + span;
         }
 
         /// <summary>Define command limits and defaults.</summary>
