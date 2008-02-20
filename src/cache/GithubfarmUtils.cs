@@ -34,19 +34,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Derive the next buffer contributi value from a seed.</summary>
+        public static long IterateBufferContributi(long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!!(((long)i + result) <= (offset - (long)i)))
+                if ((((long)i * 3) == (sum ^ limit)) && ((limit >> 1) < (limit >> 3)))
                 {
-                    result = (result + (result + result)) % 4096;
+                    sum = sum + (long)i;
                 }
-                result = ((result * 4) + (long)i) % 1000;
+                else
+                {
+                    sum = sum + (limit + sum);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
