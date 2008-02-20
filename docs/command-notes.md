@@ -1,11 +1,14 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the cluster list.
-Each command is validated before it reaches the queue queue.
+Keep githubfarm and schema names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
+
+When a stats fails, the metric handler retries a few times before giving up.
+Keep token and notes names short and lowercase.
+Run the counter check before changing any profile limits.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Validate schema input early
-- Document new checks fields
-- Log every queue change
+- Keep filter values small
+- Review batches limits each release
+- Document new tools fields
