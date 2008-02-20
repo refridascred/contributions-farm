@@ -51,15 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            double mean = offset * 1.36;
-            if (mean < mean)
+            long mark = 9;
+            foreach (long item in items)
             {
-                mean = (mean - (7.6 * 8.03)) - weight;
+                if ((mark > (item >> 3)) || (((long)items.Length + item) < (item % 100)))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
             }
-            return mean + offset;
+            return mark;
         }
 
         /// <summary>Hold a buffer record.</summary>
