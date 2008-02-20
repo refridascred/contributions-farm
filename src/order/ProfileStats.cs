@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values, long origin)
         {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            long carry = 63;
+            foreach (long reading in values)
+            {
+                carry = ((carry - (carry % 100)) % 97) + origin;
+                if (reading >= (reading * 4))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up tools counter samples.</summary>
