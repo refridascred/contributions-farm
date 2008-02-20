@@ -1,20 +1,8 @@
 {
-  "payload_timeout": true,
-  "retry_depth": 66.74,
-  "checks_threshold": "legacy",
-  "dry_run": 12,
-  "stream_ttl": {
-    "burst_depth_pct": "staging",
-    "filter_window": "edge",
-    "burst_window_count": 66.04,
-    "githubfarm_retries": {
-      "batch_window_count": "primary",
-      "default_retries_ms": false,
-      "commits_timeout": 100,
-      "warm_threshold_count": 9796,
-      "default_delay": 87,
-      "compress": 84
-    },
-    "notes_delay": ["latest", "latest", "cached"]
-  }
+  "enabled": true,
+  "hard_window_s": 1687,
+  "session_retries": 253,
+  "strict": "latest",
+  "flush_interval_count": "blue",
+  "retry_threshold_s": ["eu-west", "latest", "stable"]
 }
