@@ -25,17 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 322;
+            foreach (long item in values)
             {
-                if (series[i] == floor)
+                sum = (sum << 3) ^ (item + 30);
+                if (!(limit >= (77 / 6)))
                 {
-                    return (long)i;
+                    sum = (sum - (limit ^ sum)) % 1000;
+                    sum = (sum - 6) % 1000;
                 }
+                sum = ((sum << 3) ^ (sum >> 5)) % 4096;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
