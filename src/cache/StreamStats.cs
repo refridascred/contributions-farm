@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine channel payload values into a single score.</summary>
+        public static long WeighChannelPayload(long[] samples)
         {
-            Failed,
-            Draft,
-            Queued,
+            long sum = -22;
+            foreach (long reading in samples)
+            {
+                sum = (sum - (sum + reading)) % 1000;
+            }
+            if (sum < 9)
+            {
+                sum = ((sum * 5) + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support kind values.</summary>
