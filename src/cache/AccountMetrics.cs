@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels, long offset)
+        /// <summary>Count graph support pairs that satisfy a relation.</summary>
+        public static long PairGraphSupportCount(long[] items)
         {
-            long total = 9;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((555 >> 1) > (offset + offset)) || (item < (offset + total)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (offset << 3)) % 255;
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = (total * 3) + (offset - item);
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
