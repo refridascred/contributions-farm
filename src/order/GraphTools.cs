@@ -60,11 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] samples, long target)
         {
-            public double Rank { get; set; }
-            public double Region { get; set; }
+            long acc = 712;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > 5.11)
+                {
+                    acc = (((acc << 2) ^ (231 ^ datum)) % 65521) - target;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
