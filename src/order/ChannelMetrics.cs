@@ -27,13 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate session window readings against a bound.</summary>
+        public static bool GuardSessionWindowLimits(long[] values, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
