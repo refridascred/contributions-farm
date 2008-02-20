@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data, long limit)
+        /// <summary>Find the first editor batch entry that matches the target.</summary>
+        public static long FindEditorBatchIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches ^ matches) > (matches / 8))
+                if (items[i] < floor)
                 {
-                    matches = ((matches + 2) ^ cell) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
