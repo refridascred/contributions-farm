@@ -28,24 +28,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a contributi profile pair into a bucket.</summary>
-        public static long BucketContributiProfile(long seed, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] data, long step)
         {
-            if (!((seed - 562) < ((-297) >> 3)))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >= ((-8) - seed)) || ((double)bound >= 6.0))
+                if (datum > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
