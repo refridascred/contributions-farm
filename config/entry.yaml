@@ -1,6 +1,15 @@
 # entry settings
-hard_capacity_count: 95.95
-min_ratio_ms:
-  - latest
-  - green
-idle_depth: 5873
+account_ttl: true
+strict: 43
+verbose:
+  dry_run: open
+  idle_capacity: eu-west
+  idle_window_count: green
+  session_size: stable
+  metrics_timeout: true
+  cache_depth: false
+flush_threshold:
+  - 396
+  - 100
+  - 384
+idle_capacity_count: 100
