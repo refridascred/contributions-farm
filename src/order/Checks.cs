@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string WindowFarm = "latest-edge";
         public const string MaxRatio = "stable";
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Measure how many order buffer samples are out of range.</summary>
+        public static long MeasureOrderBufferGaps(long[] samples, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (((origin >> 2) > count) || (origin < (4 - cell)))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
