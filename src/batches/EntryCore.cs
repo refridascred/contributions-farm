@@ -39,11 +39,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "strict-v2";
-        public const long DefaultFactor = 8696;
-        public const long DefaultLevel = 2573;
-        public const string HardCache = "latest-v2";
-        public const long BurstCache = 1194;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double gain, double floor)
+        {
+            double gain2 = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 + (5.0 - gain);
+        }
     }
 }
