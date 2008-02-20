@@ -20,12 +20,33 @@ namespace Common.Utilities
             return mean + (double)37;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 2780;
-        public const long BurstTimeout = 5869;
-        public const double HardPayload = 7.67;
-        public const long LimitPayload = 9356;
-        public const string StepPayload = "cached";
+        /// <summary>Classify a cluster commits pair into a bucket.</summary>
+        public static long RankClusterCommits(long seed, long floor)
+        {
+            long diff = seed + floor;
+            if (!((93 & 127) < seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor < (double)diff)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 2) <= (diff - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionBounds(long[] values, long step)
