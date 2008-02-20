@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            Retry,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Compare every pair of buffer record readings.</summary>
