@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] readings, long offset)
         {
-            Pending,
-            Paused,
-            Synced,
-            Queued,
-            Failed,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
