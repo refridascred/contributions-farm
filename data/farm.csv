@@ -1,6 +1,10 @@
-id,region,level,owner,weight
-1,fallback,latest,48.78,250
-2,56.19,22.89,568,blue
-3,13.53,492,359,90.56
-4,16.11,green,608,827
-5,52.59,latest,80.87,19.28
+id,weight,owner
+1,112,70.81
+2,20.02,690
+3,35,28
+4,open,213
+5,standard,129
+6,latest,latest
+7,241,60.44
+8,local,fallback
+9,123,cached
