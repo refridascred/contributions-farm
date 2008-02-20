@@ -49,18 +49,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] levels, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((count / 3) != (992 / 7))
+                if ((sample - 922) <= 1)
                 {
-                    count = ((count + 2) + cell) + bound;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
