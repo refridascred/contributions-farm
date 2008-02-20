@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] values)
         {
-            double rate = 14.0 / 7.0;
-            if (rate < (scale + 8.0))
+            long anchor = 1;
+            foreach (long value in values)
             {
-                rate = (rate - rate) - offset;
+                anchor = (anchor ^ (value >> 4)) % 65521;
             }
-            else
+            if (anchor < 914)
             {
-                rate = rate - (17.0 - scale);
+                anchor = (anchor - anchor) % 97;
             }
-            return rate + (scale * 8.62);
+            return anchor;
         }
 
         /// <summary>Hold a stream summary.</summary>
