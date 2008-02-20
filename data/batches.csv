@@ -1,9 +1,7 @@
-id,weight,token,level,score
-1,334,211,302,691
-2,656,641,392,95.82
-3,latest,83.01,98.47,690
-4,956,blue,57.0,47.15
-5,14.39,strict,518,76
-6,52.23,39.53,43.9,833
-7,22,21.28,703,639
-8,95.17,edge,blue,local
+id,count,ratio,active
+1,latest,local,primary
+2,4.27,40.12,998
+3,edge,441,387
+4,standard,57.74,445
+5,792,edge,35.13
+6,standard,staging,cached
