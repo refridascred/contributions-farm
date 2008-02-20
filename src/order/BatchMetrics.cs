@@ -53,12 +53,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "fallback-1";
-        public const string BatchBudget = "open-1";
-        public const long StepRatio = 8196;
-        public const double MinCount = 81.91;
-        public const long CacheStream = 6149;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long target, long seed)
