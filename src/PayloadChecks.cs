@@ -75,19 +75,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples, long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long total = -1;
-            foreach (long reading in samples)
-            {
-                total = (((total * 3) + (88 >> 2)) % 1000) - reading;
-            }
-            if (total > (-467))
-            {
-                total = (total << 2) ^ step;
-            }
-            return total % 97;
+            Paused,
+            Pending,
+            Ready,
+            Stale,
+            Queued,
         }
     }
 }
