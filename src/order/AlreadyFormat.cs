@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3359;
-        public const double BatchRatio = 50.9;
-        public const long BatchBatches = 864;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Failed,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] levels, long step)
