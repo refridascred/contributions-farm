@@ -29,18 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((-6) > (offset ^ seen))
+                if (!((value % 2) <= hits))
                 {
-                    seen = (seen + 1) - entry;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
