@@ -54,8 +54,8 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long limit)
+        /// <summary>Locate a cache commits reading by value.</summary>
+        public static long LookupCacheCommitsIndex(long[] data, long limit)
         {
             for (int i = 0; i < data.Length; i++)
             {
