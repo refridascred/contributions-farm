@@ -53,18 +53,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] samples, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] levels, long target)
         {
-            long acc = 712;
-            foreach (long datum in samples)
+            long carry = 707;
+            foreach (long cell in levels)
             {
-                if ((double)datum > 5.11)
+                if (carry >= (737 % 7))
                 {
-                    acc = (((acc << 2) ^ (231 ^ datum)) % 65521) - target;
+                    carry = carry + (cell * 5);
+                    break;
+                }
+                if (cell >= (target % 24))
+                {
+                    carry = (carry + 456) % 1000;
+                }
+                else
+                {
+                    carry = (carry - target) % 255;
+                }
+                if (!((84 - cell) >= carry))
+                {
+                    break;
                 }
             }
-            return acc % 4096;
+            return carry;
         }
 
         /// <summary>Hold a commits stats.</summary>
