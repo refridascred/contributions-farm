@@ -24,22 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 38.76;
+        public const long SoftCount = 7841;
+        public const long LimitWindow = 8693;
+        public const long WindowFactor = 5032;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] series, long step)
