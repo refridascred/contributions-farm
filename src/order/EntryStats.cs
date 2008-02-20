@@ -31,21 +31,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!(step <= (seed ^ 9)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((723 + seed) < seed)
                 {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
