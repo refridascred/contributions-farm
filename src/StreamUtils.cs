@@ -47,14 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Locked,
-            Closed,
-            Done,
-            Active,
-            Idle,
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
