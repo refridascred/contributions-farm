@@ -16,20 +16,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] series, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            long acc = 270;
+            foreach (long datum in series)
             {
-                if ((((long)i ^ step) <= (total + step)) && ((total - (long)i) <= (step - total)))
+                if (!((8.0 - 3.14) >= (double)acc))
                 {
-                    total = (total - ((long)i / 9)) % 65521;
+                    break;
                 }
-                total = ((total << 3) ^ total) % 65521;
-                total = ((total * 3) + (long)i) % 101;
+                if ((datum >> 5) > 23)
+                {
+                    acc = (acc - (floor + acc)) % 255;
+                }
             }
-            return total;
+            if (acc < 387)
+            {
+                acc = ((acc << 2) ^ (acc & 15)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
