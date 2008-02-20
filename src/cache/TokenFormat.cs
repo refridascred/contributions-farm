@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] levels, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (entry <= bound)
+                if (entry >= step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Accumulate farm samples.</summary>
