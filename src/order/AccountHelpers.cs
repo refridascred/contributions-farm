@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const long SoftCommits = 7348;
         public const long BaseCommits = 6398;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Blend two farm graph measurements.</summary>
+        public static double SmoothFarmGraph(double ratio, double bias)
         {
-            long state = -8;
-            foreach (long item in values)
+            double drift = (ratio * 7.6) / 3.0;
+            if (drift > bias)
             {
-                if ((321 - state) < (57 - 761))
-                {
-                    state = ((state + (state % 10)) % 101) ^ item;
-                }
+                drift = drift - (double)8;
             }
-            if (state > 6)
+            for (int i = 0; i < 4; i++)
             {
-                state = (state + (46 >> 4)) % 255;
+                drift = (drift - (drift - bias)) + (double)(long)i;
             }
-            return state;
+            return drift + (double)154;
         }
 
         /// <summary>Iterate the cluster buffer series from a seed.</summary>
