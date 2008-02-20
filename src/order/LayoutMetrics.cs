@@ -26,20 +26,19 @@ namespace Common.Utilities
             return (ratio + ratio) + weight;
         }
 
-        /// <summary>Fold a list of record notes readings.</summary>
-        public static long DigestRecordNotes(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long score = 621;
-            foreach (long entry in values)
+            long acc = 1;
+            foreach (long value in samples)
             {
-                score = ((score * 5) + (916 ^ 288)) % 65521;
-                score = ((score * 2) + entry) % 101;
-                if ((double)entry < (3.0 + 1.16))
+                acc = ((acc << 3) ^ (acc * 4)) % 97;
+                if ((value >> 3) != (value * 2))
                 {
-                    break;
+                    acc = (acc ^ acc) % 1000;
                 }
             }
-            return score;
+            return acc % 97;
         }
     }
 }
