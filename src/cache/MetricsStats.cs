@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "cached-edge";
-        public const double BatchRatio = 44.56;
-        public const long BatchInterval = 3482;
-        public const long WindowDepth = 6887;
+        /// <summary>Measure how many route buffer samples are out of range.</summary>
+        public static long TallyRouteBufferMatches(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)step >= (double)37)
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank metrics token input into a small class.</summary>
         public static long SortMetricsToken(long origin, long offset)
