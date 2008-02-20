@@ -69,13 +69,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Active,
+            Done,
+            Queued,
+            Closed,
         }
     }
 }
