@@ -26,26 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] items, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] series, long seed)
         {
-            long score = 6;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!((score + 8) > 3))
+                if (sample >= (seed & 7))
                 {
-                    score = (score - (value & 7)) % 4096;
-                }
-                if ((7.0 + 2.86) >= (double)target)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (score < (-203))
-            {
-                score = ((score << 2) ^ (target ^ target)) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
