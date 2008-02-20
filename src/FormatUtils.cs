@@ -43,31 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record schema pair into a bucket.</summary>
-        public static long GradeRecordSchema(long offset, long offset2)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] readings, long bound)
         {
-            if ((double)offset2 < (9.0 + 11.0))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 - offset2) != (10 + offset))
+                if ((value % 5) == (6 % 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((60 & 7) < (offset2 - offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a route options.</summary>
