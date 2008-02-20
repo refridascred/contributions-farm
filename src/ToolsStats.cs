@@ -15,13 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double gain, double offset)
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            double scale = offset * 1.23;
+            return (scale - (double)80) + gain;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
