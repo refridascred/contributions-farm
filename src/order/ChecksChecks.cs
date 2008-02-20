@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order buffer samples.</summary>
-        public static long CompareOrderBufferCount(long[] items)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound + bound) > (bound ^ 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit <= (double)54)
                 {
-                    if ((items[i] ^ items[j]) != 8)
+                    return 5;
+                }
+                else
+                {
+                    if (((bound / 7) >= (32 - limit)) && ((934 - (-223)) != (bound - limit)))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
