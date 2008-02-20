@@ -36,38 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((offset >> 3) >= (step + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step > (step ^ step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset & 7) == (offset - step)) && ((double)step == (4.49 / 3.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-628) << 3) > ((-468) + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
