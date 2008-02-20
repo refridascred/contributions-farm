@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "primary-edge";
-        public const string RetryContext = "fallback-1";
-        public const long BurstTimeout = 1103;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
