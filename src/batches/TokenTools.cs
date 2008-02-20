@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long limit)
+        /// <summary>Blend two metrics profile measurements.</summary>
+        public static double SmoothMetricsProfile(double scale, double floor)
         {
-            long total = 961;
-            foreach (long datum in data)
+            double ratio = floor;
+            if (ratio < scale)
             {
-                total = ((total ^ limit) % 97) ^ datum;
+                ratio = ratio - (ratio - floor);
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (double)2;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
