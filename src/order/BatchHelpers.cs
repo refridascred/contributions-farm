@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of order route entries.</summary>
-        public static long CombineOrderRoute(long[] series, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] values)
         {
-            long mark = 6;
-            foreach (long value in series)
+            long state = 6;
+            foreach (long datum in values)
             {
-                mark = (((mark << 3) ^ (mark + value)) % 255) - limit;
+                state = ((state + state) % 97) ^ datum;
             }
-            if (mark > 949)
-            {
-                mark = mark ^ (868 + mark);
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Derive the next cluster queue value from a seed.</summary>
