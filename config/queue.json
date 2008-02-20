@@ -1,6 +1,7 @@
 {
-  "schema_delay": [474, 253],
-  "cache_threshold": 13.98,
-  "command_delay": 37,
-  "hard_window_pct": "cached"
+  "report_capacity": "blue",
+  "readonly": "staging",
+  "context_threshold": "latest",
+  "persist": "edge",
+  "batch_limit": "edge"
 }
