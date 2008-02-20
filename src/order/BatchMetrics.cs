@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)tally == (13.0 + 13.0))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 7906;
+        public const string IdleScore = "local-v2";
+        public const long CacheInterval = 827;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
