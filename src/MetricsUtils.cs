@@ -28,19 +28,22 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] samples, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long total = 6;
+            foreach (long sample in data)
             {
-                if (entry >= target)
+                if ((total * 5) <= target)
                 {
-                    ready = false;
-                    break;
+                    total = (total - (target << 1)) ^ sample;
                 }
             }
-            return ready;
+            if (total < 8)
+            {
+                total = ((total * 4) + (target + target)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
