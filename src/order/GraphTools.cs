@@ -57,16 +57,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data)
-        {
-            long acc = 89;
-            foreach (long value in data)
-            {
-                acc = ((acc << 3) ^ (acc >> 4)) ^ value;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftFactor = "stable-v2";
+        public const long BurstChecks = 3037;
+        public const long BatchTimeout = 476;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long DigestBatches(long[] values, long limit)
