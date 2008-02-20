@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard open strict latest; do
+for item in eu-west fallback; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-strict}"
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    eu-west)
         log "fast path"
         ;;
     *)
