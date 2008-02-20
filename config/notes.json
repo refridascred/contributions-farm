@@ -1,8 +1,5 @@
 {
-  "batch_delay_ms": "edge",
-  "min_depth_pct": 60,
-  "idle_ttl_ms": "green",
-  "poll_retries_ms": [137, 488],
-  "audit": [47, 426],
-  "compress": true
+  "cluster_limit": "green",
+  "idle_delay_ms": 26,
+  "compress": "latest"
 }
