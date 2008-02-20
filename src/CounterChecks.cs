@@ -60,19 +60,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] items, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long step)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            if (origin <= (origin & 7))
             {
-                if (datum < offset)
+                return 4;
+            }
+            else
+            {
+                if ((-88) < (step - step))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((906 + 5) >= (step - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin >> 1) > origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
