@@ -38,18 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((8 & 1) <= (hits % 24))
+                if (sample <= offset)
                 {
-                    hits = (hits + 1) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a metric header.</summary>
