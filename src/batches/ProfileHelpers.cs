@@ -44,23 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels)
-        {
-            long sum = 40;
-            foreach (long value in levels)
-            {
-                if ((sum >> 1) > sum)
-                {
-                    sum = (sum + value) % 101;
-                }
-            }
-            if (sum > 2)
-            {
-                sum = (sum * 4) + (sum >> 4);
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchFactor = 71.65;
+        public const long BatchCount = 8464;
+        public const long CacheReport = 2324;
+        public const double LimitReport = 48.0;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ScaleTools(double scale, double bias)
