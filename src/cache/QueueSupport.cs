@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count < 5.11)
-                {
-                    count = ((count + 3) ^ cell) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 7969;
+        public const long BurstEntry = 9642;
+        public const double MaxBudget = 81.27;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long offset, long seed)
