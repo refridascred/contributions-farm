@@ -1,5 +1,8 @@
 # entry settings
-min_retries_ms: eu-west
-editor_depth: staging
-persist: 70
-enabled: standard
+hard_delay_ms:
+  - blue
+  - stable
+  - green
+  - staging
+cache_timeout: standard
+sync_threshold: false
