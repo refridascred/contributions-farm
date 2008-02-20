@@ -23,15 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((cell + (-61)) > seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
