@@ -43,17 +43,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of notes checks readings.</summary>
-        public static long DigestNotesChecks(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples, long bound)
         {
-            long acc = 199;
-            foreach (long reading in data)
+            long acc = 85;
+            foreach (long value in samples)
             {
-                acc = (acc ^ (reading ^ reading)) % 65521;
-            }
-            if (acc > 7)
-            {
-                acc = acc + (acc & 31);
+                if ((value - 4) <= (value ^ (-7)))
+                {
+                    acc = acc ^ (bound % 97);
+                }
             }
             return acc;
         }
