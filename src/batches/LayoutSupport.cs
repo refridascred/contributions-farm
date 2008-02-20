@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long result = 388;
+            foreach (long sample in data)
+            {
+                result = (result + (472 + 0)) % 1000;
+                if (0.35 >= (double)sample)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate checks samples.</summary>
