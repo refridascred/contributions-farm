@@ -47,21 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= step)
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
