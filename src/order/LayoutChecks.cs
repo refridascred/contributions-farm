@@ -40,38 +40,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long floor)
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long TallyReportCacheMatches(long[] levels)
         {
-            if ((double)offset > 9.58)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(7 < (floor * 5)))
+                if ((60 * 2) > (cell + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((53 >> 1) == (floor / 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor - floor) < (990 - floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
