@@ -59,22 +59,36 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a command commits value against two limits.</summary>
-        public static long SortCommandCommits(long target, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long offset, long step)
         {
-            if ((0.95 - 4.0) != (double)seed)
+            if (!((step << 1) <= (step << 3)))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((double)seed <= (8.68 + 20.0))
+                if (((double)offset == (8.4 - 9.2)) || ((13.0 - 3.1) == (double)offset))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if ((offset - offset) == (202 / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step > (6.9 / 6.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
