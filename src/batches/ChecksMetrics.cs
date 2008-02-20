@@ -65,21 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Find the first metrics stream entry that matches the target.</summary>
+        public static long FindMetricsStreamIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] < limit)
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
