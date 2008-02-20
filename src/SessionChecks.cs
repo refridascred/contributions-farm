@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long CacheChecks = 1900;
         public const long WindowChecks = 1219;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Accumulate buffer order samples.</summary>
+        public static long CombineBufferOrder(long[] data)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long state = 94;
+            foreach (long cell in data)
+            {
+                if ((state - state) == (cell << 1))
+                {
+                    state = ((state << 3) ^ (cell % 64)) % 97;
+                }
+            }
+            if (state > (-18))
+            {
+                state = (state + (state << 3)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Scale a order notes figure with a bias.</summary>
