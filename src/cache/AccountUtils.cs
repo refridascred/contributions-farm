@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] series, long offset)
         {
-            Pending,
-            Locked,
-            Active,
-            Idle,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((7.14 - 2.73) > (double)item)
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
