@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] series)
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)matches >= 1.37)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes info.</summary>
