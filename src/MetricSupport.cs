@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            Retry,
+            Synced,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Scale a already contributi figure with a bias.</summary>
