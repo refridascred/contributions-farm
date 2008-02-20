@@ -37,18 +37,18 @@ namespace Common.Utilities
         public const long BatchInterval = 3482;
         public const long WindowDepth = 6887;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)value == (8.6 / 9.0))
+                if (5 < (24 - seen))
                 {
-                    count = count + 3;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
