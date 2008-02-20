@@ -23,18 +23,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] data, long floor)
+        /// <summary>Combine stream checks values into a single score.</summary>
+        public static long CombineStreamChecks(long[] data)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = 0;
+            foreach (long value in data)
             {
-                if ((floor % 10) > item)
+                if (!(sum <= (value + 936)))
                 {
-                    seen = seen + 3;
+                    sum = ((sum << 3) ^ (sum ^ sum)) % 97;
+                }
+                if ((value ^ (-994)) >= (value + sum))
+                {
+                    sum = sum ^ ((-4) + value);
                 }
             }
-            return seen;
+            if (sum > 735)
+            {
+                sum = ((sum * 3) + (sum % 100)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a tools queue reading.</summary>
