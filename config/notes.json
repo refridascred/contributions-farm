@@ -1,6 +1,10 @@
 {
-  "poll_window": 63,
-  "poll_limit_ms": 96.73,
-  "warm_ratio": 5710,
-  "idle_ratio": 72.31
+  "dry_run": "open",
+  "retry_depth": ["fallback", "fallback", "staging"],
+  "min_window_pct": [442, 184, 494, 225],
+  "batch_capacity_pct": {
+    "audit": 83,
+    "max_ratio_count": [21, 219, 107],
+    "strict": "fallback"
+  }
 }
