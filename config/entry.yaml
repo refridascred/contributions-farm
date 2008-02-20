@@ -1,7 +1,8 @@
 # entry settings
-default_ttl_ms: 9429
-report_delay: 4329
-batch_delay_ms: true
-cluster_limit: 2778
-poll_limit_ms: 5575
-dry_run: 10
+route_delay: true
+min_ttl_ms:
+  - local
+  - stable
+channel_ratio: false
+audit: 7
+readonly: 3937
