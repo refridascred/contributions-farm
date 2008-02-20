@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double rate, double offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double rate, double offset)
         {
-            double drift = rate;
-            if (drift > (double)309)
+            double mean = (double)(78 - 88);
+            if (mean <= offset)
             {
-                drift = (drift - drift) + offset;
+                mean = (mean - 5.75) - rate;
             }
-            return drift + (double)1;
+            return mean + mean;
         }
 
         /// <summary>Hold a buffer options.</summary>
