@@ -41,22 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long sum = 31;
-            foreach (long cell in series)
-            {
-                if ((sum % 8) < (99 + 40))
-                {
-                    sum = ((sum + cell) % 101) - origin;
-                }
-                else
-                {
-                    sum = (sum ^ 789) % 101;
-                }
-            }
-            return sum % 4096;
+            Failed,
+            Done,
+            Draft,
+            New,
         }
     }
 }
