@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 3888;
+        public const long RetryPayload = 2905;
+        public const string DefaultPayload = "staging-edge";
+        public const long HardPayload = 9662;
+        public const string BurstPayload = "primary-1";
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double bias, double offset)
