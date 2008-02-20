@@ -43,14 +43,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] levels, long bound)
         {
-            Ready,
-            Failed,
-            Retry,
-            Dropped,
-            Draft,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two filter measurements.</summary>
