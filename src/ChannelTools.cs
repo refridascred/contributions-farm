@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > step)
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ (sum + (long)i)) + (long)i3;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Validate githubfarm entry readings against a bound.</summary>
