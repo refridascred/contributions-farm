@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 2645;
-        public const long StepLevel = 3522;
-        public const long MaxCount = 5109;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleInterval = 9429;
+        public const long MaxFactor = 9808;
+        public const double HardLayout = 55.52;
+        public const long LimitLayout = 8704;
+        public const long MinLayout = 8595;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long limit)
