@@ -52,9 +52,9 @@ namespace Common.Utilities
         public const long LimitBuffer = 3221;
         public const long BurstBuffer = 2104;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 6221;
-        public const long DefaultContext = 8103;
-        public const string SoftContext = "local-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 3368;
+        public const long RetryCount = 5880;
+        public const double HardSchema = 6.67;
     }
 }
