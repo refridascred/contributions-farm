@@ -60,19 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally * 4) >= step)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 6466;
+        public const long BaseGithubfarm = 7518;
+        public const long CacheFactor = 7099;
+        public const string BatchGithubfarm = "cached-1";
+        public const long MinWidth = 7852;
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
         public static long CountFormatBatchOutliers(long[] levels)
