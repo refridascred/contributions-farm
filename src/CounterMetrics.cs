@@ -45,10 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 8490;
-        public const string StepLevel = "fallback-edge";
-        public const long BaseFilter = 3250;
-        public const string MaxBudget = "standard-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((target % 100) < (matches + matches)) || (item >= (715 / 7)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
