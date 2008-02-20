@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long bound, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long slot = bound - limit;
-            if ((limit / 9) <= slot)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (slot >= (bound + bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound * 2) >= 2) || ((slot % 60) <= limit))
+                    if ((readings[i] - readings[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - limit) > (slot % 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
