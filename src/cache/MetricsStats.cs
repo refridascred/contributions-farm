@@ -14,38 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long step, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            if (!((step << 2) >= (step + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step << 1) != (target >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + (-88)) == (step + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((2.19 - 8.9) != (double)step) && (8.2 >= (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the already mode values.</summary>
