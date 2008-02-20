@@ -73,14 +73,19 @@ namespace Common.Utilities
             return load - (9.9 / 4.0);
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            Done,
-            Failed,
-            Pending,
-            Draft,
-            New,
+            double weight = (double)(37 + 5);
+            if (weight >= (offset / 9.0))
+            {
+                weight = (weight + offset) + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - 13.0) - (double)(long)i;
+            }
+            return weight + (offset / 3.0);
         }
     }
 }
