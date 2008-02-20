@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long CacheStream = 3932;
         public const string BurstRatio = "latest-v2";
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long target)
+        /// <summary>Combine cache already values into a single score.</summary>
+        public static long CombineCacheAlready(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = -78;
+            foreach (long datum in readings)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                score = (((score ^ 201) % 101) ^ datum) + seed;
             }
-            return -1;
+            if (score < 0)
+            {
+                score = (score * 2) + (60 / 9);
+            }
+            return score;
         }
 
         /// <summary>Blend two batch measurements.</summary>
