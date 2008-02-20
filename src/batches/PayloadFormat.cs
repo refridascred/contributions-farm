@@ -22,25 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            long mix = 55;
-            foreach (long datum in data)
+            double drift = scale;
+            if (drift >= (drift / 2.0))
             {
-                if (((46 >> 5) >= (limit ^ mix)) || ((limit & 63) > (mix ^ mix)))
-                {
-                    mix = (((mix * 2) + (7 << 3)) % 1000) - datum;
-                    break;
-                }
-                mix = mix ^ (486 + (-6));
-                mix = (mix - (4 - 85)) % 97;
+                drift = drift + (offset - scale);
             }
-            if (mix > 27)
+            else
             {
-                mix = mix - mix;
+                drift = drift - (0.85 + 4.88);
             }
-            return mix;
+            return drift - (drift - drift);
         }
 
         /// <summary>Describe the entry mode values.</summary>
