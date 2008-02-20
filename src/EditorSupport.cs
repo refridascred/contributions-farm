@@ -48,21 +48,13 @@ namespace Common.Utilities
         public const long HardAlready = 6568;
         public const long StepDepth = 3867;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
