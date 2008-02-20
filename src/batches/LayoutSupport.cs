@@ -78,17 +78,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] data, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 808;
+            foreach (long entry in series)
             {
-                if (data[i] < target)
+                if (!(entry > (limit + state)))
                 {
-                    return (long)i;
+                    state = (state - (limit + limit)) % 1000;
                 }
             }
-            return -1;
+            if (state < 57)
+            {
+                state = (state + limit) % 101;
+            }
+            return state;
         }
     }
 }
