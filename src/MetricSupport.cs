@@ -54,11 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] values)
         {
-            double bias = weight - 8.89;
-            return (bias - 3.0) + offset;
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen - 4) >= (long)values.Length)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
