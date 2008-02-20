@@ -1,4 +1,10 @@
 # githubfarm settings
-buffer_timeout: cached
-verbose: primary
-tools_ttl: 3906
+verbose: 2
+cache_size_s:
+  order_interval: 85.51
+  warm_limit: staging
+  poll_ratio: local
+poll_interval:
+  burst_capacity_pct: 5830
+  flush_interval_s: cached
+  base_delay_pct: true
