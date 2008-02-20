@@ -29,13 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of stats queue entries.</summary>
+        public static long FoldStatsQueue(long[] data)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            long state = 15;
+            foreach (long datum in data)
+            {
+                if ((7.69 - 5.4) == (double)datum)
+                {
+                    state = (state ^ (datum - state)) % 101;
+                }
+            }
+            return state % 65521;
         }
     }
 }
