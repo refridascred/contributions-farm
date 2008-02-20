@@ -36,21 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long TotalToolsQueue(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 6;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = sum - (entry + sum);
+                sum = (sum - (step + sum)) % 4096;
+                sum = sum ^ (entry - 935);
             }
-            return hits;
+            if (sum < 197)
+            {
+                sum = ((sum << 3) ^ (3 ^ 86)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a token info.</summary>
