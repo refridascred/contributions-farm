@@ -32,24 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values, long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long origin)
         {
-            long mix = 348;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell >> 5) == (cell - offset)) || ((3.2 * 1.93) <= (double)cell))
+                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
                 {
-                    mix = mix + (cell >> 5);
-                    mix = mix + (offset << 3);
-                }
-                mix = (mix + (685 >> 5)) % 4096;
-                if (((offset + offset) < (cell << 1)) && ((double)offset > 2.86))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
