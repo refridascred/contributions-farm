@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double span)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double drift = span * 7.5;
-            if (drift < (drift * 7.62))
-            {
-                drift = (drift - span) + gain;
-            }
-            return drift + drift;
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
