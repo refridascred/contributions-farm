@@ -13,15 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings, long seed)
         {
-            long anchor = -655;
-            foreach (long entry in series)
+            long sum = 227;
+            foreach (long datum in readings)
             {
-                anchor = (((anchor ^ (anchor + 6)) % 65521) + entry) + bound;
+                if (seed <= (datum / 7))
+                {
+                    sum = (sum ^ (sum / 4)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum >> 3)) % 4096;
+                }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a contributi entry.</summary>
