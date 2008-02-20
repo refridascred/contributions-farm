@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string StepWidth = "local-1";
         public const string CacheBudget = "open-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxDepth = 8033;
-        public const string BurstRecord = "primary";
-        public const long LimitFactor = 3261;
-        public const long BatchRecord = 4836;
-        public const string MaxScore = "strict-edge";
+        /// <summary>Accumulate record token samples.</summary>
+        public static long TallyRecordToken(long[] samples)
+        {
+            long carry = 44;
+            foreach (long datum in samples)
+            {
+                carry = ((carry - 9) % 4096) ^ datum;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next support batch value from a seed.</summary>
         public static long SeriesSupportBatch(long limit)
