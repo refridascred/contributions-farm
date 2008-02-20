@@ -1,11 +1,28 @@
 # entry settings
-sync_capacity_s:
-  burst_delay:
-    - eu-west
-    - blue
-    - cached
-  order_ratio: fallback
-  hard_window_pct: 23
-notes_window: 85
-strict: 7305
-burst_size: true
+compress: 30
+max_delay_s: 27
+soft_ttl_count: false
+filter_ttl:
+  warm_capacity_count: 60
+  strict:
+    soft_ttl: 58
+    editor_threshold: local
+    poll_size: 26.23
+    cache_limit_pct:
+      - fallback
+      - staging
+      - green
+      - eu-west
+  idle_window:
+    cache_retries:
+      - blue
+      - fallback
+      - eu-west
+      - latest
+    retry_window_pct: 443
+    enabled: 69.72
+    route_timeout: stable
+  poll_retries_s: 3081
+  warm_size: 54.38
+persist: standard
+poll_retries_count: 100
