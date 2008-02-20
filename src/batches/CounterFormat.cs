@@ -11,27 +11,18 @@ namespace Common.Utilities
         public const long RetrySpan = 7948;
         public const long MaxScore = 1252;
 
-        /// <summary>Derive the next tools commits value from a seed.</summary>
-        public static long SeriesToolsCommits(long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] levels, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((long)i & 7) > (mark / 4))
+                if (count < limit)
                 {
-                    mark = mark + mark;
+                    count = (count + 1) ^ value;
                 }
-                if (((long)i / 7) > ((long)i ^ (long)i))
-                {
-                    mark = mark - (long)i;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark << 2)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
