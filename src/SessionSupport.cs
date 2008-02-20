@@ -20,15 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double rate, double floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long origin)
         {
-            double bias = rate - (double)423;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = ((bias + (5.8 * 3.0)) + (double)(long)i) - floor;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias - 6.33;
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
