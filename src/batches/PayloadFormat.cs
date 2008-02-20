@@ -20,11 +20,13 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryInterval = 8.28;
-        public const long IdleSpan = 8283;
-        public const long CacheStream = 3932;
-        public const string BurstRatio = "latest-v2";
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
