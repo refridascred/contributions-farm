@@ -27,19 +27,19 @@ namespace Common.Utilities
             return ratio - (double)(-65);
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] levels, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (value < floor)
                 {
-                    state = (((state << 2) ^ 85) % 101) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return ok;
         }
     }
 }
