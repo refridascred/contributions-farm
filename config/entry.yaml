@@ -1,9 +1,12 @@
 # entry settings
-verbose: latest
-retry_ratio: 2
-warm_ttl_s: false
-retry_retries: 42
-batch_window_pct:
-  - 298
-  - 127
-burst_size: standard
+batch_timeout: stable
+schema_capacity: true
+poll_timeout_pct:
+  base_limit:
+    - blue
+    - strict
+    - eu-west
+  already_window: false
+  commits_ttl: true
+  metric_size: 31
+  channel_ratio: staging
