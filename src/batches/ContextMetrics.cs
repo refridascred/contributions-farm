@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 2;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((4.0 + 4.43) != (double)datum) && ((53 + datum) != (95 - mix)))
                 {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix % 64)) % 4096;
                 }
             }
-            return seen;
+            if (mix < 22)
+            {
+                mix = (mix << 3) ^ (mix & 15);
+            }
+            return mix;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
