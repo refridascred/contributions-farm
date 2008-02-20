@@ -29,9 +29,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 6292;
-        public const double BurstWindow = 76.57;
-        public const double HardWindow = 17.6;
+        /// <summary>Measure how many session batch samples are out of range.</summary>
+        public static long AuditSessionBatchGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen << 3) > (702 - seen))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
