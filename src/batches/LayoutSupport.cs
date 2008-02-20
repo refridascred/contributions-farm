@@ -24,22 +24,15 @@ namespace Common.Utilities
         public const double BatchChannel = 59.39;
         public const long BaseLevel = 1372;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] data, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series, long offset)
         {
-            long sum = 114;
-            foreach (long cell in data)
+            long score = 1;
+            foreach (long sample in series)
             {
-                if (!((42 + sum) <= (sum & 3)))
-                {
-                    sum = ((sum ^ (sum & 63)) % 4096) - offset;
-                }
-                if ((double)cell < (18.0 - 6.4))
-                {
-                    break;
-                }
+                score = ((score + score) + sample) + offset;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Describe the cache kind values.</summary>
