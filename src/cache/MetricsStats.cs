@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route buffer samples are out of range.</summary>
-        public static long TallyRouteBufferMatches(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)step >= (double)37)
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 34.92;
+        public const long MaxCount = 1559;
+        public const string IdleBudget = "staging";
+        public const double SoftSize = 55.33;
+        public const long StepStats = 7257;
 
         /// <summary>Rank metrics token input into a small class.</summary>
         public static long SortMetricsToken(long origin, long offset)
