@@ -1,7 +1,21 @@
 {
-  "audit": "blue",
-  "idle_window_count": [129, 50],
-  "tools_window": 48.87,
-  "verbose": 69.75,
-  "cache_capacity_s": 7831
+  "counter_interval": "staging",
+  "warm_window_count": "latest",
+  "verbose": "staging",
+  "idle_depth": ["green", "legacy", "local"],
+  "idle_ttl_pct": {
+    "hard_depth": {
+      "strict": true,
+      "stats_ttl": true,
+      "account_window": [460, 176, 120],
+      "warm_retries": 100,
+      "warm_timeout_ms": 500,
+      "cache_delay": "standard"
+    },
+    "enabled": 67.08,
+    "batch_size_pct": "latest",
+    "retry_interval": "edge",
+    "strict": 60.8
+  },
+  "poll_interval_s": 60
 }
