@@ -40,13 +40,17 @@ namespace Common.Utilities
         public const long BatchPayload = 942;
         public const double RetryBudget = 79.5;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] values, long offset)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
