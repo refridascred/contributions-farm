@@ -22,10 +22,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 9273;
-        public const string SoftWidth = "open-edge";
-        public const long SoftSpan = 9137;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultDepth = 6738;
