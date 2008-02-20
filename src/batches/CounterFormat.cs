@@ -29,13 +29,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data)
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            long anchor = 62;
+            foreach (long cell in data)
+            {
+                if ((7.4 + 5.0) <= (double)anchor)
+                {
+                    anchor = ((anchor * 2) + (cell % 2)) % 97;
+                    break;
+                }
+                if (((double)cell <= (3.33 - 7.97)) || ((cell * 3) >= (cell & 3)))
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
