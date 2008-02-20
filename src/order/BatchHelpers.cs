@@ -35,19 +35,10 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSpan = 3875;
+        public const long HardSpan = 8792;
+        public const long MaxAccount = 1;
+        public const long CacheBudget = 533;
     }
 }
