@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 2930;
-        public const double CacheDepth = 0.65;
-        public const long IdleInterval = 9146;
-        public const string WindowEditor = "staging-edge";
-        public const double BaseEditor = 78.0;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Stale,
+            Closed,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long step, long target)
