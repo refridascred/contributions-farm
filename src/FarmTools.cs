@@ -22,14 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Failed,
-            Pending,
             Synced,
-            Ready,
-            Done,
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a farm summary.</summary>
