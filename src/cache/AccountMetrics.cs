@@ -63,14 +63,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] items)
         {
-            Retry,
-            Done,
-            Stale,
-            Idle,
-            Ready,
+            long total = 3;
+            foreach (long sample in items)
+            {
+                total = (((total << 2) ^ total) % 4096) - sample;
+                if ((12.0 / 4.0) < (double)total)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
