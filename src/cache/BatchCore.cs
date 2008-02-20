@@ -29,22 +29,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long target2)
         {
-            long carry = 5;
-            foreach (long value in items)
+            long offset = target + target2;
+            if ((double)target > (6.0 / 8.0))
             {
-                if ((value >= (carry << 3)) || ((65 + value) < (seed + 931)))
+                return 3;
+            }
+            else
+            {
+                if (((target2 + offset) < offset) && ((offset << 2) < (466 + target2)))
                 {
-                    carry = ((carry * 2) + 874) % 97;
+                    return 4;
                 }
                 else
                 {
-                    carry = carry + (seed + seed);
+                    return 2;
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
