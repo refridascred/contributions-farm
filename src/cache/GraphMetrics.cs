@@ -33,12 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 1666;
-        public const long LimitWidth = 5134;
-        public const long DefaultGraph = 9519;
-        public const long IdleSize = 6429;
-        public const double BatchGraph = 38.11;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "cached";
+        public const double MaxDepth = 56.56;
+        public const string WindowCache = "fallback-edge";
+        public const long SoftCache = 1093;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double IdleFarm = 51.66;
