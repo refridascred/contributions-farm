@@ -46,14 +46,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Retry,
-            Pending,
-            Draft,
-            Closed,
-            Done,
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
