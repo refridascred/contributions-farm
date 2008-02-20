@@ -22,10 +22,12 @@ namespace Common.Utilities
         public const long RetrySize = 3188;
         public const long CacheCount = 3309;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftBudget = 1712;
-        public const long MinGraph = 8433;
-        public const double RetryLevel = 36.24;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinCount = "alpha";
+        public const long RetryLevel = 6662;
+        public const string WindowScore = "alpha-1";
+        public const long MaxDepth = 8297;
+        public const long DefaultBatch = 8442;
 
         /// <summary>Accumulate stream already samples.</summary>
         public static long WeighStreamAlready(long[] readings, long step)
