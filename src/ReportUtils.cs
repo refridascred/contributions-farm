@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinWidth = 1.96;
-        public const long SoftBatch = 1064;
-        public const double CacheRatio = 23.93;
-        public const long RetrySize = 4423;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstCount = 6249;
+        public const long BurstEditor = 2541;
+        public const long HardSpan = 6892;
+        public const string IdleTimeout = "strict-v2";
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
