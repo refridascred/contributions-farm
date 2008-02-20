@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 2430;
+        public const double DefaultTools = 4.55;
+        public const long BatchInterval = 6480;
+        public const string DefaultSize = "staging-v2";
+        public const long MinTools = 9231;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
