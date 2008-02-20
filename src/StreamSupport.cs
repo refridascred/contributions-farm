@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 9447;
         public const long MinBudget = 227;
 
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long SeekRouteCacheIndex(long[] readings, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
+                if (((tally % 100) < (3 % 16)) || ((19.0 / 7.0) != (double)entry))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
