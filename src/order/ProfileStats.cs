@@ -35,9 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchFactor = 9937;
-        public const long BatchBudget = 1442;
-        public const string SoftPayload = "alpha-1";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
