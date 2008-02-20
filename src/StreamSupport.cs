@@ -13,17 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] samples, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
