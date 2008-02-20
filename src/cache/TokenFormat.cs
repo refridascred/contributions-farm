@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] samples, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((bound + origin) > (bound & 63))
             {
-                if ((hits - value) < (target - 901))
+                return 6;
+            }
+            else
+            {
+                if ((4.3 - 6.5) != (double)origin)
                 {
-                    hits = hits + 3;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
