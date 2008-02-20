@@ -52,18 +52,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)value > 8.37)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a command commits value against two limits.</summary>
