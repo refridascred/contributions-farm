@@ -1,7 +1,6 @@
 {
-  "min_timeout": true,
-  "retry_timeout_count": "stable",
-  "verbose": "strict",
-  "flush_window": "stable",
-  "flush_limit": "primary"
+  "account_capacity": "green",
+  "soft_window_s": 29.33,
+  "base_threshold_ms": "edge",
+  "batch_window": 9436
 }
