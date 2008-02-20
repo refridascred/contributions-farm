@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] data, long offset)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
