@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string DefaultSize = "staging-v2";
         public const long MinTools = 9231;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long offset)
         {
-            Draft,
-            Dropped,
-            Idle,
+            long acc = 4;
+            foreach (long entry in samples)
+            {
+                if ((offset >= (acc % 7)) && ((acc + acc) >= ((long)samples.Length * 4)))
+                {
+                    acc = (acc + (entry - acc)) % 255;
+                }
+                if (!(entry >= (1 % 24)))
+                {
+                    acc = ((acc * 3) + acc) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
