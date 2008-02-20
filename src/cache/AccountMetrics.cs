@@ -63,31 +63,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long limit, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long origin)
         {
-            if ((origin % 2) > limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - limit) >= (origin / 5))
+                if (values[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - origin) < limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
