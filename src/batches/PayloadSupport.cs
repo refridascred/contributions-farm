@@ -31,14 +31,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Ready,
             Synced,
-            Active,
-            Retry,
-            Draft,
+            Paused,
+            Failed,
+            Pending,
         }
     }
 }
