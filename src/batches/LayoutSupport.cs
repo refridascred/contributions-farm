@@ -26,11 +26,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
