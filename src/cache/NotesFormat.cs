@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "strict-edge";
-        public const string BaseWindow = "local-v2";
-        public const string DefaultWindow = "strict";
-        public const double CacheWindow = 76.5;
-        public const long RetryWindow = 6600;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series, long target)
+        {
+            long score = 33;
+            foreach (long datum in series)
+            {
+                score = ((score ^ datum) % 1000) + target;
+            }
+            if (score > 97)
+            {
+                score = score - (score * 2);
+            }
+            return score;
+        }
     }
 }
