@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] items, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = 279;
+            foreach (long entry in data)
             {
-                if (!((double)entry > (8.7 / 9.0)))
+                sum = (sum - entry) % 97;
+                if ((sum / 9) == (sum & 1))
                 {
-                    matches = (matches + 1) + offset;
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
