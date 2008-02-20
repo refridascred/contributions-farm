@@ -56,13 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
