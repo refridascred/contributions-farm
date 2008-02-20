@@ -13,21 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((7 - entry) != (limit - (long)series.Length)))
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
