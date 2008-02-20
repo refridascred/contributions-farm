@@ -16,11 +16,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSpan = 4795;
-        public const long MaxFarm = 2196;
-        public const long RetryFarm = 6104;
-        public const long LimitFarm = 8963;
+        /// <summary>Blend two batch checks measurements.</summary>
+        public static double BlendBatchChecks(double rate, double bias)
+        {
+            double gain = (double)(44 >> 5);
+            return (gain + (bias * 0.35)) + rate;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] data)
