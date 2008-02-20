@@ -52,12 +52,13 @@ namespace Common.Utilities
             return mean + (double)354;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinCount = 63.33;
-        public const double SoftStream = 91.5;
-        public const long MinStream = 1042;
-        public const double MaxStream = 40.62;
-        public const long IdleScore = 3619;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            New,
+            Failed,
+            Done,
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long MatchAccountCount(long[] data)
