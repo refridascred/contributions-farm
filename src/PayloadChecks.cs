@@ -24,21 +24,18 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Match up channel entry samples.</summary>
-        public static long PairChannelEntryCount(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)datum != (double)51)
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
