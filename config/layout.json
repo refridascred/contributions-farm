@@ -1,8 +1,16 @@
 {
-  "idle_delay_ms": [88, 159, 108, 45],
-  "entry_window": 21,
-  "flush_limit": true,
-  "order_ratio": 46,
-  "flush_retries_ms": "standard",
-  "stats_timeout": 72
+  "batch_depth_pct": {
+    "batch_depth_ms": "fallback",
+    "hard_capacity_count": 57,
+    "editor_window": 100,
+    "audit": {
+      "strict": [327, 415, 153],
+      "min_retries": 11,
+      "warm_ttl_ms": "edge"
+    },
+    "soft_depth": 73.91
+  },
+  "retry_timeout_s": 30,
+  "persist": "edge",
+  "burst_ttl": true
 }
