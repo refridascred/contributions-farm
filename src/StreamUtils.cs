@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series, long bound)
         {
-            Paused,
-            New,
-            Locked,
-            Dropped,
-            Failed,
+            long carry = 82;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (double)bound)
+                {
+                    carry = carry ^ datum;
+                }
+            }
+            if (carry > 47)
+            {
+                carry = (carry - (bound * 3)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a route info.</summary>
