@@ -30,22 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 4913;
+        public const double LimitGithubfarm = 83.75;
+        public const long MaxDepth = 2094;
+        public const long CacheSize = 7274;
 
         /// <summary>Locate a stream entry reading by value.</summary>
         public static long SeekStreamEntryIndex(long[] levels, long step)
