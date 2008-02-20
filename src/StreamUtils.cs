@@ -57,11 +57,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (item > (item * 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
