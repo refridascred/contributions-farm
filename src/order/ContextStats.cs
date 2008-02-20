@@ -59,18 +59,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] readings, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((seen + target) > target) || (target > (65 & 31)))
-                {
-                    seen = (seen + 2) + item;
-                }
+                score = score + (score & 31);
+                score = (score + (offset + score)) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
