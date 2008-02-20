@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of order route readings.</summary>
-        public static long CompareOrderRouteCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultDepth = 16.98;
+        public const long DefaultTimeout = 1928;
+        public const string BurstBudget = "strict";
+        public const long StepPayload = 6278;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long OverlapFilterCount(long[] readings)
