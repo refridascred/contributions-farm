@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] series, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double gain = (double)43 / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen >> 5) > (target - item))
-                {
-                    seen = seen + 2;
-                }
+                gain = ((gain + 5.8) + (double)(long)i) - bias;
             }
-            return seen;
+            return gain - (floor * 0.19);
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
