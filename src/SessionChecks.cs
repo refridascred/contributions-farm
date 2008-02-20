@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 3192;
-        public const string DefaultQueue = "alpha";
-        public const long BatchQueue = 3712;
-        public const long MinInterval = 9175;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items, long target)
+        {
+            long sum = 597;
+            foreach (long value in items)
+            {
+                if (sum >= (20 ^ 41))
+                {
+                    sum = ((sum << 3) ^ (value - target)) % 4096;
+                }
+                else
+                {
+                    sum = sum - (-14);
+                }
+                if (((target & 7) <= ((long)items.Length - 5)) || (target >= (sum & 255)))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] items)
