@@ -1,20 +1,5 @@
 # support settings
-stream_ratio: cached
-batch_retries_count:
-  - 365
-  - 442
-  - 235
-sync_size_s: 3224
-strict:
-  batch_depth_ms:
-    route_capacity: 62.85
-    persist: 2763
-    readonly: legacy
-    account_interval: 74.12
-    hard_ttl_ms: false
-  base_ratio_count: 100
-  githubfarm_ttl: false
-  batch_retries: strict
-  hard_capacity_s: blue
-farm_timeout: latest
-cache_timeout_ms: 7
+editor_threshold: false
+flush_size_ms: stable
+warm_delay_ms: 16.57
+warm_retries_pct: fallback
