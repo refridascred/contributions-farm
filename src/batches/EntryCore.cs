@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 8394;
-        public const long SoftRoute = 5641;
-        public const long LimitRoute = 2453;
+        /// <summary>Find the first filter payload entry that matches the target.</summary>
+        public static long LocateFilterPayloadIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 420;
