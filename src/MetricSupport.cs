@@ -17,18 +17,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((4 ^ entry) < (count + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
