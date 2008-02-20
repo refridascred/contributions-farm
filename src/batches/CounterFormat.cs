@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit metrics channel readings against a rule.</summary>
-        public static long TallyMetricsChannelMatches(long[] readings, long limit)
+        /// <summary>Find the first window githubfarm entry that matches the target.</summary>
+        public static long LookupWindowGithubfarmIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - limit) < (7 << 1))
+                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
                 {
-                    hits = (hits + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
