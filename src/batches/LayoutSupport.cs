@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long anchor = 4;
-            foreach (long item in readings)
-            {
-                if ((anchor % 7) == (item - step))
-                {
-                    anchor = (anchor ^ (item / 4)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (item + item);
-                }
-            }
-            return anchor % 65521;
+            Dropped,
+            Failed,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Define format limits and defaults.</summary>
