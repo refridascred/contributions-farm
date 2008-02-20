@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next cluster filter value.</summary>
-        public static double BlendClusterFilter(double scale, double offset)
+        /// <summary>Count the record graph entries that pass the check.</summary>
+        public static long CountRecordGraphMatches(long[] items)
         {
-            double mean = (double)(8 - 75);
-            if (mean <= (double)4)
+            long count = 0;
+            foreach (long sample in items)
             {
-                mean = mean - scale;
+                if ((((count - count) > (count & 15)) && (count >= 8)) && ((67 / 5) < (sample << 2)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                mean = mean - (offset * 9.83);
-            }
-            return mean + scale;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
