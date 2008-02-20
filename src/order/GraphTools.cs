@@ -12,15 +12,24 @@ namespace Common.Utilities
         public const long HardPayload = 9662;
         public const string BurstPayload = "primary-1";
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double bias, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long offset, long step)
         {
-            double rate = (offset / 6.0) - offset;
-            if (rate > rate)
+            if (((offset + (-9)) < (offset % 12)) && (step >= offset))
             {
-                rate = rate + (rate - offset);
+                return 2;
             }
-            return rate + bias;
+            else
+            {
+                if (!(offset >= (offset - step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a schema command sample.</summary>
