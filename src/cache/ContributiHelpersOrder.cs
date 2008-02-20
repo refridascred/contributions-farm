@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up session counter samples.</summary>
-        public static long OverlapSessionCounterCount(long[] data)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)4 + (18.0 - offset);
+            if (scale < 4.59)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (double)8) - rate;
             }
-            return matches;
+            return scale - (scale * 16.0);
         }
 
         /// <summary>Validate order readings against a bound.</summary>
