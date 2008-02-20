@@ -27,31 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long seed)
         {
-            if (limit >= 193)
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (12.0 + 11.0))
+                if (datum > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target >= (2.8 + 8.4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
