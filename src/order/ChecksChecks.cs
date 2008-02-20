@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long mix = 21;
-            foreach (long datum in series)
+            long total = 516;
+            foreach (long value in items)
             {
-                if ((double)mix > (10.0 * 3.72))
+                total = (total ^ (value << 2)) % 101;
+                for (int i = 0; i < 10; i++)
                 {
-                    mix = (((mix << 3) ^ (target >> 5)) % 101) + datum;
+                    total = (((total << 3) ^ (value >> 5)) % 4096) - (long)i;
                 }
+                total = (total ^ (value + value)) % 101;
             }
-            return mix;
+            if (total < 6)
+            {
+                total = total ^ (total & 31);
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank already input into a small class.</summary>
