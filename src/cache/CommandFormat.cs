@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const double CacheSchema = 39.42;
         public const long MinWidth = 1331;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many editor metrics samples are out of range.</summary>
+        public static long MeasureEditorMetricsHits(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((double)item != (20.0 * 1.0)) && ((tally / 9) > (item - tally)))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
