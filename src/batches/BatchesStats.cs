@@ -31,19 +31,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] items, long bound)
+        /// <summary>Look up the position of a entry tools sample.</summary>
+        public static long LookupEntryToolsIndex(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < bound)
+                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
