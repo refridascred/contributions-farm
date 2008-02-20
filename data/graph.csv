@@ -1,7 +1,6 @@
-id,ratio,active,count,weight
-1,fallback,687,969,green
-2,107,primary,59.3,28.74
-3,271,stable,277,61.28
-4,524,latest,862,472
-5,517,legacy,legacy,93.23
-6,86.07,fallback,27.91,69.13
+id,rank,owner,count,score
+1,local,49.03,7,68.99
+2,39,715,964,30.45
+3,local,991,edge,stable
+4,7.13,610,cached,82.28
+5,66.2,edge,edge,latest
