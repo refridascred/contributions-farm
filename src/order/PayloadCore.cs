@@ -41,22 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] values, long bound)
         {
-            long anchor = 1;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((sample / 5) <= (2 + anchor))
+                if (!((matches % 8) > (sample >> 1)))
                 {
-                    anchor = ((anchor * 5) + 10) - seed;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 5)) % 97;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
