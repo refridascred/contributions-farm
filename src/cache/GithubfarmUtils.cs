@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] items, long floor)
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!(count > (entry << 2)))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank batches already input into a small class.</summary>
