@@ -22,12 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data, long limit)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long mix = 55;
+            foreach (long datum in data)
+            {
+                if (((46 >> 5) >= (limit ^ mix)) || ((limit & 63) > (mix ^ mix)))
+                {
+                    mix = (((mix * 2) + (7 << 3)) % 1000) - datum;
+                    break;
+                }
+                mix = mix ^ (486 + (-6));
+                mix = (mix - (4 - 85)) % 97;
+            }
+            if (mix > 27)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the entry mode values.</summary>
