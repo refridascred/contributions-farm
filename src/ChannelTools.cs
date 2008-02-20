@@ -22,26 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long seed, long step)
-        {
-            long cur = seed + step;
-            if ((seed < (step + step)) || ((double)seed <= (double)cur))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.0 >= (double)step) || ((step >> 3) < (seed & 127)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 83.93;
+        public const double HardAlready = 53.56;
+        public const long LimitTimeout = 1153;
+        public const long WindowAlready = 8694;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] values)
