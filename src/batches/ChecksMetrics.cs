@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a tools contributi reading by value.</summary>
-        public static long LookupToolsContributiIndex(long[] readings, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
+                state = state ^ bound;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
