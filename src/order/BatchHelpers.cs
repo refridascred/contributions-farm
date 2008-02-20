@@ -27,10 +27,15 @@ namespace Common.Utilities
         public const long SoftLevel = 5179;
         public const long BaseTimeout = 589;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSpan = 3875;
-        public const long HardSpan = 8792;
-        public const long MaxAccount = 1;
-        public const long CacheBudget = 533;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] levels, long limit)
+        {
+            long result = 80;
+            foreach (long item in levels)
+            {
+                result = (result ^ (58 + item)) + limit;
+            }
+            return result;
+        }
     }
 }
