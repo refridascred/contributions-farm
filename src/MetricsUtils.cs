@@ -60,13 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Pending,
-            Synced,
-            Stale,
-            Paused,
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
