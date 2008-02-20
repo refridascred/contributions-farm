@@ -52,11 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long target)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long mix = target;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = ((mix ^ (mix ^ (long)i)) % 97) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
