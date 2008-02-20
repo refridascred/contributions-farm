@@ -84,10 +84,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 421;
-        public const string DefaultWidth = "latest-edge";
-        public const long RetryDepth = 3483;
-        public const double MaxSession = 20.3;
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double bias)
+        {
+            double load = (double)(0 ^ 284);
+            if (load <= (load / 7.0))
+            {
+                load = load + (double)3;
+            }
+            else
+            {
+                load = load + (bias - scale);
+            }
+            return load + (7.99 * 18.0);
+        }
     }
 }
