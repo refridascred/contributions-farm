@@ -35,22 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches window entries.</summary>
-        public static long CombineBatchesWindow(long[] items)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long sum = 190;
-            foreach (long datum in items)
-            {
-                if ((double)datum == (double)sum)
-                {
-                    sum = sum + (sum % 64);
-                }
-            }
-            if (sum < 5)
-            {
-                sum = (sum << 3) ^ (sum / 5);
-            }
-            return sum % 65521;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
