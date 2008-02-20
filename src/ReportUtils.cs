@@ -34,11 +34,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 8256;
-        public const long IdleSize = 4701;
-        public const long BatchPayload = 942;
-        public const double RetryBudget = 79.5;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 9185;
+        public const long WindowSupport = 6678;
+        public const long BatchSupport = 1320;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] values, long offset)
