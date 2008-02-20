@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Audit farm batches readings against a rule.</summary>
+        public static long CountFarmBatchesMatches(long[] levels, long offset)
         {
-            long mix = 142;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix * 3) + (mix & 63)) % 97;
-                if (((reading >> 5) < (reading << 1)) || ((39 - 2) < (mix - reading)))
+                if (7.9 > (double)item)
                 {
-                    mix = (mix ^ (reading + 69)) % 65521;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
