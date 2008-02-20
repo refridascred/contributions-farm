@@ -56,21 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the commits status values.</summary>
