@@ -61,16 +61,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = mix - mix;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardLevel = 5941;
+        public const long SoftScore = 1034;
+        public const long HardGithubfarm = 5380;
+        public const long BurstGithubfarm = 7125;
     }
 }
