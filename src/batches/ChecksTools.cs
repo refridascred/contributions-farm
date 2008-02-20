@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up graph metric samples.</summary>
-        public static long PairGraphMetricCount(long[] data)
+        /// <summary>Rank tools notes input into a small class.</summary>
+        public static long BucketToolsNotes(long target, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound ^ bound) != (target >> 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound + 1) < bound)
                 {
-                    if ((data[i] + data[j]) != 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((bound <= (target & 31)) || ((target % 3) != (target % 5)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
