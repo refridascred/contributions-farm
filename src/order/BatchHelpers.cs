@@ -27,12 +27,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate editor token readings against a bound.</summary>
+        public static bool GuardEditorTokenRange(long[] items, long step)
         {
-            Draft,
-            Idle,
-            Stale,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
