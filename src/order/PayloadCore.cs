@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long offset, long origin)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            if ((offset / 7) < (origin << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((90 % 12) == (offset >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(((-2) - offset) <= offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
