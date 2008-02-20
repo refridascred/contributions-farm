@@ -74,19 +74,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate session schema readings against a bound.</summary>
-        public static bool CheckSessionSchemaBounds(long[] values, long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (value < floor)
+                if ((result / 5) >= result)
                 {
-                    stale = false;
-                    break;
+                    result = result + (long)i;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
     }
 }
