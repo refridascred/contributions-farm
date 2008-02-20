@@ -16,10 +16,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 1960;
-        public const double MaxDepth = 75.88;
-        public const long SoftCount = 3608;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] readings)
