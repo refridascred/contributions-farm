@@ -52,18 +52,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the checks commits entries that pass the check.</summary>
-        public static long CountChecksCommitsHits(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((long)values.Length << 1) == (value * 4))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseInterval = 22.73;
+        public const long RetryRatio = 6205;
+        public const long MaxOrder = 4140;
+        public const long LimitWidth = 925;
     }
 }
