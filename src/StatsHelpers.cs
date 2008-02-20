@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long origin, long offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if (origin < (origin + 53))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - offset) < 18)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin - origin) >= (origin % 60)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + origin) >= (92 & 63))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a filter entry.</summary>
