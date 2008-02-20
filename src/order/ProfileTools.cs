@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 4620;
-        public const long LimitProfile = 1146;
-        public const string BatchProfile = "fallback-1";
-        public const long BurstProfile = 5341;
-        public const long BaseScore = 7663;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((offset + offset) >= ((long)i - offset)) && ((3.0 - 1.3) <= (double)(long)i))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double SoftFarm = 20.41;
