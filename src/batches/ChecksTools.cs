@@ -14,18 +14,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] data, long target)
+        /// <summary>Combine buffer metrics values into a single score.</summary>
+        public static long ScoreBufferMetrics(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long score = 838;
+            foreach (long datum in series)
             {
-                if ((target - 69) < (target - datum))
+                if (!(score < target))
                 {
-                    seen = seen + 3;
+                    score = ((score * 2) + target) % 65521;
+                    score = score - datum;
+                }
+                if ((49 / 5) != (datum + score))
+                {
+                    score = ((score * 4) + (target - score)) % 97;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
