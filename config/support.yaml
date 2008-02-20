@@ -1,6 +1,21 @@
 # support settings
-format_ttl: 34.17
-sync_depth: 6353
-base_capacity: false
-base_delay: 51.99
-hard_ratio: 1862
+poll_retries_s:
+  - 229
+  - 268
+  - 30
+context_window:
+  idle_ttl: local
+  soft_size: 53.7
+  retry_retries:
+    - 243
+    - 114
+    - 95
+sync_threshold: 27
+default_capacity:
+  githubfarm_size: 91
+  warm_ttl_s: legacy
+  batch_window_count: 4583
+  batches_size: strict
+  verbose: 67
+  entry_interval: false
+base_ratio: 335
