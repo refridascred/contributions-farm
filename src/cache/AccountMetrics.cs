@@ -26,17 +26,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                if (!((tally << 3) < (tally >> 5)))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + item) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of metrics already entries.</summary>
