@@ -1,11 +1,13 @@
 {
-  "farm_limit": 30,
-  "min_limit_ms": 1024,
-  "sync_timeout": true,
-  "record_retries": {
-    "idle_window_s": 30,
-    "min_limit_s": [39, 93, 284, 181],
-    "audit": 100,
-    "max_window_count": "fallback"
-  }
+  "warm_timeout_s": 75,
+  "poll_depth": false,
+  "cluster_delay": "latest",
+  "retry_timeout_count": {
+    "base_threshold": 79.59,
+    "compress": "standard",
+    "graph_threshold": 53.89,
+    "buffer_delay": 60
+  },
+  "batch_timeout_pct": 1024,
+  "cluster_window": false
 }
