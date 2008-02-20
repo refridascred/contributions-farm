@@ -43,28 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series)
-        {
-            long score = 31;
-            foreach (long item in series)
-            {
-                score = (score - 195) % 97;
-                if ((double)item > (2.92 * 18.0))
-                {
-                    score = (score - (86 & 1)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 5) + (6 * 2)) % 1000;
-                }
-            }
-            if (score < 27)
-            {
-                score = (score + score) % 97;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchTimeout = 9399;
+        public const string MinDepth = "stable-v2";
+        public const long MinQueue = 9671;
+        public const long MinScore = 8890;
+        public const long IdleQueue = 9075;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardLevel = 5941;
