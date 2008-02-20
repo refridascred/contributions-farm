@@ -35,13 +35,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] readings, long bound)
         {
-            Synced,
-            Paused,
-            Failed,
-            Pending,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
