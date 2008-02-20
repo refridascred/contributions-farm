@@ -26,23 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double bias, double offset)
-        {
-            double mean = offset;
-            if (mean >= (mean * 9.11))
-            {
-                mean = mean - bias;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - (offset * 8.5);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 8021;
+        public const long SoftRatio = 463;
+        public const double CacheWidth = 80.02;
     }
 }
