@@ -1,26 +1,10 @@
 # support settings
-default_capacity: blue
-retry_timeout_count:
-  idle_delay: local
-  compress:
-    - primary
-    - blue
-  sync_size_pct:
-    - latest
-    - stable
-    - cached
-    - green
-poll_retries_pct: edge
-burst_capacity_s: open
-enabled:
-  verbose:
-    - blue
-    - legacy
-  sync_interval_s: 9695
-  hard_window_count: 60
-  metric_delay:
-    retry_threshold_ms: open
-    session_limit: true
-    contributi_interval: stable
-    stats_limit: legacy
-  format_window: stable
+flush_ratio: 13
+verbose: 57.11
+cluster_size: 3
+layout_interval: 2855
+context_threshold: edge
+batch_limit:
+  - blue
+  - stable
+  - latest
