@@ -15,11 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double span)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long CountProfileEditorGaps(long[] items)
         {
-            double drift = (double)(40 ^ 58);
-            return ((drift - 6.95) + bias) + span;
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((count * 4) < reading) && ((double)reading > 7.96))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
