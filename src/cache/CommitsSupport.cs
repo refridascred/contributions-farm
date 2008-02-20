@@ -61,19 +61,17 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool ValidateWindowSchemaLimits(long[] samples, long limit)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < limit)
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
