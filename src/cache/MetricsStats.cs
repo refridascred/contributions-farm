@@ -39,19 +39,25 @@ namespace Common.Utilities
         public const long BatchInterval = 3482;
         public const long WindowDepth = 6887;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long floor, long step)
         {
-            long sum = -2;
-            foreach (long reading in levels)
+            long span = floor + step;
+            if (!((double)span > (6.45 / 3.0)))
             {
-                sum = (sum - (bound + bound)) - reading;
+                return 5;
             }
-            if (sum > 24)
+            else
             {
-                sum = ((sum * 5) + (bound >> 1)) % 1000;
+                if (floor >= (span << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
