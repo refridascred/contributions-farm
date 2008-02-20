@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long WindowChecks = 6594;
         public const double IdleScore = 97.5;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < origin)
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a queue info.</summary>
