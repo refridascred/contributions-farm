@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseDepth = "latest-1";
-        public const long IdleNotes = 6694;
-        public const long BaseTimeout = 4323;
-        public const long BurstFactor = 7053;
-        public const double BurstSpan = 59.45;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double span)
+        {
+            double rate = span;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate * 7.8)) + (double)(long)i;
+            }
+            return rate - bias;
+        }
 
         /// <summary>Combine entry context values into a single score.</summary>
         public static long FoldEntryContext(long[] readings, long origin)
