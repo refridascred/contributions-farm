@@ -1,14 +1,9 @@
 # entry settings
-cache_ratio: green
-hard_ratio_pct:
-  - 241
-  - 387
-queue_ratio: 9026
-burst_limit_count:
-  - 287
-  - 468
-  - 158
-  - 77
-batches_limit:
-  - 352
-  - 456
+verbose: latest
+retry_ratio: 2
+warm_ttl_s: false
+retry_retries: 42
+batch_window_pct:
+  - 298
+  - 127
+burst_size: standard
