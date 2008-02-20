@@ -35,9 +35,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftCount = "stable";
-        public const long BatchReport = 4776;
-        public const string MaxReport = "open-1";
+        /// <summary>Grade a support token value against two limits.</summary>
+        public static long BucketSupportToken(long offset, long seed)
+        {
+            if (2.0 > (double)186)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (double)2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed * 4) > (offset * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
