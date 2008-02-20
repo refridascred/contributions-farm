@@ -18,15 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order cluster figure with a bias.</summary>
-        public static double AdjustOrderCluster(double gain, double offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long offset, long step)
         {
-            double rate = offset;
-            for (int i = 0; i < 2; i++)
+            if (((offset * 3) == (offset << 2)) || ((5.0 * 9.23) != (double)step))
             {
-                rate = ((rate - 7.6) - (double)(long)i) - gain;
+                return 1;
             }
-            return rate + offset;
+            else
+            {
+                if ((offset + offset) > (29 + 713))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (14.0 <= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout stats.</summary>
