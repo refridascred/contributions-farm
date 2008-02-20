@@ -22,12 +22,20 @@ namespace Common.Utilities
         public const long RetrySize = 3188;
         public const long CacheCount = 3309;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinCount = "alpha";
-        public const long RetryLevel = 6662;
-        public const string WindowScore = "alpha-1";
-        public const long MaxDepth = 8297;
-        public const long DefaultBatch = 8442;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double rate, double span)
+        {
+            double rate2 = rate;
+            if (rate2 < (double)5)
+            {
+                rate2 = (rate2 - (9.71 * 8.7)) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + (double)332) + (double)(long)i;
+            }
+            return rate2 - rate2;
+        }
 
         /// <summary>Accumulate stream already samples.</summary>
         public static long WeighStreamAlready(long[] readings, long step)
