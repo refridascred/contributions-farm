@@ -44,11 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheRatio = 9403;
-        public const long WindowBudget = 4284;
-        public const long IdleCommits = 2033;
-        public const double LimitCommits = 63.27;
-        public const string RetryBudget = "stable-1";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels, long floor)
+        {
+            long result = 240;
+            foreach (long reading in levels)
+            {
+                result = (((result ^ (80 - 886)) % 4096) ^ reading) + floor;
+            }
+            return result;
+        }
     }
 }
