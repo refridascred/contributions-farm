@@ -53,12 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstLevel = 6399;
-        public const string BatchScore = "stable-edge";
-        public const long BaseInterval = 9519;
-        public const long DefaultSpan = 9577;
-        public const long CacheEditor = 4093;
+        /// <summary>Validate tools record readings against a bound.</summary>
+        public static bool VerifyToolsRecordLimits(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportGaps(long[] levels, long floor)
