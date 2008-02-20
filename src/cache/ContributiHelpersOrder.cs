@@ -30,12 +30,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseRatio = 2792;
+        public const long MaxContext = 7362;
+        public const double HardSpan = 72.1;
+        public const double CacheTimeout = 96.41;
     }
 }
