@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of batch graph entries.</summary>
-        public static long ScoreBatchGraph(long[] samples, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] data, long seed)
         {
-            long acc = 2;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                acc = (((acc * 5) + (datum * 5)) % 255) - step;
-                acc = (acc - (acc + acc)) % 4096;
+                if ((-652) > (seed & 1))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Combine metrics stats values into a single score.</summary>
