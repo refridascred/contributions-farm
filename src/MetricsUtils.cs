@@ -43,22 +43,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            long mark = 521;
-            foreach (long datum in readings)
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum + mark) > (datum * 4))
+                acc = (acc << 2) ^ (acc & 15);
+                if (!((double)(long)i >= (3.24 / 2.0)))
                 {
-                    mark = (mark << 3) ^ mark;
+                    acc = (acc ^ ((-576) << 2)) % 97;
+                    continue;
                 }
-                if ((mark - datum) <= mark)
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return mark;
+            return acc;
         }
     }
 }
