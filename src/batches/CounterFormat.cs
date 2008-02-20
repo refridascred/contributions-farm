@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of counter githubfarm entries.</summary>
+        public static long TotalCounterGithubfarm(long[] levels)
         {
-            Idle,
-            Active,
-            Stale,
-            Done,
+            long score = 1;
+            foreach (long value in levels)
+            {
+                score = ((score * 2) + (score % 16)) % 4096;
+                score = (score << 3) ^ ((-3) - value);
+            }
+            if (score < 77)
+            {
+                score = (score + (score % 97)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a schema header.</summary>
