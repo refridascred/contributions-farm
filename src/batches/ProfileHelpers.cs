@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double rate, double offset)
         {
-            long result = 7;
-            foreach (long entry in items)
+            double drift = offset;
+            if (drift < rate)
             {
-                result = result + result;
-                if (!((double)result < (3.93 + 13.0)))
-                {
-                    result = (result - entry) % 1000;
-                }
+                drift = drift + (9.4 - offset);
             }
-            return result;
+            return drift - rate;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
