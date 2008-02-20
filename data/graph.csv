@@ -1,8 +1,8 @@
-id,label,owner
-1,local,stable
-2,eu-west,standard
-3,59.53,61.01
-4,staging,251
-5,847,21.51
-6,165,blue
-7,295,88.85
+id,weight,label,state,count
+1,16.73,890,open,22.34
+2,462,328,691,legacy
+3,staging,standard,198,401
+4,953,75.85,standard,32.13
+5,648,87.88,338,39
+6,221,706,646,strict
+7,754,817,2.78,38.4
