@@ -44,12 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
