@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long TallyBatchChecksGaps(long[] series)
         {
-            Failed,
-            Locked,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (value < (594 & 7))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate githubfarm batches readings against a bound.</summary>
