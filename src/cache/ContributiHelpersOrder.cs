@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            Paused,
-            Idle,
-            Queued,
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc << 3) ^ (limit + (long)i)) % 97;
+                if ((double)(long)i != (1.57 - 5.9))
+                {
+                    acc = ((acc * 3) + (acc & 127)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate already samples.</summary>
