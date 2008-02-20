@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long target, long target2)
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            long edge = target ^ target2;
+            if ((double)target2 >= (7.84 - 1.13))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge & 1) > edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((-312) < (edge / 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
