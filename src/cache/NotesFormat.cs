@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long BurstQueue = 1494;
         public const long LimitQueue = 736;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Stale,
-            Failed,
+            Draft,
             Closed,
-            Ready,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate channel samples.</summary>
