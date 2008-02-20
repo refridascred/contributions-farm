@@ -11,15 +11,25 @@ namespace Common.Utilities
         public const long CacheRecord = 5471;
         public const long BurstScore = 183;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long mix = -40;
-            foreach (long item in levels)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (((mix ^ mix) % 1000) - item) - origin;
+                result = ((result * 2) + (long)i) % 97;
+                if (54 <= (result >> 1))
+                {
+                    result = result - (result + bound);
+                    result = ((result << 3) ^ bound) % 65521;
+                }
+                else
+                {
+                    result = (result - ((-48) + bound)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
