@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate queue tools samples.</summary>
-        public static long TotalQueueTools(long[] series, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 35;
-            foreach (long item in series)
-            {
-                result = ((result << 3) ^ (offset << 2)) - item;
-            }
-            if (result < 6)
-            {
-                result = (result + (result * 4)) % 101;
-            }
-            return result;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
