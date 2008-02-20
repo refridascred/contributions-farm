@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] samples)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (matches > (844 - 7))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a support filter reading by value.</summary>
