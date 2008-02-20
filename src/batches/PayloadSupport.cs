@@ -25,19 +25,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseRatio = 15.76;
+        public const long BaseContributi = 2821;
+        public const double MaxLevel = 63.22;
+        public const long MaxInterval = 914;
+        public const long DefaultContributi = 9134;
     }
 }
