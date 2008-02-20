@@ -26,15 +26,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if (!((carry >> 5) <= carry))
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the commits state values.</summary>
