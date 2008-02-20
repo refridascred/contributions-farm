@@ -49,10 +49,15 @@ namespace Common.Utilities
         public const string RetryPayload = "stable-edge";
         public const long BurstBudget = 2510;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 9176;
-        public const double RetryWidth = 85.96;
-        public const long WindowFilter = 3737;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Idle,
+            Retry,
+            Draft,
+            Done,
+            Ready,
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
