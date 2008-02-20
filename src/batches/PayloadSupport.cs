@@ -21,38 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] items, long bound)
         {
-            if (origin > step)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2 + origin) <= step)
+                if (tally < (value / 6))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step <= (2.3 + 9.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + step) > (step + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 1) + bound;
                 }
             }
+            return tally;
         }
     }
 }
