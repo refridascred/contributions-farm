@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] levels, long seed)
+        /// <summary>Fold a list of report commits readings.</summary>
+        public static long TallyReportCommits(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long sum = 513;
+            foreach (long value in samples)
             {
-                if (sample != seed)
+                if ((sum + sum) >= value)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum * 5) + (value + sum);
                 }
             }
-            return ok;
+            if (sum > 1)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
