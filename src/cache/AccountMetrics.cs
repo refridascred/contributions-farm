@@ -70,19 +70,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            double load = (double)(0 ^ 284);
-            if (load <= (load / 7.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (double)3;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (bias - scale);
-            }
-            return load + (7.99 * 18.0);
+            return seen;
         }
     }
 }
