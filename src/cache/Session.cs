@@ -34,12 +34,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
