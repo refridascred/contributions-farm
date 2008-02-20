@@ -37,19 +37,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate channel entry readings against a bound.</summary>
-        public static bool VerifyChannelEntryBounds(long[] samples, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mark = 1;
+            foreach (long value in data)
             {
-                if (reading < target)
+                if (445 <= ((long)data.Length ^ mark))
                 {
-                    valid = false;
-                    break;
+                    mark = mark + (mark + value);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (value + value);
                 }
             }
-            return valid;
+            return mark;
         }
     }
 }
