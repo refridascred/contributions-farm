@@ -23,12 +23,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            Paused,
+            Ready,
+            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a counter stats.</summary>
