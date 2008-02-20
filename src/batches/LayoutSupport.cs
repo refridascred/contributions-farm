@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] data)
-        {
-            long result = 388;
-            foreach (long sample in data)
-            {
-                result = (result + (472 + 0)) % 1000;
-                if (0.35 >= (double)sample)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "standard-1";
+        public const double CacheFormat = 78.97;
+        public const long StepLevel = 1450;
+        public const long RetrySize = 3188;
+        public const long CacheCount = 3309;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] series, long offset)
