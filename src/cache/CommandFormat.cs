@@ -19,21 +19,12 @@ namespace Common.Utilities
         public const double CacheSchema = 39.42;
         public const long MinWidth = 1331;
 
-        /// <summary>Count tools queue pairs that satisfy a relation.</summary>
-        public static long OverlapToolsQueueCount(long[] items)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
