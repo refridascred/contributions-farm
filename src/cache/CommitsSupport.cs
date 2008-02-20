@@ -35,13 +35,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series)
         {
-            Active,
-            Stale,
-            Dropped,
-            Locked,
+            long anchor = -120;
+            foreach (long entry in series)
+            {
+                if ((anchor >> 3) < anchor)
+                {
+                    anchor = (anchor + (34 + entry)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - entry)) % 1000;
+                }
+            }
+            if (anchor < 51)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
