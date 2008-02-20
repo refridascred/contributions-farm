@@ -32,15 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long CountFormatGithubfarmGaps(long[] samples)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] series)
         {
             long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)item > (0.7 - 4.3)) || ((count & 1) == (count % 100)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
