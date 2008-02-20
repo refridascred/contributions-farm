@@ -20,18 +20,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = 8;
+            foreach (long value in readings)
             {
-                if (((double)tally != (1.14 + 9.2)) || (tally >= item))
-                {
-                    tally = tally + 3;
-                }
+                state = (state << 3) ^ (572 - value);
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
