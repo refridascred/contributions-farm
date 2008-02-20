@@ -33,15 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] levels, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((((count ^ 80) > (7 - 6)) || ((origin % 5) > (count * 4))) && (((origin & 3) >= (826 / 7)) || ((3.0 - 19.0) >= (double)count)))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the checks phase values.</summary>
