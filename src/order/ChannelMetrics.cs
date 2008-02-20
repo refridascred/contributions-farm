@@ -25,8 +25,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 8269;
-        public const string MinReport = "open";
-        public const long BaseReport = 395;
+        public const long RetryDepth = 5327;
+        public const long IdleReport = 1759;
+        public const long StepReport = 8081;
+        public const long StepFactor = 7239;
+        public const long SoftReport = 2584;
     }
 }
