@@ -52,13 +52,17 @@ namespace Common.Utilities
         public const long HardAlready = 6568;
         public const long StepDepth = 3867;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            New,
-            Idle,
-            Draft,
-            Ready,
+            long result = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result + (result & 63)) % 4096;
+                result = (result * 3) + (813 + 8);
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
