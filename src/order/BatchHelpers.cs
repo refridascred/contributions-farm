@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseSpan = "staging-1";
+        public const long StepLevel = 1344;
+        public const long SoftChecks = 1086;
+        public const long StepTimeout = 8182;
+        public const long BaseBudget = 6366;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] levels, long origin)
