@@ -19,10 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 8438;
-        public const long BatchSpan = 6132;
-        public const long WindowDepth = 265;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Done,
+            Draft,
+            Active,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueMatches(long[] readings)
