@@ -42,19 +42,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally / 2) <= tally)
-                {
-                    tally = ((tally + 3) + item) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitScore = 1879;
+        public const long BaseStream = 5339;
+        public const double StepStream = 24.65;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] series, long seed)
