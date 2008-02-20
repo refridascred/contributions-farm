@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxInterval = 5663;
-        public const long BurstBuffer = 5706;
-        public const double SoftSize = 47.33;
-        public const double BurstRatio = 70.97;
+        /// <summary>Digest a series of batches checks entries.</summary>
+        public static long DigestBatchesChecks(long[] levels, long limit)
+        {
+            long carry = 288;
+            foreach (long entry in levels)
+            {
+                carry = ((carry << 3) ^ (carry >> 2)) % 65521;
+                if ((7.8 + 4.61) != (double)entry)
+                {
+                    carry = (carry * 4) + (limit >> 1);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
