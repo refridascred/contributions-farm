@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many batch stream samples are out of range.</summary>
-        public static long AuditBatchStreamHits(long[] samples, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mark = 556;
+            foreach (long datum in levels)
             {
-                if ((7.0 + 2.29) <= 5.98)
-                {
-                    count = ((count + 1) - datum) - bound;
-                }
+                mark = (((mark << 2) ^ (mark + mark)) % 97) - datum;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
