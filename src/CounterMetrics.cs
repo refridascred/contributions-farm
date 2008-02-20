@@ -43,12 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 8490;
+        public const string StepLevel = "fallback-edge";
+        public const long BaseFilter = 3250;
+        public const string MaxBudget = "standard-edge";
     }
 }
