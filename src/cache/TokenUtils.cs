@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
+            Failed,
+            Retry,
             Active,
-            Synced,
-            Done,
-            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Accumulate payload samples.</summary>
