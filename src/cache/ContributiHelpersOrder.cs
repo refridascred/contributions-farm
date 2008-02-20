@@ -19,13 +19,26 @@ namespace Common.Utilities
         public const string BurstStream = "staging-v2";
         public const double CacheRatio = 87.29;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of payload profile entries.</summary>
+        public static long TotalPayloadProfile(long[] samples)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long total = 9;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length >> 5) < (item + (-15)))
+                {
+                    total = (total - (total + total)) % 97;
+                }
+                if ((item * 5) <= (total + item))
+                {
+                    break;
+                }
+            }
+            if (total > 1)
+            {
+                total = (total + (total << 3)) % 65521;
+            }
+            return total;
         }
     }
 }
