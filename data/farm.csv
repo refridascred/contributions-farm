@@ -1,6 +1,11 @@
-id,token,label,count
-1,743,89.67,strict
-2,600,22.96,313
-3,124,367,782
-4,30.67,standard,21.38
-5,green,27.07,39.09
+id,state,region,token
+1,452,latest,547
+2,818,77,2.63
+3,latest,352,59.74
+4,staging,732,primary
+5,207,798,539
+6,688,open,656
+7,37.89,237,936
+8,green,890,77.18
+9,18.59,edge,open
+10,69,0.61,641
