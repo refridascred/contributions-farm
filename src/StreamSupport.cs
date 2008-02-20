@@ -12,22 +12,24 @@ namespace Common.Utilities
         public const long DefaultLevel = 9447;
         public const long MinBudget = 227;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long total = 458;
+            foreach (long item in levels)
             {
-                if (((tally % 100) < (3 % 16)) || ((19.0 / 7.0) != (double)entry))
+                total = ((total << 2) ^ step) % 65521;
+                total = (total ^ (item ^ step)) % 101;
+                if (total < (item >> 3))
                 {
-                    tally = tally + 1;
+                    total = (total + total) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total << 2) ^ (step >> 3);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
