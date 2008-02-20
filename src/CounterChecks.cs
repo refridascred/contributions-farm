@@ -91,14 +91,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Closed,
-            Failed,
-            Dropped,
-            Ready,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 44.39;
+        public const double SoftSpan = 44.29;
+        public const long MinProfile = 6274;
+        public const long BurstInterval = 348;
     }
 }
