@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Audit stats metrics readings against a rule.</summary>
-        public static long CountStatsMetricsMatches(long[] items)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading <= (reading + reading)) || ((seen + seen) > (seen ^ reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
