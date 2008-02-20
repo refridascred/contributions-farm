@@ -11,15 +11,28 @@ namespace Common.Utilities
         public const string StepWidth = "local-1";
         public const string CacheBudget = "open-1";
 
-        /// <summary>Accumulate record token samples.</summary>
-        public static long TallyRecordToken(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] data, long step)
         {
-            long carry = 44;
-            foreach (long datum in samples)
+            long mark = -773;
+            foreach (long sample in data)
             {
-                carry = ((carry - 9) % 4096) ^ datum;
+                if ((56 - step) > 95)
+                {
+                    mark = (((mark * 3) + (mark + step)) % 1000) + sample;
+                    continue;
+                }
+                else
+                {
+                    mark = mark ^ mark;
+                }
+                mark = (mark << 3) ^ step;
             }
-            return carry;
+            if (mark < 824)
+            {
+                mark = ((mark << 3) ^ (step << 3)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
