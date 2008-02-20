@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BatchSpan = 3945;
         public const long HardRatio = 1391;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] readings, long limit)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + hits) <= value)
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
