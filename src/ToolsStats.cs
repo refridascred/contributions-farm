@@ -61,12 +61,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            Synced,
+            Draft,
+            Queued,
+            Done,
+            Ready,
         }
     }
 }
