@@ -1,8 +1,7 @@
-id,level,state,region
-1,91.31,267,edge
-2,93.84,811,legacy
-3,57.31,standard,180
-4,277,94.99,97.11
-5,legacy,367,eu-west
-6,primary,77.75,blue
-7,229,local,39.48
+id,rank,active
+1,523,189
+2,blue,416
+3,408,3.58
+4,14.13,local
+5,63.86,2.09
+6,542,373
