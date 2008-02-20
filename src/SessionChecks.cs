@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long CacheChecks = 1900;
         public const long WindowChecks = 1219;
 
-        /// <summary>Accumulate buffer order samples.</summary>
-        public static long CombineBufferOrder(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = 94;
-            foreach (long cell in data)
-            {
-                if ((state - state) == (cell << 1))
-                {
-                    state = ((state << 3) ^ (cell % 64)) % 97;
-                }
-            }
-            if (state > (-18))
-            {
-                state = (state + (state << 3)) % 1000;
-            }
-            return state % 1000;
+            Active,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Scale a order notes figure with a bias.</summary>
