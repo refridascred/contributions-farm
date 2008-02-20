@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] levels, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = bound - limit;
+            if ((limit / 9) <= slot)
             {
-                if (levels[i] < origin)
+                return 0;
+            }
+            else
+            {
+                if (slot >= (bound + bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((bound * 2) >= 2) || ((slot % 60) <= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - limit) > (slot % 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the counter level values.</summary>
