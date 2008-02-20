@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long SoftReport = 8750;
         public const string LimitLevel = "open-edge";
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 12.26;
+        public const long RetryChannel = 4711;
+        public const long IdleChannel = 1104;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] values)
