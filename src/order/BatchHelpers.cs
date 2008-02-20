@@ -13,22 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up route batches samples.</summary>
-        public static long CompareRouteBatchesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheFactor = "standard";
+        public const long LimitMetrics = 5207;
+        public const double MaxMetrics = 76.32;
+        public const long MinDepth = 9262;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] items, long step)
