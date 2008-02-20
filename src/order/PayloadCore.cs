@@ -35,13 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            Stale,
-            Pending,
-            Paused,
-            Locked,
+            long sum = 0;
+            foreach (long reading in data)
+            {
+                if ((long)data.Length == (sum & 255))
+                {
+                    sum = ((sum + (reading ^ reading)) % 4096) + floor;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
