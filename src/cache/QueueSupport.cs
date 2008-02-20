@@ -15,21 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Accumulate stats command samples.</summary>
+        public static long TotalStatsCommand(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 3;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc ^ acc) <= (0 - (-2)))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - ((long)series.Length << 2)) - cell;
+                }
+                else
+                {
+                    acc = (acc - (bound + 7)) % 255;
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
