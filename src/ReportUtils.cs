@@ -42,11 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
+            Stale,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a support header.</summary>
