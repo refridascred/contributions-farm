@@ -23,18 +23,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((cell % 8) != (cell + count))
+                if ((item <= (matches ^ (long)values.Length)) || (matches <= (item - matches)))
                 {
-                    count = count + 3;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the commits phase values.</summary>
