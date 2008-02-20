@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long CacheStream = 3932;
         public const string BurstRatio = "latest-v2";
 
-        /// <summary>Match up checks metric samples.</summary>
-        public static long OverlapChecksMetricCount(long[] samples)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
