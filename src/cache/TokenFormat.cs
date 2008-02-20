@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] levels, long bound)
         {
-            double bias3 = (double)22 / 5.0;
-            if (bias3 > bias3)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                bias3 = (bias3 - (bias + 1.92)) + bias2;
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias3 - (0.55 / 2.0);
+            return flag;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
