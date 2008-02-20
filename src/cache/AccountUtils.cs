@@ -15,22 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of entry token readings.</summary>
-        public static long MatchEntryTokenCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 52.74;
+        public const long BatchWidth = 6951;
+        public const double DefaultFactor = 31.42;
+        public const double MinRecord = 31.38;
+        public const long DefaultRecord = 445;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] series, long target)
