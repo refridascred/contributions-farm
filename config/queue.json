@@ -1,7 +1,19 @@
 {
-  "batch_ratio_s": [396, 304, 480, 139],
-  "checks_size": "green",
-  "window_ratio": 500,
-  "format_ratio": "edge",
-  "compress": 81
+  "flush_retries_ms": "eu-west",
+  "queue_threshold": {
+    "command_capacity": [401, 138, 112],
+    "editor_delay": "blue",
+    "default_threshold_ms": "edge",
+    "audit": "green",
+    "batch_retries": {
+      "account_delay": 31,
+      "cache_delay_count": 250,
+      "filter_timeout": true
+    },
+    "compress": 29.76
+  },
+  "warm_limit": ["edge", "staging", "strict", "staging"],
+  "warm_capacity": "eu-west",
+  "token_interval": "open",
+  "cluster_timeout": ["blue", "latest"]
 }
