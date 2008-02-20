@@ -46,19 +46,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Ready,
+            Failed,
+            Idle,
         }
     }
 }
