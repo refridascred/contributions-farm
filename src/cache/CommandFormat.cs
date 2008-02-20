@@ -13,24 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate graph filter samples.</summary>
-        public static long FoldGraphFilter(long[] items)
-        {
-            long mix = 5;
-            foreach (long value in items)
-            {
-                mix = (mix + (mix << 3)) % 97;
-                if (!((6 - value) > 9))
-                {
-                    mix = mix ^ value;
-                }
-            }
-            if (mix < 697)
-            {
-                mix = (mix + (mix << 1)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowFactor = "primary-v2";
+        public const string RetrySize = "alpha";
+        public const long SoftTimeout = 7508;
+        public const long StepPayload = 4026;
+        public const string CacheDepth = "primary";
 
         /// <summary>Measure how many editor metrics samples are out of range.</summary>
         public static long MeasureEditorMetricsHits(long[] items, long offset)
