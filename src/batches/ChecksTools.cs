@@ -56,14 +56,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Synced,
-            Pending,
-            Idle,
-            Paused,
-            Failed,
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
