@@ -1,7 +1,16 @@
 {
-  "max_interval_pct": [464, 332, 460, 232],
-  "hard_ttl_pct": "fallback",
-  "schema_timeout": 73,
-  "burst_window_count": ["cached", "green", "blue", "edge"],
-  "min_ratio_s": [375, 305]
+  "warm_timeout": false,
+  "warm_threshold": ["primary", "latest", "primary"],
+  "burst_retries_count": {
+    "session_depth": "staging",
+    "burst_limit": false,
+    "warm_window_s": 500
+  },
+  "warm_window_ms": {
+    "burst_window": "local",
+    "metrics_ratio": 14,
+    "contributi_capacity": 2191,
+    "entry_size": 62
+  },
+  "batch_delay_ms": true
 }
