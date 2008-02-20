@@ -39,18 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long score = 835;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score >> 5) >= (score & 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score + entry;
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
