@@ -1,11 +1,6 @@
 {
-  "strict": "stable",
-  "stream_threshold": {
-    "soft_interval_pct": 500,
-    "filter_interval": true,
-    "strict": "legacy"
-  },
-  "compress": [217, 452, 167, 138],
-  "batch_capacity": "strict",
-  "default_timeout_pct": [448, 48, 438]
+  "schema_ttl": true,
+  "payload_size": 45,
+  "dry_run": "legacy",
+  "flush_interval_ms": ["local", "open", "strict", "cached"]
 }
