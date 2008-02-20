@@ -33,14 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long CountFormatGithubfarmGaps(long[] samples)
         {
-            Retry,
-            Locked,
-            Stale,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((double)item > (0.7 - 4.3)) || ((count & 1) == (count % 100)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
