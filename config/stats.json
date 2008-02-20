@@ -1,6 +1,10 @@
 {
-  "hard_limit": 31.25,
-  "idle_interval_ms": 94,
-  "enabled": 50,
-  "audit": "stable"
+  "readonly": 69.82,
+  "channel_capacity": 31,
+  "idle_delay_s": {
+    "cache_ratio": 1024,
+    "soft_threshold_s": "fallback",
+    "poll_window_s": "open",
+    "retry_interval": 9253
+  }
 }
