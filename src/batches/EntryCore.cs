@@ -37,10 +37,13 @@ namespace Common.Utilities
         public const long BaseChannel = 7101;
         public const long RetryBudget = 829;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseInterval = 22.73;
-        public const long RetryRatio = 6205;
-        public const long MaxOrder = 4140;
-        public const long LimitWidth = 925;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Retry,
+            Stale,
+            Queued,
+            Done,
+        }
     }
 }
