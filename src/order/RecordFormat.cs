@@ -27,20 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxInterval = 5663;
+        public const long BurstBuffer = 5706;
+        public const double SoftSize = 47.33;
+        public const double BurstRatio = 70.97;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
