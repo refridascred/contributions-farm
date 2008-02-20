@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double offset)
         {
-            double drift = 1.1;
-            if (drift >= floor)
+            double rate = 14.0 / 7.0;
+            if (rate < (scale + 8.0))
             {
-                drift = drift + scale;
+                rate = (rate - rate) - offset;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift + (floor / 9.0)) - (double)(long)i;
+                rate = rate - (17.0 - scale);
             }
-            return drift - floor;
+            return rate + (scale * 8.62);
         }
 
         /// <summary>Hold a stream summary.</summary>
