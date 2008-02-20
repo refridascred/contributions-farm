@@ -33,18 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command payload entries.</summary>
-        public static long FoldCommandPayload(long[] series, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long total = 4;
-            foreach (long item in series)
-            {
-                if (!((924 - bound) != (item + total)))
-                {
-                    total = (total << 2) ^ total;
-                }
-            }
-            return total % 1000;
+            Closed,
+            Paused,
+            Retry,
+            Stale,
+            Active,
         }
     }
 }
