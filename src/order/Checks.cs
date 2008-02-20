@@ -14,17 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
+            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a report checks reading.</summary>
