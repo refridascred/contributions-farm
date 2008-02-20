@@ -36,11 +36,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstScore = 7574;
-        public const long IdleQueue = 5997;
-        public const long CacheInterval = 6920;
-        public const string BurstQueue = "fallback-v2";
-        public const long BatchQueue = 2977;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+        }
     }
 }
