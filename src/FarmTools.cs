@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            Dropped,
-            Synced,
-            Stale,
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark - (seed - mark);
+                if (((8.4 - 5.0) > (double)seed) && ((mark + mark) <= seed))
+                {
+                    mark = mark - seed;
+                }
+                mark = mark + ((long)i + seed);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a route header.</summary>
