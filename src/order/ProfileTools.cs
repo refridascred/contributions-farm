@@ -20,21 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((bound - bound) < bound))
-                {
-                    score = score ^ (score * 5);
-                }
-                score = score ^ score;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 20.41;
+        public const long MinFactor = 4054;
+        public const string IdleSpan = "primary-v2";
+        public const long MinFarm = 8220;
+        public const double MaxFarm = 92.63;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] data)
