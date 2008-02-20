@@ -34,19 +34,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] series, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (cell <= bound)
+                if ((((26 + (long)values.Length) >= tally) && ((tally << 1) >= (item % 60))) || (seed <= (item * 4)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
