@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many order buffer samples are out of range.</summary>
-        public static long MeasureOrderBufferGaps(long[] samples, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((origin >> 2) > count) || (origin < (4 - cell)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
