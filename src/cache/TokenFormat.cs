@@ -18,31 +18,18 @@ namespace Common.Utilities
         public const double IdleProfile = 60.02;
         public const string RetryProfile = "standard-edge";
 
-        /// <summary>Accumulate profile batches samples.</summary>
-        public static long WeighProfileBatches(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] samples)
         {
-            long mix = 566;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 4) + (item & 63)) % 1000;
-                if ((9.1 - 6.0) <= (double)item)
+                if ((count * 5) > reading)
                 {
-                    mix = (mix ^ (mix * 4)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (item + item)) % 101;
-                }
-                if ((mix + item) < (item - mix))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (mix > 69)
-            {
-                mix = (mix - (mix - mix)) % 65521;
-            }
-            return mix;
+            return count;
         }
     }
 }
