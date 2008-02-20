@@ -1,10 +1,5 @@
 # githubfarm settings
-default_ttl_pct: staging
-context_limit: 48.6
-retry_timeout_ms:
-  persist: 9192
-  tools_window:
-    - legacy
-    - fallback
-  order_size: stable
-  record_depth: 38.83
+max_interval_s: 19
+batch_capacity_s: latest
+max_ttl_ms: 250
+max_window: green
