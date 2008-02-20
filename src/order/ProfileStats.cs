@@ -17,15 +17,12 @@ namespace Common.Utilities
         public const string HardCluster = "local-1";
         public const long RetryWidth = 8297;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long anchor = 2;
-            foreach (long cell in readings)
-            {
-                anchor = (((anchor << 2) ^ (anchor << 2)) % 101) + cell;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
