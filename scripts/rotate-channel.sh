@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback staging strict; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=316
-log "limit is ${CHANNEL_LIMIT}"
-
 count=0
 while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+CHANNEL_LIMIT=163
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
