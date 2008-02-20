@@ -31,18 +31,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] levels, long origin)
+        /// <summary>Locate a notes counter reading by value.</summary>
+        public static long FindNotesCounterIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((count ^ 80) > (7 - 6)) || ((origin % 5) > (count * 4))) && (((origin & 3) >= (826 / 7)) || ((3.0 - 19.0) >= (double)count)))
+                if (values[i] < seed)
                 {
-                    count = (count + 3) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
