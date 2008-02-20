@@ -23,25 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long offset, long step)
-        {
-            if (((offset + (-9)) < (offset % 12)) && (step >= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(offset >= (offset - step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSpan = 6292;
+        public const double HardCount = 29.08;
+        public const string IdleNotes = "latest-1";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
