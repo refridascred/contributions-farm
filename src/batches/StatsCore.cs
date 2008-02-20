@@ -21,22 +21,19 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const long IdleRecord = 6058;
 
-        /// <summary>Fold a list of buffer token readings.</summary>
-        public static long DigestBufferToken(long[] items, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] levels, long step)
         {
-            long result = -455;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((target % 64) != (target / 6))
+                if (datum > step)
                 {
-                    result = ((result + target) % 65521) - value;
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 3)
-            {
-                result = (result << 3) ^ (target << 1);
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Measure how many report order samples are out of range.</summary>
