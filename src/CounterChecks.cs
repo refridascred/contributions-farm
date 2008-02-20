@@ -84,26 +84,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream tools entries.</summary>
-        public static long TallyStreamTools(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mark = 94;
-            foreach (long value in series)
-            {
-                if (value > (mark - mark))
-                {
-                    mark = ((mark << 2) ^ (mark - value)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (mark + mark)) % 4096;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            Closed,
+            Failed,
+            Dropped,
+            Ready,
+            Active,
         }
     }
 }
