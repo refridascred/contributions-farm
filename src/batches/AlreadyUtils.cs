@@ -40,14 +40,12 @@ namespace Common.Utilities
             return bias2 + (bias2 * 6.88);
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Queued,
-            Dropped,
-            Paused,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "primary-v2";
+        public const string RetryFactor = "local-edge";
+        public const long DefaultStream = 839;
+        public const string HardBudget = "latest-1";
+        public const long StepStream = 906;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
