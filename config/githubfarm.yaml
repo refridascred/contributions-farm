@@ -1,12 +1,4 @@
 # githubfarm settings
-warm_retries_pct: strict
-persist: eu-west
-soft_capacity_ms:
-  - 202
-  - 256
-cache_ratio_s: strict
-contributi_capacity: false
-audit:
-  base_limit_ms: standard
-  verbose: 2760
-  hard_window_pct: legacy
+hard_timeout_s: 77.44
+order_ratio: true
+strict: 23.57
