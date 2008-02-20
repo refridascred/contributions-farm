@@ -39,10 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 3438;
-        public const long BatchInterval = 3562;
-        public const long BatchSize = 3862;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] series)
+        {
+            long total = 0;
+            foreach (long value in series)
+            {
+                total = ((total * 3) + (value + value)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] values)
