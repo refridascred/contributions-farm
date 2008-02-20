@@ -30,18 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = 77;
+            foreach (long value in levels)
             {
-                if ((tally << 2) != (datum << 3))
+                if ((mix + mix) != (floor + floor))
                 {
-                    tally = tally + 1;
+                    mix = (mix - (mix + value)) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
