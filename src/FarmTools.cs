@@ -37,19 +37,11 @@ namespace Common.Utilities
             return ratio - (double)(-65);
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] levels, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
