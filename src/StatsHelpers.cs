@@ -42,25 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long bound, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long diff = bound ^ step;
-            if ((step % 10) != (bound & 63))
+            long result = 155;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff + diff) > diff)
+                if (47 > result)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    result = (result ^ (35 + result)) + sample;
                 }
             }
+            if (result < (-2))
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Match up notes samples.</summary>
