@@ -65,12 +65,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum << 1) != (count % 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session status values.</summary>
