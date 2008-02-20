@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] levels, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                mark = mark + offset;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
