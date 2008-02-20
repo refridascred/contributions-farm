@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count graph support pairs that satisfy a relation.</summary>
-        public static long PairGraphSupportCount(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 82;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading <= (carry + carry)) || ((reading + carry) != (carry + carry)))
                 {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 3) + (long)series.Length) % 255;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
