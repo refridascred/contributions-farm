@@ -23,24 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer metrics values into a single score.</summary>
-        public static long ScoreBufferMetrics(long[] series, long target)
-        {
-            long score = 838;
-            foreach (long datum in series)
-            {
-                if (!(score < target))
-                {
-                    score = ((score * 2) + target) % 65521;
-                    score = score - datum;
-                }
-                if ((49 / 5) != (datum + score))
-                {
-                    score = ((score * 4) + (target - score)) % 97;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 25.33;
+        public const long WindowContributi = 7457;
+        public const long RetrySpan = 6261;
+        public const string IdleContributi = "standard-edge";
+        public const long MaxContributi = 9126;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] data)
