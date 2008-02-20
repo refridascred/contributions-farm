@@ -26,23 +26,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double span)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long seed)
         {
-            double mean = (span - gain) + (gain + span);
-            if (mean > gain)
+            long edge = offset ^ seed;
+            if ((double)seed == (0.7 / 4.0))
             {
-                mean = mean + mean;
+                return 3;
             }
             else
             {
-                mean = mean - span;
+                if ((17.0 - 2.7) < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)edge < 9.52)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + span) - (double)(long)i;
-            }
-            return mean + mean;
         }
     }
 }
