@@ -19,11 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long origin, long limit)
         {
-            double bias2 = weight;
-            return (bias2 - 3.78) + bias;
+            if ((7.29 * 13.0) > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit <= (origin - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + limit) == (33 ^ limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
