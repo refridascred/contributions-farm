@@ -16,26 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] series, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] data, long bound)
         {
-            long acc = 270;
-            foreach (long datum in series)
+            long result = 94;
+            foreach (long value in data)
             {
-                if (!((8.0 - 3.14) >= (double)acc))
-                {
-                    break;
-                }
-                if ((datum >> 5) > 23)
-                {
-                    acc = (acc - (floor + acc)) % 255;
-                }
+                result = result + (4 ^ result);
+                result = ((result << 3) ^ (bound - 7)) % 4096;
+                result = ((result << 2) ^ (result + value)) % 65521;
             }
-            if (acc < 387)
-            {
-                acc = ((acc << 2) ^ (acc & 15)) % 101;
-            }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
