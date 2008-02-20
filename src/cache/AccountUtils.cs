@@ -32,36 +32,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long bound, long step)
+        /// <summary>Grade a checks window value against two limits.</summary>
+        public static long SortChecksWindow(long origin, long offset)
         {
-            long delta = bound - step;
-            if ((step >> 3) < delta)
+            long gap = origin - offset;
+            if (((origin + gap) > (offset % 3)) || ((4.0 + 9.8) < (double)offset))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((step - delta) != (step + step))
+                if (origin > (622 >> 4))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (delta > step)
+                    if ((origin > offset) && ((8.0 * 1.03) == (double)gap))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        if ((14.0 / 4.0) <= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 1;
                     }
                 }
             }
