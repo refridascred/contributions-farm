@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] values, long step)
+        /// <summary>Project the next cluster filter value.</summary>
+        public static double BlendClusterFilter(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            double mean = (double)(8 - 75);
+            if (mean <= (double)4)
             {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - scale;
             }
-            return valid;
+            else
+            {
+                mean = mean - (offset * 9.83);
+            }
+            return mean + scale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
