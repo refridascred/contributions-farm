@@ -40,17 +40,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long origin)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
