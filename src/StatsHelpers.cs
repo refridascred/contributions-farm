@@ -80,14 +80,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Done,
-            Dropped,
-            Paused,
-            Active,
-            Idle,
+            public bool Region { get; set; }
+            public double Label { get; set; }
         }
     }
 }
