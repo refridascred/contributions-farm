@@ -32,18 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] series)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((tally + tally) > sample) || ((tally + tally) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
