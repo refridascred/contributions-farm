@@ -56,15 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel report counter forward.</summary>
-        public static long DeriveChannelReport(long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            long sum = 40;
+            foreach (long value in levels)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((sum >> 1) > sum)
+                {
+                    sum = (sum + value) % 101;
+                }
             }
-            return acc;
+            if (sum > 2)
+            {
+                sum = (sum * 4) + (sum >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
