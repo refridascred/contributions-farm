@@ -1,27 +1,19 @@
 # githubfarm settings
-farm_size:
-  session_depth: 30
-  flush_limit: 78
-  poll_ttl: 42
-  token_timeout: false
-dry_run: 35.03
-burst_interval_ms:
-  - 310
-  - 125
-  - 429
-  - 240
-route_interval: 66.8
-record_retries:
-  persist:
-    retry_capacity_count: staging
-    enabled: false
-    session_delay:
-      - primary
-      - blue
-      - staging
-      - eu-west
-    compress: true
-  route_ratio: 9947
-  compress: 94.87
-  sync_retries_s: true
-contributi_capacity: 7590
+cache_ratio: false
+buffer_window: 250
+base_window:
+  max_window_s: 98
+  idle_size_count: 54.96
+  audit: 1.11
+dry_run: cached
+idle_delay_pct:
+  soft_window: 14
+  queue_window: legacy
+  max_size: fallback
+  compress: 89.09
+  window_interval:
+    - 171
+    - 301
+    - 65
+  layout_interval: true
+max_delay: true
