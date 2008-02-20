@@ -23,24 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long floor, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double offset)
         {
-            if ((origin <= floor) && ((floor / 8) <= origin))
+            double rate = 4.69;
+            if (rate > (double)171)
             {
-                return 1;
+                rate = (rate - rate) - offset;
             }
             else
             {
-                if ((floor ^ origin) >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                rate = rate - (rate + 4.09);
             }
+            return rate + gain;
         }
 
         /// <summary>Project the next metrics value.</summary>
