@@ -61,38 +61,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if (origin <= (origin & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((-88) < (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((906 + 5) >= (step - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin >> 1) > origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
