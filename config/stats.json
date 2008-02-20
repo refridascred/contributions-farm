@@ -1,7 +1,6 @@
 {
-  "idle_window_pct": [142, 89, 331],
-  "session_window": 60,
-  "soft_interval_ms": "edge",
-  "batch_delay_pct": false,
-  "sync_limit_count": true
+  "base_window_count": [107, 391, 453, 180],
+  "max_limit": true,
+  "command_limit": ["fallback", "stable", "latest"],
+  "poll_delay_count": "staging"
 }
