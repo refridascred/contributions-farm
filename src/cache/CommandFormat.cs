@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const long MinScore = 8890;
         public const long IdleQueue = 9075;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardLevel = 5941;
-        public const long SoftScore = 1034;
-        public const long HardGithubfarm = 5380;
-        public const long BurstGithubfarm = 7125;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
