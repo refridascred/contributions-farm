@@ -12,15 +12,12 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=470
-log "limit is ${COMMAND_LIMIT}"
