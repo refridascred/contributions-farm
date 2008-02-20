@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 25.33;
-        public const long WindowContributi = 7457;
-        public const long RetrySpan = 6261;
-        public const string IdleContributi = "standard-edge";
-        public const long MaxContributi = 9126;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
