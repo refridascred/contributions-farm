@@ -23,20 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] items, long origin)
-        {
-            long mark = 995;
-            foreach (long item in items)
-            {
-                mark = ((mark + 2) + item) + origin;
-                if ((9 ^ 829) > mark)
-                {
-                    mark = mark ^ (mark - 5);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 442;
+        public const long BatchFilter = 7139;
+        public const double HardFilter = 3.79;
+        public const long BurstCount = 4827;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
