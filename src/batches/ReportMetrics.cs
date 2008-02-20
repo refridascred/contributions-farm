@@ -11,28 +11,21 @@ namespace Common.Utilities
         public const string StepWidth = "local-1";
         public const string CacheBudget = "open-1";
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] data, long step)
+        /// <summary>Match up buffer layout samples.</summary>
+        public static long CompareBufferLayoutCount(long[] samples)
         {
-            long mark = -773;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((56 - step) > 95)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (((mark * 3) + (mark + step)) % 1000) + sample;
-                    continue;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-                mark = (mark << 3) ^ step;
             }
-            if (mark < 824)
-            {
-                mark = ((mark << 3) ^ (step << 3)) % 65521;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
