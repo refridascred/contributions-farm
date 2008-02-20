@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long MaxLevel = 9469;
         public const double SoftReport = 59.44;
 
-        /// <summary>Digest a series of commits notes entries.</summary>
-        public static long TotalCommitsNotes(long[] readings)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long total = 62;
-            foreach (long datum in readings)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total << 2) ^ (datum + datum)) % 1000;
+                total = total - (total - bound);
+                total = (total * 3) + ((long)i / 8);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return total % 97;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
