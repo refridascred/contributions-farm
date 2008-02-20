@@ -48,29 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command queue entries.</summary>
-        public static long ScoreCommandQueue(long[] levels)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            long sum = 761;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.94 / 4.0) == (double)sum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (entry << 2)) % 97;
-                    sum = sum - (161 >> 2);
-                    break;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (((entry + sum) >= sum) && (471 >= (sum + sum)))
-                {
-                    sum = sum - (sum >> 4);
-                }
-                sum = (sum * 2) + sum;
             }
-            if (sum > 22)
-            {
-                sum = (sum + (sum * 4)) % 65521;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Accumulate tools samples.</summary>
