@@ -59,20 +59,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] data)
-        {
-            long sum = 1;
-            foreach (long reading in data)
-            {
-                sum = (((sum << 3) ^ 2) % 255) - reading;
-                if (((-1) & 3) != (sum / 8))
-                {
-                    sum = ((sum * 4) + 497) % 1000;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardBudget = 64.62;
+        public const long StepScore = 2706;
+        public const long SoftFactor = 7804;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmHits(long[] items, long target)
