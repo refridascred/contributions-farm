@@ -42,13 +42,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] values, long floor)
         {
-            Paused,
-            Failed,
-            New,
-            Locked,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
