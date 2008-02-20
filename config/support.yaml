@@ -1,21 +1,7 @@
 # support settings
-poll_retries_s:
-  - 229
-  - 268
-  - 30
-context_window:
-  idle_ttl: local
-  soft_size: 53.7
-  retry_retries:
-    - 243
-    - 114
-    - 95
-sync_threshold: 27
-default_capacity:
-  githubfarm_size: 91
-  warm_ttl_s: legacy
-  batch_window_count: 4583
-  batches_size: strict
-  verbose: 67
-  entry_interval: false
-base_ratio: 335
+soft_threshold_s: false
+batch_size_count: 1312
+sync_ratio_pct: standard
+payload_threshold: local
+format_threshold: 60
+stats_delay: 26
