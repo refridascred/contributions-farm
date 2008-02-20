@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleTimeout = 3280;
+        public const long SoftRatio = 1269;
+        public const double LimitRatio = 57.89;
+        public const string IdleFactor = "latest-v2";
 
         /// <summary>Validate contributi checks readings against a bound.</summary>
         public static bool ValidateContributiChecksRange(long[] data, long seed)
