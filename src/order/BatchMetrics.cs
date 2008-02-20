@@ -43,22 +43,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] data, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long origin, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if ((origin << 3) >= (origin ^ origin))
             {
-                if ((origin % 64) >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((limit & 127) >= (99 ^ 0))
                 {
-                    count = (count + 1) + entry;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
