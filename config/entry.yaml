@@ -1,8 +1,4 @@
 # entry settings
-route_delay: true
-min_ttl_ms:
-  - local
-  - stable
-channel_ratio: false
-audit: 7
-readonly: 3937
+payload_interval: 79
+soft_ratio: legacy
+audit: latest
