@@ -16,16 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cluster queue value from a seed.</summary>
-        public static long RollClusterQueue(long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] items, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                carry = (carry + carry) % 255;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((hits / 5) > (hits + step))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
