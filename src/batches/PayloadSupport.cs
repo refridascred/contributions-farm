@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
