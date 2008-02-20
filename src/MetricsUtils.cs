@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] samples, long target)
         {
-            Ready,
-            Closed,
-            Failed,
-            New,
-            Stale,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
