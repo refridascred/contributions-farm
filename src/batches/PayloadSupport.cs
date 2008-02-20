@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine farm context values into a single score.</summary>
-        public static long WeighFarmContext(long[] items)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = 902;
-            foreach (long reading in items)
-            {
-                result = ((result ^ (result - result)) % 101) + reading;
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
