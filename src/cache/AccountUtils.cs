@@ -32,21 +32,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of graph format readings.</summary>
-        public static long CompareGraphFormatCount(long[] samples)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = bound - step;
+            if ((step >> 3) < delta)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step - delta) != (step + step))
                 {
-                    if ((samples[i] - samples[j]) < 15)
+                    return 3;
+                }
+                else
+                {
+                    if (delta > step)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((14.0 / 4.0) <= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
