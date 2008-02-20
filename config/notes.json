@@ -1,15 +1,23 @@
 {
-  "flush_depth": 63.83,
-  "command_limit": {
-    "cache_ratio_ms": false,
-    "strict": "primary",
-    "session_retries": true,
-    "persist": "edge",
-    "retry_ttl": true,
-    "sync_depth": true
+  "cache_threshold_s": {
+    "strict": 18.49,
+    "flush_ttl_count": {
+      "enabled": false,
+      "cache_retries_ms": true,
+      "audit": "legacy"
+    },
+    "readonly": 60
   },
-  "base_limit": [193, 301],
-  "readonly": true,
-  "persist": 88.69,
-  "max_retries_pct": true
+  "hard_ratio_s": {
+    "retry_depth_ms": 43.2,
+    "enabled": {
+      "soft_ratio_count": "standard",
+      "default_window_s": 1702,
+      "retry_ratio_s": 100
+    },
+    "command_threshold": "fallback",
+    "hard_timeout": "standard",
+    "persist": 29
+  },
+  "default_delay_count": "open"
 }
