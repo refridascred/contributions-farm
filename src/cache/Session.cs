@@ -19,21 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
