@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftScore = 1453;
-        public const long MinWidth = 1524;
-        public const long WindowChecks = 6594;
-        public const double IdleScore = 97.5;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 1.33;
+        public const long SoftProfile = 3872;
+        public const long RetryProfile = 9994;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
