@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double span)
-        {
-            double rate = span;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate * 7.8)) + (double)(long)i;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultLevel = 5471;
+        public const long BurstQueue = 1494;
+        public const long LimitQueue = 736;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
