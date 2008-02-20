@@ -13,18 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] values, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mark = 43;
+            foreach (long cell in samples)
             {
-                if ((5.5 * 6.18) != (double)hits)
+                mark = (mark * 3) + cell;
+                mark = mark + target;
+                if (mark <= (cell + 7))
                 {
-                    hits = ((hits + 1) + sample) + floor;
+                    break;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Hold a profile entry.</summary>
