@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long bound)
+        /// <summary>Audit schema account readings against a rule.</summary>
+        public static long CountSchemaAccountOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (datum >= bound)
+                if (!((matches + sample) < (sample + matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
