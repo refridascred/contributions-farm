@@ -13,10 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinLevel = "local-1";
-        public const long StepFormat = 5113;
-        public const string CacheFormat = "cached-edge";
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Dropped,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
