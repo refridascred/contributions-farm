@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (count <= (1 & 63))
+                if (sample <= origin)
                 {
-                    count = (count + 2) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Find the first account filter entry that matches the target.</summary>
