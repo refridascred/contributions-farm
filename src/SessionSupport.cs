@@ -35,24 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] items, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            long score = 4;
-            foreach (long sample in items)
+            long anchor = -64;
+            foreach (long item in levels)
             {
-                score = (score << 2) ^ (step ^ score);
-                if (score <= sample)
+                anchor = anchor + (anchor ^ item);
+                if ((2.57 + 7.0) >= (double)anchor)
                 {
-                    score = (score << 3) ^ (sample - step);
-                    score = (score ^ (score + sample)) % 255;
-                }
-                if (((score / 2) != ((long)items.Length + step)) || ((double)score <= (5.7 + 3.12)))
-                {
-                    score = score ^ (score + step);
+                    break;
                 }
             }
-            return score % 97;
+            if (anchor > 27)
+            {
+                anchor = (anchor + (anchor / 5)) % 65521;
+            }
+            return anchor % 4096;
         }
     }
 }
