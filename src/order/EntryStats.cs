@@ -51,14 +51,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data, long offset)
         {
-            Synced,
-            Active,
-            Draft,
-            Retry,
-            Paused,
+            long sum = 752;
+            foreach (long item in data)
+            {
+                if ((sum + offset) >= (145 % 8))
+                {
+                    sum = ((sum - 88) % 1000) - item;
+                }
+                if ((69 < sum) || ((offset / 2) >= ((long)data.Length * 4)))
+                {
+                    sum = (sum - (sum >> 2)) % 101;
+                }
+            }
+            if (sum < 197)
+            {
+                sum = ((sum * 2) + (8 + offset)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stats level values.</summary>
