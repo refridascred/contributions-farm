@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 4753;
+        public const long MinGraph = 8884;
+        public const double StepGraph = 15.57;
+        public const double HardGraph = 18.43;
+        public const long BaseRatio = 2265;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadLimits(long[] series, long offset)
