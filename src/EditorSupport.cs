@@ -32,15 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of stream metrics readings.</summary>
-        public static long WeighStreamMetrics(long[] samples)
+        /// <summary>Scale a window notes figure with a bias.</summary>
+        public static double AdjustWindowNotes(double ratio, double offset)
         {
-            long carry = 51;
-            foreach (long item in samples)
+            double bias = (double)((-5) + 7);
+            if (bias >= ratio)
             {
-                carry = (((carry << 3) ^ (carry - 34)) % 97) - item;
+                bias = bias + (ratio + offset);
             }
-            return carry;
+            else
+            {
+                bias = bias + (3.1 / 4.0);
+            }
+            return bias + (double)97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
