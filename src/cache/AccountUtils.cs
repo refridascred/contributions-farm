@@ -32,13 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Paused,
-            Draft,
-            Closed,
-            Synced,
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
