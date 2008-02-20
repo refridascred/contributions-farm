@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many report order samples are out of range.</summary>
-        public static long AuditReportOrderOutliers(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (reading <= (reading + reading))
+                if (count >= 78)
                 {
-                    hits = hits + 3;
+                    count = ((count + 2) ^ cell) + bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
