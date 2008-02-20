@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long DigestCommandBuffer(long[] samples, long origin)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mix = -9;
-            foreach (long cell in samples)
-            {
-                if (cell >= mix)
-                {
-                    mix = (mix ^ (cell * 5)) + origin;
-                }
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
