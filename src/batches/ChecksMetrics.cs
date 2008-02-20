@@ -29,11 +29,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4575;
-        public const long CacheQueue = 1023;
-        public const long BatchQueue = 6782;
-        public const double IdleFactor = 58.41;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowPayload = "strict-1";
