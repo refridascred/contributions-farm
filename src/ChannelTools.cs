@@ -37,19 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate githubfarm entry readings against a bound.</summary>
-        public static bool ValidateGithubfarmEntryLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheWidth = 334;
+        public const long HardFarm = 9557;
+        public const long MaxFarm = 4677;
+        public const double BaseInterval = 65.2;
+        public const string DefaultTimeout = "stable-v2";
     }
 }
