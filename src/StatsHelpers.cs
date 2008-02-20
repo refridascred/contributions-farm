@@ -68,21 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 2) + (anchor & 3)) % 255;
-                if ((-541) >= (anchor - (long)i))
-                {
-                    anchor = anchor - 59;
-                }
-                anchor = (anchor << 3) ^ (long)i;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Failed,
+            Dropped,
+            Queued,
+            Done,
         }
     }
 }
