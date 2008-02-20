@@ -54,19 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] series, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (reading != limit)
                 {
-                    anchor = (anchor + ((long)i - (long)i)) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Accumulate graph samples.</summary>
