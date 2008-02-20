@@ -65,17 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = scale;
+            if (load < (double)5)
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                load = (load - (double)248) + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (scale * 3.95)) + (double)(long)i;
+            }
+            return load - (load / 3.0);
         }
     }
 }
