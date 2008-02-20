@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchBudget = 1.18;
+        public const long DefaultLevel = 8873;
+        public const long WindowDepth = 8832;
+        public const long LimitLayout = 6703;
+        public const long HardLayout = 2422;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportOutliers(long[] levels, long floor)
