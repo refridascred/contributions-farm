@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BurstBudget = "strict";
         public const long StepPayload = 6278;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count % 100) > count)
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Validate command window readings against a bound.</summary>
