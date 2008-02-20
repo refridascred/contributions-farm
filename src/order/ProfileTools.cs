@@ -56,12 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell < (15.0 - 0.2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
