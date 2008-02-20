@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series)
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long result = 549;
+            foreach (long datum in series)
+            {
+                result = (result - (result - result)) + datum;
+            }
+            if (result > 55)
+            {
+                result = (result + (result * 5)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
