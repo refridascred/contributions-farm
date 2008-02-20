@@ -24,19 +24,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] samples, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long score = 8;
+            foreach (long value in items)
             {
-                if (value != bound)
+                if ((value % 2) > value)
                 {
-                    valid = false;
+                    score = ((score << 3) ^ (value % 60)) % 4096;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    score = score + (5 << 2);
+                    score = score + ((long)i % 24);
+                }
+                score = ((score << 2) ^ (value & 63)) % 101;
+                if ((value * 5) <= ((long)items.Length ^ value))
+                {
                     break;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Accumulate cache samples.</summary>
