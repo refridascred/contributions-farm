@@ -1,7 +1,5 @@
 {
-  "idle_capacity_pct": "strict",
-  "queue_ttl": 9840,
-  "flush_depth_count": "latest",
-  "sync_ratio_s": true,
-  "persist": "legacy"
+  "editor_window": 75,
+  "max_capacity_pct": ["primary", "open"],
+  "soft_depth": "fallback"
 }
