@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every counter githubfarm entry stays within the limit.</summary>
-        public static bool ValidateCounterGithubfarmRange(long[] data, long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
