@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every graph token entry stays within the limit.</summary>
-        public static bool GuardGraphTokenRange(long[] samples, long target)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
