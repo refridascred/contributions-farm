@@ -21,23 +21,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] series)
-        {
-            long state = 4;
-            foreach (long sample in series)
-            {
-                if ((sample % 10) == (sample + 2))
-                {
-                    state = (state << 2) ^ (sample * 2);
-                }
-                else
-                {
-                    state = ((state * 5) + (state + sample)) % 4096;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 763;
+        public const long CacheInterval = 6788;
+        public const long MinFormat = 7259;
+        public const string StepFormat = "fallback-1";
+        public const long RetryDepth = 9484;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
