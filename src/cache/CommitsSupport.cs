@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long WindowChecks = 6594;
         public const double IdleScore = 97.5;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
