@@ -1,6 +1,6 @@
 {
-  "verbose": false,
-  "compress": 250,
-  "persist": 8934,
-  "counter_timeout": 21.64
+  "burst_size_s": 100,
+  "poll_capacity_s": 75.53,
+  "persist": "eu-west",
+  "window_interval": 9949
 }
