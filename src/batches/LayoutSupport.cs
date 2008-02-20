@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Ready,
-            Pending,
-            Idle,
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
