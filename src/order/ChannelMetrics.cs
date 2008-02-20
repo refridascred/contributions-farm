@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of tools support readings.</summary>
-        public static long ScoreToolsSupport(long[] samples, long limit)
+        /// <summary>Check that every graph token entry stays within the limit.</summary>
+        public static bool GuardGraphTokenRange(long[] samples, long target)
         {
-            long state = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                state = ((state * 2) + (datum ^ state)) + limit;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 7)
-            {
-                state = ((state * 3) + (long)samples.Length) % 1000;
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a tools stats.</summary>
