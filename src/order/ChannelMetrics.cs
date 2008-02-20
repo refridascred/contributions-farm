@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Active,
-            Ready,
-            Retry,
-            New,
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
