@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Dropped,
-            Ready,
-            Locked,
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
