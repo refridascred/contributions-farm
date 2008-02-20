@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftFactor = 5688;
+        public const long MinInterval = 8552;
+        public const string SoftInterval = "alpha";
+        public const long LimitTimeout = 2278;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
