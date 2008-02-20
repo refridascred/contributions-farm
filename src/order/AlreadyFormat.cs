@@ -34,18 +34,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] levels, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!!((seed / 7) <= (count << 2)))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            Stale,
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
