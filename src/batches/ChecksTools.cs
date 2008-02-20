@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] items)
         {
-            Failed,
-            Synced,
-            Queued,
-            Idle,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (item <= (count ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
