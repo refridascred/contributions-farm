@@ -60,17 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema profile entry that matches the target.</summary>
-        public static long LookupSchemaProfileIndex(long[] readings, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] >= target)
+                if ((tally * 4) >= step)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
