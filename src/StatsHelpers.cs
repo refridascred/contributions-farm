@@ -35,11 +35,15 @@ namespace Common.Utilities
         public const string IdleScore = "local";
         public const double CacheStats = 29.94;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double offset)
         {
-            double bias2 = (offset - bias) + offset;
-            return bias2 + (double)83;
+            double mean = (double)(7 >> 1);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean + (offset + offset)) + (double)(long)i) + ratio;
+            }
+            return mean + offset;
         }
     }
 }
