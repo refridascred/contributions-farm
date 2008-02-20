@@ -13,12 +13,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 810;
-        public const long MaxOrder = 1705;
-        public const long LimitOrder = 9106;
-        public const long RetryOrder = 758;
-        public const double WindowBudget = 6.89;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinScore = "latest";
+        public const string RetryLevel = "primary-v2";
+        public const long MaxRoute = 7014;
+        public const double SoftFactor = 46.37;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] samples, long floor)
