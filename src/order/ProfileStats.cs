@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinSpan = 32.37;
-        public const string HardFarm = "alpha-edge";
-        public const long BaseFarm = 805;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
         public static long TallyContextSchemaGaps(long[] samples, long offset)
