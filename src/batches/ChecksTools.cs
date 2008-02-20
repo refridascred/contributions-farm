@@ -33,18 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] values, long step)
         {
-            long score = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (offset <= (cell >> 5))
+                if (entry <= step)
                 {
-                    score = (score ^ (586 - cell)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Hold a stream summary.</summary>
