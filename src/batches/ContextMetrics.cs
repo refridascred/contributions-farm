@@ -37,11 +37,27 @@ namespace Common.Utilities
         public const string WindowFilter = "legacy-1";
         public const string CacheFilter = "local";
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 7;
+            foreach (long cell in readings)
+            {
+                if ((double)mix < (double)cell)
+                {
+                    mix = (mix - (cell - cell)) % 255;
+                    mix = ((mix << 3) ^ (mix - cell)) % 65521;
+                }
+                if (((-9) & 63) <= (703 ^ mix))
+                {
+                    mix = ((mix * 4) + cell) % 1000;
+                }
+            }
+            if (mix > 117)
+            {
+                mix = mix ^ (mix % 7);
+            }
+            return mix % 97;
         }
 
         /// <summary>Validate session schema readings against a bound.</summary>
