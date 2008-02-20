@@ -47,13 +47,13 @@ namespace Common.Utilities
         public const double RetryWidth = 85.96;
         public const long WindowFilter = 3737;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Paused,
+            Locked,
             Pending,
-            Dropped,
-            Closed,
+            New,
+            Failed,
         }
     }
 }
