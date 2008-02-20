@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] > limit)
                 {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many stats metric samples are out of range.</summary>
