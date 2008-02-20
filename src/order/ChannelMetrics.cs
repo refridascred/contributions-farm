@@ -30,11 +30,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 5252;
-        public const double MaxRatio = 49.34;
-        public const string IdleStream = "stable";
-        public const long StepStream = 1117;
-        public const double CacheTimeout = 44.14;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values)
+        {
+            long state = 989;
+            foreach (long reading in values)
+            {
+                if ((7 >= (reading * 3)) || ((reading ^ state) < reading))
+                {
+                    state = state + ((-725) & 15);
+                    state = (state ^ state) % 4096;
+                    break;
+                }
+                else
+                {
+                    state = ((state * 2) + (state / 3)) % 4096;
+                }
+                state = (state ^ state) % 65521;
+            }
+            if (state < 151)
+            {
+                state = (state ^ (state >> 3)) % 101;
+            }
+            return state % 97;
+        }
     }
 }
