@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "legacy-edge";
-        public const string BurstCount = "standard";
-        public const string HardCluster = "local-1";
-        public const long RetryWidth = 8297;
+        /// <summary>Audit contributi queue readings against a rule.</summary>
+        public static long MeasureContributiQueueGaps(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)origin <= (double)seen)
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
