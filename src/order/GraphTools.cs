@@ -58,31 +58,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long floor, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values, long limit)
         {
-            if (!((82 >> 3) <= (bound / 4)))
+            long sum = 413;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound < (4.0 - 3.1))
+                if ((sum + limit) > (limit % 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound >= (16.0 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = (sum - (sample + sample)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a buffer info.</summary>
