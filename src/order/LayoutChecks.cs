@@ -91,12 +91,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values, long bound)
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            long sum = -81;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = (((sum + (sum - 79)) % 4096) + (long)i) ^ datum;
+                }
+                sum = sum + (bound + bound);
+                if ((double)sum != (double)(-5))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
