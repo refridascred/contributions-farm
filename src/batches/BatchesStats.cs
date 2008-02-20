@@ -38,15 +38,22 @@ namespace Common.Utilities
             return mean - (double)9;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double rate, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples, long target)
         {
-            double ratio = (3.0 + 0.4) / 8.0;
-            for (int i = 0; i < 5; i++)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                ratio = ((ratio - (double)147) + (double)(long)i) - span;
+                if ((total * 3) > (target + 4))
+                {
+                    total = (((total * 2) + (target + target)) % 97) - entry;
+                }
+                if ((double)target <= (3.0 / 3.0))
+                {
+                    break;
+                }
             }
-            return ratio - rate;
+            return total % 97;
         }
 
         /// <summary>Fold a list of payload farm readings.</summary>
