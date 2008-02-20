@@ -20,31 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long seed2)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            if ((double)seed >= (6.7 - 7.43))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 1) >= (seed + seed2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed2 % 60) >= (seed + seed2)) || ((seed >> 1) >= (seed2 - seed)))
+                    if ((samples[i] - samples[j]) > 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
