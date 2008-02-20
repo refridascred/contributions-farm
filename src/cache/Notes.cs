@@ -39,19 +39,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double span)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double gain = ratio;
-            if (gain <= span)
-            {
-                gain = gain - (ratio + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (5.0 + gain)) + (double)(long)i;
-            }
-            return gain + span;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
