@@ -52,30 +52,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long offset)
         {
-            long acc = 34;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((step << 1) < 5)
+                if (value >= offset)
                 {
-                    acc = (acc << 2) ^ (sample + acc);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ step) % 97;
-                }
-                if ((sample + acc) < (sample % 12))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (acc > 40)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 97;
+            return valid;
         }
     }
 }
