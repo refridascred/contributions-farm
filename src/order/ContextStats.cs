@@ -69,14 +69,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] readings, long target)
         {
-            Pending,
-            Active,
-            Done,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((seen + target) > target) || (target > (65 & 31)))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
     }
 }
