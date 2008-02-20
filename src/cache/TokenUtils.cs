@@ -32,19 +32,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
