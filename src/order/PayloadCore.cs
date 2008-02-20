@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long BurstCommand = 1245;
         public const double IdleLevel = 49.22;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Done,
-            New,
-            Closed,
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
