@@ -32,12 +32,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] items, long seed)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry / 2) < matches))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
