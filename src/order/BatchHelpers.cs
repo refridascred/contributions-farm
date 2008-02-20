@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] samples, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double gain = (double)82 / 6.0;
+            if (gain <= weight)
             {
-                if (!((bound > (bound + bound)) || (((long)samples.Length & 3) < (datum + bound))))
-                {
-                    matches = matches + 3;
-                }
+                gain = gain + (double)15;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
