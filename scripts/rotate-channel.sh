@@ -7,16 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=74
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in blue cached primary stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+mode="${1:-green}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
