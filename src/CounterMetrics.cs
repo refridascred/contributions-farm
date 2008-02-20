@@ -38,15 +38,22 @@ namespace Common.Utilities
             return rate2 + (double)2;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] data, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if ((double)bound > 10.0)
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
