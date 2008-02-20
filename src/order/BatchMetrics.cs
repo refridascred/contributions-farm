@@ -36,14 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long origin)
         {
-            Paused,
-            Stale,
-            Ready,
-            New,
-            Done,
+            long lane = floor ^ origin;
+            if ((8.4 * 7.4) <= (double)lane)
+            {
+                return 2;
+            }
+            else
+            {
+                if (lane < (floor & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
