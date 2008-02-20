@@ -1,7 +1,7 @@
 {
-  "max_threshold": 42,
-  "max_delay": "edge",
-  "warm_delay_count": "cached",
-  "burst_window_ms": 94.62,
-  "soft_size_s": 30
+  "enabled": 62,
+  "soft_delay_pct": ["edge", "standard", "local"],
+  "burst_interval": false,
+  "default_window": 500,
+  "burst_timeout_s": [366, 486, 224]
 }
