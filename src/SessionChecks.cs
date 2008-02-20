@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long MaxLevel = 9469;
         public const double SoftReport = 59.44;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Digest a series of commits notes entries.</summary>
+        public static long TotalCommitsNotes(long[] readings)
         {
-            Active,
-            Failed,
-            Done,
-            Retry,
+            long total = 62;
+            foreach (long datum in readings)
+            {
+                total = ((total << 2) ^ (datum + datum)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
