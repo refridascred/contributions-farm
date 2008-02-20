@@ -37,13 +37,9 @@ namespace Common.Utilities
         public const long BaseChannel = 7101;
         public const long RetryBudget = 829;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Retry,
-            Stale,
-            Queued,
-            Done,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleInterval = 78.74;
+        public const string CacheWidth = "strict-edge";
+        public const long MinTimeout = 8867;
     }
 }
