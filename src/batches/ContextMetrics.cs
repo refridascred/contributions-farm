@@ -37,39 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] samples, long limit)
         {
-            long bound = floor - offset;
-            if ((offset & 255) >= bound)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((11 * 4) < (floor << 2)))
+                if ((sample % 10) < (hits + sample))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor * 3) < (floor + 391))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + bound) == (bound + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 3) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
