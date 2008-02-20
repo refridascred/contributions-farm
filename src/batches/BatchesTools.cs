@@ -25,23 +25,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Adjust a context tools reading.</summary>
+        public static double ProjectContextTools(double gain, double floor)
         {
-            double scale = span;
-            if (scale < (scale + ratio))
+            double drift = floor;
+            if (drift < (gain * 5.0))
             {
-                scale = scale + (double)98;
+                drift = drift - (0.12 - floor);
             }
-            else
-            {
-                scale = scale + (span * 18.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (double)530;
+            return drift + (double)394;
         }
 
         /// <summary>Adjust a notes reading.</summary>
