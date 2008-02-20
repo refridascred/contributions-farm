@@ -16,22 +16,27 @@ namespace Common.Utilities
             return bias2 + (bias2 / 3.0);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] values, long floor)
+        /// <summary>Digest a series of filter contributi entries.</summary>
+        public static long CombineFilterContributi(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long result = 1;
+            foreach (long reading in readings)
             {
-                if ((seen ^ item) >= (seen << 1))
+                result = ((result * 5) + (655 + reading)) % 65521;
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = (seen + 1) + floor;
+                    result = (((result << 3) ^ reading) % 4096) ^ (long)i;
                 }
-                else
+                if ((8.61 <= (1.0 + 9.0)) || ((2.6 - 1.07) >= (double)reading))
                 {
-                    seen = seen - 1;
+                    result = ((result * 3) + result) % 255;
                 }
             }
-            return seen;
+            if (result > 57)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
