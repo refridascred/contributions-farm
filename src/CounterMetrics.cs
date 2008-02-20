@@ -56,23 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long score = 222;
-            foreach (long entry in readings)
-            {
-                score = ((score << 3) ^ (60 % 60)) % 65521;
-                if ((entry + entry) < 0)
-                {
-                    score = (score ^ (entry >> 1)) % 255;
-                }
-            }
-            if (score < 502)
-            {
-                score = score - (score ^ 26);
-            }
-            return score;
+            Done,
+            Queued,
+            Active,
         }
     }
 }
