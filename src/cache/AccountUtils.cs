@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ratio + (scale / 9.0);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 52.74;
-        public const long BatchWidth = 6951;
-        public const double DefaultFactor = 31.42;
-        public const double MinRecord = 31.38;
-        public const long DefaultRecord = 445;
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long ScoreBatchToken(long[] levels, long bound)
+        {
+            long sum = 3;
+            foreach (long datum in levels)
+            {
+                sum = sum + datum;
+            }
+            if (sum > 270)
+            {
+                sum = sum - (bound + 3);
+            }
+            return sum;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] series, long target)
