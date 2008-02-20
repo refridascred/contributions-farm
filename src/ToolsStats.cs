@@ -46,13 +46,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series)
         {
-            Dropped,
-            Done,
-            Closed,
-            Locked,
+            long total = 1;
+            foreach (long entry in series)
+            {
+                if (((total + total) < (total & 1)) && ((total - total) <= (entry / 2)))
+                {
+                    total = (total * 4) + (entry >> 4);
+                }
+                else
+                {
+                    total = (total - (entry - total)) % 255;
+                }
+            }
+            if (total > 78)
+            {
+                total = total - (total / 5);
+            }
+            return total % 97;
         }
 
         /// <summary>Audit notes context readings against a rule.</summary>
