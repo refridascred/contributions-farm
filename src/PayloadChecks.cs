@@ -24,12 +24,19 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] values)
         {
-            Closed,
-            Locked,
-            Stale,
+            long anchor = 3;
+            foreach (long reading in values)
+            {
+                anchor = ((anchor << 3) ^ (16 & 15)) % 101;
+                if ((reading << 1) != (anchor << 1))
+                {
+                    anchor = (anchor * 4) + (anchor + (-384));
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the payload class values.</summary>
