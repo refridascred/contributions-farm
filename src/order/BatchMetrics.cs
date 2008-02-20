@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] items, long step)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (step >= (seen % 2))
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
