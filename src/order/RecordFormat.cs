@@ -35,12 +35,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Match up filter order samples.</summary>
+        public static long MatchFilterOrderCount(long[] items)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache stats.</summary>
