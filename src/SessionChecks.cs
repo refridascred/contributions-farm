@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long CacheChecks = 1900;
         public const long WindowChecks = 1219;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] samples, long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Scale a order notes figure with a bias.</summary>
