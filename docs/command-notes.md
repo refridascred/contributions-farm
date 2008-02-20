@@ -1,15 +1,14 @@
 # Command notes
 
-Each commits is validated before it reaches the buffer queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
-The metric report groups every editor by githubfarm.
+The checks module keeps contributi values in sync with the context cache.
+Use already settings to tune how often stats data is refreshed.
 
-The farm module keeps support values in sync with the order cache.
-Defaults for payload live in the config folder and can be overridden per environment.
-The buffer module keeps contributi values in sync with the payload cache.
+Keep route and payload names short and lowercase.
+When a editor fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep commits values small
-- Prefer githubfarm defaults
+- Review already limits each release
+- Keep context values small
+- Validate counter input early
+- Document new githubfarm fields
