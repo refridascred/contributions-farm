@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Done,
-            Stale,
-            Paused,
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a buffer stats.</summary>
