@@ -60,21 +60,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up queue command samples.</summary>
-        public static long MatchQueueCommandCount(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 92;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((long)samples.Length > 4)
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 3) + (cell + cell)) % 255;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the metric state values.</summary>
