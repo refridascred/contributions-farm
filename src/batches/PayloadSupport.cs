@@ -23,14 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Pending,
-            Done,
-            Failed,
-            Idle,
-            Retry,
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
