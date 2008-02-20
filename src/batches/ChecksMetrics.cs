@@ -29,19 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] series, long origin)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
