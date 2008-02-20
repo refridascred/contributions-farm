@@ -33,21 +33,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 348;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((cell >> 5) == (cell - offset)) || ((3.2 * 1.93) <= (double)cell))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (cell >> 5);
+                    mix = mix + (offset << 3);
+                }
+                mix = (mix + (685 >> 5)) % 4096;
+                if (((offset + offset) < (cell << 1)) && ((double)offset > 2.86))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
