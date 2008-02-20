@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double rate, double offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double mean = (double)(78 - 88);
-            if (mean <= offset)
-            {
-                mean = (mean - 5.75) - rate;
-            }
-            return mean + mean;
+            Dropped,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a report snapshot.</summary>
