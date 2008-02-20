@@ -49,12 +49,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] items)
         {
-            Stale,
-            Dropped,
-            Ready,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item * 4) <= (matches + 69))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph phase values.</summary>
