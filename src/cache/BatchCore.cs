@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double DefaultWidth = 56.39;
         public const long DefaultChannel = 4637;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double ratio, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] levels, long origin)
         {
-            double ratio2 = span / 2.0;
-            if (ratio2 <= ratio2)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                ratio2 = ratio2 - ratio;
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + (span + ratio2)) + (double)(long)i;
-            }
-            return ratio2 + (span + ratio2);
+            return ready;
         }
 
         /// <summary>Hold a report snapshot.</summary>
