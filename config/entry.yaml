@@ -1,9 +1,4 @@
 # entry settings
-cache_interval_s: 12.98
-verbose: eu-west
-soft_size: 37.58
-account_delay:
-  - staging
-  - blue
-  - eu-west
-  - standard
+sync_interval: 27.92
+token_delay: open
+sync_delay_count: cached
