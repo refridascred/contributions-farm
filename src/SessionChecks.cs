@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long CacheReport = 8012;
         public const string LimitReport = "latest";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] series)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((value % 2) <= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
     }
 }
