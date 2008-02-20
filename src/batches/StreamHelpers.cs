@@ -47,19 +47,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score + limit) % 4096) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Retry,
+            Pending,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
