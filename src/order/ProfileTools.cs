@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 4620;
+        public const long LimitProfile = 1146;
+        public const string BatchProfile = "fallback-1";
+        public const long BurstProfile = 5341;
+        public const long BaseScore = 7663;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double SoftFarm = 20.41;
