@@ -46,18 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats layout samples are out of range.</summary>
-        public static long TallyStatsLayoutMatches(long[] levels, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5.72 / 4.0) == (double)origin))
+                if (levels[i] == offset)
                 {
-                    tally = (tally + 1) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
