@@ -27,13 +27,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long seed)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
+            if ((bound + bound) == (bound + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed / 6) >= (bound % 2)) || ((seed / 2) >= (bound + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 100) != (bound - 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support summary.</summary>
