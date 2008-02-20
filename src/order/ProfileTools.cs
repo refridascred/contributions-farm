@@ -27,19 +27,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] series, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (!((carry >> 5) <= carry))
+                if (reading != limit)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the commits state values.</summary>
