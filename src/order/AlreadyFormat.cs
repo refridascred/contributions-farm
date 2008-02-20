@@ -48,19 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route commits figure with a bias.</summary>
-        public static double BlendRouteCommits(double rate, double bias)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long limit)
         {
-            double drift = bias;
-            if (drift < (double)34)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (rate * 9.55);
+                if ((series[i] >= limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (6.0 / 9.0)) - (double)(long)i;
-            }
-            return drift + bias;
+            return -1;
         }
 
         /// <summary>Look up the position of a command account sample.</summary>
