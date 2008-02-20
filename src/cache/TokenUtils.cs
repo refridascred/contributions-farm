@@ -42,12 +42,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Locate a layout commits reading by value.</summary>
+        public static long LookupLayoutCommitsIndex(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
