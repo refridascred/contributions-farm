@@ -1,8 +1,7 @@
 {
-  "batch_ratio_s": [136, 114],
-  "sync_ratio": 39.35,
-  "poll_threshold_count": "open",
-  "strict": false,
-  "soft_ttl_s": "stable",
-  "poll_retries_count": [436, 254, 361]
+  "batch_ratio_s": [396, 304, 480, 139],
+  "checks_size": "green",
+  "window_ratio": 500,
+  "format_ratio": "edge",
+  "compress": 81
 }
