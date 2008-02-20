@@ -88,19 +88,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] values, long target)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= target)
+                if (values[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
