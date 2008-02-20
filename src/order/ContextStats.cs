@@ -20,22 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] values, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long bound = floor + limit;
+            if ((floor % 3) >= floor)
             {
-                if (((long)values.Length > (cell + tally)) || ((tally + cell) > (872 + limit)))
+                return 1;
+            }
+            else
+            {
+                if (floor <= (limit * 4))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((double)floor > (1.4 + 8.9)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor & 31) > (bound * 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
