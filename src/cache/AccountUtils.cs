@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long sum = 278;
+            foreach (long value in values)
+            {
+                if (((value + value) != (sum - 737)) && ((double)(long)values.Length <= 9.3))
+                {
+                    sum = ((sum << 2) ^ (value * 2)) % 1000;
+                }
+                if (sum <= (sum >> 5))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a account entry.</summary>
