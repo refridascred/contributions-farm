@@ -1,8 +1,11 @@
 {
-  "cache_timeout_s": "fallback",
-  "hard_depth": true,
-  "warm_interval_pct": 64.12,
-  "burst_interval": 49.96,
-  "batch_retries_s": 60.63,
-  "readonly": true
+  "farm_limit": 30,
+  "min_limit_ms": 1024,
+  "sync_timeout": true,
+  "record_retries": {
+    "idle_window_s": 30,
+    "min_limit_s": [39, 93, 284, 181],
+    "audit": 100,
+    "max_window_count": "fallback"
+  }
 }
