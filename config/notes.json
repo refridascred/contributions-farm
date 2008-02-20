@@ -1,6 +1,5 @@
 {
-  "verbose": false,
-  "compress": true,
-  "hard_window_count": "blue",
-  "entry_interval": ["eu-west", "green"]
+  "base_limit_ms": 85.63,
+  "default_threshold_count": ["staging", "strict"],
+  "account_threshold": "open"
 }
