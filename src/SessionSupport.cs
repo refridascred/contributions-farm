@@ -27,21 +27,10 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstScore = 9239;
+        public const string BurstCache = "primary";
+        public const string BurstInterval = "stable-edge";
+        public const long RetryCache = 6410;
     }
 }
