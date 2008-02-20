@@ -15,17 +15,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = seed + step;
+            if ((seed < (step + step)) || ((double)seed <= (double)cur))
             {
-                if (samples[i] >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((6.0 >= (double)step) || ((step >> 3) < (seed & 127)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
