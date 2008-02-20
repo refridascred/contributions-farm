@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 373;
-        public const string BatchSize = "cached-v2";
-        public const long StepScore = 1900;
-        public const string SoftCount = "primary";
-        public const long MinPayload = 5447;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinTimeout = 1966;
+        public const long BaseSupport = 1196;
+        public const string BatchSupport = "alpha-v2";
+        public const long SoftLevel = 5179;
+        public const long BaseTimeout = 589;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinSpan = 3875;
