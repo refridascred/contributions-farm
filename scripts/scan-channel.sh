@@ -6,24 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in legacy edge; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=250
+log "limit is ${CHANNEL_LIMIT}"
