@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] items)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length + 92) <= (tally % 10))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
