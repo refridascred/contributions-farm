@@ -1,31 +1,14 @@
 # entry settings
-idle_timeout_ms:
-  strict: 68.75
-  max_size: blue
-  already_depth:
-    poll_ratio_pct: 30
-    flush_interval: 250
-    poll_depth_count: 58.16
-    cache_interval_ms: false
-  flush_depth_count: 6891
-  readonly:
-    idle_depth_count: local
-    compress: 7431
-    batch_size_pct: false
-    sync_capacity: green
-    soft_threshold: 37.5
-  flush_timeout_ms:
-    batches_limit: green
-    cache_limit_s: 46.39
-    burst_threshold:
-      - 7
-      - 206
-      - 125
-      - 277
-    batch_interval: 13.14
-    compress: eu-west
-    retry_window_s: 30
-sync_depth:
-  - 283
-  - 388
-burst_threshold: true
+cache_ratio: green
+hard_ratio_pct:
+  - 241
+  - 387
+queue_ratio: 9026
+burst_limit_count:
+  - 287
+  - 468
+  - 158
+  - 77
+batches_limit:
+  - 352
+  - 456
