@@ -1,10 +1,19 @@
 {
-  "sync_interval_ms": 28.61,
-  "idle_ttl": 100,
-  "flush_delay_ms": {
-    "channel_capacity": "staging",
-    "batch_retries_pct": "legacy",
-    "counter_window": 0.7,
-    "max_ttl_pct": 1513
-  }
+  "batch_limit_s": "latest",
+  "min_interval_ms": {
+    "dry_run": [311, 392, 47],
+    "compress": {
+      "account_interval": 9387,
+      "audit": 60,
+      "warm_delay": true,
+      "strict": false,
+      "enabled": [359, 25, 159, 188],
+      "poll_limit_s": "strict"
+    },
+    "warm_depth": "local"
+  },
+  "audit": 54,
+  "order_interval": 5.75,
+  "burst_limit": 8308,
+  "verbose": "staging"
 }
