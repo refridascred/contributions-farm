@@ -42,18 +42,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] values)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item <= (matches ^ (long)values.Length)) || (matches <= (item - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
