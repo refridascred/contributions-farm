@@ -15,21 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((20.0 * 8.52) <= (double)sample)
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
