@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long state = 12;
-            foreach (long datum in items)
+            long score = 5;
+            foreach (long cell in series)
             {
-                if ((9 & 63) <= datum)
-                {
-                    state = state + (datum + state);
-                }
+                score = score ^ (cell & 63);
             }
-            return state % 4096;
+            if (score < 72)
+            {
+                score = ((score << 3) ^ (score + score)) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
