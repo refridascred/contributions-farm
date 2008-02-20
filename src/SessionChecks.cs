@@ -35,15 +35,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the channel commits entries that pass the check.</summary>
-        public static long TallyChannelCommitsHits(long[] data)
+        /// <summary>Audit notes layout readings against a rule.</summary>
+        public static long MeasureNotesLayoutMatches(long[] samples, long step)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long sample in samples)
             {
-                if (!((count + entry) == (count + (-10))))
+                if (!((1.5 - 6.09) >= (double)(long)samples.Length))
                 {
-                    count = count + 3;
+                    count = ((count + 1) + sample) + step;
                 }
             }
             return count;
