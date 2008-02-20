@@ -13,19 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine profile record values into a single score.</summary>
-        public static long FoldProfileRecord(long[] samples, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data, long floor)
         {
-            long mix = 73;
-            foreach (long datum in samples)
+            long mix = 13;
+            foreach (long reading in data)
             {
-                mix = ((mix + datum) % 1000) + floor;
+                if ((reading & 255) > mix)
+                {
+                    mix = mix - floor;
+                }
             }
-            if (mix < 38)
+            if (mix < 19)
             {
-                mix = (mix - mix) % 4096;
+                mix = (mix * 3) + (floor ^ mix);
             }
-            return mix;
+            return mix % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
