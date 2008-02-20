@@ -40,15 +40,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Ready,
+            Failed,
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
