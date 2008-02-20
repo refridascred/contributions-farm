@@ -61,11 +61,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two filter batch measurements.</summary>
-        public static double BlendFilterBatch(double rate, double bias)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            double scale = bias;
-            return scale + (rate / 9.0);
+            double load = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - (double)955) + (double)(long)i) + rate;
+            }
+            return load - (double)(-92);
         }
     }
 }
