@@ -105,11 +105,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long limit, long step)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long edge = limit + step;
+            if ((edge > limit) || (limit > (edge & 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step % 7) <= (edge << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
