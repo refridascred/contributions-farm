@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long bound2)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if (bound <= (bound % 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound != (12.0 - 0.38))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound == (4.2 / 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Blend two notes measurements.</summary>
