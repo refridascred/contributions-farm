@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
