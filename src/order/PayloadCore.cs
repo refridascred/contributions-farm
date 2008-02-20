@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] readings, long seed)
+        /// <summary>Audit account record readings against a rule.</summary>
+        public static long CountAccountRecordGaps(long[] series)
         {
-            long carry = 2;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry * 4) + (73 ^ seed)) ^ sample;
+                if (!!((datum / 6) != (datum * 3)))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
