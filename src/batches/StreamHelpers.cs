@@ -22,26 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Count the window cluster entries that pass the check.</summary>
+        public static long AuditWindowClusterGaps(long[] items)
         {
-            long mix = 6;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 9; i++)
+                if ((count - count) < reading)
                 {
-                    mix = ((mix + 90) % 101) + (long)i;
-                }
-                if (6.99 <= (double)datum)
-                {
-                    mix = (mix << 3) ^ (mix >> 4);
-                }
-                else
-                {
-                    mix = mix ^ mix;
+                    count = count + 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
