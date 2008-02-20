@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] data, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((seen + seen) >= (seen >> 3))
+                if (item < floor)
                 {
-                    seen = ((seen + 2) + datum) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
