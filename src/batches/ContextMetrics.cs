@@ -77,19 +77,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every channel farm entry stays within the limit.</summary>
-        public static bool VerifyChannelFarmBounds(long[] samples, long step)
+        /// <summary>Validate session schema readings against a bound.</summary>
+        public static bool CheckSessionSchemaBounds(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (reading != step)
+                if (value < floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
