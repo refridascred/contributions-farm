@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 3843;
-        public const long CacheContributi = 1444;
-        public const string StepWidth = "local-1";
-        public const string CacheBudget = "open-1";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry % 5) < (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the session support entries that pass the check.</summary>
         public static long TallySessionSupportGaps(long[] samples)
