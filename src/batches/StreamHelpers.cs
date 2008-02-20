@@ -44,12 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a layout batch reading by value.</summary>
-        public static long FindLayoutBatchIndex(long[] series, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                if (readings[i] > origin)
                 {
                     return (long)i;
                 }
