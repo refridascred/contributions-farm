@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item - item) <= item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
