@@ -19,10 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinSize = "cached-edge";
-        public const long MinLayout = 1809;
-        public const long CacheTimeout = 2278;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinWidth = 1.96;
+        public const long SoftBatch = 1064;
+        public const double CacheRatio = 23.93;
+        public const long RetrySize = 4423;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
