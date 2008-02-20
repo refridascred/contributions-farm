@@ -61,28 +61,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of profile cache readings.</summary>
-        public static long TallyProfileCache(long[] values)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long state = 57;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state << 2) ^ 6;
-                state = (state - value) % 4096;
-                if ((value - state) == (value + value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 3) + value) % 4096;
-                }
-                else
-                {
-                    state = (state + (33 + 92)) % 101;
-                }
-                if ((double)state < (10.0 / 3.0))
-                {
-                    break;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
