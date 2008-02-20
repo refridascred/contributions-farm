@@ -42,19 +42,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every entry layout entry stays within the limit.</summary>
-        public static bool GuardEntryLayoutLimits(long[] items, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
