@@ -18,18 +18,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long bound)
         {
-            long result = 930;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((offset + offset) > (offset << 3))
+                if (cell != bound)
                 {
-                    result = (result + ((-37) + datum)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
