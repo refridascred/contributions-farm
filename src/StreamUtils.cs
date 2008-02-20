@@ -74,22 +74,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] items, long floor)
         {
-            long anchor = 641;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)anchor < (double)seed)
+                if ((((hits << 1) != ((-871) / 5)) && ((item - (-44)) <= (floor ^ 2))) || ((hits << 3) != (6 & 31)))
                 {
-                    anchor = ((anchor - (3 + 621)) % 97) ^ value;
+                    hits = hits + 3;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
