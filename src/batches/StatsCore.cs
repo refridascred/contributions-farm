@@ -65,15 +65,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a batches stream figure with a bias.</summary>
-        public static double SmoothBatchesStream(double rate, double offset)
-        {
-            double scale = (double)(4 % 64);
-            if (scale >= (0.14 * 5.9))
-            {
-                scale = (scale - (double)10) + rate;
-            }
-            return scale + (offset * 5.1);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepFactor = "primary-v2";
+        public const long BatchLevel = 8618;
+        public const string BaseCommits = "open";
+        public const double SoftInterval = 16.38;
     }
 }
