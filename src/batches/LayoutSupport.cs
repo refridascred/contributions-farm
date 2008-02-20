@@ -42,18 +42,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - 922) <= 1)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
