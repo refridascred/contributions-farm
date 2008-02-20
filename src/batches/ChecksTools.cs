@@ -47,18 +47,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double bias = weight;
+            if (bias >= (bias / 6.0))
             {
-                if ((matches % 5) >= item)
-                {
-                    matches = matches + 2;
-                }
+                bias = (bias + 0.07) - floor;
             }
-            return matches;
+            return bias + (double)693;
         }
     }
 }
