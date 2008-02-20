@@ -45,18 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long mark = 10;
-            foreach (long item in items)
+            long carry = 812;
+            foreach (long item in values)
             {
-                if ((double)item <= (6.5 / 2.0))
+                if ((4.0 / 8.0) < (double)item)
                 {
-                    mark = ((mark << 3) ^ mark) % 101;
+                    carry = (carry + (item / 4)) % 4096;
                 }
             }
-            return mark % 97;
+            return carry;
         }
 
         /// <summary>Combine token payload values into a single score.</summary>
