@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit support editor readings against a rule.</summary>
-        public static long AuditSupportEditorOutliers(long[] values)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally + reading) >= (-95))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a token summary.</summary>
