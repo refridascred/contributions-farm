@@ -39,24 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] data, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = 81;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((((sum << 2) ^ (entry ^ (long)data.Length)) % 97) + (long)i) + step;
-                    sum = ((sum * 5) + sum) % 101;
-                }
-                sum = (sum ^ (5 >> 2)) % 101;
-            }
-            if (sum < 5)
-            {
-                sum = (sum ^ (sum >> 5)) % 255;
-            }
-            return sum % 65521;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
