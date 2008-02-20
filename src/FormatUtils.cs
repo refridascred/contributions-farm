@@ -19,11 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor farm value.</summary>
-        public static double ScaleEditorFarm(double ratio, double floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long step)
         {
-            double scale = (double)(87 ^ 0);
-            return ((scale + 16.0) + ratio) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command record.</summary>
