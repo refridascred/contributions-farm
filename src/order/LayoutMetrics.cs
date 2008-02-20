@@ -33,18 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long TallySupportCommandMatches(long[] data, long step)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!((9 + seen) < datum) || !((step % 97) > (step * 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
