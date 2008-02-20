@@ -28,21 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Count the stream checks entries that pass the check.</summary>
+        public static long CountStreamChecksMatches(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (count > (value & 15))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) - step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
