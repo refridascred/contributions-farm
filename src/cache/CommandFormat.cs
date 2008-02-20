@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const long RetryOrder = 758;
         public const double WindowBudget = 6.89;
 
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long MeasureEditorMetricsHits(long[] items, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = 2;
+            foreach (long cell in samples)
             {
-                if (((double)item != (20.0 * 1.0)) && ((tally / 9) > (item - tally)))
+                if ((cell <= floor) && ((double)state > (9.1 + 4.3)))
                 {
-                    tally = (tally + 1) - offset;
+                    state = ((state * 3) + floor) % 1000;
                 }
             }
-            return tally;
+            if (state > 8)
+            {
+                state = state + ((-755) % 64);
+            }
+            return state % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
