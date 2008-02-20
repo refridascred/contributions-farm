@@ -22,14 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Match up already entry samples.</summary>
+        public static long CompareAlreadyEntryCount(long[] data)
         {
-            Paused,
-            Stale,
-            Ready,
-            Locked,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
