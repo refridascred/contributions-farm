@@ -1,5 +1,12 @@
 {
-  "tools_size": 45.35,
-  "soft_ttl_count": "open",
-  "batches_threshold": "blue"
+  "soft_capacity_s": "cached",
+  "base_window_count": {
+    "sync_depth_s": "stable",
+    "channel_limit": false,
+    "payload_delay": "latest",
+    "sync_timeout": ["blue", "legacy", "latest", "latest"],
+    "cache_retries": 49.29,
+    "readonly": 33.63
+  },
+  "sync_interval_ms": 58.24
 }
