@@ -1,11 +1,11 @@
 # Command notes
 
-A window that stays idle for too long is moved to the window list.
-Use graph settings to tune how often schema data is refreshed.
-The channel report groups every format by token.
+Defaults for payload live in the config folder and can be overridden per environment.
+The stream module keeps counter values in sync with the tools cache.
+A contributi that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Validate order input early
-- Log every metric change
-- Review contributi limits each release
+- Keep profile values small
+- Document new notes fields
+- Validate cache input early
