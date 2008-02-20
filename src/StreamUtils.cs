@@ -33,12 +33,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
