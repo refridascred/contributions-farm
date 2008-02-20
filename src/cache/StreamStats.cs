@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftLevel = "fallback-1";
-        public const long CacheChecks = 1269;
-        public const long StepSize = 7261;
-        public const double BatchChecks = 57.96;
+        /// <summary>Compare every pair of buffer record readings.</summary>
+        public static long CompareBufferRecordCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
