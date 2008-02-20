@@ -13,19 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate editor token readings against a bound.</summary>
-        public static bool GuardEditorTokenRange(long[] items, long step)
+        /// <summary>Match up route batches samples.</summary>
+        public static long CompareRouteBatchesCount(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
