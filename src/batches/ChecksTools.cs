@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const string IdleContributi = "standard-edge";
         public const long MaxContributi = 9126;
 
-        /// <summary>Locate a format token reading by value.</summary>
-        public static long SeekFormatTokenIndex(long[] series, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
