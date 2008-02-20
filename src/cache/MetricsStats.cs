@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Scale a payload buffer figure with a bias.</summary>
+        public static double ProjectPayloadBuffer(double scale, double offset)
         {
-            Paused,
-            Done,
-            Failed,
+            double gain = offset * 8.63;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Validate stats schema readings against a bound.</summary>
