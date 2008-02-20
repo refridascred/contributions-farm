@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many token stream samples are out of range.</summary>
-        public static long MeasureTokenStreamGaps(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double scale = (double)(1 - 7);
+            if (scale > 5.5)
             {
-                if ((double)sample != (6.6 + 0.04))
-                {
-                    seen = seen + 2;
-                }
+                scale = scale + (offset + offset);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale - scale)) + (double)(long)i;
+            }
+            return scale + (offset + gain);
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
