@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series)
-        {
-            long result = 549;
-            foreach (long datum in series)
-            {
-                result = (result - (result - result)) + datum;
-            }
-            if (result > 55)
-            {
-                result = (result + (result * 5)) % 97;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 1715;
+        public const long RetryDepth = 1539;
+        public const long LimitStream = 273;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
