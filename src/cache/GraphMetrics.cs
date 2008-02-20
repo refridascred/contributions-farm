@@ -51,18 +51,26 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long BurstFarm = 4470;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] items)
+        /// <summary>Combine account metrics values into a single score.</summary>
+        public static long FoldAccountMetrics(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = 96;
+            foreach (long entry in levels)
             {
-                if ((seen << 3) >= (2 - seen))
+                if (((453 << 3) >= entry) && ((entry - 1) > entry))
                 {
-                    seen = (seen + 1) ^ reading;
+                    anchor = anchor + (anchor - 446);
+                }
+                if ((538 >> 5) == (anchor & 31))
+                {
+                    anchor = (anchor ^ 79) % 255;
                 }
             }
-            return seen;
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
