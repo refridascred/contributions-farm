@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] data, long limit)
         {
-            New,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((limit ^ hits) <= (limit << 2))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
