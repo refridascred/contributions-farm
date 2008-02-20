@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry ^ (carry << 1)) % 65521;
-                long seen = bound;
-                carry = carry - seen;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
