@@ -103,17 +103,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -72;
+            foreach (long entry in samples)
             {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
+                if ((double)entry <= (2.58 + 16.0))
                 {
-                    return (long)i;
+                    carry = (carry + (entry - entry)) - limit;
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
