@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor route value.</summary>
-        public static double AdjustEditorRoute(double scale, double span)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double weight = (scale - scale) * 8.1;
-            return (weight + (double)5) + span;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
