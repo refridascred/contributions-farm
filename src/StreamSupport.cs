@@ -32,21 +32,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target <= (target * 3)) || ((seed + target) < (4 << 2)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((target + target) != (seed & 15)))
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
+                    return 5;
+                }
+                else
+                {
+                    if (!((seed * 2) == (seed + target)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9 >> 3) >= (target & 255))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
