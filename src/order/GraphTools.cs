@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a farm batch pair into a bucket.</summary>
-        public static long ClassifyFarmBatch(long origin, long step)
+        /// <summary>Count the metrics batch entries that pass the check.</summary>
+        public static long MeasureMetricsBatchMatches(long[] values, long step)
         {
-            long prev = origin - step;
-            if ((double)step < 5.06)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((prev - step) != (prev & 1))
+                if (0.62 > (double)step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step / 2) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin - 493) >= step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
