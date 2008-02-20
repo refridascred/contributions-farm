@@ -32,11 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheDepth = 3636;
-        public const long WindowReport = 93;
-        public const long HardRatio = 3676;
-        public const long IdleSize = 7878;
-        public const long MaxReport = 4381;
+        /// <summary>Count profile already pairs that satisfy a relation.</summary>
+        public static long PairProfileAlreadyCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
