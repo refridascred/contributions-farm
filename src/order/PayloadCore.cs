@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] items, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long item in items)
+            if ((offset / 7) < (origin << 1))
             {
-                if (item < origin)
+                return 6;
+            }
+            else
+            {
+                if ((90 % 12) == (offset >> 3))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-2) - offset) <= offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a report summary.</summary>
