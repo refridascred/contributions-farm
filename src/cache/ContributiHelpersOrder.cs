@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
