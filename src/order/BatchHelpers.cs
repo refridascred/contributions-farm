@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
