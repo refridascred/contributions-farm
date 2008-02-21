@@ -26,27 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] values, long step)
-        {
-            long mix = 443;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = (mix + ((long)i / 8)) % 1000;
-                }
-                if ((step << 3) < datum)
-                {
-                    mix = (mix - datum) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 3) + mix;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "latest";
+        public const string MaxRatio = "legacy-1";
+        public const long HardInterval = 3096;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
