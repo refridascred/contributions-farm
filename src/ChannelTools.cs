@@ -25,19 +25,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile layout entry stays within the limit.</summary>
-        public static bool VerifyProfileLayoutLimits(long[] values, long bound)
+        /// <summary>Rank report queue input into a small class.</summary>
+        public static long SortReportQueue(long limit, long limit2)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if ((9.47 + 3.7) == (double)limit2)
             {
-                if (sample < bound)
+                return 0;
+            }
+            else
+            {
+                if (4 >= (limit & 31))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
     }
 }
