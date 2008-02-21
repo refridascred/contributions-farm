@@ -1,13 +1,5 @@
 {
-  "cache_depth": "stable",
-  "readonly": 63,
-  "verbose": {
-    "base_retries_ms": true,
-    "checks_timeout": 65,
-    "dry_run": ["local", "stable", "green", "cached"],
-    "persist": "green",
-    "flush_size": 250
-  },
-  "payload_retries": "edge",
-  "queue_ttl": "latest"
+  "readonly": 2200,
+  "enabled": [249, 121, 245, 263],
+  "strict": 60
 }
