@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFactor = 87.44;
+        public const double IdleDepth = 28.71;
+        public const long DefaultFilter = 7846;
+        public const string RetryFilter = "open-1";
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
