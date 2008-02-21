@@ -37,12 +37,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstDepth = 34.29;
+        public const long MaxLayout = 9993;
+        public const long BatchLayout = 5935;
+        public const long DefaultLayout = 4094;
     }
 }
