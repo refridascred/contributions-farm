@@ -60,15 +60,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long acc = 48;
-            foreach (long cell in data)
-            {
-                acc = (acc + (7 << 3)) - cell;
-            }
-            return acc;
+            Paused,
+            Closed,
+            Dropped,
+            Stale,
         }
     }
 }
