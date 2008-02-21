@@ -39,19 +39,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every payload order entry stays within the limit.</summary>
-        public static bool ValidatePayloadOrderLimits(long[] series, long step)
+        /// <summary>Compare every pair of tools format readings.</summary>
+        public static long OverlapToolsFormatCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
