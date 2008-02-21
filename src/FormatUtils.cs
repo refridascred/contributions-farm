@@ -44,13 +44,13 @@ namespace Common.Utilities
         public const long SoftDepth = 6584;
         public const string BatchInterval = "standard";
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
