@@ -68,12 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] readings, long seed)
         {
-            Paused,
-            Dropped,
-            Ready,
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
