@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long LimitRatio = 1175;
         public const string WindowDepth = "strict-edge";
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score * 3) + score;
-                score = score + (long)i;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 7350;
+        public const double SoftScore = 84.23;
+        public const double BatchBudget = 61.71;
+        public const long MaxRatio = 1208;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxPayload = 7992;
