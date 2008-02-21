@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string SoftWidth = "primary-1";
         public const string WindowChannel = "alpha";
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!(7 <= (datum - datum)))
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
