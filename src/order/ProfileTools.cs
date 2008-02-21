@@ -26,25 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long offset)
+        /// <summary>Locate a session cache reading by value.</summary>
+        public static long FindSessionCacheIndex(long[] data, long target)
         {
-            long step = seed - offset;
-            if ((745 + step) > (7 + seed))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > (double)339)
+                if (data[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
