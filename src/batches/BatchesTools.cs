@@ -31,13 +31,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            double rate = offset;
+            if (rate <= offset)
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (4.8 + scale)) + (double)(long)i;
+            }
+            return rate - (offset / 8.0);
         }
     }
 }
