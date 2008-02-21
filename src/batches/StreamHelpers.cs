@@ -71,12 +71,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            Failed,
+            Pending,
+            Closed,
+            New,
         }
     }
 }
