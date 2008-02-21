@@ -34,13 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Derive the next context account value from a seed.</summary>
+        public static long DeriveContextAccount(long step)
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor ^ (6 ^ anchor)) % 4096;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ step)) + (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
