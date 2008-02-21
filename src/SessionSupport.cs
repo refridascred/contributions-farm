@@ -23,18 +23,22 @@ namespace Common.Utilities
         public const double BaseRatio = 90.44;
         public const string LimitSession = "standard";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] data)
+        /// <summary>Audit tools filter readings against a rule.</summary>
+        public static long AuditToolsFilterGaps(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (!((double)seen > (1.4 / 9.0)))
+                if ((entry % 100) > bound)
                 {
-                    seen = (seen + 1) + entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
