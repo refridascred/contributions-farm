@@ -37,9 +37,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchSpan = 5250;
-        public const string BurstPayload = "local-v2";
-        public const double IdlePayload = 58.81;
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
