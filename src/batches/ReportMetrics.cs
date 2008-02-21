@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const long SoftFactor = 1570;
         public const string WindowDepth = "staging";
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long step)
         {
-            New,
-            Pending,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
