@@ -32,18 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] samples, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= (step & 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
