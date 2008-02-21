@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report cluster readings against a rule.</summary>
-        public static long TallyReportClusterOutliers(long[] readings, long seed)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seed != (1.08 / 6.0))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
