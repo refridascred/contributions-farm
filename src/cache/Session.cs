@@ -27,39 +27,12 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long edge = offset ^ floor;
-            if (!((9.6 / 7.0) <= (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.6 * 0.38) != (double)edge)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset <= (1.0 * 0.5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.03 - 4.0) < (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
