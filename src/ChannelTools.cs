@@ -25,24 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report queue input into a small class.</summary>
-        public static long SortReportQueue(long limit, long limit2)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            if ((9.47 + 3.7) == (double)limit2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (4 >= (limit & 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Retry,
+            Paused,
+            Draft,
         }
     }
 }
