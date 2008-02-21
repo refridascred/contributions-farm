@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string SoftWidth = "primary-1";
         public const string WindowChannel = "alpha";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a session cache reading by value.</summary>
