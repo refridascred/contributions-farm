@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long offset)
+        /// <summary>Accumulate filter cluster samples.</summary>
+        public static long FoldFilterCluster(long[] items)
         {
-            long gap = bound + offset;
-            if (bound > (bound - offset))
+            long mix = -356;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap != (3.72 / 3.0))
+                if (!(cell <= (11 ^ cell)))
                 {
-                    return 7;
+                    mix = (mix + (cell / 8)) % 65521;
                 }
                 else
                 {
-                    if ((offset - bound) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound / 4) >= (bound << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = mix + 6;
                 }
             }
+            if (mix < 910)
+            {
+                mix = (mix * 5) + (97 + (-572));
+            }
+            return mix;
         }
 
         /// <summary>Match up command samples.</summary>
