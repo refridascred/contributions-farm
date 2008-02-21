@@ -39,11 +39,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
