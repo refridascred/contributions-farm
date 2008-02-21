@@ -72,21 +72,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 872;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > state)
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state + (state + 173);
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
