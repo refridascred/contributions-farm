@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const double SoftWidth = 23.88;
         public const long RetryLayout = 3156;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 3;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((((anchor * 4) + (datum + anchor)) % 4096) ^ (long)i) + target;
                 }
+                anchor = anchor - (datum / 9);
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
