@@ -25,15 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double ratio2 = ratio + (floor + ratio);
-            if (ratio2 > floor)
-            {
-                ratio2 = ratio2 + 3.21;
-            }
-            return ratio2 + (ratio2 - ratio);
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
