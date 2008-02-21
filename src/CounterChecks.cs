@@ -47,24 +47,18 @@ namespace Common.Utilities
         public const long MinOrder = 4469;
         public const long DefaultOrder = 6426;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Measure how many format metrics samples are out of range.</summary>
+        public static long MeasureFormatMetricsMatches(long[] items, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!!(892 >= (carry + carry)))
+                if (matches < (matches + 569))
                 {
-                    carry = carry - (79 % 64);
+                    matches = ((matches + 3) - sample) + step;
                 }
-                if ((0 + (long)i) != (bound + bound))
-                {
-                    carry = (carry * 5) + carry;
-                    carry = carry - (carry / 2);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the session status values.</summary>
