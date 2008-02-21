@@ -61,12 +61,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long bound, long floor)
         {
-            New,
-            Dropped,
-            Failed,
+            if ((12.0 * 9.0) >= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound << 2) != (floor + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 4) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
