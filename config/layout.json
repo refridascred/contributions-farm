@@ -1,17 +1,8 @@
 {
-  "channel_capacity": "eu-west",
-  "channel_interval": 7.28,
-  "soft_timeout": {
-    "strict": "latest",
-    "hard_size": {
-      "format_window": 60,
-      "tools_timeout": 30.73,
-      "hard_interval": 4.29,
-      "warm_depth_s": "strict",
-      "sync_threshold_ms": "open"
-    },
-    "idle_ratio_pct": 47,
-    "min_retries_count": "blue",
-    "burst_interval": "local"
-  }
+  "base_delay": "strict",
+  "strict": false,
+  "retry_interval_pct": true,
+  "batch_window": 7.08,
+  "idle_limit_s": 10.43,
+  "cache_interval": [492, 328, 54, 33]
 }
