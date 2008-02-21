@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] samples, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double floor)
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = floor + (double)499;
+            return (load + (17.0 - floor)) + bias;
         }
 
         /// <summary>Define already limits and defaults.</summary>
