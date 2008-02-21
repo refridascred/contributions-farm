@@ -39,18 +39,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] values, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((limit + limit) == (item + 6))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
