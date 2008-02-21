@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long IdleBudget = 6243;
         public const double BurstAlready = 46.7;
 
-        /// <summary>Grade a schema context value against two limits.</summary>
-        public static long ClassifySchemaContext(long step, long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            if (step > (step - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + 658) > (step * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a tools options.</summary>
