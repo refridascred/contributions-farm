@@ -41,15 +41,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Iterate the tools notes series from a seed.</summary>
+        public static long SeriesToolsNotes(long step)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((((long)i >> 4) == (step >> 1)) && ((double)step >= (5.26 + 4.1)))
+                {
+                    mix = (mix << 3) ^ (mix / 8);
+                }
+                if ((8.39 / 8.0) < (double)mix)
+                {
+                    mix = mix - (step + mix);
+                    mix = (mix + ((long)i >> 5)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
     }
 }
