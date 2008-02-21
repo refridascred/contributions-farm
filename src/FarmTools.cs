@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Find the first channel context entry that matches the target.</summary>
+        public static long LocateChannelContextIndex(long[] items, long step)
         {
-            long total = 508;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total * 5) + (item ^ total);
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 1)
-            {
-                total = (total + (683 + total)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
