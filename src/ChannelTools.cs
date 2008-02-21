@@ -25,13 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Check that every profile layout entry stays within the limit.</summary>
+        public static bool VerifyProfileLayoutLimits(long[] values, long bound)
         {
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
