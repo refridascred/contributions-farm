@@ -22,12 +22,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowSize = 65.83;
-        public const double DefaultMetrics = 56.06;
-        public const double StepMetrics = 86.03;
-        public const double LimitMetrics = 75.95;
-        public const long WindowMetrics = 5169;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordMatches(long[] items, long target)
