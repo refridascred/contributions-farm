@@ -37,18 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long step)
-        {
-            long score = 235;
-            foreach (long datum in readings)
-            {
-                if (score >= (score >> 1))
-                {
-                    score = ((score + (-78)) ^ datum) - step;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleWidth = 2031;
+        public const long BaseRatio = 4661;
+        public const long RetryContributi = 1358;
     }
 }
