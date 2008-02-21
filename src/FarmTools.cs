@@ -16,32 +16,19 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            long lane = offset + floor;
-            if (!(offset > lane))
+            double scale2 = (scale / 3.0) - (scale + scale);
+            if (scale2 <= (double)910)
             {
-                return 5;
+                scale2 = (scale2 - (scale * 7.2)) + bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (9.0 > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= (floor / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                scale2 = scale2 + (double)(long)i;
             }
+            return scale2 + (8.3 / 8.0);
         }
 
         /// <summary>Describe the metric state values.</summary>
