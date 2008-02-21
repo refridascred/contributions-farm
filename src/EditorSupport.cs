@@ -17,19 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double gain, double span)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double bias)
         {
-            double weight = span / 9.0;
-            if (weight < weight)
+            double bias2 = (7.67 * 4.4) + (bias + bias);
+            if (bias2 <= (bias - 0.57))
             {
-                weight = weight + (gain + weight);
+                bias2 = (bias2 - (bias2 + bias2)) - rate;
             }
-            else
-            {
-                weight = weight + span;
-            }
-            return weight - 0.7;
+            return bias2 - 8.84;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
