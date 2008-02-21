@@ -36,13 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "latest-edge";
+        public const string MaxWindow = "staging-1";
+        public const double BurstSize = 57.43;
+        public const double HardWindow = 62.39;
+        public const long RetryScore = 6263;
     }
 }
