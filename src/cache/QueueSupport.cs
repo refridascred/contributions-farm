@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] data, long step)
+        /// <summary>Match up tools already samples.</summary>
+        public static long MatchToolsAlreadyCount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
