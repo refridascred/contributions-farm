@@ -1,6 +1,10 @@
-id,token,state
-1,28.46,37
-2,680,latest
-3,743,36.55
-4,edge,51
-5,11.17,76.01
+id,weight,count,rank
+1,569,green,912
+2,edge,30.77,82.46
+3,green,654,38.91
+4,609,814,180
+5,493,20.77,949
+6,3.92,eu-west,105
+7,latest,580,strict
+8,111,legacy,cached
+9,29.86,383,local
