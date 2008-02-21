@@ -68,38 +68,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a contributi checks value against two limits.</summary>
-        public static long ClassifyContributiChecks(long floor, long limit)
-        {
-            if ((floor - 94) < (floor - floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit <= (limit / 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit <= 2.1)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor == (5.7 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxFactor = "open-1";
+        public const string RetryBatches = "cached-edge";
+        public const long BatchBatches = 2441;
+        public const double DefaultBatches = 94.66;
     }
 }
