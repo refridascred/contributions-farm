@@ -57,16 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] samples, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                total = (total + (bound - bound)) % 1000;
-                total = ((total * 5) + (long)i) % 101;
+                if (datum <= ((long)samples.Length * 2))
+                {
+                    count = (count + 3) + step;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
