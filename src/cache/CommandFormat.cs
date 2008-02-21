@@ -22,10 +22,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowWidth = 6146;
-        public const long HardEntry = 6061;
-        public const double StepTimeout = 48.57;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryScore = 887;
+        public const long StepBatch = 20;
+        public const double IdleBatch = 24.59;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
