@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const long IdleWidth = 7793;
         public const double IdleScore = 29.77;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 25.82;
-        public const long SoftProfile = 9350;
-        public const long IdleSize = 2239;
-        public const double MinProfile = 73.95;
-        public const string IdleProfile = "standard-v2";
+        /// <summary>Derive the next commits graph value from a seed.</summary>
+        public static long DeriveCommitsGraph(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark ^ limit) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 3870;
