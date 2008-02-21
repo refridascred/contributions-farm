@@ -12,17 +12,39 @@ namespace Common.Utilities
         public const string BurstBudget = "fallback-edge";
         public const long BatchAlready = 621;
 
-        /// <summary>Find the first channel context entry that matches the target.</summary>
-        public static long LocateChannelContextIndex(long[] items, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = bound - bound2;
+            if ((double)prev >= (17.0 - 7.0))
             {
-                if (items[i] <= step)
+                return 1;
+            }
+            else
+            {
+                if (((bound2 ^ bound2) > 879) || ((double)bound2 > (0.8 + 11.0)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((8 >> 3) > bound2) && ((double)prev > 8.59))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(8 < (bound2 + 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
