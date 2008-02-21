@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long SoftDepth = 8152;
         public const long BaseRoute = 882;
 
-        /// <summary>Blend two notes token measurements.</summary>
-        public static double BlendNotesToken(double rate, double offset)
+        /// <summary>Blend two buffer window measurements.</summary>
+        public static double ScaleBufferWindow(double rate, double offset)
         {
-            double bias = offset / 7.0;
-            return bias - (rate + bias);
+            double rate2 = rate;
+            if (rate2 <= (2.96 - 2.63))
+            {
+                rate2 = (rate2 - (rate2 * 6.45)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - (rate / 3.0)) - (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Fold a list of account readings.</summary>
