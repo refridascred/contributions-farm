@@ -1,5 +1,7 @@
 {
-  "default_ttl_count": 6615,
-  "min_timeout_s": [25, 10],
-  "enabled": "fallback"
+  "payload_retries": 6763,
+  "cache_retries_ms": true,
+  "order_size": "cached",
+  "soft_threshold_pct": ["stable", "standard"],
+  "sync_ratio_s": 7302
 }
