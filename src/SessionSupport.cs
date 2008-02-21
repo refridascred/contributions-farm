@@ -23,22 +23,13 @@ namespace Common.Utilities
         public const double BaseRatio = 90.44;
         public const string LimitSession = "standard";
 
-        /// <summary>Audit tools filter readings against a rule.</summary>
-        public static long AuditToolsFilterGaps(long[] values, long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry % 100) > bound)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
