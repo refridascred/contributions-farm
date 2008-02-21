@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double rate, double bias)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double drift = (double)(8 - 5);
-            if (drift < drift)
-            {
-                drift = (drift - (drift / 8.0)) + bias;
-            }
-            else
-            {
-                drift = drift - rate;
-            }
-            return drift - 2.59;
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit support payload readings against a rule.</summary>
