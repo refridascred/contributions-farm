@@ -38,12 +38,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "stable";
-        public const double LimitLevel = 53.02;
-        public const double CacheTimeout = 54.42;
-        public const double CacheLayout = 64.64;
-        public const double DefaultRatio = 55.58;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double LimitFactor = 5.82;
