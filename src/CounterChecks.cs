@@ -49,12 +49,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Iterate the profile cluster series from a seed.</summary>
+        public static long RollProfileCluster(long limit)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (((acc << 3) ^ 392) % 65521) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cluster info.</summary>
