@@ -1,5 +1,21 @@
 # entry settings
-command_threshold: eu-west
-route_threshold: 39
-readonly: true
-sync_retries_s: staging
+flush_interval_count:
+  default_ttl_count:
+    poll_size:
+      - 187
+      - 167
+      - 216
+      - 277
+    session_depth: 1109
+    cache_size: strict
+    idle_size_s:
+      - 154
+      - 388
+      - 326
+      - 413
+  poll_retries_ms: 34
+  poll_delay: primary
+  idle_timeout: 500
+  poll_interval: stable
+readonly: 1340
+payload_retries: 2942
