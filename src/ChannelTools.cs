@@ -37,18 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (item <= seen)
+                if (((long)values.Length >> 4) >= (sample + hits))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
