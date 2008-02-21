@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of payload graph readings.</summary>
-        public static long CombinePayloadGraph(long[] values, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] series, long bound)
         {
-            long state = 636;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((3 - floor) >= (cell - cell)) && ((12.0 * 7.9) == (double)cell))
+                if ((35 >> 4) != (item + item))
                 {
-                    state = ((state << 3) ^ (cell ^ (long)values.Length)) % 65521;
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state < (-440))
-            {
-                state = (state + floor) % 1000;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
