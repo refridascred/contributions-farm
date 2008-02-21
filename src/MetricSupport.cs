@@ -43,10 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardLevel = 4900;
-        public const double BatchSize = 81.7;
-        public const double WindowSession = 90.89;
-        public const long LimitSession = 9781;
+        /// <summary>Check that every counter filter entry stays within the limit.</summary>
+        public static bool GuardCounterFilterLimits(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
