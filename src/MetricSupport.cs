@@ -14,31 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long floor, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long seed)
         {
-            if ((8.6 / 8.0) > (double)step)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(step >= floor))
+                if (cell <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor << 3) >= (step << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
