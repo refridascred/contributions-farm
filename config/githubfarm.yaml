@@ -1,6 +1,16 @@
 # githubfarm settings
-window_depth: false
-dry_run: 3883
-cache_limit: fallback
-flush_timeout_pct: cached
-min_ttl_ms: 38.92
+default_timeout: cached
+default_limit: 31.83
+default_size_pct: false
+metrics_depth: 88.13
+notes_window:
+  - 156
+  - 269
+  - 441
+  - 225
+sync_size:
+  cache_threshold: true
+  poll_window_pct: stable
+  cache_ratio_s:
+    - 393
+    - 342
