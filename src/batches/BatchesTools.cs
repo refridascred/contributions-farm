@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((double)item > (double)seen)
+                if (entry >= limit)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Rank filter checks input into a small class.</summary>
