@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 1948;
-        public const double RetryToken = 2.68;
-        public const double IdleToken = 37.49;
-        public const double DefaultToken = 33.37;
-        public const double BurstToken = 35.52;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double bias, double floor)
+        {
+            double mean = floor / 3.0;
+            if (mean < floor)
+            {
+                mean = mean + (double)9;
+            }
+            return mean - (bias + bias);
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
