@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long BaseCounter = 9764;
         public const long WindowCounter = 1457;
 
-        /// <summary>Scale a editor payload figure with a bias.</summary>
-        public static double AdjustEditorPayload(double rate, double floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            double gain = (double)(960 + 384);
-            return (gain - floor) + rate;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
