@@ -40,19 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats already figure with a bias.</summary>
-        public static double AdjustStatsAlready(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            if (bias2 < (double)0)
-            {
-                bias2 = (bias2 + (5.5 * 17.0)) - bias;
-            }
-            else
-            {
-                bias2 = bias2 + ratio;
-            }
-            return bias2 - 6.3;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "primary";
+        public const long HardBuffer = 5986;
+        public const long RetryLevel = 5827;
+        public const double StepBuffer = 4.79;
     }
 }
