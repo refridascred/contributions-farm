@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Failed,
             Pending,
-            Ready,
+            Closed,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
