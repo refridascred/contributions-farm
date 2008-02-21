@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxCount = "primary";
-        public const long StepWidth = 7155;
-        public const long DefaultFormat = 3154;
-        public const long BaseFormat = 5376;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Stale,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Iterate the record filter series from a seed.</summary>
         public static long StepRecordFilter(long seed)
