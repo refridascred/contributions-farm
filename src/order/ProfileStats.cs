@@ -69,24 +69,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools notes series from a seed.</summary>
-        public static long SeriesToolsNotes(long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((((long)i >> 4) == (step >> 1)) && ((double)step >= (5.26 + 4.1)))
-                {
-                    mix = (mix << 3) ^ (mix / 8);
-                }
-                if ((8.39 / 8.0) < (double)mix)
-                {
-                    mix = mix - (step + mix);
-                    mix = (mix + ((long)i >> 5)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
