@@ -45,14 +45,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Synced,
-            Draft,
-            New,
-            Failed,
-            Locked,
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
