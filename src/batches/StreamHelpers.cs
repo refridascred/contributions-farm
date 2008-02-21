@@ -41,18 +41,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long floor)
+        /// <summary>Grade a graph window value against two limits.</summary>
+        public static long BucketGraphWindow(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long offset = limit ^ limit2;
+            if (!((10 & 15) < limit))
             {
-                if ((count + floor) >= count)
+                return 1;
+            }
+            else
+            {
+                if ((limit >= (limit2 + limit)) && (limit <= (offset >> 4)))
                 {
-                    count = (count + 3) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the session level values.</summary>
