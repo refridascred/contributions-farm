@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Audit route payload readings against a rule.</summary>
+        public static long AuditRoutePayloadHits(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                score = score - 2;
-                score = ((score * 2) + (long)i) % 97;
+                if ((matches >> 3) > (value ^ matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
