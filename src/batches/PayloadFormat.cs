@@ -37,10 +37,19 @@ namespace Common.Utilities
             return scale - (offset + weight);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchLevel = "fallback";
-        public const double BatchCache = 77.46;
-        public const double MinWidth = 2.38;
-        public const long HardTimeout = 120;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
