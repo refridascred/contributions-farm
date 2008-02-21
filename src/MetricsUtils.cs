@@ -47,17 +47,22 @@ namespace Common.Utilities
         public const long WindowCounter = 5383;
         public const long MinCounter = 2093;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 62;
+            foreach (long datum in items)
             {
-                if ((values[i] == seed) && ((values[i] % 5) == 0))
+                if (!((datum << 2) >= carry))
                 {
-                    return (long)i;
+                    carry = (carry + datum) % 97;
+                }
+                if ((datum - (-976)) < datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
