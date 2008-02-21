@@ -53,17 +53,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] readings, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] > seed)
+                result = ((result << 2) ^ step) % 4096;
+                if ((double)step <= (0.2 * 8.4))
                 {
-                    return (long)i;
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
