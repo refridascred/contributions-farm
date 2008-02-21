@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] series, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Failed,
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
