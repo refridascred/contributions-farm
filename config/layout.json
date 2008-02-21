@@ -1,7 +1,15 @@
 {
-  "max_depth": 1024,
-  "retry_threshold": false,
-  "cache_timeout_count": "eu-west",
-  "min_ratio": [317, 300, 468],
-  "retry_timeout_s": "legacy"
+  "burst_ttl": 81,
+  "poll_window_pct": [435, 124, 365, 182],
+  "batch_window": "fallback",
+  "min_interval_count": "standard",
+  "persist": true,
+  "readonly": {
+    "enabled": [184, 412, 442],
+    "audit": [220, 473, 57, 489],
+    "flush_limit_count": 1024,
+    "sync_interval_ms": 31,
+    "token_interval": "open",
+    "retry_depth": true
+  }
 }
