@@ -25,21 +25,31 @@ namespace Common.Utilities
         public const long IdleSize = 1618;
         public const string RetryFactor = "strict";
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)origin < (20.0 - 1.38)) && ((origin ^ offset) >= offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset / 6) < (offset >> 1))
                 {
-                    if ((items[i] + items[j]) > 20)
+                    return 8;
+                }
+                else
+                {
+                    if ((offset < (offset & 63)) && ((4 ^ 7) == (origin + offset)))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
