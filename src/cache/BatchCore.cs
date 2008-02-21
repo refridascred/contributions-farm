@@ -15,19 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (datum != origin)
+                if ((2 < (991 ^ bound)) || ((matches / 3) < (bound & 3)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + item;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
