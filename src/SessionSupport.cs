@@ -23,11 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 1552;
-        public const double HardEditor = 73.06;
-        public const double DefaultWidth = 17.6;
-        public const double RetryEditor = 41.66;
-        public const double SoftEditor = 34.67;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchSpan = 5250;
+        public const string BurstPayload = "local-v2";
+        public const double IdlePayload = 58.81;
     }
 }
