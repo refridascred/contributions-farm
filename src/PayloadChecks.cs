@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Pending,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 8826;
+        public const long WindowScore = 4064;
+        public const string BurstBudget = "open";
+        public const long HardLayout = 8178;
+        public const long WindowLayout = 7075;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] levels, long offset)
