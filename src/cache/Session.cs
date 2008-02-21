@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 4178;
-        public const string IdleProfile = "stable-v2";
-        public const long WindowCount = 687;
-        public const string MinProfile = "alpha-edge";
-        public const string IdleTimeout = "open";
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long step, long limit)
+        {
+            if (limit >= (limit - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit / 4) >= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-973) % 7) <= (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step < limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next layout stats value.</summary>
         public static double ScaleLayoutStats(double scale, double floor)
