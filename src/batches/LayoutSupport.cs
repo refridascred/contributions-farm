@@ -74,23 +74,12 @@ namespace Common.Utilities
             return bias - (bias * 6.7);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings, long floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long acc = 97;
-            foreach (long reading in readings)
-            {
-                if ((acc + acc) >= acc)
-                {
-                    acc = (acc ^ (reading - acc)) % 97;
-                    acc = (acc ^ (acc + acc)) % 255;
-                }
-                if (floor > (floor - reading))
-                {
-                    acc = (acc << 3) ^ (-81);
-                }
-            }
-            return acc % 1000;
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
