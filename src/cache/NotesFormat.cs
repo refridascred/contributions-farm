@@ -15,22 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardTimeout = 4091;
+        public const long WindowSpan = 7845;
+        public const long HardCounter = 255;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheHits(long[] items)
