@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            Closed,
-            Ready,
-            Retry,
-            Failed,
-            Queued,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((double)hits < (0.4 * 6.5))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
