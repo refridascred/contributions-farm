@@ -27,10 +27,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 6013;
-        public const string CacheLevel = "open";
-        public const string CacheCounter = "latest-1";
-        public const string MinCounter = "strict";
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark * 4) + (floor - mark);
+                mark = (mark + mark) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
