@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long HardAlready = 7288;
         public const long IdleTimeout = 2498;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long result = 854;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= (result << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - result) % 97;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
