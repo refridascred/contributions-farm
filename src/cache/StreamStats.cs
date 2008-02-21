@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 6098;
-        public const string MinTimeout = "staging";
-        public const long BatchBudget = 6166;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((bound ^ hits) > bound)
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many cluster farm samples are out of range.</summary>
         public static long AuditClusterFarmMatches(long[] series, long offset)
