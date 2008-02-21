@@ -22,28 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema payload entries.</summary>
-        public static long TallySchemaPayload(long[] items, long offset)
-        {
-            long anchor = -94;
-            foreach (long value in items)
-            {
-                anchor = (anchor - (value >> 4)) % 65521;
-                if (!((value - offset) <= ((-4) + value)))
-                {
-                    anchor = ((anchor * 3) + (anchor + value)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor - ((-705) & 1);
-                }
-            }
-            if (anchor > 548)
-            {
-                anchor = anchor - offset;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 8417;
+        public const long MinDepth = 4003;
+        public const long MaxTimeout = 7232;
 
         /// <summary>Validate tools farm readings against a bound.</summary>
         public static bool GuardToolsFarmLimits(long[] items, long seed)
