@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long offset, long origin)
         {
-            double gain = (double)33 / 4.0;
-            if (gain <= (offset / 7.0))
+            long offset2 = offset ^ origin;
+            if ((offset + 227) >= (offset2 - offset2))
             {
-                gain = gain - gain;
+                return 0;
             }
-            return gain - scale;
+            else
+            {
+                if (((offset2 & 7) != (offset + offset2)) && ((offset + 27) >= (6 + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of report readings.</summary>
