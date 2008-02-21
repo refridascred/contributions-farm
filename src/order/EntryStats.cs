@@ -51,13 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] values, long limit)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((limit + limit) == (item + 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
