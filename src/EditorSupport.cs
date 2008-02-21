@@ -43,12 +43,15 @@ namespace Common.Utilities
             return bias + (double)97;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] data)
         {
-            New,
-            Queued,
-            Locked,
+            long sum = 31;
+            foreach (long reading in data)
+            {
+                sum = (sum - (742 + reading)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
