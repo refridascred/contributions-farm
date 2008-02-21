@@ -1,6 +1,6 @@
 {
+  "warm_ttl": 2945,
   "dry_run": true,
-  "max_threshold_s": false,
-  "readonly": "legacy",
-  "format_timeout": [475, 345]
+  "route_size": 14.74,
+  "warm_limit_s": "blue"
 }
