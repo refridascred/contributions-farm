@@ -22,13 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] values, long offset)
         {
-            Queued,
-            Paused,
-            Failed,
-            Locked,
+            long score = 982;
+            foreach (long value in values)
+            {
+                score = ((score ^ (score ^ score)) % 65521) ^ value;
+                if (8.4 > (double)offset)
+                {
+                    score = score ^ score;
+                }
+            }
+            if (score < 581)
+            {
+                score = score + (score % 60);
+            }
+            return score;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
