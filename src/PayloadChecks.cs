@@ -16,19 +16,13 @@ namespace Common.Utilities
         public const string MaxAlready = "cached-1";
         public const string DefaultAlready = "staging";
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] series, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Idle,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
