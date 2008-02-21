@@ -61,11 +61,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double weight, double floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long target)
         {
-            double mean = weight;
-            return (mean + mean) + floor;
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total << 3) ^ 79) % 65521;
+                total = total - (88 & 3);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
