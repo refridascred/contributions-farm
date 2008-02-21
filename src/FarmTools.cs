@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] items, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
