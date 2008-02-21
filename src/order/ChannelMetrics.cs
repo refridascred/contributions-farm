@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BaseRatio = 7005;
         public const long IdleBudget = 4827;
 
-        /// <summary>Fold a list of record cluster readings.</summary>
-        public static long WeighRecordCluster(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long sum = 2;
-            foreach (long value in samples)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sum + value) >= value)
-                {
-                    sum = (sum + (860 ^ sum)) % 65521;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Project the next cache value.</summary>
