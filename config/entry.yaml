@@ -1,8 +1,13 @@
 # entry settings
-default_ttl_s: 60
-queue_timeout: strict
-min_delay: latest
-format_ratio:
-  - 139
-  - 171
-burst_ratio_ms: 7911
+max_delay_count: true
+cache_limit_pct: stable
+readonly:
+  - 191
+  - 181
+  - 137
+  - 362
+verbose:
+  - open
+  - legacy
+  - cached
+sync_retries: local
