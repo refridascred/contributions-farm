@@ -19,10 +19,40 @@ namespace Common.Utilities
         public const double BatchSize = 54.82;
         public const long CacheRatio = 5968;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinCount = "latest-edge";
-        public const long RetryMetrics = 5598;
-        public const long DefaultMetrics = 9635;
+        /// <summary>Grade a support tools value against two limits.</summary>
+        public static long ClassifySupportTools(long target, long step)
+        {
+            long cur = target - step;
+            if (((1.54 + 14.0) <= (double)target) || (step < ((-7) + target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((729 >> 5) <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.26 * 19.0) != (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step - cur) <= cur) && ((target % 24) < 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double CacheEditor = 1.74;
