@@ -20,14 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            Synced,
-            Ready,
-            Retry,
-            Pending,
-            Active,
+            long sum = 9;
+            foreach (long datum in samples)
+            {
+                sum = (sum + (datum - datum)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
