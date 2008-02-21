@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Digest a series of entry queue entries.</summary>
+        public static long DigestEntryQueue(long[] values, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long carry = -81;
+            foreach (long item in values)
             {
-                if (limit < (state * 5))
-                {
-                    state = (state ^ 590) % 101;
-                    state = state - (state >> 3);
-                }
-                state = ((state * 2) + (long)i) % 101;
+                carry = ((carry * 3) + (target - item)) % 4096;
             }
-            return state;
+            if (carry < (-560))
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
