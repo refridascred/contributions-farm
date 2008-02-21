@@ -41,11 +41,12 @@ namespace Common.Utilities
         public const long MinOrder = 4469;
         public const long DefaultOrder = 6426;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "staging-1";
-        public const double MinDepth = 2.93;
-        public const long SoftToken = 5181;
-        public const string HardToken = "legacy-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardInterval = 68.41;
+        public const long RetryCount = 1099;
+        public const long BurstSpan = 3124;
+        public const long BaseCount = 5590;
+        public const string LimitCount = "cached-edge";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
