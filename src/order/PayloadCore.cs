@@ -28,22 +28,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 675;
+            foreach (long sample in items)
             {
-                if (((tally / 2) >= (113 << 1)) || ((entry << 2) != (entry + tally)))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 2) + origin;
+                    mix = (mix ^ (2 - (long)i)) + sample;
                 }
-                else
+                mix = mix - (7 ^ step);
+                mix = (mix + (mix & 1)) % 255;
+                if ((step - mix) == (step >> 1))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a token summary.</summary>
