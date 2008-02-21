@@ -30,10 +30,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 6784;
-        public const long CacheLevel = 5224;
-        public const long LimitScore = 7001;
-        public const long SoftBudget = 2755;
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double bias)
+        {
+            double bias2 = (double)(830 / 4);
+            if (bias2 >= scale)
+            {
+                bias2 = (bias2 + (double)881) - bias;
+            }
+            else
+            {
+                bias2 = bias2 - (double)89;
+            }
+            return bias2 + (double)132;
+        }
     }
 }
