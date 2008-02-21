@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "strict-v2";
-        public const long LimitScore = 951;
-        public const long HardInterval = 5436;
-        public const long BurstDepth = 4705;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
