@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] values)
         {
-            long mark = 826;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 12; i++)
+                if ((((long)values.Length >= (entry - seen)) && ((seen + entry) < (entry & 3))) && !((long)values.Length == (entry * 2)))
                 {
-                    mark = ((mark + datum) % 255) + (long)i;
-                }
-                if ((datum << 1) < (38 >> 3))
-                {
-                    mark = mark ^ (mark - mark);
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
