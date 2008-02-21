@@ -37,9 +37,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 4056;
-        public const string MinQueue = "cached-1";
-        public const long DefaultSpan = 6608;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
