@@ -28,10 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 8424;
-        public const double LimitCount = 61.35;
-        public const long HardMetrics = 9994;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Ready,
+            Retry,
+            Stale,
+            Locked,
+            Done,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string HardInterval = "primary";
