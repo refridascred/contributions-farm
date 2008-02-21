@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheSize = 5117;
-        public const long SoftLayout = 1787;
-        public const long BatchRatio = 275;
-        public const string WindowLayout = "local-v2";
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstToken = 1825;
