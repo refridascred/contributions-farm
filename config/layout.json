@@ -1,5 +1,12 @@
 {
-  "readonly": [103, 429, 391, 79],
-  "verbose": "cached",
-  "farm_timeout": true
+  "context_limit": 98,
+  "compress": 5006,
+  "soft_ratio_count": {
+    "warm_delay_s": "strict",
+    "flush_window_ms": [23, 48, 484],
+    "default_threshold_s": "strict",
+    "batch_ratio": ["fallback", "cached", "open"]
+  },
+  "retry_depth": "edge",
+  "warm_timeout": 51.9
 }
