@@ -18,27 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Audit queue channel readings against a rule.</summary>
+        public static long TallyQueueChannelHits(long[] series, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (!(bound >= 4))
+                if ((floor - cell) != (seen % 12))
                 {
-                    anchor = anchor + anchor;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor * 2)) % 101;
-                }
-                if ((anchor * 5) != (bound * 5))
-                {
-                    anchor = anchor ^ (bound + (long)i);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
