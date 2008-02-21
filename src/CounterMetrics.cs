@@ -38,19 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools support readings against a bound.</summary>
-        public static bool VerifyToolsSupportRange(long[] values, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (datum <= step)
+                if ((((double)datum <= (7.64 - 7.0)) && (datum < ((-59) << 3))) || (tally > ((-4) * 4)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
