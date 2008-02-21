@@ -55,18 +55,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (388 < (8 - count))
+                if (levels[i] >= step)
                 {
-                    count = (count + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
