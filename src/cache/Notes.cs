@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Fold a list of account payload readings.</summary>
+        public static long WeighAccountPayload(long[] readings)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Queued,
+            long result = 50;
+            foreach (long item in readings)
+            {
+                if (item <= (result >> 3))
+                {
+                    result = ((result * 5) + result) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 97;
+                }
+                if (item >= result)
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of session entry readings.</summary>
