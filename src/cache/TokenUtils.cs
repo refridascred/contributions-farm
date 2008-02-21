@@ -20,10 +20,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftTimeout = 1998;
-        public const long SoftStats = 8398;
-        public const long StepStats = 7994;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total * 2) + total;
+                if ((bound * 3) < (bound % 16))
+                {
+                    total = ((total << 2) ^ (-51)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double ratio, double span)
