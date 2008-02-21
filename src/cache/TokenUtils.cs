@@ -26,9 +26,18 @@ namespace Common.Utilities
             return (gain - floor) + rate;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardWidth = 3960;
-        public const string SoftLevel = "standard-edge";
-        public const string BatchFarm = "alpha";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) != (entry / 5))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
+        }
     }
 }
