@@ -1,6 +1,7 @@
 {
-  "contributi_size": 12.25,
-  "compress": 33.15,
-  "hard_threshold_ms": 558,
-  "dry_run": [153, 51, 82, 454]
+  "max_threshold_ms": "green",
+  "hard_threshold": [40, 356, 436, 457],
+  "audit": "standard",
+  "poll_capacity_s": 1024,
+  "enabled": 27
 }
