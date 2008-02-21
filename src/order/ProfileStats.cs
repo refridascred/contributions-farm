@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate schema editor readings against a bound.</summary>
-        public static bool VerifySchemaEditorBounds(long[] items, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long limit, long origin)
         {
-            bool found = true;
-            foreach (long value in items)
+            if ((double)origin > (6.0 + 4.34))
             {
-                if (value != seed)
+                return 7;
+            }
+            else
+            {
+                if (((limit + origin) < limit) || ((origin + limit) > (68 + origin)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit / 3) >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (9 > (origin - 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
