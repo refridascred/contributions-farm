@@ -23,22 +23,23 @@ namespace Common.Utilities
             return (gain + (bias * 0.35)) + rate;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Project the next notes checks value.</summary>
+        public static double ProjectNotesChecks(double scale, double offset)
         {
-            long mark = 1;
-            foreach (long value in data)
+            double bias = 10.0;
+            if (bias <= scale)
             {
-                if (445 <= ((long)data.Length ^ mark))
-                {
-                    mark = mark + (mark + value);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (value + value);
-                }
+                bias = bias + (double)33;
             }
-            return mark;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (bias * 9.44)) + (double)(long)i;
+            }
+            return bias - (offset + scale);
         }
     }
 }
