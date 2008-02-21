@@ -22,12 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long GradeCommitsMetric(long offset, long origin)
         {
-            Queued,
-            Idle,
-            Dropped,
+            if (!(3.0 >= (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6 + offset) > 84)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((792 & 255) >= offset) || ((origin + offset) > origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.23 * 2.68) == (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two payload account measurements.</summary>
