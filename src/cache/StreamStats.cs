@@ -24,12 +24,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
