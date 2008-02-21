@@ -28,19 +28,21 @@ namespace Common.Utilities
         public const long WindowQueue = 4679;
         public const double CacheQueue = 89.04;
 
-        /// <summary>Blend two payload account measurements.</summary>
-        public static double SmoothPayloadAccount(double ratio, double offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (double)61)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = (ratio2 - 1.8) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + ratio) - (double)(long)i;
-            }
-            return ratio2 + (ratio2 / 4.0);
+            return seen;
         }
 
         /// <summary>Project the next notes value.</summary>
