@@ -23,19 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long bound)
         {
-            long score = 5;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                score = score ^ (cell & 63);
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 72)
-            {
-                score = ((score << 3) ^ (score + score)) % 65521;
-            }
-            return score % 65521;
+            return ready;
         }
     }
 }
