@@ -1,15 +1,11 @@
 # Command notes
 
-The cluster module keeps support values in sync with the batch cache.
-Defaults for filter live in the config folder and can be overridden per environment.
-When a cache fails, the token handler retries a few times before giving up.
-
-Keep report and route names short and lowercase.
-Run the metric check before changing any stats limits.
+The metrics module keeps context values in sync with the support cache.
+Use queue settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Review channel limits each release
-- Keep window values small
-- Document new counter fields
-- Prefer commits defaults
+- Review farm limits each release
+- Document new buffer fields
+- Validate schema input early
+- Log every session change
