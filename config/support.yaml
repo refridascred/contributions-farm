@@ -1,6 +1,5 @@
 # support settings
-flush_limit: 60
-enabled: 71.94
-default_timeout_s: open
-soft_interval_ms: 30
-entry_ratio: edge
+batches_size: 92.58
+hard_delay_ms: edge
+max_timeout_count: cached
+burst_delay_ms: 1024
