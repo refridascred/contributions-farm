@@ -1,6 +1,7 @@
-id,state,count
-1,30.44,8.82
-2,757,32.71
-3,741,924
-4,736,staging
-5,333,177
+id,weight,count,state,owner
+1,976,319,450,116
+2,37,local,eu-west,green
+3,4.62,30.7,46.77,110
+4,14.21,staging,cached,134
+5,34.93,43.49,36,747
+6,green,79.3,199,362
