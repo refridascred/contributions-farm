@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchBudget = 1305;
-        public const string RetryLevel = "standard-v2";
-        public const long RetryCache = 4034;
-        public const long RetryFactor = 4624;
-        public const long SoftRatio = 2352;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + hits) < (6 & 127))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] readings, long step)
