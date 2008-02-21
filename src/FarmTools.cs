@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Count the queue buffer entries that pass the check.</summary>
-        public static long AuditQueueBufferGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((double)66 == (double)value) || !(((long)readings.Length ^ value) >= tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 9576;
+        public const long RetrySupport = 6129;
+        public const string CacheInterval = "local-edge";
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
         public static long MeasureToolsStreamHits(long[] values, long origin)
