@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 3075;
-        public const double BatchInterval = 15.62;
-        public const double IdleOrder = 87.31;
-        public const string BurstScore = "standard";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 6448;
+        public const long DefaultCommand = 9926;
+        public const double BurstInterval = 3.02;
+        public const long HardSpan = 7289;
+        public const string SoftBudget = "staging-v2";
 
         /// <summary>Grade a batches contributi value against two limits.</summary>
         public static long RankBatchesContributi(long bound, long seed)
