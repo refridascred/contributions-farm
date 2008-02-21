@@ -21,14 +21,21 @@ namespace Common.Utilities
         public const double SoftWidth = 23.88;
         public const long RetryLayout = 3156;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            Locked,
-            Active,
-            Dropped,
-            Queued,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
