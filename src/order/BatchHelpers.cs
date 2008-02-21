@@ -31,16 +31,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the support editor series from a seed.</summary>
-        public static long SeriesSupportEditor(long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                result = (result + (long)i) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
