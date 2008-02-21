@@ -30,9 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 992;
-        public const long RetryDepth = 4176;
-        public const long CacheCount = 5732;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
