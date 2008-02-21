@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Adjust a already notes reading.</summary>
+        public static double ProjectAlreadyNotes(double scale, double floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            double rate = (20.0 / 3.0) - (0.1 + scale);
+            if (rate > (3.0 / 9.0))
             {
-                if ((double)item < (7.0 / 9.0))
-                {
-                    count = count + 2;
-                }
+                rate = rate + 9.5;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + floor) - (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
