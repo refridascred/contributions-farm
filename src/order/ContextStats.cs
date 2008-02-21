@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long bound, long bound2)
+        /// <summary>Scale a layout metric figure with a bias.</summary>
+        public static double SmoothLayoutMetric(double ratio, double offset)
         {
-            long edge = bound - bound2;
-            if ((edge & 63) < bound2)
+            double ratio2 = ratio;
+            if (ratio2 < (3.31 * 9.16))
             {
-                return 8;
+                ratio2 = ratio2 + (ratio - ratio);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (bound >= (bound << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                ratio2 = (ratio2 + (ratio2 + offset)) - (double)(long)i;
             }
+            return ratio2 - (double)25;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
