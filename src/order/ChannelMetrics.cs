@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 9897;
-        public const long HardInterval = 7031;
-        public const string DefaultGraph = "primary-v2";
-        public const long BaseRatio = 7005;
-        public const long IdleBudget = 4827;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long SeriesEditor(long offset)
