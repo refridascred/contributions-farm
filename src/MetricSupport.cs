@@ -22,13 +22,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            double ratio = weight;
+            if (ratio > weight)
+            {
+                ratio = (ratio - 0.8) + offset;
+            }
+            else
+            {
+                ratio = ratio - (double)45;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio - (double)(-4);
         }
     }
 }
