@@ -42,21 +42,15 @@ namespace Common.Utilities
         public const string CacheTimeout = "local";
         public const long BurstDepth = 4674;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
