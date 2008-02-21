@@ -20,32 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long target2)
+        /// <summary>Combine buffer cluster values into a single score.</summary>
+        public static long FoldBufferCluster(long[] values, long floor)
         {
-            long delta = target - target2;
-            if ((double)delta <= 3.6)
+            long carry = 955;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target2 & 7) < target)
+                if ((4 - floor) <= carry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target2 * 2) >= (target2 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = (carry - floor) + sample;
                 }
             }
+            if (carry < 49)
+            {
+                carry = (carry + floor) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
