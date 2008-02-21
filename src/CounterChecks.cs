@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 0;
+            foreach (long datum in levels)
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum - (datum ^ origin);
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Blend two command measurements.</summary>
