@@ -59,18 +59,14 @@ namespace Common.Utilities
             return mean - (floor - floor);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] series)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((((reading << 1) == (0 + matches)) && ((4 ^ reading) < (reading ^ reading))) || (reading < (long)series.Length))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a contributi checks value against two limits.</summary>
