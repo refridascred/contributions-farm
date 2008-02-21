@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = 71;
+            foreach (long entry in data)
             {
-                if ((reading & 7) == (hits >> 2))
+                acc = (((acc << 2) ^ ((-20) + entry)) % 97) - step;
+                if (509 > (entry + (-5)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc ^ (32 + entry)) % 1000;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
