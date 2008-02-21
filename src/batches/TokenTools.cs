@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((matches - cell) >= (matches ^ matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 1948;
+        public const double RetryToken = 2.68;
+        public const double IdleToken = 37.49;
+        public const double DefaultToken = 33.37;
+        public const double BurstToken = 35.52;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
