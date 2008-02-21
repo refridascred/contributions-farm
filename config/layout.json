@@ -1,14 +1,6 @@
 {
-  "retry_ttl": 83,
-  "retry_depth": "fallback",
-  "compress": {
-    "context_limit": 20,
-    "poll_delay": 22.42,
-    "commits_ratio": "eu-west",
-    "enabled": 69.7,
-    "cache_depth_s": "legacy",
-    "compress": false
-  },
-  "route_timeout": ["stable", "standard"],
-  "idle_depth_ms": ["local", "stable"]
+  "stream_threshold": "edge",
+  "batch_capacity_pct": "primary",
+  "max_size_pct": "open",
+  "layout_ratio": true
 }
