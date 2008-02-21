@@ -1,5 +1,13 @@
 {
-  "dry_run": "eu-west",
-  "batch_retries": 18.99,
-  "base_ratio_pct": "stable"
+  "dry_run": true,
+  "poll_window_ms": "primary",
+  "hard_interval_ms": {
+    "max_ttl_s": {
+      "flush_delay": "stable",
+      "sync_limit_ms": 100,
+      "session_interval": "local"
+    },
+    "max_timeout_ms": "local",
+    "base_window": "strict"
+  }
 }
