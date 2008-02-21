@@ -1,12 +1,12 @@
 {
-  "context_limit": 98,
-  "compress": 5006,
-  "soft_ratio_count": {
-    "warm_delay_s": "strict",
-    "flush_window_ms": [23, 48, 484],
-    "default_threshold_s": "strict",
-    "batch_ratio": ["fallback", "cached", "open"]
+  "default_threshold_pct": "strict",
+  "burst_retries_s": false,
+  "max_window_count": 40.88,
+  "poll_retries_pct": {
+    "persist": false,
+    "audit": "fallback",
+    "batch_timeout_s": false
   },
-  "retry_depth": "edge",
-  "warm_timeout": 51.9
+  "burst_retries": true,
+  "queue_size": 43
 }
