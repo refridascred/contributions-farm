@@ -68,12 +68,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items, long step)
         {
-            Pending,
-            Synced,
-            Failed,
+            long anchor = 55;
+            foreach (long cell in items)
+            {
+                if ((8.81 / 7.0) > (double)step)
+                {
+                    anchor = ((anchor << 3) ^ (cell * 2)) % 1000;
+                    anchor = (anchor * 3) + (step ^ 0);
+                }
+                anchor = anchor - (cell * 2);
+            }
+            return anchor;
         }
     }
 }
