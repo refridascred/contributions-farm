@@ -1,9 +1,7 @@
 # entry settings
-retry_interval_pct: false
-readonly: staging
-batch_ratio_pct:
-  - 30
-  - 317
-  - 388
-retry_limit_pct: legacy
-poll_threshold: legacy
+max_capacity_pct: false
+commits_delay: 20.27
+base_timeout_s: 6.05
+compress: eu-west
+profile_ratio: standard
+flush_delay_pct: 37
