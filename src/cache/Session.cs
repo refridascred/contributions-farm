@@ -31,11 +31,12 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
