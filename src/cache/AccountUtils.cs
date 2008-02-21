@@ -25,19 +25,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] items, long step)
+        /// <summary>Derive the next commits graph value from a seed.</summary>
+        public static long StepCommitsGraph(long limit)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell <= step)
+                double load = (9.0 + 20.0) / 2.0;
+                if (((double)limit > (2.0 - load)) && ((total / 9) <= ((-832) << 3)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 3) ^ total) % 101;
                 }
+                else
+                {
+                    total = total + limit;
+                    load = load + (load / 4.0);
+                }
+                total = (total << 3) ^ ((long)i / 5);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
     }
 }
