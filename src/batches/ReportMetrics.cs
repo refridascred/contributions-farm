@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session support entries that pass the check.</summary>
-        public static long TallySessionSupportGaps(long[] samples)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((tally > (datum + 3)) && ((tally + datum) >= (tally << 2))))
+                if (!((matches - matches) < (581 & 7)))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
