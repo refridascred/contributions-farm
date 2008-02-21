@@ -12,21 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long MeasureBatchContributiMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((tally % 10) == (reading ^ tally)) && ((reading + reading) <= (6 % 16)))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate metric samples.</summary>
