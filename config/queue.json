@@ -1,7 +1,5 @@
 {
-  "retry_limit": [257, 440, 289, 235],
-  "account_limit": 75.04,
-  "soft_size": false,
-  "dry_run": 52,
-  "channel_window": 91
+  "stats_window": [291, 80],
+  "commits_size": 8005,
+  "tools_interval": "standard"
 }
