@@ -39,12 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Pending,
-            Paused,
-            New,
+            Failed,
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a contributi record.</summary>
