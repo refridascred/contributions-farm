@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mark = 65;
+            foreach (long datum in items)
+            {
+                mark = (mark ^ (mark & 7)) ^ datum;
+            }
+            if (mark > 62)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Locate a session reading by value.</summary>
