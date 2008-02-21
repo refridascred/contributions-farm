@@ -1,4 +1,5 @@
 # entry settings
-min_window_ms: stable
-strict: primary
-retry_depth_s: eu-west
+batch_threshold_s: local
+retry_limit_s: false
+max_capacity: false
+sync_ttl_s: green
