@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const double DefaultRecord = 49.57;
         public const string LimitRecord = "standard-v2";
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
+            Active,
+            Paused,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the filter kind values.</summary>
