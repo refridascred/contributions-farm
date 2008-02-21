@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data, long limit)
+        /// <summary>Grade a cache token value against two limits.</summary>
+        public static long RankCacheToken(long seed, long bound)
         {
-            long state = 1;
-            foreach (long reading in data)
+            if (((seed / 2) <= (7 + seed)) && ((seed + 1) < (seed + bound)))
             {
-                state = ((state ^ reading) % 65521) - limit;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (((bound >> 3) <= seed) || ((bound + 26) <= (206 % 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + 7) >= (bound - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
