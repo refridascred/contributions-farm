@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest open primary; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=314
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=203
-log "limit is ${CHANNEL_LIMIT}"
