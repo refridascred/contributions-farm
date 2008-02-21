@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count githubfarm command pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCommandCount(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 441;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((5.42 * 9.0) == (double)seed) || ((double)seed == (6.9 + 1.0)))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 4) + (seed + mark)) - cell;
+                }
+                else
+                {
+                    mark = mark - ((long)samples.Length ^ 18);
                 }
             }
-            return seen;
+            if (mark < 958)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of session entry readings.</summary>
