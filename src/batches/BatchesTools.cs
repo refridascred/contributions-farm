@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values)
         {
-            double gain = (double)1;
-            if (gain <= (1.0 / 8.0))
+            long sum = 60;
+            foreach (long reading in values)
             {
-                gain = (gain + (double)962) + weight;
+                if ((5.7 - 9.7) < (double)reading)
+                {
+                    sum = ((sum << 2) ^ reading) % 1000;
+                }
+                if ((sum & 31) == (1 & 1))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + bias;
+            return sum;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
