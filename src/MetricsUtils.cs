@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            if ((offset + 770) <= seed)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                score = score - 2;
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((0 ^ offset) < (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset * 5) < seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
