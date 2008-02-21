@@ -22,17 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] samples, long origin)
+        /// <summary>Digest a series of schema payload entries.</summary>
+        public static long TallySchemaPayload(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -94;
+            foreach (long value in items)
             {
-                if (samples[i] >= origin)
+                anchor = (anchor - (value >> 4)) % 65521;
+                if (!((value - offset) <= ((-4) + value)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (anchor + value)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - ((-705) & 1);
                 }
             }
-            return -1;
+            if (anchor > 548)
+            {
+                anchor = anchor - offset;
+            }
+            return anchor;
         }
 
         /// <summary>Validate tools farm readings against a bound.</summary>
