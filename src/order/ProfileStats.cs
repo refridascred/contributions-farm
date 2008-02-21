@@ -38,18 +38,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] readings, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((seen - floor) > cell)
+                if ((total >= (total << 3)) || (((long)i & 127) <= (35 - origin)))
                 {
-                    seen = seen + 2;
+                    total = ((total * 4) + (total ^ origin)) % 1000;
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
