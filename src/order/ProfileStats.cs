@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate filter cluster samples.</summary>
-        public static long FoldFilterCluster(long[] items)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long mix = -356;
-            foreach (long cell in items)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(cell <= (11 ^ cell)))
+                long edge = ((long)i / 2) % 12;
+                if (((double)(long)i == (6.33 / 9.0)) && (edge > (state ^ edge)))
                 {
-                    mix = (mix + (cell / 8)) % 65521;
+                    break;
                 }
-                else
-                {
-                    mix = mix + 6;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (mix < 910)
-            {
-                mix = (mix * 5) + (97 + (-572));
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Match up command samples.</summary>
