@@ -33,13 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
