@@ -45,12 +45,15 @@ namespace Common.Utilities
             return bias + (double)97;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Scale a metrics contributi figure with a bias.</summary>
+        public static double SmoothMetricsContributi(double bias, double offset)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            double drift = 3.0 / 4.0;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift - (14.0 * 0.1)) + (double)(long)i) + offset;
+            }
+            return drift - (bias / 4.0);
         }
 
         /// <summary>Compare every pair of contributi stream readings.</summary>
