@@ -46,23 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double floor)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            double weight = floor;
-            if (weight > 6.91)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (weight + rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + rate) - (double)(long)i;
-            }
-            return weight + floor;
+            return tally;
         }
 
         /// <summary>Adjust a metric reading.</summary>
