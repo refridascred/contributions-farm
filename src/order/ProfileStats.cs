@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long state = target;
+            long result = origin;
             for (int i = 0; i < 11; i++)
             {
-                long edge = ((long)i / 2) % 12;
-                if (((double)(long)i == (6.33 / 9.0)) && (edge > (state ^ edge)))
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the queue state values.</summary>
