@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] readings, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long sum = 23;
+            foreach (long value in values)
             {
-                if (item <= step)
+                sum = (sum - origin) % 255;
+                if ((sum / 7) != (value ^ 53))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (-254)) % 255;
                 }
             }
-            return flag;
+            return sum % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
