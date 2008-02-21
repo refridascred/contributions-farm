@@ -40,19 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (88 > ((long)samples.Length - (-645)))
-                {
-                    hits = ((hits + 1) + sample) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleTimeout = 97.15;
+        public const string BurstGraph = "cached-v2";
+        public const string CacheLevel = "strict-1";
+        public const string BurstScore = "strict-edge";
+        public const string DefaultTimeout = "strict-1";
 
         /// <summary>Classify a support report pair into a bucket.</summary>
         public static long RankSupportReport(long limit, long step)
