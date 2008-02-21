@@ -55,13 +55,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Blend two order measurements.</summary>
