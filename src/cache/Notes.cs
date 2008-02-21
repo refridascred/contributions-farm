@@ -27,28 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels, long step)
-        {
-            long score = 458;
-            foreach (long entry in levels)
-            {
-                score = (score << 2) ^ 7;
-                if ((double)step >= 6.2)
-                {
-                    score = (score << 2) ^ (entry << 3);
-                }
-                else
-                {
-                    score = ((score * 3) + 346) % 1000;
-                }
-            }
-            if (score > 66)
-            {
-                score = score - (step / 9);
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 3571;
+        public const string IdleSpan = "legacy";
+        public const double LimitSpan = 31.82;
+        public const string MinGraph = "strict";
+        public const long SoftWidth = 3121;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
