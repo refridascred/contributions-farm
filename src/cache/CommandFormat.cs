@@ -35,11 +35,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "standard-v2";
-        public const long MaxBudget = 6459;
-        public const long IdleInterval = 6475;
-        public const string DefaultWidth = "latest-1";
-        public const long HardSpan = 4204;
+        /// <summary>Check that every token window entry stays within the limit.</summary>
+        public static bool CheckTokenWindowRange(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
