@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every order tools entry stays within the limit.</summary>
-        public static bool GuardOrderToolsBounds(long[] samples, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            if ((bound * 3) <= (seed - bound))
             {
-                if (item <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((seed - bound) < (bound << 1))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed % 60) <= (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
