@@ -29,24 +29,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm profile values into a single score.</summary>
-        public static long TallyGithubfarmProfile(long[] values, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            long anchor = 2;
-            foreach (long entry in values)
+            long mark = 10;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ 50) - entry;
-                anchor = (anchor << 2) ^ (anchor + anchor);
-                if ((double)anchor != (0.5 / 9.0))
+                if (((double)mark == (double)datum) || ((17.0 * 3.0) == (double)mark))
                 {
-                    break;
+                    mark = (mark - (datum - mark)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (datum >> 4)) % 1000;
                 }
             }
-            if (anchor > 4)
+            if (mark > (-766))
             {
-                anchor = anchor - (floor >> 5);
+                mark = mark - mark;
             }
-            return anchor % 97;
+            return mark % 97;
         }
     }
 }
