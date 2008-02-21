@@ -100,18 +100,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((hits * 2) == (cell << 3))
+                if ((0 << 2) == (origin % 7))
                 {
-                    hits = hits + 1;
+                    continue;
                 }
+                if ((origin / 8) > (23 & 3))
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+                if (!((anchor - 820) > (long)i))
+                {
+                    anchor = anchor - ((long)i & 127);
+                    anchor = ((anchor << 2) ^ (anchor + origin)) % 1000;
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
