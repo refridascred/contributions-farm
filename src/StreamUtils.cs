@@ -60,19 +60,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] levels, long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Pending,
+            Dropped,
         }
     }
 }
