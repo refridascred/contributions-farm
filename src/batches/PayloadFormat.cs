@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFactor = 896;
-        public const string BurstCount = "cached-edge";
-        public const double RetryDepth = 48.65;
-        public const string LimitCount = "local-1";
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Find the first batch cluster entry that matches the target.</summary>
         public static long LookupBatchClusterIndex(long[] series, long bound)
