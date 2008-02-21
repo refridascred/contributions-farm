@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] series, long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count < origin) && ((count / 3) != (origin % 7)))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Describe the commits phase values.</summary>
