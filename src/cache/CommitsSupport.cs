@@ -41,12 +41,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long target)
         {
-            New,
-            Synced,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
