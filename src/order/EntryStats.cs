@@ -23,15 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Stale,
-            Retry,
-            Dropped,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 984;
+        public const long MaxGithubfarm = 2140;
+        public const long IdleGithubfarm = 4976;
+        public const double BatchDepth = 18.24;
+        public const long MinGithubfarm = 9291;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long WeighCounter(long[] series)
