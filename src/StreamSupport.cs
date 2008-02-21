@@ -30,31 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long step2)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long origin)
         {
-            if ((step <= step2) || ((step2 + step) <= 7))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 + step) > (-106))
+                if (items[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((1 >> 2) >= (step / 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
