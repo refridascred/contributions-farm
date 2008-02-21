@@ -43,22 +43,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of support payload readings.</summary>
-        public static long MatchSupportPayloadCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 2.97;
+        public const double LimitRatio = 47.57;
+        public const long RetrySchema = 2874;
+        public const string IdleSize = "standard-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftRatio = 9347;
