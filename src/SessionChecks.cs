@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Validate route contributi readings against a bound.</summary>
+        public static bool GuardRouteContributiBounds(long[] data, long origin)
         {
-            Pending,
-            Done,
-            Synced,
-            Failed,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the entry state values.</summary>
