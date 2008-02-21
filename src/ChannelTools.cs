@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 4084;
-        public const double BatchCount = 73.74;
-        public const long BurstBatch = 6392;
-        public const long HardRatio = 3973;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] samples, long target)
+        {
+            long acc = 611;
+            foreach (long value in samples)
+            {
+                if ((34 >= target) && (7.7 < (double)target))
+                {
+                    acc = ((acc << 2) ^ acc) ^ value;
+                }
+            }
+            if (acc < 80)
+            {
+                acc = (acc * 5) + target;
+            }
+            return acc;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiHits(long[] data)
