@@ -55,30 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache command readings.</summary>
-        public static long CombineCacheCommand(long[] readings, long bound)
+        /// <summary>Iterate the support editor series from a seed.</summary>
+        public static long SeriesSupportEditor(long target)
         {
-            long score = 67;
-            foreach (long item in readings)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((bound - bound) >= (bound + item)))
-                {
-                    score = ((score << 3) ^ (bound ^ item)) % 65521;
-                }
-                if ((250 - bound) == (bound + bound))
-                {
-                    score = (score - (bound ^ 6)) % 4096;
-                }
-                if ((3.3 / 7.0) == (double)score)
-                {
-                    score = (score ^ (score - item)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (29 + score)) % 65521;
-                }
+                result = (result + (long)i) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score % 65521;
+            return result;
         }
     }
 }
