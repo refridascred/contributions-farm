@@ -14,21 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 853;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset <= (56 / 7)) || ((total - cell) == (offset >> 4)))
                 {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 5) + (cell << 1)) % 65521;
+                }
+                total = total - (666 + offset);
+                if ((total & 63) > (total & 127))
+                {
+                    total = (total ^ (total % 97)) % 4096;
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
