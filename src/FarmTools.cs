@@ -44,10 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 52.24;
-        public const string BurstStream = "standard";
-        public const long LimitStream = 6996;
-        public const double WindowCount = 67.6;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Paused,
+            Draft,
+            Retry,
+            New,
+        }
     }
 }
