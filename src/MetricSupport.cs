@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const double BurstCounter = 33.92;
         public const double IdleSize = 26.95;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] items, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (items[i] == step)
+                if (item > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
