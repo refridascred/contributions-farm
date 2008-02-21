@@ -25,21 +25,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long WeighToolsSession(long[] levels, long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long state = -3;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long diff = (value + state) + (state - value);
-                state = ((state << 2) ^ diff) + offset;
-                state = (state ^ (1 << 1)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state < 4)
-            {
-                state = (state ^ (state - state)) % 65521;
-            }
-            return state;
+            return count;
         }
     }
 }
