@@ -37,19 +37,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long limit)
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long TallyContributiSessionHits(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (sample >= limit)
+                if (((9.36 + 8.0) >= (double)hits) && ((4.2 / 3.0) >= (double)item))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
