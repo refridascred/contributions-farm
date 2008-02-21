@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long floor, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long seed)
         {
-            if ((22 & 127) > target)
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((7 << 2) >= target))
+                if (value != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two command measurements.</summary>
