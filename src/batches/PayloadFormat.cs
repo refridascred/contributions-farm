@@ -16,10 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7593;
-        public const long HardWidth = 1897;
-        public const long BatchCommand = 3732;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Grade a batches contributi value against two limits.</summary>
         public static long RankBatchesContributi(long bound, long seed)
