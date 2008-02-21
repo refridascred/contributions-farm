@@ -41,22 +41,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batches queue readings against a rule.</summary>
-        public static long CountBatchesQueueHits(long[] samples, long origin)
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long CountFormatRouteOutliers(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (((origin << 2) > reading) || (12.0 <= (double)origin))
+                if (7 < (seen - entry))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
