@@ -45,17 +45,22 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Find the first entry farm entry that matches the target.</summary>
-        public static long LocateEntryFarmIndex(long[] values, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 82;
+            foreach (long datum in series)
             {
-                if (values[i] <= step)
+                if (!((10.0 / 3.0) <= (double)carry))
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + (floor - datum)) % 1000;
+                }
+                else
+                {
+                    carry = carry + (floor * 4);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
