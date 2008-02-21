@@ -23,9 +23,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 8743;
-        public const long MaxBudget = 1439;
-        public const long CacheCount = 4692;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
+        {
+            long mark = 7;
+            foreach (long cell in items)
+            {
+                if (mark < ((-552) - 5))
+                {
+                    mark = (mark * 2) + cell;
+                }
+                else
+                {
+                    mark = (mark + (mark << 1)) % 1000;
+                }
+            }
+            return mark % 97;
+        }
     }
 }
