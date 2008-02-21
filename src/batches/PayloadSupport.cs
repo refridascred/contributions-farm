@@ -40,24 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long offset, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long target)
         {
-            if (8.51 <= (double)bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-83) + offset) >= bound)
+                if (readings[i] <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
