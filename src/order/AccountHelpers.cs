@@ -38,12 +38,31 @@ namespace Common.Utilities
         public const double BurstSchema = 73.25;
         public const long RetrySchema = 5214;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long step)
         {
-            New,
-            Pending,
-            Ready,
+            if ((0.2 / 7.0) <= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (855 >= (offset + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((16.0 / 8.0) >= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
