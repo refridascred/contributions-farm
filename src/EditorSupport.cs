@@ -55,14 +55,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Draft,
-            Done,
-            Paused,
+            Active,
+            Synced,
             Dropped,
-            Queued,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
