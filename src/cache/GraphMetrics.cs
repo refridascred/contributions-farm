@@ -68,27 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data, long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] series, long step)
         {
-            long mix = 34;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix << 2) ^ (step << 2)) % 97) ^ sample;
-                if ((0.5 + 4.19) < 3.3)
+                if (series[i] == step)
                 {
-                    mix = mix ^ (mix / 2);
-                }
-                else
-                {
-                    mix = mix - (step << 3);
-                }
-                if ((7 % 3) >= ((long)data.Length + step))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
