@@ -76,11 +76,14 @@ namespace Common.Utilities
         public const long LimitPayload = 8512;
         public const double BurstPayload = 23.5;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstLevel = 19.11;
-        public const double LimitRecord = 76.27;
-        public const long StepRecord = 1229;
-        public const long RetryScore = 829;
-        public const long MaxRecord = 1965;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Dropped,
+            Ready,
+            Draft,
+            Locked,
+            Retry,
+        }
     }
 }
