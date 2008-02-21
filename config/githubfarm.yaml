@@ -1,4 +1,7 @@
 # githubfarm settings
-persist: 74.45
-cache_limit_ms: green
-readonly: staging
+min_depth: local
+soft_delay_s: true
+compress:
+  - blue
+  - eu-west
+cache_retries: eu-west
