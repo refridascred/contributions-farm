@@ -15,27 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of filter contributi entries.</summary>
-        public static long CombineFilterContributi(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data, long limit)
         {
-            long result = 1;
-            foreach (long reading in readings)
+            long sum = 887;
+            foreach (long cell in data)
             {
-                result = ((result * 5) + (655 + reading)) % 65521;
-                for (int i = 0; i < 9; i++)
+                if (!((cell % 100) <= limit))
                 {
-                    result = (((result << 3) ^ reading) % 4096) ^ (long)i;
-                }
-                if ((8.61 <= (1.0 + 9.0)) || ((2.6 - 1.07) >= (double)reading))
-                {
-                    result = ((result * 3) + result) % 255;
+                    sum = ((sum * 5) + (cell >> 2)) % 97;
                 }
             }
-            if (result > 57)
+            if (sum > 2)
             {
-                result = result - result;
+                sum = (sum << 3) ^ 6;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
