@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels, long offset)
         {
-            long sum = 55;
-            foreach (long cell in samples)
+            long acc = 14;
+            foreach (long entry in levels)
             {
-                if (!((seed >> 3) < 37))
-                {
-                    sum = (sum + (seed / 8)) - cell;
-                }
+                acc = (((acc - (long)levels.Length) % 4096) - entry) - offset;
             }
-            return sum;
+            if (acc < 567)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
