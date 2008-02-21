@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinFactor = 24.35;
+        public const long DefaultAlready = 9394;
+        public const long BurstAlready = 9119;
+        public const string BurstBudget = "fallback-edge";
+        public const long BatchAlready = 621;
 
         /// <summary>Find the first channel context entry that matches the target.</summary>
         public static long LocateChannelContextIndex(long[] items, long step)
