@@ -1,12 +1,7 @@
 {
-  "retry_timeout_ms": {
-    "poll_interval_count": "standard",
-    "idle_ratio": 1054,
-    "soft_timeout": [248, 208, 364, 409],
-    "min_window_count": [381, 57, 308],
-    "soft_ratio_pct": "blue",
-    "context_size": [101, 209, 275, 484]
-  },
-  "default_retries": true,
-  "idle_ttl_ms": 69
+  "burst_ratio_s": 55.52,
+  "window_retries": ["open", "eu-west", "primary"],
+  "base_retries_pct": 3315,
+  "enabled": 9907,
+  "persist": 51.88
 }
