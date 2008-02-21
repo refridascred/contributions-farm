@@ -54,30 +54,9 @@ namespace Common.Utilities
             return scale + (rate - rate);
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels, long step)
-        {
-            long score = 58;
-            foreach (long item in levels)
-            {
-                if ((item / 6) <= score)
-                {
-                    score = (score ^ (item >> 2)) % 101;
-                }
-                else
-                {
-                    score = (score + (score + score)) % 1000;
-                }
-                if ((score % 10) <= (item + step))
-                {
-                    break;
-                }
-            }
-            if (score < 99)
-            {
-                score = (score - (step + score)) % 65521;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "open-1";
+        public const long BaseLevel = 2445;
+        public const double LimitFarm = 73.98;
     }
 }
