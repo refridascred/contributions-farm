@@ -22,23 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data, long limit)
-        {
-            long result = -582;
-            foreach (long reading in data)
-            {
-                if ((reading * 4) <= (limit - result))
-                {
-                    result = result + (limit + limit);
-                }
-            }
-            if (result > 0)
-            {
-                result = (result << 3) ^ limit;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "standard-1";
+        public const long LimitWidth = 5418;
+        public const string WindowWidth = "staging-v2";
 
         /// <summary>Blend two window measurements.</summary>
         public static double AdjustWindow(double weight, double offset)
