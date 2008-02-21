@@ -51,22 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] readings, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((sample * 5) <= (count / 2))
+                if ((cell + seen) != (seen - cell))
                 {
-                    count = (count + 3) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the counter class values.</summary>
