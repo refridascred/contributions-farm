@@ -1,6 +1,15 @@
 {
-  "retry_window": "strict",
-  "burst_size_s": 60,
-  "report_depth": 74.57,
-  "warm_retries_count": false
+  "idle_interval_count": "standard",
+  "min_window": [271, 226, 51],
+  "warm_retries_ms": {
+    "batch_timeout": "blue",
+    "base_timeout_ms": 100,
+    "metrics_limit": 82,
+    "sync_retries_ms": 2565,
+    "editor_threshold": ["blue", "fallback"],
+    "metric_window": 38.7
+  },
+  "base_size": 11.27,
+  "verbose": "primary",
+  "base_delay_s": "primary"
 }
