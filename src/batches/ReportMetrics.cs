@@ -32,23 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] samples, long step)
         {
-            long state = 891;
-            foreach (long item in series)
+            long total = 36;
+            foreach (long datum in samples)
             {
-                state = (state + item) % 97;
-                if (state < ((long)series.Length + state))
-                {
-                    state = (state + item) % 4096;
-                }
+                total = (total ^ (datum >> 4)) + step;
             }
-            if (state < 281)
-            {
-                state = ((state * 2) + (state * 4)) % 101;
-            }
-            return state % 97;
+            return total % 97;
         }
     }
 }
