@@ -1,7 +1,6 @@
 {
-  "retry_ttl_pct": 40.88,
-  "sync_window_count": 250,
-  "dry_run": 250,
-  "retry_ratio": false,
-  "base_window": "latest"
+  "idle_delay": false,
+  "batch_timeout_s": 84,
+  "idle_size_s": 72.49,
+  "compress": [67, 254, 470]
 }
