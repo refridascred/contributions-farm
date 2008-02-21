@@ -23,11 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitInterval = 4228;
-        public const string CacheTools = "primary-edge";
-        public const long MinBudget = 5195;
-        public const string BurstBudget = "local-1";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "open-1";
+        public const string BurstSize = "strict-v2";
+        public const double RetryEntry = 20.47;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] data, long target)
