@@ -30,14 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Dropped,
-            Synced,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "latest-edge";
+        public const string LimitMetrics = "latest-v2";
+        public const long MinMetrics = 5053;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] levels, long bound)
