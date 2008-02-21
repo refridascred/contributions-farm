@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up filter token samples.</summary>
-        public static long MatchFilterTokenCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 4633;
+        public const long MinWidth = 6988;
+        public const string DefaultFarm = "strict";
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] values, long floor)
