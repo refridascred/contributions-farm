@@ -23,13 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Queued,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 8090;
+        public const double SoftEditor = 1.72;
+        public const string CacheEditor = "staging-v2";
+        public const long MaxBudget = 1537;
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double scale, double offset)
