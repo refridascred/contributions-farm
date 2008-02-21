@@ -23,26 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            long state = 224;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((34 & 7) > (state & 255)) || ((state ^ 7) < (636 - state)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ (value >> 2)) % 255;
-                }
-                else
-                {
-                    state = (state + 2) % 1000;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 66)
-            {
-                state = ((state << 2) ^ (138 + state)) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
