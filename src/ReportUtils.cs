@@ -76,11 +76,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
