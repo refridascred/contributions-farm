@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long HardStats = 5765;
         public const double DefaultStats = 59.71;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long total = 73;
+            foreach (long value in readings)
+            {
+                if ((value - value) >= value)
+                {
+                    total = ((total * 3) + (value << 2)) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
