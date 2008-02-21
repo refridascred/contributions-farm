@@ -41,25 +41,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a graph window value against two limits.</summary>
-        public static long BucketGraphWindow(long limit, long limit2)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long offset = limit ^ limit2;
-            if (!((10 & 15) < limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit >= (limit2 + limit)) && (limit <= (offset >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the session level values.</summary>
