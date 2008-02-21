@@ -31,22 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((tally - tally) < (value << 2))
+                if (((count - count) == (item * 2)) && ((857 ^ count) != (item ^ item)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two graph support measurements.</summary>
