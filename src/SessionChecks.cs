@@ -37,13 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up command window samples.</summary>
+        public static long CompareCommandWindowCount(long[] data)
         {
-            Stale,
-            Synced,
-            Closed,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
