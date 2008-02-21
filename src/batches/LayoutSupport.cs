@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 95;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((score >> 2) <= datum) && (((-56) ^ score) <= (score + score)))
                 {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score * 5) + datum) % 255;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Match up format payload samples.</summary>
