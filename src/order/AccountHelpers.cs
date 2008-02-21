@@ -55,19 +55,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] items, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long mix = 45;
+            foreach (long entry in series)
             {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ entry) % 101;
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Audit report route readings against a rule.</summary>
