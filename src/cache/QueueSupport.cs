@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (!(((double)reading != (10.0 + 6.0)) && (tally <= (reading % 64))))
+                if (cell <= seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
