@@ -43,18 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout channel readings.</summary>
-        public static long WeighLayoutChannel(long[] samples, long limit)
-        {
-            long result = 9;
-            foreach (long cell in samples)
-            {
-                if ((result % 60) <= result)
-                {
-                    result = (((result ^ result) % 65521) - cell) + limit;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardLevel = 4900;
+        public const double BatchSize = 81.7;
+        public const double WindowSession = 90.89;
+        public const long LimitSession = 9781;
     }
 }
