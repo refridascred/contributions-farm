@@ -22,17 +22,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first checks profile entry that matches the target.</summary>
-        public static long LookupChecksProfileIndex(long[] data, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long datum in values)
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                total = total + (total + datum);
             }
-            return -1;
+            return total;
         }
     }
 }
