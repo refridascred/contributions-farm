@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
