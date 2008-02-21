@@ -44,20 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] values, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long total = 72;
-            foreach (long datum in values)
-            {
-                total = (total ^ floor) - datum;
-                total = ((total * 5) + (floor * 2)) % 65521;
-            }
-            if (total > 523)
-            {
-                total = total ^ (floor >> 3);
-            }
-            return total;
+            Done,
+            Dropped,
+            Locked,
+            Active,
         }
     }
 }
