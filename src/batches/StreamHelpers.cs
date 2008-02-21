@@ -40,39 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long offset, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long prev = offset + floor;
-            if ((floor * 3) < offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(floor > (prev ^ prev)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)floor > (1.47 + 19.0)) || ((541 / 7) <= (offset + offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.3 - 1.0) > (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit batches queue readings against a rule.</summary>
