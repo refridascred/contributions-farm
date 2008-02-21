@@ -1,18 +1,6 @@
 {
-  "metric_timeout": {
-    "idle_retries": 28,
-    "farm_capacity": "green",
-    "flush_timeout": "eu-west",
-    "metrics_ttl": 100
-  },
-  "burst_ratio": true,
-  "verbose": 68.07,
-  "compress": {
-    "hard_size_s": false,
-    "dry_run": 20,
-    "checks_size": 500,
-    "base_ratio_s": "strict"
-  },
-  "batch_interval": 57.24,
-  "retry_threshold": 2472
+  "warm_retries_pct": "primary",
+  "retry_delay": ["stable", "edge"],
+  "entry_limit": ["eu-west", "primary", "green"],
+  "persist": false
 }
