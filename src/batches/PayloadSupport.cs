@@ -47,18 +47,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double gain, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            double scale = offset;
+            if (scale < (offset * 13.0))
             {
-                sum = (sum * 4) + (step << 1);
-                sum = ((sum << 2) ^ sum) % 1000;
-                sum = (sum ^ (2 + sum)) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
+                scale = scale - 5.0;
             }
-            return sum;
+            else
+            {
+                scale = scale - (gain * 8.0);
+            }
+            return scale - offset;
         }
     }
 }
