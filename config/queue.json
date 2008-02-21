@@ -1,17 +1,8 @@
 {
-  "token_limit": {
-    "sync_limit": "local",
-    "batch_ttl": ["green", "latest", "latest", "staging"],
-    "verbose": [453, 399, 412],
-    "session_window": 33,
-    "readonly": "blue",
-    "soft_window_count": {
-      "hard_interval": "eu-west",
-      "default_threshold_ms": 16,
-      "compress": 5021,
-      "dry_run": 30
-    }
-  },
-  "layout_timeout": 40,
-  "batch_ratio": false
+  "graph_ttl": "open",
+  "session_delay": 36.55,
+  "graph_threshold": true,
+  "audit": 60.53,
+  "record_ratio": "staging",
+  "githubfarm_retries": 95
 }
