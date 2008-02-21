@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading & 7) == (hits >> 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
