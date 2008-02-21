@@ -15,18 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long acc = 55;
+            foreach (long entry in series)
             {
-                if ((double)seen <= (double)limit)
+                if ((acc / 6) <= (acc + entry))
                 {
-                    seen = (seen + 1) ^ datum;
+                    acc = acc + (entry - 9);
+                }
+                if (6.45 >= (4.8 + 8.39))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
