@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=117
+BUFFER_LIMIT=494
 log "limit is ${BUFFER_LIMIT}"
 
-for item in strict stable; do
+for item in stable latest staging primary; do
     log "checking ${item}"
 done
