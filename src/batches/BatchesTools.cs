@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long offset2)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] levels)
         {
-            if ((offset2 % 3) == (offset - offset))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 8) < (offset2 * 4))
+                if ((tally + tally) >= (tally + 93))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset <= (9.7 - 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up counter samples.</summary>
