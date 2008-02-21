@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultFactor = 1298;
-        public const long MaxOrder = 2326;
-        public const long RetryOrder = 4949;
-        public const double CacheSpan = 76.8;
-        public const double WindowOrder = 54.0;
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double scale, double offset)
+        {
+            double gain = (double)33 / 4.0;
+            if (gain <= (offset / 7.0))
+            {
+                gain = gain - gain;
+            }
+            return gain - scale;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long FoldReport(long[] levels)
