@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 4633;
-        public const long MinWidth = 6988;
-        public const string DefaultFarm = "strict";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings, long seed)
+        {
+            long result = 4;
+            foreach (long sample in readings)
+            {
+                result = (result - (sample >> 5)) - seed;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] series, long offset)
