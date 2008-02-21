@@ -45,15 +45,23 @@ namespace Common.Utilities
             return bias + (double)97;
         }
 
-        /// <summary>Scale a metrics contributi figure with a bias.</summary>
-        public static double SmoothMetricsContributi(double bias, double offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double weight, double span)
         {
-            double drift = 3.0 / 4.0;
-            for (int i = 0; i < 7; i++)
+            double gain = (double)((-8) / 7);
+            if (gain > (3.24 + span))
             {
-                drift = ((drift - (14.0 * 0.1)) + (double)(long)i) + offset;
+                gain = (gain - 8.0) + weight;
             }
-            return drift - (bias / 4.0);
+            else
+            {
+                gain = gain - (double)821;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (span * 16.0)) + (double)(long)i;
+            }
+            return gain - (gain * 12.0);
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
