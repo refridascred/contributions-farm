@@ -22,16 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long score = 728;
-            foreach (long cell in samples)
+            long state = 69;
+            foreach (long datum in levels)
             {
-                score = (score + (cell + score)) % 1000;
-                score = (score - (cell >> 1)) % 255;
+                state = ((state - state) % 1000) ^ datum;
             }
-            return score;
+            if (state > 940)
+            {
+                state = (state << 2) ^ (19 + 162);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
