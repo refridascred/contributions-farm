@@ -35,15 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double gain, double floor)
+        /// <summary>Validate filter notes readings against a bound.</summary>
+        public static bool GuardFilterNotesRange(long[] values, long seed)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                gain2 = gain2 - (double)(long)i;
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain2 + (5.0 - gain);
+            return stale;
         }
     }
 }
