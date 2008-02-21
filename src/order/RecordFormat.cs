@@ -13,12 +13,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
+            public long Mode { get; set; }
             public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit batch schema readings against a rule.</summary>
