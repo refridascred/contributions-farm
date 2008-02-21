@@ -38,13 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            Retry,
+            Ready,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
