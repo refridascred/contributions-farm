@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate route account samples.</summary>
-        public static long DigestRouteAccount(long[] series, long origin)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long carry = 851;
-            foreach (long cell in series)
-            {
-                if (((cell >> 3) > (cell + carry)) || ((carry ^ carry) != ((-5) + 53)))
-                {
-                    carry = ((carry - (cell + cell)) % 255) + origin;
-                }
-            }
-            if (carry < 232)
-            {
-                carry = carry + ((long)series.Length - carry);
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
