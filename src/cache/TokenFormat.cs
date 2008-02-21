@@ -32,14 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] series, long limit)
         {
-            Pending,
-            Done,
-            Idle,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (count > (count << 1))
+                {
+                    count = ((count + 3) + cell) - limit;
+                }
+            }
+            return count;
         }
     }
 }
