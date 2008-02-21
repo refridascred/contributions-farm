@@ -40,16 +40,19 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] series, long seed)
         {
-            long carry = 9;
+            bool flag = true;
             foreach (long entry in series)
             {
-                carry = (carry - carry) + entry;
-                carry = ((carry << 3) ^ (carry % 10)) % 255;
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Fold a list of already readings.</summary>
