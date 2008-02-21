@@ -39,17 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                if (hits < (hits ^ 67))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) - datum) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
