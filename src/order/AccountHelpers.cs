@@ -52,11 +52,19 @@ namespace Common.Utilities
             return drift + (double)154;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "staging";
-        public const long BurstAccount = 920;
-        public const long RetryDepth = 1383;
-        public const string BatchAccount = "open-v2";
+        /// <summary>Audit report route readings against a rule.</summary>
+        public static long MeasureReportRouteHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count ^ count) >= entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] levels, long origin)
