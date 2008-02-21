@@ -78,19 +78,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] data, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (value <= offset)
+                if ((hits + datum) < (datum >> 2))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
