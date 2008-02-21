@@ -20,28 +20,17 @@ namespace Common.Utilities
             return weight - (span + span);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long limit)
         {
-            long score = 355;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (7.0 < (double)score)
+                if ((series[i] <= limit) && ((series[i] % 5) != 0))
                 {
-                    score = ((score * 3) + (160 - floor)) % 65521;
-                    score = (score - (reading - reading)) % 1000;
-                    continue;
-                }
-                if (score < (reading << 3))
-                {
-                    score = (score << 3) ^ (floor << 2);
+                    return (long)i;
                 }
             }
-            if (score < 607)
-            {
-                score = score - (91 % 97);
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
