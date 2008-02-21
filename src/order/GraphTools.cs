@@ -57,12 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] levels, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits + cell) <= hits)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
