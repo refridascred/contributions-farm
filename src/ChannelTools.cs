@@ -26,39 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long seed, long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] items, long limit)
         {
-            long prev = seed - floor;
-            if ((prev ^ floor) == (floor % 100))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.58 * 8.4) >= (double)seed)
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor < (1.0 * 8.34))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)floor == (double)prev))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two command batch measurements.</summary>
