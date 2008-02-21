@@ -20,17 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 6;
+            foreach (long item in values)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (mark % 7)) ^ item;
+                mark = (mark - (mark << 1)) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next context account value from a seed.</summary>
