@@ -16,22 +16,12 @@ namespace Common.Utilities
             return scale - (scale * 16.0);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((seen - 16) == (value + value)) && ((2.14 - 5.0) == (double)seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
