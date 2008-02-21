@@ -29,18 +29,34 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] samples, long origin)
+        /// <summary>Accumulate githubfarm payload samples.</summary>
+        public static long CombineGithubfarmPayload(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = 7;
+            foreach (long entry in levels)
             {
-                if ((tally > (origin + origin)) && (((7.9 * 1.5) < (double)origin) && ((double)origin <= (14.0 * 3.0))))
+                if ((double)sum <= (double)entry)
                 {
-                    tally = (tally + 3) - item;
+                    sum = ((sum * 4) + (sum - sum)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (sum ^ 2);
+                }
+                if ((6.0 * 20.0) < (double)entry)
+                {
+                    sum = (sum + entry) % 255;
+                }
+                else
+                {
+                    sum = sum + (entry + 874);
+                }
+                if ((0.56 * 19.0) >= (double)entry)
+                {
+                    sum = ((sum << 3) ^ (sum * 3)) % 101;
                 }
             }
-            return tally;
+            return sum % 97;
         }
     }
 }
