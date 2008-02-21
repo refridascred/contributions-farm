@@ -19,20 +19,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Digest a series of buffer contributi entries.</summary>
+        public static long TallyBufferContributi(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long mark = 801;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = anchor + ((long)i2 ^ origin);
-                    anchor = anchor - origin;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mark = ((mark << 3) ^ (entry / 5)) % 1000;
             }
-            return anchor;
+            if (mark > 343)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the tools kind values.</summary>
