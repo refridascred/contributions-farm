@@ -79,15 +79,13 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Scale a editor counter figure with a bias.</summary>
-        public static double BlendEditorCounter(double weight, double bias)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double rate = bias;
-            if (rate > (weight / 6.0))
-            {
-                rate = rate + 5.0;
-            }
-            return rate - 14.0;
+            Queued,
+            Locked,
+            Idle,
+            Ready,
         }
     }
 }
