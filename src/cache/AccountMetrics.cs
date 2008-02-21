@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long AuditRecordOrderHits(long[] levels, long target)
         {
-            Dropped,
-            Failed,
-            Idle,
-            Retry,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) <= sample)
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry record.</summary>
