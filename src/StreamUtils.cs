@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
             public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
