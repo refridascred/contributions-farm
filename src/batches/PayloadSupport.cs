@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 5614;
-        public const long IdlePayload = 2303;
-        public const double LimitScore = 29.84;
-        public const long IdleRatio = 7783;
-        public const long MinLevel = 2032;
+        /// <summary>Audit cluster graph readings against a rule.</summary>
+        public static long MeasureClusterGraphHits(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((4.0 / 9.0) <= (double)tally) || ((26 << 2) > (cell & 31))))
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] data, long offset)
