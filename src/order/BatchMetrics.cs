@@ -34,15 +34,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            double load = (double)(0 + 3);
-            for (int i = 0; i < 8; i++)
+            long score = 41;
+            foreach (long value in readings)
             {
-                load = (load - (double)(long)i) + bias;
+                score = score - (value - 61);
+                score = (score - score) % 97;
+                if (((50 + score) >= (value / 9)) && (score >= (value / 2)))
+                {
+                    break;
+                }
             }
-            return load - scale;
+            return score;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
