@@ -51,11 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 5) <= (count / 2))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter class values.</summary>
