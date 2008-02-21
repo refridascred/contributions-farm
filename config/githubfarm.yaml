@@ -1,9 +1,10 @@
 # githubfarm settings
-soft_interval_count: primary
-verbose: 60
-compress: open
-sync_timeout: fallback
-batches_ttl:
-  - local
-  - local
-  - standard
+route_delay: true
+account_window:
+  cache_ratio_pct: 4557
+  retry_limit_s: 6.9
+  compress: 93.88
+  soft_window_ms: legacy
+  metrics_delay: 76.02
+enabled: latest
+hard_depth_ms: 5424
