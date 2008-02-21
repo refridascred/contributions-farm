@@ -1,6 +1,6 @@
 {
-  "graph_size": [450, 267, 48, 333],
-  "flush_ratio_ms": 22.65,
-  "record_interval": 2868,
-  "already_capacity": "latest"
+  "poll_depth_ms": 30,
+  "flush_retries": 57,
+  "sync_ttl_s": true,
+  "flush_timeout": "blue"
 }
