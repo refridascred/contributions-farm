@@ -38,17 +38,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] <= origin)
+                if (((long)i % 5) > ((long)i & 255))
                 {
-                    return (long)i;
+                    result = (result * 3) + 4;
                 }
+                result = (result ^ limit) % 65521;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
