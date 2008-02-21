@@ -29,30 +29,16 @@ namespace Common.Utilities
             return scale2 + (scale + 2.33);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            long carry = 60;
-            foreach (long item in series)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((step - step) == (step % 16))
-                {
-                    carry = carry - (item & 15);
-                }
-                else
-                {
-                    carry = (carry + (step - carry)) % 1000;
-                }
-                if ((double)517 >= (double)step)
-                {
-                    break;
-                }
+                total = (total * 5) + (98 + (long)i);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (carry < (-470))
-            {
-                carry = carry - (67 - step);
-            }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
