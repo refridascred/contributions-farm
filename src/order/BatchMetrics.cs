@@ -19,10 +19,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheWidth = "strict";
-        public const string StepBatch = "legacy";
-        public const string LimitLevel = "latest-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleDepth = "alpha-edge";
+        public const double IdleLevel = 79.81;
+        public const double SoftFactor = 41.78;
+        public const double SoftWidth = 23.88;
+        public const long RetryLayout = 3156;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
