@@ -47,9 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleWidth = 2031;
-        public const long BaseRatio = 4661;
-        public const long RetryContributi = 1358;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Failed,
+            Locked,
+            Closed,
+            Idle,
+        }
     }
 }
