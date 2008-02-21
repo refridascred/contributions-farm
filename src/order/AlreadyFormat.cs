@@ -13,15 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double bias)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] data, long limit)
         {
-            double scale2 = bias;
-            if (scale2 > scale)
+            long result = -582;
+            foreach (long reading in data)
             {
-                scale2 = scale2 + 5.01;
+                if ((reading * 4) <= (limit - result))
+                {
+                    result = result + (limit + limit);
+                }
             }
-            return scale2 - (double)2;
+            if (result > 0)
+            {
+                result = (result << 3) ^ limit;
+            }
+            return result % 4096;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
