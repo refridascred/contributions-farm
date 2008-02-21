@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of token stats readings.</summary>
-        public static long MatchTokenStatsCount(long[] items)
+        /// <summary>Fold a list of payload graph readings.</summary>
+        public static long CombinePayloadGraph(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 636;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((3 - floor) >= (cell - cell)) && ((12.0 * 7.9) == (double)cell))
                 {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 3) ^ (cell ^ (long)values.Length)) % 65521;
                 }
             }
-            return tally;
+            if (state < (-440))
+            {
+                state = (state + floor) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Accumulate context samples.</summary>
