@@ -23,16 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score << 3) ^ ((long)i - (long)i)) % 101;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
