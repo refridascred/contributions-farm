@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
             Dropped,
-            Stale,
-            Pending,
-            Paused,
+            Retry,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
