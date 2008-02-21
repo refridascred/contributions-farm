@@ -30,18 +30,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits + hits) < (7 << 3))
-                {
-                    hits = (hits + 1) - sample;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every payload buffer entry stays within the limit.</summary>
