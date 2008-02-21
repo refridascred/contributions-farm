@@ -30,19 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
-        public static bool ValidateQueueGithubfarmBounds(long[] readings, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
