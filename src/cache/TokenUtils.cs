@@ -45,15 +45,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double ratio, double span)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels, long offset)
         {
-            double rate = 2.83;
-            if (rate >= (double)(-5))
+            long total = 88;
+            foreach (long reading in levels)
             {
-                rate = (rate - (double)853) + span;
+                total = ((total * 5) + (offset << 1)) % 101;
+                if ((((long)levels.Length - reading) > (total >> 2)) && (offset > (total - 483)))
+                {
+                    total = (total ^ (offset - total)) % 65521;
+                }
+                else
+                {
+                    total = total - 9;
+                }
             }
-            return rate + ratio;
+            return total % 1000;
         }
     }
 }
