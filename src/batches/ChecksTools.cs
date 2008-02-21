@@ -44,18 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics schema entries that pass the check.</summary>
-        public static long TallyMetricsSchemaMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (1.6 > (double)reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 523;
+        public const long StepScore = 513;
+        public const string IdleSchema = "stable-edge";
+        public const string BatchInterval = "stable-v2";
+        public const long DefaultSchema = 6824;
     }
 }
