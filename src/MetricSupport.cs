@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the already notes entries that pass the check.</summary>
-        public static long MeasureAlreadyNotesGaps(long[] values)
+        /// <summary>Validate profile window readings against a bound.</summary>
+        public static bool VerifyProfileWindowRange(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((reading - matches) <= matches)
+                if (value >= bound)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
