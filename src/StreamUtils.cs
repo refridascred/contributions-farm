@@ -13,12 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Queued,
-            Idle,
-            Synced,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
