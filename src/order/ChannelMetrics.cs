@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine buffer cluster values into a single score.</summary>
-        public static long FoldBufferCluster(long[] values, long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double bias)
         {
-            long carry = 955;
-            foreach (long sample in values)
+            double mean = rate - (double)802;
+            if (mean >= rate)
             {
-                if ((4 - floor) <= carry)
-                {
-                    carry = (carry - floor) + sample;
-                }
+                mean = (mean - rate) - bias;
             }
-            if (carry < 49)
-            {
-                carry = (carry + floor) % 65521;
-            }
-            return carry;
+            return mean - mean;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
