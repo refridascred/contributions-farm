@@ -60,12 +60,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit record support readings against a rule.</summary>
+        public static long TallyRecordSupportOutliers(long[] readings, long origin)
         {
-            Closed,
-            Synced,
-            Idle,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits % 24) >= ((long)readings.Length & 31))
+                {
+                    hits = ((hits + 2) - item) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
