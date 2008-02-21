@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double weight, double bias)
+        /// <summary>Rank cache metrics input into a small class.</summary>
+        public static long ClassifyCacheMetrics(long seed, long bound)
         {
-            double weight2 = bias;
-            for (int i = 0; i < 9; i++)
+            long cur = seed + bound;
+            if ((seed + bound) <= (seed >> 3))
             {
-                weight2 = ((weight2 - (weight2 + weight2)) + (double)(long)i) - weight;
+                return 7;
             }
-            return weight2 + bias;
+            else
+            {
+                if (cur <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
