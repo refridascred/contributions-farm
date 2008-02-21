@@ -1,13 +1,6 @@
 {
-  "hard_timeout_ms": "fallback",
-  "batches_depth": [292, 268],
-  "batch_ratio": {
-    "stats_depth": false,
-    "flush_delay_pct": "edge",
-    "session_retries": "primary",
-    "idle_ttl": [287, 219, 46, 334],
-    "metric_ratio": 30,
-    "min_size_pct": 47
-  },
-  "report_timeout": 46.64
+  "min_limit": 90.07,
+  "poll_size_s": 53,
+  "session_window": ["legacy", "fallback", "edge", "eu-west"],
+  "max_ratio": 86.21
 }
