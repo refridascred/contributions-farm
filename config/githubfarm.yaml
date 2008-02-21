@@ -1,6 +1,6 @@
 # githubfarm settings
-max_window: 93.86
-default_limit_ms:
-  - fallback
-  - standard
-contributi_window: 52.41
+max_ttl: 60
+context_ratio: 16.73
+record_window: 6425
+readonly: 57.53
+flush_delay: false
