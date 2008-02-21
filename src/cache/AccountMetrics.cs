@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long seed, long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long origin)
         {
-            if (((target << 2) != (target + seed)) || (target > (763 << 2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (475 < (seed ^ seed))
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed != (5.8 + 19.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed * 4) >= (seed - 812))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
