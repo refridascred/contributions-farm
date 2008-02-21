@@ -23,14 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long target, long seed)
         {
-            Synced,
-            Pending,
-            New,
-            Locked,
-            Draft,
+            if (2 >= target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed / 3) > seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
