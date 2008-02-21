@@ -20,22 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "strict-v2";
+        public const long LimitScore = 951;
+        public const long HardInterval = 5436;
+        public const long BurstDepth = 4705;
 
         /// <summary>Match up command window samples.</summary>
         public static long CompareCommandWindowCount(long[] data)
