@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSpan = 64.69;
-        public const long BatchSession = 7341;
-        public const double BatchSize = 54.82;
-        public const long CacheRatio = 5968;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a support tools value against two limits.</summary>
         public static long ClassifySupportTools(long target, long step)
