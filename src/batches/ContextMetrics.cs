@@ -14,11 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
