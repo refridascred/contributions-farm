@@ -19,14 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long sum = 6;
+            foreach (long entry in levels)
             {
-                sum = (sum * 2) + 68;
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = ((sum * 2) + ((long)i * 4)) % 65521;
+                }
+                if (!((sum * 5) >= (entry % 64)))
+                {
+                    sum = sum - (560 ^ entry);
+                }
             }
             return sum;
         }
