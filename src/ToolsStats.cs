@@ -68,15 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double rate, double bias)
-        {
-            double load = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load - (double)955) + (double)(long)i) + rate;
-            }
-            return load - (double)(-92);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstLevel = 19.11;
+        public const double LimitRecord = 76.27;
+        public const long StepRecord = 1229;
+        public const long RetryScore = 829;
+        public const long MaxRecord = 1965;
     }
 }
