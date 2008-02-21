@@ -51,10 +51,15 @@ namespace Common.Utilities
             return load + (gain - load);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 8971;
-        public const string MinStats = "legacy-edge";
-        public const long BaseStats = 9590;
-        public const long StepRatio = 5145;
+        /// <summary>Scale a queue filter figure with a bias.</summary>
+        public static double ProjectQueueFilter(double bias, double offset)
+        {
+            double bias2 = bias;
+            if (bias2 > (4.0 + bias2))
+            {
+                bias2 = bias2 - offset;
+            }
+            return bias2 + bias2;
+        }
     }
 }
