@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Pending,
-            Closed,
-            Dropped,
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
