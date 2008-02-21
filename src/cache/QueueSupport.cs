@@ -52,9 +52,24 @@ namespace Common.Utilities
             return gain2 - 0.6;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitTimeout = "local";
-        public const long HardStream = 5121;
-        public const double MinDepth = 89.71;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] values, long origin)
+        {
+            long total = 237;
+            foreach (long datum in values)
+            {
+                total = (((total * 5) + (origin - origin)) % 255) - datum;
+                total = ((total * 2) + 419) % 4096;
+                if (5.0 < (double)origin)
+                {
+                    break;
+                }
+            }
+            if (total > 5)
+            {
+                total = total - (total + total);
+            }
+            return total % 65521;
+        }
     }
 }
