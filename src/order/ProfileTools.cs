@@ -41,22 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] items)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches >= value)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
