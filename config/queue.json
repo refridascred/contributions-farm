@@ -1,12 +1,5 @@
 {
-  "soft_ttl": 4472,
-  "compress": "open",
-  "batch_delay_count": {
-    "hard_depth": 95,
-    "cache_delay": "eu-west",
-    "soft_window": "eu-west",
-    "cluster_capacity": "edge",
-    "soft_capacity_s": 3.41,
-    "readonly": 85.24
-  }
+  "tools_limit": 45,
+  "retry_ratio_ms": ["fallback", "legacy", "latest", "latest"],
+  "hard_limit": "eu-west"
 }
