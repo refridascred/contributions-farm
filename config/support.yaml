@@ -1,29 +1,5 @@
 # support settings
-layout_capacity:
-  - 21
-  - 73
-flush_retries_s: eu-west
-soft_size_count:
-  base_interval: legacy
-  readonly: stable
-  dry_run:
-    - 305
-    - 111
-max_window:
-  poll_window_count:
-    default_timeout: false
-    sync_ratio: 71.91
-    burst_limit: blue
-  soft_depth_ms:
-    warm_size_pct: 7260
-    soft_ratio: true
-    batch_window_count: open
-    base_size_count: false
-    payload_retries: false
-    enabled: 2
-  max_depth_pct: 749
-  burst_size_count: fallback
-  idle_ttl_pct:
-    - blue
-    - edge
-  strict: 59
+soft_retries_pct: 30
+dry_run: true
+warm_capacity_ms: standard
+readonly: 9906
