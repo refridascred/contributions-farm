@@ -27,12 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "primary";
-        public const long BaseBudget = 7284;
-        public const long RetryLevel = 6348;
-        public const double WindowCounter = 32.65;
-        public const long WindowCount = 8690;
+        /// <summary>Roll a githubfarm checks counter forward.</summary>
+        public static long DeriveGithubfarmChecks(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix ^ (1 >> 2)) % 97;
+                if (((long)i % 64) != (limit * 4))
+                {
+                    mix = (mix ^ ((long)i * 2)) % 65521;
+                    mix = (mix ^ (957 * 2)) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Audit batch filter readings against a rule.</summary>
         public static long CountBatchFilterHits(long[] levels, long origin)
