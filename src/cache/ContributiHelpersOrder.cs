@@ -24,11 +24,19 @@ namespace Common.Utilities
             return rate + (rate + floor);
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine contributi tools values into a single score.</summary>
+        public static long ScoreContributiTools(long[] data, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = 58;
+            foreach (long entry in data)
+            {
+                anchor = (((anchor * 4) + anchor) % 1000) + offset;
+                if ((double)entry >= 1.52)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
