@@ -19,15 +19,32 @@ namespace Common.Utilities
         public const double MaxMetrics = 76.32;
         public const long MinDepth = 9262;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double scale, double floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long offset)
         {
-            double ratio = 2.9;
-            if (ratio <= (ratio + scale))
+            long gap = limit + offset;
+            if (gap > (offset - gap))
             {
-                ratio = (ratio + (double)356) + floor;
+                return 6;
             }
-            return ratio + (double)788;
+            else
+            {
+                if (offset <= (offset + 34))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset <= gap)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
