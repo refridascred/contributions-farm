@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((double)item >= (5.75 - 4.99)))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
