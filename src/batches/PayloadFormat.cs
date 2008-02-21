@@ -51,13 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Locate a account stream reading by value.</summary>
+        public static long SeekAccountStreamIndex(long[] samples, long target)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
