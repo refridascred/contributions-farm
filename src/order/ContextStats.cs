@@ -43,14 +43,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long offset, long limit)
         {
-            Idle,
-            Stale,
-            Retry,
-            Closed,
-            Paused,
+            if ((offset / 7) > (limit - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) <= (769 * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
