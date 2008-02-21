@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "stable-v2";
-        public const string BatchStats = "primary-v2";
-        public const long HardStats = 5765;
-        public const double DefaultStats = 59.71;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] values, long origin)
+        {
+            long total = 6;
+            foreach (long reading in values)
+            {
+                total = ((total + origin) % 65521) ^ reading;
+                total = total ^ (5 + (-92));
+                if ((double)total <= (4.2 * 9.13))
+                {
+                    total = ((total * 5) + origin) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] readings)
