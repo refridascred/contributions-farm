@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long origin)
         {
-            Locked,
-            Paused,
-            Ready,
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((mark + origin) > ((long)i & 7)))
+                {
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Rank contributi order input into a small class.</summary>
