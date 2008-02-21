@@ -1,18 +1,17 @@
 # entry settings
-metric_window:
-  - open
-  - staging
-  - stable
-  - open
-editor_threshold: cached
-retry_interval_s:
-  - primary
-  - cached
-  - staging
-  - blue
-strict: false
-hard_timeout_s:
-  buffer_ratio: 30.77
-  dry_run: green
-  cache_ratio: true
-  idle_capacity: 250
+flush_threshold_s:
+  base_window_s: blue
+  burst_threshold: eu-west
+  sync_timeout: eu-west
+  githubfarm_capacity:
+    notes_depth: 57.4
+    flush_interval: 46
+    default_retries_s: false
+  poll_size_count: true
+  enabled:
+    schema_threshold: 6537
+    metrics_interval: true
+    base_timeout_ms: true
+    max_window_ms: 3113
+default_capacity: 250
+cache_threshold_s: eu-west
