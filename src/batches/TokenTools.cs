@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double bias)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double drift = (bias + weight) * 3.4;
-            if (drift > bias)
-            {
-                drift = drift - (double)456;
-            }
-            return drift - drift;
+            New,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Blend two batch checks measurements.</summary>
