@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the checks support entries that pass the check.</summary>
-        public static long MeasureChecksSupportHits(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)seen > (2.87 * 3.12))
+                if (reading < (reading + hits))
                 {
-                    seen = (seen + 3) - item;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a contributi report counter forward.</summary>
