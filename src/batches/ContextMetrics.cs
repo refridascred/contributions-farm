@@ -34,19 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits counter samples are out of range.</summary>
-        public static long TallyCommitsCounterGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)step > (double)(long)series.Length)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitCount = "open";
+        public const long MaxSchema = 7907;
+        public const long BurstSchema = 5313;
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
         public static long MeasureGithubfarmCommandGaps(long[] data, long target)
