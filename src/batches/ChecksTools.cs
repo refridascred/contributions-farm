@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4559;
-        public const long CacheCommand = 7732;
-        public const double RetryTimeout = 91.39;
-        public const long WindowCommand = 3911;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                long offset2 = (mix - offset) + (6 + offset);
+                if (offset2 > offset)
+                {
+                    offset2 = offset2 ^ (offset + (long)i);
+                    continue;
+                }
+                offset2 = ((offset2 * 4) + (offset2 & 3)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] readings, long limit)
