@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] series, long limit)
         {
-            double drift = (3.3 + floor) / 4.0;
-            if (drift >= (floor / 7.0))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                drift = (drift + (double)237) - scale;
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - (double)286;
+            return ok;
         }
 
         /// <summary>Describe the filter phase values.</summary>
