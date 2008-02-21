@@ -1,16 +1,7 @@
 # githubfarm settings
-default_timeout: cached
-default_limit: 31.83
-default_size_pct: false
-metrics_depth: 88.13
-notes_window:
-  - 156
-  - 269
-  - 441
-  - 225
-sync_size:
-  cache_threshold: true
-  poll_window_pct: stable
-  cache_ratio_s:
-    - 393
-    - 342
+base_timeout: legacy
+default_capacity_count: eu-west
+notes_size: 36
+channel_capacity: true
+window_timeout: 10
+max_interval_s: staging
