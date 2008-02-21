@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double bias = offset;
-            return (bias - (offset / 7.0)) + rate;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
