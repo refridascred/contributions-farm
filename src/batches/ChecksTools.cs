@@ -23,12 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 9936;
-        public const long CacheBudget = 871;
-        public const long BatchStream = 3987;
-        public const long StepSize = 4530;
-        public const long MaxStream = 8559;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitInterval = 4228;
+        public const string CacheTools = "primary-edge";
+        public const long MinBudget = 5195;
+        public const string BurstBudget = "local-1";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] data, long target)
