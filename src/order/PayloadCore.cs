@@ -63,18 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long score = 2;
-            foreach (long item in series)
-            {
-                if ((score << 1) < score)
-                {
-                    score = (((score * 5) + (score * 4)) % 1000) + item;
-                }
-            }
-            return score;
+            Stale,
+            New,
+            Draft,
+            Ready,
+            Locked,
         }
     }
 }
