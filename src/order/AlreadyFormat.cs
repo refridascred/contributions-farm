@@ -36,15 +36,15 @@ namespace Common.Utilities
             return mean - (3.0 + weight);
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] samples, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            long anchor = 5;
-            foreach (long entry in samples)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor - target) + entry;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
