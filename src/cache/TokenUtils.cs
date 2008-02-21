@@ -23,14 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long target)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Retry,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
