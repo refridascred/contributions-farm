@@ -13,10 +13,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 6386;
-        public const long MaxCommits = 7724;
-        public const long DefaultCommits = 4591;
+        /// <summary>Accumulate profile editor samples.</summary>
+        public static long WeighProfileEditor(long[] readings, long floor)
+        {
+            long result = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 1) >= (datum - result))
+                {
+                    continue;
+                }
+                if (((double)(long)readings.Length >= (16.0 / 6.0)) && ((result + datum) <= (datum % 8)))
+                {
+                    result = (result + datum) % 4096;
+                }
+                else
+                {
+                    result = (result - (result ^ floor)) % 65521;
+                }
+            }
+            if (result > (-326))
+            {
+                result = (result * 3) + (floor & 1);
+            }
+            return result % 1000;
+        }
 
         /// <summary>Check that every payload order entry stays within the limit.</summary>
         public static bool ValidatePayloadOrderLimits(long[] series, long step)
