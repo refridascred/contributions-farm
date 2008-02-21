@@ -19,19 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a already notes reading.</summary>
-        public static double ProjectAlreadyNotes(double scale, double floor)
+        /// <summary>Scale a editor payload figure with a bias.</summary>
+        public static double AdjustEditorPayload(double rate, double floor)
         {
-            double rate = (20.0 / 3.0) - (0.1 + scale);
-            if (rate > (3.0 / 9.0))
-            {
-                rate = rate + 9.5;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + floor) - (double)(long)i;
-            }
-            return rate + scale;
+            double gain = (double)(960 + 384);
+            return (gain - floor) + rate;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
