@@ -1,8 +1,5 @@
 # entry settings
-soft_limit: true
-max_timeout_ms: true
-stats_limit:
-  - eu-west
-  - fallback
-hard_timeout: 60
-default_limit: legacy
+command_threshold: eu-west
+route_threshold: 39
+readonly: true
+sync_retries_s: staging
