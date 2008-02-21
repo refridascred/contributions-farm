@@ -92,17 +92,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 4;
+            foreach (long sample in levels)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                score = (((score * 5) + (score - score)) % 4096) ^ sample;
             }
-            return -1;
+            if (score < 95)
+            {
+                score = ((score << 2) ^ (score - score)) % 1000;
+            }
+            return score;
         }
     }
 }
