@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 97.0;
-        public const double HardBudget = 36.26;
-        public const long BaseCounter = 9764;
-        public const long WindowCounter = 1457;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] data)
