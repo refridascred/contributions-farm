@@ -13,11 +13,40 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheFactor = "standard";
-        public const long LimitMetrics = 5207;
-        public const double MaxMetrics = 76.32;
-        public const long MinDepth = 9262;
+        /// <summary>Rank contributi order input into a small class.</summary>
+        public static long SortContributiOrder(long bound, long step)
+        {
+            long span = bound ^ step;
+            if ((bound * 3) != (918 & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)step >= (13.0 * 2.6)) || ((922 / 8) <= (bound * 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) < (bound << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - span) < (span + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long limit, long offset)
