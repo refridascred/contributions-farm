@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((target + 87) < item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the stream class values.</summary>
