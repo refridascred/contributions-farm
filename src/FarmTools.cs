@@ -28,13 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
