@@ -40,22 +40,19 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha";
         public const long RetryGraph = 2141;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] data)
+        /// <summary>Validate batch session readings against a bound.</summary>
+        public static bool ValidateBatchSessionLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((reading >= (37 * 5)) && ((0 ^ reading) > ((long)data.Length / 7)))
+                if (cell != seed)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
