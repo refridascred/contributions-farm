@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long HardRecord = 546;
         public const long MinRecord = 2355;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitFactor = "open-v2";
-        public const long BaseLevel = 7252;
-        public const string MaxAlready = "cached-1";
-        public const string DefaultAlready = "staging";
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
