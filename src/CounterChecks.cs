@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double floor)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            double ratio = 7.4;
+            return ((ratio - (double)788) + scale) + floor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
