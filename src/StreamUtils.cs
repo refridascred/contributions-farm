@@ -31,12 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Closed,
-            Stale,
-            Queued,
+            New,
+            Dropped,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
