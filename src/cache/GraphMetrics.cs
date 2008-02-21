@@ -60,22 +60,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            long state = 703;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state - 339) > (state % 100))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state * 5) + (1 + entry);
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 1)
-            {
-                state = state ^ (3 - origin);
-            }
-            return state;
+            return tally;
         }
     }
 }
