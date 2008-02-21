@@ -23,15 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                score = ((score << 3) ^ ((long)i - (long)i)) % 101;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
