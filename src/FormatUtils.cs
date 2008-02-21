@@ -42,18 +42,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] readings, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = 31;
+            foreach (long datum in levels)
             {
-                if ((value % 5) == (6 % 5))
+                if (!((double)sum <= 8.0))
                 {
-                    matches = (matches + 1) - bound;
+                    sum = sum ^ (datum + 46);
+                }
+                if ((94 - sum) < (datum + datum))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a route options.</summary>
