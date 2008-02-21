@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const string MaxRatio = "legacy-1";
         public const long HardInterval = 3096;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public double Count { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 6750;
+        public const double CacheLayout = 13.09;
+        public const long HardWidth = 234;
+        public const string MaxFactor = "latest";
+        public const double MinSize = 90.68;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
