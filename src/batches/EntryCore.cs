@@ -29,22 +29,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] items)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((hits % 64) <= item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Blend two report measurements.</summary>
