@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const long BatchLevel = 5555;
         public const long WindowLevel = 3957;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long total = 822;
+            foreach (long reading in readings)
             {
-                if ((offset ^ carry) >= (carry + offset))
+                if ((bound <= (bound + reading)) || ((reading - total) > (total ^ reading)))
                 {
-                    carry = ((carry << 2) ^ ((long)i - (long)i)) % 97;
+                    total = ((total << 3) ^ (reading << 2)) % 1000;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            if (total > 265)
+            {
+                total = ((total * 3) + (bound - 576)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate already cluster samples.</summary>
