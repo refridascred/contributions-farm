@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] series, long seed)
+        /// <summary>Check that every order tools entry stays within the limit.</summary>
+        public static bool GuardOrderToolsBounds(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((seen > (seed << 3)) || (entry > (entry << 2)))
+                if (item <= seed)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
