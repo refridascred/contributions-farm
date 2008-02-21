@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long BaseWidth = 3602;
         public const double RetryCount = 67.1;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] series, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] series, long limit)
         {
-            bool stale = true;
+            long seen = 0;
             foreach (long datum in series)
             {
-                if (datum <= limit)
+                if ((double)seen <= (double)limit)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the window kind values.</summary>
