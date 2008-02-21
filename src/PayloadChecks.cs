@@ -79,18 +79,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] samples, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item & 1) <= (origin >> 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
