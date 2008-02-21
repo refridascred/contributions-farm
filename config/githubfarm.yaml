@@ -1,12 +1,4 @@
 # githubfarm settings
-sync_retries_count: blue
-metric_depth:
-  commits_ttl: standard
-  batch_retries_ms: 8802
-  layout_retries: 87
-  verbose: fallback
-  cache_retries_ms: 14
-  graph_capacity: 49
-record_limit: 100
-idle_threshold: 69
-audit: standard
+contributi_window: true
+warm_threshold_pct: cached
+metrics_threshold: stable
