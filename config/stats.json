@@ -1,13 +1,7 @@
 {
-  "session_ttl": 80.27,
-  "warm_depth": 65.19,
-  "max_threshold": {
-    "min_capacity_pct": [126, 184, 340, 96],
-    "default_interval_count": 7,
-    "poll_ratio": 500,
-    "persist": true,
-    "audit": 4769,
-    "default_limit_s": 250
-  },
-  "idle_ttl_pct": 30
+  "strict": true,
+  "cache_delay_count": 500,
+  "soft_retries": 60,
+  "entry_interval": ["fallback", "local", "fallback"],
+  "max_capacity_count": "strict"
 }
