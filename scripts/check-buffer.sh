@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=289
+for item in edge eu-west latest; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=341
 log "limit is ${BUFFER_LIMIT}"
