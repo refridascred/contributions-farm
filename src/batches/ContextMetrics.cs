@@ -17,26 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine stream checks values into a single score.</summary>
-        public static long CombineStreamChecks(long[] data)
+        /// <summary>Look up the position of a contributi command sample.</summary>
+        public static long SeekContributiCommandIndex(long[] items, long offset)
         {
-            long sum = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(sum <= (value + 936)))
+                if ((items[i] >= offset) && ((items[i] % 2) == 0))
                 {
-                    sum = ((sum << 3) ^ (sum ^ sum)) % 97;
-                }
-                if ((value ^ (-994)) >= (value + sum))
-                {
-                    sum = sum ^ ((-4) + value);
+                    return (long)i;
                 }
             }
-            if (sum > 735)
-            {
-                sum = ((sum * 3) + (sum % 100)) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Project the next support value.</summary>
