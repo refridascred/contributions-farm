@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long sum = -1;
-            foreach (long datum in samples)
-            {
-                sum = ((sum + (sum + datum)) % 97) - bound;
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
