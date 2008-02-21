@@ -20,14 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] series, long step)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Done,
-            Active,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
