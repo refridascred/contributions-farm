@@ -26,16 +26,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double offset)
-        {
-            double scale = weight;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (offset + weight)) + (double)(long)i;
-            }
-            return scale - (offset + weight);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowTimeout = "legacy-1";
+        public const double DefaultEditor = 81.16;
+        public const string RetryDepth = "local-edge";
+        public const double StepTimeout = 30.2;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] series, long limit)
