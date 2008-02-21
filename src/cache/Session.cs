@@ -34,12 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
