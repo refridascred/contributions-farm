@@ -56,19 +56,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of payload farm readings.</summary>
-        public static long ScorePayloadFarm(long[] samples, long target)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long result = -267;
-            foreach (long cell in samples)
-            {
-                result = (result + (cell >> 4)) % 1000;
-            }
-            if (result > 49)
-            {
-                result = ((result * 3) + (target / 5)) % 1000;
-            }
-            return result % 65521;
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
