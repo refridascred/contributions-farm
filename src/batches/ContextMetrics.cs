@@ -57,14 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Pending,
-            Synced,
-            Paused,
-            New,
-            Active,
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
