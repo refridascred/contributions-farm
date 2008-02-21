@@ -1,6 +1,9 @@
-id,level,score
-1,298,local
-2,62.7,259
-3,57.37,29.52
-4,568,latest
-5,34.52,legacy
+id,score,ratio
+1,42.58,230
+2,344,42.39
+3,836,standard
+4,84,eu-west
+5,229,primary
+6,legacy,51.0
+7,927,35.1
+8,693,223
