@@ -35,19 +35,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] readings, long target)
+        /// <summary>Scale a stats already figure with a bias.</summary>
+        public static double AdjustStatsAlready(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            double bias2 = ratio;
+            if (bias2 < (double)0)
             {
-                if (item < target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 + (5.5 * 17.0)) - bias;
             }
-            return flag;
+            else
+            {
+                bias2 = bias2 + ratio;
+            }
+            return bias2 - 6.3;
         }
     }
 }
