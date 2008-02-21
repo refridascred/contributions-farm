@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const double DefaultRecord = 49.57;
         public const string LimitRecord = "standard-v2";
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count route metrics pairs that satisfy a relation.</summary>
+        public static long MatchRouteMetricsCount(long[] levels)
         {
-            Active,
-            Paused,
-            New,
-            Retry,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter kind values.</summary>
