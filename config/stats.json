@@ -1,5 +1,17 @@
 {
-  "default_window_s": "green",
-  "order_ttl": 60,
-  "min_depth_count": [150, 155]
+  "hard_depth": 81.64,
+  "channel_delay": [433, 121, 132, 450],
+  "hard_size": 1114,
+  "min_size_count": {
+    "idle_limit": 3703,
+    "base_capacity_count": "strict",
+    "idle_interval": "eu-west",
+    "base_capacity_ms": {
+      "flush_threshold_ms": [463, 51, 208, 167],
+      "command_ratio": "green",
+      "audit": "fallback"
+    },
+    "soft_depth_s": "blue"
+  },
+  "verbose": ["primary", "cached", "primary"]
 }
