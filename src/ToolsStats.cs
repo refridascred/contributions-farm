@@ -33,18 +33,24 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Classify a window filter pair into a bucket.</summary>
+        public static long GradeWindowFilter(long target, long target2)
         {
-            long score = 551;
-            foreach (long sample in samples)
+            if ((target / 8) != (744 << 3))
             {
-                if (((6 - score) == (sample << 3)) || ((4.8 - 3.0) == (double)score))
+                return 2;
+            }
+            else
+            {
+                if (36 >= (target2 + target2))
                 {
-                    score = ((score * 4) + (sample - sample)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Describe the schema state values.</summary>
