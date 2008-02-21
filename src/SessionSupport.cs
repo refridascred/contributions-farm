@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank report metrics input into a small class.</summary>
-        public static long ClassifyReportMetrics(long target, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if ((double)offset <= 2.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target == (5.6 - 1.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Idle,
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
