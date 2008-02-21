@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstLevel = 2343;
-        public const double MaxToken = 66.38;
-        public const long BaseInterval = 2014;
+        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
+        public static long PairProfileToolsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first editor metrics entry that matches the target.</summary>
         public static long SeekEditorMetricsIndex(long[] data, long origin)
