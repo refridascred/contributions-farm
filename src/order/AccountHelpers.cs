@@ -55,19 +55,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two farm graph measurements.</summary>
-        public static double SmoothFarmGraph(double ratio, double bias)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] items, long bound)
         {
-            double drift = (ratio * 7.6) / 3.0;
-            if (drift > bias)
+            bool flag = true;
+            foreach (long item in items)
             {
-                drift = drift - (double)8;
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift - bias)) + (double)(long)i;
-            }
-            return drift + (double)154;
+            return flag;
         }
 
         /// <summary>Audit report route readings against a rule.</summary>
