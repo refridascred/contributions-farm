@@ -40,12 +40,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
+            Failed,
             Active,
             Synced,
-            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
