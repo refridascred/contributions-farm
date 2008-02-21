@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
+        public static long OverlapContextMetricsCount(long[] values)
         {
-            long anchor = 69;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (sample % 8)) % 255;
-                anchor = (anchor * 3) + (sample + 56);
-                if ((9.6 + 4.0) != (double)anchor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 616)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
