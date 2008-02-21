@@ -40,11 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples, long offset)
         {
-            double mean = rate;
-            return (mean + (9.5 * 7.3)) + floor;
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (88 > ((long)samples.Length - (-645)))
+                {
+                    hits = ((hits + 1) + sample) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a support report pair into a bucket.</summary>
