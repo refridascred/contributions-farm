@@ -27,19 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter payload readings against a bound.</summary>
-        public static bool ValidateCounterPayloadLimits(long[] values, long bound)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
