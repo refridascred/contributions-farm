@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowCount = 6396;
+        public const long RetrySupport = 4873;
+        public const long BaseSpan = 5988;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long IterateSession(long origin)
