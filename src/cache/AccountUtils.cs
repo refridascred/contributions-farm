@@ -29,15 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the checks graph series from a seed.</summary>
-        public static long DeriveChecksGraph(long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] items, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
     }
 }
