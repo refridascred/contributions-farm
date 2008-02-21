@@ -34,23 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next buffer contributi value from a seed.</summary>
-        public static long IterateBufferContributi(long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double gain, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            double load = span + (9.3 - span);
+            if (load > (span - 6.4))
             {
-                if ((((long)i * 3) == (sum ^ limit)) && ((limit >> 1) < (limit >> 3)))
-                {
-                    sum = sum + (long)i;
-                }
-                else
-                {
-                    sum = sum + (limit + sum);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                load = load - (10.0 - gain);
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (7.87 / 8.0)) + (double)(long)i;
+            }
+            return load + (gain - load);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
