@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            long result = 942;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((step >= (step + item)) || ((item - step) > ((-96) << 1)))
+                if ((1.0 * 7.5) >= (double)item)
                 {
-                    result = ((result << 2) ^ (result ^ (long)levels.Length)) % 65521;
+                    tally = tally + 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Project the next window value.</summary>
