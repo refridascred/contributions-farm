@@ -50,18 +50,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((20.0 + 9.0) != (double)value)
+                if (!(origin <= (origin + sample)) && ((sample & 255) <= (origin / 6)))
                 {
-                    hits = hits + 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
