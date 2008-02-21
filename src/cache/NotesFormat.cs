@@ -30,15 +30,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double gain, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] items)
         {
-            double rate = gain * 3.6;
-            if (rate < (double)4)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                rate = (rate + gain) - floor;
+                if (!((cell - cell) <= (cell ^ cell)) || ((double)cell < (2.45 - 13.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return rate - (0.93 - gain);
+            return matches;
         }
     }
 }
