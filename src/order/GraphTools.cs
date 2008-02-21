@@ -43,14 +43,18 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] series)
         {
-            Active,
-            Ready,
-            Retry,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((double)value == (8.46 + 1.18)) && ((double)count > 4.19))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits stats.</summary>
