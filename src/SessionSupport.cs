@@ -31,16 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Measure how many support editor samples are out of range.</summary>
+        public static long AuditSupportEditorHits(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                state = (state - 319) % 97;
-                state = ((state * 5) + (long)i) % 65521;
+                if ((double)hits <= (6.0 * 13.0))
+                {
+                    hits = (hits + 2) - reading;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
