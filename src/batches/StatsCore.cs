@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit support payload readings against a rule.</summary>
+        public static long TallySupportPayloadOutliers(long[] levels, long offset)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((878 >= (reading % 3)) && ((seen % 12) <= (seen % 3)))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
