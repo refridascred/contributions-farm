@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long floor, long floor2)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double weight, double bias)
         {
-            long edge = floor - floor2;
-            if ((edge - edge) != (floor + edge))
+            double weight2 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                weight2 = ((weight2 - (weight2 + weight2)) + (double)(long)i) - weight;
             }
-            else
-            {
-                if (edge > (edge ^ edge))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return weight2 + bias;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
