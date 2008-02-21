@@ -48,18 +48,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report cluster entries that pass the check.</summary>
-        public static long MeasureReportClusterHits(long[] data)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (hits > 50)
+                if (values[i] == target)
                 {
-                    hits = (hits + 1) - entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
