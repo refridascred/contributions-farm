@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next channel context value from a seed.</summary>
-        public static long RollChannelContext(long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] levels, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                state = (state << 3) ^ (offset >> 5);
-                state = ((state * 4) + offset) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((double)entry > (2.8 * 9.1))
+                {
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
