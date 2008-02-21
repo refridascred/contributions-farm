@@ -1,17 +1,8 @@
 # support settings
-entry_size: 2
-sync_capacity_s: blue
-cache_depth_count: fallback
-sync_size_ms: 75.83
-sync_interval:
-  dry_run:
-    - fallback
-    - legacy
-    - standard
-    - latest
-  min_interval_s: 69
-  soft_threshold: fallback
-  audit: open
-  idle_window_ms: standard
-  batches_timeout: 100
-default_delay_ms: staging
+enabled: local
+audit: true
+burst_delay: 46.1
+verbose:
+  - 2
+  - 252
+  - 113
