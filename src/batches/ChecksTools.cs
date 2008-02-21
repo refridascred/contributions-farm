@@ -27,21 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ ((long)i % 24)) % 255;
-                if (result <= (61 - target))
+                if (series[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                result = (result - (result + 4)) % 97;
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a stats already figure with a bias.</summary>
