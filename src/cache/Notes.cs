@@ -52,20 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools record readings against a bound.</summary>
-        public static bool VerifyToolsRecordLimits(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheRatio = 5397;
+        public const long MaxCluster = 2020;
+        public const string StepInterval = "fallback";
+        public const long IdleDepth = 1288;
 
         /// <summary>Scale a editor counter figure with a bias.</summary>
         public static double BlendEditorCounter(double weight, double bias)
