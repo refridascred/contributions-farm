@@ -24,12 +24,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Fold a list of session schema readings.</summary>
+        public static long DigestSessionSchema(long[] samples)
         {
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            long acc = 77;
+            foreach (long item in samples)
+            {
+                if ((acc % 60) >= (item ^ item))
+                {
+                    acc = (acc ^ (item + item)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (acc + acc)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
