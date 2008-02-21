@@ -65,11 +65,15 @@ namespace Common.Utilities
             return gain - (gain * 12.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseSpan = 18.15;
-        public const double WindowChecks = 8.2;
-        public const string SoftCount = "alpha-v2";
-        public const double SoftChecks = 12.53;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Draft,
+            Done,
+            Paused,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsLimits(long[] data, long offset)
