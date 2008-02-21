@@ -64,22 +64,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session tools entries that pass the check.</summary>
-        public static long MeasureSessionToolsHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading ^ reading) > (7 % 24)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5721;
+        public const long HardEntry = 9346;
+        public const double MinDepth = 75.46;
+        public const string DefaultEntry = "fallback-edge";
     }
 }
