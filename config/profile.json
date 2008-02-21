@@ -1,6 +1,10 @@
 {
-  "filter_delay": "staging",
-  "payload_retries": 250,
-  "base_threshold_count": 44,
-  "persist": 35
+  "dry_run": 88.74,
+  "batch_ttl": "open",
+  "support_window": {
+    "context_ratio": "cached",
+    "audit": "stable",
+    "warm_capacity_count": "eu-west",
+    "strict": false
+  }
 }
