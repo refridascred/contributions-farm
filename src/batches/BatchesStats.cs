@@ -35,39 +35,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long origin)
         {
-            long edge = offset - seed;
-            if ((double)offset >= 1.0)
+            long score = 3;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((edge % 12) == (edge + edge)) && ((double)seed != (9.61 - 11.0)))
+                if ((0.98 / 9.0) > (double)origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((edge + offset) <= (497 % 97)) && (edge > (seed >> 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((edge - offset) >= offset) || ((offset << 3) > offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = ((score * 4) + (datum * 5)) % 1000;
                 }
             }
+            if (score > 679)
+            {
+                score = ((score << 3) ^ score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the profile phase values.</summary>
