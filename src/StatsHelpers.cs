@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Compare every pair of entry account readings.</summary>
+        public static long CompareEntryAccountCount(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every token batches entry stays within the limit.</summary>
