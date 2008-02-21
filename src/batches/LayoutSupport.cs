@@ -47,12 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "open-v2";
-        public const long CacheInterval = 5671;
-        public const double LimitLevel = 70.32;
-        public const string WindowBudget = "strict-v2";
-        public const long MinSize = 8840;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double floor)
+        {
+            double weight = floor;
+            if (weight > 6.91)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - (weight + rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + rate) - (double)(long)i;
+            }
+            return weight + floor;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] readings)
