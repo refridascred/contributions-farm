@@ -14,19 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long ScoreBatchToken(long[] levels, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long sum = 3;
-            foreach (long datum in levels)
-            {
-                sum = sum + datum;
-            }
-            if (sum > 270)
-            {
-                sum = sum - (bound + 3);
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
