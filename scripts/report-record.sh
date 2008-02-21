@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=284
-log "limit is ${RECORD_LIMIT}"
-
-for item in standard latest; do
+for item in legacy latest edge; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
