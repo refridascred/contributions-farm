@@ -24,22 +24,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of session schema readings.</summary>
-        public static long DigestSessionSchema(long[] samples)
+        /// <summary>Measure how many stats record samples are out of range.</summary>
+        public static long CountStatsRecordGaps(long[] readings, long offset)
         {
-            long acc = 77;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((acc % 60) >= (item ^ item))
+                if ((datum + datum) <= (datum % 97))
                 {
-                    acc = (acc ^ (item + item)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (acc + acc)) % 97;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
