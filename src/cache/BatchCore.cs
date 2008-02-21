@@ -54,11 +54,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "primary-edge";
-        public const long LimitCount = 8413;
-        public const long IdleScore = 1575;
-        public const string MinMetric = "cached-v2";
-        public const string MaxMetric = "fallback-edge";
+        /// <summary>Iterate the editor checks series from a seed.</summary>
+        public static long IterateEditorChecks(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(origin <= (mark - (-6))))
+                {
+                    mark = (mark * 3) + origin;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (((mark * 2) + ((long)i % 100)) % 4096) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
