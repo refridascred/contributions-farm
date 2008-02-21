@@ -83,18 +83,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= (sample - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
