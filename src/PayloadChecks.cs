@@ -39,39 +39,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a commits notes value against two limits.</summary>
-        public static long SortCommitsNotes(long bound, long seed)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long bound2 = bound ^ seed;
-            if (!((5.0 - 8.7) == (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + 51) >= (bound * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound > (8.35 / 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)bound2 == (double)105)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Blend two account measurements.</summary>
