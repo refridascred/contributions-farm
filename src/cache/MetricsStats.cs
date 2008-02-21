@@ -35,12 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchCount = 59.71;
-        public const long BurstTimeout = 627;
-        public const double RetryGraph = 4.29;
-        public const long IdleGraph = 9773;
-        public const string LimitGraph = "staging";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double CacheEditor = 1.74;
