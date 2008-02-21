@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count % 7) != (244 * 5))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
