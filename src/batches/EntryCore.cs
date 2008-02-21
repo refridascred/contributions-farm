@@ -20,31 +20,13 @@ namespace Common.Utilities
         public const long BurstSpan = 2003;
         public const double LimitAccount = 27.06;
 
-        /// <summary>Classify a metrics farm pair into a bucket.</summary>
-        public static long BucketMetricsFarm(long floor, long limit)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((double)floor > (6.0 + 9.55))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.4 + 7.94) == (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + limit) > floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
