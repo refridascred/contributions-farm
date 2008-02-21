@@ -32,18 +32,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double bias, double span)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double scale = span - (bias + span);
+            if (scale > scale)
             {
-                if (((item & 63) > (hits - item)) && ((hits & 31) > (item * 2)))
-                {
-                    hits = hits + 1;
-                }
+                scale = scale + (span * 20.0);
             }
-            return hits;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + (8.4 * 5.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
