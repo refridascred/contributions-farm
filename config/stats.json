@@ -1,8 +1,18 @@
 {
-  "filter_capacity": [74, 287, 196],
-  "warm_depth": 70,
-  "soft_capacity_ms": 10,
-  "graph_ratio": true,
-  "base_threshold": [305, 417, 199],
-  "base_limit_pct": 21.93
+  "token_retries": {
+    "profile_retries": 92,
+    "notes_interval": 250,
+    "graph_threshold": 71,
+    "max_window": "standard",
+    "persist": {
+      "poll_ttl_count": [375, 429, 495, 346],
+      "cache_capacity": 60,
+      "retry_ratio_count": true,
+      "persist": "open",
+      "max_limit": [248, 213],
+      "token_threshold": "blue"
+    }
+  },
+  "retry_timeout_count": "legacy",
+  "cache_retries_ms": true
 }
