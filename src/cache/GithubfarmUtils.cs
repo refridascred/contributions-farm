@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double gain, double span)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double load = span + (9.3 - span);
-            if (load > (span - 6.4))
-            {
-                load = load - (10.0 - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (7.87 / 8.0)) + (double)(long)i;
-            }
-            return load + (gain - load);
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a queue filter figure with a bias.</summary>
