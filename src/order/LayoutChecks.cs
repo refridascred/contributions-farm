@@ -26,12 +26,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] data, long offset)
         {
-            Done,
-            Closed,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a entry counter reading by value.</summary>
