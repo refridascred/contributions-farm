@@ -45,22 +45,23 @@ namespace Common.Utilities
         public const long IdleFactor = 9518;
         public const long MinBatches = 8451;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] items, long target)
+        /// <summary>Iterate the record cluster series from a seed.</summary>
+        public static long RollRecordCluster(long origin)
         {
-            long mix = 94;
-            foreach (long entry in items)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)target >= (double)entry) && ((double)target > (4.2 / 5.0)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mix = (mix << 2) ^ target;
+                    anchor = ((anchor << 3) ^ ((long)i ^ anchor)) + (long)i2;
                 }
-                else
+                if (anchor >= (anchor + anchor))
                 {
-                    mix = (mix << 2) ^ (mix + target);
+                    anchor = ((anchor * 5) + (origin >> 4)) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
     }
 }
