@@ -38,15 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Pending,
-            Retry,
-            Idle,
-            Queued,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinCount = 54.86;
+        public const double WindowFactor = 2.34;
+        public const double BaseWidth = 14.84;
+        public const long IdleFactor = 9518;
+        public const long MinBatches = 8451;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] items, long target)
