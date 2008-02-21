@@ -1,9 +1,10 @@
 # support settings
-report_retries: open
-batch_delay_count: local
-idle_interval_s: blue
-filter_timeout:
-  - cached
-  - strict
-  - cached
-  - latest
+sync_size_pct: strict
+base_retries_ms: strict
+enabled:
+  - 34
+  - 345
+strict:
+  - green
+  - green
+warm_interval: 81.86
