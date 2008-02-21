@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the order class values.</summary>
