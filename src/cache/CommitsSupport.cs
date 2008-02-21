@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
