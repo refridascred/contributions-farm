@@ -61,17 +61,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry counter reading by value.</summary>
-        public static long FindEntryCounterIndex(long[] items, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long floor, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - floor) >= (floor - origin))
             {
-                if (items[i] < origin)
+                return 8;
+            }
+            else
+            {
+                if ((20.0 * 6.61) == (double)floor)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
