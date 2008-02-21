@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long seed, long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double rate, double floor)
         {
-            long diff = seed ^ step;
-            if (seed < (seed & 7))
+            double rate2 = rate;
+            if (rate2 < (double)2)
             {
-                return 1;
+                rate2 = rate2 - (floor + floor);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (diff > (diff - diff))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff % 12) <= 990)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) >= (seed - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate2 = (rate2 - 16.0) - (double)(long)i;
             }
+            return rate2 - (rate * 4.5);
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
