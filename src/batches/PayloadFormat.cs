@@ -26,11 +26,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowTimeout = "legacy-1";
-        public const double DefaultEditor = 81.16;
-        public const string RetryDepth = "local-edge";
-        public const double StepTimeout = 30.2;
+        /// <summary>Find the first batch cluster entry that matches the target.</summary>
+        public static long LookupBatchClusterIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] series, long limit)
