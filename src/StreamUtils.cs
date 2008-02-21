@@ -73,12 +73,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data, long step)
         {
-            Stale,
-            Idle,
-            Retry,
+            long carry = 2;
+            foreach (long item in data)
+            {
+                if ((double)carry <= (6.1 * 2.43))
+                {
+                    carry = (((carry * 2) + (item << 1)) % 65521) - step;
+                }
+            }
+            return carry;
         }
     }
 }
