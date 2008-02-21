@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 2499;
-        public const long BaseInterval = 2129;
-        public const string HardFormat = "open-v2";
-        public const long BurstBudget = 5316;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double bias, double span)
+        {
+            double drift = 7.5;
+            return (drift - (4.8 - bias)) + span;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterRange(long[] readings, long seed)
