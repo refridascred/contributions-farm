@@ -32,18 +32,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] series, long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (count > (count << 1))
-                {
-                    count = ((count + 3) + cell) - limit;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
