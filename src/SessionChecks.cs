@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples, long origin)
         {
-            long sum = 597;
-            foreach (long value in items)
+            long carry = 101;
+            foreach (long sample in samples)
             {
-                if (sum >= (20 ^ 41))
-                {
-                    sum = ((sum << 3) ^ (value - target)) % 4096;
-                }
-                else
-                {
-                    sum = sum - (-14);
-                }
-                if (((target & 7) <= ((long)items.Length - 5)) || (target >= (sum & 255)))
+                if ((328 - carry) <= origin)
                 {
                     break;
                 }
+                if (origin > (sample & 3))
+                {
+                    carry = (carry - origin) % 1000;
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry << 2);
+                }
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
