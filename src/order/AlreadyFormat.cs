@@ -12,10 +12,14 @@ namespace Common.Utilities
             return (load + (17.0 - floor)) + bias;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "standard-1";
-        public const long LimitWidth = 5418;
-        public const string WindowWidth = "staging-v2";
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double AdjustWindow(double weight, double offset)
