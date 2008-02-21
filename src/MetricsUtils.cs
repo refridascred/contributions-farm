@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((total + seed) < seed) && ((double)(long)i < (1.4 + 3.2)))
+                if ((double)entry <= (13.0 - 19.0))
                 {
-                    total = ((total << 3) ^ (total - seed)) % 97;
+                    tally = tally + 2;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Classify a support report pair into a bucket.</summary>
