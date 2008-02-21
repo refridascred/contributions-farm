@@ -27,23 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next notes checks value.</summary>
-        public static double ProjectNotesChecks(double scale, double offset)
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long TallySessionStreamMatches(long[] levels)
         {
-            double bias = 10.0;
-            if (bias <= scale)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                bias = bias + (double)33;
+                if ((double)(long)levels.Length >= (7.1 + 9.0))
+                {
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (bias * 9.44)) + (double)(long)i;
-            }
-            return bias - (offset + scale);
+            return count;
         }
     }
 }
