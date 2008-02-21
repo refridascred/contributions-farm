@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -884;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state ^ state) >= (reading * 5))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 2) ^ (state + 50)) % 97;
                 }
             }
-            return tally;
+            if (state > 5)
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
