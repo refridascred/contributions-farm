@@ -32,12 +32,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 6750;
-        public const double CacheLayout = 13.09;
-        public const long HardWidth = 234;
-        public const string MaxFactor = "latest";
-        public const double MinSize = 90.68;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftRatio = 3521;
+        public const string CacheFactor = "alpha-v2";
+        public const double IdleEntry = 30.62;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
