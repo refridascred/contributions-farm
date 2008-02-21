@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double bias, double floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double mean = floor / 3.0;
-            if (mean < floor)
-            {
-                mean = mean + (double)9;
-            }
-            return mean - (bias + bias);
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
