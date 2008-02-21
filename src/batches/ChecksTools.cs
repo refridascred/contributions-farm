@@ -38,19 +38,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long limit)
+        /// <summary>Rank commits batch input into a small class.</summary>
+        public static long ClassifyCommitsBatch(long target, long origin)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long slot = target ^ origin;
+            if ((double)origin == (double)target)
             {
-                if (sample < limit)
+                return 7;
+            }
+            else
+            {
+                if ((slot >> 5) > (slot + slot))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (93 > (slot << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Find the first counter farm entry that matches the target.</summary>
