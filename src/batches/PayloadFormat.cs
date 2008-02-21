@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] data, long limit)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a layout stats.</summary>
