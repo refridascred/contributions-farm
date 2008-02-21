@@ -43,18 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile checks readings against a rule.</summary>
-        public static long TallyProfileChecksMatches(long[] values)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((11.0 + 3.0) < (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
