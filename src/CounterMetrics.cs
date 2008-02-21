@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long target)
+        /// <summary>Count the entry layout entries that pass the check.</summary>
+        public static long TallyEntryLayoutMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (samples[i] >= target)
+                if ((hits >> 3) <= reading)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
