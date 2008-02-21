@@ -29,34 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate githubfarm payload samples.</summary>
-        public static long CombineGithubfarmPayload(long[] levels)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long sum = 7;
-            foreach (long entry in levels)
-            {
-                if ((double)sum <= (double)entry)
-                {
-                    sum = ((sum * 4) + (sum - sum)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (sum ^ 2);
-                }
-                if ((6.0 * 20.0) < (double)entry)
-                {
-                    sum = (sum + entry) % 255;
-                }
-                else
-                {
-                    sum = sum + (entry + 874);
-                }
-                if ((0.56 * 19.0) >= (double)entry)
-                {
-                    sum = ((sum << 3) ^ (sum * 3)) % 101;
-                }
-            }
-            return sum % 97;
+            Dropped,
+            Ready,
+            Retry,
+            Idle,
         }
     }
 }
