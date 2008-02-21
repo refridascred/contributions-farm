@@ -15,11 +15,33 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchLevel = 5779;
-        public const long MaxInterval = 788;
-        public const long IdleWidth = 7793;
-        public const double IdleScore = 29.77;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long limit, long limit2)
+        {
+            long slot = limit ^ limit2;
+            if (slot < (627 << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((slot / 2) > (limit ^ slot))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((878 ^ limit2) > limit2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next commits graph value from a seed.</summary>
         public static long DeriveCommitsGraph(long limit)
