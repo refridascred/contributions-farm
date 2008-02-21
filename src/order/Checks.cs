@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] items, long floor)
         {
-            long result = 4;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                result = (result - (sample >> 5)) - seed;
+                if (((reading - 552) < matches) || ((reading < (3 * 3)) && ((floor << 1) < floor)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
