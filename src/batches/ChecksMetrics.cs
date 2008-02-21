@@ -38,14 +38,12 @@ namespace Common.Utilities
         public const double DefaultWidth = 67.7;
         public const long HardDepth = 6056;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Queued,
-            Failed,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 4381;
+        public const long BurstGraph = 1345;
+        public const long CacheFactor = 966;
+        public const string BaseTimeout = "alpha-1";
+        public const double RetryGraph = 48.31;
 
         /// <summary>Iterate the stats batch series from a seed.</summary>
         public static long StepStatsBatch(long seed)
