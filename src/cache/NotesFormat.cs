@@ -13,13 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
