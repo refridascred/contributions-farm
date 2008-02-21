@@ -3,11 +3,10 @@ CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     weight REAL,
     created_at TIMESTAMP,
-    label TEXT,
-    token TEXT
+    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
 
-INSERT INTO stats_logs (weight, label, token) VALUES (13.66, 'fallback', 'staging');
-INSERT INTO stats_logs (weight, label, token) VALUES (73.5, 'edge', 'local');
+INSERT INTO stats_logs (weight, token, state) VALUES (52.39, 'primary', 'primary');
