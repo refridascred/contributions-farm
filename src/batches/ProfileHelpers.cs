@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((1.0 * 12.0) <= (double)cell)
+                if ((hits - sample) <= 229)
                 {
-                    count = count + 3;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
