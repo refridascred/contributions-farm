@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double drift = 7.5;
-            return (drift - (4.8 - bias)) + span;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
