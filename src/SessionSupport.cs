@@ -40,13 +40,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            long state = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state - 319) % 97;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
