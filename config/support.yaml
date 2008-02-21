@@ -1,4 +1,7 @@
 # support settings
-strict: standard
-audit: 30
-metric_retries: legacy
+base_retries_pct: 90
+support_retries:
+  - eu-west
+  - standard
+batches_window: 65
+soft_interval: 58.25
