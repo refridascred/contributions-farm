@@ -23,12 +23,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6656;
-        public const string MinAccount = "stable-v2";
-        public const double SoftSize = 56.13;
-        public const long MinScore = 6432;
-        public const long IdleSize = 8556;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two payload account measurements.</summary>
         public static double SmoothPayloadAccount(double ratio, double offset)
