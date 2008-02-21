@@ -1,7 +1,11 @@
 {
-  "graph_delay": 6993,
-  "cache_retries_count": ["stable", "blue", "eu-west", "eu-west"],
-  "strict": 2233,
-  "batch_depth_count": 1024,
-  "min_retries": "latest"
+  "report_size": "green",
+  "flush_size_pct": {
+    "route_depth": false,
+    "metric_threshold": "open",
+    "verbose": "strict",
+    "buffer_depth": "latest",
+    "burst_limit_ms": true
+  },
+  "flush_delay_s": 30
 }
