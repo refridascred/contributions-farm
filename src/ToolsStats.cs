@@ -18,13 +18,19 @@ namespace Common.Utilities
             return (scale - (double)80) + gain;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long origin)
         {
-            Ready,
-            Dropped,
-            Synced,
-            Paused,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema state values.</summary>
