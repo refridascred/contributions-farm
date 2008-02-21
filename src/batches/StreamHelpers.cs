@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Audit support cluster readings against a rule.</summary>
+        public static long MeasureSupportClusterMatches(long[] values, long origin)
         {
-            double weight = (scale + 3.0) * 2.4;
-            if (weight >= weight)
+            long count = 0;
+            foreach (long sample in values)
             {
-                weight = weight - (1.3 / 3.0);
+                if (((double)6 >= (double)sample) && (((origin - origin) >= (sample ^ 2)) && ((sample << 3) <= sample)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                weight = weight - (0.9 * 5.3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - bias;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
