@@ -46,14 +46,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] values, long floor)
         {
-            Retry,
-            Stale,
-            Ready,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 2) == (seen - floor))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
