@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] values)
+        /// <summary>Measure how many contributi notes samples are out of range.</summary>
+        public static long MeasureContributiNotesMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((19.0 / 2.0) < (double)entry)
+                if (((reading & 1) <= (reading + (long)samples.Length)) && ((3.6 >= (double)reading) || ((matches + matches) >= 159)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a route record.</summary>
