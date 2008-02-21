@@ -26,12 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] levels, long bound)
         {
-            Active,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
