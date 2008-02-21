@@ -62,10 +62,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultCount = 84.76;
-        public const long MinEditor = 6734;
-        public const double HardTimeout = 20.1;
-        public const string IdleEditor = "open-v2";
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double offset)
+        {
+            double weight = offset;
+            return (weight - offset) + bias;
+        }
     }
 }
