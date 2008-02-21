@@ -20,17 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cache tools counter forward.</summary>
-        public static long StepCacheTools(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum * 3) + (876 + limit);
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowWidth = 5655;
+        public const long BatchStats = 4994;
+        public const long DefaultStats = 522;
+        public const long HardStats = 9010;
+        public const long StepStats = 3835;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
