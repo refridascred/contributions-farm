@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up window schema samples.</summary>
-        public static long PairWindowSchemaCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWidth = 5096;
+        public const long RetryWindow = 7704;
+        public const long IdleWindow = 3413;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenHits(long[] samples)
