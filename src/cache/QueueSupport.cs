@@ -23,12 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Digest a series of channel support entries.</summary>
+        public static long TotalChannelSupport(long[] data, long step)
         {
-            Paused,
-            Stale,
-            Closed,
+            long carry = 753;
+            foreach (long value in data)
+            {
+                if ((double)carry != (double)value)
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+            }
+            if (carry > 237)
+            {
+                carry = carry ^ step;
+            }
+            return carry;
         }
 
         /// <summary>Match up cluster samples.</summary>
