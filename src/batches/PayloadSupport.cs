@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const long IdleInterval = 3135;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] levels)
         {
-            Draft,
-            Retry,
-            Pending,
-            Closed,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + tally) <= (tally % 100))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
