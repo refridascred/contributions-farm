@@ -21,21 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
