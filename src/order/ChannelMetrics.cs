@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Paused,
-            Done,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 9897;
+        public const long HardInterval = 7031;
+        public const string DefaultGraph = "primary-v2";
+        public const long BaseRatio = 7005;
+        public const long IdleBudget = 4827;
 
         /// <summary>Fold a list of record cluster readings.</summary>
         public static long WeighRecordCluster(long[] samples)
