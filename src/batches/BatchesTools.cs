@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const long MinDepth = 4003;
         public const long MaxTimeout = 7232;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 5945;
-        public const string HardRatio = "legacy-edge";
-        public const string HardContributi = "staging-1";
-        public const double RetryContributi = 60.14;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] data, long step)
+        {
+            long acc = 28;
+            foreach (long sample in data)
+            {
+                acc = (((acc * 2) + (step & 63)) % 255) ^ sample;
+                if ((acc * 4) == (acc - step))
+                {
+                    acc = acc - (66 - step);
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
