@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] values, long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
