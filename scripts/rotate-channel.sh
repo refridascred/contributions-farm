@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in latest eu-west strict; do
+for item in cached blue; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=88
+log "limit is ${CHANNEL_LIMIT}"
