@@ -15,32 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long gap = origin + step;
-            if (!((step / 6) < (gap >> 1)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin >= (step / 8)) || ((0 % 97) > (gap + step)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - origin) == (step / 8))
+                    if ((readings[i] + readings[j]) == 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
