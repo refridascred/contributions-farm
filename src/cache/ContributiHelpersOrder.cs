@@ -24,13 +24,31 @@ namespace Common.Utilities
             return rate + (rate + floor);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long offset, long target)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Pending,
+            if ((target % 5) <= (target - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((48 & 63) > offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset < (-708))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
