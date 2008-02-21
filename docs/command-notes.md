@@ -1,15 +1,12 @@
 # Command notes
 
-When a editor fails, the window handler retries a few times before giving up.
-Use schema settings to tune how often counter data is refreshed.
-Defaults for farm live in the config folder and can be overridden per environment.
-
-A graph that stays idle for too long is moved to the command list.
-Use account settings to tune how often stream data is refreshed.
+Each support is validated before it reaches the filter queue.
+Each command is validated before it reaches the token queue.
+The channel report groups every support by buffer.
 
 ## Guidelines
 
-- Log every farm change
-- Document new buffer fields
-- Keep metric values small
-- Review entry limits each release
+- Log every command change
+- Document new commits fields
+- Prefer queue defaults
+- Keep buffer values small
