@@ -1,10 +1,26 @@
 # support settings
-audit: 23.8
-burst_interval: edge
-strict: 2095
-poll_delay:
-  - green
-  - fallback
-  - standard
-readonly: 48
-report_capacity: strict
+batch_delay: 15.41
+channel_ratio:
+  cache_capacity_ms: latest
+  queue_interval:
+    cache_timeout_count: 22.72
+    notes_ratio: 25
+    flush_retries_pct: latest
+    base_window_ms: standard
+    counter_retries: blue
+    compress: 17.47
+  enabled: false
+  poll_ttl_pct: 77
+  max_threshold_ms: true
+  max_retries:
+    persist: 887
+    base_timeout_ms:
+      - 383
+      - 318
+      - 362
+      - 35
+    notes_window: legacy
+    metric_ratio: 66.56
+    max_depth_s: 250
+    sync_size_ms: 52.26
+dry_run: 27.39
