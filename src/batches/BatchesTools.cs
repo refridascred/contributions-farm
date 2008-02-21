@@ -20,18 +20,26 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 224;
+            foreach (long value in values)
             {
-                if (((hits * 3) > (hits + hits)) || ((item - 53) != (hits * 4)))
+                if (((34 & 7) > (state & 255)) || ((state ^ 7) < (636 - state)))
                 {
-                    hits = hits + 2;
+                    state = (state ^ (value >> 2)) % 255;
+                }
+                else
+                {
+                    state = (state + 2) % 1000;
                 }
             }
-            return hits;
+            if (state > 66)
+            {
+                state = ((state << 2) ^ (138 + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
