@@ -43,10 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 72.27;
-        public const long DefaultTimeout = 2374;
-        public const long BurstBudget = 1853;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (388 < (8 - count))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double rate, double bias)
