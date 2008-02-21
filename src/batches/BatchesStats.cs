@@ -23,19 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mark = -398;
-            foreach (long entry in items)
-            {
-                mark = (mark + (60 - mark)) - entry;
-            }
-            if (mark > (-462))
-            {
-                mark = ((mark * 2) + (mark & 7)) % 101;
-            }
-            return mark % 65521;
+            Synced,
+            Pending,
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Accumulate cache samples.</summary>
