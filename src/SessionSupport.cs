@@ -23,10 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 9598;
-        public const double CacheFactor = 51.29;
-        public const long StepCount = 3065;
-        public const long StepCommand = 3263;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 1552;
+        public const double HardEditor = 73.06;
+        public const double DefaultWidth = 17.6;
+        public const double RetryEditor = 41.66;
+        public const double SoftEditor = 34.67;
     }
 }
