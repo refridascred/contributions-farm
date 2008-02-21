@@ -76,13 +76,22 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] readings, long origin)
         {
-            Dropped,
-            Stale,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((matches << 2) >= (matches + sample)))
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
