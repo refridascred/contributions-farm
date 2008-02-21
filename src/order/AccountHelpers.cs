@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm batches readings against a rule.</summary>
-        public static long CountFarmBatchesMatches(long[] levels, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (7.9 > (double)item)
+                if (cell >= target)
                 {
-                    tally = (tally + 1) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the contributi state values.</summary>
