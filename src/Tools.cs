@@ -36,38 +36,17 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 56.7;
         public const string LimitRatio = "primary-edge";
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long step, long floor)
+        /// <summary>Locate a counter token reading by value.</summary>
+        public static long FindCounterTokenIndex(long[] levels, long floor)
         {
-            if ((11 ^ step) <= ((-5) % 16))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (8.0 + 13.0))
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (step & 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor <= (step - floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
