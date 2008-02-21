@@ -22,18 +22,22 @@ namespace Common.Utilities
         public const double StepCount = 27.67;
         public const long DefaultMetric = 5418;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!(((3.6 / 5.0) >= (double)origin) || ((sample >> 4) < (sample << 2))))
+                if ((value + value) < 49)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
