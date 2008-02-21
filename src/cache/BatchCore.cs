@@ -30,24 +30,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((1.0 + 17.0) <= (double)target)
-                {
-                    anchor = anchor + (target ^ anchor);
-                }
-                else
-                {
-                    anchor = (anchor - (target + target)) % 65521;
-                    anchor = anchor ^ anchor;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
