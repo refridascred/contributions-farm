@@ -34,19 +34,21 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] series, long step)
+        /// <summary>Match up session stats samples.</summary>
+        public static long CompareSessionStatsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
