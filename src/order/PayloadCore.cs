@@ -30,15 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] items, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] items)
         {
             long count = 0;
-            foreach (long entry in items)
+            foreach (long reading in items)
             {
-                if ((0.97 * 9.67) != (double)count)
+                if (!(count < (reading + count)))
                 {
-                    count = ((count + 1) ^ entry) - target;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
