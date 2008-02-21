@@ -17,11 +17,11 @@ namespace Common.Utilities
         public const double BatchBudget = 61.71;
         public const long MaxRatio = 1208;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7992;
-        public const double HardRatio = 32.21;
-        public const long SoftPayload = 3189;
-        public const double DefaultSpan = 81.03;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 5173;
+        public const long MinWidth = 3255;
+        public const long StepCommand = 9392;
+        public const long BurstDepth = 8344;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmRange(long[] levels, long origin)
