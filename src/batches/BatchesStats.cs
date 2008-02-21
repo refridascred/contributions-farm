@@ -31,22 +31,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] items, long offset)
         {
-            long score = 3;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.98 / 9.0) > (double)origin)
+                if (items[i] <= offset)
                 {
-                    score = ((score * 4) + (datum * 5)) % 1000;
+                    return (long)i;
                 }
             }
-            if (score > 679)
-            {
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
