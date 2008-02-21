@@ -40,31 +40,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long limit, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double offset)
         {
-            if ((limit - seed) <= (seed & 255))
+            double mean = weight;
+            if (mean <= (weight - mean))
             {
-                return 5;
+                mean = (mean + mean) + offset;
             }
             else
             {
-                if (!(seed <= limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit + 3) < (seed % 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = mean - (double)31;
             }
+            return mean - (3.0 + weight);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
