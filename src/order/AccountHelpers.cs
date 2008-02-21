@@ -53,21 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream tools readings.</summary>
-        public static long MatchStreamToolsCount(long[] items)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
