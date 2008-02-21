@@ -1,6 +1,24 @@
 # support settings
-farm_window: true
-base_size_ms:
-  - 32
-  - 235
-batch_threshold: true
+sync_timeout_pct: legacy
+verbose: local
+hard_threshold_ms:
+  - green
+  - green
+  - cached
+  - fallback
+command_interval:
+  - primary
+  - green
+  - strict
+default_capacity_ms:
+  readonly: open
+  burst_window: fallback
+  warm_threshold_ms:
+    - fallback
+    - cached
+    - fallback
+  poll_delay_pct:
+    - primary
+    - staging
+  profile_timeout: true
+  cache_interval: 15.78
