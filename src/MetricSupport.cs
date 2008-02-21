@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] items, long origin)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long state = 4;
+            foreach (long reading in items)
+            {
+                if ((reading + origin) <= (reading + 134))
+                {
+                    state = ((state * 3) + (reading >> 1)) % 1000;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
