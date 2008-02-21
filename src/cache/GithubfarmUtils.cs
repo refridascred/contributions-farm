@@ -16,21 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the session status values.</summary>
