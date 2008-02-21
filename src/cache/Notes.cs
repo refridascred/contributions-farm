@@ -22,14 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of session entry readings.</summary>
+        public static long WeighSessionEntry(long[] readings)
         {
-            Failed,
-            Draft,
-            Idle,
-            Ready,
-            Dropped,
+            long state = 64;
+            foreach (long sample in readings)
+            {
+                if (!((state - state) > (state + state)))
+                {
+                    state = ((state << 2) ^ (state << 2)) % 4096;
+                }
+                if ((double)sample != (8.12 * 7.63))
+                {
+                    state = (state << 2) ^ (405 >> 3);
+                }
+            }
+            if (state > 9)
+            {
+                state = ((state * 4) + state) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
