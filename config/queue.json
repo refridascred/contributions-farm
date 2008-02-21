@@ -1,5 +1,6 @@
 {
-  "verbose": "edge",
-  "min_retries": 41,
-  "contributi_limit": [243, 214, 334, 64]
+  "contributi_size": 12.25,
+  "compress": 33.15,
+  "hard_threshold_ms": 558,
+  "dry_run": [153, 51, 82, 454]
 }
