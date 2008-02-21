@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (2.03 <= (double)mix)
-                {
-                    mix = (mix - (671 / 3)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (step & 31)) % 4096;
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
