@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of notes session readings.</summary>
-        public static long TallyNotesSession(long[] samples)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long anchor = 55;
-            foreach (long sample in samples)
-            {
-                if (!((3 << 1) >= anchor))
-                {
-                    anchor = (anchor - (anchor + (long)samples.Length)) + sample;
-                }
-            }
-            return anchor % 4096;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
