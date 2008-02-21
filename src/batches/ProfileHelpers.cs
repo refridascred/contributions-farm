@@ -54,23 +54,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 5304;
         public const long HardCommand = 3787;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] series, long step)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long anchor = 402;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor << 2) ^ (anchor - sample)) % 4096;
-                if ((step % 12) == (sample + sample))
-                {
-                    anchor = (anchor - anchor) % 1000;
-                }
-            }
-            if (anchor < 325)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
