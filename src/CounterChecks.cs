@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long carry = -236;
+            foreach (long value in values)
             {
-                if (((-39) + item) != (item + matches))
+                if ((limit >= (carry / 5)) && (((-8) ^ carry) == (value + carry)))
                 {
-                    matches = matches + 2;
+                    carry = (carry * 3) + 30;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
