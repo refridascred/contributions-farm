@@ -26,20 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double gain, double span)
-        {
-            double weight = (double)(-141) - gain;
-            if (weight <= span)
-            {
-                weight = weight - 8.6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 6517;
+        public const string BaseMetric = "strict-edge";
+        public const double MaxMetric = 0.32;
+        public const long BurstDepth = 2598;
+        public const long BatchMetric = 5736;
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
         public static long MeasureGithubfarmCommandGaps(long[] data, long target)
