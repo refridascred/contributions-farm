@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 2499;
+        public const long BaseInterval = 2129;
+        public const string HardFormat = "open-v2";
+        public const long BurstBudget = 5316;
 
         /// <summary>Count the counter order entries that pass the check.</summary>
         public static long TallyCounterOrderHits(long[] readings, long target)
