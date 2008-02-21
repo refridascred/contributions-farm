@@ -42,11 +42,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] values, long offset)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
