@@ -1,22 +1,12 @@
 {
-  "filter_capacity": true,
-  "contributi_retries": true,
-  "checks_depth": {
-    "contributi_threshold": [61, 84, 326, 246],
-    "persist": "strict",
-    "base_interval": 31.39,
-    "warm_ttl": 60,
-    "flush_timeout_s": 2644
+  "batch_window_ms": {
+    "max_delay_s": "edge",
+    "tools_window": 89.54,
+    "idle_limit": "local",
+    "checks_interval": 1570
   },
-  "checks_timeout": 75.37,
-  "base_retries": {
-    "metrics_ttl": 68,
-    "min_ttl": {
-      "hard_threshold_ms": [487, 256, 162],
-      "poll_size_s": 1383,
-      "verbose": "stable"
-    },
-    "retry_ttl_s": 3993
-  },
-  "min_window_count": [340, 108, 390, 389]
+  "dry_run": "primary",
+  "warm_window_ms": 97.81,
+  "batch_limit": true,
+  "base_retries": 61.55
 }
