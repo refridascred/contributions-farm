@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels, long step)
+        /// <summary>Count command contributi pairs that satisfy a relation.</summary>
+        public static long MatchCommandContributiCount(long[] series)
         {
-            long mix = 27;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-5) / 4) != (mix - cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix * 3) + (cell + step);
-                }
-                else
-                {
-                    mix = mix ^ (step % 12);
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 88)
-            {
-                mix = (mix * 5) + ((-84) + mix);
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
