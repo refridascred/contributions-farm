@@ -25,23 +25,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings, long seed)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long bound)
         {
-            long acc = 91;
-            foreach (long datum in readings)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                acc = (acc + (acc & 3)) % 4096;
-                if (((-12) >> 5) <= (datum * 2))
-                {
-                    acc = acc ^ (seed % 10);
-                }
-                else
-                {
-                    acc = acc ^ (seed & 1);
-                }
+                state = state + (bound - (long)i);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
