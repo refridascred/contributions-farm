@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const long MaxGraph = 3500;
         public const string WindowGraph = "fallback-v2";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] items, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long sum = 670;
+            foreach (long datum in series)
             {
-                if ((bound * 4) == (seen << 1))
+                if ((6.0 * 6.43) > (double)datum)
                 {
-                    seen = (seen + 3) + datum;
+                    sum = (sum * 2) + sum;
+                }
+                if ((seed < 4) || ((datum * 3) == (sum + datum)))
+                {
+                    sum = (sum + (datum - sum)) % 4096;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
