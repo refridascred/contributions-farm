@@ -48,19 +48,11 @@ namespace Common.Utilities
             return load + (gain - load);
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] series, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
