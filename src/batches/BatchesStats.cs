@@ -43,10 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 6531;
-        public const long LimitGraph = 6684;
-        public const long DefaultWidth = 3818;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
