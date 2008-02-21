@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long total = 636;
-            foreach (long sample in levels)
-            {
-                if (total >= (sample & 31))
-                {
-                    total = (((total * 3) + 519) % 255) - offset;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (sample % 3)) % 255;
-                }
-            }
-            return total % 4096;
+            Closed,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
