@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            Done,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
