@@ -29,12 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            Synced,
-            Dropped,
-            Done,
+            double rate = floor;
+            return (rate - (double)306) + bias;
         }
     }
 }
