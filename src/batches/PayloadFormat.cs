@@ -27,15 +27,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two counter order measurements.</summary>
-        public static double SmoothCounterOrder(double gain, double floor)
+        /// <summary>Grade a batches contributi value against two limits.</summary>
+        public static long RankBatchesContributi(long bound, long seed)
         {
-            double weight = (gain - gain) - 4.0;
-            for (int i = 0; i < 9; i++)
+            if ((double)9 > (double)bound)
             {
-                weight = (weight - (floor - floor)) - (double)(long)i;
+                return 6;
             }
-            return weight + gain;
+            else
+            {
+                if ((8.9 / 3.0) != (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
