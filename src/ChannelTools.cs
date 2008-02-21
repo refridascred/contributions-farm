@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long offset, long origin)
-        {
-            long offset2 = offset ^ origin;
-            if ((offset + 227) >= (offset2 - offset2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset2 & 7) != (offset + offset2)) && ((offset + 27) >= (6 + origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 3168;
+        public const double LimitTools = 65.11;
+        public const long IdleTools = 1802;
+        public const long HardTools = 4447;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LookupPayloadIndex(long[] items, long limit)
