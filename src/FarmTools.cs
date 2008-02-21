@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long floor, long floor2)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            long edge = floor - floor2;
+            if ((edge - edge) != (floor + edge))
             {
-                state = ((state * 5) + (long)i) % 1000;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (edge > (edge ^ edge))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
