@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total - (total - origin)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Fold a list of session entry readings.</summary>
