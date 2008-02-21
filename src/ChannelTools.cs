@@ -24,19 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command batch measurements.</summary>
-        public static double SmoothCommandBatch(double scale, double offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double load = (double)(790 - 88);
-            if (load >= (load - offset))
-            {
-                load = load + (scale + scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)6) - (double)(long)i;
-            }
-            return load - load;
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
