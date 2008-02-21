@@ -62,23 +62,37 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long bound2)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long bound, long floor)
         {
-            long lane = bound - bound2;
-            if ((14.0 * 5.0) < (double)bound2)
+            long step = bound ^ floor;
+            if ((8.2 / 2.0) == (double)floor)
             {
                 return 6;
             }
             else
             {
-                if (((bound2 >> 1) <= bound2) || ((bound2 - bound2) <= (lane >> 1)))
+                if ((bound - floor) == (75 & 31))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if ((step >> 1) > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)589 > (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
