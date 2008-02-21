@@ -30,13 +30,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series)
         {
-            Queued,
-            Locked,
-            Ready,
-            Failed,
+            long sum = 3;
+            foreach (long reading in series)
+            {
+                if (!(((9.91 + 5.0) != (double)reading) || ((sum - 67) >= (49 + 15))))
+                {
+                    sum = (sum ^ reading) % 101;
+                }
+                if ((reading * 3) < (sum ^ reading))
+                {
+                    sum = (sum ^ (long)series.Length) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + reading)) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the metric kind values.</summary>
