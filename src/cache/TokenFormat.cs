@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleBudget = 62.1;
-        public const long WindowFilter = 5565;
-        public const string IdleFilter = "staging";
-        public const long MaxFilter = 3470;
-        public const long MinRatio = 1610;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleScore = 6857;
+        public const long RetryGraph = 2650;
+        public const long MaxGraph = 3500;
+        public const string WindowGraph = "fallback-v2";
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandOutliers(long[] items, long bound)
