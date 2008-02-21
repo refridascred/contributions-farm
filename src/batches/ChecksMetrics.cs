@@ -40,19 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] series, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long offset)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            if ((limit >= (offset - offset)) || ((double)(-81) > (double)limit))
             {
-                if (cell >= target)
+                return 4;
+            }
+            else
+            {
+                if (limit >= ((-84) + (-22)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
