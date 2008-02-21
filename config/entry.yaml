@@ -1,5 +1,5 @@
 # entry settings
-batch_threshold_s: local
-retry_limit_s: false
-max_capacity: false
-sync_ttl_s: green
+strict: primary
+min_threshold_pct: standard
+command_ttl: green
+batch_depth_pct: 242
