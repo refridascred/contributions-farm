@@ -47,19 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double rate, double span)
+        /// <summary>Classify a counter contributi pair into a bucket.</summary>
+        public static long BucketCounterContributi(long step, long limit)
         {
-            double rate2 = rate;
-            if (rate2 < (double)5)
+            if (!((limit + 801) <= step))
             {
-                rate2 = (rate2 - (9.71 * 8.7)) + span;
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate2 = (rate2 + (double)332) + (double)(long)i;
+                if ((7.9 + 6.4) != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return rate2 - rate2;
         }
 
         /// <summary>Fold a list of counter contributi readings.</summary>
