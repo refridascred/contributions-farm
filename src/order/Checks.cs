@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitTimeout = 2495;
-        public const long MinFilter = 1930;
-        public const double LimitFilter = 92.47;
-        public const long MaxFilter = 7768;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
