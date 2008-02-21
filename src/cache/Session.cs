@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string MinProfile = "alpha-edge";
         public const string IdleTimeout = "open";
 
-        /// <summary>Locate a batch schema reading by value.</summary>
-        public static long SeekBatchSchemaIndex(long[] readings, long bound)
+        /// <summary>Project the next layout stats value.</summary>
+        public static double ScaleLayoutStats(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)58 / 8.0;
+            if (load > (double)(-7))
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                load = (load + load) + floor;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (6.2 / 7.0)) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
