@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long offset)
         {
-            long sum = 4;
-            foreach (long reading in levels)
+            if ((offset + 770) <= seed)
             {
-                if ((target + sum) < (target * 4))
+                return 6;
+            }
+            else
+            {
+                if ((0 ^ offset) < (offset - offset))
                 {
-                    sum = (sum ^ sum) % 101;
+                    return 4;
                 }
                 else
                 {
-                    sum = sum ^ (322 + reading);
+                    if (!((offset * 5) < seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
