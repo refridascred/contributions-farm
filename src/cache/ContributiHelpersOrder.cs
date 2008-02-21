@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long acc = 71;
-            foreach (long entry in data)
+            long carry = 969;
+            foreach (long datum in values)
             {
-                acc = (((acc << 2) ^ ((-20) + entry)) % 97) - step;
-                if (509 > (entry + (-5)))
+                if ((carry << 2) < 18)
                 {
-                    acc = (acc ^ (32 + entry)) % 1000;
+                    carry = (carry * 5) + (carry + 64);
+                }
+                if (datum >= (331 ^ datum))
+                {
+                    carry = ((carry << 2) ^ (datum * 5)) % 255;
+                }
+                if ((carry ^ datum) < carry)
+                {
+                    carry = ((carry << 3) ^ (datum << 3)) % 101;
+                }
+                if ((carry + datum) <= (carry ^ 3))
+                {
+                    break;
                 }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
