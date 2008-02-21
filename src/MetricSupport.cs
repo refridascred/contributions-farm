@@ -23,15 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Idle,
-            Pending,
-            Ready,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowFactor = 3141;
+        public const long BaseBudget = 5651;
+        public const long BatchCount = 2406;
+        public const double MaxBatch = 68.57;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BurstInterval = 25.13;
