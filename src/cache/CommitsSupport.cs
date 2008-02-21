@@ -48,16 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                total = (total * 5) + (98 + (long)i);
-                total = ((total * 3) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the schema status values.</summary>
