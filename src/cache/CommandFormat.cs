@@ -13,19 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((count & 3) == (floor - floor)) || (floor <= (entry % 64)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepBudget = 5169;
+        public const long MaxFilter = 1074;
+        public const double BaseSpan = 40.1;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphHits(long[] levels)
