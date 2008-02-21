@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long CacheLevel = 7917;
         public const string BatchInterval = "open";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowFactor = "staging-1";
-        public const long MaxDepth = 8778;
-        public const double CacheRatio = 97.49;
-        public const double IdleProfile = 60.02;
-        public const string RetryProfile = "standard-edge";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)origin > (6.0 - 7.0))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
