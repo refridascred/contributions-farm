@@ -25,13 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Failed,
-            Retry,
-            Paused,
+            Closed,
             Draft,
+            Done,
+            Paused,
         }
     }
 }
