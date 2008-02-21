@@ -13,17 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a counter queue sample.</summary>
-        public static long LocateCounterQueueIndex(long[] items, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                if (((item + item) <= (item - item)) && (matches >= (matches - item)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
