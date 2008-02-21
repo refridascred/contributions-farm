@@ -54,12 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Ready,
-            Draft,
-            Done,
+            Closed,
+            Dropped,
+            Idle,
         }
     }
 }
