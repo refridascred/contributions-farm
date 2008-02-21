@@ -16,13 +16,12 @@ namespace Common.Utilities
         public const string MaxAlready = "cached-1";
         public const string DefaultAlready = "staging";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Paused,
-            Idle,
-            Pending,
-            Failed,
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
