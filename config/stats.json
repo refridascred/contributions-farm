@@ -1,8 +1,13 @@
 {
-  "compress": [60, 331],
-  "support_threshold": 632,
-  "max_window_s": 2939,
-  "readonly": 250,
-  "base_interval": 60,
-  "default_ratio_ms": 7380
+  "session_ttl": 80.27,
+  "warm_depth": 65.19,
+  "max_threshold": {
+    "min_capacity_pct": [126, 184, 340, 96],
+    "default_interval_count": 7,
+    "poll_ratio": 500,
+    "persist": true,
+    "audit": 4769,
+    "default_limit_s": 250
+  },
+  "idle_ttl_pct": 30
 }
