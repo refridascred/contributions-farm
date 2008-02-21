@@ -31,18 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] values, long floor)
         {
-            long score = 41;
-            foreach (long value in readings)
+            long score = 96;
+            foreach (long value in values)
             {
-                score = score - (value - 61);
-                score = (score - score) % 97;
-                if (((50 + score) >= (value / 9)) && (score >= (value / 2)))
-                {
-                    break;
-                }
+                score = ((score ^ (score + floor)) % 1000) ^ value;
             }
             return score;
         }
