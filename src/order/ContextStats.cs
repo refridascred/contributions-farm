@@ -35,21 +35,32 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = offset ^ target;
+            if (offset < (target + target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)target > (double)lane)
                 {
-                    if ((data[i] ^ data[j]) > 12)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target < (double)offset)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
