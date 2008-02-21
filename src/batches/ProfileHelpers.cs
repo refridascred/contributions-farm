@@ -35,18 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long floor)
         {
-            long total = 73;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value - value) >= value)
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    total = ((total * 3) + (value << 2)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
