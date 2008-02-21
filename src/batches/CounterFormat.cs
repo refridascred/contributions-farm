@@ -25,21 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Digest a series of queue session entries.</summary>
+        public static long TotalQueueSession(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 887;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((value - 196) >= (acc >> 2)))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - (value - target)) % 101;
+                    acc = acc + (target >> 3);
+                }
+                if ((7.16 - 2.3) >= (double)value)
+                {
+                    acc = ((acc * 2) + target) % 65521;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
