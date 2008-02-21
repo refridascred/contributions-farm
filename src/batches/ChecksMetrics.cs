@@ -27,14 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 91.48;
+        public const long BaseBatches = 6115;
+        public const long HardBatches = 4605;
+        public const long BatchScore = 8424;
+        public const string RetryLevel = "primary-1";
 
         /// <summary>Fold a list of commits stream readings.</summary>
         public static long WeighCommitsStream(long[] levels)
