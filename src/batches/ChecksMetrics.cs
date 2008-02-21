@@ -68,13 +68,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Locked,
-            Pending,
-            New,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultCount = 84.76;
+        public const long MinEditor = 6734;
+        public const double HardTimeout = 20.1;
+        public const string IdleEditor = "open-v2";
     }
 }
