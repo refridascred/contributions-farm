@@ -33,17 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long floor)
+        /// <summary>Adjust a account cache reading.</summary>
+        public static double ProjectAccountCache(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = floor;
+            if (gain2 < floor)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (floor * 6.03);
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 - (double)(-2);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - gain) - (double)(long)i;
+            }
+            return gain2 - 0.6;
         }
 
         /// <summary>Hold a payload summary.</summary>
