@@ -43,15 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metric stats value.</summary>
-        public static double AdjustMetricStats(double bias, double floor)
+        /// <summary>Validate schema order readings against a bound.</summary>
+        public static bool GuardSchemaOrderRange(long[] data, long offset)
         {
-            double mean = (double)(154 % 2);
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mean = ((mean + floor) + (double)(long)i) + bias;
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - (floor - floor);
+            return ok;
         }
 
         /// <summary>Describe the counter state values.</summary>
