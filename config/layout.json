@@ -1,6 +1,6 @@
 {
-  "default_ttl_pct": 29,
-  "warm_window_ms": 48.49,
-  "min_retries": true,
-  "max_size_count": 54.02
+  "retry_window": "strict",
+  "burst_size_s": 60,
+  "report_depth": 74.57,
+  "warm_retries_count": false
 }
