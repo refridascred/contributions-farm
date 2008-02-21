@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] levels, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry <= target)
+                if (!((sum * 4) > (59 % 100)))
                 {
-                    ready = false;
-                    break;
+                    sum = sum ^ (offset - sum);
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Find the first format stream entry that matches the target.</summary>
