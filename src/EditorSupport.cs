@@ -37,12 +37,13 @@ namespace Common.Utilities
             return bias + (double)97;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of contributi stream readings.</summary>
