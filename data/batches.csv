@@ -1,6 +1,8 @@
-id,region,active,ratio,score
-1,staging,211,blue,latest
-2,96.89,791,580,34.72
-3,203,26,27.66,52.53
-4,80.3,green,105,610
-5,551,41.2,standard,latest
+id,weight,label,rank
+1,eu-west,732,strict
+2,558,156,7.98
+3,634,staging,16.16
+4,137,64.29,24.59
+5,64.92,578,blue
+6,3.54,24.71,stable
+7,80.75,standard,25.15
