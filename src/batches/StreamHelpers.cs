@@ -18,11 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(bound >= 4))
+                {
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor * 2)) % 101;
+                }
+                if ((anchor * 5) != (bound * 5))
+                {
+                    anchor = anchor ^ (bound + (long)i);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
