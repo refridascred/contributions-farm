@@ -1,25 +1,5 @@
 {
-  "persist": 37.48,
-  "notes_window": "latest",
-  "profile_interval": {
-    "hard_delay": false,
-    "soft_limit": ["green", "stable", "primary", "cached"],
-    "enabled": [145, 398],
-    "base_ratio": {
-      "filter_window": [359, 56],
-      "editor_ttl": 995,
-      "min_threshold": ["legacy", "staging", "standard"],
-      "enabled": 96.16
-    },
-    "audit": "edge",
-    "soft_delay": ["staging", "blue"]
-  },
-  "account_size": false,
-  "idle_retries_s": 35.34,
-  "contributi_timeout": {
-    "flush_ratio_ms": 66,
-    "soft_delay_count": 45.32,
-    "batch_interval": 28.4,
-    "entry_ttl": 60
-  }
+  "context_threshold": 500,
+  "burst_size": "stable",
+  "poll_limit": "local"
 }
