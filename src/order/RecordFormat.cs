@@ -22,31 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long seed, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            if ((3.0 * 13.0) >= (double)seed)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((41 - 35) > (bound >> 4))
+                if (value < (count / 8))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ seed) >= (855 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
