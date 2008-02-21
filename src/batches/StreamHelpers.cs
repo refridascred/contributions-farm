@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count command contributi pairs that satisfy a relation.</summary>
-        public static long MatchCommandContributiCount(long[] series)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (scale + 3.0) * 2.4;
+            if (weight >= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (1.3 / 3.0);
             }
-            return tally;
+            else
+            {
+                weight = weight - (0.9 * 5.3);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
