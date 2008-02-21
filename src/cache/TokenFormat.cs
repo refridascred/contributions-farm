@@ -25,25 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token already entries.</summary>
-        public static long WeighTokenAlready(long[] items, long bound)
-        {
-            long anchor = 793;
-            foreach (long item in items)
-            {
-                anchor = ((anchor + (anchor + (long)items.Length)) % 65521) - item;
-                anchor = anchor ^ (anchor ^ bound);
-                if ((anchor * 3) > anchor)
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-            }
-            if (anchor > (-301))
-            {
-                anchor = anchor - bound;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleBudget = 62.1;
+        public const long WindowFilter = 5565;
+        public const string IdleFilter = "staging";
+        public const long MaxFilter = 3470;
+        public const long MinRatio = 1610;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] levels, long bound)
