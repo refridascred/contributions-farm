@@ -1,5 +1,8 @@
 {
-  "tools_limit": 45,
-  "retry_ratio_ms": ["fallback", "legacy", "latest", "latest"],
-  "hard_limit": "eu-west"
+  "checks_window": false,
+  "burst_depth_pct": true,
+  "verbose": "strict",
+  "soft_ttl": "staging",
+  "max_interval_count": "standard",
+  "dry_run": 85
 }
