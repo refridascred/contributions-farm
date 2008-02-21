@@ -26,10 +26,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardSpan = "local-edge";
-        public const string RetryBatches = "local";
-        public const long CacheScore = 6048;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((6.96 / 3.0) != (double)target)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double SoftTimeout = 27.69;
