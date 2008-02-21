@@ -48,15 +48,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a tools layout figure with a bias.</summary>
-        public static double AdjustToolsLayout(double bias, double span)
+        /// <summary>Roll a buffer commits counter forward.</summary>
+        public static long DeriveBufferCommits(long seed)
         {
-            double drift = bias / 7.0;
+            long total = seed;
             for (int i = 0; i < 4; i++)
             {
-                drift = ((drift + (double)23) + (double)(long)i) + span;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return drift - (drift / 6.0);
+            return total;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
