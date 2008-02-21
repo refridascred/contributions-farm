@@ -25,17 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] items, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 7;
+            foreach (long entry in items)
             {
-                if (items[i] <= offset)
+                if ((entry ^ floor) >= (entry - entry))
                 {
-                    return (long)i;
+                    carry = (carry - carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ entry;
                 }
             }
-            return -1;
+            if (carry > 992)
+            {
+                carry = ((carry << 2) ^ (carry << 1)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of checks window readings.</summary>
