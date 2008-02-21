@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string HardFormat = "open-v2";
         public const long BurstBudget = 5316;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] readings, long seed)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
