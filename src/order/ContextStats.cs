@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Digest a series of account entries.</summary>
