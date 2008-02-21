@@ -13,13 +13,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Digest a series of profile contributi entries.</summary>
+        public static long ScoreProfileContributi(long[] series)
         {
-            Synced,
-            New,
-            Stale,
-            Locked,
+            long sum = 18;
+            foreach (long cell in series)
+            {
+                if ((cell / 9) >= cell)
+                {
+                    sum = ((sum * 4) + sum) % 255;
+                }
+                else
+                {
+                    sum = sum + (13 << 2);
+                }
+            }
+            if (sum > 983)
+            {
+                sum = (sum << 3) ^ 907;
+            }
+            return sum;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
