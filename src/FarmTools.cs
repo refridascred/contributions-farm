@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double weight, double span)
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool GuardRouteStatsRange(long[] levels, long bound)
         {
-            double mean = (weight * 8.35) * 7.6;
-            if (mean <= (span + weight))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                mean = mean + (span / 6.0);
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + weight;
+            return flag;
         }
 
         /// <summary>Roll a cache tools counter forward.</summary>
