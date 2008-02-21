@@ -36,38 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long bound)
+        /// <summary>Fold a list of support channel readings.</summary>
+        public static long FoldSupportChannel(long[] items, long origin)
         {
-            if ((step - bound) == (3 - 826))
+            long state = 247;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound == (double)step)
+                if ((114 ^ origin) > origin)
                 {
-                    return 6;
+                    state = state ^ (state / 2);
                 }
-                else
+                if (value > (347 + 671))
                 {
-                    if ((step & 15) > (bound / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step >= (380 - 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = state - (origin % 10);
                 }
             }
+            return state;
         }
     }
 }
