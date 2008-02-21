@@ -66,12 +66,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
