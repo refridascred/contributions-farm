@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long HardRecord = 546;
         public const long MinRecord = 2355;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Stale,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitFactor = "open-v2";
+        public const long BaseLevel = 7252;
+        public const string MaxAlready = "cached-1";
+        public const string DefaultAlready = "staging";
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportLimits(long[] series, long bound)
