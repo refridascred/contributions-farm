@@ -39,12 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleTimeout = 97.15;
-        public const string BurstGraph = "cached-v2";
-        public const string CacheLevel = "strict-1";
-        public const string BurstScore = "strict-edge";
-        public const string DefaultTimeout = "strict-1";
+        /// <summary>Count the metric checks entries that pass the check.</summary>
+        public static long MeasureMetricChecksGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count / 2) < 2)
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a support report pair into a bucket.</summary>
         public static long RankSupportReport(long limit, long step)
