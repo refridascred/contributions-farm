@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of format cluster entries.</summary>
-        public static long TotalFormatCluster(long[] values, long floor)
+        /// <summary>Compare every pair of tools layout readings.</summary>
+        public static long OverlapToolsLayoutCount(long[] values)
         {
-            long result = 205;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.0 + 7.2) == (double)result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (((result << 3) ^ (cell & 7)) % 65521) + floor;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
