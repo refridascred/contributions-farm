@@ -41,12 +41,10 @@ namespace Common.Utilities
         public const long MinOrder = 4469;
         public const long DefaultOrder = 6426;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardInterval = 68.41;
-        public const long RetryCount = 1099;
-        public const long BurstSpan = 3124;
-        public const long BaseCount = 5590;
-        public const string LimitCount = "cached-edge";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryTimeout = 33.38;
+        public const long BaseScore = 1840;
+        public const long WindowBatch = 204;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
