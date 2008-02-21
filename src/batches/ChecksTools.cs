@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((tally >> 2) < (4 ^ tally)) || (((3.77 / 7.0) >= (double)item) && ((tally + limit) >= (item + 28))))
+                if ((count > (2 + cell)) && (count >= (count / 4)))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
