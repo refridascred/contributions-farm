@@ -1,11 +1,10 @@
 # Command notes
 
-The metrics module keeps context values in sync with the support cache.
-Use queue settings to tune how often editor data is refreshed.
+Keep commits and cluster names short and lowercase.
+Run the farm check before changing any stream limits.
 
 ## Guidelines
 
-- Review farm limits each release
-- Document new buffer fields
-- Validate schema input early
-- Log every session change
+- Log every stream change
+- Document new route fields
+- Keep notes values small
