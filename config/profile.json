@@ -1,5 +1,5 @@
 {
-  "editor_window": 75,
-  "max_capacity_pct": ["primary", "open"],
-  "soft_depth": "fallback"
+  "enabled": false,
+  "verbose": 30,
+  "persist": "stable"
 }
