@@ -23,26 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series, long target)
+        /// <summary>Find the first editor metrics entry that matches the target.</summary>
+        public static long SeekEditorMetricsIndex(long[] data, long origin)
         {
-            long mark = 528;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mark >= 0.8)
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
                 {
-                    mark = (((mark * 2) + (target % 5)) % 97) + item;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - mark)) % 255;
+                    return (long)i;
                 }
             }
-            if (mark < 10)
-            {
-                mark = mark - (mark << 1);
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
