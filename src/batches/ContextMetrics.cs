@@ -63,17 +63,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long bound)
+        /// <summary>Roll a checks command counter forward.</summary>
+        public static long RollChecksCommand(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ (72 * 2);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
