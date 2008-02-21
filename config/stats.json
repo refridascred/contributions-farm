@@ -1,15 +1,5 @@
 {
-  "contributi_depth": 5,
-  "farm_limit": false,
-  "sync_depth_s": {
-    "editor_interval": ["standard", "standard"],
-    "token_window": 24,
-    "filter_delay": [253, 188, 171],
-    "warm_interval_count": "latest",
-    "window_window": false,
-    "layout_window": 500
-  },
-  "min_size_ms": 30,
-  "burst_size": "strict",
-  "strict": "stable"
+  "sync_window_ms": 79.97,
+  "burst_threshold_pct": 53.57,
+  "max_capacity": false
 }
