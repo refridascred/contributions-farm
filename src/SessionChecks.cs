@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const double WindowCounter = 32.65;
         public const long WindowCount = 8690;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Audit batch filter readings against a rule.</summary>
+        public static long CountBatchFilterHits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (tally < (value - tally))
+                if (hits > 64)
                 {
-                    tally = tally + 3;
+                    hits = ((hits + 2) + sample) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of command readings.</summary>
