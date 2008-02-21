@@ -1,5 +1,6 @@
 # support settings
-format_capacity: green
-hard_limit: false
-profile_capacity: edge
-verbose: 19
+cache_size_count: true
+retry_timeout: latest
+verbose: primary
+default_capacity_ms: standard
+stream_delay: true
