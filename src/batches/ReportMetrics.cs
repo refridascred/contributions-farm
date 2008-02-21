@@ -23,21 +23,22 @@ namespace Common.Utilities
         public const long SoftFactor = 1570;
         public const string WindowDepth = "staging";
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)datum <= (double)85)
                 {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
