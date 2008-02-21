@@ -47,17 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] values, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long value in values)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (result & 15)) % 255) ^ value;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a batch info.</summary>
