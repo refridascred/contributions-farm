@@ -23,21 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of window format readings.</summary>
-        public static long PairWindowFormatCount(long[] series)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
