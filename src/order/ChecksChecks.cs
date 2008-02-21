@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the farm channel entries that pass the check.</summary>
-        public static long TallyFarmChannelGaps(long[] values)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double gain2 = gain + (double)7;
+            if (gain2 > (gain / 2.0))
             {
-                if ((matches + 92) < (value + value))
-                {
-                    matches = matches + 1;
-                }
+                gain2 = gain2 + floor;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + floor) + (double)(long)i;
+            }
+            return gain2 - (gain + gain);
         }
 
         /// <summary>Blend two buffer window measurements.</summary>
