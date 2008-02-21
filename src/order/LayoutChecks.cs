@@ -37,10 +37,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheRatio = 43.46;
-        public const string CacheTimeout = "local";
-        public const long BurstDepth = 4674;
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double rate, double floor)
+        {
+            double mean = (double)(5 >> 2);
+            if (mean >= mean)
+            {
+                mean = (mean - (rate / 5.0)) + floor;
+            }
+            return mean + (double)353;
+        }
 
         /// <summary>Compare every pair of queue batches readings.</summary>
         public static long MatchQueueBatchesCount(long[] series)
