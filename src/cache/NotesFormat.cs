@@ -28,19 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] levels, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            double rate = gain * 3.6;
+            if (rate < (double)4)
             {
-                if (value < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + gain) - floor;
             }
-            return valid;
+            return rate - (0.93 - gain);
         }
     }
 }
