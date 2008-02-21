@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data, long bound)
-        {
-            long carry = 8;
-            foreach (long item in data)
-            {
-                if ((item + (long)data.Length) > item)
-                {
-                    carry = ((carry << 3) ^ (bound ^ carry)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchFactor = 11.9;
+        public const long MaxEditor = 3332;
+        public const long DefaultWidth = 7020;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
