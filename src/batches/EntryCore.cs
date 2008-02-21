@@ -55,23 +55,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two checks format measurements.</summary>
-        public static double AdjustChecksFormat(double scale, double offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long bound, long offset)
         {
-            double load = (double)(80 & 1);
-            if (load < (offset / 7.0))
+            long gap = bound - offset;
+            if ((bound >> 1) == (bound ^ gap))
             {
-                load = load + scale;
+                return 7;
             }
             else
             {
-                load = load + offset;
+                if ((bound + offset) > (offset + 33))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (scale + load)) - (double)(long)i;
-            }
-            return load - 0.4;
         }
     }
 }
