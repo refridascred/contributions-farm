@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Draft,
-            Dropped,
-            Synced,
-            Active,
             Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Combine token values into a single score.</summary>
