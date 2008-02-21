@@ -46,11 +46,11 @@ namespace Common.Utilities
         public const string StepEditor = "latest";
         public const string BatchLevel = "alpha-v2";
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double weight2 = span;
-            return (weight2 - (weight2 / 5.0)) + weight;
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
