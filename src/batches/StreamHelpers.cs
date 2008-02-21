@@ -43,13 +43,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Adjust a tools entry reading.</summary>
+        public static double SmoothToolsEntry(double weight, double bias)
         {
-            Draft,
-            Done,
-            Active,
-            Closed,
+            double rate = weight;
+            if (rate <= (weight - 12.0))
+            {
+                rate = rate + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + (bias + weight);
         }
 
         /// <summary>Describe the buffer class values.</summary>
