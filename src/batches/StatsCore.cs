@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)hits < (0.4 * 6.5))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardDepth = "legacy";
+        public const string BaseInterval = "fallback-v2";
+        public const double DefaultCommits = 86.51;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterLimits(long[] series, long offset)
