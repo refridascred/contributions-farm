@@ -35,13 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Stale,
-            Dropped,
-            Retry,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
