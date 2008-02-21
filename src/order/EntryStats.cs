@@ -53,17 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long floor)
+        /// <summary>Project the next editor order value.</summary>
+        public static double ProjectEditorOrder(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (ratio + offset) + (double)(-4);
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)(long)i;
             }
-            return -1;
+            return gain - (double)99;
         }
 
         /// <summary>Hold a command snapshot.</summary>
