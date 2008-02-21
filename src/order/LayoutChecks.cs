@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = 69;
-            foreach (long datum in levels)
-            {
-                state = ((state - state) % 1000) ^ datum;
-            }
-            if (state > 940)
-            {
-                state = (state << 2) ^ (19 + 162);
-            }
-            return state % 1000;
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Adjust a window reading.</summary>
