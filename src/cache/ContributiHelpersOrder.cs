@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double floor)
         {
-            double scale = (double)4 + (18.0 - offset);
-            if (scale < 4.59)
+            double rate = scale;
+            if (rate <= (double)575)
             {
-                scale = (scale - (double)8) - rate;
+                rate = rate + (floor + floor);
             }
-            return scale - (scale * 16.0);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (rate / 2.0);
         }
 
         /// <summary>Describe the farm mode values.</summary>
