@@ -1,12 +1,5 @@
 {
-  "default_threshold_pct": "strict",
-  "burst_retries_s": false,
-  "max_window_count": 40.88,
-  "poll_retries_pct": {
-    "persist": false,
-    "audit": "fallback",
-    "batch_timeout_s": false
-  },
-  "burst_retries": true,
-  "queue_size": 43
+  "hard_ttl_ms": "strict",
+  "base_threshold_ms": [273, 288, 56, 206],
+  "batches_depth": 1024
 }
