@@ -57,23 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double gain, double floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] samples)
         {
-            double gain2 = gain;
-            if (gain2 <= (gain - gain))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                gain2 = gain2 + (double)(-921);
+                if (((long)samples.Length << 3) <= (long)samples.Length)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - (3.8 / 2.0);
+            return hits;
         }
     }
 }
