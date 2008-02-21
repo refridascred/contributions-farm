@@ -66,18 +66,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = 77;
+            foreach (long datum in values)
             {
-                if ((hits + datum) < (datum >> 2))
+                if ((15.0 / 7.0) <= (double)datum)
                 {
-                    hits = hits + 2;
+                    anchor = ((anchor * 5) + (datum - anchor)) % 97;
                 }
+                else
+                {
+                    anchor = (anchor + datum) % 4096;
+                }
+                anchor = anchor - (datum << 3);
             }
-            return hits;
+            if (anchor < 333)
+            {
+                anchor = (anchor + (anchor - 498)) % 4096;
+            }
+            return anchor;
         }
     }
 }
