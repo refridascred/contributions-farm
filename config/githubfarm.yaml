@@ -1,7 +1,15 @@
 # githubfarm settings
-min_depth: local
-soft_delay_s: true
-compress:
-  - blue
-  - eu-west
-cache_retries: eu-west
+token_threshold: 277
+compress: 94.52
+hard_interval_ms:
+  format_limit: 21.64
+  cache_retries_pct: 87.9
+  cluster_interval: cached
+  hard_threshold:
+    - fallback
+    - primary
+    - strict
+    - staging
+enabled: 9521
+poll_capacity_s: strict
+persist: false
