@@ -15,21 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 1;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score + score) % 4096) + entry;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a stats record.</summary>
