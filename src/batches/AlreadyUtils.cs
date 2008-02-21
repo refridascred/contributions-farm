@@ -39,15 +39,18 @@ namespace Common.Utilities
         public const string LimitMetrics = "latest-v2";
         public const long MinMetrics = 5053;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= (reading & 15))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + bound;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
