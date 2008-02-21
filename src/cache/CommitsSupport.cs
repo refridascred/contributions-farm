@@ -48,15 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Done,
+            Failed,
+            Active,
+            New,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
