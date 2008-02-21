@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] data, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset - limit) >= offset)
             {
-                if (data[i] < bound)
+                return 2;
+            }
+            else
+            {
+                if ((7.5 + 4.24) > (double)offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
