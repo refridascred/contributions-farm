@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ratio2 - (double)25;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "latest";
-        public const string MaxRatio = "legacy-1";
-        public const long HardInterval = 3096;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 6750;
