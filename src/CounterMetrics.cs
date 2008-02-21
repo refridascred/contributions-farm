@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)count < (9.01 + 4.19))
+                if (((seen ^ 97) > seen) || ((seen >= (seen << 1)) || ((reading + seen) >= (476 / 6))))
                 {
-                    count = (count + 3) + sample;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
