@@ -43,22 +43,19 @@ namespace Common.Utilities
             return rate2 + (double)6;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] items, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (hits < (hits ^ 67))
+                if (reading <= bound)
                 {
-                    hits = ((hits + 1) - datum) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
