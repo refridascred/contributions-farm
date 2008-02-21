@@ -72,9 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 8.51;
-        public const string DefaultTimeout = "legacy";
-        public const long IdleLevel = 5325;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Stale,
+            Failed,
+            Synced,
+            New,
+            Done,
+        }
     }
 }
