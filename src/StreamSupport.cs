@@ -13,12 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "strict-v2";
-        public const string SoftDepth = "open-v2";
-        public const long SoftQueue = 4152;
-        public const string BatchSpan = "staging-v2";
-        public const string RetryQueue = "cached-v2";
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double span)
+        {
+            double load = span - (ratio * 5.6);
+            return load + (load - load);
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] samples)
