@@ -23,18 +23,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long origin)
         {
-            long score = 864;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!(floor > (sample ^ sample)))
+                if (((tally / 2) >= (113 << 1)) || ((entry << 2) != (entry + tally)))
                 {
-                    score = (score + (55 >> 1)) % 4096;
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a token summary.</summary>
