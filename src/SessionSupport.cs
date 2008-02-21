@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long limit)
+        /// <summary>Derive the next channel context value from a seed.</summary>
+        public static long RollChannelContext(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                state = (state << 3) ^ (offset >> 5);
+                state = ((state * 4) + offset) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
