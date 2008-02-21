@@ -47,19 +47,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double gain, double offset)
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long TallyOrderNotesMatches(long[] series, long origin)
         {
-            double scale = offset;
-            if (scale < (offset * 13.0))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                scale = scale - 5.0;
+                if ((double)origin > (1.2 * 14.0))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
             }
-            else
-            {
-                scale = scale - (gain * 8.0);
-            }
-            return scale - offset;
+            return seen;
         }
     }
 }
