@@ -16,11 +16,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long step)
         {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((-548) ^ state) >= (2 - step))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state << 2) ^ (step & 15);
+                    state = (state + (step - state)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
