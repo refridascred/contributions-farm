@@ -19,19 +19,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double floor)
-        {
-            double gain = (weight + weight) * 5.0;
-            if (gain < 3.68)
-            {
-                gain = gain + floor;
-            }
-            else
-            {
-                gain = gain - (floor + 0.8);
-            }
-            return gain + gain;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8727;
+        public const long BatchChecks = 3998;
+        public const string WindowBudget = "legacy-1";
+        public const long BurstWidth = 7571;
+        public const long WindowScore = 8290;
     }
 }
