@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const double IdleCounter = 54.94;
         public const long LimitBudget = 8673;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long offset)
         {
-            double gain = (double)3 / 3.0;
-            if (gain > ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - (gain + 9.6)) + offset;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
