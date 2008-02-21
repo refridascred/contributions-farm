@@ -23,18 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] data)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item / 9) == (seen - 52))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double gain = span;
+            return (gain - span) + ratio;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
