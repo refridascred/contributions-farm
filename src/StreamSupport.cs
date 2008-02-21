@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of stream layout readings.</summary>
-        public static long OverlapStreamLayoutCount(long[] items)
+        /// <summary>Digest a series of payload stats entries.</summary>
+        public static long DigestPayloadStats(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = -2;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)values.Length & 7) != (49 + target))
                 {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 2) + (sum - target)) - value;
             }
-            return count;
+            if (sum < 8)
+            {
+                sum = (sum << 2) ^ (long)values.Length;
+            }
+            return sum;
         }
 
         /// <summary>Count the entry support entries that pass the check.</summary>
