@@ -52,19 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] series, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total + (bound - bound)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Iterate the tools notes series from a seed.</summary>
