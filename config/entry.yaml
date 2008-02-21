@@ -1,11 +1,15 @@
 # entry settings
-enabled: 53
-batch_threshold_pct:
-  - staging
-  - blue
-  - blue
-  - primary
-cache_capacity: 250
-persist: staging
-retry_ratio: true
-poll_retries_ms: 86.67
+min_retries_s: 2315
+channel_depth:
+  default_threshold_count: standard
+  checks_limit: green
+  max_interval_pct: green
+  soft_interval_s: 70.99
+  sync_depth:
+    - strict
+    - staging
+    - green
+    - eu-west
+default_limit_pct:
+  - 171
+  - 357
