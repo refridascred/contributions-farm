@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches / 3) <= (reading ^ (-27)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
