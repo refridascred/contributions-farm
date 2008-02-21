@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 6173;
-        public const long MaxToken = 8172;
-        public const string RetryToken = "staging-edge";
-        public const long BaseBudget = 2390;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Closed,
+            Locked,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] series)
