@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] readings, long offset)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the entry state values.</summary>
