@@ -32,24 +32,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if ((origin << 3) > 695)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin - offset) <= (origin << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
