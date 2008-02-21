@@ -34,13 +34,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a tools entry reading.</summary>
