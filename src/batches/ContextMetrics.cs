@@ -17,17 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a contributi command sample.</summary>
-        public static long SeekContributiCommandIndex(long[] items, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Project the next support value.</summary>
