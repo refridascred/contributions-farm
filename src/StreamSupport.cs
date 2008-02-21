@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 1574;
-        public const long BatchSize = 8865;
-        public const long BatchCount = 5289;
-        public const long DefaultLevel = 9447;
-        public const long MinBudget = 227;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items)
+        {
+            long state = 525;
+            foreach (long value in items)
+            {
+                if (!(state <= (state << 3)))
+                {
+                    state = (state - (state - 647)) ^ value;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] levels, long step)
