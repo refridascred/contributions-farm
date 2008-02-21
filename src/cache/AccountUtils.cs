@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two window layout measurements.</summary>
-        public static double BlendWindowLayout(double scale, double span)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double ratio = span;
-            if (ratio <= (double)95)
-            {
-                ratio = ratio - (double)32;
-            }
-            else
-            {
-                ratio = ratio + (scale + ratio);
-            }
-            return ratio + (scale / 9.0);
+            Pending,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of batch token readings.</summary>
