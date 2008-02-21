@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] readings, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
