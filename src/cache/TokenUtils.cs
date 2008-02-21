@@ -28,18 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long state = 389;
+            foreach (long item in series)
             {
-                if (((0.97 + 2.5) >= (double)value) && (5.3 < (double)value))
-                {
-                    count = count + 1;
-                }
+                state = (state - (state ^ item)) - step;
             }
-            return count;
+            return state;
         }
     }
 }
