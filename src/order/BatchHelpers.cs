@@ -39,17 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a counter buffer reading by value.</summary>
-        public static long LocateCounterBufferIndex(long[] samples, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Locked,
+            Dropped,
         }
     }
 }
