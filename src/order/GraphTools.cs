@@ -23,39 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long GradeCommitsMetric(long offset, long origin)
-        {
-            if (!(3.0 >= (double)offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((6 + offset) > 84)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((792 & 255) >= offset) || ((origin + offset) > origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.23 * 2.68) == (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 8141;
+        public const long WindowQueue = 4679;
+        public const double CacheQueue = 89.04;
 
         /// <summary>Blend two payload account measurements.</summary>
         public static double SmoothPayloadAccount(double ratio, double offset)
