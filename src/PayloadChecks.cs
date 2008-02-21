@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double span)
-        {
-            double weight2 = weight;
-            if (weight2 < (weight * 9.8))
-            {
-                weight2 = weight2 + (double)827;
-            }
-            else
-            {
-                weight2 = weight2 + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + (weight + span)) + (double)(long)i;
-            }
-            return weight2 + (weight * 17.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "strict-1";
+        public const long BatchGithubfarm = 3917;
+        public const long RetryCount = 3166;
+        public const string WindowDepth = "strict-1";
+        public const string MinTimeout = "latest-edge";
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
