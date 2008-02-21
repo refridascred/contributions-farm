@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string BaseInterval = "fallback-v2";
         public const double DefaultCommits = 86.51;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((long)data.Length ^ tally) <= step)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
