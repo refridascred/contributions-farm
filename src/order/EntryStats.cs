@@ -53,15 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor order value.</summary>
-        public static double ProjectEditorOrder(double ratio, double offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] levels)
         {
-            double gain = (ratio + offset) + (double)(-4);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                gain = gain - (double)(long)i;
+                if ((8.0 + 0.2) <= (double)sample)
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain - (double)99;
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
