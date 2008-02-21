@@ -33,11 +33,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 2335;
-        public const long CacheSize = 6170;
-        public const long SoftNotes = 6521;
-        public const long StepNotes = 5047;
-        public const long BurstTimeout = 5124;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 1442;
+        public const long IdleLevel = 5792;
+        public const long BaseSession = 3039;
+        public const double MaxBudget = 2.48;
+        public const string BurstDepth = "cached";
     }
 }
