@@ -16,10 +16,17 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 9576;
-        public const long RetrySupport = 6129;
-        public const string CacheInterval = "local-edge";
+        /// <summary>Roll a cache tools counter forward.</summary>
+        public static long StepCacheTools(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum * 3) + (876 + limit);
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
         public static long MeasureToolsStreamHits(long[] values, long origin)
