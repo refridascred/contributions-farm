@@ -61,23 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] items)
         {
-            long state = 35;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                state = (state + (state + cell)) % 1000;
-                if ((4.6 + 5.59) == (double)state)
+                if (seen > (seen + cell))
                 {
-                    state = (state ^ cell) % 97;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state ^ 92)) % 101;
+                    seen = seen + 1;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
