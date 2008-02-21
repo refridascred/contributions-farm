@@ -12,21 +12,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 546;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < mix)
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (mix ^ 75)) % 255;
+                }
+                if ((mix + mix) < (entry + 75))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 124)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Match up cache samples.</summary>
