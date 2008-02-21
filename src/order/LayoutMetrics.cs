@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 7080;
-        public const long WindowSpan = 8882;
-        public const long MinLevel = 7103;
-        public const string RetryFormat = "latest-1";
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double bias)
+        {
+            double ratio = bias - (0.83 + bias);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (double)(long)i) - scale;
+            }
+            return ratio - (ratio / 4.0);
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterLimits(long[] values, long limit)
