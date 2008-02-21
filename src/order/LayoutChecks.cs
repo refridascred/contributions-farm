@@ -17,11 +17,14 @@ namespace Common.Utilities
         public const double BatchBudget = 61.71;
         public const long MaxRatio = 1208;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 5173;
-        public const long MinWidth = 3255;
-        public const long StepCommand = 9392;
-        public const long BurstDepth = 8344;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmRange(long[] levels, long origin)
