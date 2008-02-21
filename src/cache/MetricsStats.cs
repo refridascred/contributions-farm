@@ -26,22 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format support readings against a rule.</summary>
-        public static long CountFormatSupportMatches(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long score = 499;
+            foreach (long cell in values)
             {
-                if (((6.0 / 6.0) == (double)entry) || ((entry >> 4) <= (entry + hits)))
+                if (0 <= (score / 2))
                 {
-                    hits = hits + 3;
+                    score = (score - score) + floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = score + (cell - 3);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
