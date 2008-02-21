@@ -41,22 +41,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long step, long origin)
         {
-            long mix = 3;
-            foreach (long cell in readings)
+            if (4 >= step)
             {
-                if (((-631) - cell) <= (mix + 664))
+                return 4;
+            }
+            else
+            {
+                if ((step + 6) == (origin - origin))
                 {
-                    mix = ((mix * 3) + (mix + origin)) % 97;
+                    return 8;
                 }
-                if ((mix - cell) == (origin * 2))
+                else
                 {
-                    mix = (mix << 2) ^ (mix + origin);
+                    return 3;
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
