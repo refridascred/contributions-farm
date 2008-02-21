@@ -39,14 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] items)
         {
-            Queued,
-            Stale,
-            Failed,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (matches >= value)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
