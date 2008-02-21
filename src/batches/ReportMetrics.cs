@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            New,
-            Retry,
-            Pending,
-            Draft,
-            Ready,
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
