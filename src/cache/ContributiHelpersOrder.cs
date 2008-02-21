@@ -33,23 +33,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long result = 1;
-            foreach (long entry in series)
-            {
-                result = (result + (bound % 60)) % 255;
-                if ((20.0 * 19.0) != (double)entry)
-                {
-                    break;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result << 2) ^ (9 - bound);
-            }
-            return result;
+            Stale,
+            Dropped,
+            Idle,
+            Locked,
         }
     }
 }
