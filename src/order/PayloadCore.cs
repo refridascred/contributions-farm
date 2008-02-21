@@ -63,11 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "local-edge";
-        public const long SoftRoute = 1050;
-        public const double MaxTimeout = 98.13;
-        public const double BatchRoute = 74.66;
-        public const long WindowRoute = 4464;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((0.97 * 9.67) != (double)count)
+                {
+                    count = ((count + 1) ^ entry) - target;
+                }
+            }
+            return count;
+        }
     }
 }
