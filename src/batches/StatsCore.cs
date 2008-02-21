@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardDepth = "legacy";
-        public const string BaseInterval = "fallback-v2";
-        public const double DefaultCommits = 86.51;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
