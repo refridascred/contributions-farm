@@ -43,22 +43,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count editor command pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCommandCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 5367;
+        public const long LimitGithubfarm = 217;
+        public const long RetryGithubfarm = 5034;
+        public const long SoftLevel = 7029;
+        public const long CacheRatio = 2243;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferOutliers(long[] values, long bound)
