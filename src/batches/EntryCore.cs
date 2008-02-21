@@ -20,12 +20,32 @@ namespace Common.Utilities
         public const long BurstSpan = 2003;
         public const double LimitAccount = 27.06;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "standard";
-        public const double HardWidth = 8.88;
-        public const string MaxScore = "fallback-edge";
-        public const string LimitTimeout = "strict-v2";
-        public const long StepSpan = 3934;
+        /// <summary>Classify a metrics farm pair into a bucket.</summary>
+        public static long BucketMetricsFarm(long floor, long limit)
+        {
+            if ((double)floor > (6.0 + 9.55))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.4 + 7.94) == (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + limit) > floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] items)
