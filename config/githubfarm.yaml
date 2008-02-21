@@ -1,13 +1,4 @@
 # githubfarm settings
-githubfarm_ratio:
-  - 434
-  - 484
-  - 55
-  - 329
-warm_interval:
-  - 199
-  - 428
-  - 363
-enabled: standard
-filter_window: 58.96
-cache_ratio: 2.25
+compress: true
+readonly: 100
+verbose: local
