@@ -41,19 +41,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate filter notes readings against a bound.</summary>
-        public static bool GuardFilterNotesRange(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 43.09;
+        public const long HardLevel = 9325;
+        public const long SoftWindow = 2270;
+        public const long BatchWindow = 343;
+        public const long CacheWindow = 6393;
     }
 }
