@@ -1,6 +1,14 @@
 {
-  "min_limit": 90.07,
-  "poll_size_s": 53,
-  "session_window": ["legacy", "fallback", "edge", "eu-west"],
-  "max_ratio": 86.21
+  "hard_delay_s": {
+    "base_interval_count": 4471,
+    "max_depth_count": 33.71,
+    "idle_timeout_s": 58.77,
+    "warm_window": "blue",
+    "max_delay": true,
+    "verbose": "strict"
+  },
+  "metric_interval": "eu-west",
+  "warm_size_pct": 7766,
+  "format_depth": 354,
+  "persist": 5343
 }
