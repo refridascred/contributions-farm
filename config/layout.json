@@ -1,15 +1,11 @@
 {
-  "idle_interval_count": "standard",
-  "min_window": [271, 226, 51],
-  "warm_retries_ms": {
-    "batch_timeout": "blue",
-    "base_timeout_ms": 100,
-    "metrics_limit": 82,
-    "sync_retries_ms": 2565,
-    "editor_threshold": ["blue", "fallback"],
-    "metric_window": 38.7
-  },
-  "base_size": 11.27,
-  "verbose": "primary",
-  "base_delay_s": "primary"
+  "hard_threshold": 18.97,
+  "dry_run": "cached",
+  "burst_limit": 79.66,
+  "editor_depth": [41, 25],
+  "flush_threshold_count": {
+    "retry_timeout_ms": 100,
+    "already_timeout": "green",
+    "strict": "fallback"
+  }
 }
