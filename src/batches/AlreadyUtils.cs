@@ -44,10 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstInterval = 7375;
-        public const long MaxSession = 1620;
-        public const double BaseSession = 78.8;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= (reading & 15))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long SortReport(long floor, long offset)
