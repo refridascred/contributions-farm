@@ -80,13 +80,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double gain, double span)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
+            double scale = gain;
+            return (scale - (double)930) + span;
         }
     }
 }
