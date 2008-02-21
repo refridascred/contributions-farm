@@ -14,10 +14,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepSize = 3159;
-        public const double MinProfile = 63.23;
-        public const long RetryProfile = 1151;
+        /// <summary>Rank session window input into a small class.</summary>
+        public static long GradeSessionWindow(long bound, long step)
+        {
+            if (!((3.0 / 9.0) < (4.05 - 6.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > (step & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
