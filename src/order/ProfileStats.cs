@@ -57,15 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a buffer commits counter forward.</summary>
-        public static long DeriveBufferCommits(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] readings, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((seen - floor) > cell)
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
