@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
-        public static long PairProfileToolsCount(long[] samples)
+        /// <summary>Rank report metrics input into a small class.</summary>
+        public static long ClassifyReportMetrics(long target, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)offset <= 2.0)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)target == (5.6 - 1.0))
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
