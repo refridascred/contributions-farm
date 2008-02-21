@@ -35,13 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Queued,
-            Dropped,
-            Retry,
-            Pending,
+            public double Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
