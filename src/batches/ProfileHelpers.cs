@@ -32,16 +32,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next checks contributi value from a seed.</summary>
-        public static long DeriveChecksContributi(long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            if ((origin << 3) > 695)
             {
-                result = (result ^ (floor << 1)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((origin - offset) <= (origin << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
