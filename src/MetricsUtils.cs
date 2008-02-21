@@ -35,12 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseWidth = 48.24;
-        public const string SoftFarm = "primary-edge";
-        public const long BurstFarm = 2148;
-        public const long CacheFarm = 1;
-        public const string HardFarm = "strict-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 423;
+        public const long BatchInterval = 1847;
+        public const long WindowCounter = 5383;
+        public const long MinCounter = 2093;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] values, long seed)
