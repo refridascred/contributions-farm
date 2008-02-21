@@ -32,13 +32,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Grade a contributi route value against two limits.</summary>
+        public static long RankContributiRoute(long step, long step2)
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            if (step2 <= (0 + step2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step2 - step) == (step + step)) || (962 > step2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (94 >= (step2 - step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
