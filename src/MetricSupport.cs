@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate profile window readings against a bound.</summary>
-        public static bool VerifyProfileWindowRange(long[] values, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
