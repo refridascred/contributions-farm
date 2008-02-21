@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (hits <= (value & 127))
+                anchor = (anchor * 5) + (anchor << 2);
+                if (((long)i / 2) < anchor)
                 {
-                    hits = hits + 1;
+                    anchor = (anchor + (anchor / 7)) % 101;
+                    anchor = (anchor ^ (long)i) % 101;
+                    continue;
                 }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the profile kind values.</summary>
