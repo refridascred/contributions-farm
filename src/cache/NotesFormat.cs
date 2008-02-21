@@ -23,19 +23,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long bound)
+        /// <summary>Rank order report input into a small class.</summary>
+        public static long ClassifyOrderReport(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            if ((limit >= (seed / 4)) || ((62 ^ limit) == (seed - seed)))
             {
-                if (entry != bound)
+                return 6;
+            }
+            else
+            {
+                if (!((seed % 5) <= (seed % 16)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >= (907 % 64)) || ((seed % 16) < (seed & 127)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed < limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
