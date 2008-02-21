@@ -73,22 +73,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] series)
+        /// <summary>Validate token graph readings against a bound.</summary>
+        public static bool GuardTokenGraphLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((((double)tally < (2.17 + 7.61)) || ((tally - value) <= (tally ^ tally))) || ((double)value > (7.5 - 0.26)))
+                if (item <= bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
