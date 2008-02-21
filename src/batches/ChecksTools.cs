@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public double Token { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheDepth = 14.76;
+        public const long MinSize = 9786;
+        public const long CacheChannel = 1161;
+        public const long SoftChannel = 8871;
+        public const long IdleChannel = 1693;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] readings, long seed)
