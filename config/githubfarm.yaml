@@ -1,7 +1,7 @@
 # githubfarm settings
-base_interval_pct: primary
-sync_timeout_pct: staging
-audit: false
-batch_window:
-  - 52
-  - 332
+base_threshold_pct: staging
+default_retries: latest
+idle_capacity_count: 38
+max_ratio: standard
+readonly: 40.27
+default_capacity: primary
