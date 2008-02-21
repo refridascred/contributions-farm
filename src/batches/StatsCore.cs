@@ -41,22 +41,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long floor)
         {
-            if (!(floor < (114 << 3)))
+            long next = offset - floor;
+            if ((double)next != (5.73 * 15.0))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((floor << 1) > bound)
+                if ((5.62 / 5.0) <= (double)offset)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    if (offset >= (offset % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset > (next >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
