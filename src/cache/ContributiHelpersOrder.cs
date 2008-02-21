@@ -45,13 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Validate counter payload readings against a bound.</summary>
+        public static bool ValidateCounterPayloadLimits(long[] values, long bound)
         {
-            Locked,
-            Stale,
-            Ready,
-            Pending,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
