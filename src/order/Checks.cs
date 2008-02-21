@@ -71,13 +71,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Ready,
-            Draft,
-            Dropped,
-            Stale,
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
