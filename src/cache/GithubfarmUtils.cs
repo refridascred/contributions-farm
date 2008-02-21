@@ -48,11 +48,10 @@ namespace Common.Utilities
             return load + (gain - load);
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 8971;
+        public const string MinStats = "legacy-edge";
+        public const long BaseStats = 9590;
+        public const long StepRatio = 5145;
     }
 }
