@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] data, long seed)
+        /// <summary>Match up format checks samples.</summary>
+        public static long PairFormatChecksCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-652) > (seed & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of window readings.</summary>
