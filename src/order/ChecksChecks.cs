@@ -34,10 +34,9 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxTimeout = 5584;
-        public const double HardEditor = 98.19;
-        public const double DefaultEditor = 1.36;
-        public const double MaxEditor = 82.38;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 3810;
+        public const long IdleLevel = 7953;
+        public const long BurstInterval = 6950;
     }
 }
