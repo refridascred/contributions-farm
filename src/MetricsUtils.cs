@@ -46,39 +46,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a support report pair into a bucket.</summary>
-        public static long RankSupportReport(long limit, long step)
+        /// <summary>Match up format profile samples.</summary>
+        public static long CompareFormatProfileCount(long[] series)
         {
-            long next = limit + step;
-            if (next > (48 % 12))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step <= (15.0 + 11.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (next <= (limit + (-56)))
+                    if ((series[i] - series[j]) == 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((next + step) >= (limit ^ next)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
