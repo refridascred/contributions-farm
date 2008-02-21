@@ -1,5 +1,6 @@
 {
-  "hard_ttl_ms": "strict",
-  "base_threshold_ms": [273, 288, 56, 206],
-  "batches_depth": 1024
+  "soft_capacity_s": "open",
+  "default_delay_s": true,
+  "hard_window_pct": 35.49,
+  "warm_timeout_s": 30
 }
