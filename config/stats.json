@@ -1,7 +1,23 @@
 {
-  "strict": true,
-  "cache_delay_count": 500,
-  "soft_retries": 60,
-  "entry_interval": ["fallback", "local", "fallback"],
-  "max_capacity_count": "strict"
+  "poll_timeout": "local",
+  "window_ratio": false,
+  "min_ttl_count": "green",
+  "sync_size_ms": 2.02,
+  "poll_threshold_s": {
+    "retry_limit_count": {
+      "format_ratio": "latest",
+      "compress": "fallback",
+      "token_ratio": 98.46,
+      "cache_retries": 71
+    },
+    "readonly": 6.43,
+    "idle_size_pct": 25,
+    "entry_size": "fallback",
+    "min_capacity": {
+      "payload_timeout": ["standard", "cached", "local", "open"],
+      "profile_depth": 2,
+      "compress": 69,
+      "burst_timeout_ms": 6.14
+    }
+  }
 }
