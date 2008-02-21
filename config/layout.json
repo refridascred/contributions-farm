@@ -1,8 +1,7 @@
 {
-  "base_delay": "strict",
-  "strict": false,
-  "retry_interval_pct": true,
-  "batch_window": 7.08,
-  "idle_limit_s": 10.43,
-  "cache_interval": [492, 328, 54, 33]
+  "poll_retries": "blue",
+  "retry_timeout_pct": [482, 301, 17, 227],
+  "dry_run": 38.67,
+  "max_threshold_pct": false,
+  "default_retries_count": "cached"
 }
