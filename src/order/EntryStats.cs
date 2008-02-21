@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples, long seed)
         {
-            long anchor = -5;
-            foreach (long sample in readings)
+            long sum = 55;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor + (floor >> 4)) % 101) ^ sample;
+                if (!((seed >> 3) < 37))
+                {
+                    sum = (sum + (seed / 8)) - cell;
+                }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
