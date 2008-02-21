@@ -47,18 +47,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long CountFormatRouteOutliers(long[] values, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (7 < (seen - entry))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
