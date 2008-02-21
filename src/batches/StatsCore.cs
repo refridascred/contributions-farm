@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many contributi notes samples are out of range.</summary>
-        public static long MeasureContributiNotesMatches(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading & 1) <= (reading + (long)samples.Length)) && ((3.6 >= (double)reading) || ((matches + matches) >= 159)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a route record.</summary>
