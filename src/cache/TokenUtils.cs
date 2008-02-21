@@ -19,17 +19,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset = limit + floor;
+            if (((double)offset == (6.8 + 8.42)) && ((floor >> 5) <= (limit + floor)))
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((61 & 15) <= limit) && ((limit ^ limit) != (floor >> 4)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (floor >= (floor - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset / 6) != (floor << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
