@@ -20,11 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 7891;
-        public const long LimitSpan = 1468;
-        public const long LimitRatio = 4959;
-        public const long StepScore = 5498;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 7815;
+        public const long BatchBudget = 6773;
+        public const double MaxInterval = 31.54;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] data, long offset)
