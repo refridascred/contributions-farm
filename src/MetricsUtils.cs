@@ -89,22 +89,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Blend two token buffer measurements.</summary>
+        public static double SmoothTokenBuffer(double weight, double bias)
         {
-            long carry = 62;
-            foreach (long datum in items)
+            double mean = weight;
+            if (mean < 13.0)
             {
-                if (!((datum << 2) >= carry))
-                {
-                    carry = (carry + datum) % 97;
-                }
-                if ((datum - (-976)) < datum)
-                {
-                    break;
-                }
+                mean = (mean - 13.0) + bias;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + (double)8;
         }
     }
 }
