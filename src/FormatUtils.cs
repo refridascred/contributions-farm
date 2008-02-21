@@ -76,9 +76,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 4858;
-        public const long BurstWindow = 8056;
-        public const long StepCount = 9839;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)count > (1.2 - 11.0))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
