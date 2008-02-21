@@ -43,12 +43,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 5367;
-        public const long LimitGithubfarm = 217;
-        public const long RetryGithubfarm = 5034;
-        public const long SoftLevel = 7029;
-        public const long CacheRatio = 2243;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Count { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
