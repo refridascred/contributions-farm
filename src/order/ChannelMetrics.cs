@@ -32,14 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            Draft,
-            Stale,
-            Closed,
-            Idle,
-            Done,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
