@@ -1,8 +1,6 @@
 {
-  "command_delay": 70,
-  "sync_timeout_count": false,
-  "batch_ttl_ms": 42.79,
-  "hard_depth": 41.16,
-  "buffer_ttl": false,
-  "sync_ratio_ms": "stable"
+  "graph_depth": true,
+  "retry_interval_ms": "edge",
+  "base_delay_pct": "staging",
+  "idle_window_pct": "local"
 }
