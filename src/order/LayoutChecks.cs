@@ -61,23 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double bias)
         {
-            double mean = ratio;
-            if (mean > mean)
+            double mean = (bias / 3.0) + (bias + bias);
+            if (mean > (double)131)
             {
-                mean = (mean - 5.55) + span;
+                mean = mean + (18.0 / 8.0);
             }
             else
             {
-                mean = mean - (mean - 5.01);
+                mean = mean + (scale * 8.39);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (12.0 - mean)) + (double)(long)i;
-            }
-            return mean + 6.83;
+            return mean + scale;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
