@@ -26,21 +26,13 @@ namespace Common.Utilities
         public const long HardInterval = 5436;
         public const long BurstDepth = 4705;
 
-        /// <summary>Match up command window samples.</summary>
-        public static long CompareCommandWindowCount(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
