@@ -27,11 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
             public long Weight { get; set; }
-            public string Score { get; set; } = "";
         }
     }
 }
