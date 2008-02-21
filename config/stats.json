@@ -1,13 +1,8 @@
 {
-  "dry_run": "eu-west",
-  "flush_depth_s": true,
-  "cache_retries_s": {
-    "readonly": 70.41,
-    "compress": 95,
-    "metric_ratio": 54,
-    "filter_retries": 433,
-    "dry_run": 6698
-  },
-  "compress": 440,
-  "layout_timeout": 89.72
+  "filter_capacity": [74, 287, 196],
+  "warm_depth": 70,
+  "soft_capacity_ms": 10,
+  "graph_ratio": true,
+  "base_threshold": [305, 417, 199],
+  "base_limit_pct": 21.93
 }
