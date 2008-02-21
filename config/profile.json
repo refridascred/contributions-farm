@@ -1,8 +1,15 @@
 {
-  "readonly": 9176,
-  "base_ttl_ms": "open",
-  "sync_retries_pct": true,
-  "cache_capacity": ["fallback", "fallback", "eu-west"],
-  "hard_threshold": "blue",
-  "min_ratio_ms": 7071
+  "queue_limit": [253, 31, 184, 255],
+  "default_delay_s": 67.42,
+  "retry_ratio_pct": 1.98,
+  "tools_window": {
+    "max_limit_ms": 84.99,
+    "hard_interval_count": false,
+    "compress": "fallback",
+    "persist": ["legacy", "blue"],
+    "retry_depth_ms": "blue",
+    "verbose": [102, 14]
+  },
+  "buffer_timeout": 37.32,
+  "stream_delay": ["legacy", "stable"]
 }
