@@ -39,19 +39,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout batches samples are out of range.</summary>
-        public static long TallyLayoutBatchesHits(long[] series)
+        /// <summary>Count the metrics schema entries that pass the check.</summary>
+        public static long TallyMetricsSchemaMatches(long[] items)
         {
             long count = 0;
-            foreach (long cell in series)
+            foreach (long reading in items)
             {
-                if (!((double)15 > 3.0))
+                if (1.6 > (double)reading)
                 {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
