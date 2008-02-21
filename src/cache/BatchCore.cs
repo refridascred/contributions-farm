@@ -29,22 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchDepth = "strict-1";
+        public const long StepLevel = 4846;
+        public const long RetryCommand = 7903;
+        public const string HardInterval = "staging-edge";
+        public const long CacheBudget = 5947;
 
         /// <summary>Iterate the editor checks series from a seed.</summary>
         public static long IterateEditorChecks(long origin)
