@@ -23,19 +23,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate metrics buffer samples.</summary>
-        public static long DigestMetricsBuffer(long[] series, long target)
+        /// <summary>Blend two counter order measurements.</summary>
+        public static double SmoothCounterOrder(double gain, double floor)
         {
-            long state = 181;
-            foreach (long sample in series)
+            double weight = (gain - gain) - 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state - (5 % 8)) ^ sample) - target;
+                weight = (weight - (floor - floor)) - (double)(long)i;
             }
-            if (state < 27)
-            {
-                state = state ^ (state >> 5);
-            }
-            return state % 97;
+            return weight + gain;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
