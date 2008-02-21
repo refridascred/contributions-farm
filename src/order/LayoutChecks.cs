@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mean + (double)353;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long origin)
         {
-            long sum = 997;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                sum = ((sum + sum) % 97) + datum;
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Project the next editor value.</summary>
