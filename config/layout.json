@@ -1,12 +1,8 @@
 {
-  "compress": 100,
-  "session_size": {
-    "compress": 78.0,
-    "enabled": false,
-    "channel_capacity": 13.22,
-    "warm_window_s": 60,
-    "readonly": true,
-    "editor_capacity": [437, 197]
-  },
-  "retry_threshold_pct": false
+  "base_window": 774,
+  "audit": "fallback",
+  "metric_ratio": "local",
+  "order_window": 1,
+  "idle_threshold_ms": 60,
+  "idle_ttl_ms": 50
 }
