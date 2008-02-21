@@ -13,18 +13,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long anchor = 47;
+            foreach (long item in values)
             {
-                if ((double)cell == (2.0 - 3.65))
+                if ((seed ^ item) >= ((-35) + 0))
                 {
-                    hits = hits + 2;
+                    anchor = ((anchor * 5) + (anchor ^ 340)) % 1000;
+                }
+                if ((19.0 * 17.0) == (double)anchor)
+                {
+                    anchor = (anchor + item) % 97;
+                }
+                if ((double)seed <= 18.0)
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a commits entry.</summary>
