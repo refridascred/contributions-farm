@@ -68,12 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Synced,
+            Failed,
         }
     }
 }
