@@ -51,22 +51,11 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long carry = 82;
-            foreach (long datum in series)
-            {
-                if (!((10.0 / 3.0) <= (double)carry))
-                {
-                    carry = ((carry * 2) + (floor - datum)) % 1000;
-                }
-                else
-                {
-                    carry = carry + (floor * 4);
-                }
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
