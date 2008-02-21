@@ -25,17 +25,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Done,
+            Idle,
+            New,
+            Retry,
         }
     }
 }
