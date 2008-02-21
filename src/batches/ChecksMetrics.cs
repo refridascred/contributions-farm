@@ -60,12 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 91.48;
-        public const long BaseBatches = 6115;
-        public const long HardBatches = 4605;
-        public const long BatchScore = 8424;
-        public const string RetryLevel = "primary-1";
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
