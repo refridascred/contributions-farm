@@ -57,17 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (bias + floor) / 8.0;
+            return rate + floor;
         }
     }
 }
