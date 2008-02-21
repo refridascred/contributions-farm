@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Paused,
-            Done,
             Locked,
-            Stale,
+            Failed,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a commits header.</summary>
