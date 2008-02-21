@@ -65,14 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long floor)
         {
-            Synced,
-            Locked,
-            Paused,
-            Pending,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
