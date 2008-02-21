@@ -47,31 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] items, long floor)
         {
-            if ((0.2 / 7.0) <= (double)offset)
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (855 >= (offset + step))
+                if (value >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((16.0 / 8.0) >= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate commits samples.</summary>
