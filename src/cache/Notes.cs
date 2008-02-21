@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long mark = 441;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5.42 * 9.0) == (double)seed) || ((double)seed == (6.9 + 1.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark * 4) + (seed + mark)) - cell;
-                }
-                else
-                {
-                    mark = mark - ((long)samples.Length ^ 18);
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 958)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
