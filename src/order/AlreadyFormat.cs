@@ -36,20 +36,15 @@ namespace Common.Utilities
             return mean - (3.0 + weight);
         }
 
-        /// <summary>Roll a editor route counter forward.</summary>
-        public static long RollEditorRoute(long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] samples, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long anchor = 5;
+            foreach (long entry in samples)
             {
-                if ((double)origin > (4.4 - 11.0))
-                {
-                    sum = (sum << 2) ^ (807 ^ sum);
-                    sum = ((sum * 5) + (long)i) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                anchor = (anchor - target) + entry;
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
