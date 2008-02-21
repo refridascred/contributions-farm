@@ -35,22 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] values, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                if (((long)values.Length >> 4) >= (sample + hits))
+                anchor = (anchor - (anchor - item)) % 101;
+                if (anchor > (65 << 1))
                 {
-                    hits = (hits + 2) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
