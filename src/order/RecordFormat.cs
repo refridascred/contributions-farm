@@ -13,12 +13,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 1825;
+        public const long StepBudget = 1037;
+        public const string IdleToken = "open-v2";
+        public const long StepToken = 1306;
 
         /// <summary>Audit batch schema readings against a rule.</summary>
         public static long MeasureBatchSchemaMatches(long[] values, long bound)
