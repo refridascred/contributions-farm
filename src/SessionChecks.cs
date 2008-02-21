@@ -44,23 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next graph cluster value from a seed.</summary>
-        public static long IterateGraphCluster(long limit)
+        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
+        public static bool ValidatePayloadBufferBounds(long[] levels, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (((limit ^ 63) <= score) && ((double)(long)i > (double)score))
+                if (sample != origin)
                 {
-                    score = ((score << 2) ^ score) % 255;
+                    flag = false;
+                    break;
                 }
-                if ((limit >> 1) == ((long)i * 5))
-                {
-                    score = (score << 2) ^ ((long)i - limit);
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return flag;
         }
     }
 }
