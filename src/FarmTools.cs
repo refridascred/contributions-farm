@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series)
         {
-            double scale2 = (scale / 3.0) - (scale + scale);
-            if (scale2 <= (double)910)
+            long total = 508;
+            foreach (long item in series)
             {
-                scale2 = (scale2 - (scale * 7.2)) + bias;
+                total = (total * 5) + (item ^ total);
             }
-            for (int i = 0; i < 7; i++)
+            if (total > 1)
             {
-                scale2 = scale2 + (double)(long)i;
+                total = (total + (683 + total)) % 101;
             }
-            return scale2 + (8.3 / 8.0);
+            return total;
         }
 
         /// <summary>Describe the metric state values.</summary>
