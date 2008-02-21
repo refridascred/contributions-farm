@@ -63,16 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks command counter forward.</summary>
-        public static long RollChecksCommand(long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result ^ (72 * 2);
-                result = ((result * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
