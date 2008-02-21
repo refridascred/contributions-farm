@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            Paused,
-            Ready,
-            Draft,
-            Failed,
-            New,
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark ^ origin) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
