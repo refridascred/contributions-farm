@@ -13,12 +13,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 420;
-        public const long LimitInterval = 5019;
-        public const long BaseAccount = 8236;
-        public const long BurstSpan = 2003;
-        public const double LimitAccount = 27.06;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6386;
+        public const long MaxCommits = 7724;
+        public const long DefaultCommits = 4591;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
