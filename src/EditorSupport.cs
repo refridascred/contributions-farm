@@ -74,27 +74,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] series, long bound)
         {
-            long anchor = 77;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((15.0 / 7.0) <= (double)datum)
+                if (series[i] >= bound)
                 {
-                    anchor = ((anchor * 5) + (datum - anchor)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + datum) % 4096;
-                }
-                anchor = anchor - (datum << 3);
             }
-            if (anchor < 333)
-            {
-                anchor = (anchor + (anchor - 498)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
