@@ -25,13 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] values, long step)
         {
-            Paused,
-            Draft,
-            Retry,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
