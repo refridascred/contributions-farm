@@ -28,40 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long floor)
-        {
-            long step = bound ^ floor;
-            if (!((floor ^ floor) > bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 1) <= (68 % 97))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor >> 4) >= (24 + 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(floor <= (step / 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowSize = 65.83;
+        public const double DefaultMetrics = 56.06;
+        public const double StepMetrics = 86.03;
+        public const double LimitMetrics = 75.95;
+        public const long WindowMetrics = 5169;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordMatches(long[] items, long target)
