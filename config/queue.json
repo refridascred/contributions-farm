@@ -1,5 +1,8 @@
 {
-  "stats_window": [291, 80],
-  "commits_size": 8005,
-  "tools_interval": "standard"
+  "hard_ratio_pct": 39.86,
+  "retry_size_pct": "edge",
+  "batch_limit": 893,
+  "report_window": [391, 20, 60],
+  "retry_delay": "green",
+  "audit": 30
 }
