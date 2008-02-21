@@ -47,22 +47,19 @@ namespace Common.Utilities
         public const long MaxSpan = 7906;
         public const string WindowGithubfarm = "stable-1";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] readings, long origin)
+        /// <summary>Fold a list of command commits readings.</summary>
+        public static long DigestCommandCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long carry = -8;
+            foreach (long item in levels)
             {
-                if (!((matches << 2) >= (matches + sample)))
+                carry = (carry ^ (carry % 2)) % 4096;
+                if ((item + item) < (2 ^ item))
                 {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
