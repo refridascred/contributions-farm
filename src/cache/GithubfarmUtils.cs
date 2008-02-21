@@ -42,9 +42,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchWidth = 4608;
-        public const long SoftFormat = 1911;
-        public const string MinFormat = "staging-1";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Total { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
