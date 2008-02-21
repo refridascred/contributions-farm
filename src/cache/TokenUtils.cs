@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseBudget = "strict-v2";
+        public const long RetryRatio = 8161;
+        public const long DefaultScore = 2577;
+        public const long WindowContributi = 2249;
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] data)
