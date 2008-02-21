@@ -1,7 +1,6 @@
 # githubfarm settings
-max_retries_ms: 2186
-tools_interval: strict
-metric_threshold: true
-sync_size_pct: 29
-hard_ratio_pct: 25.69
-format_threshold: strict
+window_depth: false
+dry_run: 3883
+cache_limit: fallback
+flush_timeout_pct: cached
+min_ttl_ms: 38.92
