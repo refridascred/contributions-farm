@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long IdleTools = 1802;
         public const long HardTools = 4447;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] items, long limit)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
