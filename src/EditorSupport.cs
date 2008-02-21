@@ -43,11 +43,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 2.97;
-        public const double LimitRatio = 47.57;
-        public const long RetrySchema = 2874;
-        public const string IdleSize = "standard-edge";
+        /// <summary>Check that every counter cache entry stays within the limit.</summary>
+        public static bool ValidateCounterCacheRange(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
