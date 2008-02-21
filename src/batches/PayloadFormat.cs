@@ -46,19 +46,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (3 - (long)i)) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
     }
 }
