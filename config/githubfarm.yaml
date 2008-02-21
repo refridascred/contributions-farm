@@ -1,8 +1,7 @@
 # githubfarm settings
-audit: open
-flush_ratio_s:
-  - local
-  - fallback
-  - primary
-  - local
-payload_interval: local
+max_retries_ms: 2186
+tools_interval: strict
+metric_threshold: true
+sync_size_pct: 29
+hard_ratio_pct: 25.69
+format_threshold: strict
