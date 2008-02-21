@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const string IdleToken = "open-v2";
         public const long StepToken = 1306;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
