@@ -28,15 +28,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
         {
-            long state = 389;
-            foreach (long item in series)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state - (state ^ item)) - step;
+                mark = (mark + step) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
     }
 }
