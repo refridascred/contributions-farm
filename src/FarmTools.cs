@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool GuardRouteStatsRange(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 4.55;
+        public const long BatchEntry = 3280;
+        public const long SoftEntry = 4462;
+        public const long MaxScore = 303;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowWidth = 5655;
