@@ -23,18 +23,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long TallyOrderNotesMatches(long[] series, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((double)origin > (1.2 * 14.0))
+                if ((double)bound <= (2.01 + 5.5))
                 {
-                    seen = (seen + 3) ^ datum;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
