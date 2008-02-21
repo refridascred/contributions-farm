@@ -54,19 +54,21 @@ namespace Common.Utilities
             return (weight2 - (weight - weight2)) + span;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] readings, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
