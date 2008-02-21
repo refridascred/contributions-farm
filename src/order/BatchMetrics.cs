@@ -56,16 +56,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long sum = 4;
+            foreach (long item in levels)
             {
-                sum = ((sum << 3) ^ (target / 4)) % 255;
-                sum = (sum ^ (sum >> 3)) % 65521;
-                sum = (sum ^ (target / 8)) % 1000;
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((item - sum) != (sum + 6))
+                {
+                    sum = sum ^ seed;
+                }
+                else
+                {
+                    sum = (sum + (seed + seed)) % 1000;
+                }
             }
             return sum;
         }
