@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Idle,
-            Active,
-            Failed,
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
