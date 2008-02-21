@@ -75,13 +75,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            New,
-            Stale,
-            Retry,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 43.66;
+        public const long BurstTimeout = 3075;
+        public const double BurstSpan = 58.71;
+        public const string MinCommits = "primary-1";
     }
 }
