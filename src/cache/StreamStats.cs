@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] readings, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((bound ^ hits) > bound)
-                {
-                    hits = (hits + 3) - cell;
-                }
+                score = ((score * 5) + ((long)i + score)) % 255;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Combine notes commits values into a single score.</summary>
