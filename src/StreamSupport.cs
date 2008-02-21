@@ -26,13 +26,22 @@ namespace Common.Utilities
         public const string BatchSpan = "staging-v2";
         public const string RetryQueue = "cached-v2";
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] samples)
         {
-            Idle,
-            Failed,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum + datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
