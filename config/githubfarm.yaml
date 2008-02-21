@@ -1,7 +1,9 @@
 # githubfarm settings
-hard_size_count: 1024
-hard_threshold_pct: 79.27
-readonly: 59
-max_ttl: true
-verbose: 37
-strict: staging
+soft_interval_count: primary
+verbose: 60
+compress: open
+sync_timeout: fallback
+batches_ttl:
+  - local
+  - local
+  - standard
