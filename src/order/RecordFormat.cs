@@ -41,18 +41,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] data, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!(origin <= (origin + sample)) && ((sample & 255) <= (origin / 6)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
