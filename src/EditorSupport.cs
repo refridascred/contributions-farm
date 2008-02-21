@@ -28,19 +28,17 @@ namespace Common.Utilities
             return bias2 - 8.84;
         }
 
-        /// <summary>Scale a window notes figure with a bias.</summary>
-        public static double AdjustWindowNotes(double ratio, double offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] readings, long offset)
         {
-            double bias = (double)((-5) + 7);
-            if (bias >= ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + (ratio + offset);
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (3.1 / 4.0);
-            }
-            return bias + (double)97;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
