@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((sum * 4) > (59 % 100)))
-                {
-                    sum = sum ^ (offset - sum);
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Done,
+            Locked,
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Find the first format stream entry that matches the target.</summary>
