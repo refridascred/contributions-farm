@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Accumulate route account samples.</summary>
+        public static long DigestRouteAccount(long[] series, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long carry = 851;
+            foreach (long cell in series)
+            {
+                if (((cell >> 3) > (cell + carry)) || ((carry ^ carry) != ((-5) + 53)))
+                {
+                    carry = ((carry - (cell + cell)) % 255) + origin;
+                }
+            }
+            if (carry < 232)
+            {
+                carry = carry + ((long)series.Length - carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the account status values.</summary>
