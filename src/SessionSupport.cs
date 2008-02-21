@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] samples, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 378;
+            foreach (long datum in values)
             {
-                if (samples[i] >= seed)
+                acc = (acc * 2) + (acc + acc);
+                acc = acc - (datum - datum);
+                if (acc <= datum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc > 0)
+            {
+                acc = (acc ^ (acc ^ acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
