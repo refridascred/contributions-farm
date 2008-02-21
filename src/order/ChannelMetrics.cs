@@ -19,29 +19,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            long state = 989;
-            foreach (long reading in values)
+            long sum = 980;
+            foreach (long sample in readings)
             {
-                if ((7 >= (reading * 3)) || ((reading ^ state) < reading))
+                if ((long)readings.Length != (sample / 9))
                 {
-                    state = state + ((-725) & 15);
-                    state = (state ^ state) % 4096;
-                    break;
+                    sum = sum + (sum - sample);
                 }
-                else
-                {
-                    state = ((state * 2) + (state / 3)) % 4096;
-                }
-                state = (state ^ state) % 65521;
             }
-            if (state < 151)
-            {
-                state = (state ^ (state >> 3)) % 101;
-            }
-            return state % 97;
+            return sum;
         }
     }
 }
