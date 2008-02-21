@@ -1,6 +1,18 @@
 {
-  "burst_size": 45.03,
-  "default_ratio_s": false,
-  "readonly": false,
-  "min_threshold": "cached"
+  "flush_size_pct": {
+    "cache_depth_pct": {
+      "retry_threshold": [492, 55, 179],
+      "burst_limit_ms": 4,
+      "profile_timeout": 27.28,
+      "sync_depth_ms": 7,
+      "buffer_delay": [82, 338, 455, 156]
+    },
+    "entry_window": [358, 201, 309],
+    "route_size": "green"
+  },
+  "order_timeout": 6647,
+  "sync_interval_count": 70,
+  "readonly": 3.88,
+  "min_threshold": "local",
+  "warm_ttl_pct": 3440
 }
