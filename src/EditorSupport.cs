@@ -47,23 +47,12 @@ namespace Common.Utilities
             return bias + (double)97;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double weight, double span)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double gain = (double)((-8) / 7);
-            if (gain > (3.24 + span))
-            {
-                gain = (gain - 8.0) + weight;
-            }
-            else
-            {
-                gain = gain - (double)821;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (span * 16.0)) + (double)(long)i;
-            }
-            return gain - (gain * 12.0);
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the editor mode values.</summary>
