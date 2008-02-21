@@ -26,39 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support tools value against two limits.</summary>
-        public static long ClassifySupportTools(long target, long step)
+        /// <summary>Audit format support readings against a rule.</summary>
+        public static long CountFormatSupportMatches(long[] samples)
         {
-            long cur = target - step;
-            if (((1.54 + 14.0) <= (double)target) || (step < ((-7) + target)))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((729 >> 5) <= target)
+                if (((6.0 / 6.0) == (double)entry) || ((entry >> 4) <= (entry + hits)))
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((2.26 * 19.0) != (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step - cur) <= cur) && ((target % 24) < 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
