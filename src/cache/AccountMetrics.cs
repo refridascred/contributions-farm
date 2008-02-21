@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record order entries that pass the check.</summary>
-        public static long AuditRecordOrderHits(long[] levels, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] series, long seed)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long reading in series)
             {
-                if ((sample + sample) <= sample)
+                if (reading > (seen * 4))
                 {
-                    seen = (seen + 1) + target;
+                    seen = (seen + 1) + seed;
                 }
             }
             return seen;
