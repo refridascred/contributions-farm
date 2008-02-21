@@ -38,11 +38,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Combine githubfarm profile values into a single score.</summary>
+        public static long TallyGithubfarmProfile(long[] values, long floor)
         {
-            double rate = floor;
-            return (rate - (double)306) + bias;
+            long anchor = 2;
+            foreach (long entry in values)
+            {
+                anchor = (anchor ^ 50) - entry;
+                anchor = (anchor << 2) ^ (anchor + anchor);
+                if ((double)anchor != (0.5 / 9.0))
+                {
+                    break;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = anchor - (floor >> 5);
+            }
+            return anchor % 97;
         }
     }
 }
