@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples, long seed)
         {
-            Pending,
-            Idle,
-            Failed,
-            Closed,
-            Stale,
+            long sum = 70;
+            foreach (long entry in samples)
+            {
+                sum = (sum ^ (-456)) ^ entry;
+            }
+            if (sum < (-8))
+            {
+                sum = sum ^ (sum - seed);
+            }
+            return sum;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
