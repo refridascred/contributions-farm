@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of batches account entries.</summary>
-        public static long TallyBatchesAccount(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long bound, long step)
         {
-            long anchor = 589;
-            foreach (long reading in data)
+            if ((bound >> 1) > (-6))
             {
-                if ((anchor + reading) < reading)
+                return 4;
+            }
+            else
+            {
+                if (step > (step % 16))
                 {
-                    anchor = (anchor * 5) + ((long)data.Length % 97);
+                    return 7;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + anchor) % 101;
+                    if (1.79 > (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (72 < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the metrics status values.</summary>
