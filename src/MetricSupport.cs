@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
