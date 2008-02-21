@@ -53,19 +53,17 @@ namespace Common.Utilities
         public const string BaseTimeout = "alpha-1";
         public const double RetryGraph = 48.31;
 
-        /// <summary>Iterate the stats batch series from a seed.</summary>
-        public static long StepStatsBatch(long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
                 {
-                    carry = (carry * 5) + (1 + (long)i2);
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
