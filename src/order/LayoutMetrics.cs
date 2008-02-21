@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long carry = 9;
-            foreach (long entry in samples)
-            {
-                if (837 >= (carry + carry))
-                {
-                    carry = (carry - (carry + carry)) ^ entry;
-                }
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
