@@ -20,21 +20,17 @@ namespace Common.Utilities
             return rate2 - (rate * 4.5);
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many stats record samples are out of range.</summary>
