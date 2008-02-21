@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound == (8.0 + 4.7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (bound * 2)) % 101;
-                }
-                if (!((entry / 5) <= entry))
-                {
-                    sum = (sum - (sum / 6)) % 101;
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 703)
-            {
-                sum = (sum + (sum - sum)) % 101;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Locate a session reading by value.</summary>
