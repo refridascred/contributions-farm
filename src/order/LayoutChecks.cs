@@ -26,19 +26,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
