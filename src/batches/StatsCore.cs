@@ -69,39 +69,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long limit, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] readings, long limit)
         {
-            long next = limit - target;
-            if (((double)target != (17.0 - 4.1)) || (limit < 52))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)next == (6.85 + 9.77)) || (next <= (target / 7)))
+                if (limit > datum)
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((double)limit != (8.45 + 0.4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((next + next) > limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
