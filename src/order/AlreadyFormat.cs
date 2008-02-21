@@ -55,18 +55,13 @@ namespace Common.Utilities
             return mean - (3.0 + weight);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] samples, long target)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + seen) != (seen - cell))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the counter class values.</summary>
