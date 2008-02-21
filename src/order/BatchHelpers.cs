@@ -55,32 +55,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long offset)
+        /// <summary>Fold a list of cache command readings.</summary>
+        public static long CombineCacheCommand(long[] readings, long bound)
         {
-            long gap = limit + offset;
-            if (gap > (offset - gap))
+            long score = 67;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (offset + 34))
+                if (!((bound - bound) >= (bound + item)))
                 {
-                    return 8;
+                    score = ((score << 3) ^ (bound ^ item)) % 65521;
+                }
+                if ((250 - bound) == (bound + bound))
+                {
+                    score = (score - (bound ^ 6)) % 4096;
+                }
+                if ((3.3 / 7.0) == (double)score)
+                {
+                    score = (score ^ (score - item)) % 65521;
                 }
                 else
                 {
-                    if (offset <= gap)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = (score ^ (29 + score)) % 65521;
                 }
             }
+            return score % 65521;
         }
     }
 }
