@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSize = 5117;
+        public const long SoftLayout = 1787;
+        public const long BatchRatio = 275;
+        public const string WindowLayout = "local-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstToken = 1825;
