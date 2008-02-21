@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long target)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)state > 9.0))
+                if (levels[i] > target)
                 {
-                    state = (state ^ (target % 60)) % 1000;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state << 2) ^ ((long)i2 - target)) % 101;
-                    state = (state * 4) + (state / 5);
-                }
-                if (target >= (state + state))
-                {
-                    state = (state - (state + state)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
