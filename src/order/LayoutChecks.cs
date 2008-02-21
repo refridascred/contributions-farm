@@ -36,18 +36,12 @@ namespace Common.Utilities
         public const string CacheTimeout = "local";
         public const long BurstDepth = 4674;
 
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long TallyReportCacheMatches(long[] levels)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((60 * 2) > (cell + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
