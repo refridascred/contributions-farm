@@ -100,11 +100,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long step, long step2)
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            if (step2 > (87 * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(step >= (step << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step != (8.52 * 19.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step * 2) == (step + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
