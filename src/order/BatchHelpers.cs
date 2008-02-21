@@ -20,39 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank contributi order input into a small class.</summary>
-        public static long SortContributiOrder(long bound, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long span = bound ^ step;
-            if ((bound * 3) != (918 & 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step >= (13.0 * 2.6)) || ((922 / 8) <= (bound * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) < (bound << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - span) < (span + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the support editor series from a seed.</summary>
