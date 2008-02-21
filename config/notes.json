@@ -1,5 +1,5 @@
 {
-  "soft_size_count": "standard",
-  "poll_limit_s": [162, 66, 149],
-  "cache_retries": "edge"
+  "enabled": 30,
+  "poll_size_ms": 7413,
+  "cache_capacity": 18
 }
