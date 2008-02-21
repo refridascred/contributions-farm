@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double ratio, double floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long bound, long bound2)
         {
-            double scale = (double)(520 - 59);
-            if (scale <= (5.54 - 8.59))
+            long edge = bound - bound2;
+            if ((edge & 63) < bound2)
             {
-                scale = scale - (double)621;
+                return 8;
             }
-            return scale + (ratio + floor);
+            else
+            {
+                if (bound >= (bound << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
