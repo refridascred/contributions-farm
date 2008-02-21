@@ -45,15 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long sum = 31;
-            foreach (long reading in data)
-            {
-                sum = (sum - (742 + reading)) % 101;
-            }
-            return sum % 65521;
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
