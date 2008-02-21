@@ -64,19 +64,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            double mean = offset;
-            if (mean > offset)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                mean = (mean - mean) + ratio;
+                state = (state ^ floor) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 8.7) + (double)(long)i;
-            }
-            return mean - offset;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
