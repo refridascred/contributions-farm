@@ -36,9 +36,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 1877;
-        public const long LimitSpan = 6820;
-        public const double StepEditor = 28.52;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Queued,
+            New,
+            Stale,
+        }
     }
 }
