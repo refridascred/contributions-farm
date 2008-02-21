@@ -1,26 +1,17 @@
 # support settings
-metric_retries: edge
-poll_ttl:
-  metrics_timeout:
-    - strict
-    - primary
-  support_ratio: 7240
-  readonly: fallback
-  payload_threshold:
-    context_size: 83.48
-    soft_ratio_s: 43.95
-    compress:
-      - primary
-      - standard
-    hard_depth:
-      - staging
-      - local
-      - legacy
-      - cached
-  flush_limit_pct:
-    - 201
-    - 406
-  dry_run: false
-hard_retries_count: 1024
-base_timeout_ms: 78.78
-audit: open
+entry_size: 2
+sync_capacity_s: blue
+cache_depth_count: fallback
+sync_size_ms: 75.83
+sync_interval:
+  dry_run:
+    - fallback
+    - legacy
+    - standard
+    - latest
+  min_interval_s: 69
+  soft_threshold: fallback
+  audit: open
+  idle_window_ms: standard
+  batches_timeout: 100
+default_delay_ms: staging
