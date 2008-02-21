@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 4.55;
-        public const long BatchEntry = 3280;
-        public const long SoftEntry = 4462;
-        public const long MaxScore = 303;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long offset, long floor)
