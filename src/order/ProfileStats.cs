@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long carry = 8;
+            foreach (long item in data)
             {
-                if ((seen & 3) <= seen)
+                if ((item + (long)data.Length) > item)
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry << 3) ^ (bound ^ carry)) % 65521;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
