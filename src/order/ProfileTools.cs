@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two entry schema measurements.</summary>
-        public static double ProjectEntrySchema(double bias, double floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double bias2 = floor;
-            if (bias2 <= bias)
-            {
-                bias2 = bias2 + (bias + bias);
-            }
-            return bias2 + (bias2 / 3.0);
+            Idle,
+            Stale,
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Digest a series of filter contributi entries.</summary>
