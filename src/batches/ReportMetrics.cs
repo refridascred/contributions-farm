@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] samples, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long total = 67;
+            foreach (long datum in levels)
             {
-                if (datum >= origin)
+                total = (total * 3) + total;
+                if ((floor + floor) == (datum >> 2))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (total > 0)
+            {
+                total = (total << 3) ^ (total << 1);
+            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
