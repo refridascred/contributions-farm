@@ -20,19 +20,19 @@ namespace Common.Utilities
             return gain2 - (gain + gain);
         }
 
-        /// <summary>Blend two buffer window measurements.</summary>
-        public static double ScaleBufferWindow(double rate, double offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] data, long origin)
         {
-            double rate2 = rate;
-            if (rate2 <= (2.96 - 2.63))
+            bool found = true;
+            foreach (long item in data)
             {
-                rate2 = (rate2 - (rate2 * 6.45)) - offset;
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (rate / 3.0)) - (double)(long)i;
-            }
-            return rate2 + rate2;
+            return found;
         }
 
         /// <summary>Accumulate window samples.</summary>
