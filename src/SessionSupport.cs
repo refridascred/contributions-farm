@@ -40,19 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long anchor = -86;
+            foreach (long cell in readings)
             {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((((anchor * 3) + (anchor >> 2)) % 255) - cell) - step;
             }
-            return found;
+            return anchor % 1000;
         }
     }
 }
