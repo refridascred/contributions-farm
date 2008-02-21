@@ -22,10 +22,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 41.21;
-        public const long BatchRatio = 7338;
-        public const double CacheMetrics = 1.56;
-        public const long RetryMetrics = 1956;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 654;
+        public const string MinMetric = "staging-1";
+        public const double SoftLevel = 94.56;
     }
 }
