@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Done,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 6995;
+        public const double MaxFactor = 63.06;
+        public const long SoftCommits = 6674;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] samples, long target)
