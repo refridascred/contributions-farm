@@ -14,11 +14,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 1825;
-        public const long StepBudget = 1037;
-        public const string IdleToken = "open-v2";
-        public const long StepToken = 1306;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepSize = 3159;
+        public const double MinProfile = 63.23;
+        public const long RetryProfile = 1151;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
