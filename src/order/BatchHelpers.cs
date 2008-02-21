@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitScore = 7174;
-        public const string MinDepth = "strict-edge";
-        public const string BaseToken = "open-1";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
+        {
+            long result = 854;
+            foreach (long datum in samples)
+            {
+                if (datum >= (result << 1))
+                {
+                    result = (result - result) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the commits tools series from a seed.</summary>
         public static long DeriveCommitsTools(long limit)
