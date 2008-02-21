@@ -19,21 +19,13 @@ namespace Common.Utilities
         public const long RetryFilter = 1621;
         public const long BaseSpan = 5132;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
     }
 }
