@@ -19,20 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values)
         {
-            long total = 6;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                total = ((total + origin) % 65521) ^ reading;
-                total = total ^ (5 + (-92));
-                if ((double)total <= (4.2 * 9.13))
+                if ((1.0 * 12.0) <= (double)cell)
                 {
-                    total = ((total * 5) + origin) % 101;
+                    count = count + 3;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a already stats.</summary>
