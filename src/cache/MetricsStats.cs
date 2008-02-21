@@ -43,18 +43,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetrySpan = "open-1";
+        public const long BatchInterval = 1313;
+        public const string StepNotes = "alpha-1";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsHits(long[] samples)
