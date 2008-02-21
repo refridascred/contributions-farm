@@ -1,6 +1,5 @@
 {
-  "graph_depth": true,
-  "retry_interval_ms": "edge",
-  "base_delay_pct": "staging",
-  "idle_window_pct": "local"
+  "compress": "edge",
+  "default_ratio": false,
+  "batch_interval": "standard"
 }
