@@ -22,23 +22,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm profile series from a seed.</summary>
-        public static long IterateGithubfarmProfile(long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] items, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((origin / 8) < (mark >> 1))
+                if (reading < target)
                 {
-                    mark = mark - ((long)i >> 5);
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ ((long)i - origin)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
