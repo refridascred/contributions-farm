@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of payload stream readings.</summary>
-        public static long MatchPayloadStreamCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "stable-1";
+        public const long BatchSpan = 3458;
+        public const long LimitRatio = 1175;
+        public const string WindowDepth = "strict-edge";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
