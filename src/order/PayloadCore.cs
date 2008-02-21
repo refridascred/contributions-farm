@@ -28,22 +28,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long MeasureStatsCacheOutliers(long[] readings, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long step = bound ^ floor;
+            if (!((floor ^ floor) > bound))
             {
-                if ((35 + 68) < (origin - tally))
+                return 3;
+            }
+            else
+            {
+                if ((bound << 1) <= (68 % 97))
                 {
-                    tally = (tally + 2) ^ datum;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((floor >> 4) >= (24 + 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(floor <= (step / 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
