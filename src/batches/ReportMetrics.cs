@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first record metric entry that matches the target.</summary>
-        public static long LookupRecordMetricIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 27.93;
+        public const long SoftFactor = 1570;
+        public const string WindowDepth = "staging";
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long DigestStats(long[] series, long origin)
