@@ -36,19 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] series, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= bound)
+                if (readings[i] > offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
