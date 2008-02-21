@@ -49,21 +49,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up format profile samples.</summary>
-        public static long CompareFormatProfileCount(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item + count) == (count + 254))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
