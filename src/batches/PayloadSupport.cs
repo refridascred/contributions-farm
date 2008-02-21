@@ -16,24 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] items, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (((-548) ^ state) >= (2 - step))
+                if (cell <= origin)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    state = (state << 2) ^ (step & 15);
-                    state = (state + (step - state)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
