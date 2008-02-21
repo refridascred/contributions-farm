@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long IdleBudget = 6243;
         public const double BurstAlready = 46.7;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
