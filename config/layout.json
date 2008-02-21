@@ -1,35 +1,5 @@
 {
-  "min_delay_s": 500,
-  "flush_delay": {
-    "batches_depth": {
-      "stats_interval": "edge",
-      "default_size_pct": 3922,
-      "cluster_window": "legacy"
-    },
-    "batch_ttl_pct": 1024,
-    "sync_capacity_ms": {
-      "batch_capacity": 35,
-      "enabled": "strict",
-      "account_ratio": false,
-      "cluster_timeout": ["legacy", "staging"],
-      "hard_ttl_ms": "standard",
-      "flush_interval_pct": "standard"
-    },
-    "audit": 75.17,
-    "soft_depth_s": 1024
-  },
-  "route_threshold": 36,
-  "checks_timeout": 8143,
-  "compress": {
-    "hard_ratio_s": false,
-    "sync_retries": 30,
-    "already_retries": "latest",
-    "enabled": 82,
-    "cache_threshold_s": {
-      "queue_retries": 72.62,
-      "sync_depth": true,
-      "queue_capacity": 18
-    },
-    "default_ttl_ms": 94
-  }
+  "commits_limit": 66,
+  "enabled": false,
+  "checks_window": 62.19
 }
