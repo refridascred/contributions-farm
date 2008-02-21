@@ -1,11 +1,11 @@
 # Command notes
 
-Keep route and report names short and lowercase.
-Use layout settings to tune how often record data is refreshed.
-Keep cache and metrics names short and lowercase.
+Run the record check before changing any queue limits.
+Use graph settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate window input early
-- Document new commits fields
+- Prefer layout defaults
+- Review layout limits each release
+- Log every buffer change
+- Validate command input early
