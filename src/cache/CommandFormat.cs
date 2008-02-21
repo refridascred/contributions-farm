@@ -37,20 +37,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long mix = 416;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix ^ (limit * 2)) % 1000;
-                if (!((value + limit) >= 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix + limit) % 65521;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = mix + (mix >> 3);
             }
-            return mix % 65521;
+            return count;
         }
     }
 }
