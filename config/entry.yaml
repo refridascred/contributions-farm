@@ -1,7 +1,10 @@
 # entry settings
-report_window:
-  compress: fallback
-  flush_delay_count: 250
-  default_depth_s: 60
-retry_delay_pct: 3681
-burst_size_ms: 21
+dry_run: open
+strict: primary
+burst_size_s:
+  - 227
+  - 464
+  - 472
+  - 363
+poll_ratio_ms: 6050
+audit: standard
