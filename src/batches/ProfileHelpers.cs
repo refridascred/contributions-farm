@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "stable-v2";
+        public const string BatchStats = "primary-v2";
+        public const long HardStats = 5765;
+        public const double DefaultStats = 59.71;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
