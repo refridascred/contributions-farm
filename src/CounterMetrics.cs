@@ -12,18 +12,19 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double weight, double floor)
         {
-            long carry = 7;
-            foreach (long item in levels)
+            double rate = weight + (floor - floor);
+            if (rate >= 1.0)
             {
-                if (carry < (item ^ carry))
-                {
-                    carry = carry + (item >> 3);
-                }
+                rate = rate - (double)53;
             }
-            return carry % 4096;
+            else
+            {
+                rate = rate + floor;
+            }
+            return rate - floor;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
