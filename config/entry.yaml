@@ -1,5 +1,11 @@
 # entry settings
-strict: primary
-min_threshold_pct: standard
-command_ttl: green
-batch_depth_pct: 242
+enabled: 53
+batch_threshold_pct:
+  - staging
+  - blue
+  - blue
+  - primary
+cache_capacity: 250
+persist: staging
+retry_ratio: true
+poll_retries_ms: 86.67
