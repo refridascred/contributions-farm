@@ -53,12 +53,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] items, long bound)
         {
-            Active,
-            New,
-            Pending,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((3 & 127) < hits)
+                {
+                    hits = ((hits + 1) - reading) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
