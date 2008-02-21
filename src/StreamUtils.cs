@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Paused,
-            Ready,
+            Queued,
+            Idle,
             Synced,
-            Failed,
-            Closed,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
