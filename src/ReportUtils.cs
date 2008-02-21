@@ -51,15 +51,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((4 / 9) > seen)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
