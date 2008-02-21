@@ -51,14 +51,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Dropped,
-            Paused,
-            Stale,
-            Pending,
-            Failed,
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many checks layout samples are out of range.</summary>
