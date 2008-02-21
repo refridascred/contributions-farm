@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] series, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((item - tally) > (offset * 4))
+                if (cell <= seed)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of format cluster entries.</summary>
