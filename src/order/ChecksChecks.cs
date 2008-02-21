@@ -29,13 +29,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 3100;
+        public const long BatchBuffer = 5543;
+        public const long IdleRatio = 4376;
     }
 }
