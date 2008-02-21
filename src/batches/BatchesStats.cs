@@ -23,24 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long target, long seed)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            if (2 >= target)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (!((seed / 3) > seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a batch info.</summary>
