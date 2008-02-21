@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 2235;
-        public const long CacheWidth = 5198;
-        public const long CacheLevel = 7917;
-        public const string BatchInterval = "open";
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = mix ^ bound;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferBounds(long[] series, long limit)
