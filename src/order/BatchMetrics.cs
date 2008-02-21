@@ -42,18 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] values, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!((96 + tally) >= (sample + step)) && ((sample << 1) <= (step ^ sample)))
+                if (reading > limit)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
