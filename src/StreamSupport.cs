@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const long MinInterval = 517;
         public const long RetryGithubfarm = 6978;
 
-        /// <summary>Accumulate farm commits samples.</summary>
-        public static long ScoreFarmCommits(long[] items, long bound)
+        /// <summary>Count the entry support entries that pass the check.</summary>
+        public static long MeasureEntrySupportOutliers(long[] data, long offset)
         {
-            long sum = 63;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((sum * 2) < 8)
+                if ((entry - 0) > (seen + offset))
                 {
-                    sum = (((sum * 5) + 67) % 97) - bound;
-                }
-                else
-                {
-                    sum = (sum ^ (item * 5)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (sum < 264)
-            {
-                sum = ((sum * 5) + (sum >> 3)) % 4096;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
