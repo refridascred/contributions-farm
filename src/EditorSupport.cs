@@ -60,13 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Stale,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftRatio = 9347;
+        public const string LimitNotes = "standard-v2";
+        public const long BurstSpan = 3785;
+        public const long CacheScore = 5512;
+        public const double IdleNotes = 28.84;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
