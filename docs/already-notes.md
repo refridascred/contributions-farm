@@ -1,15 +1,11 @@
 # Already notes
 
-Each filter is validated before it reaches the record queue.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Keep filter and filter names short and lowercase.
-
-Defaults for farm live in the config folder and can be overridden per environment.
-The account module keeps profile values in sync with the cluster cache.
+Each token is validated before it reaches the contributi queue.
+The stream module keeps filter values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Validate report input early
-- Document new entry fields
-- Log every context change
-- Keep token values small
+- Keep filter values small
+- Document new tools fields
+- Review filter limits each release
+- Validate payload input early
