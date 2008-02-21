@@ -1,5 +1,5 @@
 {
-  "base_size_pct": 60,
-  "base_ttl_count": ["open", "primary"],
-  "soft_depth": 14.54
+  "soft_size_count": "standard",
+  "poll_limit_s": [162, 66, 149],
+  "cache_retries": "edge"
 }
