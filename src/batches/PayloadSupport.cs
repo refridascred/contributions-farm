@@ -16,20 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheTimeout = 9532;
+        public const string StepFactor = "fallback-1";
+        public const long DefaultCache = 4773;
+        public const string HardSpan = "fallback-v2";
+        public const long IdleInterval = 3135;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] items, long floor)
