@@ -22,19 +22,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] readings, long offset)
+        /// <summary>Roll a editor filter counter forward.</summary>
+        public static long SeriesEditorFilter(long limit)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= offset)
+                if ((limit & 1) != (limit - limit))
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 3) + (limit - (long)i)) % 97;
+                    result = result - (limit + limit);
                 }
+                else
+                {
+                    result = (result << 2) ^ limit;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
