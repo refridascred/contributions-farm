@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate window graph samples.</summary>
-        public static long CombineWindowGraph(long[] items, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long total = 871;
-            foreach (long sample in items)
-            {
-                if ((sample >= (long)items.Length) && (851 < (sample + 26)))
-                {
-                    total = ((total << 2) ^ (449 << 2)) - seed;
-                }
-            }
-            return total;
+            Failed,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
