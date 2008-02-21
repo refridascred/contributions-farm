@@ -54,19 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] items, long floor)
         {
-            double gain = (double)(665 + 252);
-            if (gain > span)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + (gain / 5.0)) + bias;
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 2.27) + (double)(long)i;
-            }
-            return gain + (gain * 0.28);
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
