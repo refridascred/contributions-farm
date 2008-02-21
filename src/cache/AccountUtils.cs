@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Audit batches support readings against a rule.</summary>
+        public static long MeasureBatchesSupportGaps(long[] levels, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                total = (total - (5 / 7)) % 1000;
-                total = ((total * 4) + (long)i) % 97;
+                if (((item % 16) <= item) && ((item - item) > (long)levels.Length))
+                {
+                    tally = (tally + 1) - limit;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
