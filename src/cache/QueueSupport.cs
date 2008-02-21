@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] data, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                long cur = (17 << 2) + (mark + 354);
-                if (!(5 >= cur))
+                if (cell <= step)
                 {
-                    cur = (cur + (mark / 8)) % 4096;
+                    flag = false;
+                    break;
                 }
-                cur = (cur * 2) + cur;
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Digest a series of window entries.</summary>
