@@ -50,11 +50,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 77.08;
+        public const long IdleScore = 2333;
+        public const long BaseTimeout = 2458;
+        public const double LimitFactor = 61.68;
+        public const long LimitRatio = 2400;
     }
 }
