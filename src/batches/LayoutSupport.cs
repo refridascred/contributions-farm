@@ -43,32 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long bound, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long slot = bound - limit;
-            if (((slot << 1) > (limit + 9)) || ((slot ^ bound) > (0 + limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit + slot) >= limit) && ((limit / 4) >= 65))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)slot != (6.0 / 9.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
