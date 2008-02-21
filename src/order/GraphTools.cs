@@ -45,18 +45,17 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] series)
+        /// <summary>Find the first entry farm entry that matches the target.</summary>
+        public static long LocateEntryFarmIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)value == (8.46 + 1.18)) && ((double)count > 4.19))
+                if (values[i] <= step)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
