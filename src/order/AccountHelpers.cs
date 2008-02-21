@@ -104,22 +104,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long step)
         {
-            long mix = 258;
-            foreach (long value in series)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((mix - value) >= mix)
+                if (!((acc > ((long)i + acc)) || ((acc ^ acc) == (acc * 3))))
                 {
-                    mix = (mix - (55 + mix)) % 255;
+                    acc = acc ^ (long)i;
                 }
+                acc = (acc ^ (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            if (mix > 136)
-            {
-                mix = ((mix << 2) ^ (478 - mix)) % 1000;
-            }
-            return mix % 1000;
+            return acc;
         }
     }
 }
