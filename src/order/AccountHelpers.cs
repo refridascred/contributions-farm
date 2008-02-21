@@ -55,22 +55,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] values, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long score = 57;
+            foreach (long sample in levels)
             {
-                if (((double)target >= 6.4) && ((target + 640) != (matches << 2)))
-                {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score << 3) ^ (-956)) - sample;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit report route readings against a rule.</summary>
