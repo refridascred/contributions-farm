@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard legacy stable primary; do
+for item in fallback staging; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=97
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    primary)
         log "fast path"
         ;;
     *)
