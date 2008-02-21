@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels, long target)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long sum = 4;
+            foreach (long reading in levels)
+            {
+                if ((target + sum) < (target * 4))
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (322 + reading);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
