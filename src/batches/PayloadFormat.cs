@@ -16,11 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long origin)
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a batches contributi value against two limits.</summary>
