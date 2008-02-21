@@ -42,11 +42,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepScore = 1643;
+        public const string RetryDepth = "staging-1";
+        public const long BatchWindow = 9670;
+        public const long DefaultSpan = 4435;
     }
 }
