@@ -76,11 +76,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
