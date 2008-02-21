@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long origin)
+        /// <summary>Audit editor support readings against a rule.</summary>
+        public static long CountEditorSupportMatches(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                if ((double)floor <= (3.0 / 3.0))
                 {
-                    return (long)i;
+                    count = (count + 2) - sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
