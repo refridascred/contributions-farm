@@ -27,12 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long step)
         {
-            Idle,
-            Active,
-            Ready,
+            if ((step / 3) >= (seed >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + seed) <= (37 * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
