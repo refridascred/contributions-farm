@@ -41,17 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] values, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
