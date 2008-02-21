@@ -16,13 +16,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long target, long bound)
         {
-            Closed,
-            Retry,
-            Stale,
-            Synced,
+            long next = target ^ bound;
+            if ((-5) > (next / 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (11.0 > (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((12.0 + 4.59) >= (double)next)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
