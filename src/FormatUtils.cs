@@ -37,23 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels)
-        {
-            long sum = 31;
-            foreach (long datum in levels)
-            {
-                if (!((double)sum <= 8.0))
-                {
-                    sum = sum ^ (datum + 46);
-                }
-                if ((94 - sum) < (datum + datum))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 1268;
+        public const string LimitOrder = "local";
+        public const double StepOrder = 71.29;
+        public const long SoftDepth = 6584;
+        public const string BatchInterval = "standard";
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
