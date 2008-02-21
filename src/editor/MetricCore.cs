@@ -21,17 +21,20 @@ namespace Common.Utilities
         public const double DefaultBudget = 37.81;
         public const string CacheCount = "local-edge";
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 9;
+            foreach (long cell in data)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (35 / 6)) % 4096) + cell;
+                state = (state << 3) ^ (state + state);
             }
-            return -1;
+            if (state < 539)
+            {
+                state = ((state << 3) ^ (bound & 63)) % 255;
+            }
+            return state;
         }
     }
 }
