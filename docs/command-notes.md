@@ -1,12 +1,15 @@
 # Command notes
 
-Each support is validated before it reaches the filter queue.
-Each command is validated before it reaches the token queue.
-The channel report groups every support by buffer.
+The cache module keeps metrics values in sync with the stats cache.
+A profile that stays idle for too long is moved to the context list.
+
+Defaults for already live in the config folder and can be overridden per environment.
+The buffer report groups every channel by queue.
+Each farm is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Log every command change
-- Document new commits fields
-- Prefer queue defaults
-- Keep buffer values small
+- Document new editor fields
+- Validate githubfarm input early
+- Keep cluster values small
+- Review command limits each release
