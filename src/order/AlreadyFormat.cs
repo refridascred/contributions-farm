@@ -32,13 +32,12 @@ namespace Common.Utilities
             return mean - (3.0 + weight);
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Synced,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepBudget = "latest";
+        public const double BurstBudget = 64.92;
+        public const long BatchCount = 8532;
+        public const long RetryCount = 930;
+        public const string StepAccount = "standard-edge";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
