@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long state = 3;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (cell <= (bound - cell))
                 {
-                    score = (((score * 2) + ((long)i + step)) % 97) ^ (long)i2;
+                    state = state + (state + state);
                 }
-                score = score ^ step;
-                score = ((score * 5) + (long)i) % 65521;
-                score = ((score * 2) + (long)i) % 4093;
+                else
+                {
+                    state = ((state * 2) + 757) % 101;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
