@@ -74,10 +74,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 2032;
-        public const long BatchLevel = 5555;
-        public const long WindowLevel = 3957;
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double bias, double span)
+        {
+            double gain = span;
+            if (gain >= (bias + 8.0))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + 9.42;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] data, long floor)
