@@ -41,19 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] series, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample <= offset)
+                sum = sum - ((long)i + 394);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    found = false;
-                    break;
+                    sum = (((sum << 3) ^ 346) % 97) ^ (long)i2;
+                    sum = sum - sum;
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
     }
 }
