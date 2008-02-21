@@ -47,19 +47,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools entry reading.</summary>
-        public static double SmoothToolsEntry(double weight, double bias)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            double rate = weight;
-            if (rate <= (weight - 12.0))
+            long result = 9;
+            foreach (long item in readings)
             {
-                rate = rate + weight;
+                result = result - (item % 5);
+                if ((double)result == (17.0 / 3.0))
+                {
+                    result = (result ^ (item + item)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (876 + 6)) % 65521;
+                }
+                if (((item - item) < item) || ((item - result) >= (result * 4)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + (bias + weight);
+            return result % 4096;
         }
 
         /// <summary>Describe the buffer class values.</summary>
