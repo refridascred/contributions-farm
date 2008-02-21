@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((double)entry == (double)matches)
+                if (sample != seed)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a session stats.</summary>
