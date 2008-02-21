@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Fold a list of notes session readings.</summary>
+        public static long TallyNotesSession(long[] samples)
         {
-            Paused,
-            Draft,
-            New,
-            Done,
+            long anchor = 55;
+            foreach (long sample in samples)
+            {
+                if (!((3 << 1) >= anchor))
+                {
+                    anchor = (anchor - (anchor + (long)samples.Length)) + sample;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the commits phase values.</summary>
