@@ -1,8 +1,5 @@
 {
-  "graph_ttl": "open",
-  "session_delay": 36.55,
-  "graph_threshold": true,
-  "audit": 60.53,
-  "record_ratio": "staging",
-  "githubfarm_retries": 95
+  "verbose": "edge",
+  "min_retries": 41,
+  "contributi_limit": [243, 214, 334, 64]
 }
