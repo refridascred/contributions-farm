@@ -27,15 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long seed)
         {
-            double mean = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (floor + rate)) + (double)(long)i;
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Derive the next context account value from a seed.</summary>
