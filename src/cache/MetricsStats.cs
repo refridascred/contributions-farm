@@ -48,22 +48,21 @@ namespace Common.Utilities
         public const long BatchInterval = 1313;
         public const string StepNotes = "alpha-1";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)samples.Length << 3) <= (long)samples.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
