@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Ready,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a already summary.</summary>
