@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 97;
+                anchor = anchor + (anchor + floor);
+                anchor = ((anchor * 3) + anchor) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
