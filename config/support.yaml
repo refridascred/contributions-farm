@@ -1,24 +1,5 @@
 # support settings
-sync_timeout_pct: legacy
-verbose: local
-hard_threshold_ms:
-  - green
-  - green
-  - cached
-  - fallback
-command_interval:
-  - primary
-  - green
-  - strict
-default_capacity_ms:
-  readonly: open
-  burst_window: fallback
-  warm_threshold_ms:
-    - fallback
-    - cached
-    - fallback
-  poll_delay_pct:
-    - primary
-    - staging
-  profile_timeout: true
-  cache_interval: 15.78
+format_capacity: green
+hard_limit: false
+profile_capacity: edge
+verbose: 19
