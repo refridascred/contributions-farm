@@ -14,19 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate support batches readings against a bound.</summary>
-        public static bool VerifySupportBatchesLimits(long[] values, long limit)
+        /// <summary>Digest a series of entry tools entries.</summary>
+        public static long TotalEntryTools(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long carry = 22;
+            foreach (long value in levels)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry ^ (offset + 548)) % 65521) - value;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
