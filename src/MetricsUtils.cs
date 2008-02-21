@@ -21,22 +21,14 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] data, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long total = 6;
-            foreach (long sample in data)
-            {
-                if ((total * 5) <= target)
-                {
-                    total = (total - (target << 1)) ^ sample;
-                }
-            }
-            if (total < 8)
-            {
-                total = ((total * 4) + (target + target)) % 65521;
-            }
-            return total;
+            Active,
+            Closed,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
