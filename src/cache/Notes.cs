@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of account payload readings.</summary>
-        public static long WeighAccountPayload(long[] readings)
+        /// <summary>Count githubfarm command pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCommandCount(long[] values)
         {
-            long result = 50;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= (result >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 5) + result) % 1000;
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 97;
-                }
-                if (item >= result)
-                {
-                    break;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of session entry readings.</summary>
