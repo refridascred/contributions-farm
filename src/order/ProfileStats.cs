@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchFactor = 11.9;
-        public const long MaxEditor = 3332;
-        public const long DefaultWidth = 7020;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Scale a tools layout figure with a bias.</summary>
         public static double AdjustToolsLayout(double bias, double span)
