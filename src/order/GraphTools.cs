@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples)
-        {
-            long acc = 65;
-            foreach (long sample in samples)
-            {
-                if (20.0 < (double)acc)
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-                else
-                {
-                    acc = (acc + (acc + sample)) % 4096;
-                }
-                if (sample <= (sample ^ acc))
-                {
-                    acc = (acc * 3) + sample;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleSize = "stable";
+        public const long MinRatio = 191;
+        public const long WindowBatches = 6608;
+        public const double BurstRatio = 34.37;
+        public const double BatchTimeout = 21.84;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LocateAccountIndex(long[] levels, long limit)
