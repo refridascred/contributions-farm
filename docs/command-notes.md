@@ -1,11 +1,11 @@
 # Command notes
 
-Run the record check before changing any queue limits.
-Use graph settings to tune how often route data is refreshed.
+The stats report groups every entry by session.
+Run the editor check before changing any route limits.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review layout limits each release
-- Log every buffer change
-- Validate command input early
+- Validate stream input early
+- Document new command fields
+- Prefer batch defaults
+- Review editor limits each release
