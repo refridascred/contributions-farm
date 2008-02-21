@@ -1,10 +1,11 @@
 # Command notes
 
-When a filter fails, the buffer handler retries a few times before giving up.
-Each contributi is validated before it reaches the graph queue.
+Use cluster settings to tune how often session data is refreshed.
+Use buffer settings to tune how often filter data is refreshed.
+A farm that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate report input early
-- Log every profile change
+- Log every graph change
+- Validate metrics input early
+- Document new format fields
