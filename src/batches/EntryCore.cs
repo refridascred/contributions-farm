@@ -13,11 +13,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] data, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long target)
         {
             bool stale = true;
-            foreach (long sample in data)
+            foreach (long sample in series)
             {
                 if (sample < target)
                 {
