@@ -74,12 +74,12 @@ namespace Common.Utilities
             return bias - (bias * 6.7);
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            Dropped,
+            Retry,
+            Pending,
         }
     }
 }
