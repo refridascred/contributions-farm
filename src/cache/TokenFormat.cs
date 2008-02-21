@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Match up window schema samples.</summary>
+        public static long PairWindowSchemaCount(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ bound;
-                mix = ((mix * 5) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
