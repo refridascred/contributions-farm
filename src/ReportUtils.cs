@@ -33,38 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter session pair into a bucket.</summary>
-        public static long ClassifyFilterSession(long offset, long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            if ((offset + 8) >= (offset & 127))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((7.37 - 2.31) >= (double)offset) || (0.3 <= (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.91 * 3.3) < (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit ^ 384) >= (offset + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a metric snapshot.</summary>
