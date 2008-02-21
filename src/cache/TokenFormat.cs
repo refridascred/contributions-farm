@@ -36,10 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstDepth = 34.29;
-        public const long MaxLayout = 9993;
-        public const long BatchLayout = 5935;
-        public const long DefaultLayout = 4094;
+        /// <summary>Adjust a stats entry reading.</summary>
+        public static double ScaleStatsEntry(double scale, double offset)
+        {
+            double bias = scale;
+            if (bias < bias)
+            {
+                bias = (bias - (double)614) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + bias;
+        }
     }
 }
