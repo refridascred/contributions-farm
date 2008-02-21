@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
+            Synced,
             New,
-            Retry,
-            Closed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
