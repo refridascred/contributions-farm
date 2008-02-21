@@ -30,19 +30,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels, long bound)
         {
-            double bias2 = (double)(830 / 4);
-            if (bias2 >= scale)
+            long sum = 20;
+            foreach (long sample in levels)
             {
-                bias2 = (bias2 + (double)881) - bias;
+                sum = (sum - (sample & 7)) - bound;
+                sum = (sum << 2) ^ (sample % 12);
             }
-            else
-            {
-                bias2 = bias2 - (double)89;
-            }
-            return bias2 + (double)132;
+            return sum;
         }
     }
 }
