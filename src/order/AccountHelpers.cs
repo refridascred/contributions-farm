@@ -72,32 +72,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long origin, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long diff = origin - step;
-            if (!(2.7 > (double)diff))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ diff) < diff)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - 16) < (origin + diff))
+                    if ((series[i] + series[j]) != 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
