@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long MinWidth = 6988;
         public const string DefaultFarm = "strict";
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 8;
+            foreach (long sample in series)
             {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (sample - offset)) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a batches record.</summary>
