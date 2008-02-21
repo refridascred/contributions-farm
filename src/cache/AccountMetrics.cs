@@ -27,17 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] values, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
