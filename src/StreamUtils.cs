@@ -13,11 +13,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum * 2) + 68;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
