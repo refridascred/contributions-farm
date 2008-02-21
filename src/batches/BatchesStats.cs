@@ -43,14 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 6531;
+        public const long LimitGraph = 6684;
+        public const long DefaultWidth = 3818;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
