@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinCount = 54.86;
-        public const double WindowFactor = 2.34;
-        public const double BaseWidth = 14.84;
-        public const long IdleFactor = 9518;
-        public const long MinBatches = 8451;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] readings, long target)
