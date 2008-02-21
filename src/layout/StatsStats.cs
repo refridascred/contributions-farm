@@ -44,13 +44,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Combine filter token values into a single score.</summary>
+        public static long DigestFilterToken(long[] levels, long origin)
         {
-            Locked,
-            Dropped,
-            Ready,
-            Synced,
+            long state = -93;
+            foreach (long entry in levels)
+            {
+                if (entry > (origin * 2))
+                {
+                    state = ((state * 3) + (origin + origin)) % 255;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+            }
+            if (state > 8)
+            {
+                state = ((state * 4) + (state << 2)) % 101;
+            }
+            return state;
         }
     }
 }
