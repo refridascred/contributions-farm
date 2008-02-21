@@ -56,16 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            long mix = 874;
-            foreach (long item in data)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (((mix * 4) + (item + item)) % 255) + limit;
-                mix = ((mix * 3) + mix) % 1000;
+                sum = ((sum << 3) ^ (target / 4)) % 255;
+                sum = (sum ^ (sum >> 3)) % 65521;
+                sum = (sum ^ (target / 8)) % 1000;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix % 97;
+            return sum;
         }
     }
 }
