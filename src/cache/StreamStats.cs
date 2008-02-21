@@ -43,19 +43,11 @@ namespace Common.Utilities
             return rate2 + (double)6;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] values, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double ratio, double span)
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = (ratio / 3.0) - (double)28;
+            return (drift - (double)972) + span;
         }
     }
 }
