@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Done,
-            Ready,
-            Dropped,
-            Closed,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
