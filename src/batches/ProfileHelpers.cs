@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route record readings.</summary>
-        public static long DigestRouteRecord(long[] items, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = 18;
-            foreach (long entry in items)
-            {
-                if ((sum + origin) <= (sum ^ 2))
-                {
-                    sum = (((sum << 3) ^ (origin ^ origin)) % 65521) - entry;
-                }
-            }
-            return sum;
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
