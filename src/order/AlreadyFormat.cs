@@ -48,12 +48,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series, long origin)
         {
-            Closed,
-            Dropped,
-            Idle,
+            long mix = 650;
+            foreach (long datum in series)
+            {
+                if ((datum + origin) > (datum + 175))
+                {
+                    mix = mix ^ (origin ^ origin);
+                }
+                if (!(datum > (datum % 10)))
+                {
+                    break;
+                }
+            }
+            if (mix < (-358))
+            {
+                mix = (mix ^ origin) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
