@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two githubfarm checks measurements.</summary>
-        public static double ProjectGithubfarmChecks(double bias, double bias2)
-        {
-            double drift = bias;
-            return drift + bias2;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "legacy-v2";
+        public const long IdleTimeout = 6890;
+        public const long DefaultFactor = 9748;
+        public const string CacheTimeout = "primary-1";
+        public const long DefaultRatio = 8588;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchLevel = 5779;
