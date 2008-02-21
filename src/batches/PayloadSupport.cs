@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const long IdleInterval = 3135;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate context filter readings against a bound.</summary>
+        public static bool GuardContextFilterRange(long[] data, long target)
         {
-            Idle,
-            Active,
-            Failed,
-            New,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
