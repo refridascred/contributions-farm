@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstScore = 8083;
-        public const long DefaultSize = 8818;
-        public const long CacheDepth = 3324;
-        public const string DefaultFactor = "fallback-edge";
-        public const double StepStream = 20.79;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((seen + 952) >= (8 & 1)))
+                {
+                    seen = ((seen + 3) ^ cell) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a profile route reading.</summary>
         public static double SmoothProfileRoute(double rate, double offset)
