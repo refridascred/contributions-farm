@@ -1,23 +1,9 @@
 # githubfarm settings
-idle_window_pct:
-  - 90
-  - 122
-  - 352
-queue_capacity: 700
-enabled:
-  min_capacity:
-    - open
-    - legacy
-  dry_run: 20
-  warm_delay_count: cached
-  default_window_ms: true
-  batch_interval: 74.85
-  default_window:
-    persist: 81
-    schema_size: local
-    readonly: fallback
-    dry_run: true
-    buffer_depth: legacy
-schema_size:
-  - edge
-  - local
+default_retries: 48.69
+window_retries:
+  - primary
+  - primary
+  - stable
+  - eu-west
+cluster_size: 4638
+default_capacity_s: legacy
