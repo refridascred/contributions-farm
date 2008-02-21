@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTimeout = 3168;
-        public const double LimitTools = 65.11;
-        public const long IdleTools = 1802;
-        public const long HardTools = 4447;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Pending,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] series, long bound)
