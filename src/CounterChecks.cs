@@ -61,31 +61,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long bound, long floor)
-        {
-            if ((12.0 * 9.0) >= (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((bound << 2) != (floor + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 4) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 8.51;
+        public const string DefaultTimeout = "legacy";
+        public const long IdleLevel = 5325;
     }
 }
