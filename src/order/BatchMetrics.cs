@@ -19,12 +19,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double floor)
-        {
-            double rate = (double)(98 << 1);
-            return ((rate + 13.0) + scale) + floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheWidth = "strict";
+        public const string StepBatch = "legacy";
+        public const string LimitLevel = "latest-edge";
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
