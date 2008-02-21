@@ -69,22 +69,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] readings, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (limit > datum)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
