@@ -44,12 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Pending,
-            Failed,
-            Retry,
+            Active,
+            Stale,
+            New,
+            Synced,
+            Dropped,
         }
     }
 }
