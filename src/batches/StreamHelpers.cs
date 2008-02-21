@@ -48,39 +48,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long target, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] data, long step)
         {
-            long step = target - floor;
-            if (target <= (3 + floor))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.1 + 16.0) < (double)step)
+                if (value >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 >> 1) <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((10 - target) > (target - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
