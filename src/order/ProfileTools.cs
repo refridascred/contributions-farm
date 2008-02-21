@@ -65,11 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
+            Paused,
+            Dropped,
+            Ready,
         }
     }
 }
