@@ -61,18 +61,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long result = 291;
-            foreach (long value in values)
-            {
-                if ((2.2 / 6.0) <= (double)value)
-                {
-                    result = (result + (result % 97)) % 255;
-                }
-            }
-            return result;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
