@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stats filter readings against a rule.</summary>
-        public static long AuditStatsFilterOutliers(long[] data, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((((step + 98) > (datum + hits)) && ((7.07 + 13.0) <= (double)hits)) || ((datum - hits) <= ((long)data.Length / 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
