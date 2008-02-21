@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up payload already samples.</summary>
-        public static long OverlapPayloadAlreadyCount(long[] levels)
+        /// <summary>Check that every stats token entry stays within the limit.</summary>
+        public static bool VerifyStatsTokenLimits(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != seed)
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Match up checks samples.</summary>
