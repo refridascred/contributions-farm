@@ -1,4 +1,20 @@
 # githubfarm settings
-contributi_window: true
-warm_threshold_pct: cached
-metrics_threshold: stable
+sync_timeout_ms:
+  - strict
+  - eu-west
+  - standard
+  - edge
+burst_interval_pct: 60.22
+strict:
+  cache_depth_pct:
+    - 486
+    - 383
+    - 50
+    - 162
+  soft_threshold_s: open
+  min_ratio_s: local
+context_delay: 60
+readonly:
+  - eu-west
+  - open
+  - open
