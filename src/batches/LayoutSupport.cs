@@ -46,15 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double ratio, double offset)
+        /// <summary>Compare every pair of counter cache readings.</summary>
+        public static long PairCounterCacheCount(long[] values)
         {
-            double bias = ratio * 10.0;
-            if (bias >= (bias - ratio))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias + 6.0) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - (bias * 6.7);
+            return tally;
         }
 
         /// <summary>Describe the token kind values.</summary>
