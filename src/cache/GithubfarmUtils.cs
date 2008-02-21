@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] items, long floor)
+        /// <summary>Audit cache window readings against a rule.</summary>
+        public static long TallyCacheWindowMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!(count > (entry << 2)))
+                if ((reading + tally) < (reading ^ reading))
                 {
-                    count = (count + 2) + floor;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
