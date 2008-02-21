@@ -43,26 +43,17 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Fold a list of githubfarm queue readings.</summary>
-        public static long TallyGithubfarmQueue(long[] readings)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long offset)
         {
-            long carry = 88;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item + 8) >= (carry * 2))
+                if ((items[i] >= offset) && ((items[i] % 3) != 0))
                 {
-                    carry = (carry - (24 ^ carry)) % 1000;
-                }
-                if ((carry * 4) > (carry - 36))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 82)
-            {
-                carry = ((carry << 2) ^ (carry / 4)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a commits stats.</summary>
