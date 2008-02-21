@@ -34,12 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            Synced,
+            Dropped,
+            Done,
         }
     }
 }
