@@ -20,18 +20,15 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Measure how many record metric samples are out of range.</summary>
-        public static long TallyRecordMetricMatches(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double mean = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((-97) * 4) > (seen + 1))
-                {
-                    seen = (seen + 3) + item;
-                }
+                mean = (mean + (floor + rate)) + (double)(long)i;
             }
-            return seen;
+            return mean - mean;
         }
 
         /// <summary>Derive the next context account value from a seed.</summary>
