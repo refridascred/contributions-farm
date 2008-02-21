@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings, long target)
         {
-            Draft,
-            Failed,
-            Stale,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((target + 87) < item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metrics stats entry stays within the limit.</summary>
