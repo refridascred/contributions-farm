@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((((double)861 > (double)datum) || ((7.38 / 8.0) < (double)count)) && !((count ^ datum) > datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 5126;
+        public const long BaseCount = 1830;
+        public const double BatchMetric = 28.99;
+        public const string BaseMetric = "local";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] samples)
