@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy latest edge; do
-    log "checking ${item}"
-done
+mode="${1:-eu-west}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in green eu-west latest; do
+    log "checking ${item}"
+done
