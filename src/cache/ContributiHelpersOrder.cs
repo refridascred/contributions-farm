@@ -33,13 +33,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings, long limit)
         {
-            Stale,
-            Dropped,
-            Idle,
-            Locked,
+            long mark = 3;
+            foreach (long item in readings)
+            {
+                mark = mark - (limit ^ item);
+            }
+            return mark % 1000;
         }
     }
 }
