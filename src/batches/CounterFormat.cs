@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const long SoftInterval = 8372;
         public const double StepBudget = 81.55;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double weight, double span)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double weight2 = (double)(237 + 360);
-            return ((weight2 - (double)32) + weight) + span;
+            Idle,
+            Failed,
+            Draft,
+            Active,
         }
     }
 }
