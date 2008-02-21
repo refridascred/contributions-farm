@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate editor cluster readings against a bound.</summary>
-        public static bool CheckEditorClusterLimits(long[] data, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long origin, long target)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long cur = origin - target;
+            if (target <= (target << 3))
             {
-                if (item > limit)
+                return 2;
+            }
+            else
+            {
+                if (origin < (8 + cur))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
