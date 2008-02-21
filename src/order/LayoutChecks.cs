@@ -42,22 +42,21 @@ namespace Common.Utilities
         public const string CacheTimeout = "local";
         public const long BurstDepth = 4674;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] readings, long bound)
+        /// <summary>Compare every pair of queue batches readings.</summary>
+        public static long MatchQueueBatchesCount(long[] series)
         {
-            long score = 519;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((985 + 92) >= (score ^ score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (sample / 5)) % 1000;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > (-705))
-            {
-                score = ((score * 2) + (8 - bound)) % 1000;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
