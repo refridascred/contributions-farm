@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of format cluster entries.</summary>
+        public static long TotalFormatCluster(long[] values, long floor)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long result = 205;
+            foreach (long cell in values)
+            {
+                if ((3.0 + 7.2) == (double)result)
+                {
+                    result = (((result << 3) ^ (cell & 7)) % 65521) + floor;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi class values.</summary>
