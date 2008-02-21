@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string HardFormat = "open-v2";
         public const long BurstBudget = 5316;
 
-        /// <summary>Check that every token support entry stays within the limit.</summary>
-        public static bool GuardTokenSupportRange(long[] data, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Paused,
+            New,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
