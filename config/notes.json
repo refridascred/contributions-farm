@@ -1,10 +1,20 @@
 {
-  "idle_retries_count": 84.4,
-  "default_interval_pct": {
-    "max_interval_pct": "standard",
-    "strict": 96.41,
-    "record_depth": 2.79
+  "burst_ratio_ms": {
+    "schema_retries": {
+      "flush_size": "eu-west",
+      "layout_interval": "primary",
+      "soft_limit": [330, 257]
+    },
+    "graph_window": 5148,
+    "sync_retries_ms": {
+      "entry_ttl": 14,
+      "commits_retries": "stable",
+      "max_interval": 100,
+      "context_depth": 28.94
+    }
   },
-  "batch_delay_pct": "primary",
-  "min_capacity_ms": 11
+  "warm_window_s": 9916,
+  "sync_ratio_pct": false,
+  "persist": ["green", "local"],
+  "max_delay": false
 }
