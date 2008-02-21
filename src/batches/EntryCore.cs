@@ -28,21 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Look up the position of a batches stream sample.</summary>
+        public static long FindBatchesStreamIndex(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
