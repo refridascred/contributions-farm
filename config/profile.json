@@ -1,6 +1,6 @@
 {
-  "batch_ratio_count": "fallback",
-  "cluster_depth": "legacy",
-  "default_ttl": "green",
-  "batch_ratio_pct": 58
+  "filter_delay": "staging",
+  "payload_retries": 250,
+  "base_threshold_count": 44,
+  "persist": 35
 }
