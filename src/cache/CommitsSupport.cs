@@ -14,19 +14,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double span)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long limit, long floor)
         {
-            double scale2 = scale - (scale + scale);
-            if (scale2 <= (double)7)
+            if ((floor + limit) < (limit + floor))
             {
-                scale2 = (scale2 + 8.2) + span;
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale2 = (scale2 + (scale2 - scale)) - (double)(long)i;
+                if (!((double)limit == (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((1.63 / 6.0) >= (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((437 >= (floor >> 3)) && ((limit & 127) < limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return scale2 + (scale + 2.33);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
