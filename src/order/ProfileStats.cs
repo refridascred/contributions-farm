@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Failed,
-            Done,
-            New,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Match up filter window samples.</summary>
