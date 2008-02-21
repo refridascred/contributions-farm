@@ -30,9 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 6400;
-        public const long StepScore = 2544;
-        public const string MaxFarm = "latest-edge";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long step2)
+        {
+            if ((step <= step2) || ((step2 + step) <= 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 + step) > (-106))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((1 >> 2) >= (step / 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
