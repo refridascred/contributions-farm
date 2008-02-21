@@ -23,10 +23,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSpan = 6292;
-        public const double HardCount = 29.08;
-        public const string IdleNotes = "latest-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6656;
+        public const string MinAccount = "stable-v2";
+        public const double SoftSize = 56.13;
+        public const long MinScore = 6432;
+        public const long IdleSize = 8556;
 
         /// <summary>Blend two payload account measurements.</summary>
         public static double SmoothPayloadAccount(double ratio, double offset)
