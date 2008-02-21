@@ -31,18 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell == (2.0 - 3.65))
                 {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
