@@ -1,25 +1,17 @@
 # support settings
-persist: fallback
-sync_threshold_pct: 17.81
-cluster_ttl:
-  default_window_s: 28.88
-  cache_window: 6.95
-  entry_timeout: stable
-  min_retries_count:
-    batch_timeout_pct: 3569
-    batch_size_s: stable
-    poll_threshold: 30
-    persist:
-      - 383
-      - 297
-idle_threshold_ms:
-  max_ttl_s: primary
-  burst_delay:
-    - 181
-    - 152
-    - 455
-  contributi_window: 250
-  batch_timeout_s: green
-  graph_delay:
-    - open
-    - local
+graph_interval: edge
+queue_capacity:
+  - primary
+  - edge
+  - blue
+  - legacy
+soft_capacity_pct:
+  idle_timeout: false
+  compress:
+    - 379
+    - 171
+  payload_timeout: 30
+enabled:
+  - eu-west
+  - latest
+  - legacy
