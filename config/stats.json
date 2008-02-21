@@ -1,6 +1,12 @@
 {
-  "enabled": 39,
-  "cache_depth": 8190,
-  "warm_capacity_pct": "blue",
-  "max_ttl": 7.82
+  "account_ttl": "green",
+  "base_interval_ms": "cached",
+  "checks_window": 39,
+  "min_ratio_pct": "blue",
+  "default_depth_pct": {
+    "min_delay_s": "primary",
+    "soft_depth_pct": "legacy",
+    "persist": "cached"
+  },
+  "metric_ratio": 7371
 }
