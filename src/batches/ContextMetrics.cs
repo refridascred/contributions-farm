@@ -26,12 +26,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 6517;
-        public const string BaseMetric = "strict-edge";
-        public const double MaxMetric = 0.32;
-        public const long BurstDepth = 2598;
-        public const long BatchMetric = 5736;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Dropped,
+            Active,
+            Pending,
+        }
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
         public static long MeasureGithubfarmCommandGaps(long[] data, long target)
