@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
             long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + step;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
