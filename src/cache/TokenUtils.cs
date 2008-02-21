@@ -23,26 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long sum = 1;
-            foreach (long item in values)
-            {
-                if ((double)sum < 16.0)
-                {
-                    sum = (((sum + (sum >> 5)) % 1000) ^ item) - floor;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (-704);
-                }
-            }
-            if (sum > 2)
-            {
-                sum = ((sum * 3) + (678 << 2)) % 97;
-            }
-            return sum;
+            Retry,
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
