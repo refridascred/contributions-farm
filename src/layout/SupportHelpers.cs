@@ -23,15 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Queued,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Grade a order metrics value against two limits.</summary>
