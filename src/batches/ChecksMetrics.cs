@@ -5,39 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long next = limit - seed;
-            if ((4.0 + 14.0) < (double)next)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((863 ^ next) < (next - next))
+                score = ((score * 4) + score) % 4096;
+                if ((limit << 1) <= (limit << 3))
                 {
-                    return 1;
+                    score = (score + (score - limit)) % 65521;
+                    score = ((score * 4) + limit) % 1000;
                 }
                 else
                 {
-                    if ((limit - seed) > (40 + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next <= limit) || (26 > (next + seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score ^ score) % 97;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
