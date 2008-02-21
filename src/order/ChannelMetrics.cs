@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "latest";
-        public const long StepSession = 4507;
-        public const long MaxSpan = 7816;
-        public const long DefaultSession = 8660;
-        public const double LimitSession = 62.06;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
