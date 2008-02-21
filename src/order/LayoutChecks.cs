@@ -81,16 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] series, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                total = (total * 4) + (total << 1);
-                total = ((total * 5) + (long)i) % 65521;
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
