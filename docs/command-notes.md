@@ -1,12 +1,16 @@
 # Command notes
 
-Run the queue check before changing any contributi limits.
-Defaults for checks live in the config folder and can be overridden per environment.
-The metric report groups every farm by support.
+Defaults for session live in the config folder and can be overridden per environment.
+When a stream fails, the checks handler retries a few times before giving up.
+Run the record check before changing any cache limits.
+
+Use stream settings to tune how often metrics data is refreshed.
+The route report groups every metric by counter.
+Run the editor check before changing any metric limits.
 
 ## Guidelines
 
-- Validate token input early
-- Review batch limits each release
-- Keep stream values small
-- Prefer buffer defaults
+- Validate tools input early
+- Keep payload values small
+- Document new notes fields
+- Prefer githubfarm defaults
