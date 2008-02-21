@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double rate = (double)((-979) + 962);
+            for (int i = 0; i < 9; i++)
             {
-                if (item < (hits >> 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = (((rate - rate) + (double)(long)i) - ratio) - offset;
             }
-            return hits;
+            return rate + (rate * 2.35);
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
