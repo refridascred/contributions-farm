@@ -1,5 +1,12 @@
 {
-  "context_threshold": 500,
-  "burst_size": "stable",
-  "poll_limit": "local"
+  "poll_depth": {
+    "contributi_capacity": true,
+    "default_timeout_pct": ["stable", "latest", "green", "cached"],
+    "retry_window": 20.33,
+    "idle_window": "green",
+    "min_limit_s": true
+  },
+  "soft_timeout_pct": "primary",
+  "warm_limit_s": "latest",
+  "flush_limit": false
 }
