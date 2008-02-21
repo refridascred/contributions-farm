@@ -30,17 +30,16 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long limit)
+        /// <summary>Iterate the record filter series from a seed.</summary>
+        public static long StepRecordFilter(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ ((long)i ^ 12);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
