@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)52 * 0.92;
+            if (load >= (load * 3.44))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (double)26;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - (rate / 4.0);
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
