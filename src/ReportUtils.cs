@@ -52,10 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 9185;
-        public const long WindowSupport = 6678;
-        public const long BatchSupport = 1320;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] values)
