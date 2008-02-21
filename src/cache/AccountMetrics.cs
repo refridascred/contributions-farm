@@ -41,13 +41,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 4768;
         public const long MaxStats = 8837;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
