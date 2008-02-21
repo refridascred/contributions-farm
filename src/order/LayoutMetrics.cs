@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] items, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (cell >= offset)
+                if (((double)reading == (1.0 + 2.9)) && !((reading >> 1) == (reading ^ 20)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a editor record.</summary>
