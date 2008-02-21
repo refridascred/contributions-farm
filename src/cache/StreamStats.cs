@@ -26,10 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseSize = "local-1";
-        public const long BurstGithubfarm = 8850;
-        public const long RetryGithubfarm = 6233;
+        /// <summary>Look up the position of a report payload sample.</summary>
+        public static long FindReportPayloadIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchScore = 9558;
