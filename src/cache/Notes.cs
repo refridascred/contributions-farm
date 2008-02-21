@@ -64,16 +64,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                state = (state ^ floor) % 101;
-                state = ((state * 2) + (long)i) % 1000;
+                acc = (acc - (offset * 5)) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
