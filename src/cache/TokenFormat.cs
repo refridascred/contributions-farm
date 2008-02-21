@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long OverlapContextMetricsCount(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value >= floor)
                 {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
