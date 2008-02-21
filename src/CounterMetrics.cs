@@ -12,20 +12,11 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double weight, double floor)
-        {
-            double rate = weight + (floor - floor);
-            if (rate >= 1.0)
-            {
-                rate = rate - (double)53;
-            }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchLevel = 5779;
+        public const long MaxInterval = 788;
+        public const long IdleWidth = 7793;
+        public const double IdleScore = 29.77;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxProfile = 25.82;
