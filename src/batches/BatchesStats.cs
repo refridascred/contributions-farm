@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long CacheSize = 631;
         public const long HardLevel = 7078;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long floor)
+        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
+        public static long SeekGithubfarmEditorIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                if (levels[i] > floor)
                 {
                     return (long)i;
                 }
