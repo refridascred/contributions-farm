@@ -48,10 +48,40 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFactor = 1203;
-        public const string StepFilter = "local-v2";
-        public const double SoftScore = 8.69;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long target, long floor)
+        {
+            long step = target - floor;
+            if (target <= (3 + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.1 + 16.0) < (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7 >> 1) <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((10 - target) > (target - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmHits(long[] items, long target)
