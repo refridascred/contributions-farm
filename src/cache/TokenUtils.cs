@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of window route entries.</summary>
-        public static long CombineWindowRoute(long[] data, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = 827;
-            foreach (long item in data)
-            {
-                score = ((score * 3) + (origin % 60)) + item;
-            }
-            if (score < 88)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
