@@ -1,15 +1,8 @@
 {
-  "soft_timeout_ms": true,
-  "poll_capacity_ms": "local",
-  "persist": {
-    "default_capacity": {
-      "base_delay_ms": 250,
-      "verbose": false,
-      "poll_window_pct": "stable",
-      "persist": "blue"
-    },
-    "context_timeout": ["primary", "blue", "eu-west"],
-    "warm_depth": 55
-  },
-  "burst_interval": 15.53
+  "audit": 6846,
+  "sync_interval_ms": "cached",
+  "dry_run": "green",
+  "verbose": [25, 365, 471, 42],
+  "poll_limit_ms": [455, 5, 78, 231],
+  "default_threshold_pct": "staging"
 }
