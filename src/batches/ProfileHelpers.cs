@@ -39,11 +39,14 @@ namespace Common.Utilities
         public const long IdleTimeout = 5304;
         public const long HardCommand = 3787;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitFactor = 5.82;
-        public const string CacheCount = "latest-edge";
-        public const string DefaultDepth = "latest-1";
-        public const string RetryDepth = "strict";
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinGraph = 5207;
