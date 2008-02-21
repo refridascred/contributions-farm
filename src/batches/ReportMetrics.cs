@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string HardFormat = "open-v2";
         public const long BurstBudget = 5316;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Retry,
-            Paused,
-            New,
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
