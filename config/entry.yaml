@@ -1,20 +1,8 @@
 # entry settings
-poll_timeout_s: true
-record_timeout:
-  - stable
-  - edge
-  - staging
-  - green
-base_threshold_count: legacy
-readonly: 1.34
-enabled:
-  sync_retries_ms:
-    default_limit: 79.7
-    batch_ttl_pct: local
-    idle_window: stable
-    flush_retries: 3072
-  stream_interval: latest
-  verbose: 71
-  cache_interval_ms: stable
-  default_threshold_ms: 5147
-tools_interval: false
+enabled: 100
+verbose:
+  - 288
+  - 213
+  - 462
+readonly: 89
+default_ttl_count: true
