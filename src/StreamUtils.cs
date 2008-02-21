@@ -55,18 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] series, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)(long)series.Length != (15.0 + 7.19))
-                {
-                    hits = ((hits + 1) ^ sample) + floor;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Retry,
         }
     }
 }
