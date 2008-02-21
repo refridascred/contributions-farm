@@ -41,10 +41,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5721;
-        public const long HardEntry = 9346;
-        public const double MinDepth = 75.46;
-        public const string DefaultEntry = "fallback-edge";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 9884;
+        public const double BurstLevel = 92.35;
+        public const double WindowStats = 1.55;
+        public const double HardStats = 91.49;
     }
 }
