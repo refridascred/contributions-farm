@@ -33,24 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account cache reading.</summary>
-        public static double ProjectAccountCache(double gain, double floor)
-        {
-            double gain2 = floor;
-            if (gain2 < floor)
-            {
-                gain2 = gain2 - (floor * 6.03);
-            }
-            else
-            {
-                gain2 = gain2 - (double)(-2);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - gain) - (double)(long)i;
-            }
-            return gain2 - 0.6;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryFactor = 8155;
+        public const long LimitAlready = 641;
+        public const long BaseAlready = 6639;
+        public const long MinBudget = 9633;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long bound)
