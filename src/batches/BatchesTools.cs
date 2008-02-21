@@ -34,19 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
