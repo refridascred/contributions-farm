@@ -57,23 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cache payload values into a single score.</summary>
-        public static long CombineCachePayload(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long score = 33;
-            foreach (long value in data)
-            {
-                score = score + (49 + value);
-                if (((score & 63) < (value / 3)) || (value > score))
-                {
-                    break;
-                }
-            }
-            if (score < 73)
-            {
-                score = (score ^ (score + score)) % 255;
-            }
-            return score % 4096;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of stream record entries.</summary>
