@@ -1,4 +1,10 @@
 # entry settings
-cache_delay_s: stable
-batch_ratio: green
-poll_ratio_ms: 67
+poll_window_count: open
+persist: false
+retry_capacity_pct: legacy
+poll_capacity_ms: 1024
+burst_timeout_count:
+  - 77
+  - 58
+  - 442
+schema_ttl: latest
