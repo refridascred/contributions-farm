@@ -1,12 +1,15 @@
 {
-  "soft_capacity_s": "cached",
-  "base_window_count": {
-    "sync_depth_s": "stable",
-    "channel_limit": false,
-    "payload_delay": "latest",
-    "sync_timeout": ["blue", "legacy", "latest", "latest"],
-    "cache_retries": 49.29,
-    "readonly": 33.63
+  "burst_delay": {
+    "min_retries_ms": {
+      "max_depth": 3973,
+      "buffer_ttl": "fallback",
+      "base_depth_pct": true,
+      "soft_retries": "green"
+    },
+    "base_retries_s": "cached",
+    "min_threshold_ms": 2691
   },
-  "sync_interval_ms": 58.24
+  "min_window_s": false,
+  "sync_threshold": 250,
+  "compress": false
 }
