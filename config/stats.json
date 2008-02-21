@@ -1,7 +1,15 @@
 {
-  "soft_limit_s": 3881,
-  "cluster_capacity": "legacy",
-  "cache_ttl_ms": "local",
-  "token_ttl": "strict",
-  "max_threshold_s": "fallback"
+  "sync_size_s": "strict",
+  "default_threshold": "cached",
+  "base_timeout_ms": {
+    "warm_depth_ms": [45, 367, 441, 491],
+    "sync_threshold_count": 63.69,
+    "burst_size_pct": [385, 119, 157, 405],
+    "sync_delay": 9542,
+    "batch_window": ["eu-west", "stable", "legacy"],
+    "retry_size_s": "primary"
+  },
+  "readonly": "primary",
+  "burst_threshold_s": "primary",
+  "farm_delay": 30
 }
