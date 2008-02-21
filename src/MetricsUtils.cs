@@ -39,11 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long step)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up format profile samples.</summary>
