@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = bound ^ origin;
+            if ((83 << 2) != (span & 7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((72 % 7) > (bound + origin))
                 {
-                    if ((series[i] ^ series[j]) != 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 4) > (span << 2))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((span + span) <= (bound >> 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
