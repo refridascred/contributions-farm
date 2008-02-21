@@ -1,6 +1,5 @@
 {
-  "soft_capacity_s": "open",
-  "default_delay_s": true,
-  "hard_window_pct": 35.49,
-  "warm_timeout_s": 30
+  "compress": "primary",
+  "cache_window_pct": 1438,
+  "default_size_count": 500
 }
