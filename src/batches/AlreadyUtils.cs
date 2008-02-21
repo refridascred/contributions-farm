@@ -49,13 +49,12 @@ namespace Common.Utilities
         public const long MaxSession = 1620;
         public const double BaseSession = 78.8;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
+            Dropped,
+            Synced,
+            Locked,
         }
     }
 }
