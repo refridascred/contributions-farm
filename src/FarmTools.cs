@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] values, long bound)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long result = 25;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result << 2) ^ (result >> 1)) % 101) + bound;
-                result = ((result * 3) + (160 * 3)) % 4096;
-                result = ((result << 3) ^ (result - entry)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
