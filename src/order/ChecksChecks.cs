@@ -34,21 +34,10 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Match up session stats samples.</summary>
-        public static long CompareSessionStatsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxTimeout = 5584;
+        public const double HardEditor = 98.19;
+        public const double DefaultEditor = 1.36;
+        public const double MaxEditor = 82.38;
     }
 }
