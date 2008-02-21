@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Dropped,
-            Failed,
+            Stale,
             Queued,
+            Closed,
         }
     }
 }
