@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many profile command samples are out of range.</summary>
-        public static long MeasureProfileCommandGaps(long[] series, long bound)
+        /// <summary>Compare every pair of token stats readings.</summary>
+        public static long MatchTokenStatsCount(long[] items)
         {
             long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8 + tally) > (reading - 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
