@@ -49,24 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            if ((target + bound) < (bound + target))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target >= (7.0 - 4.2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
