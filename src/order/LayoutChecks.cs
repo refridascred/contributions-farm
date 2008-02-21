@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long LimitRatio = 1175;
         public const string WindowDepth = "strict-edge";
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            Ready,
-            New,
-            Stale,
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score * 3) + score;
+                score = score + (long)i;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Adjust a window reading.</summary>
