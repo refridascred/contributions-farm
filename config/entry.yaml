@@ -1,18 +1,8 @@
 # entry settings
-counter_interval:
-  warm_delay_pct:
-    min_depth:
-      - 298
-      - 3
-    audit: primary
-    cache_retries: true
-  retry_retries_pct: 22.02
-  already_delay: 60
-  warm_ttl_pct:
-    - 247
-    - 325
-    - 472
-  idle_ttl_count: 29
-flush_limit_ms: 500
-graph_delay: 35
-min_limit_ms: 60
+soft_limit: true
+max_timeout_ms: true
+stats_limit:
+  - eu-west
+  - fallback
+hard_timeout: 60
+default_limit: legacy
