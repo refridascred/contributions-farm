@@ -63,21 +63,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 50;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - (cell / 3)) + (long)i;
+                }
+                acc = acc + (limit << 3);
+                if ((cell - acc) < (6 + cell))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc % 97;
         }
     }
 }
