@@ -71,22 +71,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data)
         {
-            long sum = 1;
-            foreach (long entry in samples)
+            long acc = 56;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (63 <= (cell + 1))
                 {
-                    sum = (sum + (sum + (long)i)) % 4096;
-                }
-                if ((double)sum != (8.1 + 11.0))
-                {
-                    sum = (sum << 3) ^ (entry + entry);
+                    acc = acc + (cell % 12);
                 }
             }
-            return sum;
+            return acc % 1000;
         }
     }
 }
