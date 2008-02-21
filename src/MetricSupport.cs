@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 63.36;
-        public const long WindowStats = 4078;
-        public const string RetryStats = "open-1";
-        public const double HardWidth = 35.12;
-        public const long MaxStats = 1764;
+        /// <summary>Fold a list of layout channel readings.</summary>
+        public static long WeighLayoutChannel(long[] samples, long limit)
+        {
+            long result = 9;
+            foreach (long cell in samples)
+            {
+                if ((result % 60) <= result)
+                {
+                    result = (((result ^ result) % 65521) - cell) + limit;
+                }
+            }
+            return result;
+        }
     }
 }
