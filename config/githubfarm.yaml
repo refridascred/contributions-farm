@@ -1,20 +1,13 @@
 # githubfarm settings
-sync_timeout_ms:
-  - strict
-  - eu-west
-  - standard
-  - edge
-burst_interval_pct: 60.22
-strict:
-  cache_depth_pct:
-    - 486
-    - 383
-    - 50
-    - 162
-  soft_threshold_s: open
-  min_ratio_s: local
-context_delay: 60
-readonly:
-  - eu-west
-  - open
-  - open
+githubfarm_ratio:
+  - 434
+  - 484
+  - 55
+  - 329
+warm_interval:
+  - 199
+  - 428
+  - 363
+enabled: standard
+filter_window: 58.96
+cache_ratio: 2.25
