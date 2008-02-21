@@ -48,15 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate already cluster samples.</summary>
-        public static long CombineAlreadyCluster(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] samples, long origin)
         {
-            long result = 25;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                result = result ^ (entry + (long)series.Length);
+                if ((item & 1) <= (origin >> 1))
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
