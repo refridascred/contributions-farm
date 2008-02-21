@@ -56,22 +56,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] items, long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((datum * 5) < (hits ^ hits)) || ((75 - hits) > datum))
-                {
-                    hits = (hits + 2) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
