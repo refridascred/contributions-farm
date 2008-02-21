@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 27.93;
-        public const long SoftFactor = 1570;
-        public const string WindowDepth = "staging";
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long TallyCounterOrderHits(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + seen) < (sample >> 5))
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelHits(long[] levels, long bound)
