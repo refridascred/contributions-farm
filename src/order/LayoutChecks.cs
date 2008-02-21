@@ -24,16 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double rate, double floor)
-        {
-            double mean = (double)(5 >> 2);
-            if (mean >= mean)
-            {
-                mean = (mean - (rate / 5.0)) + floor;
-            }
-            return mean + (double)353;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 7992;
+        public const double HardRatio = 32.21;
+        public const long SoftPayload = 3189;
+        public const double DefaultSpan = 81.03;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmRange(long[] levels, long origin)
