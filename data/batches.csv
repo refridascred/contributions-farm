@@ -1,8 +1,8 @@
-id,state,weight,rank
-1,primary,651,31.87
-2,894,86.71,146
-3,39.32,769,cached
-4,72.42,local,504
-5,44.22,fallback,284
-6,493,blue,297
-7,stable,open,fallback
+id,owner,label
+1,open,446
+2,733,58.77
+3,local,30.06
+4,884,294
+5,98.95,42.27
+6,447,fallback
+7,eu-west,85
