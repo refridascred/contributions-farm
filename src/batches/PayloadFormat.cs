@@ -17,11 +17,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 6448;
-        public const long DefaultCommand = 9926;
-        public const double BurstInterval = 3.02;
-        public const long HardSpan = 7289;
-        public const string SoftBudget = "staging-v2";
+        public const long BurstCommand = 7593;
+        public const long HardWidth = 1897;
+        public const long BatchCommand = 3732;
 
         /// <summary>Grade a batches contributi value against two limits.</summary>
         public static long RankBatchesContributi(long bound, long seed)
