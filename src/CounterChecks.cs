@@ -23,22 +23,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items, long target)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long score = 584;
-            foreach (long value in items)
-            {
-                if (!((4.78 / 5.0) >= (double)value))
-                {
-                    score = (((score << 3) ^ score) % 97) - target;
-                }
-                else
-                {
-                    score = (score - (score / 8)) % 255;
-                }
-            }
-            return score;
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
