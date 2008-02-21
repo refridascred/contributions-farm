@@ -1,10 +1,32 @@
 # support settings
-sync_size_pct: strict
-base_retries_ms: strict
-enabled:
-  - 34
-  - 345
-strict:
-  - green
-  - green
-warm_interval: 81.86
+default_interval: true
+min_capacity:
+  strict:
+    - 290
+    - 200
+    - 281
+    - 393
+  verbose: 38.77
+  enabled:
+    - cached
+    - open
+  idle_delay: true
+  retry_retries: open
+  default_capacity_ms:
+    - latest
+    - eu-west
+warm_depth_count:
+  notes_limit: true
+  githubfarm_limit: 6542
+  layout_interval: 5731
+  cluster_capacity: 250
+  sync_retries_pct:
+    - 150
+    - 94
+    - 231
+  command_ratio:
+    - eu-west
+    - standard
+cluster_window: 1024
+hard_ttl_ms: local
+soft_timeout_count: 52.32
