@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleLevel = 25.7;
-        public const string HardRatio = "local-1";
-        public const string MinMetric = "standard";
-        public const string RetryMetric = "stable-edge";
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (limit < (state * 5))
+                {
+                    state = (state ^ 590) % 101;
+                    state = state - (state >> 3);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] data)
