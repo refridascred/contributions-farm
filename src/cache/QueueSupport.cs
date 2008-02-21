@@ -22,29 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank command graph input into a small class.</summary>
-        public static long BucketCommandGraph(long target, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            if ((17.0 - 6.0) <= (double)target)
+            if (((origin + origin) <= origin) || ((double)origin == (6.69 + 5.46)))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (target <= (target & 1))
+                if (((origin - origin) < (origin - 41)) || ((double)origin > 6.12))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((5.3 + 7.51) < (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 2;
                 }
             }
         }
