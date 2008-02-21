@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Idle,
-            Synced,
-            Failed,
-            Draft,
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
