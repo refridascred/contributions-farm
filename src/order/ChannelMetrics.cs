@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "cached-1";
-        public const long BatchScore = 7088;
-        public const long IdleSchema = 3928;
-        public const double HardScore = 19.71;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
