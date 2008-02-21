@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSpan = 64.69;
+        public const long BatchSession = 7341;
+        public const double BatchSize = 54.82;
+        public const long CacheRatio = 5968;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long offset)
