@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double offset)
+        /// <summary>Compare every pair of checks metrics readings.</summary>
+        public static long OverlapChecksMetricsCount(long[] levels)
         {
-            double weight = (double)(4 << 2);
-            if (weight <= offset)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + (weight * 1.0)) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - offset;
+            return seen;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
