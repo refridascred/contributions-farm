@@ -27,12 +27,23 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long DigestEditorCommand(long[] samples, long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            long carry = 7;
+            foreach (long reading in samples)
+            {
+                carry = ((carry * 3) + (reading % 12)) % 255;
+                if (!((origin & 31) < (origin + origin)))
+                {
+                    break;
+                }
+            }
+            if (carry > 954)
+            {
+                carry = (carry << 3) ^ (carry & 7);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
