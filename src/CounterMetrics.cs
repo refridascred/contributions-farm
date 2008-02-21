@@ -19,22 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data, long floor)
+        /// <summary>Grade a order batch value against two limits.</summary>
+        public static long GradeOrderBatch(long step, long bound)
         {
-            long mix = 13;
-            foreach (long reading in data)
+            long offset = step - bound;
+            if ((bound >> 3) < (offset + bound))
             {
-                if ((reading & 255) > mix)
+                return 7;
+            }
+            else
+            {
+                if (20 < (bound ^ bound))
                 {
-                    mix = mix - floor;
+                    return 4;
+                }
+                else
+                {
+                    if (step > (step * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 19)
-            {
-                mix = (mix * 3) + (floor ^ mix);
-            }
-            return mix % 1000;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
