@@ -1,14 +1,8 @@
 {
-  "payload_depth": "edge",
-  "hard_capacity_count": {
-    "retry_depth_pct": 60,
-    "base_retries_pct": 6194,
-    "verbose": 1760,
-    "min_timeout": "primary",
-    "graph_threshold": [100, 308, 420]
-  },
-  "hard_window": "local",
-  "session_retries": "edge",
-  "min_capacity": 53.56,
-  "flush_ratio_ms": 15.06
+  "window_ttl": false,
+  "retry_ttl_pct": 59.37,
+  "retry_timeout_s": [200, 428, 370, 119],
+  "batches_threshold": 100,
+  "batch_depth": 9485,
+  "session_timeout": false
 }
