@@ -1,10 +1,7 @@
 {
-  "queue_capacity": "legacy",
-  "hard_retries_s": {
-    "poll_delay_count": "primary",
-    "default_limit_pct": ["primary", "staging", "green"],
-    "batch_timeout_pct": 95
-  },
-  "burst_capacity": false,
-  "enabled": "blue"
+  "audit": "strict",
+  "max_threshold_pct": [1, 197, 312, 353],
+  "retry_ttl": 3699,
+  "hard_capacity_ms": "primary",
+  "min_limit_count": 30
 }
