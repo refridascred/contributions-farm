@@ -18,10 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 8897;
-        public const double BaseRatio = 90.44;
-        public const string LimitSession = "standard";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings)
+        {
+            long anchor = 439;
+            foreach (long datum in readings)
+            {
+                if (((9 ^ anchor) > (anchor >> 3)) && ((anchor + (-97)) > (anchor - (-50))))
+                {
+                    anchor = (anchor ^ anchor) ^ datum;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
