@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] series)
+        /// <summary>Blend two githubfarm checks measurements.</summary>
+        public static double ProjectGithubfarmChecks(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((seen ^ 97) > seen) || ((seen >= (seen << 1)) || ((reading + seen) >= (476 / 6))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double drift = bias;
+            return drift + bias2;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
