@@ -28,18 +28,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long sum = 0;
-            foreach (long reading in data)
-            {
-                if ((long)data.Length == (sum & 255))
-                {
-                    sum = ((sum + (reading ^ reading)) % 4096) + floor;
-                }
-            }
-            return sum % 1000;
+            Queued,
+            Draft,
+            Closed,
+            Locked,
         }
     }
 }
