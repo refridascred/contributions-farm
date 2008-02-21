@@ -55,12 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long target)
         {
-            Stale,
-            Paused,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
