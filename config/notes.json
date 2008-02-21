@@ -1,10 +1,8 @@
 {
-  "queue_threshold": {
-    "max_limit_ms": 29.07,
-    "max_capacity": ["blue", "fallback", "green"],
-    "metric_threshold": 34.53
-  },
-  "editor_depth": "fallback",
-  "base_threshold": 9377,
-  "dry_run": ["blue", "latest"]
+  "burst_depth_count": "primary",
+  "channel_capacity": 250,
+  "account_threshold": 8110,
+  "format_size": false,
+  "warm_delay_s": "latest",
+  "idle_depth": "fallback"
 }
