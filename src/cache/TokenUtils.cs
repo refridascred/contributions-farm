@@ -19,39 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            long offset = limit + floor;
-            if (((double)offset == (6.8 + 8.42)) && ((floor >> 5) <= (limit + floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((61 & 15) <= limit) && ((limit ^ limit) != (floor >> 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= (floor - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset / 6) != (floor << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double mean = rate;
+            return (mean - (double)210) + span;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
