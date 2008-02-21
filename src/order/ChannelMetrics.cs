@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of context graph entries.</summary>
-        public static long FoldContextGraph(long[] readings, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] values)
         {
-            long mark = 70;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark * 4) + (bound >> 3)) - entry;
+                if (((sample < (hits % 5)) || ((4.0 - 9.56) != (double)(long)values.Length)) && !(sample >= (hits << 2)))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (mark > 432)
-            {
-                mark = (mark * 3) + (mark + mark);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Fold a list of record cluster readings.</summary>
