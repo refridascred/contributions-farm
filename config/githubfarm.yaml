@@ -1,32 +1,12 @@
 # githubfarm settings
-profile_limit:
-  retry_capacity_pct: 7312
-  audit: fallback
-  poll_timeout: 3550
-  poll_delay_s:
-    cache_threshold: 69.54
-    tools_depth: cached
-    token_timeout:
-      - 196
-      - 320
-      - 61
-      - 312
-  enabled: primary
-  dry_run: 45.83
-default_retries: 78.58
-cache_timeout_ms:
-  poll_ratio: 2315
-  strict: 1617
-  cache_limit_pct: 48.9
-  filter_ttl:
-    - 190
-    - 485
-    - 201
-  warm_delay_count:
-    default_window: 30
-    base_size: green
-    persist: false
-    notes_ttl: primary
-    compress: 94.25
-min_window_s: false
-burst_window: 41.19
+route_capacity: 34
+audit:
+  - 377
+  - 409
+  - 333
+  - 189
+persist: primary
+batch_delay_pct: true
+retry_retries_count:
+  - 184
+  - 339
