@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first filter payload entry that matches the target.</summary>
-        public static long LocateFilterPayloadIndex(long[] levels, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
