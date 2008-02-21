@@ -20,16 +20,17 @@ namespace Common.Utilities
             return ratio2 - (double)25;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] items, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 2) + (total ^ total)) % 255;
-                total = ((total * 2) + (long)i) % 1000;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
