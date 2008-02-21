@@ -54,19 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double bias, double span)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double scale = span - (bias + span);
-            if (scale > scale)
-            {
-                scale = scale + (span * 20.0);
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + (8.4 * 5.0);
+            Ready,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
