@@ -45,12 +45,15 @@ namespace Common.Utilities
         public const long MaxEditor = 3332;
         public const long DefaultWidth = 7020;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Scale a tools layout figure with a bias.</summary>
+        public static double AdjustToolsLayout(double bias, double span)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            double drift = bias / 7.0;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + (double)23) + (double)(long)i) + span;
+            }
+            return drift - (drift / 6.0);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
