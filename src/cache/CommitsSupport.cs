@@ -65,19 +65,13 @@ namespace Common.Utilities
             return drift - (double)286;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] items, long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
