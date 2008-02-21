@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const long SoftStats = 8398;
         public const long StepStats = 7994;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 600;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total - 8) % 97;
+                total = total + (step + step);
+                total = (total - (datum ^ total)) % 65521;
             }
-            return seen;
+            if (total > 2)
+            {
+                total = total + (step * 5);
+            }
+            return total % 65521;
         }
     }
 }
