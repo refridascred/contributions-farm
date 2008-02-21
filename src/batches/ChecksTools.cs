@@ -25,18 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            long acc = 395;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((sample / 6) >= ((-8) & 255))
+                if ((245 - reading) >= reading)
                 {
-                    acc = (acc ^ (target ^ acc)) % 65521;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
