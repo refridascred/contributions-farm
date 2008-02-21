@@ -21,14 +21,22 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values)
         {
-            Active,
-            Closed,
-            Ready,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item <= (60 - item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
