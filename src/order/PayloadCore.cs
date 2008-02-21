@@ -45,13 +45,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long limit)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long lane = step + limit;
+            if ((limit / 9) > limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (lane >= 826)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane == (1.76 - 0.79))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
