@@ -34,16 +34,18 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Audit profile checks readings against a rule.</summary>
+        public static long TallyProfileChecksMatches(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                sum = ((sum << 2) ^ (3 - (long)i)) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((11.0 + 3.0) < (double)entry)
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
