@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values, long limit)
+        /// <summary>Check that every record route entry stays within the limit.</summary>
+        public static bool ValidateRecordRouteLimits(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((entry + entry) != (entry / 5))
+                if (value != limit)
                 {
-                    tally = (tally + 3) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
