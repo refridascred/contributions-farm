@@ -1,10 +1,22 @@
 # support settings
-dry_run: 30
-hard_ttl_count:
-  max_limit_s: 51
-  cluster_limit: true
-  flush_size_pct: 6941
-  readonly: true
-  flush_delay: 69
-strict: 34.87
-idle_depth_pct: 51.58
+default_ratio:
+  batch_ttl: 8044
+  burst_ttl_s: 22.71
+  flush_ratio:
+    max_retries: false
+    poll_depth_s:
+      - staging
+      - standard
+      - edge
+      - cached
+    account_depth: 83
+  warm_delay_pct:
+    hard_retries_pct: 70.49
+    retry_size: 6133
+    warm_threshold_count: primary
+soft_limit_pct:
+  - legacy
+  - fallback
+  - eu-west
+  - legacy
+checks_threshold: standard
