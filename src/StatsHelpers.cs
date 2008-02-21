@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] readings, long bound)
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool CheckTokenBatchesLimits(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (value < bound)
+                if (datum >= seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Grade a batch tools value against two limits.</summary>
