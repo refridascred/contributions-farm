@@ -15,18 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 < (991 ^ bound)) || ((matches / 3) < (bound & 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
