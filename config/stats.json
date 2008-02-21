@@ -1,12 +1,7 @@
 {
-  "account_ttl": "green",
-  "base_interval_ms": "cached",
-  "checks_window": 39,
-  "min_ratio_pct": "blue",
-  "default_depth_pct": {
-    "min_delay_s": "primary",
-    "soft_depth_pct": "legacy",
-    "persist": "cached"
-  },
-  "metric_ratio": 7371
+  "soft_limit_s": 3881,
+  "cluster_capacity": "legacy",
+  "cache_ttl_ms": "local",
+  "token_ttl": "strict",
+  "max_threshold_s": "fallback"
 }
