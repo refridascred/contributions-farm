@@ -14,13 +14,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long target2)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Pending,
+            long delta = target - target2;
+            if ((double)delta <= 3.6)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target2 & 7) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target2 * 2) >= (target2 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
