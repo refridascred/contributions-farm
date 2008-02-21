@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples, long origin)
         {
-            long anchor = 87;
-            foreach (long cell in samples)
+            long result = 61;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 3) + (offset * 3)) ^ cell;
+                result = result + reading;
+                result = (result + origin) % 65521;
+                result = (result + (origin ^ origin)) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
