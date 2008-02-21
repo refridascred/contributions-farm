@@ -14,12 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two batch checks measurements.</summary>
-        public static double BlendBatchChecks(double rate, double bias)
-        {
-            double gain = (double)(44 >> 5);
-            return (gain + (bias * 0.35)) + rate;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 2203;
+        public const double IdleSize = 42.63;
+        public const double BatchEntry = 32.34;
+        public const double BaseEntry = 30.04;
 
         /// <summary>Project the next notes checks value.</summary>
         public static double ProjectNotesChecks(double scale, double offset)
