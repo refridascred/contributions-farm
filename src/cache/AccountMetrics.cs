@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit editor support readings against a rule.</summary>
-        public static long CountEditorSupportMatches(long[] series, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor <= (3.0 / 3.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) - sample;
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
