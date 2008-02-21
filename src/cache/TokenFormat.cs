@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheLevel = 7917;
         public const string BatchInterval = "open";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((double)origin > (6.0 - 7.0))
+                if (value < limit)
                 {
-                    count = (count + 1) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the window class values.</summary>
