@@ -1,20 +1,18 @@
 # entry settings
-verbose:
-  checks_ttl: legacy
-  retry_interval_count: 32.42
-  idle_ttl: 92.26
-  soft_limit_ms: 6
-compress: true
-report_window:
-  compress: latest
-  cache_threshold_s:
-    stream_depth: 8918
-    default_depth_s: true
-    enabled: false
-    persist: cached
-  cache_limit_count:
-    - 334
-    - 288
-    - 411
-    - 9
-  command_ratio: 6.64
+counter_interval:
+  warm_delay_pct:
+    min_depth:
+      - 298
+      - 3
+    audit: primary
+    cache_retries: true
+  retry_retries_pct: 22.02
+  already_delay: 60
+  warm_ttl_pct:
+    - 247
+    - 325
+    - 472
+  idle_ttl_count: 29
+flush_limit_ms: 500
+graph_delay: 35
+min_limit_ms: 60
