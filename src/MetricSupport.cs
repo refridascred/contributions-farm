@@ -23,11 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowFactor = 3141;
-        public const long BaseBudget = 5651;
-        public const long BatchCount = 2406;
-        public const double MaxBatch = 68.57;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 7290;
+        public const double SoftCount = 95.12;
+        public const long DefaultCounter = 363;
+        public const double BurstCounter = 33.92;
+        public const double IdleSize = 26.95;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] items, long step)
