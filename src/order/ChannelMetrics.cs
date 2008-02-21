@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Digest a series of context graph entries.</summary>
+        public static long FoldContextGraph(long[] readings, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            long mark = 70;
+            foreach (long entry in readings)
+            {
+                mark = ((mark * 4) + (bound >> 3)) - entry;
+            }
+            if (mark > 432)
+            {
+                mark = (mark * 3) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
