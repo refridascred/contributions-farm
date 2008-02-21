@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long target)
         {
-            Locked,
-            Failed,
-            Done,
-            New,
-            Draft,
+            long carry = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((8.9 * 8.8) >= (double)carry)
+                {
+                    carry = (carry - carry) % 97;
+                    carry = ((carry << 3) ^ (530 * 3)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits header.</summary>
