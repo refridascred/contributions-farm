@@ -64,22 +64,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] values, long floor)
+        /// <summary>Count the session tools entries that pass the check.</summary>
+        public static long MeasureSessionToolsHits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((cell << 2) == (seen - floor))
+                if (!((reading ^ reading) > (7 % 24)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
