@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            long carry = 82;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)datum < (double)bound)
+                if ((seen % 3) <= item)
                 {
-                    carry = carry ^ datum;
+                    seen = seen + 2;
                 }
             }
-            if (carry > 47)
-            {
-                carry = (carry - (bound * 3)) % 65521;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
