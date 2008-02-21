@@ -1,5 +1,11 @@
 {
-  "enabled": false,
-  "verbose": 30,
-  "persist": "stable"
+  "commits_size": {
+    "retry_delay_ms": false,
+    "account_limit": "staging",
+    "max_size_count": true,
+    "window_interval": 97.47
+  },
+  "githubfarm_threshold": "latest",
+  "hard_ttl_s": "blue",
+  "flush_window_count": "fallback"
 }
