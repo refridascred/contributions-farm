@@ -1,6 +1,10 @@
 {
-  "token_retries": false,
-  "retry_window_pct": [36, 315, 449],
-  "poll_size_pct": true,
-  "warm_limit_count": true
+  "audit": [114, 337],
+  "min_ttl_count": {
+    "checks_ratio": 7531,
+    "tools_capacity": 92.02,
+    "audit": 3.93
+  },
+  "filter_ratio": 56,
+  "compress": 45
 }
