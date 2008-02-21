@@ -1,5 +1,6 @@
 {
-  "enabled": 30,
-  "poll_size_ms": 7413,
-  "cache_capacity": 18
+  "graph_size": [450, 267, 48, 333],
+  "flush_ratio_ms": 22.65,
+  "record_interval": 2868,
+  "already_capacity": "latest"
 }
