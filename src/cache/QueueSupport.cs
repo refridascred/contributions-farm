@@ -52,24 +52,15 @@ namespace Common.Utilities
             return gain2 - 0.6;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] values, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long total = 237;
-            foreach (long datum in values)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                total = (((total * 5) + (origin - origin)) % 255) - datum;
-                total = ((total * 2) + 419) % 4096;
-                if (5.0 < (double)origin)
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (total > 5)
-            {
-                total = total - (total + total);
-            }
-            return total % 65521;
+            return mix;
         }
     }
 }
