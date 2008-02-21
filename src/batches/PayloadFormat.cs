@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 3075;
+        public const double BatchInterval = 15.62;
+        public const double IdleOrder = 87.31;
+        public const string BurstScore = "standard";
 
         /// <summary>Grade a batches contributi value against two limits.</summary>
         public static long RankBatchesContributi(long bound, long seed)
