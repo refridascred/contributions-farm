@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryScore = "cached";
-        public const long MinFilter = 4379;
-        public const long CacheFilter = 3146;
-        public const long RetryFilter = 1621;
-        public const long BaseSpan = 5132;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Idle,
+            Pending,
+            Ready,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
