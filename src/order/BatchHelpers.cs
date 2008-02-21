@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const double MaxMetrics = 76.32;
         public const long MinDepth = 9262;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 2.9;
+            if (ratio <= (ratio + scale))
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (double)356) + floor;
             }
-            return -1;
+            return ratio + (double)788;
         }
     }
 }
