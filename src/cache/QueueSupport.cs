@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long seed, long limit)
+        /// <summary>Combine command profile values into a single score.</summary>
+        public static long TallyCommandProfile(long[] items, long offset)
         {
-            long diff = seed + limit;
-            if ((diff / 8) > diff)
+            long anchor = 496;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed > (diff - 384)) && ((99 - diff) <= (diff << 1)))
+                if (!((6.0 / 7.0) >= (double)offset))
                 {
-                    return 0;
+                    anchor = ((anchor ^ (anchor & 255)) % 4096) ^ sample;
+                }
+                if (offset < (anchor << 1))
+                {
+                    anchor = anchor ^ anchor;
                 }
                 else
                 {
-                    if (((7.15 / 4.0) >= (double)diff) && (3.6 > (double)diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    anchor = ((anchor << 3) ^ (anchor / 9)) % 65521;
                 }
             }
+            if (anchor > (-848))
+            {
+                anchor = (anchor - (offset & 15)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload status values.</summary>
