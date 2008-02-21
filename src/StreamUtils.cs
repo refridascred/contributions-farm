@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes account samples are out of range.</summary>
-        public static long AuditNotesAccountMatches(long[] values, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset == (double)3)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    hits = (hits + 3) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
