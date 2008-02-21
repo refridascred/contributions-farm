@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] series, long target)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
