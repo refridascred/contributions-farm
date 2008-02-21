@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstLevel = 73.0;
-        public const long BatchSpan = 5018;
-        public const long WindowFarm = 9751;
-        public const long CacheCount = 3363;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value / 7) > (count + 816))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up format payload samples.</summary>
         public static long PairFormatPayloadCount(long[] values)
