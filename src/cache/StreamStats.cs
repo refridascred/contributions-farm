@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long HardOrder = 123;
         public const long MinSize = 1463;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series, long target)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double offset)
         {
-            long total = 267;
-            foreach (long datum in series)
+            double rate2 = (double)(3 + 992);
+            if (rate2 > rate)
             {
-                total = (((total ^ (7 & 127)) % 1000) ^ datum) - target;
+                rate2 = (rate2 + (20.0 - rate)) - offset;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + (double)6;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
