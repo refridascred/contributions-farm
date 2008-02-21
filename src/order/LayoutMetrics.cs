@@ -31,18 +31,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit cache cluster readings against a rule.</summary>
-        public static long TallyCacheClusterMatches(long[] values, long seed)
+        /// <summary>Compare every pair of command stats readings.</summary>
+        public static long OverlapCommandStatsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= (seed - 88))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
