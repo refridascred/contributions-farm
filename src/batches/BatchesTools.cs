@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format session entries that pass the check.</summary>
-        public static long TallyFormatSessionMatches(long[] readings)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum / 7) < (datum >> 2))
+                if (samples[i] >= origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate tools farm readings against a bound.</summary>
