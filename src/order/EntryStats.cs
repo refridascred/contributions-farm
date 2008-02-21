@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long total = 0;
+            foreach (long sample in levels)
             {
-                if ((((long)values.Length >= (entry - seen)) && ((seen + entry) < (entry & 3))) && !((long)values.Length == (entry * 2)))
+                total = (total * 2) + sample;
+                if (((double)seed <= (6.06 / 2.0)) || ((sample * 3) != (total / 9)))
                 {
-                    seen = seen + 1;
+                    total = (total * 5) + sample;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
