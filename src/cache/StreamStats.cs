@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already record input into a small class.</summary>
-        public static long SortAlreadyRecord(long origin, long limit)
+        /// <summary>Measure how many cluster farm samples are out of range.</summary>
+        public static long AuditClusterFarmMatches(long[] series, long offset)
         {
-            if ((33 - limit) >= limit)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.18 / 7.0) == (double)limit)
+                if (((datum < (offset - tally)) && ((double)tally < (double)datum)) || ((datum & 63) > tally))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
