@@ -22,28 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long target, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long seed, long bound)
         {
-            if ((target >> 3) >= (target + target))
+            if ((3.0 * 13.0) >= (double)seed)
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (offset < (52 - offset))
+                if ((41 - 35) > (bound >> 4))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if (((target + 1) != (offset >> 1)) || (offset <= (target ^ 562)))
+                    if ((seed ^ seed) >= (855 << 2))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        return 0;
                     }
                 }
             }
