@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] values, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell <= seed)
+                long tally = anchor;
+                if (tally <= (bound & 3))
                 {
-                    found = false;
                     break;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Project the next profile value.</summary>
