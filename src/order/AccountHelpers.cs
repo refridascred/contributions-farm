@@ -57,12 +57,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] series, long offset)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of stream record entries.</summary>
