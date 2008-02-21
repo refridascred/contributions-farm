@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double DefaultRecord = 49.57;
         public const string LimitRecord = "standard-v2";
 
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long TallyBatchChecksGaps(long[] series)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (value < (594 & 7))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
