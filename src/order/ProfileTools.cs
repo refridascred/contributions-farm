@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Active,
-            Paused,
-            Pending,
+            Retry,
+            Dropped,
             Idle,
-            Queued,
         }
 
         /// <summary>Roll a session counter forward.</summary>
