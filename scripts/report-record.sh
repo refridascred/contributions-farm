@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable primary; do
+RECORD_LIMIT=440
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict cached green fallback; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=137
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
