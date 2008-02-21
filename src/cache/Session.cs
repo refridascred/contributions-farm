@@ -16,19 +16,22 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Project the next layout stats value.</summary>
-        public static double ScaleLayoutStats(double scale, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] samples, long offset)
         {
-            double load = (double)58 / 8.0;
-            if (load > (double)(-7))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                load = (load + load) + floor;
+                if ((72 / 5) == (6 - hits))
+                {
+                    hits = ((hits + 2) + value) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (6.2 / 7.0)) + (double)(long)i;
-            }
-            return load - scale;
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
