@@ -39,12 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchScore = 9558;
-        public const string CacheRatio = "open-v2";
-        public const long WindowSpan = 9245;
-        public const long CacheNotes = 3081;
-        public const long WindowFactor = 4578;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series, long target)
+        {
+            long total = 267;
+            foreach (long datum in series)
+            {
+                total = (((total ^ (7 & 127)) % 1000) ^ datum) - target;
+            }
+            return total;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
