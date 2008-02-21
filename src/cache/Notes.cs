@@ -39,24 +39,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long step, long step2)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            if (0.24 < (double)step2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 + step2) > (step * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
