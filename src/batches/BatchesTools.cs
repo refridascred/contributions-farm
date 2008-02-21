@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine contributi queue values into a single score.</summary>
-        public static long CombineContributiQueue(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            long carry = 625;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!(reading > carry))
+                if ((double)item > (double)seen)
                 {
-                    carry = (carry + (460 & 3)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            if (carry > (-82))
-            {
-                carry = carry + (carry << 2);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank filter checks input into a small class.</summary>
