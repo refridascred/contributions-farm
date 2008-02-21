@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultSpan = 4109;
-        public const long RetryBatch = 6164;
-        public const long BatchScore = 4318;
-        public const long CacheBatch = 4845;
-        public const double WindowWidth = 35.93;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 16.82;
+        public const long CacheFormat = 6583;
+        public const long BatchFormat = 2728;
+        public const long CacheSize = 631;
+        public const long HardLevel = 7078;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long CombineChecks(long[] series)
