@@ -42,11 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 77.08;
-        public const long IdleScore = 2333;
-        public const long BaseTimeout = 2458;
-        public const double LimitFactor = 61.68;
-        public const long LimitRatio = 2400;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
