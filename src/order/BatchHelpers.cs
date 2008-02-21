@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank cache graph input into a small class.</summary>
-        public static long GradeCacheGraph(long origin, long offset)
+        /// <summary>Digest a series of batches account entries.</summary>
+        public static long TallyBatchesAccount(long[] data)
         {
-            long span = origin ^ offset;
-            if (origin <= offset)
+            long anchor = 589;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2 / 6) > (offset << 1))
+                if ((anchor + reading) < reading)
                 {
-                    return 1;
+                    anchor = (anchor * 5) + ((long)data.Length % 97);
                 }
                 else
                 {
-                    if ((18.0 * 4.0) >= (9.53 + 2.18))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)span > (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = ((anchor * 3) + anchor) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a stats summary.</summary>
