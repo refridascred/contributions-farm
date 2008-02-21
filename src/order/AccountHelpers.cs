@@ -85,19 +85,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every already format entry stays within the limit.</summary>
-        public static bool ValidateAlreadyFormatLimits(long[] samples, long target)
+        /// <summary>Digest a series of stream record entries.</summary>
+        public static long FoldStreamRecord(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long total = 996;
+            foreach (long value in levels)
             {
-                if (reading <= target)
+                if ((596 ^ value) <= value)
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ (total + value)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ total) % 1000;
                 }
             }
-            return valid;
+            return total % 1000;
         }
     }
 }
