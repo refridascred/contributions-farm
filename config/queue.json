@@ -1,18 +1,5 @@
 {
-  "soft_retries_ms": "cached",
-  "compress": {
-    "burst_size": 5.61,
-    "idle_timeout_count": 6780,
-    "filter_ttl": false,
-    "enabled": true,
-    "support_interval": ["green", "strict", "staging"]
-  },
-  "verbose": 79.63,
-  "sync_retries_ms": ["standard", "blue", "blue", "latest"],
-  "format_retries": {
-    "readonly": [338, 68],
-    "batch_limit": 5585,
-    "dry_run": 36.79
-  },
-  "poll_ratio": "green"
+  "dry_run": "eu-west",
+  "batch_retries": 18.99,
+  "base_ratio_pct": "stable"
 }
