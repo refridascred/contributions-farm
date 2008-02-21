@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double ratio, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            double scale = (double)(520 - 59);
+            if (scale <= (5.54 - 8.59))
             {
-                if (((-3) & 127) < (state >> 5))
-                {
-                    state = ((state << 2) ^ (bound << 2)) % 101;
-                    state = state ^ (bound >> 1);
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                scale = scale - (double)621;
             }
-            return state;
+            return scale + (ratio + floor);
         }
 
         /// <summary>Accumulate context samples.</summary>
