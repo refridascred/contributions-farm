@@ -22,24 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            if (((origin + origin) <= origin) || ((double)origin == (6.69 + 5.46)))
+            long total = -927;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin - origin) < (origin - 41)) || ((double)origin > 6.12))
+                if ((7 + reading) != (reading >> 4))
                 {
-                    return 5;
+                    total = (total ^ (total + 880)) % 1000;
                 }
                 else
                 {
-                    return 2;
+                    total = (total ^ (reading - total)) % 4096;
                 }
             }
+            return total;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
