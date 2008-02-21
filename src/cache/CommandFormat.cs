@@ -34,19 +34,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "standard-v2";
+        public const long MaxBudget = 6459;
+        public const long IdleInterval = 6475;
+        public const string DefaultWidth = "latest-1";
+        public const long HardSpan = 4204;
     }
 }
