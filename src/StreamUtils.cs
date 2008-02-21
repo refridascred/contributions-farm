@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] levels)
+        /// <summary>Measure how many notes account samples are out of range.</summary>
+        public static long AuditNotesAccountMatches(long[] values, long offset)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 8; i++)
+                if ((double)offset == (double)3)
                 {
-                    sum = ((sum * 2) + ((long)i * 4)) % 65521;
-                }
-                if (!((sum * 5) >= (entry % 64)))
-                {
-                    sum = sum - (560 ^ entry);
+                    hits = (hits + 3) + datum;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the account state values.</summary>
