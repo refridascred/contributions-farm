@@ -74,17 +74,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] items, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = seed ^ floor;
+            if (floor <= seed)
             {
-                if (items[i] == offset)
+                return 8;
+            }
+            else
+            {
+                if ((bound * 3) > (seed + 633))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed >> 1) != (950 - bound)) || (7 <= (floor >> 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(541 < (floor ^ floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
