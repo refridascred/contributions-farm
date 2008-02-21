@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
             long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell - cell) >= cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
