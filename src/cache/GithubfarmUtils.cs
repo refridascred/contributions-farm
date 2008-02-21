@@ -44,15 +44,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long offset)
         {
-            long sum = 9;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((((sum * 4) + (sum + sum)) % 4096) - entry) - target;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
