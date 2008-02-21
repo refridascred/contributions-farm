@@ -47,14 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Dropped,
-            New,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftTimeout = 27.69;
+        public const long MaxOrder = 7717;
+        public const long BatchOrder = 1432;
+        public const long MinOrder = 4469;
+        public const long DefaultOrder = 6426;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long StepOrder(long bound)
