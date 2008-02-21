@@ -28,18 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long MeasureToolsStreamHits(long[] values, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!((double)9 < (double)origin) && !((double)hits != (7.69 - 16.0)))
+                if ((origin / 9) >= (origin / 8))
                 {
-                    hits = (hits + 1) - value;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
