@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long target)
         {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
