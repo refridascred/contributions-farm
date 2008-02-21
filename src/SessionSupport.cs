@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support editor samples are out of range.</summary>
-        public static long AuditSupportEditorHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)hits <= (6.0 * 13.0))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 9598;
+        public const double CacheFactor = 51.29;
+        public const long StepCount = 3065;
+        public const long StepCommand = 3263;
     }
 }
