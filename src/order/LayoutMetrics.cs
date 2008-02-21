@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long sum = 23;
-            foreach (long value in values)
+            long carry = 9;
+            foreach (long entry in samples)
             {
-                sum = (sum - origin) % 255;
-                if ((sum / 7) != (value ^ 53))
+                if (837 >= (carry + carry))
                 {
-                    sum = (sum + (-254)) % 255;
+                    carry = (carry - (carry + carry)) ^ entry;
                 }
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
