@@ -1,10 +1,14 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Use buffer settings to tune how often githubfarm data is refreshed.
+The notes helpers are pure functions, so they are safe to call from any thread.
+When a format fails, the stream handler retries a few times before giving up.
+
+When a route fails, the session handler retries a few times before giving up.
+The editor report groups every route by support.
+A window that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Review stream limits each release
-- Keep cluster values small
-- Validate batch input early
+- Document new already fields
+- Log every order change
+- Keep stats values small
