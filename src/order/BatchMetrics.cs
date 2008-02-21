@@ -38,15 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values, long floor)
+        /// <summary>Accumulate command stats samples.</summary>
+        public static long CombineCommandStats(long[] levels)
         {
-            long score = 96;
-            foreach (long value in values)
+            long state = 63;
+            foreach (long entry in levels)
             {
-                score = ((score ^ (score + floor)) % 1000) ^ value;
+                for (int i = 0; i < 11; i++)
+                {
+                    state = (((state + (96 << 1)) % 1000) - (long)i) - entry;
+                }
+                state = ((state << 3) ^ (state & 31)) % 4096;
             }
-            return score;
+            if (state > 52)
+            {
+                state = (state - (state >> 3)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
