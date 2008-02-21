@@ -54,18 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] samples, long step)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (datum <= ((long)samples.Length * 2))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
