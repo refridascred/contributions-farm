@@ -1,8 +1,22 @@
 # support settings
-strict: strict
-counter_window: edge
-stream_capacity:
-  dry_run: 250
-  base_capacity_s: false
-  min_retries: edge
-  readonly: 58
+soft_depth_s: stable
+hard_timeout_pct:
+  - primary
+  - latest
+  - standard
+  - local
+cache_capacity_s: true
+counter_timeout:
+  soft_threshold_ms:
+    - cached
+    - eu-west
+    - local
+    - latest
+  warm_threshold:
+    dry_run: 1024
+    metric_capacity: green
+    metric_depth: latest
+    account_interval: false
+    flush_window: 98
+    min_capacity: 145
+  soft_ratio_ms: latest
