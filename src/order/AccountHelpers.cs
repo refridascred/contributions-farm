@@ -29,18 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] levels)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!(((9.0 + 15.0) < (double)value) && ((count + count) >= (6 - count))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Blend two farm graph measurements.</summary>
