@@ -31,9 +31,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 7957;
-        public const long CacheContext = 2421;
-        public const string BatchDepth = "open-1";
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
