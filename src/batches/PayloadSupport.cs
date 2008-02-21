@@ -23,17 +23,13 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const long IdleInterval = 3135;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] items, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Failed,
+            New,
         }
     }
 }
