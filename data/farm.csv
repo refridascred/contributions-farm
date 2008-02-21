@@ -1,6 +1,7 @@
-id,score,level
-1,37.55,949
-2,47.94,401
-3,726,stable
-4,stable,open
-5,92.15,466
+id,token,label,active
+1,standard,328,70.87
+2,52.52,green,94.37
+3,latest,489,44
+4,staging,320,148
+5,349,718,31.95
+6,836,343,31.6
