@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseWidth = 2510;
-        public const long IdleLevel = 5502;
-        public const long LimitSpan = 3255;
-        public const long SoftDepth = 8152;
-        public const long BaseRoute = 882;
+        /// <summary>Count the farm channel entries that pass the check.</summary>
+        public static long TallyFarmChannelGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches + 92) < (value + value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two buffer window measurements.</summary>
         public static double ScaleBufferWindow(double rate, double offset)
