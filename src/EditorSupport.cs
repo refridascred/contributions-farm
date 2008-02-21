@@ -56,18 +56,19 @@ namespace Common.Utilities
             return drift - (bias / 4.0);
         }
 
-        /// <summary>Compare every pair of contributi stream readings.</summary>
-        public static long OverlapContributiStreamCount(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum + count) >= datum)
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
