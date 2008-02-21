@@ -62,9 +62,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "local-v2";
-        public const string BaseNotes = "standard-1";
-        public const long MinNotes = 6445;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels, long offset)
+        {
+            long state = -9;
+            foreach (long datum in levels)
+            {
+                state = ((((state * 4) + (state - state)) % 255) - datum) - offset;
+            }
+            return state % 97;
+        }
     }
 }
