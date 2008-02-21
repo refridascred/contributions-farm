@@ -21,13 +21,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 2796;
+        public const long RetryContributi = 3340;
+        public const long DefaultContributi = 3050;
     }
 }
