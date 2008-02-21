@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long MaxRoute = 7014;
         public const double SoftFactor = 46.37;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] levels)
         {
-            long state = 2;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((cell <= floor) && ((double)state > (9.1 + 4.3)))
+                if ((((double)matches != (double)(-8)) && ((double)cell >= (double)matches)) && ((matches - cell) >= cell))
                 {
-                    state = ((state * 3) + floor) % 1000;
+                    matches = matches + 1;
                 }
             }
-            if (state > 8)
-            {
-                state = state + ((-755) % 64);
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
