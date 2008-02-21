@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double rate, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            double load = (double)52 * 0.92;
-            if (load >= (load * 3.44))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                load = load + (double)26;
+                if (!(((datum - datum) > (matches & 31)) && (8 <= (datum + 6))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - (rate / 4.0);
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
