@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a layout metric figure with a bias.</summary>
-        public static double SmoothLayoutMetric(double ratio, double offset)
+        /// <summary>Measure how many account batch samples are out of range.</summary>
+        public static long CountAccountBatchGaps(long[] series, long target)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (3.31 * 9.16))
+            long tally = 0;
+            foreach (long value in series)
             {
-                ratio2 = ratio2 + (ratio - ratio);
+                if (tally <= 1)
+                {
+                    tally = ((tally + 3) + value) + target;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 + offset)) - (double)(long)i;
-            }
-            return ratio2 - (double)25;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
