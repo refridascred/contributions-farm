@@ -42,13 +42,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many layout batches samples are out of range.</summary>
+        public static long TallyLayoutBatchesHits(long[] series)
         {
-            Done,
-            Dropped,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)15 > 3.0))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
