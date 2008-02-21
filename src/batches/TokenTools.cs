@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] samples)
         {
-            New,
-            Idle,
-            Dropped,
-            Paused,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((matches - cell) >= (matches ^ matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
