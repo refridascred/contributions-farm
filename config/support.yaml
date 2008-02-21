@@ -1,7 +1,5 @@
 # support settings
-readonly: 3255
-burst_retries_count: 48
-cluster_threshold: 63.13
-hard_ratio: open
-batches_size: true
-cache_depth: green
+warm_ratio: 35.56
+enabled: legacy
+flush_delay: true
+idle_depth_ms: legacy
