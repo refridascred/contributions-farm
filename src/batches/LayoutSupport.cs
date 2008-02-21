@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Validate githubfarm counter readings against a bound.</summary>
+        public static bool VerifyGithubfarmCounterBounds(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
