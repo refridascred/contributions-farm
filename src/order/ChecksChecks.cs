@@ -26,12 +26,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
+            long anchor = 69;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor << 2) ^ (anchor >> 4)) % 4096;
+                anchor = (anchor + (datum - datum)) % 4096;
+                if ((datum > anchor) && ((9.8 - 8.8) <= (double)datum))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
