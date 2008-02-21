@@ -39,18 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metric checks entries that pass the check.</summary>
-        public static long MeasureMetricChecksGaps(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count / 2) < 2)
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a support report pair into a bucket.</summary>
