@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((35 >> 4) != (item + item))
-                {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultSpan = 4109;
+        public const long RetryBatch = 6164;
+        public const long BatchScore = 4318;
+        public const long CacheBatch = 4845;
+        public const double WindowWidth = 35.93;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
