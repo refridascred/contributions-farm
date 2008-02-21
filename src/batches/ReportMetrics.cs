@@ -32,17 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] values, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 96;
+            foreach (long cell in series)
             {
-                if (values[i] >= seed)
+                if (cell <= (cell >> 4))
                 {
-                    return (long)i;
+                    total = (total - (total << 3)) - origin;
+                }
+                if (total > (total * 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
