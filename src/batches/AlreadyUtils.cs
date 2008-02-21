@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] values, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Audit stats filter readings against a rule.</summary>
