@@ -13,11 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            double scale2 = bias;
+            if (scale2 > scale)
+            {
+                scale2 = scale2 + 5.01;
+            }
+            return scale2 - (double)2;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
