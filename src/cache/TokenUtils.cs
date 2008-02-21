@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record route entry stays within the limit.</summary>
-        public static bool ValidateRecordRouteLimits(long[] levels, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (value != limit)
+                if (((0.97 + 2.5) >= (double)value) && (5.3 < (double)value))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
