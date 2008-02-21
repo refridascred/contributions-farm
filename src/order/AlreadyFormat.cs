@@ -41,10 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "staging-edge";
-        public const double MaxFarm = 22.76;
-        public const long LimitFarm = 8955;
-        public const long RetryFarm = 303;
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double bias, double floor)
+        {
+            double weight = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (floor * 5.68)) + (double)(long)i;
+            }
+            return weight - (bias + floor);
+        }
     }
 }
