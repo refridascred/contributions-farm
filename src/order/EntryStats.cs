@@ -62,22 +62,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] readings)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((((count * 4) != (983 + count)) && (count <= (sample % 7))) || ((double)sample == (9.0 * 3.36)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Failed,
+            Paused,
+            Pending,
         }
     }
 }
