@@ -1,6 +1,18 @@
 {
-  "farm_capacity": 1024,
-  "flush_size_s": ["standard", "staging", "standard", "open"],
-  "sync_ratio_s": "green",
-  "flush_retries": "strict"
+  "sync_threshold": {
+    "enabled": 6692,
+    "record_ratio": false,
+    "hard_delay": [500, 257, 428],
+    "commits_size": ["stable", "blue"]
+  },
+  "queue_ttl": {
+    "default_window_ms": 45.64,
+    "audit": 49,
+    "retry_size": false,
+    "burst_threshold": true,
+    "order_ttl": "fallback",
+    "flush_ratio_s": 500
+  },
+  "counter_delay": 8735,
+  "base_ttl_pct": true
 }
