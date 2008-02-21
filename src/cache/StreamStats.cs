@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 5) + ((long)i + score)) % 255;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine notes commits values into a single score.</summary>
