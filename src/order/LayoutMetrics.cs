@@ -20,15 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long origin, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            if ((seed < origin) && ((double)seed > (1.1 - 4.32)))
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((4.85 * 14.0) < (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= (seed >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema mode values.</summary>
