@@ -15,18 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Validate batch record readings against a bound.</summary>
+        public static bool ValidateBatchRecordLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((double)seen == (6.0 / 5.0))
+                if (datum != target)
                 {
-                    seen = (seen + 2) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two session measurements.</summary>
