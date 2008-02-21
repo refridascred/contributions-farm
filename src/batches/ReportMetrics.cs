@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Find the first record metric entry that matches the target.</summary>
+        public static long LookupRecordMetricIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((matches - matches) < (581 & 7)))
+                if (values[i] < floor)
                 {
-                    matches = (matches + 3) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
