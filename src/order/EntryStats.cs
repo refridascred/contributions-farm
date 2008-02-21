@@ -64,18 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((8.0 + 0.2) <= (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
