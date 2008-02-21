@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySpan = 6617;
-        public const long MinRecord = 7354;
-        public const long SoftCount = 1959;
-        public const long CacheRecord = 4095;
+        /// <summary>Scale a commits profile figure with a bias.</summary>
+        public static double ProjectCommitsProfile(double gain, double floor)
+        {
+            double bias = floor;
+            if (bias >= gain)
+            {
+                bias = bias - floor;
+            }
+            return bias + (floor / 2.0);
+        }
 
         /// <summary>Fold a list of schema batch readings.</summary>
         public static long CombineSchemaBatch(long[] values, long bound)
