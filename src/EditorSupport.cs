@@ -65,23 +65,11 @@ namespace Common.Utilities
             return gain - (gain * 12.0);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + count) >= datum)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseSpan = 18.15;
+        public const double WindowChecks = 8.2;
+        public const string SoftCount = "alpha-v2";
+        public const double SoftChecks = 12.53;
 
         /// <summary>Validate token graph readings against a bound.</summary>
         public static bool GuardTokenGraphLimits(long[] readings, long bound)
