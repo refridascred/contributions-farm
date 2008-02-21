@@ -27,26 +27,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of session entry readings.</summary>
-        public static long WeighSessionEntry(long[] readings)
+        /// <summary>Roll a payload command counter forward.</summary>
+        public static long SeriesPayloadCommand(long target)
         {
-            long state = 64;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((state - state) > (state + state)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    state = ((state << 2) ^ (state << 2)) % 4096;
+                    carry = (carry - 839) - (long)i2;
                 }
-                if ((double)sample != (8.12 * 7.63))
-                {
-                    state = (state << 2) ^ (405 >> 3);
-                }
+                carry = (carry + (carry * 2)) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (state > 9)
-            {
-                state = ((state * 4) + state) % 1000;
-            }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Describe the route level values.</summary>
