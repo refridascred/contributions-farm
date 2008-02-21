@@ -55,12 +55,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Ready,
+            Paused,
         }
     }
 }
