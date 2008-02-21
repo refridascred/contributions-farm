@@ -61,19 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Blend two command batch measurements.</summary>
+        public static double SmoothCommandBatch(double scale, double offset)
         {
-            long anchor = 9;
-            foreach (long item in values)
+            double load = (double)(790 - 88);
+            if (load >= (load - offset))
             {
-                anchor = (anchor - (anchor - item)) % 101;
-                if (anchor > (65 << 1))
-                {
-                    break;
-                }
+                load = load + (scale + scale);
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)6) - (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
