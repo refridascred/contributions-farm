@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            if ((offset - limit) >= offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7.5 + 4.24) > (double)offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
