@@ -43,24 +43,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long offset, long limit)
+        /// <summary>Count editor command pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCommandCount(long[] values)
         {
-            if ((offset / 7) > (limit - limit))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) <= (769 * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
