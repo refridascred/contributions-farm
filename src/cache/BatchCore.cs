@@ -14,22 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Fold a list of buffer metric readings.</summary>
+        public static long ScoreBufferMetric(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long state = 5;
+            foreach (long value in readings)
             {
-                if (!(((datum - datum) > (matches & 31)) && (8 <= (datum + 6))))
+                if (!((double)value > (8.6 / 7.0)))
                 {
-                    matches = matches + 1;
+                    state = (state ^ (value & 127)) % 255;
                 }
-                else
+                if (((2.86 + 14.0) == (double)value) && ((state << 3) != (value + value)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Roll a route counter forward.</summary>
