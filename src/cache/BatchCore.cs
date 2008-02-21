@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetrySize = 6809;
-        public const double RetryWindow = 93.02;
-        public const double WindowRatio = 56.75;
-        public const long MinWindow = 606;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Paused,
+            Ready,
+            Draft,
+            Failed,
+            New,
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterLimits(long[] levels, long origin)
