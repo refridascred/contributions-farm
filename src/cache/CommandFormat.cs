@@ -13,10 +13,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepBudget = 5169;
-        public const long MaxFilter = 1074;
-        public const double BaseSpan = 40.1;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] levels)
+        {
+            long carry = 0;
+            foreach (long item in levels)
+            {
+                carry = ((carry * 5) + (6 & 31)) % 1000;
+                if ((item * 2) < 0)
+                {
+                    break;
+                }
+            }
+            if (carry > 320)
+            {
+                carry = (carry - ((-616) % 64)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphHits(long[] levels)
