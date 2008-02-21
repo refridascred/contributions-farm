@@ -1,6 +1,16 @@
 {
-  "retry_ttl_count": "local",
-  "dry_run": true,
-  "retry_ratio": 27,
-  "cache_size_s": "open"
+  "enabled": 4700,
+  "payload_window": {
+    "buffer_interval": {
+      "burst_threshold": 100,
+      "verbose": 500,
+      "burst_depth_s": "strict",
+      "persist": ["cached", "open"]
+    },
+    "burst_interval_pct": 67,
+    "burst_timeout_ms": "green"
+  },
+  "readonly": 45.43,
+  "route_threshold": 100,
+  "base_interval_pct": "primary"
 }
