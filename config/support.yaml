@@ -1,11 +1,10 @@
 # support settings
-sync_retries_pct: 1018
-soft_depth_ms: cached
-hard_interval: staging
-max_capacity_pct:
-  queue_threshold: 30
-  readonly: 79
-  default_limit_s:
-    - open
-    - strict
-    - standard
+audit: 23.8
+burst_interval: edge
+strict: 2095
+poll_delay:
+  - green
+  - fallback
+  - standard
+readonly: 48
+report_capacity: strict
