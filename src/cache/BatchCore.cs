@@ -38,18 +38,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((8.7 > (4.5 * 1.97)) && ((0.2 - 18.0) >= (double)seen))
-                {
-                    seen = ((seen + 2) - reading) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 4056;
+        public const string MinQueue = "cached-1";
+        public const long DefaultSpan = 6608;
     }
 }
