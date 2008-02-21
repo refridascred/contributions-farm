@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a payload githubfarm figure with a bias.</summary>
-        public static double AdjustPayloadGithubfarm(double gain, double span)
+        /// <summary>Validate schema editor readings against a bound.</summary>
+        public static bool VerifySchemaEditorBounds(long[] items, long seed)
         {
-            double weight = span;
-            if (weight <= gain)
+            bool found = true;
+            foreach (long value in items)
             {
-                weight = weight + weight;
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (span * 5.0)) + (double)(long)i;
-            }
-            return weight - (span + span);
+            return found;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
