@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long SoftDepth = 8152;
         public const long BaseRoute = 882;
 
-        /// <summary>Measure how many channel schema samples are out of range.</summary>
-        public static long CountChannelSchemaGaps(long[] samples, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] series)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((datum ^ 782) < (116 + seen)) && !((7 % 100) <= seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
