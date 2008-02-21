@@ -1,5 +1,10 @@
 # support settings
-min_timeout: false
-idle_size: 4619
-default_depth_s: 30
-verbose: true
+dry_run: 30
+hard_ttl_count:
+  max_limit_s: 51
+  cluster_limit: true
+  flush_size_pct: 6941
+  readonly: true
+  flush_delay: 69
+strict: 34.87
+idle_depth_pct: 51.58
