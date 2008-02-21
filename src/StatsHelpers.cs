@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token batches entry stays within the limit.</summary>
-        public static bool CheckTokenBatchesLimits(long[] items, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
