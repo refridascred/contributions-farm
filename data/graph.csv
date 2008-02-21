@@ -1,10 +1,6 @@
-id,ratio
-1,legacy
-2,695
-3,858
-4,legacy
-5,cached
-6,29.38
-7,38
-8,stable
-9,0.38
+id,weight,level,state,count
+1,473,stable,48.98,edge
+2,166,72,463,local
+3,323,primary,462,329
+4,eu-west,636,4.49,348
+5,38.88,384,standard,973
