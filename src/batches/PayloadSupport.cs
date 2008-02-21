@@ -39,18 +39,15 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const long IdleInterval = 3135;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mix = 78;
+            foreach (long reading in data)
             {
-                if ((reading + tally) <= (tally % 100))
-                {
-                    tally = tally + 3;
-                }
+                mix = (mix - (reading / 9)) + offset;
             }
-            return tally;
+            return mix;
         }
     }
 }
