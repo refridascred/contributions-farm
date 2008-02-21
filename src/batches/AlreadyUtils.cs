@@ -30,10 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "latest-edge";
-        public const string LimitMetrics = "latest-v2";
-        public const long MinMetrics = 5053;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public bool Score { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] series, long limit)
