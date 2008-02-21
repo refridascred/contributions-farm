@@ -33,21 +33,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (weight + weight) * 5.0;
+            if (gain < 3.68)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + floor;
             }
-            return seen;
+            else
+            {
+                gain = gain - (floor + 0.8);
+            }
+            return gain + gain;
         }
     }
 }
