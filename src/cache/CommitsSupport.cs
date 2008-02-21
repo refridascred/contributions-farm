@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Combine counter report values into a single score.</summary>
+        public static long TotalCounterReport(long[] series)
         {
-            Closed,
-            Locked,
-            Active,
-            Queued,
+            long state = -8;
+            foreach (long value in series)
+            {
+                if ((double)state >= (7.0 + 8.4))
+                {
+                    state = ((state - (state / 9)) % 97) + value;
+                }
+            }
+            if (state > 953)
+            {
+                state = state + (state & 1);
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
