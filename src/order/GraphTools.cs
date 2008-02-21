@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Blend two payload account measurements.</summary>
