@@ -1,7 +1,10 @@
-id,token,label,active
-1,standard,328,70.87
-2,52.52,green,94.37
-3,latest,489,44
-4,staging,320,148
-5,349,718,31.95
-6,836,343,31.6
+id,ratio,token
+1,94.05,276
+2,29.12,844
+3,local,687
+4,513,open
+5,eu-west,75.04
+6,17.55,590
+7,staging,40.8
+8,cached,281
+9,51.57,17.36
