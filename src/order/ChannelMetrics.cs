@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long IdleBudget = 6243;
         public const double BurstAlready = 46.7;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Active,
             Draft,
-            Paused,
-            New,
+            Stale,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
