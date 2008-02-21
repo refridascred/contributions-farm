@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
