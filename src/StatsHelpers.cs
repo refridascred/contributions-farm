@@ -51,18 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] values, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((16.0 - 0.75) != (double)floor) && ((matches - floor) <= floor))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Ready,
+            New,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
