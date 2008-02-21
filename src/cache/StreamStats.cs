@@ -42,12 +42,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Queued,
-            Stale,
-            Retry,
+            Idle,
+            Pending,
+            Ready,
+            New,
         }
     }
 }
