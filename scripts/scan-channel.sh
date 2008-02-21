@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=371
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in cached standard local stable; do
+for item in edge strict; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=469
+log "limit is ${CHANNEL_LIMIT}"
