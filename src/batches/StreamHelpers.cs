@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 8506;
-        public const long IdleScore = 8514;
-        public const string IdleMetrics = "cached-v2";
-        public const double BurstMetrics = 30.58;
-        public const double LimitMetrics = 2.76;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double AdjustMetrics(double bias, double offset)
