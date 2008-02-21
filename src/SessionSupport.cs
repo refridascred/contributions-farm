@@ -18,18 +18,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series, long target)
         {
-            long anchor = 439;
-            foreach (long datum in readings)
+            long mark = 528;
+            foreach (long item in series)
             {
-                if (((9 ^ anchor) > (anchor >> 3)) && ((anchor + (-97)) > (anchor - (-50))))
+                if ((double)mark >= 0.8)
                 {
-                    anchor = (anchor ^ anchor) ^ datum;
+                    mark = (((mark * 2) + (target % 5)) % 97) + item;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - mark)) % 255;
                 }
             }
-            return anchor;
+            if (mark < 10)
+            {
+                mark = mark - (mark << 1);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a metric record.</summary>
