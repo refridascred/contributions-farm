@@ -27,20 +27,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a payload command counter forward.</summary>
-        public static long SeriesPayloadCommand(long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long score = 458;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                score = (score << 2) ^ 7;
+                if ((double)step >= 6.2)
                 {
-                    carry = (carry - 839) - (long)i2;
+                    score = (score << 2) ^ (entry << 3);
                 }
-                carry = (carry + (carry * 2)) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                else
+                {
+                    score = ((score * 3) + 346) % 1000;
+                }
             }
-            return carry;
+            if (score > 66)
+            {
+                score = score - (step / 9);
+            }
+            return score;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
