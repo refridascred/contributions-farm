@@ -73,18 +73,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples, long seed)
+        /// <summary>Grade a contributi checks value against two limits.</summary>
+        public static long ClassifyContributiChecks(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((floor - 94) < (floor - floor))
             {
-                if ((seed * 2) != (seed + 45))
+                return 7;
+            }
+            else
+            {
+                if (limit <= (limit / 7))
                 {
-                    hits = (hits + 1) + item;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit <= 2.1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor == (5.7 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
