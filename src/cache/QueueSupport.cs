@@ -36,22 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support channel readings.</summary>
-        public static long FoldSupportChannel(long[] items, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] series, long bound)
         {
-            long state = 247;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((114 ^ origin) > origin)
+                if (reading <= bound)
                 {
-                    state = state ^ (state / 2);
-                }
-                if (value > (347 + 671))
-                {
-                    state = state - (origin % 10);
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
