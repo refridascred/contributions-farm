@@ -49,19 +49,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the profile cluster series from a seed.</summary>
-        public static long RollProfileCluster(long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((78 - target) <= target)
                 {
-                    acc = (((acc << 3) ^ 392) % 65521) ^ (long)i2;
+                    mark = (mark * 5) + (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a cluster info.</summary>
