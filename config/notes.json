@@ -1,5 +1,6 @@
 {
-  "cache_timeout_s": "eu-west",
-  "metrics_ratio": 8.84,
-  "verbose": 73.11
+  "idle_timeout_ms": [109, 453],
+  "audit": "fallback",
+  "retry_delay_s": 60,
+  "batch_ratio": ["cached", "latest"]
 }
