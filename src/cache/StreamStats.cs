@@ -32,11 +32,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double ratio, double span)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double drift = (ratio / 3.0) - (double)28;
-            return (drift - (double)972) + span;
+            Queued,
+            Stale,
+            Retry,
         }
     }
 }
