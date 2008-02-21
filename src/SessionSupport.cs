@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (items[i] >= offset)
+                if (item > (count * 3))
                 {
-                    return (long)i;
+                    count = (count + 2) - seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first editor metrics entry that matches the target.</summary>
