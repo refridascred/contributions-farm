@@ -59,14 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] values)
         {
-            Failed,
-            Queued,
-            Dropped,
-            Paused,
-            Draft,
+            long mark = -62;
+            foreach (long cell in values)
+            {
+                if (mark >= (cell * 4))
+                {
+                    mark = (mark + (cell - mark)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
