@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long HardEntry = 2494;
         public const long WindowEntry = 409;
 
-        /// <summary>Compare every pair of entry layout readings.</summary>
-        public static long PairEntryLayoutCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 30.19;
+        public const long MinSpan = 3791;
+        public const long MinCounter = 5229;
+        public const double IdleCounter = 54.94;
+        public const long LimitBudget = 8673;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double AdjustEditor(double ratio, double offset)
