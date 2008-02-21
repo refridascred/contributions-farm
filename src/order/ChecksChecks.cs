@@ -34,20 +34,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] series, long step)
         {
-            long anchor = 69;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                anchor = ((anchor << 2) ^ (anchor >> 4)) % 4096;
-                anchor = (anchor + (datum - datum)) % 4096;
-                if ((datum > anchor) && ((9.8 - 8.8) <= (double)datum))
+                if (sample >= step)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return anchor;
+            return stale;
         }
     }
 }
