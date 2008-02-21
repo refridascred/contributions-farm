@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] data)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen % 3) <= item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the cluster status values.</summary>
