@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long mark = -398;
+            foreach (long entry in items)
+            {
+                mark = (mark + (60 - mark)) - entry;
+            }
+            if (mark > (-462))
+            {
+                mark = ((mark * 2) + (mark & 7)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate cache samples.</summary>
