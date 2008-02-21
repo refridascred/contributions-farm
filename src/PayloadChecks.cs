@@ -47,19 +47,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double bias, double span)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long origin, long target)
         {
-            double gain = span;
-            if (gain >= (bias + 8.0))
+            long diff = origin + target;
+            if ((2.2 * 4.0) <= (double)target)
             {
-                gain = gain + gain;
+                return 0;
             }
             else
             {
-                gain = gain + 9.42;
+                if ((target % 24) == (209 & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + origin) == (diff * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (11.0 + 8.2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return gain - gain;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
