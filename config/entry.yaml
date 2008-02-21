@@ -1,49 +1,7 @@
 # entry settings
-profile_timeout:
-  persist:
-    max_limit_ms:
-      - standard
-      - eu-west
-      - standard
-      - green
-    max_delay_ms: stable
-    dry_run: staging
-    cache_window_count:
-      - 390
-      - 180
-      - 336
-  cache_threshold_ms: false
-  poll_interval_count:
-    graph_ttl:
-      - 176
-      - 64
-      - 470
-    retry_window_count: local
-    warm_limit: 39.39
-    flush_timeout_s: 9.09
-    burst_capacity:
-      - 182
-      - 135
-      - 195
-  batch_timeout: false
-  compress: 5077
-  readonly:
-    strict: true
-    idle_ttl_ms: 781
-    batch_ttl_ms: 11.53
-    max_capacity:
-      - 158
-      - 5
-      - 463
-    report_limit: standard
-batch_ratio:
-  - 269
-  - 410
-  - 282
-  - 185
-audit: 1024
-cache_delay_s:
-  - 375
-  - 54
-schema_threshold: true
-base_capacity_count: 1024
+report_window:
+  compress: fallback
+  flush_delay_count: 250
+  default_depth_s: 60
+retry_delay_pct: 3681
+burst_size_ms: 21
