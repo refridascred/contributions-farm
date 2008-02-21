@@ -1,9 +1,47 @@
 # githubfarm settings
-default_retries: 48.69
-window_retries:
-  - primary
-  - primary
-  - stable
-  - eu-west
-cluster_size: 4638
-default_capacity_s: legacy
+poll_depth:
+  - 288
+  - 436
+  - 373
+command_retries:
+  flush_limit_pct:
+    account_timeout: standard
+    max_retries: fallback
+    burst_interval_s: eu-west
+    burst_threshold: open
+    sync_limit_s:
+      - blue
+      - local
+      - blue
+    command_threshold: false
+  verbose: false
+  persist: local
+  audit: 1009
+  retry_limit_s:
+    persist: cached
+    retry_ratio_count: staging
+    readonly:
+      - 343
+      - 191
+      - 30
+    format_ttl: open
+    session_capacity: false
+buffer_depth: 50.45
+window_limit:
+  default_window_count:
+    - 493
+    - 64
+    - 60
+    - 323
+  flush_interval_pct:
+    - 163
+    - 446
+  retry_delay_ms: 1024
+  retry_timeout_s: 500
+  audit: 7316
+persist:
+  base_limit: 6899
+  already_timeout: 14
+  soft_delay: 7382
+  burst_ttl_s: 645
+  dry_run: true
