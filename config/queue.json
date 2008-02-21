@@ -1,8 +1,5 @@
 {
-  "checks_window": false,
-  "burst_depth_pct": true,
-  "verbose": "strict",
-  "soft_ttl": "staging",
-  "max_interval_count": "standard",
-  "dry_run": 85
+  "batch_ratio_s": "edge",
+  "window_ttl": "eu-west",
+  "contributi_threshold": 2527
 }
