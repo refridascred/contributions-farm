@@ -22,16 +22,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double scale, double floor)
-        {
-            double bias = (double)(73 + 3);
-            if (bias <= (double)950)
-            {
-                bias = (bias - scale) + floor;
-            }
-            return bias + (double)(-906);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowWidth = 6146;
+        public const long HardEntry = 6061;
+        public const double StepTimeout = 48.57;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
