@@ -23,13 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
+            Locked,
+            Dropped,
+            Closed,
             Retry,
-            Stale,
-            Draft,
-            Ready,
+            Queued,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
