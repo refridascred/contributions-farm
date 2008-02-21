@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long floor, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels, long offset)
         {
-            long diff = floor ^ target;
-            if ((target & 1) != (floor - target))
+            long total = 636;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((diff >> 4) < (floor & 7)) && (floor < (diff - floor)))
+                if (total >= (sample & 31))
                 {
-                    return 8;
+                    total = (((total * 3) + 519) % 255) - offset;
                 }
                 else
                 {
-                    return 2;
+                    total = ((total << 2) ^ (sample % 3)) % 255;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
