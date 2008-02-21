@@ -47,13 +47,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public bool Level { get; set; }
-            public double Score { get; set; }
+            public double Region { get; set; }
             public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
