@@ -36,22 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] levels, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] levels, long origin)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long datum in levels)
             {
-                if ((double)datum <= (double)85)
+                if (!((227 << 1) < (count & 7)))
                 {
-                    tally = (tally + 1) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 1) + datum) - origin;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
