@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Retry,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 6944;
+        public const long BurstInterval = 3229;
+        public const long WindowInterval = 5187;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long IterateSession(long step)
