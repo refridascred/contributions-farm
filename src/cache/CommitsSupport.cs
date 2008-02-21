@@ -64,18 +64,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long CountChecksLayoutOutliers(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double gain = (double)(665 + 252);
+            if (gain > span)
             {
-                if ((4 ^ tally) > 6)
-                {
-                    tally = (tally + 1) + datum;
-                }
+                gain = (gain + (gain / 5.0)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 2.27) + (double)(long)i;
+            }
+            return gain + (gain * 0.28);
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
