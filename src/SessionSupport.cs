@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((sample + hits) < (6 & 127))
+                if ((step <= (step << 2)) || (count <= (17 - count)))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
