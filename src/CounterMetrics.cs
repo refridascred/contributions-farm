@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "legacy-v2";
-        public const long IdleTimeout = 6890;
-        public const long DefaultFactor = 9748;
-        public const string CacheTimeout = "primary-1";
-        public const long DefaultRatio = 8588;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Draft,
+            Locked,
+            Idle,
+            Done,
+            Closed,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchLevel = 5779;
