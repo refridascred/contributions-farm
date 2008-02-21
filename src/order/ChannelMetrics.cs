@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long DefaultSession = 8660;
         public const double LimitSession = 62.06;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
+            Retry,
+            Dropped,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
