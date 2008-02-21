@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long result = 61;
-            foreach (long reading in samples)
-            {
-                result = result + reading;
-                result = (result + origin) % 65521;
-                result = (result + (origin ^ origin)) % 97;
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a schema reading by value.</summary>
