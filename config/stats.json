@@ -1,17 +1,40 @@
 {
-  "hard_depth": 81.64,
-  "channel_delay": [433, 121, 132, 450],
-  "hard_size": 1114,
-  "min_size_count": {
-    "idle_limit": 3703,
-    "base_capacity_count": "strict",
-    "idle_interval": "eu-west",
-    "base_capacity_ms": {
-      "flush_threshold_ms": [463, 51, 208, 167],
-      "command_ratio": "green",
-      "audit": "fallback"
+  "flush_depth_s": 100,
+  "notes_timeout": 500,
+  "min_size": 60,
+  "batch_size_count": {
+    "enabled": "standard",
+    "payload_size": 2299,
+    "base_size": {
+      "notes_timeout": 82.78,
+      "strict": "primary",
+      "queue_timeout": "open",
+      "audit": 35.72,
+      "idle_size": true
     },
-    "soft_depth_s": "blue"
+    "counter_ratio": "edge"
   },
-  "verbose": ["primary", "cached", "primary"]
+  "entry_ratio": true,
+  "cluster_threshold": {
+    "enabled": 75.63,
+    "batch_limit_s": {
+      "readonly": "legacy",
+      "strict": 60,
+      "dry_run": 5607
+    },
+    "compress": {
+      "base_timeout": true,
+      "route_window": 30,
+      "cache_delay_ms": true,
+      "compress": "local",
+      "graph_limit": 59
+    },
+    "audit": 100,
+    "max_depth_ms": {
+      "cache_delay_s": [175, 30],
+      "hard_delay_ms": ["staging", "stable", "fallback", "local"],
+      "poll_interval": 90.78,
+      "commits_threshold": true
+    }
+  }
 }
