@@ -1,13 +1,7 @@
 # support settings
-burst_interval: staging
-persist:
-  dry_run: green
-  window_timeout:
-    retry_timeout_ms: 18
-    verbose: 7593
-    idle_ttl: legacy
-  command_depth: 7606
-sync_threshold_pct:
-  - 41
-  - 197
-notes_size: 20
+readonly: 3255
+burst_retries_count: 48
+cluster_threshold: 63.13
+hard_ratio: open
+batches_size: true
+cache_depth: green
