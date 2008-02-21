@@ -71,19 +71,19 @@ namespace Common.Utilities
         public const string SoftCount = "alpha-v2";
         public const double SoftChecks = 12.53;
 
-        /// <summary>Validate token graph readings against a bound.</summary>
-        public static bool GuardTokenGraphLimits(long[] readings, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (item <= bound)
+                if (value <= offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
