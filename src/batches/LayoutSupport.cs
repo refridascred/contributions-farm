@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a channel cache value against two limits.</summary>
