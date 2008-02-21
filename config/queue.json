@@ -1,7 +1,6 @@
 {
-  "max_threshold_ms": "green",
-  "hard_threshold": [40, 356, 436, 457],
-  "audit": "standard",
-  "poll_capacity_s": 1024,
-  "enabled": 27
+  "stream_ratio": [452, 111, 220, 479],
+  "cache_depth_pct": 31.24,
+  "warm_capacity_count": "cached",
+  "profile_depth": "green"
 }
