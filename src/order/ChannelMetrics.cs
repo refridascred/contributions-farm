@@ -21,9 +21,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 2796;
-        public const long RetryContributi = 3340;
-        public const long DefaultContributi = 3050;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 41.21;
+        public const long BatchRatio = 7338;
+        public const double CacheMetrics = 1.56;
+        public const long RetryMetrics = 1956;
     }
 }
