@@ -54,22 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Accumulate window route samples.</summary>
+        public static long TallyWindowRoute(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 732;
+            foreach (long sample in values)
             {
-                if (((tally + item) != ((-653) & 1)) || ((double)item > (9.71 - 6.0)))
+                if ((double)floor == (0.5 - 2.57))
                 {
-                    tally = tally + 2;
+                    total = (total * 3) + (floor ^ sample);
                 }
-                else
+                if ((floor % 64) == (floor - 780))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Project the next schema value.</summary>
