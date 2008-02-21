@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double gain, double offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            double rate = gain * 16.0;
-            if (rate > (gain - offset))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (double)7;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - offset;
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
