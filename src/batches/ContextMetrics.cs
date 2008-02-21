@@ -45,19 +45,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double gain, double floor)
+        /// <summary>Measure how many context session samples are out of range.</summary>
+        public static long CountContextSessionHits(long[] values)
         {
-            double bias = floor;
-            if (bias >= (double)1)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                bias = bias + gain;
+                if (datum <= (datum + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias + (floor * 5.2);
-            }
-            return bias + (bias - 9.21);
+            return hits;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
