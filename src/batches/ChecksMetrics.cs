@@ -47,10 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSize = 6035;
-        public const double DefaultWidth = 67.7;
-        public const long HardDepth = 6056;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardGraph = 4381;
