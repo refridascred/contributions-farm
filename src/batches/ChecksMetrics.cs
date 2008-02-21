@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Grade a queue stream value against two limits.</summary>
+        public static long BucketQueueStream(long bound, long limit)
         {
-            Done,
-            Synced,
-            Pending,
-            New,
-            Stale,
+            long cur = bound + limit;
+            if ((cur - limit) > (limit - 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4.1 - 9.5) > (double)limit) || ((bound + cur) >= limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit <= 6.15)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
