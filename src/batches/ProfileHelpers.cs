@@ -39,13 +39,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 5304;
         public const long HardCommand = 3787;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
