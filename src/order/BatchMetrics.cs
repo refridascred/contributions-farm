@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "local";
-        public const long IdleInterval = 6554;
-        public const double DefaultRecord = 49.57;
-        public const string LimitRecord = "standard-v2";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values, long floor)
+        {
+            long carry = 3;
+            foreach (long datum in values)
+            {
+                if ((169 + (-67)) <= ((long)values.Length >> 3))
+                {
+                    carry = (((carry - (carry / 9)) % 255) - datum) - floor;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Count route metrics pairs that satisfy a relation.</summary>
         public static long MatchRouteMetricsCount(long[] levels)
