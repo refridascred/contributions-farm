@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            Done,
-            Ready,
-            Stale,
-            New,
-            Queued,
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit stats filter readings against a rule.</summary>
