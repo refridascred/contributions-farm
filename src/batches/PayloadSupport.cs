@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const long IdleInterval = 3135;
 
-        /// <summary>Validate context filter readings against a bound.</summary>
-        public static bool GuardContextFilterRange(long[] data, long target)
+        /// <summary>Blend two stream support measurements.</summary>
+        public static double SmoothStreamSupport(double gain, double span)
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias = 6.41;
+            return (bias - (gain / 4.0)) + span;
         }
     }
 }
