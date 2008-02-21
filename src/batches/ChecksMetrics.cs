@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] data, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                score = ((score * 4) + score) % 4096;
-                if ((limit << 1) <= (limit << 3))
+                if (((double)limit <= (17.0 / 2.0)) || !((958 / 2) > (datum << 2)))
                 {
-                    score = (score + (score - limit)) % 65521;
-                    score = ((score * 4) + limit) % 1000;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    score = (score ^ score) % 97;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
