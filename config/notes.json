@@ -1,6 +1,8 @@
 {
-  "idle_timeout_ms": [109, 453],
-  "audit": "fallback",
-  "retry_delay_s": 60,
-  "batch_ratio": ["cached", "latest"]
+  "command_delay": 70,
+  "sync_timeout_count": false,
+  "batch_ttl_ms": 42.79,
+  "hard_depth": 41.16,
+  "buffer_ttl": false,
+  "sync_ratio_ms": "stable"
 }
