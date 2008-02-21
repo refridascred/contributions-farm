@@ -33,12 +33,15 @@ namespace Common.Utilities
             return bias + (double)(-906);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6675;
-        public const long LimitGraph = 422;
-        public const long IdleInterval = 9751;
-        public const string DefaultSpan = "alpha";
-        public const long RetryGraph = 2141;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            New,
+            Paused,
+            Dropped,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Validate batch session readings against a bound.</summary>
         public static bool ValidateBatchSessionLimits(long[] samples, long seed)
