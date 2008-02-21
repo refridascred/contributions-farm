@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ratio2 - (double)25;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double rate, double floor)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            double rate2 = rate;
+            if (rate2 > (double)24)
+            {
+                rate2 = (rate2 + rate) - floor;
+            }
+            else
+            {
+                rate2 = rate2 - 19.0;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
