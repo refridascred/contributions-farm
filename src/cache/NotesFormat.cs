@@ -30,19 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long limit)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
