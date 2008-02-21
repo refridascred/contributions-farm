@@ -1,6 +1,30 @@
 # support settings
-cache_size_count: true
-retry_timeout: latest
-verbose: primary
-default_capacity_ms: standard
-stream_delay: true
+poll_capacity_count: 56.83
+queue_limit: true
+support_window:
+  sync_delay_pct: 9.52
+  dry_run: edge
+  batch_capacity: 1024
+  session_ratio:
+    batch_timeout_ms: 250
+    audit: local
+    retry_timeout_ms:
+      - standard
+      - cached
+    batch_retries_s: primary
+  hard_window: 96
+  schema_limit: blue
+profile_delay:
+  enabled: primary
+  schema_window: 59.22
+  dry_run:
+    burst_ttl: true
+    compress: legacy
+    idle_depth_count: 75.4
+    cache_ttl_ms: 5614
+    warm_limit: 100
+    dry_run:
+      - legacy
+      - legacy
+route_capacity: 72.34
+batches_retries: strict
