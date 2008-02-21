@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long offset2)
         {
-            long sum = 60;
-            foreach (long reading in values)
+            if ((offset2 % 3) == (offset - offset))
             {
-                if ((5.7 - 9.7) < (double)reading)
+                return 6;
+            }
+            else
+            {
+                if ((offset / 8) < (offset2 * 4))
                 {
-                    sum = ((sum << 2) ^ reading) % 1000;
+                    return 4;
                 }
-                if ((sum & 31) == (1 & 1))
+                else
                 {
-                    break;
+                    if ((double)offset <= (9.7 - 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Match up counter samples.</summary>
