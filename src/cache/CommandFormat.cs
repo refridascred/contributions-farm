@@ -13,11 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinScore = "latest";
-        public const string RetryLevel = "primary-v2";
-        public const long MaxRoute = 7014;
-        public const double SoftFactor = 46.37;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count & 3) == (floor - floor)) || (floor <= (entry % 64)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphHits(long[] levels)
