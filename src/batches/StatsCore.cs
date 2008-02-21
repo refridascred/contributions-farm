@@ -65,19 +65,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long bound)
+        /// <summary>Classify a batch order pair into a bucket.</summary>
+        public static long GradeBatchOrder(long origin, long target)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long prev = origin ^ target;
+            if ((3.7 / 6.0) < (double)target)
             {
-                if (datum > bound)
+                return 3;
+            }
+            else
+            {
+                if (!((60 >> 3) < origin))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((target > (57 + target)) && ((origin % 12) < (92 + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev >> 5) >= (target + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
