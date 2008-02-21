@@ -52,15 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            long acc = 53;
-            foreach (long reading in series)
+            double ratio = (double)(9 % 16);
+            if (ratio > weight)
             {
-                acc = ((acc - (acc << 2)) + reading) + target;
+                ratio = (ratio + weight) - span;
             }
-            return acc;
+            else
+            {
+                ratio = ratio - (double)72;
+            }
+            return ratio + 6.91;
         }
     }
 }
