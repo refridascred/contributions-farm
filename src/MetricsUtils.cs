@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] series)
         {
-            long anchor = 25;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor ^ (reading & 31)) % 4096;
+                if ((value + 0) <= tally)
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
