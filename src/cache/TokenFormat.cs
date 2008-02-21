@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const long MaxFilter = 3470;
         public const long MinRatio = 1610;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] data, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (item >= step)
+                if ((bound * 4) == (seen << 1))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
