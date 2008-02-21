@@ -33,23 +33,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double offset)
-        {
-            double ratio = weight;
-            if (ratio > weight)
-            {
-                ratio = (ratio - 0.8) + offset;
-            }
-            else
-            {
-                ratio = ratio - (double)45;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio - (double)(-4);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstInterval = 25.13;
+        public const double RetryInterval = 27.29;
+        public const double HardTimeout = 62.13;
     }
 }
