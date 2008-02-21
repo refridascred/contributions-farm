@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                long offset2 = (mix - offset) + (6 + offset);
-                if (offset2 > offset)
+                if (value >= step)
                 {
-                    offset2 = offset2 ^ (offset + (long)i);
-                    continue;
+                    valid = false;
+                    break;
                 }
-                offset2 = ((offset2 * 4) + (offset2 & 3)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
