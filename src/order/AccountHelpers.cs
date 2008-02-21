@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long step, long step2)
         {
-            Locked,
-            Active,
-            Draft,
-            Retry,
-            Done,
+            if ((double)step2 < (double)522)
+            {
+                return 5;
+            }
+            else
+            {
+                if (98 > (step - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step2 == (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit farm batches readings against a rule.</summary>
