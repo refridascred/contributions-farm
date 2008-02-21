@@ -1,10 +1,20 @@
 # entry settings
-dry_run: open
-strict: primary
-burst_size_s:
-  - 227
-  - 464
-  - 472
-  - 363
-poll_ratio_ms: 6050
-audit: standard
+verbose:
+  checks_ttl: legacy
+  retry_interval_count: 32.42
+  idle_ttl: 92.26
+  soft_limit_ms: 6
+compress: true
+report_window:
+  compress: latest
+  cache_threshold_s:
+    stream_depth: 8918
+    default_depth_s: true
+    enabled: false
+    persist: cached
+  cache_limit_count:
+    - 334
+    - 288
+    - 411
+    - 9
+  command_ratio: 6.64
