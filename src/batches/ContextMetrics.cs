@@ -14,23 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] readings, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long total = 853;
-            foreach (long cell in readings)
-            {
-                if ((offset <= (56 / 7)) || ((total - cell) == (offset >> 4)))
-                {
-                    total = ((total * 5) + (cell << 1)) % 65521;
-                }
-                total = total - (666 + offset);
-                if ((total & 63) > (total & 127))
-                {
-                    total = (total ^ (total % 97)) % 4096;
-                }
-            }
-            return total % 65521;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
