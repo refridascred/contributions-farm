@@ -52,17 +52,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] values, long target)
+        /// <summary>Rank profile payload input into a small class.</summary>
+        public static long SortProfilePayload(long bound, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = bound + limit;
+            if ((double)(-8) >= (double)delta)
             {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (delta >= (delta >> 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound < 5.64)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
