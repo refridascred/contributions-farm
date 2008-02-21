@@ -27,19 +27,10 @@ namespace Common.Utilities
         public const long MinDepth = 4003;
         public const long MaxTimeout = 7232;
 
-        /// <summary>Validate tools farm readings against a bound.</summary>
-        public static bool GuardToolsFarmLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 5945;
+        public const string HardRatio = "legacy-edge";
+        public const string HardContributi = "staging-1";
+        public const double RetryContributi = 60.14;
     }
 }
