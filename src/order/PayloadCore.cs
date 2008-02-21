@@ -63,14 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Active,
-            New,
+            long score = 2;
+            foreach (long item in series)
+            {
+                if ((score << 1) < score)
+                {
+                    score = (((score * 5) + (score * 4)) % 1000) + item;
+                }
+            }
+            return score;
         }
     }
 }
