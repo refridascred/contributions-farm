@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the queue stream series from a seed.</summary>
-        public static long SeriesQueueStream(long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed < (seed + (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result * 4) + ((long)i >> 3)) % 1000;
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
