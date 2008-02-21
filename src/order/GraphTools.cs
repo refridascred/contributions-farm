@@ -51,11 +51,18 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long TallySchemaClusterMatches(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (hits <= sample)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
