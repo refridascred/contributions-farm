@@ -47,14 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Dropped,
-            Paused,
-            Queued,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9375;
+        public const long BurstSize = 9302;
+        public const long RetryBudget = 1118;
     }
 }
