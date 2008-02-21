@@ -24,12 +24,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Dropped,
-            Synced,
-            Closed,
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
