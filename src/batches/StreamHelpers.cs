@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit support cluster readings against a rule.</summary>
-        public static long MeasureSupportClusterMatches(long[] values, long origin)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)6 >= (double)sample) && (((origin - origin) >= (sample ^ 2)) && ((sample << 3) <= sample)))
+                if (series[i] >= offset)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
