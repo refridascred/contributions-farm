@@ -39,15 +39,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of tools format readings.</summary>
-        public static long OverlapToolsFormatCount(long[] samples)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 9)
+                    if ((values[i] ^ values[j]) != 1)
                     {
                         matches = matches + 1;
                     }
