@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long DigestPayloadStats(long[] values, long target)
+        /// <summary>Roll a editor route counter forward.</summary>
+        public static long RollEditorRoute(long seed)
         {
-            long sum = -2;
-            foreach (long value in values)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (((long)values.Length & 7) != (49 + target))
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (sum - target)) - value;
+                result = ((result * 5) + (seed + result)) % 65521;
+                result = (result << 2) ^ ((long)i + (long)i);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (sum < 8)
-            {
-                sum = (sum << 2) ^ (long)values.Length;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a channel info.</summary>
