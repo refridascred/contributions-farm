@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Audit tools layout readings against a rule.</summary>
+        public static long AuditToolsLayoutMatches(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.0 / 4.0) >= (4.3 + 9.2))
                 {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 2) + value) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
