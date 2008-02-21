@@ -36,22 +36,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series, long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)bound <= (2.01 + 5.5))
+                if ((items[i] <= floor) && ((items[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
