@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] readings, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] values, long step)
         {
-            long anchor = -485;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)datum < (double)anchor)
+                if (((-708) << 2) < (seen ^ reading))
                 {
-                    anchor = (anchor - ((-7) % 5)) + target;
+                    seen = (seen + 2) + step;
                 }
-                if (!((datum - 44) >= ((long)readings.Length - 23)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (anchor < 95)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
