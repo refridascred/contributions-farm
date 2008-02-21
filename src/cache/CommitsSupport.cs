@@ -92,12 +92,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long step)
         {
-            Draft,
-            Retry,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
