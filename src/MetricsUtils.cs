@@ -40,18 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= (13.0 - 19.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double mean = rate;
+            return (mean + (9.5 * 7.3)) + floor;
         }
 
         /// <summary>Classify a support report pair into a bucket.</summary>
