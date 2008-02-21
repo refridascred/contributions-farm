@@ -35,17 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
