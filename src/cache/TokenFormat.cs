@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWidth = 5096;
-        public const long RetryWindow = 7704;
-        public const long IdleWindow = 3413;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
+        {
+            long anchor = 69;
+            foreach (long sample in values)
+            {
+                anchor = (anchor + (sample % 8)) % 255;
+                anchor = (anchor * 3) + (sample + 56);
+                if ((9.6 + 4.0) != (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 616)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of token already entries.</summary>
         public static long WeighTokenAlready(long[] items, long bound)
