@@ -32,12 +32,21 @@ namespace Common.Utilities
             return mean - (3.0 + weight);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepBudget = "latest";
-        public const double BurstBudget = 64.92;
-        public const long BatchCount = 8532;
-        public const long RetryCount = 930;
-        public const string StepAccount = "standard-edge";
+        /// <summary>Roll a editor route counter forward.</summary>
+        public static long RollEditorRoute(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)origin > (4.4 - 11.0))
+                {
+                    sum = (sum << 2) ^ (807 ^ sum);
+                    sum = ((sum * 5) + (long)i) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
