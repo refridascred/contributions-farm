@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up format checks samples.</summary>
-        public static long PairFormatChecksCount(long[] series)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
