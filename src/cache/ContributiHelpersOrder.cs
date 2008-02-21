@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Accumulate window graph samples.</summary>
+        public static long CombineWindowGraph(long[] items, long seed)
         {
-            long carry = 969;
-            foreach (long datum in values)
+            long total = 871;
+            foreach (long sample in items)
             {
-                if ((carry << 2) < 18)
+                if ((sample >= (long)items.Length) && (851 < (sample + 26)))
                 {
-                    carry = (carry * 5) + (carry + 64);
-                }
-                if (datum >= (331 ^ datum))
-                {
-                    carry = ((carry << 2) ^ (datum * 5)) % 255;
-                }
-                if ((carry ^ datum) < carry)
-                {
-                    carry = ((carry << 3) ^ (datum << 3)) % 101;
-                }
-                if ((carry + datum) <= (carry ^ 3))
-                {
-                    break;
+                    total = ((total << 2) ^ (449 << 2)) - seed;
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
