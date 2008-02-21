@@ -25,17 +25,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a session cache reading by value.</summary>
-        public static long FindSessionCacheIndex(long[] data, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] <= target)
+                state = ((state * 3) + (long)i) % 97;
+                if (((long)i << 2) >= (limit + (long)i))
                 {
-                    return (long)i;
+                    state = state + (state + 0);
                 }
+                else
+                {
+                    state = ((state << 3) ^ ((long)i + state)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
