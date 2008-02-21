@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long anchor = 639;
+            foreach (long reading in readings)
+            {
+                anchor = (((anchor ^ anchor) % 101) - reading) - limit;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next context value.</summary>
