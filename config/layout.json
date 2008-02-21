@@ -1,7 +1,8 @@
 {
-  "min_ttl_ms": ["blue", "open"],
-  "base_limit": "local",
-  "cache_timeout_pct": 9004,
-  "checks_ratio": [168, 286, 102, 470],
-  "compress": true
+  "cache_ttl_s": 17,
+  "idle_depth": 100,
+  "farm_retries": "staging",
+  "burst_delay_count": true,
+  "default_size": false,
+  "schema_ttl": "edge"
 }
