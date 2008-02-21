@@ -23,20 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a record githubfarm counter forward.</summary>
-        public static long IterateRecordGithubfarm(long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long anchor = 25;
+            foreach (long reading in readings)
             {
-                total = total - total;
-                if (2 < (total - total))
-                {
-                    total = (total - (origin << 1)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                anchor = (anchor ^ (reading & 31)) % 4096;
             }
-            return total;
+            return anchor % 4096;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
