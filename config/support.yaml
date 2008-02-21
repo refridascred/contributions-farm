@@ -1,22 +1,6 @@
 # support settings
-soft_depth_s: stable
-hard_timeout_pct:
-  - primary
-  - latest
-  - standard
-  - local
-cache_capacity_s: true
-counter_timeout:
-  soft_threshold_ms:
-    - cached
-    - eu-west
-    - local
-    - latest
-  warm_threshold:
-    dry_run: 1024
-    metric_capacity: green
-    metric_depth: latest
-    account_interval: false
-    flush_window: 98
-    min_capacity: 145
-  soft_ratio_ms: latest
+flush_limit: 60
+enabled: 71.94
+default_timeout_s: open
+soft_interval_ms: 30
+entry_ratio: edge
