@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string HardFormat = "open-v2";
         public const long BurstBudget = 5316;
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long TallyCounterOrderHits(long[] readings, long target)
+        /// <summary>Check that every token support entry stays within the limit.</summary>
+        public static bool GuardTokenSupportRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((sample + seen) < (sample >> 5))
+                if (datum >= target)
                 {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
