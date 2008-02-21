@@ -55,12 +55,13 @@ namespace Common.Utilities
         public const long IdleTimeout = 5304;
         public const long HardCommand = 3787;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
