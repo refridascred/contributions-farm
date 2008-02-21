@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit tools layout readings against a rule.</summary>
-        public static long AuditToolsLayoutMatches(long[] series, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((5.0 / 4.0) >= (4.3 + 9.2))
-                {
-                    hits = ((hits + 2) + value) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
