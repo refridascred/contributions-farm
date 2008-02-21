@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 3) ^ ((long)i + 3)) ^ (long)i2;
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
