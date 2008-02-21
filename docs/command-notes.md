@@ -1,10 +1,11 @@
 # Command notes
 
-Each queue is validated before it reaches the schema queue.
-The format module keeps layout values in sync with the farm cache.
+A editor that stays idle for too long is moved to the support list.
+Run the counter check before changing any support limits.
+Keep context and metrics names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every order change
-- Document new session fields
+- Log every batch change
+- Keep batch values small
+- Document new buffer fields
