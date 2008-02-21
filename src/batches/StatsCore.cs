@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] series, long offset)
         {
-            New,
-            Pending,
-            Failed,
-            Draft,
-            Synced,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
