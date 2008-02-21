@@ -49,19 +49,31 @@ namespace Common.Utilities
         public const long MaxSession = 1620;
         public const double BaseSession = 78.8;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] items, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if ((offset >> 3) > (offset ^ 6))
             {
-                if (value <= seed)
+                return 8;
+            }
+            else
+            {
+                if (offset > (floor + 70))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((12.0 + 3.1) <= (double)offset) || ((double)offset > (1.34 / 6.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
