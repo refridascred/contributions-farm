@@ -1,8 +1,11 @@
 {
-  "window_ttl": false,
-  "retry_ttl_pct": 59.37,
-  "retry_timeout_s": [200, 428, 370, 119],
-  "batches_threshold": 100,
-  "batch_depth": 9485,
-  "session_timeout": false
+  "max_retries_pct": {
+    "sync_depth": 250,
+    "batch_interval": 93.56,
+    "max_limit_ms": 100,
+    "max_threshold_count": "edge",
+    "sync_limit_s": "strict"
+  },
+  "hard_timeout_ms": true,
+  "readonly": "staging"
 }
