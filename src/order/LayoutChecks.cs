@@ -61,18 +61,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            long total = 99;
-            foreach (long value in items)
+            double mean = ratio;
+            if (mean > mean)
             {
-                if ((value & 127) >= (value - value))
-                {
-                    total = ((total << 2) ^ (total << 1)) % 4096;
-                }
+                mean = (mean - 5.55) + span;
             }
-            return total;
+            else
+            {
+                mean = mean - (mean - 5.01);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (12.0 - mean)) + (double)(long)i;
+            }
+            return mean + 6.83;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
