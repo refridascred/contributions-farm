@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] series, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum + floor) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Project the next format value.</summary>
