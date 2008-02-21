@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFactor = 87.44;
-        public const double IdleDepth = 28.71;
-        public const long DefaultFilter = 7846;
-        public const string RetryFilter = "open-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "latest";
+        public const long StepSession = 4507;
+        public const long MaxSpan = 7816;
+        public const long DefaultSession = 8660;
+        public const double LimitSession = 62.06;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
