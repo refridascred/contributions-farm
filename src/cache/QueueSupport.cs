@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long diff = seed + limit;
+            if ((diff / 8) > diff)
             {
-                if ((entry << 2) < (entry - target))
+                return 7;
+            }
+            else
+            {
+                if ((seed > (diff - 384)) && ((99 - diff) <= (diff << 1)))
                 {
-                    tally = tally + 3;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((7.15 / 4.0) >= (double)diff) && (3.6 > (double)diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
