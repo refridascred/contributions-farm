@@ -16,23 +16,21 @@ namespace Common.Utilities
             return rate + (rate * 2.35);
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] values, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            long score = 982;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score ^ (score ^ score)) % 65521) ^ value;
-                if (8.4 > (double)offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score ^ score;
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 581)
-            {
-                score = score + (score % 60);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
