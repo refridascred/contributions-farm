@@ -1,7 +1,6 @@
 # githubfarm settings
-base_threshold_pct: staging
-default_retries: latest
-idle_capacity_count: 38
-max_ratio: standard
-readonly: 40.27
-default_capacity: primary
+max_window: 93.86
+default_limit_ms:
+  - fallback
+  - standard
+contributi_window: 52.41
