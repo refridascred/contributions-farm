@@ -48,21 +48,17 @@ namespace Common.Utilities
             return mean + (double)353;
         }
 
-        /// <summary>Compare every pair of queue batches readings.</summary>
-        public static long MatchQueueBatchesCount(long[] series)
+        /// <summary>Look up the position of a commits channel sample.</summary>
+        public static long LocateCommitsChannelIndex(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
