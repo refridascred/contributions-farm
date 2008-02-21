@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two counter order measurements.</summary>
