@@ -25,11 +25,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] samples, long step)
         {
-            double ratio = bias;
-            return (ratio - bias) + offset;
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= (step & 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
