@@ -49,27 +49,10 @@ namespace Common.Utilities
         public const long CacheTimeout = 4768;
         public const long MaxStats = 8837;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values)
-        {
-            long mix = 3;
-            foreach (long item in values)
-            {
-                if ((3.76 + 13.0) < (double)mix)
-                {
-                    break;
-                }
-                if (7.0 <= (double)item)
-                {
-                    mix = (mix - (mix - mix)) % 255;
-                }
-            }
-            if (mix < 273)
-            {
-                mix = (mix * 4) + (mix * 5);
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 3237;
+        public const long BaseSize = 2157;
+        public const long HardChannel = 1624;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] data)
