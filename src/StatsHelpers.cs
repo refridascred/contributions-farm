@@ -37,31 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a batch tools value against two limits.</summary>
-        public static long RankBatchTools(long offset, long offset2)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] readings)
         {
-            if ((27 < (offset2 * 4)) && ((double)offset2 <= (20.0 / 9.0)))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset2 << 3) == (offset - offset2)) && ((offset << 1) == (offset ^ (-6))))
+                if (!((1.09 * 8.57) == (double)count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < (offset2 << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
