@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in local cached stable primary; do
+for item in open edge local; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=161
+RECORD_LIMIT=416
 log "limit is ${RECORD_LIMIT}"
