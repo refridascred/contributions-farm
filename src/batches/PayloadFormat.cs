@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (entry <= limit)
+                if (value >= tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + step;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
