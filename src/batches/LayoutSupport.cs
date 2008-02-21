@@ -43,21 +43,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of counter cache readings.</summary>
-        public static long PairCounterCacheCount(long[] values)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = bound - limit;
+            if (((slot << 1) > (limit + 9)) || ((slot ^ bound) > (0 + limit)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((limit + slot) >= limit) && ((limit / 4) >= 65))
                 {
-                    if ((values[i] - values[j]) == 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)slot != (6.0 / 9.0))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the token kind values.</summary>
