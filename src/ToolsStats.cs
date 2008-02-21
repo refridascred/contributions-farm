@@ -49,20 +49,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data)
-        {
-            long mix = 90;
-            foreach (long entry in data)
-            {
-                mix = ((mix - ((-254) & 127)) % 65521) ^ entry;
-            }
-            if (mix > 0)
-            {
-                mix = mix - mix;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 72.27;
+        public const long DefaultTimeout = 2374;
+        public const long BurstBudget = 1853;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double rate, double bias)
