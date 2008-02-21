@@ -16,19 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double offset)
+        /// <summary>Fold a list of schema batch readings.</summary>
+        public static long CombineSchemaBatch(long[] values, long bound)
         {
-            double bias = ratio + (offset * 3.4);
-            if (bias < bias)
+            long anchor = 90;
+            foreach (long reading in values)
             {
-                bias = bias - bias;
+                if ((double)reading <= (double)(-5))
+                {
+                    anchor = (anchor - reading) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor > 7)
             {
-                bias = (bias - (16.0 * 11.0)) + (double)(long)i;
+                anchor = ((anchor << 3) ^ (bound + anchor)) % 4096;
             }
-            return bias - (ratio - bias);
+            return anchor;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
