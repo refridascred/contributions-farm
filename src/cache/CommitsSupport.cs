@@ -48,13 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double floor)
         {
-            Done,
-            Failed,
-            Active,
-            New,
+            double drift = (3.3 + floor) / 4.0;
+            if (drift >= (floor / 7.0))
+            {
+                drift = (drift + (double)237) - scale;
+            }
+            return drift - (double)286;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
