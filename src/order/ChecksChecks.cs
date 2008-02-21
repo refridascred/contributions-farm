@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long SoftDepth = 8152;
         public const long BaseRoute = 882;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Blend two notes token measurements.</summary>
+        public static double BlendNotesToken(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias = offset / 7.0;
+            return bias - (rate + bias);
         }
 
         /// <summary>Fold a list of account readings.</summary>
