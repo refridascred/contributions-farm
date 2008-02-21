@@ -13,21 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a githubfarm checks counter forward.</summary>
-        public static long DeriveGithubfarmChecks(long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (1 >> 2)) % 97;
-                if (((long)i % 64) != (limit * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix ^ ((long)i * 2)) % 65521;
-                    mix = (mix ^ (957 * 2)) % 101;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Match up command window samples.</summary>
