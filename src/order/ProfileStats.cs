@@ -41,32 +41,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank profile payload input into a small class.</summary>
-        public static long SortProfilePayload(long bound, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            long delta = bound + limit;
-            if ((double)(-8) >= (double)delta)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (delta >= (delta >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound < 5.64)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
