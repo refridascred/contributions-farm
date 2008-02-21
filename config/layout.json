@@ -1,17 +1,12 @@
 {
-  "batch_window_pct": [355, 255],
-  "retry_window": {
-    "soft_interval": 26.58,
-    "base_ratio": 3.84,
-    "audit": "eu-west",
-    "verbose": {
-      "hard_ttl_pct": false,
-      "batch_retries_pct": 6916,
-      "metric_interval": 12,
-      "warm_ratio": 47.46,
-      "poll_timeout_count": true
-    }
+  "retry_timeout_ms": {
+    "poll_interval_count": "standard",
+    "idle_ratio": 1054,
+    "soft_timeout": [248, 208, 364, 409],
+    "min_window_count": [381, 57, 308],
+    "soft_ratio_pct": "blue",
+    "context_size": [101, 209, 275, 484]
   },
-  "metrics_interval": 1024,
-  "dry_run": 80
+  "default_retries": true,
+  "idle_ttl_ms": 69
 }
