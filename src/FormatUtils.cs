@@ -61,18 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (seen > (seen + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
