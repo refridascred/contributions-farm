@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 5049;
-        public const double BaseAlready = 31.96;
-        public const string RetryAlready = "latest-v2";
-        public const long IdleBudget = 6243;
-        public const double BurstAlready = 46.7;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "cached-1";
+        public const long BatchScore = 7088;
+        public const long IdleSchema = 3928;
+        public const double HardScore = 19.71;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
