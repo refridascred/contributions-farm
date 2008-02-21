@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            Paused,
-            Dropped,
-            Retry,
+            double mean = bias;
+            if (mean > 9.5)
+            {
+                mean = (mean + bias) + offset;
+            }
+            return mean - (double)16;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
