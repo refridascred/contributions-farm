@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Iterate the tools account series from a seed.</summary>
+        public static long StepToolsAccount(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
