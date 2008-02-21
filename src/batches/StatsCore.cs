@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string BaseInterval = "fallback-v2";
         public const double DefaultCommits = 86.51;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] series, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value >= offset)
+                if ((tally & 15) < (sample + 836))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + step;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
