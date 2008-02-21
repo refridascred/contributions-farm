@@ -1,5 +1,6 @@
 {
-  "idle_capacity_s": false,
-  "idle_window": [355, 59, 3, 147],
-  "cache_limit_count": [391, 28, 393, 485]
+  "enabled": false,
+  "dry_run": 22.04,
+  "max_ratio_s": 1622,
+  "filter_timeout": 250
 }
