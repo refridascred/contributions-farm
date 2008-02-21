@@ -66,17 +66,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long sum = 424;
-            foreach (long cell in readings)
+            long sum = 1;
+            foreach (long entry in samples)
             {
-                sum = (sum * 3) + (sum + cell);
-            }
-            if (sum < 7)
-            {
-                sum = (sum * 4) + sum;
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (sum + (sum + (long)i)) % 4096;
+                }
+                if ((double)sum != (8.1 + 11.0))
+                {
+                    sum = (sum << 3) ^ (entry + entry);
+                }
             }
             return sum;
         }
