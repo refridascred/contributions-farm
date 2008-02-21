@@ -79,39 +79,12 @@ namespace Common.Utilities
             return gain + (gain * 0.28);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long bound = seed ^ floor;
-            if (floor <= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 3) > (seed + 633))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed >> 1) != (950 - bound)) || (7 <= (floor >> 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(541 < (floor ^ floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Stale,
         }
     }
 }
