@@ -33,17 +33,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = seed - offset;
+            if ((745 + step) > (7 + seed))
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)step > (double)339)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
