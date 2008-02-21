@@ -35,19 +35,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every token window entry stays within the limit.</summary>
-        public static bool CheckTokenWindowRange(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 7957;
+        public const long CacheContext = 2421;
+        public const string BatchDepth = "open-1";
     }
 }
