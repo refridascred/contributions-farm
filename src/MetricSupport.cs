@@ -19,12 +19,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 7290;
-        public const double SoftCount = 95.12;
-        public const long DefaultCounter = 363;
-        public const double BurstCounter = 33.92;
-        public const double IdleSize = 26.95;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] samples, long target)
