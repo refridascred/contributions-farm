@@ -34,19 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] data, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long acc = 28;
-            foreach (long sample in data)
+            long acc = 130;
+            foreach (long datum in items)
             {
-                acc = (((acc * 2) + (step & 63)) % 255) ^ sample;
-                if ((acc * 4) == (acc - step))
+                if (4.12 >= (double)datum)
                 {
-                    acc = acc - (66 - step);
+                    acc = ((acc * 2) + (acc >> 2)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 255;
                 }
             }
-            return acc % 1000;
+            return acc % 4096;
         }
     }
 }
