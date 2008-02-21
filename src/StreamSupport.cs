@@ -13,11 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double span)
+        /// <summary>Look up the position of a counter queue sample.</summary>
+        public static long LocateCounterQueueIndex(long[] items, long seed)
         {
-            double load = span - (ratio * 5.6);
-            return load + (load - load);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
