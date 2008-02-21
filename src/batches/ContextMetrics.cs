@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc ^ (target + acc);
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Match up order samples.</summary>
