@@ -75,10 +75,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxFactor = "open-1";
-        public const string RetryBatches = "cached-edge";
-        public const long BatchBatches = 2441;
-        public const double DefaultBatches = 94.66;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
