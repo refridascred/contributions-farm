@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of entry queue entries.</summary>
-        public static long DigestEntryQueue(long[] values, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] readings, long limit)
         {
-            long carry = -81;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry * 3) + (target - item)) % 4096;
+                if (item >= (155 * 4))
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry < (-560))
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
