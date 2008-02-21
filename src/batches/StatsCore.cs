@@ -38,13 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Adjust a queue session reading.</summary>
+        public static double AdjustQueueSession(double weight, double bias)
         {
-            Locked,
-            Ready,
-            Queued,
-            Pending,
+            double bias2 = (weight * 5.5) * 4.5;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (bias / 9.0)) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Roll a token counter forward.</summary>
