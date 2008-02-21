@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!(tally >= (tally + datum)))
+                if ((hits >> 2) != (cell + hits))
                 {
-                    tally = tally + 3;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
