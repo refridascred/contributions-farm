@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 5681;
-        public const long RetryLevel = 6279;
-        public const long IdleTimeout = 3669;
+        /// <summary>Count the commits counter entries that pass the check.</summary>
+        public static long TallyCommitsCounterHits(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!(((double)hits == (double)sample) && ((hits + step) >= sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double gain, double span)
