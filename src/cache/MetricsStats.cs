@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit buffer counter readings against a rule.</summary>
-        public static long CountBufferCounterGaps(long[] levels)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count - count) != (count + count))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a session stats.</summary>
