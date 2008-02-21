@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long step, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long limit)
         {
-            if (limit >= (limit - step))
+            long sum = 997;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 4) >= step)
+                if ((sum ^ limit) > (1 & 31))
                 {
-                    return 3;
+                    sum = (sum << 2) ^ 1;
                 }
                 else
                 {
-                    if (((-973) % 7) <= (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = sum + value;
+                }
+                if (sum <= 44)
+                {
+                    break;
                 }
             }
+            if (sum < 78)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Project the next layout stats value.</summary>
