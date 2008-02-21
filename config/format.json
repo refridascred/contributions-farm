@@ -1,5 +1,5 @@
 {
-  "flush_window_ms": 13.99,
-  "hard_ttl_s": 500,
-  "default_interval_ms": 50
+  "enabled": "standard",
+  "burst_threshold_count": true,
+  "account_ttl": 77.71
 }
