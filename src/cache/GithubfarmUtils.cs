@@ -37,17 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 7;
+            foreach (long cell in readings)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (origin & 1)) - cell;
             }
-            return -1;
+            if (carry < 68)
+            {
+                carry = (carry - (carry + origin)) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
