@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] values)
-        {
-            long acc = 378;
-            foreach (long datum in values)
-            {
-                acc = (acc * 2) + (acc + acc);
-                acc = acc - (datum - datum);
-                if (acc <= datum)
-                {
-                    break;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = (acc ^ (acc ^ acc)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchBudget = 1305;
+        public const string RetryLevel = "standard-v2";
+        public const long RetryCache = 4034;
+        public const long RetryFactor = 4624;
+        public const long SoftRatio = 2352;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] readings, long step)
