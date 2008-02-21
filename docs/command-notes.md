@@ -1,14 +1,15 @@
 # Command notes
 
+When a tools fails, the metrics handler retries a few times before giving up.
+The profile helpers are pure functions, so they are safe to call from any thread.
 Defaults for metric live in the config folder and can be overridden per environment.
-Use commits settings to tune how often stats data is refreshed.
 
-When a cache fails, the entry handler retries a few times before giving up.
-A checks that stays idle for too long is moved to the filter list.
-A profile that stays idle for too long is moved to the batch list.
+A session that stays idle for too long is moved to the graph list.
+A support that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Document new stats fields
-- Validate batch input early
-- Keep batch values small
+- Document new command fields
+- Validate cache input early
+- Keep token values small
+- Prefer metrics defaults
