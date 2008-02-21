@@ -1,17 +1,9 @@
 # support settings
-graph_interval: edge
-queue_capacity:
-  - primary
-  - edge
-  - blue
-  - legacy
-soft_capacity_pct:
-  idle_timeout: false
-  compress:
-    - 379
-    - 171
-  payload_timeout: 30
-enabled:
-  - eu-west
+report_retries: open
+batch_delay_count: local
+idle_interval_s: blue
+filter_timeout:
+  - cached
+  - strict
+  - cached
   - latest
-  - legacy
