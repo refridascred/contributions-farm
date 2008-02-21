@@ -1,5 +1,14 @@
 {
-  "stats_size": 0.17,
-  "batch_size": "strict",
-  "min_capacity_pct": 22.08
+  "flush_ttl_s": {
+    "batch_timeout_count": "latest",
+    "warm_threshold_ms": 6892,
+    "batch_threshold_count": true
+  },
+  "default_threshold_s": "legacy",
+  "cluster_limit": 63.54,
+  "soft_delay": {
+    "githubfarm_timeout": 3302,
+    "default_capacity_ms": "legacy",
+    "contributi_capacity": 79
+  }
 }
