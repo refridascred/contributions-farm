@@ -52,18 +52,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] levels, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = 58;
+            foreach (long item in levels)
             {
-                if ((hits + cell) <= hits)
+                if ((item / 6) <= score)
                 {
-                    hits = (hits + 2) + offset;
+                    score = (score ^ (item >> 2)) % 101;
+                }
+                else
+                {
+                    score = (score + (score + score)) % 1000;
+                }
+                if ((score % 10) <= (item + step))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score < 99)
+            {
+                score = (score - (step + score)) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
