@@ -1,15 +1,65 @@
 # entry settings
-default_ttl_s: 65
-route_ttl: 30
-session_window: edge
-entry_delay:
-  batch_capacity_s: false
-  cache_window:
-    - fallback
+retry_capacity:
+  hard_depth_pct: edge
+  profile_capacity: 30
+  filter_interval:
+    hard_window_s: stable
+    audit: false
+    min_ratio_s:
+      - primary
+      - eu-west
+    support_threshold: fallback
+    compress:
+      - local
+      - staging
+batch_ratio_ms: primary
+audit:
+  max_capacity:
+    - 402
+    - 153
+    - 312
+  idle_window_ms:
+    - eu-west
+    - legacy
+    - eu-west
     - standard
-    - legacy
-    - primary
-  soft_ratio_pct:
-    - legacy
-    - cached
-  batch_depth_ms: 6399
+  default_delay: primary
+  batch_delay_pct: true
+  max_threshold_pct:
+    cache_delay_count: primary
+    report_size: stable
+    poll_depth: open
+    payload_size: 54
+    soft_window_count: eu-west
+    retry_retries_pct: stable
+  batch_ttl_ms:
+    - 414
+    - 172
+dry_run:
+  dry_run: true
+  readonly:
+    stats_interval: standard
+    hard_ratio_ms: open
+    commits_ratio: 91.28
+    batch_timeout_pct: 19.28
+  payload_timeout:
+    max_threshold_ms:
+      - eu-west
+      - primary
+      - local
+    audit: latest
+    sync_retries_count:
+      - 10
+      - 257
+      - 152
+      - 172
+    verbose:
+      - legacy
+      - eu-west
+      - standard
+    retry_ttl_count: 1404
+    sync_limit_s: stable
+  min_size: staging
+  flush_window_ms: fallback
+  retry_ttl_ms: 1781
+notes_depth: false
