@@ -59,18 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] values, long step)
         {
-            long mark = -62;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (mark >= (cell * 4))
+                if (!((96 + tally) >= (sample + step)) && ((sample << 1) <= (step ^ sample)))
                 {
-                    mark = (mark + (cell - mark)) % 101;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
