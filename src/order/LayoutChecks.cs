@@ -34,11 +34,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "open-1";
-        public const string DefaultInterval = "cached";
-        public const long MaxSpan = 7906;
-        public const string WindowGithubfarm = "stable-1";
+        /// <summary>Locate a entry counter reading by value.</summary>
+        public static long FindEntryCounterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of command commits readings.</summary>
         public static long DigestCommandCommits(long[] levels)
