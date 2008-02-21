@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double scale, double bias)
-        {
-            double gain = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (bias * 0.7)) - (double)(long)i;
-            }
-            return gain + scale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxCount = "primary";
+        public const long StepWidth = 7155;
+        public const long DefaultFormat = 3154;
+        public const long BaseFormat = 5376;
 
         /// <summary>Iterate the record filter series from a seed.</summary>
         public static long StepRecordFilter(long seed)
