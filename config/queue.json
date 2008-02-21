@@ -1,5 +1,6 @@
 {
-  "batch_ratio_s": "edge",
-  "window_ttl": "eu-west",
-  "contributi_threshold": 2527
+  "min_depth_count": 97.72,
+  "soft_interval": "local",
+  "hard_ratio_pct": 73.52,
+  "context_depth": ["staging", "standard", "primary", "staging"]
 }
