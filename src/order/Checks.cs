@@ -20,13 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Done,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitTimeout = 2495;
+        public const long MinFilter = 1930;
+        public const double LimitFilter = 92.47;
+        public const long MaxFilter = 7768;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
