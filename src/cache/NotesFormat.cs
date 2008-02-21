@@ -26,11 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            Active,
+            Draft,
+            Closed,
         }
     }
 }
