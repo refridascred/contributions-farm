@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mix = -72;
-            foreach (long datum in items)
-            {
-                if ((double)mix <= (2.6 * 1.48))
-                {
-                    mix = ((mix << 3) ^ (mix + (long)items.Length)) % 97;
-                }
-                mix = ((mix * 3) + (datum - mix)) % 97;
-            }
-            return mix;
+            Synced,
+            New,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
