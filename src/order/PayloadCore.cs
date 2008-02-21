@@ -41,21 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            double gain = 5.3;
+            if (gain <= (floor + gain))
             {
-                sum = sum - ((long)i + 394);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = (((sum << 3) ^ 346) % 97) ^ (long)i2;
-                    sum = sum - sum;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                gain = gain - (floor + rate);
             }
-            return sum;
+            return gain - (8.0 * 0.43);
         }
     }
 }
