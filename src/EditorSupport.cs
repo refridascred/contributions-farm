@@ -28,17 +28,21 @@ namespace Common.Utilities
             return bias2 - 8.84;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of support payload readings.</summary>
+        public static long MatchSupportPayloadCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
