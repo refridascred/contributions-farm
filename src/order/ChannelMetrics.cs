@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8727;
-        public const long BatchChecks = 3998;
-        public const string WindowBudget = "legacy-1";
-        public const long BurstWidth = 7571;
-        public const long WindowScore = 8290;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
