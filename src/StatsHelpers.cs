@@ -55,10 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardInterval = "primary";
-        public const string IdleScore = "local";
-        public const double CacheStats = 29.94;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((16.0 - 0.75) != (double)floor) && ((matches - floor) <= floor))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyOutliers(long[] items)
