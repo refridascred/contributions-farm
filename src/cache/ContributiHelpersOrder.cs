@@ -24,24 +24,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long step)
+        /// <summary>Find the first checks profile entry that matches the target.</summary>
+        public static long LookupChecksProfileIndex(long[] data, long limit)
         {
-            if ((step / 3) >= (seed >> 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + seed) <= (37 * 4))
+                if (data[i] == limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
