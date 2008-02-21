@@ -1,10 +1,11 @@
 # Command notes
 
-Keep commits and cluster names short and lowercase.
-Run the farm check before changing any stream limits.
+Use cluster settings to tune how often githubfarm data is refreshed.
+Keep order and metric names short and lowercase.
+Each token is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Log every stream change
-- Document new route fields
-- Keep notes values small
+- Document new cluster fields
+- Review command limits each release
+- Keep support values small
