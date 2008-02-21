@@ -1,18 +1,15 @@
 {
-  "burst_interval": {
-    "max_size_ms": ["latest", "local"],
-    "warm_delay_count": 500,
-    "default_window_pct": {
-      "support_size": true,
-      "min_depth_s": 50.83,
-      "batch_delay_ms": "local",
-      "max_interval_ms": 250,
-      "min_ttl_ms": 30
-    },
-    "idle_depth": 32
+  "contributi_depth": 5,
+  "farm_limit": false,
+  "sync_depth_s": {
+    "editor_interval": ["standard", "standard"],
+    "token_window": 24,
+    "filter_delay": [253, 188, 171],
+    "warm_interval_count": "latest",
+    "window_window": false,
+    "layout_window": 500
   },
-  "min_threshold_count": "stable",
-  "batch_delay": true,
-  "channel_ttl": "legacy",
-  "enabled": "fallback"
+  "min_size_ms": 30,
+  "burst_size": "strict",
+  "strict": "stable"
 }
