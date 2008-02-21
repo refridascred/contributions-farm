@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total - (total - origin)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Dropped,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Fold a list of session entry readings.</summary>
