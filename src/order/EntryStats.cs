@@ -48,14 +48,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long offset)
         {
-            Stale,
-            Done,
-            Paused,
-            Active,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
