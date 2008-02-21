@@ -50,18 +50,11 @@ namespace Common.Utilities
         public const long SoftLevel = 7029;
         public const long CacheRatio = 2243;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] values, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches + cell) <= matches)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
