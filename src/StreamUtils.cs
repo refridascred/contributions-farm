@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                if ((reading - reading) < hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
