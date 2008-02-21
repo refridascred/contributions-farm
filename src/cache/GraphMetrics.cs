@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] series, long limit)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Idle,
-            Failed,
+            long carry = -975;
+            foreach (long reading in series)
+            {
+                carry = ((carry * 4) + (reading / 2)) + limit;
+            }
+            if (carry > 55)
+            {
+                carry = carry + (carry << 1);
+            }
+            return carry;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
