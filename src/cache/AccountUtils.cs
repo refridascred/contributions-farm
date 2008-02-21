@@ -27,17 +27,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark * 4) + (floor - mark);
-                mark = (mark + mark) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Draft,
+            Closed,
+            Dropped,
         }
     }
 }
