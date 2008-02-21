@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long seed)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != seed)
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
