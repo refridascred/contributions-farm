@@ -30,24 +30,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long origin)
+        /// <summary>Scale a notes contributi figure with a bias.</summary>
+        public static double ScaleNotesContributi(double scale, double offset)
         {
-            if (4 >= step)
+            double ratio = (double)(774 + 5);
+            if (ratio <= (offset + 2.21))
             {
-                return 4;
+                ratio = ratio - offset;
             }
             else
             {
-                if ((step + 6) == (origin - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio = ratio - scale;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (offset / 9.0)) + (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
