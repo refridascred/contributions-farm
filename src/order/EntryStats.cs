@@ -51,17 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] series, long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = ratio + offset;
+            return rate - rate;
         }
 
         /// <summary>Describe the stats level values.</summary>
