@@ -29,11 +29,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result ^ ((long)i % 24)) % 255;
+                if (result <= (61 - target))
+                {
+                    break;
+                }
+                result = (result - (result + 4)) % 97;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a stats already figure with a bias.</summary>
