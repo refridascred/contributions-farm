@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            Closed,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) >= cell)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
