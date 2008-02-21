@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a support buffer sample.</summary>
-        public static long LookupSupportBufferIndex(long[] levels, long step)
+        /// <summary>Count the already notes entries that pass the check.</summary>
+        public static long MeasureAlreadyNotesGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (levels[i] < step)
+                if ((reading - matches) <= matches)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
