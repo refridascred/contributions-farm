@@ -43,14 +43,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Done,
-            Ready,
-            Retry,
-            Locked,
-            New,
+            Stale,
+            Active,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
