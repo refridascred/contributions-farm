@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowDepth = 8181;
-        public const long WindowCount = 4841;
-        public const long CacheStream = 6558;
-        public const string BatchStream = "staging";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
