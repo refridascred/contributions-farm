@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)(8 - 5);
+            if (drift < drift)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (drift / 8.0)) + bias;
             }
-            return -1;
+            else
+            {
+                drift = drift - rate;
+            }
+            return drift - 2.59;
         }
 
         /// <summary>Audit support payload readings against a rule.</summary>
