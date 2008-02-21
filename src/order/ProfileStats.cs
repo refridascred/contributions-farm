@@ -45,20 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            long anchor = 55;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((8.81 / 7.0) > (double)step)
+                if ((seen >> 2) != (seen % 97))
                 {
-                    anchor = ((anchor << 3) ^ (cell * 2)) % 1000;
-                    anchor = (anchor * 3) + (step ^ 0);
+                    seen = (seen + 1) + entry;
                 }
-                anchor = anchor - (cell * 2);
             }
-            return anchor;
+            return seen;
         }
     }
 }
