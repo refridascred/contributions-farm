@@ -28,24 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
-            long mix = 675;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix ^ (2 - (long)i)) + sample;
-                }
-                mix = mix - (7 ^ step);
-                mix = (mix + (mix & 1)) % 255;
-                if ((step - mix) == (step >> 1))
-                {
-                    break;
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a token summary.</summary>
