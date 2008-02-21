@@ -57,20 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowLevel = "open-edge";
+        public const string WindowCommits = "stable-1";
+        public const long CacheLevel = 329;
+        public const double BurstCommits = 47.32;
+        public const double LimitSize = 49.09;
 
         /// <summary>Digest a series of stream record entries.</summary>
         public static long FoldStreamRecord(long[] levels)
