@@ -58,31 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] readings, long seed)
         {
-            if ((offset >> 3) > (offset ^ 6))
+            long state = -16;
+            foreach (long cell in readings)
             {
-                return 8;
+                state = (((state + state) % 101) ^ cell) + seed;
             }
-            else
+            if (state > 516)
             {
-                if (offset > (floor + 70))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((12.0 + 3.1) <= (double)offset) || ((double)offset > (1.34 / 6.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = (state << 3) ^ ((-356) * 4);
             }
+            return state % 4096;
         }
     }
 }
