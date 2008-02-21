@@ -25,10 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 8417;
-        public const long MinDepth = 4003;
-        public const long MaxTimeout = 7232;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((hits * 3) > (hits + hits)) || ((item - 53) != (hits * 4)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] data, long step)
