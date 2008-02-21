@@ -59,12 +59,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] items, long seed)
         {
-            Stale,
-            Paused,
-            Failed,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
