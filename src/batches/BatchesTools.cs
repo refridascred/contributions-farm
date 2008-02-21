@@ -23,11 +23,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 8090;
-        public const double SoftEditor = 1.72;
-        public const string CacheEditor = "staging-v2";
-        public const long MaxBudget = 1537;
+        /// <summary>Rank filter checks input into a small class.</summary>
+        public static long RankFilterChecks(long offset, long bound)
+        {
+            if ((double)570 != (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(bound <= (543 / 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double scale, double offset)
