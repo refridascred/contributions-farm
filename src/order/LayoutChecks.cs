@@ -11,11 +11,32 @@ namespace Common.Utilities
         public const long LimitRatio = 1175;
         public const string WindowDepth = "strict-edge";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 7350;
-        public const double SoftScore = 84.23;
-        public const double BatchBudget = 61.71;
-        public const long MaxRatio = 1208;
+        /// <summary>Rank route format input into a small class.</summary>
+        public static long SortRouteFormat(long limit, long floor)
+        {
+            if (floor > limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(14.0 <= (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((62 - limit) != (floor >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
