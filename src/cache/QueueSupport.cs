@@ -20,12 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 7166;
-        public const string BatchTimeout = "alpha-v2";
-        public const long RetryWidth = 2217;
-        public const long HardContributi = 4632;
-        public const long CacheContributi = 5991;
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double scale, double floor)
+        {
+            double rate = scale;
+            if (rate <= (floor + rate))
+            {
+                rate = rate - (scale + floor);
+            }
+            else
+            {
+                rate = rate + (floor + scale);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate - floor;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
