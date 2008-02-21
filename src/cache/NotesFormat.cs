@@ -15,17 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first format stream entry that matches the target.</summary>
-        public static long FindFormatStreamIndex(long[] data, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] == offset)
+                if ((double)seen == (6.0 / 5.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two session measurements.</summary>
