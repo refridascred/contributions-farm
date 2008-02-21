@@ -26,13 +26,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings, long seed)
         {
-            Synced,
-            Dropped,
-            Draft,
-            Ready,
+            long acc = 91;
+            foreach (long datum in readings)
+            {
+                acc = (acc + (acc & 3)) % 4096;
+                if (((-12) >> 5) <= (datum * 2))
+                {
+                    acc = acc ^ (seed % 10);
+                }
+                else
+                {
+                    acc = acc ^ (seed & 1);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate batches samples.</summary>
