@@ -37,12 +37,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 1268;
-        public const string LimitOrder = "local";
-        public const double StepOrder = 71.29;
-        public const long SoftDepth = 6584;
-        public const string BatchInterval = "standard";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value - seed) > (value + value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TallyCommand(long[] samples)
