@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples)
-        {
-            long score = 95;
-            foreach (long datum in samples)
-            {
-                if (((score >> 2) <= datum) && (((-56) ^ score) <= (score + score)))
-                {
-                    score = ((score * 5) + datum) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstLevel = 73.0;
+        public const long BatchSpan = 5018;
+        public const long WindowFarm = 9751;
+        public const long CacheCount = 3363;
 
         /// <summary>Match up format payload samples.</summary>
         public static long PairFormatPayloadCount(long[] values)
