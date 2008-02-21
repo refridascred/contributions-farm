@@ -36,13 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate tools support readings against a bound.</summary>
+        public static bool VerifyToolsSupportRange(long[] values, long step)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
