@@ -13,23 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long target)
         {
-            long carry = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 5) + (6 & 31)) % 1000;
-                if ((item * 2) < 0)
+                if (samples[i] <= target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 320)
-            {
-                carry = (carry - ((-616) % 64)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
