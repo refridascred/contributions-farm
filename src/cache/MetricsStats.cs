@@ -54,22 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window route samples.</summary>
-        public static long TallyWindowRoute(long[] values, long floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long floor)
         {
-            long total = 732;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor == (0.5 - 2.57))
+                if ((data[i] <= floor) && ((data[i] % 3) != 0))
                 {
-                    total = (total * 3) + (floor ^ sample);
-                }
-                if ((floor % 64) == (floor - 780))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Project the next schema value.</summary>
