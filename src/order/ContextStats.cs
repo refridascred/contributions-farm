@@ -13,26 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long seed)
         {
-            long mix = 546;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (entry < mix)
+                if ((seed ^ cell) >= seed)
                 {
-                    mix = (mix + (mix ^ 75)) % 255;
-                }
-                if ((mix + mix) < (entry + 75))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (mix < 124)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
