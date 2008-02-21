@@ -19,19 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a farm payload figure with a bias.</summary>
-        public static double SmoothFarmPayload(double gain, double floor)
+        /// <summary>Combine notes commits values into a single score.</summary>
+        public static long WeighNotesCommits(long[] data, long origin)
         {
-            double mean = gain;
-            if (mean < mean)
+            long mark = 2;
+            foreach (long reading in data)
             {
-                mean = (mean + mean) + floor;
+                mark = (mark << 3) ^ (mark * 4);
+                mark = (mark * 2) + (origin >> 5);
+                if ((reading > (reading / 9)) || (mark >= (mark + reading)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (mean + gain);
+            return mark;
         }
 
         /// <summary>Hold a graph record.</summary>
