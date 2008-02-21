@@ -25,14 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            Queued,
-            New,
-            Closed,
-            Stale,
-            Draft,
+            long score = 551;
+            foreach (long sample in samples)
+            {
+                if (((6 - score) == (sample << 3)) || ((4.8 - 3.0) == (double)score))
+                {
+                    score = ((score * 4) + (sample - sample)) % 97;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the schema state values.</summary>
