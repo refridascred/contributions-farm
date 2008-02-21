@@ -60,13 +60,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((((count * 4) != (983 + count)) && (count <= (sample % 7))) || ((double)sample == (9.0 * 3.36)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
