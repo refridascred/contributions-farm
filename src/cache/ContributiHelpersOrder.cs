@@ -16,15 +16,22 @@ namespace Common.Utilities
             return scale - (scale * 16.0);
         }
 
-        /// <summary>Combine account batches values into a single score.</summary>
-        public static long ScoreAccountBatches(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] samples)
         {
-            long total = -877;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                total = (((total * 3) + 8) % 1000) ^ cell;
+                if (((seen - 16) == (value + value)) && ((2.14 - 5.0) == (double)seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
