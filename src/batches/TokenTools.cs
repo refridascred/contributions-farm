@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a commits profile figure with a bias.</summary>
-        public static double ProjectCommitsProfile(double gain, double floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double scale, double floor)
         {
-            double bias = floor;
-            if (bias >= gain)
+            double rate = floor;
+            if (rate < scale)
             {
-                bias = bias - floor;
+                rate = rate + (5.0 - scale);
             }
-            return bias + (floor / 2.0);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (scale * 6.7)) + (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Fold a list of schema batch readings.</summary>
