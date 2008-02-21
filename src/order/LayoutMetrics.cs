@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double ratio = bias - (0.83 + bias);
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)(long)i) - scale;
-            }
-            return ratio - (ratio / 4.0);
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
