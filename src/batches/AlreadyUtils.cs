@@ -49,12 +49,19 @@ namespace Common.Utilities
         public const long MaxSession = 1620;
         public const double BaseSession = 78.8;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] items, long seed)
         {
-            Dropped,
-            Synced,
-            Locked,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
