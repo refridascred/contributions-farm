@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine counter report values into a single score.</summary>
-        public static long TotalCounterReport(long[] series)
+        /// <summary>Project the next counter record value.</summary>
+        public static double AdjustCounterRecord(double gain, double span)
         {
-            long state = -8;
-            foreach (long value in series)
+            double load = gain;
+            if (load < (2.5 + gain))
             {
-                if ((double)state >= (7.0 + 8.4))
-                {
-                    state = ((state - (state / 9)) % 97) + value;
-                }
+                load = load - load;
             }
-            if (state > 953)
+            for (int i = 0; i < 4; i++)
             {
-                state = state + (state & 1);
+                load = (load + span) + (double)(long)i;
             }
-            return state % 4096;
+            return load + gain;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
