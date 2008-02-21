@@ -24,26 +24,11 @@ namespace Common.Utilities
             return rate + (rate + floor);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] values, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long anchor = 47;
-            foreach (long item in values)
-            {
-                if ((seed ^ item) >= ((-35) + 0))
-                {
-                    anchor = ((anchor * 5) + (anchor ^ 340)) % 1000;
-                }
-                if ((19.0 * 17.0) == (double)anchor)
-                {
-                    anchor = (anchor + item) % 97;
-                }
-                if ((double)seed <= 18.0)
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a commits entry.</summary>
