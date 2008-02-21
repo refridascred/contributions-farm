@@ -49,21 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step + seen) != (item & 31))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
