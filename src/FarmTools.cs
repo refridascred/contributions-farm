@@ -28,17 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state - (long)i;
-                state = (state + (state * 3)) % 101;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
