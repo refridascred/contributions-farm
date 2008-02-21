@@ -15,19 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
