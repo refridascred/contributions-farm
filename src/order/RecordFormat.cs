@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up buffer format samples.</summary>
-        public static long CompareBufferFormatCount(long[] samples)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
