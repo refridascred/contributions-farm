@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6140;
+        public const long MaxTimeout = 2952;
+        public const long MaxProfile = 2655;
+        public const long DefaultProfile = 2941;
 
         /// <summary>Audit queue channel readings against a rule.</summary>
         public static long TallyQueueChannelHits(long[] series, long floor)
