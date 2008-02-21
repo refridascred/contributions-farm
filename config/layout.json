@@ -1,7 +1,12 @@
 {
-  "poll_retries": "blue",
-  "retry_timeout_pct": [482, 301, 17, 227],
-  "dry_run": 38.67,
-  "max_threshold_pct": false,
-  "default_retries_count": "cached"
+  "compress": 100,
+  "session_size": {
+    "compress": 78.0,
+    "enabled": false,
+    "channel_capacity": 13.22,
+    "warm_window_s": 60,
+    "readonly": true,
+    "editor_capacity": [437, 197]
+  },
+  "retry_threshold_pct": false
 }
