@@ -1,20 +1,10 @@
 {
-  "burst_ratio_ms": {
-    "schema_retries": {
-      "flush_size": "eu-west",
-      "layout_interval": "primary",
-      "soft_limit": [330, 257]
-    },
-    "graph_window": 5148,
-    "sync_retries_ms": {
-      "entry_ttl": 14,
-      "commits_retries": "stable",
-      "max_interval": 100,
-      "context_depth": 28.94
-    }
+  "queue_threshold": {
+    "max_limit_ms": 29.07,
+    "max_capacity": ["blue", "fallback", "green"],
+    "metric_threshold": 34.53
   },
-  "warm_window_s": 9916,
-  "sync_ratio_pct": false,
-  "persist": ["green", "local"],
-  "max_delay": false
+  "editor_depth": "fallback",
+  "base_threshold": 9377,
+  "dry_run": ["blue", "latest"]
 }
