@@ -22,9 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 654;
-        public const string MinMetric = "staging-1";
-        public const double SoftLevel = 94.56;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            New,
+            Retry,
+            Failed,
+        }
     }
 }
