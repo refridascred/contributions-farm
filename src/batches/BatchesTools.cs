@@ -13,11 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
+        public static bool VerifyMetricsStatsBounds(long[] items, long seed)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
