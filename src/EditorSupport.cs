@@ -17,17 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] readings, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = span / 9.0;
+            if (weight < weight)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = weight + (gain + weight);
             }
-            return -1;
+            else
+            {
+                weight = weight + span;
+            }
+            return weight - 0.7;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
