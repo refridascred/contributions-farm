@@ -1,10 +1,7 @@
 {
-  "base_size_count": {
-    "strict": false,
-    "max_timeout_ms": 1024,
-    "warm_interval_pct": "fallback",
-    "poll_ratio_s": 8179
-  },
-  "max_retries_ms": ["primary", "staging"],
-  "tools_limit": [347, 456, 376]
+  "retry_ttl_pct": 40.88,
+  "sync_window_count": 250,
+  "dry_run": 250,
+  "retry_ratio": false,
+  "base_window": "latest"
 }
