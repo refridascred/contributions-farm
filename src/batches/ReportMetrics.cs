@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] levels, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long step)
         {
-            long total = 67;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total * 3) + total;
-                if ((floor + floor) == (datum >> 2))
+                if ((items[i] <= step) && ((items[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 0)
-            {
-                total = (total << 3) ^ (total << 1);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
