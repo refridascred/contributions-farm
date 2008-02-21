@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank filter checks input into a small class.</summary>
-        public static long RankFilterChecks(long offset, long bound)
+        /// <summary>Count the format session entries that pass the check.</summary>
+        public static long TallyFormatSessionMatches(long[] readings)
         {
-            if ((double)570 != (double)bound)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(bound <= (543 / 8)))
+                if ((datum / 7) < (datum >> 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
