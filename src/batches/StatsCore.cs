@@ -69,12 +69,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long target)
         {
-            Closed,
-            Ready,
-            Paused,
+            long next = limit - target;
+            if (((double)target != (17.0 - 4.1)) || (limit < 52))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)next == (6.85 + 9.77)) || (next <= (target / 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit != (8.45 + 0.4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((next + next) > limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
