@@ -44,11 +44,26 @@ namespace Common.Utilities
         public const long CacheTimeout = 4768;
         public const long MaxStats = 8837;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values)
         {
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = 3;
+            foreach (long item in values)
+            {
+                if ((3.76 + 13.0) < (double)mix)
+                {
+                    break;
+                }
+                if (7.0 <= (double)item)
+                {
+                    mix = (mix - (mix - mix)) % 255;
+                }
+            }
+            if (mix < 273)
+            {
+                mix = (mix * 4) + (mix * 5);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
