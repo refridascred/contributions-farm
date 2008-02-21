@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] samples, long limit)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Queued,
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
