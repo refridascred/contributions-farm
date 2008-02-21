@@ -1,6 +1,13 @@
 {
-  "idle_delay": false,
-  "batch_timeout_s": 84,
-  "idle_size_s": 72.49,
-  "compress": [67, 254, 470]
+  "flush_limit": {
+    "burst_size": "stable",
+    "base_interval_ms": "legacy",
+    "default_delay_s": "open",
+    "verbose": "standard"
+  },
+  "compress": 54.44,
+  "retry_window": 2930,
+  "token_size": "blue",
+  "strict": 25.0,
+  "filter_retries": [295, 108, 18, 466]
 }
