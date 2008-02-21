@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] readings, long bound)
+        /// <summary>Combine batch token values into a single score.</summary>
+        public static long DigestBatchToken(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = 19;
+            foreach (long value in levels)
             {
-                if (((long)readings.Length << 2) < (tally << 1))
-                {
-                    tally = ((tally + 1) + datum) - bound;
-                }
+                mark = ((mark + (long)levels.Length) ^ value) + bound;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
