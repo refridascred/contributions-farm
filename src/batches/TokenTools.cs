@@ -27,39 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long seed, long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long span = seed ^ target;
-            if (seed < (target + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.71 * 4.21) != (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - span) != (seed >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)span < (6.3 / 4.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
