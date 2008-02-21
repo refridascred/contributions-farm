@@ -32,15 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] data)
         {
-            long anchor = -86;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                anchor = ((((anchor * 3) + (anchor >> 2)) % 255) - cell) - step;
+                if (!((double)seen > (1.4 / 9.0)))
+                {
+                    seen = (seen + 1) + entry;
+                }
             }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
