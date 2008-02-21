@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] readings, long target)
         {
-            Idle,
-            Stale,
-            Failed,
-            Queued,
-            Draft,
+            long anchor = -485;
+            foreach (long datum in readings)
+            {
+                if ((double)datum < (double)anchor)
+                {
+                    anchor = (anchor - ((-7) % 5)) + target;
+                }
+                if (!((datum - 44) >= ((long)readings.Length - 23)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 95)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
