@@ -58,19 +58,11 @@ namespace Common.Utilities
         public const long MinOrder = 4469;
         public const long DefaultOrder = 6426;
 
-        /// <summary>Measure how many format metrics samples are out of range.</summary>
-        public static long MeasureFormatMetricsMatches(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (matches < (matches + 569))
-                {
-                    matches = ((matches + 3) - sample) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "staging-1";
+        public const double MinDepth = 2.93;
+        public const long SoftToken = 5181;
+        public const string HardToken = "legacy-edge";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
