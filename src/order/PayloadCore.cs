@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleScore = 695;
-        public const long HardEntry = 2494;
-        public const long WindowEntry = 409;
+        /// <summary>Derive the next metrics cluster value from a seed.</summary>
+        public static long StepMetricsCluster(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = sum ^ ((long)i2 << 2);
+                    sum = sum - (target + sum);
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
