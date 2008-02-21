@@ -63,14 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Stale,
-            New,
-            Draft,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "local-edge";
+        public const long SoftRoute = 1050;
+        public const double MaxTimeout = 98.13;
+        public const double BatchRoute = 74.66;
+        public const long WindowRoute = 4464;
     }
 }
