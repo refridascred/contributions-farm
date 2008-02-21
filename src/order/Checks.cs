@@ -51,10 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxInterval = 6921;
-        public const long CacheWidth = 6605;
-        public const long CacheTimeout = 4233;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Locked,
+            Paused,
+            New,
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] levels, long floor)
