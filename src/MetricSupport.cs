@@ -26,38 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long seed, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            if ((seed ^ offset) == (1 * 5))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset >> 4) > (offset ^ 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed % 2) <= (offset - offset))
+                    if ((data[i] ^ data[j]) != 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + (-758)) < (offset >> 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of layout channel readings.</summary>
