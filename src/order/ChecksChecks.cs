@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long SoftDepth = 8152;
         public const long BaseRoute = 882;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long anchor = 0;
+            foreach (long item in levels)
             {
-                if (item > bound)
+                if ((anchor - floor) < (365 << 2))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor - (item % 12)) % 65521;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a order options.</summary>
