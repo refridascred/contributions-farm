@@ -1,11 +1,5 @@
 {
-  "max_retries_pct": {
-    "sync_depth": 250,
-    "batch_interval": 93.56,
-    "max_limit_ms": 100,
-    "max_threshold_count": "edge",
-    "sync_limit_s": "strict"
-  },
-  "hard_timeout_ms": true,
-  "readonly": "staging"
+  "idle_capacity_s": false,
+  "idle_window": [355, 59, 3, 147],
+  "cache_limit_count": [391, 28, 393, 485]
 }
