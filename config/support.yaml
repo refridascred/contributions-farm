@@ -1,10 +1,4 @@
 # support settings
-counter_threshold:
-  - legacy
-  - eu-west
-  - eu-west
-burst_timeout_count:
-  - 104
-  - 429
-  - 442
-min_capacity_s: 66.08
+githubfarm_size: 5587
+stats_window: 59
+default_retries_s: 100
