@@ -34,22 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items)
-        {
-            long acc = 130;
-            foreach (long datum in items)
-            {
-                if (4.12 >= (double)datum)
-                {
-                    acc = ((acc * 2) + (acc >> 2)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstInterval = 5249;
+        public const long BurstSize = 1404;
+        public const double MinDepth = 31.61;
     }
 }
