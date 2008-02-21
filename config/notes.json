@@ -1,12 +1,10 @@
 {
-  "retry_retries_ms": 60,
-  "hard_ratio": 250,
-  "default_delay": ["latest", "open"],
-  "hard_timeout_pct": {
-    "verbose": 9869,
-    "idle_capacity_pct": 12.81,
-    "cluster_window": "eu-west",
-    "githubfarm_interval": 100,
-    "cache_retries": "stable"
-  }
+  "idle_retries_count": 84.4,
+  "default_interval_pct": {
+    "max_interval_pct": "standard",
+    "strict": 96.41,
+    "record_depth": 2.79
+  },
+  "batch_delay_pct": "primary",
+  "min_capacity_ms": 11
 }
