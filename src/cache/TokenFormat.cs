@@ -36,19 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats entry reading.</summary>
-        public static double ScaleStatsEntry(double scale, double offset)
-        {
-            double bias = scale;
-            if (bias < bias)
-            {
-                bias = (bias - (double)614) + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 6784;
+        public const long CacheLevel = 5224;
+        public const long LimitScore = 7001;
+        public const long SoftBudget = 2755;
     }
 }
