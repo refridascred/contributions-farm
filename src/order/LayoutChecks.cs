@@ -52,19 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command commits readings.</summary>
-        public static long DigestCommandCommits(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long bound)
         {
-            long carry = -8;
-            foreach (long item in levels)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (carry ^ (carry % 2)) % 4096;
-                if ((item + item) < (2 ^ item))
-                {
-                    break;
-                }
+                total = (total * 4) + (total << 1);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
     }
 }
