@@ -66,13 +66,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            Dropped,
-            Failed,
-            Done,
-            Closed,
+            long sum = 0;
+            foreach (long item in readings)
+            {
+                if (!((item % 24) >= (item & 255)))
+                {
+                    sum = ((sum << 3) ^ (978 << 1)) % 255;
+                }
+                if ((item - 796) < (item >> 4))
+                {
+                    sum = sum + (6 & 127);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a queue options.</summary>
