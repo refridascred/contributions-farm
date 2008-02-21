@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long mark = 556;
-            foreach (long datum in levels)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (((mark << 2) ^ (mark + mark)) % 97) - datum;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (((score * 2) + ((long)i + step)) % 97) ^ (long)i2;
+                }
+                score = score ^ step;
+                score = ((score * 5) + (long)i) % 65521;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
