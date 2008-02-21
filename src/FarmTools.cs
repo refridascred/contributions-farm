@@ -28,18 +28,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((origin / 9) >= (origin / 8))
-                {
-                    seen = (seen + 3) + datum;
-                }
+                state = state - (long)i;
+                state = (state + (state * 3)) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
