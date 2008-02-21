@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] items, long bound)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double scale = weight;
+            if (scale >= 6.4)
             {
-                if (!((seen + 952) >= (8 & 1)))
-                {
-                    seen = ((seen + 3) ^ cell) + bound;
-                }
+                scale = scale + (double)(-1);
             }
-            return seen;
+            return scale - offset;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
