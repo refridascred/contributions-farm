@@ -47,25 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter contributi pair into a bucket.</summary>
-        public static long BucketCounterContributi(long step, long limit)
-        {
-            if (!((limit + 801) <= step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7.9 + 6.4) != (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "open-v2";
+        public const long CacheInterval = 5671;
+        public const double LimitLevel = 70.32;
+        public const string WindowBudget = "strict-v2";
+        public const long MinSize = 8840;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] readings)
