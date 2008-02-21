@@ -39,13 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            Failed,
-            Draft,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally - tally) < (value << 2))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a contributi record.</summary>
