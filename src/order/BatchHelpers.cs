@@ -32,19 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long origin)
+        /// <summary>Iterate the commits tools series from a seed.</summary>
+        public static long DeriveCommitsTools(long limit)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum > origin)
+                if (((sum - limit) > (limit & 63)) && ((sum + sum) == (sum + limit)))
                 {
-                    ok = false;
-                    break;
+                    sum = sum ^ (sum * 2);
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ok;
+            return sum;
         }
     }
 }
