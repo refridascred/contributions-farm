@@ -29,13 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
+        public static bool ValidateQueueGithubfarmBounds(long[] readings, long target)
         {
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
