@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const long IdleBudget = 6243;
         public const double BurstAlready = 46.7;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Grade a schema context value against two limits.</summary>
+        public static long ClassifySchemaContext(long step, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
+            if (step > (step - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + 658) > (step * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a tools options.</summary>
