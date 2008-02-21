@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxRatio = 7199;
-        public const long StepStats = 4107;
-        public const string WindowSize = "staging-v2";
-        public const long SoftDepth = 9506;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            New,
+            Pending,
+            Failed,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Locate a session profile reading by value.</summary>
         public static long LookupSessionProfileIndex(long[] data, long origin)
