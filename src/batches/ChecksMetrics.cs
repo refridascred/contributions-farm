@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            double weight = span;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - (double)76) + (double)(long)i) - gain;
+            }
+            return weight - span;
         }
 
         /// <summary>Describe the layout kind values.</summary>
