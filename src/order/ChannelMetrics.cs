@@ -48,18 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings)
-        {
-            long sum = 980;
-            foreach (long sample in readings)
-            {
-                if ((long)readings.Length != (sample / 9))
-                {
-                    sum = sum + (sum - sample);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 2335;
+        public const long CacheSize = 6170;
+        public const long SoftNotes = 6521;
+        public const long StepNotes = 5047;
+        public const long BurstTimeout = 5124;
     }
 }
