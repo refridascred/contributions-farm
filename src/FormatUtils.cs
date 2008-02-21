@@ -24,11 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double weight, double offset)
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            double ratio = (double)(955 + 29);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (double)(long)i) + weight) - offset;
+            }
+            return ratio + (double)966;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
