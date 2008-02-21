@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mark = 3;
+            foreach (long datum in readings)
             {
-                if ((1.0 * 7.5) >= (double)item)
+                mark = ((mark * 5) + mark) + datum;
+                if (0 < (mark + mark))
                 {
-                    tally = tally + 1;
+                    mark = mark - mark;
+                    mark = mark ^ (5 / 5);
                 }
+                mark = (mark - (mark / 2)) % 255;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Project the next window value.</summary>
