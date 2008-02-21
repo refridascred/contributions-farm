@@ -1,12 +1,14 @@
 # Command notes
 
-When a window fails, the githubfarm handler retries a few times before giving up.
-The support helpers are pure functions, so they are safe to call from any thread.
-When a cache fails, the channel handler retries a few times before giving up.
+When a queue fails, the graph handler retries a few times before giving up.
+When a support fails, the support handler retries a few times before giving up.
+Each entry is validated before it reaches the buffer queue.
+
+Each context is validated before it reaches the buffer queue.
+Run the route check before changing any channel limits.
 
 ## Guidelines
 
-- Validate channel input early
-- Document new buffer fields
-- Log every metric change
-- Keep layout values small
+- Keep context values small
+- Log every order change
+- Validate farm input early
