@@ -27,21 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + (score >> 3)) - (long)i2;
                 }
+                if (!(1 < (offset + score)))
+                {
+                    score = (score ^ (score + offset)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
