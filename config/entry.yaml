@@ -1,13 +1,4 @@
 # entry settings
-max_delay_count: true
-cache_limit_pct: stable
-readonly:
-  - 191
-  - 181
-  - 137
-  - 362
-verbose:
-  - open
-  - legacy
-  - cached
-sync_retries: local
+min_window_ms: stable
+strict: primary
+retry_depth_s: eu-west
