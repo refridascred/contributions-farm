@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings, long limit)
-        {
-            long anchor = 639;
-            foreach (long reading in readings)
-            {
-                anchor = (((anchor ^ anchor) % 101) - reading) - limit;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetrySpan = 6617;
+        public const long MinRecord = 7354;
+        public const long SoftCount = 1959;
+        public const long CacheRecord = 4095;
 
         /// <summary>Fold a list of schema batch readings.</summary>
         public static long CombineSchemaBatch(long[] values, long bound)
