@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryDepth = "stable";
-        public const double MinCommand = 80.1;
-        public const long BaseWidth = 3602;
-        public const double RetryCount = 67.1;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Failed,
+            Locked,
+            Retry,
+            Queued,
+            Active,
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiMatches(long[] series, long limit)
