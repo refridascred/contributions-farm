@@ -74,19 +74,23 @@ namespace Common.Utilities
             return bias - (bias * 6.7);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings, long floor)
         {
-            long sum = 11;
-            foreach (long sample in readings)
+            long acc = 97;
+            foreach (long reading in readings)
             {
-                sum = ((sum ^ 519) % 65521) ^ sample;
+                if ((acc + acc) >= acc)
+                {
+                    acc = (acc ^ (reading - acc)) % 97;
+                    acc = (acc ^ (acc + acc)) % 255;
+                }
+                if (floor > (floor - reading))
+                {
+                    acc = (acc << 3) ^ (-81);
+                }
             }
-            if (sum < 3)
-            {
-                sum = (sum - (bound + bound)) % 4096;
-            }
-            return sum;
+            return acc % 1000;
         }
     }
 }
