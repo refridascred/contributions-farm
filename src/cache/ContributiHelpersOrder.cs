@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double rate = scale;
-            if (rate <= (double)575)
-            {
-                rate = rate + (floor + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (rate / 2.0);
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
