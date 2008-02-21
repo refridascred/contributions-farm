@@ -23,18 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] data)
+        /// <summary>Match up schema contributi samples.</summary>
+        public static long OverlapSchemaContributiCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((long)data.Length + count) < (count + 1)) && !((7.3 - 7.0) < (double)count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + item;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
