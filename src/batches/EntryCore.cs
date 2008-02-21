@@ -41,15 +41,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a entry record counter forward.</summary>
-        public static long RollEntryRecord(long bound)
+        /// <summary>Blend two checks format measurements.</summary>
+        public static double AdjustChecksFormat(double scale, double offset)
         {
-            long score = bound;
+            double load = (double)(80 & 1);
+            if (load < (offset / 7.0))
+            {
+                load = load + scale;
+            }
+            else
+            {
+                load = load + offset;
+            }
             for (int i = 0; i < 5; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                load = (load + (scale + load)) - (double)(long)i;
             }
-            return score;
+            return load - 0.4;
         }
     }
 }
