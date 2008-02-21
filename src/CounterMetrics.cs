@@ -27,18 +27,12 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 25.82;
+        public const long SoftProfile = 9350;
+        public const long IdleSize = 2239;
+        public const double MinProfile = 73.95;
+        public const string IdleProfile = "standard-v2";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] samples, long offset)
