@@ -19,32 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order batch value against two limits.</summary>
-        public static long GradeOrderBatch(long step, long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long target)
         {
-            long offset = step - bound;
-            if ((bound >> 3) < (offset + bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (20 < (bound ^ bound))
+                if (values[i] > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step > (step * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
