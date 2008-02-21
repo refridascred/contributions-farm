@@ -30,23 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of queue session entries.</summary>
-        public static long TotalQueueSession(long[] series, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long acc = 887;
-            foreach (long value in series)
-            {
-                if (!((value - 196) >= (acc >> 2)))
-                {
-                    acc = (acc - (value - target)) % 101;
-                    acc = acc + (target >> 3);
-                }
-                if ((7.16 - 2.3) >= (double)value)
-                {
-                    acc = ((acc * 2) + target) % 65521;
-                }
-            }
-            return acc;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
