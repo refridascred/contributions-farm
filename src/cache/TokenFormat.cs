@@ -32,16 +32,19 @@ namespace Common.Utilities
         public const long MaxFilter = 3470;
         public const long MinRatio = 1610;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] data, long step)
         {
-            long sum = 20;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long item in data)
             {
-                sum = (sum - (sample & 7)) - bound;
-                sum = (sum << 2) ^ (sample % 12);
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
