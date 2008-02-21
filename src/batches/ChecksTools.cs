@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            double ratio = 3.45;
+            if (ratio < bias)
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 7.4) - (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
