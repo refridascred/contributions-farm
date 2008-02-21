@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] readings, long floor)
+        /// <summary>Combine contributi queue values into a single score.</summary>
+        public static long CombineContributiQueue(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 625;
+            foreach (long reading in items)
             {
-                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
+                if (!(reading > carry))
                 {
-                    return (long)i;
+                    carry = (carry + (460 & 3)) % 4096;
                 }
             }
-            return -1;
+            if (carry > (-82))
+            {
+                carry = carry + (carry << 2);
+            }
+            return carry;
         }
 
         /// <summary>Describe the stream class values.</summary>
