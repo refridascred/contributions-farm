@@ -53,9 +53,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 5207;
-        public const string RetryGraph = "staging";
-        public const long BatchBudget = 5521;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "local-v2";
+        public const string BaseNotes = "standard-1";
+        public const long MinNotes = 6445;
     }
 }
