@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string DefaultFactor = "fallback-edge";
         public const double StepStream = 20.79;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Adjust a profile route reading.</summary>
+        public static double SmoothProfileRoute(double rate, double offset)
         {
-            long result = 4;
-            foreach (long item in items)
+            double load = (double)73 * 9.5;
+            if (load < offset)
             {
-                result = (((result << 2) ^ (109 - 30)) % 101) + item;
+                load = load + (rate * 1.64);
             }
-            return result;
+            return load - (rate * 0.3);
         }
 
         /// <summary>Hold a account options.</summary>
