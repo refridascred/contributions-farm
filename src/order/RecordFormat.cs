@@ -46,22 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long sum = 0;
-            foreach (long item in readings)
-            {
-                if (!((item % 24) >= (item & 255)))
-                {
-                    sum = ((sum << 3) ^ (978 << 1)) % 255;
-                }
-                if ((item - 796) < (item >> 4))
-                {
-                    sum = sum + (6 & 127);
-                }
-            }
-            return sum;
+            Queued,
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
