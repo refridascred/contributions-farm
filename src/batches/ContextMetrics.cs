@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = acc ^ (target + acc);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine stream checks values into a single score.</summary>
