@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] series, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (value < limit)
+                if (!(tally >= (tally + datum)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
