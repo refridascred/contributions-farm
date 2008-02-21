@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double bias, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double mean = bias;
-            if (mean > (8.1 - mean))
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (double)9;
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
