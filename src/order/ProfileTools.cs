@@ -15,22 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long limit)
         {
-            long sum = 887;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (!((cell % 100) <= limit))
+                if (datum > limit)
                 {
-                    sum = ((sum * 5) + (cell >> 2)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > 2)
-            {
-                sum = (sum << 3) ^ 6;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
