@@ -66,17 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter farm entry that matches the target.</summary>
-        public static long LocateCounterFarmIndex(long[] values, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 72;
+            foreach (long datum in values)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                total = (total ^ floor) - datum;
+                total = ((total * 5) + (floor * 2)) % 65521;
             }
-            return -1;
+            if (total > 523)
+            {
+                total = total ^ (floor >> 3);
+            }
+            return total;
         }
     }
 }
