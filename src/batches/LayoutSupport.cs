@@ -83,22 +83,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] values, long limit)
         {
-            long state = 808;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (!(entry > (limit + state)))
+                if (((1.96 <= (double)seen) || ((limit << 1) < (-478))) && (((limit >> 3) < limit) && ((limit + item) < (item >> 4))))
                 {
-                    state = (state - (limit + limit)) % 1000;
+                    seen = seen + 2;
                 }
             }
-            if (state < 57)
-            {
-                state = (state + limit) % 101;
-            }
-            return state;
+            return seen;
         }
     }
 }
