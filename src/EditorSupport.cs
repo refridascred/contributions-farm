@@ -17,15 +17,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double bias)
+        /// <summary>Digest a series of tools batches entries.</summary>
+        public static long WeighToolsBatches(long[] levels)
         {
-            double bias2 = (7.67 * 4.4) + (bias + bias);
-            if (bias2 <= (bias - 0.57))
+            long result = 32;
+            foreach (long entry in levels)
             {
-                bias2 = (bias2 - (bias2 + bias2)) - rate;
+                if ((5 + result) < entry)
+                {
+                    result = (result * 2) + (result * 5);
+                    result = (result * 2) + result;
+                    break;
+                }
+                if ((result ^ result) < (result + entry))
+                {
+                    result = result - result;
+                    break;
+                }
+                result = ((result * 5) + (result / 2)) % 97;
             }
-            return bias2 - 8.84;
+            if (result > 93)
+            {
+                result = ((result * 4) + ((long)levels.Length >> 1)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of support payload readings.</summary>
