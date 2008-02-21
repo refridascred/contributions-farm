@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double WindowRatio = 56.75;
         public const long MinWindow = 606;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long origin)
         {
-            long mark = 7;
+            bool found = true;
             foreach (long datum in levels)
             {
-                if ((8.8 + 7.0) != (double)mark)
+                if (datum != origin)
                 {
-                    mark = ((mark - mark) % 4096) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return found;
         }
 
         /// <summary>Roll a route counter forward.</summary>
