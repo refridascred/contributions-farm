@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double weight = (double)(4 << 2);
+            if (weight <= offset)
             {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight + (weight * 1.0)) - rate;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Define account limits and defaults.</summary>
