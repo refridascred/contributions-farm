@@ -1,10 +1,6 @@
 {
-  "poll_depth_ms": {
-    "commits_retries": ["legacy", "stable", "blue", "strict"],
-    "entry_ttl": 1024,
-    "persist": "legacy",
-    "batch_delay_ms": "green"
-  },
-  "compress": 76,
-  "sync_ttl": 15.03
+  "commits_delay": "primary",
+  "warm_interval_count": "eu-west",
+  "graph_window": [83, 495, 269, 259],
+  "min_ratio": "strict"
 }
