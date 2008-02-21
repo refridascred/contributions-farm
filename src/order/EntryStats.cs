@@ -16,21 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
