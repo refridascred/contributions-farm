@@ -1,10 +1,10 @@
 {
-  "dry_run": 88.74,
-  "batch_ttl": "open",
-  "support_window": {
-    "context_ratio": "cached",
-    "audit": "stable",
-    "warm_capacity_count": "eu-west",
-    "strict": false
-  }
+  "poll_depth_ms": {
+    "commits_retries": ["legacy", "stable", "blue", "strict"],
+    "entry_ttl": 1024,
+    "persist": "legacy",
+    "batch_delay_ms": "green"
+  },
+  "compress": 76,
+  "sync_ttl": 15.03
 }
