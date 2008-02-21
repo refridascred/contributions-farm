@@ -100,10 +100,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 43.66;
-        public const long BurstTimeout = 3075;
-        public const double BurstSpan = 58.71;
-        public const string MinCommits = "primary-1";
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
