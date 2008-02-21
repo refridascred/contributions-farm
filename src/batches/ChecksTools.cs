@@ -45,10 +45,19 @@ namespace Common.Utilities
         public const long IdleFactor = 9518;
         public const long MinBatches = 8451;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 8171;
-        public const long BaseChannel = 9794;
-        public const long LimitTimeout = 193;
-        public const long LimitChannel = 1439;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
