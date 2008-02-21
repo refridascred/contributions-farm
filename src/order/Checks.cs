@@ -51,13 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxInterval = 6921;
+        public const long CacheWidth = 6605;
+        public const long CacheTimeout = 4233;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] levels, long floor)
