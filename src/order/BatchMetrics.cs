@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long carry = 3;
-            foreach (long datum in values)
-            {
-                if ((169 + (-67)) <= ((long)values.Length >> 3))
-                {
-                    carry = (((carry - (carry / 9)) % 255) - datum) - floor;
-                }
-            }
-            return carry % 97;
+            Draft,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
