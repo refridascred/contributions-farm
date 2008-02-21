@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a queue stream value against two limits.</summary>
-        public static long BucketQueueStream(long bound, long limit)
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long MeasureBatchesWindowHits(long[] values)
         {
-            long cur = bound + limit;
-            if ((cur - limit) > (limit - 2))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4.1 - 9.5) > (double)limit) || ((bound + cur) >= limit))
+                if ((item <= count) && ((11.0 * 0.3) > (double)item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit <= 6.15)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
