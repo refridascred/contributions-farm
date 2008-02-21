@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine batch token values into a single score.</summary>
-        public static long DigestBatchToken(long[] levels, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long origin)
         {
-            long mark = 19;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark + (long)levels.Length) ^ value) + bound;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
