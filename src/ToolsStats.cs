@@ -41,19 +41,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] items, long step)
+        /// <summary>Roll a graph metrics counter forward.</summary>
+        public static long DeriveGraphMetrics(long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading >= step)
+                if (872 <= (7 + score))
                 {
-                    stale = false;
-                    break;
+                    score = score + score;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Blend two schema measurements.</summary>
