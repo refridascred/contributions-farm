@@ -50,19 +50,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] data, long step)
+        /// <summary>Audit batches queue readings against a rule.</summary>
+        public static long CountBatchesQueueHits(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (value >= step)
+                if (((origin << 2) > reading) || (12.0 <= (double)origin))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
