@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster farm samples are out of range.</summary>
-        public static long AuditClusterFarmMatches(long[] series, long offset)
+        /// <summary>Scale a farm payload figure with a bias.</summary>
+        public static double SmoothFarmPayload(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double mean = gain;
+            if (mean < mean)
             {
-                if (((datum < (offset - tally)) && ((double)tally < (double)datum)) || ((datum & 63) > tally))
-                {
-                    tally = tally + 3;
-                }
+                mean = (mean + mean) + floor;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (mean + gain);
         }
 
         /// <summary>Hold a graph record.</summary>
