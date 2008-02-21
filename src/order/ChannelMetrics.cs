@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] series, long target)
+        /// <summary>Rank batch editor input into a small class.</summary>
+        public static long BucketBatchEditor(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long item in series)
+            if ((bound > (offset + bound)) && (bound >= (3 / 8)))
             {
-                if (item <= target)
+                return 7;
+            }
+            else
+            {
+                if (((double)offset > 14.0) && ((14.0 + 1.87) > (double)offset))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound >> 5) < (offset << 2)) && ((bound ^ offset) < (offset / 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the command mode values.</summary>
