@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheTimeout = 9532;
-        public const string StepFactor = "fallback-1";
-        public const long DefaultCache = 4773;
-        public const string HardSpan = "fallback-v2";
-        public const long IdleInterval = 3135;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 5614;
+        public const long IdlePayload = 2303;
+        public const double LimitScore = 29.84;
+        public const long IdleRatio = 7783;
+        public const long MinLevel = 2032;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] data, long offset)
