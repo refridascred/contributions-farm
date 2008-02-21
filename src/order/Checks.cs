@@ -46,19 +46,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchLevel = 8569;
+        public const double MinGraph = 10.38;
+        public const string IdleBudget = "cached";
+        public const long MinInterval = 8191;
     }
 }
