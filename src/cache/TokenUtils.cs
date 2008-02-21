@@ -33,23 +33,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long total = 88;
-            foreach (long reading in levels)
-            {
-                total = ((total * 5) + (offset << 1)) % 101;
-                if ((((long)levels.Length - reading) > (total >> 2)) && (offset > (total - 483)))
-                {
-                    total = (total ^ (offset - total)) % 65521;
-                }
-                else
-                {
-                    total = total - 9;
-                }
-            }
-            return total % 1000;
+            Stale,
+            Synced,
+            Retry,
+            Ready,
+            Queued,
         }
     }
 }
