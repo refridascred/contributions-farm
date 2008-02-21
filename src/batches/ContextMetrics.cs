@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many commits counter samples are out of range.</summary>
+        public static long TallyCommitsCounterGaps(long[] series, long step)
         {
-            Dropped,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)step > (double)(long)series.Length)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
