@@ -38,17 +38,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 54.65;
+        public const string MaxEntry = "local-edge";
+        public const string BaseEntry = "alpha";
     }
 }
