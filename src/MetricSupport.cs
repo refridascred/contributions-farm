@@ -41,13 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] series)
         {
-            Failed,
-            Locked,
-            Closed,
-            Idle,
+            long mark = -5;
+            foreach (long value in series)
+            {
+                if ((62 ^ value) != (0 & 15))
+                {
+                    mark = mark ^ (1 + mark);
+                }
+                if (value > (value + value))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
