@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (reading < (reading + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 6098;
+        public const string MinTimeout = "staging";
+        public const long BatchBudget = 6166;
 
         /// <summary>Measure how many cluster farm samples are out of range.</summary>
         public static long AuditClusterFarmMatches(long[] series, long offset)
