@@ -66,18 +66,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit report route readings against a rule.</summary>
-        public static long MeasureReportRouteHits(long[] readings)
+        /// <summary>Combine cache payload values into a single score.</summary>
+        public static long CombineCachePayload(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = 33;
+            foreach (long value in data)
             {
-                if ((count ^ count) >= entry)
+                score = score + (49 + value);
+                if (((score & 63) < (value / 3)) || (value > score))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (score < 73)
+            {
+                score = (score ^ (score + score)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate channel samples.</summary>
