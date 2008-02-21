@@ -1,15 +1,10 @@
 # Command notes
 
-Each support is validated before it reaches the notes queue.
-The route helpers are pure functions, so they are safe to call from any thread.
-Keep profile and profile names short and lowercase.
-
-The editor report groups every format by metric.
-Keep command and context names short and lowercase.
+When a filter fails, the buffer handler retries a few times before giving up.
+Each contributi is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new entry fields
-- Review batches limits each release
-- Validate command input early
+- Prefer metric defaults
+- Validate report input early
+- Log every profile change
