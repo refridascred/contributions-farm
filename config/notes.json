@@ -1,5 +1,19 @@
 {
-  "compress": "edge",
-  "default_ratio": false,
-  "batch_interval": "standard"
+  "base_size_pct": {
+    "min_ttl_pct": ["edge", "standard", "open", "eu-west"],
+    "default_limit_pct": 52.04,
+    "readonly": false,
+    "cluster_interval": 60,
+    "retry_retries": {
+      "min_ratio_count": 1024,
+      "default_retries": ["latest", "edge", "standard", "legacy"],
+      "persist": false,
+      "burst_limit_pct": 6667,
+      "stream_depth": "open"
+    }
+  },
+  "checks_window": 38.36,
+  "persist": 1024,
+  "strict": 250,
+  "min_window_s": 93
 }
