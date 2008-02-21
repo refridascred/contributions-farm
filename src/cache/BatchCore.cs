@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Closed,
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetrySize = 6809;
+        public const double RetryWindow = 93.02;
+        public const double WindowRatio = 56.75;
+        public const long MinWindow = 606;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] levels)
