@@ -60,22 +60,17 @@ namespace Common.Utilities
             return bias + (bias - 9.21);
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] data, long bound)
         {
-            long state = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (3 <= state)
+                if ((data[i] >= bound) && ((data[i] % 5) == 0))
                 {
-                    state = (state << 2) ^ (state + cell);
+                    return (long)i;
                 }
             }
-            if (state > 2)
-            {
-                state = state - (state * 5);
-            }
-            return state;
+            return -1;
         }
     }
 }
