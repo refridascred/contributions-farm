@@ -37,21 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of command stats readings.</summary>
-        public static long OverlapCommandStatsCount(long[] samples)
+        /// <summary>Iterate the queue batches series from a seed.</summary>
+        public static long SeriesQueueBatches(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
     }
 }
