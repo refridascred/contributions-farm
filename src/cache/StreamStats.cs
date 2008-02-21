@@ -19,10 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 88.31;
-        public const long HardOrder = 123;
-        public const long MinSize = 1463;
+        /// <summary>Roll a contributi report counter forward.</summary>
+        public static long IterateContributiReport(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                long gap = (acc / 4) >> 1;
+                if ((long)i <= acc)
+                {
+                    gap = ((gap * 5) + (floor % 3)) % 65521;
+                }
+                if ((acc << 1) <= (acc + gap))
+                {
+                    acc = (acc - (acc ^ acc)) % 4096;
+                    gap = gap ^ (floor - 83);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] levels, long limit)
