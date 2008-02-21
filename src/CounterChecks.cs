@@ -38,10 +38,20 @@ namespace Common.Utilities
         public const long MinOrder = 4469;
         public const long DefaultOrder = 6426;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryTimeout = 33.38;
-        public const long BaseScore = 1840;
-        public const long WindowBatch = 204;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
