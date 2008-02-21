@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=313
+log "limit is ${COMMAND_LIMIT}"
 
-for item in standard staging; do
+for item in blue strict; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
