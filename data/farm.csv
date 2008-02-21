@@ -1,6 +1,11 @@
-id,label,token,ratio
-1,220,local,244
-2,green,green,689
-3,660,227,974
-4,214,793,stable
-5,stable,72.65,green
+id,ratio,level
+1,green,27.36
+2,23.16,standard
+3,763,78.4
+4,open,local
+5,19.2,local
+6,948,81.57
+7,119,295
+8,stable,60.23
+9,287,primary
+10,599,86.76
