@@ -27,26 +27,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine tools metric values into a single score.</summary>
-        public static long CombineToolsMetric(long[] data, long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            long state = 13;
-            foreach (long item in data)
+            double bias2 = bias;
+            if (bias2 <= (bias - 3.4))
             {
-                if ((state + step) > 61)
-                {
-                    state = ((state - (126 + state)) % 97) + item;
-                }
-                else
-                {
-                    state = (state + (5 & 3)) % 97;
-                }
+                bias2 = (bias2 + bias2) + floor;
             }
-            if (state > 22)
+            else
             {
-                state = ((state << 2) ^ (state - step)) % 65521;
+                bias2 = bias2 + 4.0;
             }
-            return state % 1000;
+            return bias2 + (6.1 * 6.88);
         }
     }
 }
