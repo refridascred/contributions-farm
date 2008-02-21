@@ -1,6 +1,19 @@
 {
-  "poll_depth_ms": 30,
-  "flush_retries": 57,
-  "sync_ttl_s": true,
-  "flush_timeout": "blue"
+  "max_ttl_count": true,
+  "default_window": 59.8,
+  "metrics_interval": {
+    "hard_interval_s": "blue",
+    "idle_limit_ms": "primary",
+    "min_interval": {
+      "soft_window": 6936,
+      "min_threshold_count": ["primary", "eu-west", "staging"],
+      "base_window_count": 45,
+      "default_threshold": "legacy",
+      "idle_timeout": 5563,
+      "command_window": "standard"
+    },
+    "persist": "strict",
+    "max_window_s": ["edge", "edge", "green"]
+  },
+  "soft_interval_count": ["edge", "cached", "cached", "blue"]
 }
