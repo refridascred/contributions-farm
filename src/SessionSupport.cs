@@ -18,19 +18,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((step <= (step << 2)) || (count <= (17 - count)))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 8897;
+        public const double BaseRatio = 90.44;
+        public const string LimitSession = "standard";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportOutliers(long[] data)
