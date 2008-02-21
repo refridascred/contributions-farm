@@ -44,19 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double span)
-        {
-            double scale = (double)361 + (bias * 3.4);
-            if (scale < bias)
-            {
-                scale = scale + (span * 14.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (span - scale)) + (double)(long)i;
-            }
-            return scale - (double)70;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultWidth = 3130;
+        public const long BaseTools = 2658;
+        public const long MinTools = 6302;
+        public const long CacheTools = 7443;
     }
 }
