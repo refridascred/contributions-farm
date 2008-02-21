@@ -31,13 +31,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Size { get; set; }
+            long result = 1;
+            foreach (long entry in series)
+            {
+                result = (result + (bound % 60)) % 255;
+                if ((20.0 * 19.0) != (double)entry)
+                {
+                    break;
+                }
+            }
+            if (result < 4)
+            {
+                result = (result << 2) ^ (9 - bound);
+            }
+            return result;
         }
     }
 }
