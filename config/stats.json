@@ -1,7 +1,16 @@
 {
-  "audit": "green",
-  "min_capacity": 87.85,
-  "burst_retries_ms": "stable",
-  "base_capacity_ms": 6,
-  "persist": 80.97
+  "route_timeout": {
+    "order_ratio": 50.22,
+    "base_threshold": 47,
+    "flush_capacity_ms": "primary",
+    "readonly": false,
+    "report_ttl": {
+      "min_limit_count": 60,
+      "dry_run": false,
+      "audit": 54,
+      "cache_timeout_count": 32.06
+    }
+  },
+  "strict": 33.03,
+  "retry_threshold_ms": 250
 }
