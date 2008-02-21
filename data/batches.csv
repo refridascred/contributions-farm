@@ -1,8 +1,9 @@
-id,weight,label,rank
-1,eu-west,732,strict
-2,558,156,7.98
-3,634,staging,16.16
-4,137,64.29,24.59
-5,64.92,578,blue
-6,3.54,24.71,stable
-7,80.75,standard,25.15
+id,weight,count,region,state
+1,437,primary,499,33.54
+2,eu-west,988,eu-west,2.7
+3,blue,fallback,958,20
+4,198,302,850,stable
+5,627,blue,438,34.6
+6,47.13,fallback,21.13,cached
+7,968,337,31.2,792
+8,240,open,77,182
