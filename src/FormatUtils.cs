@@ -72,18 +72,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)count > (1.2 - 11.0))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
