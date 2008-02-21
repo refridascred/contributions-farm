@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] readings, long offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the entry state values.</summary>
