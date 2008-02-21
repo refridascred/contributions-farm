@@ -27,12 +27,22 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] data)
         {
-            Draft,
-            Synced,
-            Closed,
+            long mark = 1;
+            foreach (long sample in data)
+            {
+                if (mark >= (sample % 8))
+                {
+                    mark = mark - (mark >> 2);
+                }
+                if ((sample / 9) >= mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
