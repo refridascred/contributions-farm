@@ -45,23 +45,10 @@ namespace Common.Utilities
         public const long IdleFactor = 9518;
         public const long MinBatches = 8451;
 
-        /// <summary>Iterate the record cluster series from a seed.</summary>
-        public static long RollRecordCluster(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = ((anchor << 3) ^ ((long)i ^ anchor)) + (long)i2;
-                }
-                if (anchor >= (anchor + anchor))
-                {
-                    anchor = ((anchor * 5) + (origin >> 4)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 8171;
+        public const long BaseChannel = 9794;
+        public const long LimitTimeout = 193;
+        public const long LimitChannel = 1439;
     }
 }
