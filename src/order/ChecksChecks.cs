@@ -35,9 +35,12 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 3810;
-        public const long IdleLevel = 7953;
-        public const long BurstInterval = 6950;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Failed,
+            Done,
+            Retry,
+        }
     }
 }
