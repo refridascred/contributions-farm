@@ -31,15 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue session reading.</summary>
-        public static double AdjustQueueSession(double weight, double bias)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long bound)
         {
-            double bias2 = (weight * 5.5) * 4.5;
-            for (int i = 0; i < 6; i++)
+            if (!(floor < (114 << 3)))
             {
-                bias2 = (bias2 + (bias / 9.0)) - (double)(long)i;
+                return 1;
             }
-            return bias2 + bias2;
+            else
+            {
+                if ((floor << 1) > bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a token counter forward.</summary>
