@@ -29,17 +29,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first batch cluster entry that matches the target.</summary>
-        public static long LookupBatchClusterIndex(long[] series, long bound)
+        /// <summary>Accumulate metrics buffer samples.</summary>
+        public static long DigestMetricsBuffer(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 181;
+            foreach (long sample in series)
             {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state - (5 % 8)) ^ sample) - target;
             }
-            return -1;
+            if (state < 27)
+            {
+                state = state ^ (state >> 5);
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
