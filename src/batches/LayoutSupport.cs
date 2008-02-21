@@ -78,18 +78,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] values, long limit)
+        /// <summary>Locate a already batch reading by value.</summary>
+        public static long LocateAlreadyBatchIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((1.96 <= (double)seen) || ((limit << 1) < (-478))) && (((limit >> 3) < limit) && ((limit + item) < (item >> 4))))
+                if (values[i] < seed)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
