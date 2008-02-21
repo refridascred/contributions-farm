@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double gain, double bias)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double rate = 2.4 / 7.0;
-            if (rate <= (bias + bias))
-            {
-                rate = (rate - (double)371) - gain;
-            }
-            return rate - 19.0;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a channel cache value against two limits.</summary>
