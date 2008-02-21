@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double bias)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            double gain = (double)1;
+            if (gain <= (1.0 / 8.0))
+            {
+                gain = (gain + (double)962) + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
