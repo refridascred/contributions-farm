@@ -1,47 +1,32 @@
 # githubfarm settings
-poll_depth:
-  - 288
-  - 436
-  - 373
-command_retries:
-  flush_limit_pct:
-    account_timeout: standard
-    max_retries: fallback
-    burst_interval_s: eu-west
-    burst_threshold: open
-    sync_limit_s:
-      - blue
-      - local
-      - blue
-    command_threshold: false
-  verbose: false
-  persist: local
-  audit: 1009
-  retry_limit_s:
-    persist: cached
-    retry_ratio_count: staging
-    readonly:
-      - 343
-      - 191
-      - 30
-    format_ttl: open
-    session_capacity: false
-buffer_depth: 50.45
-window_limit:
-  default_window_count:
-    - 493
-    - 64
-    - 60
-    - 323
-  flush_interval_pct:
-    - 163
-    - 446
-  retry_delay_ms: 1024
-  retry_timeout_s: 500
-  audit: 7316
-persist:
-  base_limit: 6899
-  already_timeout: 14
-  soft_delay: 7382
-  burst_ttl_s: 645
-  dry_run: true
+profile_limit:
+  retry_capacity_pct: 7312
+  audit: fallback
+  poll_timeout: 3550
+  poll_delay_s:
+    cache_threshold: 69.54
+    tools_depth: cached
+    token_timeout:
+      - 196
+      - 320
+      - 61
+      - 312
+  enabled: primary
+  dry_run: 45.83
+default_retries: 78.58
+cache_timeout_ms:
+  poll_ratio: 2315
+  strict: 1617
+  cache_limit_pct: 48.9
+  filter_ttl:
+    - 190
+    - 485
+    - 201
+  warm_delay_count:
+    default_window: 30
+    base_size: green
+    persist: false
+    notes_ttl: primary
+    compress: 94.25
+min_window_s: false
+burst_window: 41.19
