@@ -23,38 +23,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank order report input into a small class.</summary>
-        public static long ClassifyOrderReport(long seed, long limit)
-        {
-            if ((limit >= (seed / 4)) || ((62 ^ limit) == (seed - seed)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((seed % 5) <= (seed % 16)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >= (907 % 64)) || ((seed % 16) < (seed & 127)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed < limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 8743;
+        public const long MaxBudget = 1439;
+        public const long CacheCount = 4692;
     }
 }
