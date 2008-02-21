@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double offset)
-        {
-            double rate = offset;
-            if (rate <= offset)
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (4.8 + scale)) + (double)(long)i;
-            }
-            return rate - (offset / 8.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowDepth = 8181;
+        public const long WindowCount = 4841;
+        public const long CacheStream = 6558;
+        public const string BatchStream = "staging";
     }
 }
