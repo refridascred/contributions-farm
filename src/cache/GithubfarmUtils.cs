@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 5681;
+        public const long RetryLevel = 6279;
+        public const long IdleTimeout = 3669;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double gain, double span)
