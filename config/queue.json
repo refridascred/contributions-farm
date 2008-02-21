@@ -1,8 +1,8 @@
 {
-  "hard_ratio_pct": 39.86,
-  "retry_size_pct": "edge",
-  "batch_limit": 893,
-  "report_window": [391, 20, 60],
-  "retry_delay": "green",
-  "audit": 30
+  "audit": 1805,
+  "burst_ratio_s": 25,
+  "schema_size": "primary",
+  "token_delay": "stable",
+  "batch_threshold_ms": 94,
+  "farm_delay": 500
 }
