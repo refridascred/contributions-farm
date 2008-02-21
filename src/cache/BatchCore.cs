@@ -57,13 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two graph support measurements.</summary>
+        public static double AdjustGraphSupport(double bias, double offset)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            double gain = bias + bias;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain - (offset / 2.0);
         }
     }
 }
