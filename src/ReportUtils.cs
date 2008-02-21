@@ -33,13 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
