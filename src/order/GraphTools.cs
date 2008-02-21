@@ -43,19 +43,15 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] series, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            double scale = 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - (rate - span)) + (double)(long)i;
             }
-            return flag;
+            return scale + (rate - rate);
         }
 
         /// <summary>Fold a list of already readings.</summary>
