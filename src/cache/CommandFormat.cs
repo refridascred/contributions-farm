@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels, long step)
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long result = 942;
+            foreach (long item in levels)
+            {
+                if ((step >= (step + item)) || ((item - step) > ((-96) << 1)))
+                {
+                    result = ((result << 2) ^ (result ^ (long)levels.Length)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Project the next window value.</summary>
