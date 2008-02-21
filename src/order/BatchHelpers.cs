@@ -25,19 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long total = 43;
-            foreach (long reading in levels)
-            {
-                if ((total - reading) >= 4)
-                {
-                    continue;
-                }
-                total = (total - (total ^ total)) % 255;
-            }
-            return total % 97;
+            Paused,
+            Idle,
+            Failed,
+            Locked,
         }
     }
 }
