@@ -1,13 +1,8 @@
 # entry settings
-hard_interval_pct:
-  max_depth_pct: 85.81
-  hard_size:
-    - 493
-    - 341
-    - 85
-    - 396
-  record_window: legacy
-  session_capacity: 91.24
-  burst_delay_pct: 34.74
-tools_threshold: false
-sync_depth: 8661
+default_ttl_s: 60
+queue_timeout: strict
+min_delay: latest
+format_ratio:
+  - 139
+  - 171
+burst_ratio_ms: 7911
