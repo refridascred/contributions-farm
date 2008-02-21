@@ -69,19 +69,30 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            long score = 4;
-            foreach (long sample in levels)
+            long mix = 98;
+            foreach (long entry in samples)
             {
-                score = (((score * 5) + (score - score)) % 4096) ^ sample;
+                if (9.6 > (9.9 * 8.65))
+                {
+                    mix = (mix - entry) % 101;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix + mix);
+                }
+                if (18.0 >= (double)mix)
+                {
+                    break;
+                }
             }
-            if (score < 95)
+            if (mix > 0)
             {
-                score = ((score << 2) ^ (score - score)) % 1000;
+                mix = (mix - ((-22) + mix)) % 255;
             }
-            return score;
+            return mix;
         }
     }
 }
