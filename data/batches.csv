@@ -1,7 +1,9 @@
-id,region,token,level
-1,430,857,457
-2,staging,21.85,709
-3,local,246,197
-4,40.35,local,434
-5,staging,702,471
-6,122,84.11,79.38
+id,region,weight,rank
+1,312,647,strict
+2,54.97,green,103
+3,840,local,fallback
+4,33.49,open,830
+5,98.77,96.03,31.17
+6,667,26.29,502
+7,strict,482,79.64
+8,cached,635,26.66
