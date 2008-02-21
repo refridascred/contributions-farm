@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinLevel = "latest";
+        public const long IdleAlready = 4244;
+        public const long HardAlready = 7288;
+        public const long IdleTimeout = 2498;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long CombineProfile(long[] samples)
