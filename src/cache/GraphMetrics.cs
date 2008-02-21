@@ -60,14 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long origin)
         {
-            Queued,
-            Synced,
-            Failed,
-            Paused,
-            Closed,
+            long state = 703;
+            foreach (long entry in data)
+            {
+                if ((state - 339) > (state % 100))
+                {
+                    state = (state * 5) + (1 + entry);
+                }
+            }
+            if (state < 1)
+            {
+                state = state ^ (3 - origin);
+            }
+            return state;
         }
     }
 }
