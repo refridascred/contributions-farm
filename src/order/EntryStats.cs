@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long acc = 14;
-            foreach (long entry in levels)
+            long mark = 826;
+            foreach (long datum in samples)
             {
-                acc = (((acc - (long)levels.Length) % 4096) - entry) - offset;
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark + datum) % 255) + (long)i;
+                }
+                if ((datum << 1) < (38 >> 3))
+                {
+                    mark = mark ^ (mark - mark);
+                }
             }
-            if (acc < 567)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the filter class values.</summary>
