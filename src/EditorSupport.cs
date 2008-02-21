@@ -17,15 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double bias)
+        /// <summary>Count tools entry pairs that satisfy a relation.</summary>
+        public static long MatchToolsEntryCount(long[] data)
         {
-            double drift = bias;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift + drift) + (double)(long)i) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + 6.8;
+            return count;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
