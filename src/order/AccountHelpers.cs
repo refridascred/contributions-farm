@@ -85,22 +85,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream record entries.</summary>
-        public static long FoldStreamRecord(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long total = 996;
-            foreach (long value in levels)
+            long mix = 258;
+            foreach (long value in series)
             {
-                if ((596 ^ value) <= value)
+                if ((mix - value) >= mix)
                 {
-                    total = (total ^ (total + value)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ total) % 1000;
+                    mix = (mix - (55 + mix)) % 255;
                 }
             }
-            return total % 1000;
+            if (mix > 136)
+            {
+                mix = ((mix << 2) ^ (478 - mix)) % 1000;
+            }
+            return mix % 1000;
         }
     }
 }
