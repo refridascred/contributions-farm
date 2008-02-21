@@ -57,23 +57,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] series, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = 50;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (acc - (cell / 3)) + (long)i;
-                }
-                acc = acc + (limit << 3);
-                if ((cell - acc) < (6 + cell))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            Pending,
+            Synced,
+            Paused,
+            New,
+            Active,
         }
     }
 }
