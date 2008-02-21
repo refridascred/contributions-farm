@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const double BurstMetrics = 30.58;
         public const double LimitMetrics = 2.76;
 
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long MeasureContextLayoutGaps(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((datum / 8) != (tally - 19)) || ((tally & 127) < (tally + (-8))))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
