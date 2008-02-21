@@ -23,12 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Idle,
+            Active,
+            Dropped,
             Paused,
-            Pending,
+            Draft,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
