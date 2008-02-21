@@ -34,17 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a batches stream sample.</summary>
-        public static long FindBatchesStreamIndex(long[] series, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = -547;
+            foreach (long cell in items)
             {
-                if ((series[i] > floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (2 >> 1)) ^ cell) - seed;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
