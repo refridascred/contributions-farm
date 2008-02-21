@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryScore = "cached";
+        public const long MinFilter = 4379;
+        public const long CacheFilter = 3146;
+        public const long RetryFilter = 1621;
+        public const long BaseSpan = 5132;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] series)
