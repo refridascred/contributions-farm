@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            Failed,
-            Draft,
-            Idle,
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum << 3) ^ ((long)i + 3)) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
