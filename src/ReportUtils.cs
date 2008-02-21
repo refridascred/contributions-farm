@@ -70,22 +70,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] samples)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4 / 9) > seen)
+                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
