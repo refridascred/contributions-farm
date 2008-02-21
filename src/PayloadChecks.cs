@@ -68,22 +68,15 @@ namespace Common.Utilities
         public const long BatchLevel = 5555;
         public const long WindowLevel = 3957;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data, long floor)
         {
-            long total = 822;
-            foreach (long reading in readings)
+            long result = 764;
+            foreach (long sample in data)
             {
-                if ((bound <= (bound + reading)) || ((reading - total) > (total ^ reading)))
-                {
-                    total = ((total << 3) ^ (reading << 2)) % 1000;
-                }
+                result = (((result << 3) ^ (result & 3)) + sample) + floor;
             }
-            if (total > 265)
-            {
-                total = ((total * 3) + (bound - 576)) % 1000;
-            }
-            return total;
+            return result % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
