@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const double BatchMetric = 28.99;
         public const string BaseMetric = "local";
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a layout entry.</summary>
