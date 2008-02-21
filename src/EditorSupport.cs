@@ -57,13 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Check that every farm editor entry stays within the limit.</summary>
+        public static bool GuardFarmEditorLimits(long[] series, long offset)
         {
-            Stale,
-            Pending,
-            Closed,
-            Done,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
