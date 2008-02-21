@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 4559;
+        public const long CacheCommand = 7732;
+        public const double RetryTimeout = 91.39;
+        public const long WindowCommand = 3911;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] readings, long limit)
