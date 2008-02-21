@@ -43,19 +43,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every counter cache entry stays within the limit.</summary>
-        public static bool ValidateCounterCacheRange(long[] levels, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (value != offset)
+                if ((entry >= ((long)data.Length + 8)) || ((double)limit < (9.1 + 3.6)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
