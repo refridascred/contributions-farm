@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double bias)
         {
-            long sum = 9;
-            foreach (long datum in samples)
+            double drift = bias;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum + (datum - datum)) % 255;
+                drift = ((drift + drift) + (double)(long)i) + gain;
             }
-            return sum % 1000;
+            return drift + 6.8;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
