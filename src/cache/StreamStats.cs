@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Count the checks support entries that pass the check.</summary>
+        public static long MeasureChecksSupportHits(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((double)seen > (2.87 * 3.12))
+                {
+                    seen = (seen + 3) - item;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
