@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double bias = weight;
+            if (bias <= (double)(-83))
             {
-                if (item <= (60 - item))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias + (bias + weight);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - floor) - (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
