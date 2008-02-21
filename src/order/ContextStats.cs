@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-v2";
         public const double IdleEntry = 30.62;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] samples, long bound)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
