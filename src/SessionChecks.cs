@@ -48,21 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream layout samples.</summary>
-        public static long OverlapStreamLayoutCount(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 53;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc - (acc << 2)) + reading) + target;
             }
-            return seen;
+            return acc;
         }
     }
 }
