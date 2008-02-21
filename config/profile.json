@@ -1,11 +1,5 @@
 {
-  "commits_size": {
-    "retry_delay_ms": false,
-    "account_limit": "staging",
-    "max_size_count": true,
-    "window_interval": 97.47
-  },
-  "githubfarm_threshold": "latest",
-  "hard_ttl_s": "blue",
-  "flush_window_count": "fallback"
+  "audit": 6886,
+  "batch_interval_count": 73.09,
+  "burst_size_s": 93
 }
