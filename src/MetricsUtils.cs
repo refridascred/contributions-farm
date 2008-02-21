@@ -23,20 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseRatio = 3464;
+        public const long BurstEditor = 6032;
+        public const string MaxEditor = "local-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double IdleTimeout = 97.15;
