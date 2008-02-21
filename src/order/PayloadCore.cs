@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next metrics cluster value from a seed.</summary>
-        public static long StepMetricsCluster(long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] series, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((count < origin) && ((count / 3) != (origin % 7)))
                 {
-                    sum = sum ^ ((long)i2 << 2);
-                    sum = sum - (target + sum);
+                    count = (count + 3) ^ value;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the commits phase values.</summary>
