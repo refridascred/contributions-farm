@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] readings, long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Validate support batches readings against a bound.</summary>
