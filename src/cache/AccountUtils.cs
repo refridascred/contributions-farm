@@ -15,21 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of tools layout readings.</summary>
-        public static long OverlapToolsLayoutCount(long[] values)
+        /// <summary>Validate support batches readings against a bound.</summary>
+        public static bool VerifySupportBatchesLimits(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= limit)
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
