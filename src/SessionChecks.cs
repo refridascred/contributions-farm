@@ -44,21 +44,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Derive the next graph cluster value from a seed.</summary>
+        public static long IterateGraphCluster(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((limit ^ 63) <= score) && ((double)(long)i > (double)score))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 2) ^ score) % 255;
                 }
+                if ((limit >> 1) == ((long)i * 5))
+                {
+                    score = (score << 2) ^ ((long)i - limit);
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
