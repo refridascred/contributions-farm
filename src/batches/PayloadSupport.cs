@@ -23,11 +23,13 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const long IdleInterval = 3135;
 
-        /// <summary>Blend two stream support measurements.</summary>
-        public static double SmoothStreamSupport(double gain, double span)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double bias = 6.41;
-            return (bias - (gain / 4.0)) + span;
+            Draft,
+            Retry,
+            Pending,
+            Closed,
         }
     }
 }
