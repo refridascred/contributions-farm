@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            Closed,
-            Draft,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (item <= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
