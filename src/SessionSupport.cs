@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultSize = 7259;
-        public const long MinWidth = 3268;
-        public const long IdleDepth = 1525;
-        public const long MinSize = 6581;
-        public const long BurstStats = 674;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
