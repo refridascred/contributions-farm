@@ -19,16 +19,25 @@ namespace Common.Utilities
         public const double StepCount = 27.67;
         public const long DefaultMetric = 5418;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] series, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long limit)
         {
-            long anchor = 182;
-            foreach (long cell in series)
+            long slot = target + limit;
+            if (limit >= (target + 78))
             {
-                anchor = ((anchor - (53 * 3)) % 4096) + cell;
-                anchor = (anchor * 3) + (limit % 60);
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((6.0 + 7.4) >= (double)slot)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
