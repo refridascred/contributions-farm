@@ -1,15 +1,8 @@
 {
-  "burst_delay": {
-    "min_retries_ms": {
-      "max_depth": 3973,
-      "buffer_ttl": "fallback",
-      "base_depth_pct": true,
-      "soft_retries": "green"
-    },
-    "base_retries_s": "cached",
-    "min_threshold_ms": 2691
-  },
-  "min_window_s": false,
-  "sync_threshold": 250,
-  "compress": false
+  "filter_threshold": "strict",
+  "flush_limit": "legacy",
+  "poll_interval_count": "edge",
+  "max_capacity_s": "eu-west",
+  "cache_window_pct": 3503,
+  "sync_ratio": 60
 }
