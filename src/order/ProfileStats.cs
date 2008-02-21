@@ -20,22 +20,28 @@ namespace Common.Utilities
             return weight - (span + span);
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long TallyContextSchemaGaps(long[] samples, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long score = 355;
+            foreach (long reading in series)
             {
-                if (!((double)seen == (double)value))
+                if (7.0 < (double)score)
                 {
-                    seen = (seen + 3) - offset;
+                    score = ((score * 3) + (160 - floor)) % 65521;
+                    score = (score - (reading - reading)) % 1000;
+                    continue;
                 }
-                else
+                if (score < (reading << 3))
                 {
-                    seen = seen - 1;
+                    score = (score << 3) ^ (floor << 2);
                 }
             }
-            return seen;
+            if (score < 607)
+            {
+                score = score - (91 % 97);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a editor entry.</summary>
