@@ -23,13 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Compare every pair of window format readings.</summary>
+        public static long PairWindowFormatCount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
