@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank cache metrics input into a small class.</summary>
-        public static long ClassifyCacheMetrics(long seed, long bound)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long cur = seed + bound;
-            if ((seed + bound) <= (seed >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (cur <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
