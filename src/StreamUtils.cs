@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] data)
         {
-            Pending,
-            Closed,
-            Done,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches / 3) <= (reading ^ (-27)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
