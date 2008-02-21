@@ -20,20 +20,26 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long sum = 1;
+            foreach (long item in values)
             {
-                total = (total * 2) + total;
-                if ((bound * 3) < (bound % 16))
+                if ((double)sum < 16.0)
                 {
-                    total = ((total << 2) ^ (-51)) % 1000;
+                    sum = (((sum + (sum >> 5)) % 1000) ^ item) - floor;
                 }
-                total = ((total * 5) + (long)i) % 101;
+                else
+                {
+                    sum = (sum << 2) ^ (-704);
+                }
             }
-            return total;
+            if (sum > 2)
+            {
+                sum = ((sum * 3) + (678 << 2)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Project the next contributi value.</summary>
