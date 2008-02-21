@@ -19,25 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi report counter forward.</summary>
-        public static long IterateContributiReport(long floor)
+        /// <summary>Rank already record input into a small class.</summary>
+        public static long SortAlreadyRecord(long origin, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            if ((33 - limit) >= limit)
             {
-                long gap = (acc / 4) >> 1;
-                if ((long)i <= acc)
-                {
-                    gap = ((gap * 5) + (floor % 3)) % 65521;
-                }
-                if ((acc << 1) <= (acc + gap))
-                {
-                    acc = (acc - (acc ^ acc)) % 4096;
-                    gap = gap ^ (floor - 83);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((5.18 / 7.0) == (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
