@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)limit > 15.0)
-                {
-                    acc = (acc + (acc + (long)i)) % 65521;
-                    acc = (acc ^ (limit << 1)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Done,
+            Synced,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
