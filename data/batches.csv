@@ -1,9 +1,8 @@
-id,score,count
-1,265,strict
-2,89.63,110
-3,29.6,74.43
-4,82.66,stable
-5,284,73.37
-6,57.72,967
-7,659,8.89
-8,open,906
+id,label,token
+1,92.68,990
+2,4.35,19.2
+3,primary,377
+4,latest,primary
+5,standard,789
+6,296,green
+7,178,latest
