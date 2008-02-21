@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 8826;
-        public const long WindowScore = 4064;
-        public const string BurstBudget = "open";
-        public const long HardLayout = 8178;
-        public const long WindowLayout = 7075;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double span)
+        {
+            double weight2 = weight;
+            if (weight2 < (weight * 9.8))
+            {
+                weight2 = weight2 + (double)827;
+            }
+            else
+            {
+                weight2 = weight2 + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + (weight + span)) + (double)(long)i;
+            }
+            return weight2 + (weight * 17.0);
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] levels, long offset)
