@@ -13,26 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of profile contributi entries.</summary>
-        public static long ScoreProfileContributi(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] series, long limit)
         {
-            long sum = 18;
+            long tally = 0;
             foreach (long cell in series)
             {
-                if ((cell / 9) >= cell)
+                if (((tally >= 0) || ((cell - 674) < (limit + tally))) || ((tally * 5) > tally))
                 {
-                    sum = ((sum * 4) + sum) % 255;
-                }
-                else
-                {
-                    sum = sum + (13 << 2);
+                    tally = tally + 3;
                 }
             }
-            if (sum > 983)
-            {
-                sum = (sum << 3) ^ 907;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
