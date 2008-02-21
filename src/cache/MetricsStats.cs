@@ -14,11 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Measure how many metric counter samples are out of range.</summary>
+        public static long MeasureMetricCounterMatches(long[] readings)
         {
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((9.49 * 1.0) < (double)seen)
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
