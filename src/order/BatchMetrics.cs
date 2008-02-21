@@ -31,24 +31,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long origin, long limit)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            if ((origin << 3) >= (origin ^ origin))
+            double load = (double)(0 + 3);
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                load = (load - (double)(long)i) + bias;
             }
-            else
-            {
-                if ((limit & 127) >= (99 ^ 0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return load - scale;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
