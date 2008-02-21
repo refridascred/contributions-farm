@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            long next = limit - seed;
+            if ((4.0 + 14.0) < (double)next)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((863 ^ next) < (next - next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - seed) > (40 + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next <= limit) || (26 > (next + seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
