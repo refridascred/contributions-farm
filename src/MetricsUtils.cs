@@ -23,21 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up schema contributi samples.</summary>
-        public static long OverlapSchemaContributiCount(long[] data)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < origin)
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
