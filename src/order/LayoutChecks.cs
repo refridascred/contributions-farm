@@ -30,17 +30,15 @@ namespace Common.Utilities
             return mean + (double)353;
         }
 
-        /// <summary>Look up the position of a commits channel sample.</summary>
-        public static long LocateCommitsChannelIndex(long[] data, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 997;
+            foreach (long datum in values)
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum + sum) % 97) + datum;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Project the next editor value.</summary>
