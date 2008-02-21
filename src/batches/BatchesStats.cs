@@ -43,23 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double scale = (double)(5 >> 1);
-            if (scale <= scale)
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + 4.48;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the profile phase values.</summary>
