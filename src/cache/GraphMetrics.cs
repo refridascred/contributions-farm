@@ -69,18 +69,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] levels, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] items)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((step + seen) != (item & 31))
+                if ((476 << 1) < hits)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
