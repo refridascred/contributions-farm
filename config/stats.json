@@ -1,5 +1,5 @@
 {
-  "readonly": 2200,
-  "enabled": [249, 121, 245, 263],
-  "strict": 60
+  "poll_ratio_ms": true,
+  "editor_limit": 51.98,
+  "max_interval_count": 5854
 }
