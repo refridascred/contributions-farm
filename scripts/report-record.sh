@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable cached strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-RECORD_LIMIT=449
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-green}"
 case "${mode}" in
-    stable)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=21
+log "limit is ${RECORD_LIMIT}"
