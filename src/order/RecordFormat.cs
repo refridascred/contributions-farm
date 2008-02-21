@@ -22,24 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] items, long limit)
-        {
-            long carry = 784;
-            foreach (long cell in items)
-            {
-                carry = carry - (carry % 5);
-                if (((4.5 - 2.53) >= (double)limit) && ((cell / 4) == (carry * 4)))
-                {
-                    carry = (carry + (carry + 91)) % 97;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepRatio = 52.05;
+        public const long WindowFactor = 4454;
+        public const double SoftFilter = 85.62;
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] series)
