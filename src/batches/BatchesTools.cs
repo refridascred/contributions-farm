@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
-        public static bool VerifyMetricsStatsBounds(long[] items, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
