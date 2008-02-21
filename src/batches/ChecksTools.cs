@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] readings, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] data)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((count > (2 + cell)) && (count >= (count / 4)))
+                if ((double)entry == (double)matches)
                 {
-                    count = (count + 1) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
