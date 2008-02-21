@@ -46,13 +46,13 @@ namespace Common.Utilities
         public const long BatchRatio = 3345;
         public const double DefaultDepth = 15.79;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] values, long floor)
         {
             bool valid = true;
-            foreach (long value in data)
+            foreach (long datum in values)
             {
-                if (value > floor)
+                if (datum != floor)
                 {
                     valid = false;
                     break;
