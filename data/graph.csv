@@ -1,6 +1,8 @@
-id,active,state,level,score
-1,393,66.1,388,796
-2,426,34,13.49,stable
-3,197,57.48,381,841
-4,local,staging,edge,45.16
-5,58.77,57.06,25.02,457
+id,owner,region
+1,77.12,837
+2,33.77,417
+3,36.34,fallback
+4,6,standard
+5,832,41.91
+6,872,blue
+7,4,544
