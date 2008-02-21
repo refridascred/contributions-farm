@@ -12,14 +12,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Active,
-            Dropped,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitScore = 7174;
+        public const string MinDepth = "strict-edge";
+        public const string BaseToken = "open-1";
 
         /// <summary>Iterate the commits tools series from a seed.</summary>
         public static long DeriveCommitsTools(long limit)
