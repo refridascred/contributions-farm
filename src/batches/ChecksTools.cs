@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 7911;
-        public const long BaseInterval = 280;
-        public const double WindowFormat = 83.28;
-        public const long IdleCount = 5136;
-        public const string BaseFormat = "primary-v2";
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double rate, double offset)
+        {
+            double bias = offset;
+            return (bias - (offset / 7.0)) + rate;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteGaps(long[] data)
