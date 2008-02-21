@@ -52,19 +52,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] readings, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long target)
         {
-            long state = -16;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (((state + state) % 101) ^ cell) + seed;
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 516)
-            {
-                state = (state << 3) ^ ((-356) * 4);
-            }
-            return state % 4096;
+            return -1;
         }
     }
 }
