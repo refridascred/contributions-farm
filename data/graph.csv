@@ -1,6 +1,10 @@
-id,ratio,label,active,token
-1,latest,655,33.47,fallback
-2,987,35.46,eu-west,143
-3,314,500,74.52,strict
-4,staging,250,37.01,19.21
-5,519,767,101,77
+id,state,label
+1,83.29,legacy
+2,10,legacy
+3,eu-west,8.25
+4,4.84,90.27
+5,850,29.24
+6,59.68,23.12
+7,standard,101
+8,34.66,474
+9,41.87,14.57
