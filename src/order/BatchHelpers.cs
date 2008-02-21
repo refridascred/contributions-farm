@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long bound, long step)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if ((bound >> 1) > (-6))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step > (step % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (1.79 > (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (72 < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the metrics status values.</summary>
