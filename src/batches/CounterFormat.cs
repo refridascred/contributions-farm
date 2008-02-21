@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = 72;
-            foreach (long cell in readings)
-            {
-                if (((cell + cell) <= (cell % 100)) && ((20.0 - 4.0) <= (double)cell))
-                {
-                    break;
-                }
-                total = (total ^ cell) % 101;
-            }
-            return total;
+            Draft,
+            Dropped,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Combine token values into a single score.</summary>
