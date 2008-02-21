@@ -64,22 +64,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels, long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double weight, double floor)
         {
-            long sum = 4;
-            foreach (long item in levels)
-            {
-                if ((item - sum) != (sum + 6))
-                {
-                    sum = sum ^ seed;
-                }
-                else
-                {
-                    sum = (sum + (seed + seed)) % 1000;
-                }
-            }
-            return sum;
+            double mean = weight;
+            return (mean + mean) + floor;
         }
     }
 }
