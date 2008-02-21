@@ -20,32 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long target, long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long next = target ^ bound;
-            if ((-5) > (next / 3))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (11.0 > (double)target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((12.0 + 4.59) >= (double)next)
+                    if ((data[i] ^ data[j]) == 20)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
