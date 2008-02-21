@@ -55,17 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (items[i] == floor)
+                if (reading != target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the support state values.</summary>
