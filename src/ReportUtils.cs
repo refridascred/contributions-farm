@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 3397;
-        public const double MaxScore = 47.25;
-        public const long IdleSize = 1618;
-        public const string RetryFactor = "strict";
+        /// <summary>Audit report cluster readings against a rule.</summary>
+        public static long TallyReportClusterOutliers(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seed != (1.08 / 6.0))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a filter session pair into a bucket.</summary>
         public static long ClassifyFilterSession(long offset, long limit)
