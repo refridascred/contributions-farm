@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const long HardOrder = 123;
         public const long MinSize = 1463;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] levels, long limit)
         {
-            double rate2 = (double)(3 + 992);
-            if (rate2 > rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = (rate2 + (20.0 - rate)) - offset;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (double)6;
+            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
