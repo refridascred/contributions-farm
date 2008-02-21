@@ -68,23 +68,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double span)
         {
-            long total = 348;
-            foreach (long datum in samples)
+            double weight2 = 5.3;
+            if (weight2 > (weight / 2.0))
             {
-                if ((double)total < (1.32 + 0.3))
-                {
-                    break;
-                }
-                total = total - datum;
-                if (datum > (total + datum))
-                {
-                    break;
-                }
+                weight2 = (weight2 + weight2) - span;
             }
-            return total;
+            else
+            {
+                weight2 = weight2 + (9.3 + weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 - (double)5;
         }
     }
 }
