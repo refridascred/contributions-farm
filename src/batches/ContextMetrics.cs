@@ -39,15 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a tools queue reading.</summary>
-        public static double BlendToolsQueue(double weight, double span)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double gain, double span)
         {
-            double bias = (4.6 - span) * 12.0;
+            double weight = (double)(-141) - gain;
+            if (weight <= span)
+            {
+                weight = weight - 8.6;
+            }
             for (int i = 0; i < 3; i++)
             {
-                bias = ((bias - bias) + (double)(long)i) + weight;
+                weight = (weight + weight) + (double)(long)i;
             }
-            return bias - bias;
+            return weight + gain;
         }
 
         /// <summary>Measure how many context session samples are out of range.</summary>
