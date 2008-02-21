@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleSize = "stable";
-        public const long MinRatio = 191;
-        public const long WindowBatches = 6608;
-        public const double BurstRatio = 34.37;
-        public const double BatchTimeout = 21.84;
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
