@@ -89,15 +89,25 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long bound2)
         {
-            long result = 764;
-            foreach (long sample in data)
+            long lane = bound - bound2;
+            if ((14.0 * 5.0) < (double)bound2)
             {
-                result = (((result << 3) ^ (result & 3)) + sample) + floor;
+                return 6;
             }
-            return result % 4096;
+            else
+            {
+                if (((bound2 >> 1) <= bound2) || ((bound2 - bound2) <= (lane >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
