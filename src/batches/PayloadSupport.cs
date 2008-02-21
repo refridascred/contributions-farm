@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster graph readings against a rule.</summary>
-        public static long MeasureClusterGraphHits(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((4.0 / 9.0) <= (double)tally) || ((26 << 2) > (cell & 31))))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 7891;
+        public const long LimitSpan = 1468;
+        public const long LimitRatio = 4959;
+        public const long StepScore = 5498;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] data, long offset)
