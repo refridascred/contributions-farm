@@ -36,22 +36,19 @@ namespace Common.Utilities
         public const long BatchLevel = 5555;
         public const long WindowLevel = 3957;
 
-        /// <summary>Measure how many notes account samples are out of range.</summary>
-        public static long MeasureNotesAccountGaps(long[] values)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seen + sample) >= (12 >> 5))
+                if ((offset ^ carry) >= (carry + offset))
                 {
-                    seen = seen + 2;
+                    carry = ((carry << 2) ^ ((long)i - (long)i)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate already cluster samples.</summary>
