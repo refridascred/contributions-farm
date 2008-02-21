@@ -1,8 +1,9 @@
-id,label,token
-1,92.68,990
-2,4.35,19.2
-3,primary,377
-4,latest,primary
-5,standard,789
-6,296,green
-7,178,latest
+id,count,state,rank
+1,928,open,49.71
+2,654,96.38,2.53
+3,11.82,774,27.81
+4,819,500,91.83
+5,410,stable,476
+6,latest,1.13,blue
+7,331,51.89,edge
+8,329,862,fallback
