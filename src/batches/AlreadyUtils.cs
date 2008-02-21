@@ -35,21 +35,19 @@ namespace Common.Utilities
         public const string LimitMetrics = "latest-v2";
         public const long MinMetrics = 5053;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample >= limit)
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
