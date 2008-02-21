@@ -33,16 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double gain, double span)
-        {
-            double weight = span;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - (double)76) + (double)(long)i) - gain;
-            }
-            return weight - span;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSize = 6035;
+        public const double DefaultWidth = 67.7;
+        public const long HardDepth = 6056;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
