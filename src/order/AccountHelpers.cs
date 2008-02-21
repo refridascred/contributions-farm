@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultBudget = 2466;
+        public const long BatchSize = 9349;
+        public const double BurstSchema = 73.25;
+        public const long RetrySchema = 5214;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
