@@ -48,15 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long total = 1;
-            foreach (long datum in values)
-            {
-                total = total + (total + datum);
-            }
-            return total;
+            Locked,
+            Stale,
+            Ready,
+            Pending,
         }
     }
 }
