@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of entry account readings.</summary>
-        public static long CompareEntryAccountCount(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < (hits >> 3))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
