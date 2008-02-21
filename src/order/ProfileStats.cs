@@ -52,12 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] series, long target)
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the tools notes series from a seed.</summary>
