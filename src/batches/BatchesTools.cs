@@ -31,22 +31,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] series)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((double)matches < 8.0) || ((double)matches < (2.26 + 6.77)))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
