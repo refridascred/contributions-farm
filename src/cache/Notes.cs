@@ -62,23 +62,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double span)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long seed, long origin)
         {
-            double weight2 = 5.3;
-            if (weight2 > (weight / 2.0))
+            if ((double)origin >= (2.6 / 5.0))
             {
-                weight2 = (weight2 + weight2) - span;
+                return 7;
             }
             else
             {
-                weight2 = weight2 + (9.3 + weight);
+                if ((10.0 + 3.76) < (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed > (origin >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - (double)5;
         }
     }
 }
