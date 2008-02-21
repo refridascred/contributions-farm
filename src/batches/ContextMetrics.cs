@@ -45,15 +45,15 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Measure how many context session samples are out of range.</summary>
-        public static long CountContextSessionHits(long[] values)
+        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
+        public static long MeasureGithubfarmCommandGaps(long[] data, long target)
         {
             long hits = 0;
-            foreach (long datum in values)
+            foreach (long reading in data)
             {
-                if (datum <= (datum + hits))
+                if ((84 / 4) <= (hits + reading))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 1) - target;
                 }
                 else
                 {
