@@ -25,15 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] readings, long bound)
         {
-            long result = 8;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result ^ (result & 15)) % 255) ^ value;
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate tools support readings against a bound.</summary>
