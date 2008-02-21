@@ -1,11 +1,6 @@
-id,score,level,ratio
-1,52.47,853,primary
-2,367,224,strict
-3,921,edge,229
-4,237,eu-west,888
-5,standard,80.34,58.22
-6,207,952,91.26
-7,primary,303,51.07
-8,65,open,638
-9,primary,300,8.16
-10,51.52,945,91.46
+id,ratio,label,active,token
+1,latest,655,33.47,fallback
+2,987,35.46,eu-west,143
+3,314,500,74.52,strict
+4,staging,250,37.01,19.21
+5,519,767,101,77
