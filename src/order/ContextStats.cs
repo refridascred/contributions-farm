@@ -14,11 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstSize = 459;
-        public const double DefaultCounter = 44.21;
-        public const double MaxSize = 16.76;
-        public const long BatchDepth = 9259;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] data)
