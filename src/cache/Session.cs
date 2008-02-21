@@ -22,22 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] samples, long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((72 / 5) == (6 - hits))
-                {
-                    hits = ((hits + 2) + value) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
