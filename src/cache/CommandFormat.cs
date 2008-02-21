@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] levels)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((((double)matches != (double)(-8)) && ((double)cell >= (double)matches)) && ((matches - cell) >= cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
