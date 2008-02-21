@@ -69,19 +69,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] data, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long mix = 874;
+            foreach (long item in data)
             {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (((mix * 4) + (item + item)) % 255) + limit;
+                mix = ((mix * 3) + mix) % 1000;
             }
-            return found;
+            return mix % 97;
         }
     }
 }
