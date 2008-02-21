@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long SoftStats = 8398;
         public const long StepStats = 7994;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values, long step)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double span)
         {
-            long total = 600;
-            foreach (long datum in values)
+            double rate = 2.83;
+            if (rate >= (double)(-5))
             {
-                total = (total - 8) % 97;
-                total = total + (step + step);
-                total = (total - (datum ^ total)) % 65521;
+                rate = (rate - (double)853) + span;
             }
-            if (total > 2)
-            {
-                total = total + (step * 5);
-            }
-            return total % 65521;
+            return rate + ratio;
         }
     }
 }
