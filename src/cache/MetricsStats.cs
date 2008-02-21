@@ -42,25 +42,12 @@ namespace Common.Utilities
         public const long IdleGraph = 9773;
         public const string LimitGraph = "staging";
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long seed)
-        {
-            if (seed <= (seed % 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((3 + seed) == (floor ^ 6)) && ((double)floor != (8.03 / 8.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 1.74;
+        public const string RetryEditor = "open-1";
+        public const long RetryTimeout = 9321;
+        public const string StepEditor = "latest";
+        public const string BatchLevel = "alpha-v2";
 
         /// <summary>Blend two stats measurements.</summary>
         public static double BlendStats(double weight, double span)
