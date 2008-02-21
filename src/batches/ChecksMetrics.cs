@@ -33,17 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] <= step)
+                if (4.7 >= (double)step)
                 {
-                    return (long)i;
+                    state = state - ((long)i + state);
+                    state = ((state * 5) + step) % 97;
                 }
+                if (72 < step)
+                {
+                    state = ((state << 3) ^ (78 << 2)) % 1000;
+                    state = state ^ (1 & 63);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
