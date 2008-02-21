@@ -1,9 +1,7 @@
-id,weight,region,owner,token
-1,staging,edge,866,97.67
-2,cached,70.87,stable,edge
-3,234,955,edge,10.41
-4,staging,local,236,26.3
-5,latest,994,blue,38.42
-6,fallback,828,eu-west,350
-7,eu-west,fallback,green,legacy
-8,legacy,402,16.92,78.83
+id,level,count,region
+1,latest,338,50.66
+2,743,7.54,64.58
+3,62.67,616,28.14
+4,864,38.95,16
+5,99,372,2.03
+6,cached,70.46,36.76
