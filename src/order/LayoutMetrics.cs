@@ -20,12 +20,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 4663;
-        public const long DefaultEditor = 7893;
-        public const double SoftEditor = 14.83;
-        public const double RetryRatio = 26.06;
-        public const long BurstRatio = 268;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 9375;
