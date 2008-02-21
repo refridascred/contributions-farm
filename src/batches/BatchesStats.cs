@@ -43,22 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            double scale = (double)(5 >> 1);
+            if (scale <= scale)
             {
-                if ((total * 3) > (target + 4))
-                {
-                    total = (((total * 2) + (target + target)) % 97) - entry;
-                }
-                if ((double)target <= (3.0 / 3.0))
-                {
-                    break;
-                }
+                scale = scale + bias;
             }
-            return total % 97;
+            else
+            {
+                scale = scale + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + 4.48;
         }
 
         /// <summary>Describe the profile phase values.</summary>
