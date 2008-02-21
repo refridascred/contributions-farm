@@ -55,15 +55,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Compare every pair of stream tools readings.</summary>
+        public static long MatchStreamToolsCount(long[] items)
         {
-            long score = 57;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 3) ^ (-956)) - sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
