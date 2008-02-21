@@ -69,10 +69,18 @@ namespace Common.Utilities
             return scale + (8.4 * 5.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchLevel = 8569;
-        public const double MinGraph = 10.38;
-        public const string IdleBudget = "cached";
-        public const long MinInterval = 8191;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + tally) != (tally << 3))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
+        }
     }
 }
