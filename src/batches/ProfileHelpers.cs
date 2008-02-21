@@ -38,20 +38,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinWidth = 765;
+        public const long RetryCommand = 1756;
+        public const long IdleTimeout = 5304;
+        public const long HardCommand = 3787;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double LimitFactor = 5.82;
