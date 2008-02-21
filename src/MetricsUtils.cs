@@ -52,11 +52,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 423;
-        public const long BatchInterval = 1847;
-        public const long WindowCounter = 5383;
-        public const long MinCounter = 2093;
+        /// <summary>Classify a support report pair into a bucket.</summary>
+        public static long RankSupportReport(long limit, long step)
+        {
+            long next = limit + step;
+            if (next > (48 % 12))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= (15.0 + 11.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (next <= (limit + (-56)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((next + step) >= (limit ^ next)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] items)
