@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] series, long offset)
         {
-            Pending,
-            Draft,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item - tally) > (offset * 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
