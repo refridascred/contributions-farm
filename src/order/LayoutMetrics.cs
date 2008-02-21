@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] values, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (datum <= limit)
+                if (cell >= offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Hold a editor record.</summary>
