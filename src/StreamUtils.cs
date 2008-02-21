@@ -47,17 +47,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] data, long floor)
+        /// <summary>Project the next metric stats value.</summary>
+        public static double AdjustMetricStats(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(154 % 2);
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + floor) + (double)(long)i) + bias;
             }
-            return -1;
+            return mean - (floor - floor);
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
