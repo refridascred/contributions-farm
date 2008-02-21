@@ -85,22 +85,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels, long origin)
+        /// <summary>Check that every already format entry stays within the limit.</summary>
+        public static bool ValidateAlreadyFormatLimits(long[] samples, long target)
         {
-            long total = 137;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (515 > (total - total))
+                if (reading <= target)
                 {
-                    total = (total * 3) + (total % 100);
-                }
-                if ((origin >> 1) > (total - value))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return total % 4096;
+            return valid;
         }
     }
 }
