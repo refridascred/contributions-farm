@@ -16,15 +16,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series, long offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long sum = 8;
-            foreach (long sample in series)
-            {
-                sum = ((sum * 4) + (sample - offset)) % 97;
-            }
-            return sum;
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a batches record.</summary>
