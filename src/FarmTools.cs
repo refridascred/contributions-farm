@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 25;
+            foreach (long entry in values)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ (result >> 1)) % 101) + bound;
+                result = ((result * 3) + (160 * 3)) % 4096;
+                result = ((result << 3) ^ (result - entry)) % 97;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
