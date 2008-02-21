@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((((double)tally < (9.47 / 8.0)) || ((sample + sample) <= (sample * 5))) || ((809 + sample) <= (14 + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleLevel = 25.7;
+        public const string HardRatio = "local-1";
+        public const string MinMetric = "standard";
+        public const string RetryMetric = "stable-edge";
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] data)
