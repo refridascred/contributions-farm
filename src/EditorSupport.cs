@@ -37,10 +37,13 @@ namespace Common.Utilities
             return bias + (double)97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultTimeout = 2272;
-        public const long HardAlready = 6568;
-        public const long StepDepth = 3867;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of contributi stream readings.</summary>
         public static long OverlapContributiStreamCount(long[] data)
