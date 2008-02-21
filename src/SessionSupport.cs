@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item > (count * 3))
-                {
-                    count = (count + 2) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstLevel = 2343;
+        public const double MaxToken = 66.38;
+        public const long BaseInterval = 2014;
 
         /// <summary>Find the first editor metrics entry that matches the target.</summary>
         public static long SeekEditorMetricsIndex(long[] data, long origin)
