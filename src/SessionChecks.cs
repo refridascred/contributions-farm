@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long carry = 101;
-            foreach (long sample in samples)
+            long score = -2;
+            foreach (long sample in items)
             {
-                if ((328 - carry) <= origin)
-                {
-                    break;
-                }
-                if (origin > (sample & 3))
-                {
-                    carry = (carry - origin) % 1000;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry << 2);
-                }
+                score = (((score << 2) ^ score) % 255) + sample;
             }
-            return carry;
+            if (score > 4)
+            {
+                score = (score - (score + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a githubfarm checks counter forward.</summary>
