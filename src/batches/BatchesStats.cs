@@ -34,11 +34,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long seed)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            long edge = offset - seed;
+            if ((double)offset >= 1.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((edge % 12) == (edge + edge)) && ((double)seed != (9.61 - 11.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((edge + offset) <= (497 % 97)) && (edge > (seed >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((edge - offset) >= offset) || ((offset << 3) > offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile phase values.</summary>
