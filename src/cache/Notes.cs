@@ -45,16 +45,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc - (offset * 5)) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Synced,
+            Draft,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
