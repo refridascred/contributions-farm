@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of checks metrics readings.</summary>
-        public static long OverlapChecksMetricsCount(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 6;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)bound == (8.0 + 4.7))
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (bound * 2)) % 101;
+                }
+                if (!((entry / 5) <= entry))
+                {
+                    sum = (sum - (sum / 6)) % 101;
                 }
             }
-            return seen;
+            if (sum > 703)
+            {
+                sum = (sum + (sum - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
