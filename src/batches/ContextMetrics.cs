@@ -45,11 +45,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double gain, double floor)
         {
-            double ratio = (double)(645 + 667);
-            return (ratio + scale) + floor;
+            double bias = floor;
+            if (bias >= (double)1)
+            {
+                bias = bias + gain;
+            }
+            else
+            {
+                bias = bias + (floor * 5.2);
+            }
+            return bias + (bias - 9.21);
         }
 
         /// <summary>Accumulate buffer samples.</summary>
