@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long CacheSize = 631;
         public const long HardLevel = 7078;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long floor)
         {
-            long acc = 957;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc + (acc - acc)) % 1000) + item;
+                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
