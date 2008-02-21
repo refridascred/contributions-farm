@@ -30,32 +30,18 @@ namespace Common.Utilities
         public const long StepSize = 4530;
         public const long MaxStream = 8559;
 
-        /// <summary>Rank commits batch input into a small class.</summary>
-        public static long ClassifyCommitsBatch(long target, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long target)
         {
-            long slot = target ^ origin;
-            if ((double)origin == (double)target)
+            long acc = 395;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot >> 5) > (slot + slot))
+                if ((sample / 6) >= ((-8) & 255))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (93 > (slot << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc ^ (target ^ acc)) % 65521;
                 }
             }
+            return acc;
         }
 
         /// <summary>Accumulate route samples.</summary>
