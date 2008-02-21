@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] data, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)limit <= (17.0 / 2.0)) || !((958 / 2) > (datum << 2)))
+                if ((double)limit > 15.0)
                 {
-                    hits = hits + 1;
+                    acc = (acc + (acc + (long)i)) % 65521;
+                    acc = (acc ^ (limit << 1)) % 255;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
