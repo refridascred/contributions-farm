@@ -49,13 +49,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] series, long limit)
         {
-            Idle,
-            Pending,
-            Retry,
-            Failed,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
