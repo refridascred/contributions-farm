@@ -27,14 +27,14 @@ namespace Common.Utilities
         public const long HardEntry = 6061;
         public const double StepTimeout = 48.57;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            New,
-            Paused,
-            Dropped,
-            Queued,
+            Draft,
+            Pending,
             Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Validate batch session readings against a bound.</summary>
