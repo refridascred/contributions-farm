@@ -33,12 +33,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long target)
         {
-            Draft,
-            Closed,
-            Dropped,
+            if ((offset ^ target) >= (target >> 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target - target) != (target % 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset <= (2.6 * 6.9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
