@@ -43,17 +43,14 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a commits stats.</summary>
