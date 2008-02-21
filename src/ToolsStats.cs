@@ -49,19 +49,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a graph metrics counter forward.</summary>
-        public static long DeriveGraphMetrics(long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long mix = 90;
+            foreach (long entry in data)
             {
-                if (872 <= (7 + score))
-                {
-                    score = score + score;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                mix = ((mix - ((-254) & 127)) % 65521) ^ entry;
             }
-            return score;
+            if (mix > 0)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Blend two schema measurements.</summary>
