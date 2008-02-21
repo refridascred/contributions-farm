@@ -28,13 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Locate a counter buffer reading by value.</summary>
+        public static long LocateCounterBufferIndex(long[] samples, long origin)
         {
-            Paused,
-            Idle,
-            Failed,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
