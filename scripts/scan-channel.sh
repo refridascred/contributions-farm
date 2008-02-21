@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-stable}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=424
-log "limit is ${CHANNEL_LIMIT}"
+for item in fallback open; do
+    log "checking ${item}"
+done
