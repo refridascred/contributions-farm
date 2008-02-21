@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long RetryWindow = 7704;
         public const long IdleWindow = 3413;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] samples)
+        /// <summary>Digest a series of token already entries.</summary>
+        public static long WeighTokenAlready(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long anchor = 793;
+            foreach (long item in items)
             {
-                if ((hits >> 2) != (cell + hits))
+                anchor = ((anchor + (anchor + (long)items.Length)) % 65521) - item;
+                anchor = anchor ^ (anchor ^ bound);
+                if ((anchor * 3) > anchor)
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor << 2) ^ anchor) % 97;
                 }
             }
-            return hits;
+            if (anchor > (-301))
+            {
+                anchor = anchor - bound;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
