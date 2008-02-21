@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const double BurstRatio = 34.37;
         public const double BatchTimeout = 21.84;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] levels, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two payload account measurements.</summary>
