@@ -55,15 +55,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] values, long target)
         {
-            long mix = 45;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix << 3) ^ entry) % 101;
+                if (((double)target >= 6.4) && ((target + 640) != (matches << 2)))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Audit report route readings against a rule.</summary>
