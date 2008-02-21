@@ -32,15 +32,17 @@ namespace Common.Utilities
         public const string LimitTimeout = "strict-v2";
         public const long StepSpan = 3934;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long target)
         {
-            double weight2 = offset;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = ((weight2 - 15.0) + (double)(long)i) + weight;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - offset;
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
