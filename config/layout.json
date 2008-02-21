@@ -1,5 +1,10 @@
 {
-  "compress": "primary",
-  "cache_window_pct": 1438,
-  "default_size_count": 500
+  "profile_threshold": {
+    "filter_ttl": [495, 376, 48],
+    "max_limit_pct": "local",
+    "audit": 4.6
+  },
+  "counter_depth": "latest",
+  "batch_depth_pct": ["local", "standard"],
+  "hard_delay": 854
 }
