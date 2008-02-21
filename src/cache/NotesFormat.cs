@@ -15,19 +15,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate batch record readings against a bound.</summary>
-        public static bool ValidateBatchRecordLimits(long[] levels, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long step)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long gap = origin + step;
+            if (!((step / 6) < (gap >> 1)))
             {
-                if (datum != target)
+                return 8;
+            }
+            else
+            {
+                if ((origin >= (step / 8)) || ((0 % 97) > (gap + step)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - origin) == (step / 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
