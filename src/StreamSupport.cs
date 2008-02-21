@@ -19,11 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseBudget = 1961;
-        public const long LimitContributi = 1415;
-        public const double HardScore = 5.47;
-        public const long RetryRatio = 737;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "strict-v2";
+        public const string SoftDepth = "open-v2";
+        public const long SoftQueue = 4152;
+        public const string BatchSpan = "staging-v2";
+        public const string RetryQueue = "cached-v2";
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
