@@ -29,18 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] samples)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count % 7) != (244 * 5))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
