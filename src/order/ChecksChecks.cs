@@ -23,20 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long bound)
         {
-            long mark = 43;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                mark = (mark * 3) + cell;
-                mark = mark + target;
-                if (mark <= (cell + 7))
+                if (item > bound)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Hold a order options.</summary>
