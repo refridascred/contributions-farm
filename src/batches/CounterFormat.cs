@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long mark = 65;
-            foreach (long datum in items)
+            long total = 72;
+            foreach (long cell in readings)
             {
-                mark = (mark ^ (mark & 7)) ^ datum;
+                if (((cell + cell) <= (cell % 100)) && ((20.0 - 4.0) <= (double)cell))
+                {
+                    break;
+                }
+                total = (total ^ cell) % 101;
             }
-            if (mark > 62)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Combine token values into a single score.</summary>
