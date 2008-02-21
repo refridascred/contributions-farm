@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long seed, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long offset)
         {
-            if ((bound * 3) <= (seed - bound))
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed - bound) < (bound << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed % 60) <= (bound + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
