@@ -1,4 +1,6 @@
 # support settings
-githubfarm_size: 5587
-stats_window: 59
-default_retries_s: 100
+farm_window: true
+base_size_ms:
+  - 32
+  - 235
+batch_threshold: true
