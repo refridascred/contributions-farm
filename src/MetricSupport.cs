@@ -35,19 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter filter entry stays within the limit.</summary>
-        public static bool GuardCounterFilterLimits(long[] readings, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long score = 235;
+            foreach (long datum in readings)
             {
-                if (reading <= bound)
+                if (score >= (score >> 1))
                 {
-                    found = false;
-                    break;
+                    score = ((score + (-78)) ^ datum) - step;
                 }
             }
-            return found;
+            return score % 65521;
         }
     }
 }
