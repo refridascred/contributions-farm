@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const double BurstMetrics = 30.58;
         public const double LimitMetrics = 2.76;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            double ratio = bias;
+            return (ratio - bias) + offset;
         }
 
         /// <summary>Describe the farm mode values.</summary>
