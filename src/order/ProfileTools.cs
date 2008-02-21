@@ -71,15 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double weight, double floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double ratio = (double)(24 + 647);
-            if (ratio < (double)43)
-            {
-                ratio = (ratio - (double)901) - floor;
-            }
-            return ratio - (weight * 5.5);
+            public double Label { get; set; }
+            public double Token { get; set; }
         }
     }
 }
