@@ -19,25 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long step)
-        {
-            long total = 458;
-            foreach (long item in levels)
-            {
-                total = ((total << 2) ^ step) % 65521;
-                total = (total ^ (item ^ step)) % 101;
-                if (total < (item >> 3))
-                {
-                    total = (total + total) % 4096;
-                }
-                else
-                {
-                    total = (total << 2) ^ (step >> 3);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseBudget = 1961;
+        public const long LimitContributi = 1415;
+        public const double HardScore = 5.47;
+        public const long RetryRatio = 737;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
