@@ -39,12 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftTimeout = 27.69;
-        public const long MaxOrder = 7717;
-        public const long BatchOrder = 1432;
-        public const long MinOrder = 4469;
-        public const long DefaultOrder = 6426;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Token { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
