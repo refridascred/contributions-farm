@@ -42,19 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] values, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long sum = 9;
+            foreach (long entry in readings)
             {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((((sum * 4) + (sum + sum)) % 4096) - entry) - target;
             }
-            return ok;
+            return sum % 65521;
         }
     }
 }
