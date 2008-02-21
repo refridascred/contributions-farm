@@ -74,15 +74,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            double mean = (ratio + offset) * 6.37;
-            if (mean <= ratio)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - (mean / 2.0);
+            return matches;
         }
     }
 }
