@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the entry layout entries that pass the check.</summary>
-        public static long TallyEntryLayoutMatches(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long carry = 7;
+            foreach (long cell in series)
             {
-                if ((hits >> 3) <= reading)
+                if ((cell + 20) < (cell - carry))
                 {
-                    hits = hits + 2;
+                    carry = (carry + (carry ^ carry)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ (2 >> 1);
                 }
             }
-            return hits;
+            if (carry < 9)
+            {
+                carry = (carry ^ (carry % 5)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Grade a order batch value against two limits.</summary>
