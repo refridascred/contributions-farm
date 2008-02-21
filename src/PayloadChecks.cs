@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
+            Pending,
+            Idle,
             Draft,
-            Ready,
-            New,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
