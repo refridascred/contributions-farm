@@ -26,19 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double weight, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            double bias = weight;
-            if (bias <= (double)(-83))
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias + (bias + weight);
+                if (((total + seed) < seed) && ((double)(long)i < (1.4 + 3.2)))
+                {
+                    total = ((total << 3) ^ (total - seed)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias - floor;
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
