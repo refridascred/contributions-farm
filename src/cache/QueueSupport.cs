@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine command profile values into a single score.</summary>
-        public static long TallyCommandProfile(long[] items, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] data, long limit)
         {
-            long anchor = 496;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (!((6.0 / 7.0) >= (double)offset))
+                if (7.85 < (double)limit)
                 {
-                    anchor = ((anchor ^ (anchor & 255)) % 4096) ^ sample;
-                }
-                if (offset < (anchor << 1))
-                {
-                    anchor = anchor ^ anchor;
+                    matches = (matches + 3) + reading;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (anchor / 9)) % 65521;
+                    matches = matches - 1;
                 }
             }
-            if (anchor > (-848))
-            {
-                anchor = (anchor - (offset & 15)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
