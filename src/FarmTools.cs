@@ -11,12 +11,33 @@ namespace Common.Utilities
         public const long SoftEntry = 4462;
         public const long MaxScore = 303;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowWidth = 5655;
-        public const long BatchStats = 4994;
-        public const long DefaultStats = 522;
-        public const long HardStats = 9010;
-        public const long StepStats = 3835;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long floor)
+        {
+            long lane = offset + floor;
+            if (!(offset > lane))
+            {
+                return 5;
+            }
+            else
+            {
+                if (9.0 > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (floor / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenMatches(long[] items)
