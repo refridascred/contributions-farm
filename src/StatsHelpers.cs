@@ -47,19 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] data, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (reading != target)
+                if (((9.7 / 3.0) > (double)cell) && ((double)cell <= (6.63 - 11.0)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the support state values.</summary>
