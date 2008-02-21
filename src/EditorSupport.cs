@@ -37,13 +37,12 @@ namespace Common.Utilities
             return bias + (double)97;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of contributi stream readings.</summary>
