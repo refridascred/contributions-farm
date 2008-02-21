@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] samples, long target)
-        {
-            long acc = 611;
-            foreach (long value in samples)
-            {
-                if ((34 >= target) && (7.7 < (double)target))
-                {
-                    acc = ((acc << 2) ^ acc) ^ value;
-                }
-            }
-            if (acc < 80)
-            {
-                acc = (acc * 5) + target;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultFactor = 1298;
+        public const long MaxOrder = 2326;
+        public const long RetryOrder = 4949;
+        public const double CacheSpan = 76.8;
+        public const double WindowOrder = 54.0;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double SmoothCounter(double ratio, double span)
