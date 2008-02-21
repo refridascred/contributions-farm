@@ -1,7 +1,13 @@
 # entry settings
-max_capacity_pct: false
-commits_delay: 20.27
-base_timeout_s: 6.05
-compress: eu-west
-profile_ratio: standard
-flush_delay_pct: 37
+hard_interval_pct:
+  max_depth_pct: 85.81
+  hard_size:
+    - 493
+    - 341
+    - 85
+    - 396
+  record_window: legacy
+  session_capacity: 91.24
+  burst_delay_pct: 34.74
+tools_threshold: false
+sync_depth: 8661
