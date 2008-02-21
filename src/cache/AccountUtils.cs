@@ -14,15 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of entry tools entries.</summary>
-        public static long TotalEntryTools(long[] levels, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long carry = 22;
-            foreach (long value in levels)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry ^ (offset + 548)) % 65521) - value;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
