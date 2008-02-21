@@ -1,13 +1,14 @@
 # support settings
-default_window:
-  readonly: false
-  batches_capacity:
-    - green
-    - edge
-    - green
-  batch_timeout_pct: 100
-default_size_s: 2216
-burst_retries_s:
-  - 264
-  - 449
-  - 496
+window_size: 60.12
+retry_limit_pct:
+  session_window: false
+  base_delay_s: 13
+  strict: staging
+  account_retries: true
+  layout_limit:
+    persist: 17.34
+    format_delay: open
+    min_limit_s: cached
+    max_depth_count: strict
+warm_timeout_ms: 5165
+farm_ratio: open
