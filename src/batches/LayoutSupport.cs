@@ -65,17 +65,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a already batch reading by value.</summary>
-        public static long LocateAlreadyBatchIndex(long[] values, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 11;
+            foreach (long sample in readings)
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ 519) % 65521) ^ sample;
             }
-            return -1;
+            if (sum < 3)
+            {
+                sum = (sum - (bound + bound)) % 4096;
+            }
+            return sum;
         }
     }
 }
