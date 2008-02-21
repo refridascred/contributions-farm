@@ -1,15 +1,11 @@
 # Command notes
 
-The cache module keeps metrics values in sync with the stats cache.
-A profile that stays idle for too long is moved to the context list.
-
-Defaults for already live in the config folder and can be overridden per environment.
-The buffer report groups every channel by queue.
-Each farm is validated before it reaches the graph queue.
+Keep route and report names short and lowercase.
+Use layout settings to tune how often record data is refreshed.
+Keep cache and metrics names short and lowercase.
 
 ## Guidelines
 
-- Document new editor fields
-- Validate githubfarm input early
-- Keep cluster values small
-- Review command limits each release
+- Prefer notes defaults
+- Validate window input early
+- Document new commits fields
