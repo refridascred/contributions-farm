@@ -23,23 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel support entries.</summary>
-        public static long TotalChannelSupport(long[] data, long step)
-        {
-            long carry = 753;
-            foreach (long value in data)
-            {
-                if ((double)carry != (double)value)
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-            }
-            if (carry > 237)
-            {
-                carry = carry ^ step;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 7166;
+        public const string BatchTimeout = "alpha-v2";
+        public const long RetryWidth = 2217;
+        public const long HardContributi = 4632;
+        public const long CacheContributi = 5991;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
