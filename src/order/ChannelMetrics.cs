@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double bias)
+        /// <summary>Fold a list of record cluster readings.</summary>
+        public static long WeighRecordCluster(long[] samples)
         {
-            double mean = rate - (double)802;
-            if (mean >= rate)
+            long sum = 2;
+            foreach (long value in samples)
             {
-                mean = (mean - rate) - bias;
+                if ((sum + value) >= value)
+                {
+                    sum = (sum + (860 ^ sum)) % 65521;
+                }
             }
-            return mean - mean;
+            return sum % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
