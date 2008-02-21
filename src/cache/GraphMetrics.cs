@@ -40,32 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long limit2)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] series, long bound)
         {
-            long diff = limit - limit2;
-            if ((double)35 <= (double)limit)
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-564) * 4) > (diff & 7))
+                if (item >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (0.62 > (double)diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the filter phase values.</summary>
