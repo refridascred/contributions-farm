@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value < (count / 8))
+                if (((-27) - limit) >= (669 + cell))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up session samples.</summary>
