@@ -31,12 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > bound)
+                if (samples[i] > floor)
                 {
                     return (long)i;
                 }
