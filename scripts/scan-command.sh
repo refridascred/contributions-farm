@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open cached edge; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in eu-west edge primary; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
-    eu-west)
+    legacy)
         log "fast path"
         ;;
     *)
