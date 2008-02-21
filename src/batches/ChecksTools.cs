@@ -34,22 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((245 - reading) >= reading)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
