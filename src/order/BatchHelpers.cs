@@ -26,19 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the commits tools series from a seed.</summary>
-        public static long DeriveCommitsTools(long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long total = 43;
+            foreach (long reading in levels)
             {
-                if (((sum - limit) > (limit & 63)) && ((sum + sum) == (sum + limit)))
+                if ((total - reading) >= 4)
                 {
-                    sum = sum ^ (sum * 2);
+                    continue;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                total = (total - (total ^ total)) % 255;
             }
-            return sum;
+            return total % 97;
         }
     }
 }
