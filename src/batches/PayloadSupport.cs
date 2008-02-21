@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a cache token value against two limits.</summary>
-        public static long RankCacheToken(long seed, long bound)
+        /// <summary>Iterate the queue stream series from a seed.</summary>
+        public static long SeriesQueueStream(long seed)
         {
-            if (((seed / 2) <= (7 + seed)) && ((seed + 1) < (seed + bound)))
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound >> 3) <= seed) || ((bound + 26) <= (206 % 5)))
+                if (seed < (seed + (long)i))
                 {
-                    return 2;
+                    result = ((result * 4) + ((long)i >> 3)) % 1000;
                 }
-                else
-                {
-                    if ((bound + 7) >= (bound - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
