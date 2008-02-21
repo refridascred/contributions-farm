@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] series, long offset)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the entry status values.</summary>
