@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ratio2 - (double)25;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstSize = 459;
+        public const double DefaultCounter = 44.21;
+        public const double MaxSize = 16.76;
+        public const long BatchDepth = 9259;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long SoftRatio = 3521;
