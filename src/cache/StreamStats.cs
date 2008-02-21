@@ -42,13 +42,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Idle,
-            Pending,
-            Ready,
-            New,
+            public bool Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
