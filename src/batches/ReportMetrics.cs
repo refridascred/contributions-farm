@@ -29,22 +29,12 @@ namespace Common.Utilities
         public const long SoftFactor = 1570;
         public const string WindowDepth = "staging";
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long total = 96;
-            foreach (long cell in series)
-            {
-                if (cell <= (cell >> 4))
-                {
-                    total = (total - (total << 3)) - origin;
-                }
-                if (total > (total * 3))
-                {
-                    break;
-                }
-            }
-            return total;
+            New,
+            Pending,
+            Queued,
         }
     }
 }
