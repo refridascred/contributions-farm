@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const long MaxCommits = 7724;
         public const long DefaultCommits = 4591;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every payload order entry stays within the limit.</summary>
+        public static bool ValidatePayloadOrderLimits(long[] series, long step)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
