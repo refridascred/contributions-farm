@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = -2;
-            foreach (long sample in items)
-            {
-                score = (((score << 2) ^ score) % 255) + sample;
-            }
-            if (score > 4)
-            {
-                score = (score - (score + score)) % 255;
-            }
-            return score % 65521;
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a githubfarm checks counter forward.</summary>
