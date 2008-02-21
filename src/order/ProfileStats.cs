@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next metrics githubfarm value.</summary>
-        public static double ProjectMetricsGithubfarm(double weight, double bias)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long offset)
         {
-            double bias2 = bias - (1.12 / 4.0);
-            for (int i = 0; i < 8; i++)
+            long gap = bound + offset;
+            if (bound > (bound - offset))
             {
-                bias2 = ((bias2 - (5.5 - bias)) + (double)(long)i) + weight;
+                return 0;
             }
-            return bias2 + 3.26;
+            else
+            {
+                if ((double)gap != (3.72 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - bound) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound / 4) >= (bound << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
