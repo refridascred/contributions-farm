@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double scale, double floor)
-        {
-            double rate = floor;
-            if (rate < scale)
-            {
-                rate = rate + (5.0 - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (scale * 6.7)) + (double)(long)i;
-            }
-            return rate + scale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 3619;
+        public const long StepSize = 2503;
+        public const long IdleCount = 8086;
+        public const long BaseRatio = 5215;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] readings, long limit)
