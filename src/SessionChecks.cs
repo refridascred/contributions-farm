@@ -30,13 +30,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits + hits) < (7 << 3))
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
