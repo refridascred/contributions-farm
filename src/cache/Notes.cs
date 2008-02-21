@@ -64,11 +64,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheRatio = 5397;
-        public const long MaxCluster = 2020;
-        public const string StepInterval = "fallback";
-        public const long IdleDepth = 1288;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double offset)
+        {
+            double mean = offset;
+            if (mean > offset)
+            {
+                mean = (mean - mean) + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 8.7) + (double)(long)i;
+            }
+            return mean - offset;
+        }
 
         /// <summary>Scale a editor counter figure with a bias.</summary>
         public static double BlendEditorCounter(double weight, double bias)
