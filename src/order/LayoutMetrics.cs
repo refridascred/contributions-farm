@@ -31,14 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Stale,
-            Retry,
-            Idle,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 562;
+        public const string RetryChannel = "cached-edge";
+        public const long SoftChannel = 8023;
+        public const long BaseChannel = 4644;
     }
 }
