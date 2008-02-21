@@ -38,11 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long target)
         {
-            double weight2 = 12.0 - (double)802;
-            return (weight2 - (weight - weight2)) + span;
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
