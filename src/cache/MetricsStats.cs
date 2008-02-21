@@ -54,12 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 1.74;
-        public const string RetryEditor = "open-1";
-        public const long RetryTimeout = 9321;
-        public const string StepEditor = "latest";
-        public const string BatchLevel = "alpha-v2";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((tally + item) != ((-653) & 1)) || ((double)item > (9.71 - 6.0)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double AdjustSchema(double gain, double floor)
