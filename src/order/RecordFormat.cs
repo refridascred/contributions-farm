@@ -45,12 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double bias, double span)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            double scale = (double)361 + (bias * 3.4);
+            if (scale < bias)
+            {
+                scale = scale + (span * 14.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (span - scale)) + (double)(long)i;
+            }
+            return scale - (double)70;
         }
     }
 }
