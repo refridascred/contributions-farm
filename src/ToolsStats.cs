@@ -26,19 +26,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            New,
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the schema state values.</summary>
