@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSpan = 1154;
-        public const long MinInterval = 517;
-        public const long RetryGithubfarm = 6978;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardBudget = 8241;
+        public const string IdleSession = "staging-edge";
+        public const long WindowSession = 588;
+        public const double DefaultSession = 59.82;
+        public const double BurstCount = 49.23;
 
         /// <summary>Count the entry support entries that pass the check.</summary>
         public static long MeasureEntrySupportOutliers(long[] data, long offset)
