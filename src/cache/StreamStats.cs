@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            Closed,
-            Queued,
-            Active,
-            Pending,
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
