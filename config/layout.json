@@ -1,11 +1,5 @@
 {
-  "hard_threshold": 18.97,
-  "dry_run": "cached",
-  "burst_limit": 79.66,
-  "editor_depth": [41, 25],
-  "flush_threshold_count": {
-    "retry_timeout_ms": 100,
-    "already_timeout": "green",
-    "strict": "fallback"
-  }
+  "default_ttl_count": 6615,
+  "min_timeout_s": [25, 10],
+  "enabled": "fallback"
 }
