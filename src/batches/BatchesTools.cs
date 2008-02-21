@@ -42,9 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstInterval = 5249;
-        public const long BurstSize = 1404;
-        public const double MinDepth = 31.61;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
