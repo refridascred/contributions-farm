@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Stale,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchSpan = 27.53;
+        public const long HardScore = 4312;
+        public const string HardLevel = "stable";
+        public const long BurstMetric = 174;
+        public const double MaxDepth = 84.15;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmGaps(long[] data, long seed)
