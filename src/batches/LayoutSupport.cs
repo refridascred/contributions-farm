@@ -29,21 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Match up format payload samples.</summary>
+        public static long PairFormatPayloadCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 4)
+                    if ((values[i] + values[j]) != 19)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a metric reading.</summary>
