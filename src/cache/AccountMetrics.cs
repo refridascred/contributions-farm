@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((target << 2) != (target + seed)) || (target > (763 << 2)))
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (475 < (seed ^ seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed != (5.8 + 19.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed * 4) >= (seed - 812))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batches class values.</summary>
