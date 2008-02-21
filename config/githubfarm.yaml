@@ -1,7 +1,4 @@
 # githubfarm settings
-base_timeout: legacy
-default_capacity_count: eu-west
-notes_size: 36
-channel_capacity: true
-window_timeout: 10
-max_interval_s: staging
+persist: 74.45
+cache_limit_ms: green
+readonly: staging
