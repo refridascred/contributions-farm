@@ -1,38 +1,4 @@
 # support settings
-hard_timeout: true
-default_interval_count: false
-window_timeout:
-  strict:
-    cache_ttl_pct:
-      - 204
-      - 94
-      - 471
-      - 290
-    enabled:
-      - open
-      - open
-      - primary
-      - green
-    min_threshold_count: fallback
-    min_size_count: 64.48
-  stats_limit: 8246
-  poll_retries:
-    readonly: 60
-    cache_timeout_pct: 500
-    window_window: fallback
-    soft_window_count: edge
-    soft_limit: 7932
-  burst_window: false
-  account_ratio: 34.46
-  compress: strict
-strict:
-  - open
-  - blue
-  - strict
-  - edge
-persist:
-  flush_timeout: edge
-  cache_capacity_pct: 8465
-  channel_size: fallback
-  default_timeout_count: 36
-  strict: 96
+strict: standard
+audit: 30
+metric_retries: legacy
