@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long HardEntry = 2494;
         public const long WindowEntry = 409;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long limit)
+        /// <summary>Compare every pair of entry layout readings.</summary>
+        public static long PairEntryLayoutCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
