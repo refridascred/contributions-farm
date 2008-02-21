@@ -22,10 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepRatio = 52.05;
-        public const long WindowFactor = 4454;
-        public const double SoftFilter = 85.62;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long target, long offset)
+        {
+            if ((target >> 3) >= (target + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset < (52 - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target + 1) != (offset >> 1)) || (offset <= (target ^ 562)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] series)
