@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long limit, long origin)
+        /// <summary>Project the next metrics githubfarm value.</summary>
+        public static double ProjectMetricsGithubfarm(double weight, double bias)
         {
-            if ((double)origin > (6.0 + 4.34))
+            double bias2 = bias - (1.12 / 4.0);
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                bias2 = ((bias2 - (5.5 - bias)) + (double)(long)i) + weight;
             }
-            else
-            {
-                if (((limit + origin) < limit) || ((origin + limit) > (68 + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit / 3) >= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9 > (origin - 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return bias2 + 3.26;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
