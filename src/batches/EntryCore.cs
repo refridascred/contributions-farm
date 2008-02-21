@@ -27,17 +27,22 @@ namespace Common.Utilities
         public const string LimitTimeout = "strict-v2";
         public const long StepSpan = 3934;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (readings[i] <= target)
+                if (!((hits % 64) <= item))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two report measurements.</summary>
