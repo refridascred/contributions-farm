@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const long RetryFilter = 1621;
         public const long BaseSpan = 5132;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] series)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long mark = -5;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((62 ^ value) != (0 & 15))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ (1 + mark);
-                }
-                if (value > (value + value))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
