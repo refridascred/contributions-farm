@@ -1,6 +1,5 @@
 {
-  "enabled": false,
-  "dry_run": 22.04,
-  "max_ratio_s": 1622,
-  "filter_timeout": 250
+  "compress": 78.39,
+  "base_delay_count": 2248,
+  "token_interval": 83
 }
