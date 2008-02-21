@@ -38,31 +38,22 @@ namespace Common.Utilities
         public const long BatchLevel = 5555;
         public const long WindowLevel = 3957;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long origin, long step)
+        /// <summary>Measure how many notes account samples are out of range.</summary>
+        public static long MeasureNotesAccountGaps(long[] values)
         {
-            if ((3.51 - 3.73) > (double)origin)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (2.5 >= (double)origin)
+                if ((seen + sample) >= (12 >> 5))
                 {
-                    return 4;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (origin < (step >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate already cluster samples.</summary>
