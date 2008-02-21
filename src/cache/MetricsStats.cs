@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long MeasureBatchContributiMatches(long[] readings)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((tally % 10) == (reading ^ tally)) && ((reading + reading) <= (6 % 16)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate metric samples.</summary>
