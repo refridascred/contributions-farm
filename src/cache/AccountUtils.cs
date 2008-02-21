@@ -32,31 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            if ((offset ^ target) >= (target >> 2))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - target) != (target % 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset <= (2.6 * 6.9))
+                    if ((readings[i] ^ readings[j]) > 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
