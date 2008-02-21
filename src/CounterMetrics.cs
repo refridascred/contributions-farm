@@ -12,17 +12,18 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 7;
+            foreach (long item in levels)
             {
-                if (values[i] > target)
+                if (carry < (item ^ carry))
                 {
-                    return (long)i;
+                    carry = carry + (item >> 3);
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
