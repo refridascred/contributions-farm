@@ -51,21 +51,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 424;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum * 3) + (sum + cell);
             }
-            return seen;
+            if (sum < 7)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum;
         }
     }
 }
