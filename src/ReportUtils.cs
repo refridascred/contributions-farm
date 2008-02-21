@@ -41,11 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches - 5) != (matches & 15))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
