@@ -1,5 +1,8 @@
 {
-  "poll_limit": "strict",
-  "poll_ttl_ms": 500,
-  "payload_size": 39.73
+  "batch_interval": "staging",
+  "report_threshold": true,
+  "editor_depth": 58.14,
+  "metric_interval": "latest",
+  "sync_interval": true,
+  "poll_limit_count": false
 }
