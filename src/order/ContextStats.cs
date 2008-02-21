@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Retry,
-            New,
-            Active,
-            Done,
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
