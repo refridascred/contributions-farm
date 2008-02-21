@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const long MinOrder = 4469;
         public const long DefaultOrder = 6426;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] data, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
