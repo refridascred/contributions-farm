@@ -28,16 +28,10 @@ namespace Common.Utilities
         public const double BatchSize = 54.82;
         public const long CacheRatio = 5968;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinCount = "latest-edge";
+        public const long RetryMetrics = 5598;
+        public const long DefaultMetrics = 9635;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double CacheEditor = 1.74;
