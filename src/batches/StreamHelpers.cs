@@ -46,17 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] series, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((series[i] >= target) && ((series[i] % 5) != 0))
+                if ((count + floor) >= count)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the session level values.</summary>
