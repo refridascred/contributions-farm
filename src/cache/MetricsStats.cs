@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit buffer counter readings against a rule.</summary>
+        public static long CountBufferCounterGaps(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count - count) != (count + count))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many batch contributi samples are out of range.</summary>
