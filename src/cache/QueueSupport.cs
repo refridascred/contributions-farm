@@ -52,11 +52,9 @@ namespace Common.Utilities
             return gain2 - 0.6;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitTimeout = "local";
+        public const long HardStream = 5121;
+        public const double MinDepth = 89.71;
     }
 }
