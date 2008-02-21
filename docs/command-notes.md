@@ -1,11 +1,15 @@
 # Command notes
 
-Use cluster settings to tune how often session data is refreshed.
-Use buffer settings to tune how often filter data is refreshed.
-A farm that stays idle for too long is moved to the editor list.
+The cluster module keeps support values in sync with the batch cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+When a cache fails, the token handler retries a few times before giving up.
+
+Keep report and route names short and lowercase.
+Run the metric check before changing any stats limits.
 
 ## Guidelines
 
-- Log every graph change
-- Validate metrics input early
-- Document new format fields
+- Review channel limits each release
+- Keep window values small
+- Document new counter fields
+- Prefer commits defaults
