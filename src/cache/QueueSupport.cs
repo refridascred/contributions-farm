@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryFactor = 8155;
-        public const long LimitAlready = 641;
-        public const long BaseAlready = 6639;
-        public const long MinBudget = 9633;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Paused,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long bound)
