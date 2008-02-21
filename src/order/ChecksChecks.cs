@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 7) > (seen >> 3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseWidth = 2510;
+        public const long IdleLevel = 5502;
+        public const long LimitSpan = 3255;
+        public const long SoftDepth = 8152;
+        public const long BaseRoute = 882;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] data, long bound)
