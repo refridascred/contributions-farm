@@ -1,8 +1,10 @@
 {
-  "base_window": 774,
-  "audit": "fallback",
-  "metric_ratio": "local",
-  "order_window": 1,
-  "idle_threshold_ms": 60,
-  "idle_ttl_ms": 50
+  "base_size_count": {
+    "strict": false,
+    "max_timeout_ms": 1024,
+    "warm_interval_pct": "fallback",
+    "poll_ratio_s": 8179
+  },
+  "max_retries_ms": ["primary", "staging"],
+  "tools_limit": [347, 456, 376]
 }
