@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west local; do
+for item in local legacy; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=480
+CHANNEL_LIMIT=484
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    green)
+    legacy)
         log "fast path"
         ;;
     *)
