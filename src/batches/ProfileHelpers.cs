@@ -32,13 +32,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] series, long target)
         {
-            New,
-            Retry,
-            Closed,
-            Synced,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
