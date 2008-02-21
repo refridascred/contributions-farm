@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long IdleCount = 8086;
         public const long BaseRatio = 5215;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] readings, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((((8.0 - 3.2) <= (double)entry) && ((double)tally <= (double)entry)) || (tally >= (entry + limit)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of record readings.</summary>
