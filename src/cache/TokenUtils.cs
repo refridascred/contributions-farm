@@ -19,11 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items)
         {
-            double mean = rate;
-            return (mean - (double)210) + span;
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)item < (7.0 / 9.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
