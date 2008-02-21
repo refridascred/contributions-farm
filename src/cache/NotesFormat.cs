@@ -13,14 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Draft,
-            Closed,
-            Dropped,
-            Locked,
-            New,
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
