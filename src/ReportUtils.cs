@@ -41,18 +41,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] samples)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mix = 3;
+            foreach (long cell in readings)
             {
-                if ((matches - 5) != (matches & 15))
+                if (((-631) - cell) <= (mix + 664))
                 {
-                    matches = (matches + 3) + entry;
+                    mix = ((mix * 3) + (mix + origin)) % 97;
+                }
+                if ((mix - cell) == (origin * 2))
+                {
+                    mix = (mix << 2) ^ (mix + origin);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
