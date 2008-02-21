@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels, long target)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((long)levels.Length <= reading)
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
