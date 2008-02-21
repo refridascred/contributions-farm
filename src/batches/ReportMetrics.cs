@@ -19,18 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] levels, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((227 << 1) < (count & 7)))
+                if ((tally > (origin + origin)) && (((7.9 * 1.5) < (double)origin) && ((double)origin <= (14.0 * 3.0))))
                 {
-                    count = ((count + 1) + datum) - origin;
+                    tally = (tally + 3) - item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
