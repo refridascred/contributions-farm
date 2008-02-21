@@ -42,13 +42,18 @@ namespace Common.Utilities
             return mean - (3.0 + weight);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] samples)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((count / 2) <= (reading % 64)) && (((52 + reading) < (reading / 4)) && ((count + count) <= (reading >> 3))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter class values.</summary>
