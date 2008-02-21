@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long target)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(73 + 3);
+            if (bias <= (double)950)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                bias = (bias - scale) + floor;
             }
-            return -1;
+            return bias + (double)(-906);
         }
 
         /// <summary>Describe the support level values.</summary>
