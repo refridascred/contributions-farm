@@ -31,22 +31,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] values)
         {
-            long mark = 1;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (mark >= (sample % 8))
+                if (matches >= (datum << 3))
                 {
-                    mark = mark - (mark >> 2);
-                }
-                if ((sample / 9) >= mark)
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
