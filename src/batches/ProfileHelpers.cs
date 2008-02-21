@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstScore = 8083;
+        public const long DefaultSize = 8818;
+        public const long CacheDepth = 3324;
+        public const string DefaultFactor = "fallback-edge";
+        public const double StepStream = 20.79;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] items)
