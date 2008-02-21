@@ -59,15 +59,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((((double)tally < (2.17 + 7.61)) || ((tally - value) <= (tally ^ tally))) || ((double)value > (7.5 - 0.26)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
