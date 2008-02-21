@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels)
         {
-            long sum = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                sum = sum - (datum ^ origin);
+                if (((-39) + item) != (item + matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a schema info.</summary>
