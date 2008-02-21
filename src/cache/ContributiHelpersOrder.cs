@@ -24,19 +24,13 @@ namespace Common.Utilities
             return rate + (rate + floor);
         }
 
-        /// <summary>Combine contributi tools values into a single score.</summary>
-        public static long ScoreContributiTools(long[] data, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = 58;
-            foreach (long entry in data)
-            {
-                anchor = (((anchor * 4) + anchor) % 1000) + offset;
-                if ((double)entry >= 1.52)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Dropped,
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
