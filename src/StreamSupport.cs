@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long state = 525;
-            foreach (long value in items)
-            {
-                if (!(state <= (state << 3)))
-                {
-                    state = (state - (state - 647)) ^ value;
-                }
-            }
-            return state;
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
