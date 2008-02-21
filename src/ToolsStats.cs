@@ -41,24 +41,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a window filter pair into a bucket.</summary>
-        public static long GradeWindowFilter(long target, long target2)
+        /// <summary>Fold a list of githubfarm profile readings.</summary>
+        public static long DigestGithubfarmProfile(long[] data, long bound)
         {
-            if ((target / 8) != (744 << 3))
+            long carry = 83;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (36 >= (target2 + target2))
+                if ((7.23 / 2.0) != (double)bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    carry = (carry << 2) ^ (item * 3);
                 }
             }
+            if (carry < 17)
+            {
+                carry = ((carry << 2) ^ bound) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
