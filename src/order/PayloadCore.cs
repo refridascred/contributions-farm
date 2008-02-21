@@ -45,32 +45,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long lane = step + limit;
-            if ((limit / 9) > limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (lane >= 826)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)lane == (1.76 - 0.79))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Failed,
+            Active,
+            New,
         }
     }
 }
