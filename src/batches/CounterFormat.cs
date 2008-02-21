@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Idle,
-            Failed,
-            Draft,
-            Active,
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
