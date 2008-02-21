@@ -33,10 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 3870;
-        public const long SoftSize = 2003;
-        public const string LimitLevel = "strict-1";
-        public const long MinCache = 5619;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowLevel = 1027;
+        public const long BurstSchema = 9849;
+        public const double MinInterval = 98.74;
+        public const long BatchSchema = 8481;
+        public const double CacheTimeout = 94.54;
     }
 }
