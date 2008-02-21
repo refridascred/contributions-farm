@@ -66,21 +66,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter order samples.</summary>
-        public static long MatchFilterOrderCount(long[] items)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a queue options.</summary>
