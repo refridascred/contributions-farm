@@ -26,13 +26,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Active,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardSpan = "local-edge";
+        public const string RetryBatches = "local";
+        public const long CacheScore = 6048;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double SoftTimeout = 27.69;
