@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 6944;
-        public const long BurstInterval = 3229;
-        public const long WindowInterval = 5187;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 1030;
+        public const long BurstSpan = 9153;
+        public const string SoftWidth = "primary-1";
+        public const string WindowChannel = "alpha";
 
         /// <summary>Roll a session counter forward.</summary>
         public static long IterateSession(long step)
