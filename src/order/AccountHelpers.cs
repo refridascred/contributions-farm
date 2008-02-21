@@ -57,12 +57,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowLevel = "open-edge";
-        public const string WindowCommits = "stable-1";
-        public const long CacheLevel = 329;
-        public const double BurstCommits = 47.32;
-        public const double LimitSize = 49.09;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long origin, long step)
+        {
+            long diff = origin - step;
+            if (!(2.7 > (double)diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ diff) < diff)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - 16) < (origin + diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream record entries.</summary>
         public static long FoldStreamRecord(long[] levels)
