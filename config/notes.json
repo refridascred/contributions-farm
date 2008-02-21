@@ -1,14 +1,7 @@
 {
-  "base_capacity_count": ["local", "fallback", "stable", "fallback"],
-  "schema_ratio": 60,
-  "hard_retries_pct": {
-    "compress": 32.5,
-    "base_threshold": ["strict", "strict"],
-    "audit": 4553,
-    "filter_size": "open",
-    "default_window": "standard"
-  },
-  "readonly": 15,
-  "cache_threshold_ms": true,
-  "dry_run": false
+  "graph_delay": 6993,
+  "cache_retries_count": ["stable", "blue", "eu-west", "eu-west"],
+  "strict": 2233,
+  "batch_depth_count": 1024,
+  "min_retries": "latest"
 }
