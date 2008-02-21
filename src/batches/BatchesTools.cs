@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)hits != (0.9 - 17.0)))
+                if (2.03 <= (double)mix)
                 {
-                    hits = (hits + 2) ^ sample;
+                    mix = (mix - (671 / 3)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = ((mix * 2) + (step & 31)) % 4096;
+                    mix = ((mix << 2) ^ mix) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
