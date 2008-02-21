@@ -80,19 +80,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token buffer measurements.</summary>
-        public static double SmoothTokenBuffer(double weight, double bias)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long bound)
         {
-            double mean = weight;
-            if (mean < 13.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - 13.0) + bias;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + (double)8;
+            return -1;
         }
     }
 }
