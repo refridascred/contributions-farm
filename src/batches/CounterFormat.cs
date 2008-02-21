@@ -20,31 +20,18 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Measure how many record metric samples are out of range.</summary>
+        public static long TallyRecordMetricMatches(long[] readings)
         {
-            long state = 92;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if (((-97) * 4) > (seen + 1))
                 {
-                    state = ((state * 3) + (cell % 3)) + (long)i;
-                    state = (state ^ (cell * 2)) % 255;
-                }
-                if ((state << 3) <= ((-6) / 4))
-                {
-                    state = ((state * 5) + (state & 255)) % 97;
-                }
-                if ((cell % 2) >= ((long)data.Length >> 2))
-                {
-                    break;
+                    seen = (seen + 3) + item;
                 }
             }
-            if (state > (-22))
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the graph status values.</summary>
