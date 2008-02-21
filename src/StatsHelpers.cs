@@ -28,14 +28,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a batch tools value against two limits.</summary>
+        public static long RankBatchTools(long offset, long offset2)
         {
-            Ready,
-            Retry,
-            Stale,
-            Locked,
-            Done,
+            if ((27 < (offset2 * 4)) && ((double)offset2 <= (20.0 / 9.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset2 << 3) == (offset - offset2)) && ((offset << 1) == (offset ^ (-6))))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (offset2 << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
