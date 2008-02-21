@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] data, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] data)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long reading in data)
             {
-                if (7.85 < (double)limit)
+                if (!(((double)reading != (10.0 + 6.0)) && (tally <= (reading % 64))))
                 {
-                    matches = (matches + 3) + reading;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of channel support entries.</summary>
