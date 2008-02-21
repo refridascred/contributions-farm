@@ -26,27 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long seed, long floor)
         {
-            long mark = 1;
-            foreach (long value in levels)
+            long prev = seed - floor;
+            if ((prev ^ floor) == (floor % 100))
             {
-                mark = (mark ^ (mark << 2)) % 1000;
-                if ((244 ^ (long)levels.Length) > (mark << 1))
+                return 1;
+            }
+            else
+            {
+                if ((1.58 * 8.4) >= (double)seed)
                 {
-                    mark = ((mark * 3) + (value & 7)) % 255;
+                    return 4;
                 }
                 else
                 {
-                    mark = (mark * 4) + (mark << 2);
+                    if ((double)floor < (1.0 * 8.34))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)floor == (double)prev))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
