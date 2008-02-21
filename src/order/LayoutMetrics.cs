@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 7080;
+        public const long WindowSpan = 8882;
+        public const long MinLevel = 7103;
+        public const string RetryFormat = "latest-1";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterLimits(long[] values, long limit)
