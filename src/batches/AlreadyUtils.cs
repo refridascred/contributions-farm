@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Define token limits and defaults.</summary>
