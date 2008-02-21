@@ -20,38 +20,18 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long limit, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] readings)
         {
-            if ((floor + limit) < (limit + floor))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit == (double)floor))
+                if ((208 << 1) >= (long)readings.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((1.63 / 6.0) >= (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((437 >= (floor >> 3)) && ((limit & 127) < limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
