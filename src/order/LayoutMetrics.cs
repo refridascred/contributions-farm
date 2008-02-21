@@ -20,32 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long origin, long seed)
-        {
-            if ((seed < origin) && ((double)seed > (1.1 - 4.32)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4.85 * 14.0) < (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (seed >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 4663;
+        public const long DefaultEditor = 7893;
+        public const double SoftEditor = 14.83;
+        public const double RetryRatio = 26.06;
+        public const long BurstRatio = 268;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 9375;
