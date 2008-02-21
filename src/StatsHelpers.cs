@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] readings, long bound)
         {
-            Queued,
-            Failed,
-            Ready,
-            Closed,
-            Paused,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a batch tools value against two limits.</summary>
