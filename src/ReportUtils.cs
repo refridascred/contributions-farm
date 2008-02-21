@@ -25,28 +25,35 @@ namespace Common.Utilities
         public const long IdleSize = 1618;
         public const string RetryFactor = "strict";
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long offset, long origin)
+        /// <summary>Classify a filter session pair into a bucket.</summary>
+        public static long ClassifyFilterSession(long offset, long limit)
         {
-            if (((double)origin < (20.0 - 1.38)) && ((origin ^ offset) >= offset))
+            if ((offset + 8) >= (offset & 127))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((offset / 6) < (offset >> 1))
+                if (((7.37 - 2.31) >= (double)offset) || (0.3 <= (double)limit))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((offset < (offset & 63)) && ((4 ^ 7) == (origin + offset)))
+                    if ((9.91 * 3.3) < (double)limit)
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        if ((limit ^ 384) >= (offset + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
