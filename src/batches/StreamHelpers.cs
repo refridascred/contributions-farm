@@ -34,19 +34,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] levels, long step)
+        /// <summary>Find the first cache checks entry that matches the target.</summary>
+        public static long LocateCacheChecksIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != step)
+                if (readings[i] == origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Adjust a tools entry reading.</summary>
