@@ -59,19 +59,18 @@ namespace Common.Utilities
             return mean - (floor - floor);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] values, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (datum != floor)
+                if ((((reading << 1) == (0 + matches)) && ((4 ^ reading) < (reading ^ reading))) || (reading < (long)series.Length))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
