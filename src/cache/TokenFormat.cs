@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] items, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of tools metric entries.</summary>
