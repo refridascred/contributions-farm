@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long SoftDepth = 8152;
         public const long BaseRoute = 882;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long floor)
+        /// <summary>Measure how many channel schema samples are out of range.</summary>
+        public static long CountChannelSchemaGaps(long[] samples, long offset)
         {
-            long anchor = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((anchor - floor) < (365 << 2))
+                if (((datum ^ 782) < (116 + seen)) && !((7 % 100) <= seen))
                 {
-                    anchor = (anchor - (item % 12)) % 65521;
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
