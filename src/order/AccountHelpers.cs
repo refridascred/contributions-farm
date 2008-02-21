@@ -40,19 +40,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] items, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= floor)
+                if (data[i] > step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Compare every pair of stream tools readings.</summary>
