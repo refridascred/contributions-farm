@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double offset)
         {
-            long sum = 997;
-            foreach (long value in values)
+            double rate = gain * 16.0;
+            if (rate > (gain - offset))
             {
-                if ((sum ^ limit) > (1 & 31))
-                {
-                    sum = (sum << 2) ^ 1;
-                }
-                else
-                {
-                    sum = sum + value;
-                }
-                if (sum <= 44)
-                {
-                    break;
-                }
+                rate = rate + (double)7;
             }
-            if (sum < 78)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return rate - offset;
         }
 
         /// <summary>Project the next layout stats value.</summary>
