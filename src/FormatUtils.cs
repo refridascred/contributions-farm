@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor * 5) + (anchor << 2);
-                if (((long)i / 2) < anchor)
-                {
-                    anchor = (anchor + (anchor / 7)) % 101;
-                    anchor = (anchor ^ (long)i) % 101;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the profile kind values.</summary>
