@@ -1,5 +1,13 @@
 # support settings
-warm_ratio: 35.56
-enabled: legacy
-flush_delay: true
-idle_depth_ms: legacy
+default_window:
+  readonly: false
+  batches_capacity:
+    - green
+    - edge
+    - green
+  batch_timeout_pct: 100
+default_size_s: 2216
+burst_retries_s:
+  - 264
+  - 449
+  - 496
