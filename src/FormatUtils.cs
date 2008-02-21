@@ -27,16 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the record filter series from a seed.</summary>
-        public static long StepRecordFilter(long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = sum ^ ((long)i ^ 12);
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
