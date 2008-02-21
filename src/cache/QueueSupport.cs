@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                long tally = anchor;
-                if (tally <= (bound & 3))
+                long cur = (17 << 2) + (mark + 354);
+                if (!(5 >= cur))
                 {
-                    break;
+                    cur = (cur + (mark / 8)) % 4096;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                cur = (cur * 2) + cur;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Project the next profile value.</summary>
