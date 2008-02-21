@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter metric readings against a bound.</summary>
-        public static bool CheckFilterMetricBounds(long[] items, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (item > floor)
+                if (value < seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
