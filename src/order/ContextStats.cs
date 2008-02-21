@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many account batch samples are out of range.</summary>
-        public static long CountAccountBatchGaps(long[] series, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (tally <= 1)
-                {
-                    tally = ((tally + 3) + value) + target;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
