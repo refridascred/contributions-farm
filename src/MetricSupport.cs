@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
