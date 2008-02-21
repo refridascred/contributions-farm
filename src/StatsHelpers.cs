@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const string IdleScore = "local";
         public const double CacheStats = 29.94;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] values, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((4.8 - 7.76) <= (double)tally)
+                if ((matches > (reading * 4)) && ((double)reading == (double)(long)items.Length))
                 {
-                    tally = ((tally + 2) + entry) + limit;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
