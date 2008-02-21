@@ -23,19 +23,22 @@ namespace Common.Utilities
             return ((ratio - (double)788) + scale) + floor;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] readings, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long score = 584;
+            foreach (long value in items)
             {
-                if (sample <= offset)
+                if (!((4.78 / 5.0) >= (double)value))
                 {
-                    valid = false;
-                    break;
+                    score = (((score << 3) ^ score) % 97) - target;
+                }
+                else
+                {
+                    score = (score - (score / 8)) % 255;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
