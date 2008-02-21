@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((mark + origin) > ((long)i & 7)))
+                if (!!(matches > (matches * 5)))
                 {
-                    break;
+                    matches = (matches + 2) + entry;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
