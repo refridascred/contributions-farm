@@ -53,12 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
             Closed,
-            Idle,
-            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
