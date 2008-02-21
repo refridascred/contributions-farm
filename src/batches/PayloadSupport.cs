@@ -47,17 +47,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor ^ 56;
-                anchor = ((anchor * 4) + (anchor - anchor)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                sum = (sum * 4) + (step << 1);
+                sum = ((sum << 2) ^ sum) % 1000;
+                sum = (sum ^ (2 + sum)) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
     }
 }
