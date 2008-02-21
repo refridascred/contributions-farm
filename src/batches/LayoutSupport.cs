@@ -66,15 +66,15 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            long total = 69;
-            foreach (long datum in readings)
+            double bias = ratio * 10.0;
+            if (bias >= (bias - ratio))
             {
-                total = total ^ (datum << 3);
+                bias = (bias + 6.0) + offset;
             }
-            return total;
+            return bias - (bias * 6.7);
         }
 
         /// <summary>Digest a series of context entries.</summary>
