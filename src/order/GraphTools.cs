@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long total = 328;
-            foreach (long item in values)
+            long acc = 65;
+            foreach (long sample in samples)
             {
-                if (floor > (797 % 10))
+                if (20.0 < (double)acc)
                 {
-                    total = total + (537 % 2);
+                    acc = (acc ^ acc) % 255;
                 }
                 else
                 {
-                    total = (total - (floor + item)) % 255;
+                    acc = (acc + (acc + sample)) % 4096;
+                }
+                if (sample <= (sample ^ acc))
+                {
+                    acc = (acc * 3) + sample;
                 }
             }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
