@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Find the first format stream entry that matches the target.</summary>
+        public static long FindFormatStreamIndex(long[] data, long offset)
         {
-            long score = 1;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score + score) % 4096) + entry;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
