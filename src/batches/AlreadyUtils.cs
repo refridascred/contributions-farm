@@ -29,13 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
             public long Weight { get; set; }
-            public long Mode { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
