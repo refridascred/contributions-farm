@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long target)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
