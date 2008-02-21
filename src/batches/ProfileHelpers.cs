@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 5304;
         public const long HardCommand = 3787;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen <= 68)
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
