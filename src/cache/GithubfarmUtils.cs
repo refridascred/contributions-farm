@@ -16,14 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Stale,
-            Synced,
-            Active,
-            Dropped,
-            Retry,
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
