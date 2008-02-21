@@ -1,7 +1,24 @@
 # entry settings
-sync_ttl_pct: 80.88
-verbose:
-  - open
-  - primary
-  - cached
-warm_capacity_ms: staging
+warm_delay_ms: 63.44
+idle_ratio_pct:
+  soft_capacity:
+    - 216
+    - 274
+  warm_ttl:
+    - local
+    - open
+  hard_threshold_pct: false
+  base_ratio_pct: 46.81
+  route_ratio:
+    report_timeout: staging
+    format_interval: edge
+    cache_threshold_s: false
+    base_interval_ms: false
+  channel_timeout: true
+min_limit_s:
+  max_ttl: stable
+  order_depth: standard
+  idle_size: local
+channel_depth: primary
+compress: true
+filter_window: 3210
