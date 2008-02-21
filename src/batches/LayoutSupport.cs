@@ -67,22 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter contributi readings.</summary>
-        public static long CombineCounterContributi(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long score = 96;
-            foreach (long value in series)
+            long total = 69;
+            foreach (long datum in readings)
             {
-                if (!((2.22 * 2.85) >= (double)score))
-                {
-                    score = ((score << 2) ^ value) % 255;
-                }
-                else
-                {
-                    score = (score + 3) % 1000;
-                }
+                total = total ^ (datum << 3);
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
