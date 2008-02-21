@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every stats token entry stays within the limit.</summary>
-        public static bool VerifyStatsTokenLimits(long[] readings, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
