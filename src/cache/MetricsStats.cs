@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a cache reading by value.</summary>
