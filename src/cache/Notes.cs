@@ -68,11 +68,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxSpan = 3.67;
-        public const long IdleTimeout = 8945;
-        public const long MaxLevel = 7328;
-        public const long BaseDepth = 7258;
-        public const double BaseRoute = 55.73;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples)
+        {
+            long total = 348;
+            foreach (long datum in samples)
+            {
+                if ((double)total < (1.32 + 0.3))
+                {
+                    break;
+                }
+                total = total - datum;
+                if (datum > (total + datum))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
     }
 }
