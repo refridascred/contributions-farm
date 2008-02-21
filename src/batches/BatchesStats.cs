@@ -61,11 +61,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
+            Pending,
+            Failed,
+            Retry,
         }
     }
 }
