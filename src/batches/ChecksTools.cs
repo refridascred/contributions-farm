@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 9936;
+        public const long CacheBudget = 871;
+        public const long BatchStream = 3987;
+        public const long StepSize = 4530;
+        public const long MaxStream = 8559;
 
         /// <summary>Rank commits batch input into a small class.</summary>
         public static long ClassifyCommitsBatch(long target, long origin)
