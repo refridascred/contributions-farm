@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] samples)
+        /// <summary>Rank cache graph input into a small class.</summary>
+        public static long GradeCacheGraph(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long span = origin ^ offset;
+            if (origin <= offset)
             {
-                if (!!(matches > (matches * 5)))
+                return 6;
+            }
+            else
+            {
+                if ((2 / 6) > (offset << 1))
                 {
-                    matches = (matches + 2) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((18.0 * 4.0) >= (9.53 + 2.18))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)span > (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
