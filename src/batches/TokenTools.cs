@@ -20,22 +20,22 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Fold a list of schema batch readings.</summary>
-        public static long CombineSchemaBatch(long[] values, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] readings, long limit)
         {
-            long anchor = 90;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)reading <= (double)(-5))
+                if ((((8.0 - 3.2) <= (double)entry) && ((double)tally <= (double)entry)) || (tally >= (entry + limit)))
                 {
-                    anchor = (anchor - reading) % 101;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 3) ^ (bound + anchor)) % 4096;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Blend two filter measurements.</summary>
