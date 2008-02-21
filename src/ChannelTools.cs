@@ -12,39 +12,27 @@ namespace Common.Utilities
         public const double CacheSpan = 76.8;
         public const double WindowOrder = 54.0;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels)
         {
-            long offset = seed - bound;
-            if ((seed >= (bound + offset)) && (bound > (seed - bound)))
+            long mark = 1;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset < (bound << 1)) && (offset >= (offset - bound)))
+                mark = (mark ^ (mark << 2)) % 1000;
+                if ((244 ^ (long)levels.Length) > (mark << 1))
                 {
-                    return 5;
+                    mark = ((mark * 3) + (value & 7)) % 255;
                 }
                 else
                 {
-                    if ((bound - seed) != (bound ^ bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((0.67 - 0.1) != (double)bound) || ((7 & 31) > (seed + bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark * 4) + (mark << 2);
                 }
             }
+            if (mark < 4)
+            {
+                mark = (mark - mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
