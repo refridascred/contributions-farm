@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-The report report groups every window by schema.
+Each support is validated before it reaches the notes queue.
+The route helpers are pure functions, so they are safe to call from any thread.
+Keep profile and profile names short and lowercase.
+
+The editor report groups every format by metric.
+Keep command and context names short and lowercase.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Document new profile fields
-- Validate tools input early
-- Keep support values small
+- Prefer order defaults
+- Document new entry fields
+- Review batches limits each release
+- Validate command input early
