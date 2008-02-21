@@ -39,11 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 523;
-        public const long StepScore = 513;
-        public const string IdleSchema = "stable-edge";
-        public const string BatchInterval = "stable-v2";
-        public const long DefaultSchema = 6824;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] items, long target)
+        {
+            long mix = 94;
+            foreach (long entry in items)
+            {
+                if (((double)target >= (double)entry) && ((double)target > (4.2 / 5.0)))
+                {
+                    mix = (mix << 2) ^ target;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix + target);
+                }
+            }
+            return mix;
+        }
     }
 }
