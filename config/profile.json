@@ -1,5 +1,6 @@
 {
-  "githubfarm_window": true,
-  "batch_depth_ms": 60,
-  "burst_interval_pct": false
+  "token_retries": false,
+  "retry_window_pct": [36, 315, 449],
+  "poll_size_pct": true,
+  "warm_limit_count": true
 }
