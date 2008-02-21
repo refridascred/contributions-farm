@@ -41,15 +41,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a queue filter figure with a bias.</summary>
-        public static double ProjectQueueFilter(double bias, double offset)
-        {
-            double bias2 = bias;
-            if (bias2 > (4.0 + bias2))
-            {
-                bias2 = bias2 - offset;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchWidth = 4608;
+        public const long SoftFormat = 1911;
+        public const string MinFormat = "staging-1";
     }
 }
