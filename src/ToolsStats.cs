@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Combine batches route values into a single score.</summary>
+        public static long ScoreBatchesRoute(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 20;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (mark > entry)
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark + (mark * 5);
                 }
             }
-            return hits;
+            if (mark > 18)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of order readings.</summary>
