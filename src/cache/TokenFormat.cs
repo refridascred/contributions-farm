@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleScore = 6857;
-        public const long RetryGraph = 2650;
-        public const long MaxGraph = 3500;
-        public const string WindowGraph = "fallback-v2";
+        /// <summary>Digest a series of tools metric entries.</summary>
+        public static long FoldToolsMetric(long[] values, long limit)
+        {
+            long acc = 19;
+            foreach (long value in values)
+            {
+                if ((value & 255) <= (56 ^ value))
+                {
+                    acc = ((acc - (value / 6)) % 101) + limit;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] series, long seed)
