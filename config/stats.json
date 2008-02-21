@@ -1,5 +1,6 @@
 {
-  "poll_ratio_ms": true,
-  "editor_limit": 51.98,
-  "max_interval_count": 5854
+  "enabled": 39,
+  "cache_depth": 8190,
+  "warm_capacity_pct": "blue",
+  "max_ttl": 7.82
 }
