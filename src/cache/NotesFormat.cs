@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Closed,
+            Synced,
+            Queued,
+            Paused,
             Done,
-            Draft,
+            Retry,
         }
 
         /// <summary>Match up cache samples.</summary>
