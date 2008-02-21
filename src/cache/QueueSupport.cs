@@ -36,17 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] readings, long offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
