@@ -40,15 +40,18 @@ namespace Common.Utilities
             return mean - (3.0 + weight);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
             long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count / 2) <= (reading % 64)) && (((52 + reading) < (reading / 4)) && ((count + count) <= (reading >> 3))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
