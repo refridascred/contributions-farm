@@ -1,13 +1,6 @@
 {
-  "dry_run": true,
-  "poll_window_ms": "primary",
-  "hard_interval_ms": {
-    "max_ttl_s": {
-      "flush_delay": "stable",
-      "sync_limit_ms": 100,
-      "session_interval": "local"
-    },
-    "max_timeout_ms": "local",
-    "base_window": "strict"
-  }
+  "sync_window_s": "strict",
+  "sync_depth_count": false,
+  "retry_ratio_pct": "standard",
+  "base_interval": 884
 }
