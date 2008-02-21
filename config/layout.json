@@ -1,6 +1,6 @@
 {
-  "stream_threshold": "edge",
-  "batch_capacity_pct": "primary",
-  "max_size_pct": "open",
-  "layout_ratio": true
+  "default_ttl_pct": 29,
+  "warm_window_ms": 48.49,
+  "min_retries": true,
+  "max_size_count": 54.02
 }
