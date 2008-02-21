@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const long HardStats = 9010;
         public const long StepStats = 3835;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] items)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((2.0 - 14.0) > (9.63 + 2.2))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
