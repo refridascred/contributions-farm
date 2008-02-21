@@ -1,7 +1,20 @@
 # support settings
-base_retries_pct: 90
-support_retries:
-  - eu-west
+window_depth:
   - standard
-batches_window: 65
-soft_interval: 58.25
+  - stable
+min_capacity_ms: 51.39
+layout_retries: 2950
+base_timeout_pct:
+  - 214
+  - 101
+strict:
+  - blue
+  - green
+  - open
+  - blue
+burst_interval:
+  support_limit: cached
+  hard_interval_ms: 83.62
+  base_ttl_count: staging
+  compress: eu-west
+  flush_limit_s: 2833
