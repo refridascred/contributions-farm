@@ -1,17 +1,5 @@
 {
-  "sync_threshold_pct": "eu-west",
-  "warm_depth": {
-    "order_threshold": {
-      "default_size": "blue",
-      "strict": true,
-      "hard_timeout": "latest"
-    },
-    "soft_limit": "staging",
-    "persist": "edge",
-    "tools_capacity": false,
-    "enabled": false,
-    "metric_interval": false
-  },
-  "channel_retries": 30,
-  "base_limit": 83.61
+  "support_timeout": 76.82,
+  "editor_window": 1024,
+  "enabled": "edge"
 }
