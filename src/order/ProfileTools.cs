@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] values, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((-708) << 2) < (seen ^ reading))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Fold a list of session readings.</summary>
