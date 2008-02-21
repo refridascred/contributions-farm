@@ -42,15 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double gain = 5.3;
-            if (gain <= (floor + gain))
-            {
-                gain = gain - (floor + rate);
-            }
-            return gain - (8.0 * 0.43);
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
