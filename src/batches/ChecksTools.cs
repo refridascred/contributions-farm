@@ -16,10 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "open-1";
-        public const string BurstSize = "strict-v2";
-        public const double RetryEntry = 20.47;
+        /// <summary>Validate token cluster readings against a bound.</summary>
+        public static bool VerifyTokenClusterBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] data, long target)
