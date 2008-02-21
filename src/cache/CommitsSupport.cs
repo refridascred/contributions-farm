@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 1.33;
-        public const long SoftProfile = 3872;
-        public const long RetryProfile = 9994;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double scale, double span)
