@@ -52,22 +52,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item + count) == (count + 254))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
