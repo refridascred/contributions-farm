@@ -42,15 +42,22 @@ namespace Common.Utilities
         public const string CacheTimeout = "local";
         public const long BurstDepth = 4674;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] readings, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long score = 519;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((985 + 92) >= (score ^ score))
+                {
+                    score = (score + (sample / 5)) % 1000;
+                }
             }
-            return acc;
+            if (score > (-705))
+            {
+                score = ((score * 2) + (8 - bound)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
