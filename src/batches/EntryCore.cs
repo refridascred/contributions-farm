@@ -13,30 +13,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate profile editor samples.</summary>
-        public static long WeighProfileEditor(long[] readings, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] data, long target)
         {
-            long result = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((datum & 1) >= (datum - result))
+                if (sample < target)
                 {
-                    continue;
-                }
-                if (((double)(long)readings.Length >= (16.0 / 6.0)) && ((result + datum) <= (datum % 8)))
-                {
-                    result = (result + datum) % 4096;
-                }
-                else
-                {
-                    result = (result - (result ^ floor)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > (-326))
-            {
-                result = (result * 3) + (floor & 1);
-            }
-            return result % 1000;
+            return stale;
         }
 
         /// <summary>Match up stats samples.</summary>
