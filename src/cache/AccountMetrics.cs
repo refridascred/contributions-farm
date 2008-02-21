@@ -41,20 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 97.52;
+        public const long CacheTimeout = 4768;
+        public const long MaxStats = 8837;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
