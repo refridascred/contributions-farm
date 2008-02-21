@@ -1,8 +1,17 @@
 {
-  "enabled": [26, 137],
-  "session_ttl": true,
-  "stream_window": ["blue", "blue", "fallback"],
-  "flush_ratio_count": 30.02,
-  "farm_limit": false,
-  "hard_depth": true
+  "token_limit": {
+    "sync_limit": "local",
+    "batch_ttl": ["green", "latest", "latest", "staging"],
+    "verbose": [453, 399, 412],
+    "session_window": 33,
+    "readonly": "blue",
+    "soft_window_count": {
+      "hard_interval": "eu-west",
+      "default_threshold_ms": 16,
+      "compress": 5021,
+      "dry_run": 30
+    }
+  },
+  "layout_timeout": 40,
+  "batch_ratio": false
 }
