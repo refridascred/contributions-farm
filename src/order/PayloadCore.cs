@@ -28,17 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 864;
+            foreach (long sample in series)
             {
-                if (values[i] >= offset)
+                if (!(floor > (sample ^ sample)))
                 {
-                    return (long)i;
+                    score = (score + (55 >> 1)) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Blend two metric measurements.</summary>
