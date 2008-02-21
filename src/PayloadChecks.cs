@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
