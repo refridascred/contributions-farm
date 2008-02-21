@@ -68,17 +68,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] items, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 4;
+            foreach (long item in data)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                if (((item + mix) > item) && (mix < (item ^ mix)))
                 {
-                    return (long)i;
+                    mix = mix - (mix << 1);
+                }
+                if ((5 ^ mix) < 32)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the route level values.</summary>
