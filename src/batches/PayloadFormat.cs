@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepDepth = 96.65;
-        public const string LimitLevel = "cached-edge";
-        public const long RetryWidth = 842;
-        public const long DefaultBudget = 5914;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate already command readings against a bound.</summary>
         public static bool CheckAlreadyCommandLimits(long[] levels, long bound)
