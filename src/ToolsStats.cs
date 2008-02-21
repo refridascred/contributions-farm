@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine batches route values into a single score.</summary>
-        public static long ScoreBatchesRoute(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data, long floor)
         {
-            long mark = 20;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (mark > entry)
+                if (((35 >> 2) != (cell % 3)) || (((double)floor != (double)916) && ((cell % 16) <= 31)))
                 {
-                    mark = mark + (mark * 5);
+                    matches = matches + 1;
                 }
             }
-            if (mark > 18)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
