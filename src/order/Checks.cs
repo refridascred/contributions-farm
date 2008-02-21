@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] items, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long seed, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long diff = seed ^ step;
+            if (seed < (seed & 7))
             {
-                if (((reading - 552) < matches) || ((reading < (3 * 3)) && ((floor << 1) < floor)))
+                return 1;
+            }
+            else
+            {
+                if (diff > (diff - diff))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((diff % 12) <= 990)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - step) >= (seed - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
