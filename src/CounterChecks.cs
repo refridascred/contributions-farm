@@ -57,14 +57,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Stale,
-            Failed,
-            Synced,
-            New,
-            Done,
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
