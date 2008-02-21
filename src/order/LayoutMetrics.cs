@@ -37,15 +37,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the queue batches series from a seed.</summary>
-        public static long SeriesQueueBatches(long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
