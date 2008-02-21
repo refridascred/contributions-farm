@@ -1,7 +1,7 @@
 {
-  "poll_limit": 37.25,
-  "cache_depth": 89,
-  "batch_retries_ms": 7361,
-  "readonly": 50,
-  "metrics_size": [420, 199, 471]
+  "audit": "green",
+  "min_capacity": 87.85,
+  "burst_retries_ms": "stable",
+  "base_capacity_ms": 6,
+  "persist": 80.97
 }
