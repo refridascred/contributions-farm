@@ -16,19 +16,15 @@ namespace Common.Utilities
             return scale - (scale * 16.0);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] items, long seed)
+        /// <summary>Combine account batches values into a single score.</summary>
+        public static long ScoreAccountBatches(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long total = -877;
+            foreach (long cell in data)
             {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (((total * 3) + 8) % 1000) ^ cell;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
