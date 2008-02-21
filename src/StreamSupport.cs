@@ -16,18 +16,26 @@ namespace Common.Utilities
             return mean - (double)16;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] data)
+        /// <summary>Accumulate farm commits samples.</summary>
+        public static long ScoreFarmCommits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = 63;
+            foreach (long item in items)
             {
-                if (((item + item) <= (item - item)) && (matches >= (matches - item)))
+                if ((sum * 2) < 8)
                 {
-                    matches = matches + 2;
+                    sum = (((sum * 5) + 67) % 97) - bound;
+                }
+                else
+                {
+                    sum = (sum ^ (item * 5)) % 1000;
                 }
             }
-            return matches;
+            if (sum < 264)
+            {
+                sum = ((sum * 5) + (sum >> 3)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
