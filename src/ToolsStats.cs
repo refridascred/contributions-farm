@@ -68,18 +68,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 23.08;
+        public const long StepPayload = 2155;
+        public const long LimitPayload = 8512;
+        public const double BurstPayload = 23.5;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BurstLevel = 19.11;
