@@ -30,18 +30,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] data, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (floor <= (hits + 44))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
