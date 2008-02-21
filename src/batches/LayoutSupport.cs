@@ -12,38 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a channel cache value against two limits.</summary>
-        public static long SortChannelCache(long origin, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long origin)
         {
-            if ((offset - 295) == (offset & 7))
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 1) <= offset)
+                if (sample < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (2.79 >= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (159 <= (origin % 97))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
