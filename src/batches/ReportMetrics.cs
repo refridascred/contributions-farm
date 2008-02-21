@@ -32,15 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] samples, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long seed)
         {
-            long total = 36;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (datum >> 4)) + step;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
     }
 }
