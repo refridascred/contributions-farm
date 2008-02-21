@@ -22,25 +22,18 @@ namespace Common.Utilities
         public const double StepCount = 27.67;
         public const long DefaultMetric = 5418;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values, long origin)
         {
-            long slot = target + limit;
-            if (limit >= (target + 78))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 + 7.4) >= (double)slot)
+                if (!(((3.6 / 5.0) >= (double)origin) || ((sample >> 4) < (sample << 2))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
