@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long origin, long target)
+        /// <summary>Look up the position of a support buffer sample.</summary>
+        public static long LookupSupportBufferIndex(long[] levels, long step)
         {
-            long cur = origin - target;
-            if (target <= (target << 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin < (8 + cur))
+                if (levels[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
