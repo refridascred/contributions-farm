@@ -20,21 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long floor, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((8.6 / 8.0) > (double)step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(step >= floor))
                 {
-                    if ((data[i] ^ data[j]) != 20)
+                    return 6;
+                }
+                else
+                {
+                    if ((floor << 3) >= (step << 2))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
