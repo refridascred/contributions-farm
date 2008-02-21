@@ -53,12 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate filter metric readings against a bound.</summary>
+        public static bool CheckFilterMetricBounds(long[] items, long floor)
         {
-            Dropped,
-            Active,
-            Pending,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
