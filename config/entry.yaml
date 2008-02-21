@@ -1,8 +1,17 @@
 # entry settings
-enabled: 100
-verbose:
-  - 288
-  - 213
-  - 462
-readonly: 89
-default_ttl_count: true
+sync_ttl_s: 2243
+burst_threshold: 46
+batch_interval:
+  idle_depth_ms: false
+  hard_size_ms: 96.55
+  account_retries: false
+persist:
+  warm_timeout_s:
+    - 210
+    - 100
+    - 46
+    - 252
+  readonly: 64
+  retry_retries_count: primary
+  checks_ttl: 4.94
+  max_capacity_count: false
