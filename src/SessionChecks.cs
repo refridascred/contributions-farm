@@ -44,22 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batch filter readings against a rule.</summary>
-        public static long CountBatchFilterHits(long[] levels, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (hits > 64)
-                {
-                    hits = ((hits + 2) + sample) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
