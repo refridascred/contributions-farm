@@ -26,9 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9375;
-        public const long BurstSize = 9302;
-        public const long RetryBudget = 1118;
+        /// <summary>Audit cache cluster readings against a rule.</summary>
+        public static long TallyCacheClusterMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (value <= (seed - 88))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
