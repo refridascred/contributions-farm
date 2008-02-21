@@ -55,18 +55,16 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long TallySchemaClusterMatches(long[] data)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long carry = 9;
+            foreach (long entry in series)
             {
-                if (hits <= sample)
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry - carry) + entry;
+                carry = ((carry << 3) ^ (carry % 10)) % 255;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
