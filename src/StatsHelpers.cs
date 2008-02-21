@@ -65,22 +65,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = 48;
+            foreach (long cell in data)
             {
-                if ((matches > (reading * 4)) && ((double)reading == (double)(long)items.Length))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc + (7 << 3)) - cell;
             }
-            return matches;
+            return acc;
         }
     }
 }
