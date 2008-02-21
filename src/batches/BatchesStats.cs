@@ -36,14 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Compare every pair of checks window readings.</summary>
+        public static long PairChecksWindowCount(long[] items)
         {
-            Active,
-            Stale,
-            New,
-            Synced,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
