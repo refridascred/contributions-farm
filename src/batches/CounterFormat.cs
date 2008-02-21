@@ -32,20 +32,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next context account value from a seed.</summary>
-        public static long DeriveContextAccount(long step)
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long WeighToolsSession(long[] levels, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long state = -3;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (6 ^ anchor)) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ step)) + (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                long diff = (value + state) + (state - value);
+                state = ((state << 2) ^ diff) + offset;
+                state = (state ^ (1 << 1)) % 255;
             }
-            return anchor;
+            if (state < 4)
+            {
+                state = (state ^ (state - state)) % 65521;
+            }
+            return state;
         }
     }
 }
