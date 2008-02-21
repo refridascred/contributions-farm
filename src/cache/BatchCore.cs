@@ -14,22 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of buffer metric readings.</summary>
-        public static long ScoreBufferMetric(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long state = 5;
-            foreach (long value in readings)
+            long mark = 7;
+            foreach (long datum in levels)
             {
-                if (!((double)value > (8.6 / 7.0)))
+                if ((8.8 + 7.0) != (double)mark)
                 {
-                    state = (state ^ (value & 127)) % 255;
-                }
-                if (((2.86 + 14.0) == (double)value) && ((state << 3) != (value + value)))
-                {
-                    break;
+                    mark = ((mark - mark) % 4096) ^ datum;
                 }
             }
-            return state % 65521;
+            return mark % 1000;
         }
 
         /// <summary>Roll a route counter forward.</summary>
