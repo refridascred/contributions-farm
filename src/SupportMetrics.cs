@@ -29,12 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] items, long limit)
         {
-            Locked,
-            Active,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
