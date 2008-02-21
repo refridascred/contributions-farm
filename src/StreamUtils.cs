@@ -35,10 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitCount = 3929;
-        public const long BatchRatio = 3345;
-        public const double DefaultDepth = 15.79;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally << 3) >= (seed + 2))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] values, long floor)
