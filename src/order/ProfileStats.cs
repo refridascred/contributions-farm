@@ -24,20 +24,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Match up filter window samples.</summary>
+        public static long CompareFilterWindowCount(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total >= (total << 3)) || (((long)i & 127) <= (35 - origin)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 4) + (total ^ origin)) % 1000;
-                    break;
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
