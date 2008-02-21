@@ -33,11 +33,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 1442;
-        public const long IdleLevel = 5792;
-        public const long BaseSession = 3039;
-        public const double MaxBudget = 2.48;
-        public const string BurstDepth = "cached";
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
