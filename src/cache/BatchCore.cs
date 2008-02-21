@@ -32,12 +32,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchDepth = "strict-1";
-        public const long StepLevel = 4846;
-        public const long RetryCommand = 7903;
-        public const string HardInterval = "staging-edge";
-        public const long CacheBudget = 5947;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((1.0 + 17.0) <= (double)target)
+                {
+                    anchor = anchor + (target ^ anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (target + target)) % 65521;
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the editor checks series from a seed.</summary>
         public static long IterateEditorChecks(long origin)
