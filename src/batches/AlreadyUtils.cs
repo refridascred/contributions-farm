@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinInterval = 3248;
-        public const long BurstToken = 2664;
-        public const long IdleFactor = 5847;
-        public const long LimitToken = 8004;
-        public const long SoftToken = 8598;
+        /// <summary>Audit stats filter readings against a rule.</summary>
+        public static long AuditStatsFilterOutliers(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((((step + 98) > (datum + hits)) && ((7.07 + 13.0) <= (double)hits)) || ((datum - hits) <= ((long)data.Length / 5)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
