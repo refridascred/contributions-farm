@@ -26,18 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report payload sample.</summary>
-        public static long FindReportPayloadIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 88.31;
+        public const long HardOrder = 123;
+        public const long MinSize = 1463;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] series, long target)
