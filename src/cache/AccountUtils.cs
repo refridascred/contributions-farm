@@ -27,19 +27,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double floor)
-        {
-            double bias2 = bias;
-            if (bias2 <= (bias - 3.4))
-            {
-                bias2 = (bias2 + bias2) + floor;
-            }
-            else
-            {
-                bias2 = bias2 + 4.0;
-            }
-            return bias2 + (6.1 * 6.88);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 6013;
+        public const string CacheLevel = "open";
+        public const string CacheCounter = "latest-1";
+        public const string MinCounter = "strict";
     }
 }
