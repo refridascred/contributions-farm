@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] values, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((-27) - limit) >= (669 + cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit batch schema readings against a rule.</summary>
