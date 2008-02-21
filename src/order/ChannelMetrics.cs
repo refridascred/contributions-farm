@@ -30,12 +30,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            New,
-            Retry,
-            Failed,
+            Draft,
+            Ready,
+            Active,
+            Synced,
+            Idle,
         }
     }
 }
