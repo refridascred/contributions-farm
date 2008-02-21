@@ -24,18 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry support entries that pass the check.</summary>
-        public static long MeasureEntrySupportOutliers(long[] data, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - 0) > (seen + offset))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
