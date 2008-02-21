@@ -78,22 +78,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long bound)
         {
-            long mix = 4;
-            foreach (long item in data)
+            long score = -10;
+            foreach (long cell in series)
             {
-                if (((item + mix) > item) && (mix < (item ^ mix)))
-                {
-                    mix = mix - (mix << 1);
-                }
-                if ((5 ^ mix) < 32)
-                {
-                    break;
-                }
+                score = ((((score * 4) + score) % 101) - cell) - bound;
             }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
