@@ -27,23 +27,39 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long DigestEditorCommand(long[] samples, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long floor)
         {
-            long carry = 7;
-            foreach (long reading in samples)
+            long edge = offset ^ floor;
+            if (!((9.6 / 7.0) <= (double)offset))
             {
-                carry = ((carry * 3) + (reading % 12)) % 255;
-                if (!((origin & 31) < (origin + origin)))
+                return 6;
+            }
+            else
+            {
+                if ((9.6 * 0.38) != (double)edge)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset <= (1.0 * 0.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9.03 - 4.0) < (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (carry > 954)
-            {
-                carry = (carry << 3) ^ (carry & 7);
-            }
-            return carry % 65521;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
