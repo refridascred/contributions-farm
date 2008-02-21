@@ -41,21 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= seed)
                 {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
