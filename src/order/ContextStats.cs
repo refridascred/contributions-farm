@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ratio2 - (double)25;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double rate, double floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            double rate2 = rate;
-            if (rate2 > (double)24)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                rate2 = (rate2 + rate) - floor;
+                total = ((total * 2) + (total ^ total)) % 255;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                rate2 = rate2 - 19.0;
-            }
-            return rate2 + rate;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
