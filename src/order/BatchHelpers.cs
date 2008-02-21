@@ -22,22 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftScore = 5506;
+        public const long HardScore = 8414;
+        public const string HardLevel = "latest";
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long seed)
