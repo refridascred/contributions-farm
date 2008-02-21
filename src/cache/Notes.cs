@@ -49,19 +49,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] series, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Ready,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
