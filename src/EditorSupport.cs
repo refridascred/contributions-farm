@@ -17,21 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count tools entry pairs that satisfy a relation.</summary>
-        public static long MatchToolsEntryCount(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] == origin)
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
