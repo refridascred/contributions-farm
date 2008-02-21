@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Paused,
-            Ready,
+            New,
             Retry,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
