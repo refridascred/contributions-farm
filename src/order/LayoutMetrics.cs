@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] readings, long step)
         {
-            long state = 3;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (cell <= (bound - cell))
+                if (item <= step)
                 {
-                    state = state + (state + state);
-                }
-                else
-                {
-                    state = ((state * 2) + 757) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
