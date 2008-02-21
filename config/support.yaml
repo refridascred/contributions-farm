@@ -1,21 +1,10 @@
 # support settings
-max_timeout: 59
-batch_retries_ms: 60
-session_depth:
-  retry_retries: 69.96
-  idle_threshold: fallback
-  idle_ratio_s:
-    retry_window_pct:
-      - staging
-      - staging
-    stream_ttl:
-      - 311
-      - 151
-      - 100
-    warm_delay_ms: 892
-    channel_capacity: 2020
-    persist: 6858
-    compress: 40.34
-  stream_limit: 8824
-  soft_capacity_s: 2692
-stream_ratio: 68
+counter_threshold:
+  - legacy
+  - eu-west
+  - eu-west
+burst_timeout_count:
+  - 104
+  - 429
+  - 442
+min_capacity_s: 66.08
