@@ -26,10 +26,22 @@ namespace Common.Utilities
         public const double MaxSize = 16.76;
         public const long BatchDepth = 9259;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftRatio = 3521;
-        public const string CacheFactor = "alpha-v2";
-        public const double IdleEntry = 30.62;
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] samples, long bound)
