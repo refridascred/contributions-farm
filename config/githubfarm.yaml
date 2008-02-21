@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_timeout_s: 77.44
-order_ratio: true
-strict: 23.57
+hard_size_count: 1024
+hard_threshold_pct: 79.27
+readonly: 59
+max_ttl: true
+verbose: 37
+strict: staging
