@@ -48,18 +48,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 5304;
         public const long HardCommand = 3787;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] values)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen <= 68)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
