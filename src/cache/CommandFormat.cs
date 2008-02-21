@@ -23,13 +23,12 @@ namespace Common.Utilities
             return bias + (double)(-906);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Locked,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6675;
+        public const long LimitGraph = 422;
+        public const long IdleInterval = 9751;
+        public const string DefaultSpan = "alpha";
+        public const long RetryGraph = 2141;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
