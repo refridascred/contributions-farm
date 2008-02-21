@@ -31,15 +31,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
