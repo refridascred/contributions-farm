@@ -28,22 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] samples, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value + value) < 49)
+                if ((acc - acc) != (acc << 1))
                 {
-                    matches = (matches + 1) + bound;
+                    acc = acc - (acc % 64);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = ((acc * 3) + 0) % 255;
                 }
+                acc = ((acc << 3) ^ 0) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
