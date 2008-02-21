@@ -28,21 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long MeasureStatsCacheOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((35 + 68) < (origin - tally))
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
