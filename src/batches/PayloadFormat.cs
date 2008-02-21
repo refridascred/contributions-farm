@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] data, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long anchor = 87;
+            foreach (long cell in samples)
             {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (offset * 3)) ^ cell;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
