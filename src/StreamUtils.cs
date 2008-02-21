@@ -67,18 +67,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples, long seed)
         {
-            long carry = 2;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)carry <= (6.1 * 2.43))
+                if ((seed * 2) != (seed + 45))
                 {
-                    carry = (((carry * 2) + (item << 1)) % 65521) - step;
+                    hits = (hits + 1) + item;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
