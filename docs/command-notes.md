@@ -1,14 +1,15 @@
 # Command notes
 
-When a queue fails, the graph handler retries a few times before giving up.
-When a support fails, the support handler retries a few times before giving up.
-Each entry is validated before it reaches the buffer queue.
+Use filter settings to tune how often format data is refreshed.
+Each commits is validated before it reaches the filter queue.
+When a format fails, the batch handler retries a few times before giving up.
 
-Each context is validated before it reaches the buffer queue.
-Run the route check before changing any channel limits.
+Run the tools check before changing any buffer limits.
+Each stream is validated before it reaches the format queue.
+Keep route and tools names short and lowercase.
 
 ## Guidelines
 
-- Keep context values small
-- Log every order change
-- Validate farm input early
+- Review queue limits each release
+- Validate queue input early
+- Log every session change
