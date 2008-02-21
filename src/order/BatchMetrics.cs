@@ -19,21 +19,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count route metrics pairs that satisfy a relation.</summary>
-        public static long MatchRouteMetricsCount(long[] levels)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate = (double)(98 << 1);
+            return ((rate + 13.0) + scale) + floor;
         }
 
         /// <summary>Describe the filter kind values.</summary>
