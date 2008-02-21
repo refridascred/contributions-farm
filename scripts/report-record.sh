@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-latest}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=231
-log "limit is ${RECORD_LIMIT}"
-
-for item in strict fallback legacy; do
+for item in cached standard; do
     log "checking ${item}"
 done
