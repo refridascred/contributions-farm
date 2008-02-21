@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-                anchor = anchor + (anchor + floor);
-                anchor = ((anchor * 3) + anchor) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 97.0;
+        public const double HardBudget = 36.26;
+        public const long BaseCounter = 9764;
+        public const long WindowCounter = 1457;
 
         /// <summary>Scale a editor payload figure with a bias.</summary>
         public static double AdjustEditorPayload(double rate, double floor)
