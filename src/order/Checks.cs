@@ -46,12 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] items, long floor)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
