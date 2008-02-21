@@ -38,23 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command stats samples.</summary>
-        public static long CombineCommandStats(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            long state = 63;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = (((state + (96 << 1)) % 1000) - (long)i) - entry;
-                }
-                state = ((state << 3) ^ (state & 31)) % 4096;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (state > 52)
-            {
-                state = (state - (state >> 3)) % 1000;
-            }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
