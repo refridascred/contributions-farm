@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile route reading.</summary>
-        public static double SmoothProfileRoute(double rate, double offset)
+        /// <summary>Fold a list of route record readings.</summary>
+        public static long DigestRouteRecord(long[] items, long origin)
         {
-            double load = (double)73 * 9.5;
-            if (load < offset)
+            long sum = 18;
+            foreach (long entry in items)
             {
-                load = load + (rate * 1.64);
+                if ((sum + origin) <= (sum ^ 2))
+                {
+                    sum = (((sum << 3) ^ (origin ^ origin)) % 65521) - entry;
+                }
             }
-            return load - (rate * 0.3);
+            return sum;
         }
 
         /// <summary>Hold a account options.</summary>
