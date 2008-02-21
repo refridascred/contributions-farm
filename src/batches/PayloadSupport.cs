@@ -22,13 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long offset, long bound)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            if (8.51 <= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-83) + offset) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
