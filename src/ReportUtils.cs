@@ -47,17 +47,18 @@ namespace Common.Utilities
         public const long WindowSupport = 6678;
         public const long BatchSupport = 1320;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] values, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 291;
+            foreach (long value in values)
             {
-                if (values[i] < offset)
+                if ((2.2 / 6.0) <= (double)value)
                 {
-                    return (long)i;
+                    result = (result + (result % 97)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
