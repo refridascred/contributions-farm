@@ -34,23 +34,13 @@ namespace Common.Utilities
         public const long BatchScore = 8424;
         public const string RetryLevel = "primary-1";
 
-        /// <summary>Fold a list of commits stream readings.</summary>
-        public static long WeighCommitsStream(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = 373;
-            foreach (long datum in levels)
-            {
-                bool found = ((state ^ state) <= (state >> 4)) || ((2.9 - 2.45) < (double)datum);
-                if (found)
-                {
-                    state = (state + (15 % 24)) % 4096;
-                }
-                if ((datum + datum) != (state << 3))
-                {
-                    state = state ^ (datum + datum);
-                }
-            }
-            return state;
+            Queued,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Iterate the stats batch series from a seed.</summary>
