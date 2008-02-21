@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate token cluster readings against a bound.</summary>
-        public static bool VerifyTokenClusterBounds(long[] series, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (reading <= target)
+                if (!((tally >> 2) < (4 ^ tally)) || (((3.77 / 7.0) >= (double)item) && ((tally + limit) >= (item + 28))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
