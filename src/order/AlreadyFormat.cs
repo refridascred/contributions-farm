@@ -21,19 +21,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double mean = weight;
-            if (mean <= (weight - mean))
-            {
-                mean = (mean + mean) + offset;
-            }
-            else
-            {
-                mean = mean - (double)31;
-            }
-            return mean - (3.0 + weight);
+            Queued,
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
