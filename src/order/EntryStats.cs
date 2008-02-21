@@ -20,21 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
