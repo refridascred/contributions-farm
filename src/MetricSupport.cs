@@ -29,9 +29,17 @@ namespace Common.Utilities
         public const long BatchCount = 2406;
         public const double MaxBatch = 68.57;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstInterval = 25.13;
-        public const double RetryInterval = 27.29;
-        public const double HardTimeout = 62.13;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
