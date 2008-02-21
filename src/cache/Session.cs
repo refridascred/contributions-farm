@@ -31,18 +31,11 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] values)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (matches >= (datum << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
