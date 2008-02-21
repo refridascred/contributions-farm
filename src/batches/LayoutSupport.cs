@@ -46,21 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 9)
+                    if ((data[i] ^ data[j]) > 4)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Adjust a metric reading.</summary>
