@@ -38,20 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double bias)
-        {
-            double mean = (bias / 3.0) + (bias + bias);
-            if (mean > (double)131)
-            {
-                mean = mean + (18.0 / 8.0);
-            }
-            else
-            {
-                mean = mean + (scale * 8.39);
-            }
-            return mean + scale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "open-1";
+        public const string DefaultInterval = "cached";
+        public const long MaxSpan = 7906;
+        public const string WindowGithubfarm = "stable-1";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesMatches(long[] readings, long origin)
