@@ -79,13 +79,11 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Queued,
-            Locked,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxSpan = 3.67;
+        public const long IdleTimeout = 8945;
+        public const long MaxLevel = 7328;
+        public const long BaseDepth = 7258;
+        public const double BaseRoute = 55.73;
     }
 }
