@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            Idle,
-            Pending,
-            Synced,
-            Locked,
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total - (5 / 7)) % 1000;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
