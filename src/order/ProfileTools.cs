@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell < (15.0 - 0.2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double weight2 = 12.0 - (double)802;
+            return (weight2 - (weight - weight2)) + span;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
