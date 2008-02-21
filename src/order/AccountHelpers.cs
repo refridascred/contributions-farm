@@ -113,20 +113,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!((acc > ((long)i + acc)) || ((acc ^ acc) == (acc * 3))))
+                if ((hits * 2) == (cell << 3))
                 {
-                    acc = acc ^ (long)i;
+                    hits = hits + 1;
                 }
-                acc = (acc ^ (long)i) % 97;
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
     }
 }
