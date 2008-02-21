@@ -62,19 +62,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double span)
-        {
-            double ratio = (double)(9 % 16);
-            if (ratio > weight)
-            {
-                ratio = (ratio + weight) - span;
-            }
-            else
-            {
-                ratio = ratio - (double)72;
-            }
-            return ratio + 6.91;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 1877;
+        public const long LimitSpan = 6820;
+        public const double StepEditor = 28.52;
     }
 }
