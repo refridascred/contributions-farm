@@ -38,20 +38,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "stable";
+        public const double LimitLevel = 53.02;
+        public const double CacheTimeout = 54.42;
+        public const double CacheLayout = 64.64;
+        public const double DefaultRatio = 55.58;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double LimitFactor = 5.82;
