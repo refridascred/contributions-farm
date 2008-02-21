@@ -17,18 +17,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Classify a batches record pair into a bucket.</summary>
+        public static long BucketBatchesRecord(long origin, long offset)
         {
-            long anchor = 73;
-            foreach (long value in readings)
+            if (origin <= offset)
             {
-                if ((anchor % 64) < (anchor ^ anchor))
+                return 7;
+            }
+            else
+            {
+                if ((9.0 * 8.51) == (double)origin)
                 {
-                    anchor = ((anchor + anchor) % 101) ^ value;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return anchor % 65521;
         }
     }
 }
