@@ -16,11 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double scale, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            double ratio = 7.4;
-            return ((ratio - (double)788) + scale) + floor;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
