@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] series)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((((double)861 > (double)datum) || ((7.38 / 8.0) < (double)count)) && !((count ^ datum) > datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
