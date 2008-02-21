@@ -42,12 +42,21 @@ namespace Common.Utilities
         public const string CacheTimeout = "local";
         public const long BurstDepth = 4674;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
