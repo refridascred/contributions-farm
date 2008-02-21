@@ -22,23 +22,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Rank command graph input into a small class.</summary>
+        public static long BucketCommandGraph(long target, long origin)
         {
-            double rate = scale;
-            if (rate <= (floor + rate))
+            if ((17.0 - 6.0) <= (double)target)
             {
-                rate = rate - (scale + floor);
+                return 5;
             }
             else
             {
-                rate = rate + (floor + scale);
+                if (target <= (target & 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.3 + 7.51) < (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - floor;
         }
 
         /// <summary>Hold a route snapshot.</summary>
