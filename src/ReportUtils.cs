@@ -29,13 +29,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc << 3) ^ origin;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
