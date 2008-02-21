@@ -1,15 +1,15 @@
 # Command notes
 
-Use filter settings to tune how often format data is refreshed.
-Each commits is validated before it reaches the filter queue.
-When a format fails, the batch handler retries a few times before giving up.
+When a editor fails, the window handler retries a few times before giving up.
+Use schema settings to tune how often counter data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
 
-Run the tools check before changing any buffer limits.
-Each stream is validated before it reaches the format queue.
-Keep route and tools names short and lowercase.
+A graph that stays idle for too long is moved to the command list.
+Use account settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Review queue limits each release
-- Validate queue input early
-- Log every session change
+- Log every farm change
+- Document new buffer fields
+- Keep metric values small
+- Review entry limits each release
