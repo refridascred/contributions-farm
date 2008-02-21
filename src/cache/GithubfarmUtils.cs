@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long TallyCacheWindowMatches(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] readings, long bound)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long datum in readings)
             {
-                if ((reading + tally) < (reading ^ reading))
+                if (((long)readings.Length << 2) < (tally << 1))
                 {
-                    tally = tally + 2;
+                    tally = ((tally + 1) + datum) - bound;
                 }
             }
             return tally;
