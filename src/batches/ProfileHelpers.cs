@@ -53,19 +53,9 @@ namespace Common.Utilities
         public const string DefaultDepth = "latest-1";
         public const string RetryDepth = "strict";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double bias)
-        {
-            double load = scale;
-            if (load < (double)5)
-            {
-                load = (load - (double)248) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (scale * 3.95)) + (double)(long)i;
-            }
-            return load - (load / 3.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 5207;
+        public const string RetryGraph = "staging";
+        public const long BatchBudget = 5521;
     }
 }
