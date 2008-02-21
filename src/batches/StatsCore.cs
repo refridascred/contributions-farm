@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const string BaseInterval = "fallback-v2";
         public const double DefaultCommits = 86.51;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data, long step)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long item in data)
             {
-                if ((tally & 15) < (sample + 836))
+                if (((long)data.Length ^ tally) <= step)
                 {
-                    tally = (tally + 3) + step;
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
