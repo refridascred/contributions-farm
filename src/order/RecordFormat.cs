@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const string IdleToken = "open-v2";
         public const long StepToken = 1306;
 
-        /// <summary>Audit batch schema readings against a rule.</summary>
-        public static long MeasureBatchSchemaMatches(long[] values, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches < (bound + 13)) && (cell <= (cell - cell)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
