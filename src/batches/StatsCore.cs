@@ -55,10 +55,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 36.31;
-        public const long SoftSize = 26;
-        public const double StepSession = 7.92;
-        public const long MinSession = 617;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
