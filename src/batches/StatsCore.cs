@@ -61,15 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Synced,
+            Locked,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
