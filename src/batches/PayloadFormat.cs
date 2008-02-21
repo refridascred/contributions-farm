@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate already command readings against a bound.</summary>
-        public static bool CheckAlreadyCommandLimits(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFactor = 896;
+        public const string BurstCount = "cached-edge";
+        public const double RetryDepth = 48.65;
+        public const string LimitCount = "local-1";
 
         /// <summary>Find the first batch cluster entry that matches the target.</summary>
         public static long LookupBatchClusterIndex(long[] series, long bound)
