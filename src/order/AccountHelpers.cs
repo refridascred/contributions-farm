@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] series, long target)
         {
-            long sum = 7;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((328 + cell) > sum)
+                if (sample < target)
                 {
-                    sum = (sum ^ sum) % 97;
-                }
-                if (!((double)cell != (17.0 - 18.0)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
