@@ -87,33 +87,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Blend two channel contributi measurements.</summary>
+        public static double SmoothChannelContributi(double rate, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((0 << 2) == (origin % 7))
-                {
-                    continue;
-                }
-                if ((origin / 8) > (23 & 3))
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                if (!((anchor - 820) > (long)i))
-                {
-                    anchor = anchor - ((long)i & 127);
-                    anchor = ((anchor << 2) ^ (anchor + origin)) % 1000;
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            double weight = (double)(633 + 848);
+            return ((weight + 1.81) + rate) + offset;
         }
     }
 }
