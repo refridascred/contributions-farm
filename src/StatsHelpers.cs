@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next token entry value from a seed.</summary>
-        public static long SeriesTokenEntry(long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] values, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + step) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
