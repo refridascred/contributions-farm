@@ -1,8 +1,9 @@
-id,token,ratio
-1,463,34.84
-2,local,30.95
-3,872,18
-4,25.33,25.04
-5,90.44,753
-6,634,eu-west
-7,365,staging
+id,token,level
+1,46.06,latest
+2,eu-west,403
+3,603,strict
+4,709,61.98
+5,staging,eu-west
+6,680,741
+7,125,57.43
+8,426,631
