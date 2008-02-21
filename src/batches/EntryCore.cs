@@ -41,11 +41,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 43.09;
-        public const long HardLevel = 9325;
-        public const long SoftWindow = 2270;
-        public const long BatchWindow = 343;
-        public const long CacheWindow = 6393;
+        /// <summary>Roll a entry record counter forward.</summary>
+        public static long RollEntryRecord(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
