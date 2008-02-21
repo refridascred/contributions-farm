@@ -1,6 +1,5 @@
 {
-  "warm_retries_pct": "primary",
-  "retry_delay": ["stable", "edge"],
-  "entry_limit": ["eu-west", "primary", "green"],
-  "persist": false
+  "default_window_s": "green",
+  "order_ttl": 60,
+  "min_depth_count": [150, 155]
 }
