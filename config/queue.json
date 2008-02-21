@@ -1,6 +1,7 @@
 {
-  "stream_ratio": [452, 111, 220, 479],
-  "cache_depth_pct": 31.24,
-  "warm_capacity_count": "cached",
-  "profile_depth": "green"
+  "retry_limit": [257, 440, 289, 235],
+  "account_limit": 75.04,
+  "soft_size": false,
+  "dry_run": 52,
+  "channel_window": 91
 }
