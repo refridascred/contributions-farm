@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long CacheBatch = 4845;
         public const double WindowWidth = 35.93;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long acc = 957;
+            foreach (long item in series)
+            {
+                acc = ((acc + (acc - acc)) % 1000) + item;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
