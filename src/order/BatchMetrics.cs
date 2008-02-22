@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((1 - matches) != (seed + matches)) && ((seed >> 3) > 7)) || ((matches << 1) < matches))
-                {
-                    matches = (matches + 3) + value;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
