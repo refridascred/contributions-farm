@@ -1,8 +1,8 @@
 # support settings
-strict: true
-cache_size_pct: 250
-flush_window_pct: 100
-layout_size:
-  - staging
-  - staging
-enabled: 1024
+flush_retries_s: 4389
+default_size_pct: 9025
+soft_limit_ms:
+  metric_retries: local
+  profile_retries: 22
+  flush_interval_count: 250
+  batches_timeout: 37
