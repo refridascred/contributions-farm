@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long MeasureBatchesWindowHits(long[] values)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item <= count) && ((11.0 * 0.3) > (double)item))
-                {
-                    count = count + 3;
-                }
+                mark = mark - limit;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
