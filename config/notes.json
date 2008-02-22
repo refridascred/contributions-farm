@@ -1,6 +1,5 @@
 {
-  "soft_size_count": 590,
-  "burst_size_ms": "blue",
-  "warm_window_s": 60,
-  "verbose": ["legacy", "standard"]
+  "verbose": 1024,
+  "min_threshold": "green",
+  "readonly": 3771
 }
