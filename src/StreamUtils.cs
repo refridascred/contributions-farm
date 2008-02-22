@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] items, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a graph entry.</summary>
