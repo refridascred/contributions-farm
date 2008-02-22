@@ -32,19 +32,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] levels, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > limit)
+                if (items[i] <= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
