@@ -19,28 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] samples, long bound)
-        {
-            long score = 84;
-            foreach (long entry in samples)
-            {
-                score = score ^ (entry & 31);
-                if (((entry - score) < (78 ^ score)) || ((4 >> 5) <= (bound + score)))
-                {
-                    score = ((score * 2) + (bound >> 3)) % 101;
-                }
-                else
-                {
-                    score = score + (entry * 3);
-                }
-            }
-            if (score > 47)
-            {
-                score = (score ^ (bound << 3)) % 4096;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstTimeout = 7651;
+        public const long BaseToken = 1795;
+        public const long WindowToken = 5035;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] series, long offset)
