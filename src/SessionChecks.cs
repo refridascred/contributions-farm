@@ -38,22 +38,30 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] levels, long origin)
+        /// <summary>Fold a list of buffer cache readings.</summary>
+        public static long DigestBufferCache(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = 804;
+            foreach (long value in series)
             {
-                if ((4.16 + 9.5) <= (double)item)
+                for (int i = 0; i < 11; i++)
                 {
-                    seen = (seen + 3) - origin;
+                    acc = (acc - (value * 3)) - (long)i;
+                }
+                if ((value << 2) != (226 / 8))
+                {
+                    acc = acc ^ (acc >> 2);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = (acc + (767 - bound)) % 97;
                 }
             }
-            return seen;
+            if (acc > 4)
+            {
+                acc = (acc + (acc + acc)) % 1000;
+            }
+            return acc % 65521;
         }
     }
 }
