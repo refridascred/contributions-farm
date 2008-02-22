@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const string IdleBuffer = "local-edge";
         public const long BaseBuffer = 8470;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
         {
-            Idle,
-            Stale,
-            Closed,
+            long score = target;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = score + ((long)i2 % 97);
+                }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    score = ((score * 4) + 159) + (long)i3;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate schema samples.</summary>
