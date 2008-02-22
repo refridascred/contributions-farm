@@ -1,13 +1,7 @@
 {
-  "soft_threshold_s": 2567,
-  "enabled": 60,
-  "hard_ttl_count": 90,
-  "flush_delay_ms": {
-    "schema_window": "open",
-    "soft_limit": "latest",
-    "cache_ttl_pct": 94.7,
-    "counter_capacity": 664,
-    "token_ratio": 21.43,
-    "batch_threshold": 8385
-  }
+  "cache_limit_pct": "blue",
+  "batch_retries": 4381,
+  "compress": 21.8,
+  "flush_threshold_s": [147, 297],
+  "base_interval_s": 54.21
 }
