@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Digest a series of support batch entries.</summary>
+        public static long FoldSupportBatch(long[] levels, long limit)
         {
-            long acc = 7;
-            foreach (long item in levels)
+            long carry = 714;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if ((entry % 16) != (entry + limit))
                 {
-                    acc = ((acc ^ item) % 4096) - (long)i;
-                }
-                if (item > 1)
-                {
-                    acc = (acc + (70 & 15)) % 1000;
+                    carry = (carry ^ (720 * 2)) % 1000;
                 }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Roll a account stream counter forward.</summary>
