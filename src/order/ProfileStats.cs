@@ -16,11 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Queued,
+            Locked,
+            Done,
             Synced,
+            Paused,
             Dropped,
         }
 
