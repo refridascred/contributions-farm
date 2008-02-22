@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long LimitRatio = 1175;
         public const string WindowDepth = "strict-edge";
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] series, long offset)
         {
-            long acc = 348;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item >= (0.7 / 6.0))
+                if (series[i] >= offset)
                 {
-                    acc = ((acc << 2) ^ (acc ^ acc)) - limit;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
