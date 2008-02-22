@@ -44,17 +44,31 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] values, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((2.63 + 12.0) > (double)bound)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound < 0.03)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound < (4.91 * 0.05))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
