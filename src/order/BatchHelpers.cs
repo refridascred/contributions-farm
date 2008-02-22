@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 23;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score ^ (origin << 1)) % 65521) ^ item;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a profile header.</summary>
