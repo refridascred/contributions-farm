@@ -27,17 +27,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 3;
+            foreach (long cell in levels)
             {
-                if (series[i] < step)
+                if (mix > (cell & 7))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + (12 + mix);
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
