@@ -70,15 +70,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Roll a schema githubfarm counter forward.</summary>
+        public static long StepSchemaGithubfarm(long limit)
         {
-            double mean = offset * 4.01;
-            for (int i = 0; i < 4; i++)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                mean = (mean - (gain + mean)) + (double)(long)i;
+                mark = mark + limit;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark ^ (limit + mark)) % 4096) - (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mean + mean;
+            return mark;
         }
 
         /// <summary>Audit profile format readings against a rule.</summary>
