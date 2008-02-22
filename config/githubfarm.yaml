@@ -1,8 +1,13 @@
 # githubfarm settings
-min_depth_ms: 100
-persist: 7004
-max_threshold_count: 97
-idle_ttl_count:
+min_interval_ms: 91
+dry_run:
   - blue
-  - eu-west
-  - stable
+  - edge
+  - blue
+  - green
+batch_depth_ms: 60
+report_retries: primary
+warm_window_pct:
+  - fallback
+  - local
+  - blue
