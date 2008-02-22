@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a commits account value against two limits.</summary>
-        public static long BucketCommitsAccount(long limit, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long limit)
         {
-            if ((bound + limit) != (limit - limit))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(bound <= (limit >> 5)))
+                if (item < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 127) > limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8 + limit) <= (96 & 31))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a format header.</summary>
