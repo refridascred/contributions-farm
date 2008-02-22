@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] series, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((origin ^ sum) != (sum / 8))
+                if (((limit + limit) == (limit * 5)) && (((double)limit != (double)count) || ((limit - reading) <= count)))
                 {
-                    sum = (sum - ((long)i + origin)) % 101;
-                    sum = (sum + ((long)i >> 5)) % 101;
+                    count = count + 2;
                 }
-                if (!(((long)i == (sum & 1)) && ((sum << 3) <= (origin ^ sum))))
-                {
-                    sum = ((sum * 4) + origin) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
