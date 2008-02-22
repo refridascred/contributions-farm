@@ -26,12 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstDepth = 3814;
+        public const double LimitSpan = 91.62;
+        public const long MaxLevel = 8224;
+        public const string SoftChecks = "strict-1";
     }
 }
