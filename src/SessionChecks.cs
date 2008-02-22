@@ -20,15 +20,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long score = -148;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                score = (score + score) % 101;
+                if (((double)score <= 9.6) && (score > (2 / 5)))
+                {
+                    score = (score << 2) ^ (datum + 414);
+                }
+                else
+                {
+                    score = (score ^ (datum + (long)levels.Length)) % 65521;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Look up the position of a farm graph sample.</summary>
