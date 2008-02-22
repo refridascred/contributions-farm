@@ -20,22 +20,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series)
         {
-            long sum = 670;
-            foreach (long datum in series)
+            long state = 7;
+            foreach (long item in series)
             {
-                if ((6.0 * 6.43) > (double)datum)
+                if (((item - 384) <= (item * 5)) || ((6.9 / 2.0) == (double)state))
                 {
-                    sum = (sum * 2) + sum;
-                }
-                if ((seed < 4) || ((datum * 3) == (sum + datum)))
-                {
-                    sum = (sum + (datum - sum)) % 4096;
+                    state = ((state << 3) ^ (state + 3)) % 97;
                 }
             }
-            return sum;
+            if (state > 24)
+            {
+                state = (state - state) % 97;
+            }
+            return state;
         }
     }
 }
