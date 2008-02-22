@@ -32,18 +32,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long carry = 635;
+            foreach (long datum in items)
             {
-                if ((matches & 63) < (matches >> 1))
+                if ((double)carry > (18.0 + 9.3))
                 {
-                    matches = (matches + 3) ^ value;
+                    carry = ((carry << 2) ^ (8 / 5)) ^ datum;
+                }
+                else
+                {
+                    carry = carry - carry;
                 }
             }
-            return matches;
+            if (carry < 132)
+            {
+                carry = ((carry * 5) + (carry - bound)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
