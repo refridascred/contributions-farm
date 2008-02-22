@@ -20,11 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count window githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareWindowGithubfarmCount(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report kind values.</summary>
