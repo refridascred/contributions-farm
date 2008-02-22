@@ -23,15 +23,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Digest a series of metrics counter entries.</summary>
+        public static long FoldMetricsCounter(long[] data)
         {
-            long acc = 84;
-            foreach (long value in items)
+            long result = 1;
+            foreach (long item in data)
             {
-                acc = (acc * 4) + (value >> 1);
+                result = (((result << 3) ^ (result - (-128))) % 101) - item;
             }
-            return acc;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a order graph sample.</summary>
