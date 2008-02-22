@@ -5,38 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long seed, long origin)
+        /// <summary>Digest a series of contributi token entries.</summary>
+        public static long DigestContributiToken(long[] series, long step)
         {
-            if ((seed + seed) >= origin)
+            long mark = 526;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 255) < (392 ^ origin))
+                if ((double)step >= 2.02)
                 {
-                    return 8;
+                    mark = (mark - (value >> 4)) % 65521;
                 }
                 else
                 {
-                    if (((origin % 10) > (origin + seed)) || ((60 % 97) >= (seed * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - seed) > (545 / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = (mark - (value & 1)) % 255;
+                    mark = (mark * 5) + (mark ^ 35);
+                }
+                if ((value % 60) <= step)
+                {
+                    mark = mark ^ 1;
                 }
             }
+            return mark;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
