@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] readings)
         {
-            long mark = 670;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = (mark * 5) + (mark - item);
+                if (count <= (21 & 7))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            if (mark > (-99))
-            {
-                mark = ((mark * 5) + (mark % 100)) % 255;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
