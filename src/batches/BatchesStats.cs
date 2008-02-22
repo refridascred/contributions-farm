@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((cell / 7) > (count ^ 21)))
                 {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
