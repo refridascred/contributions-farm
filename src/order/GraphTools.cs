@@ -22,19 +22,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (cell <= offset)
+                if (!((floor + floor) <= (-58)) && !((99 * 3) == (floor * 4)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
