@@ -30,17 +30,10 @@ namespace Common.Utilities
         public const long MinChannel = 4109;
         public const double RetryChannel = 63.34;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total - (origin - origin)) % 1000;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 8525;
+        public const long DefaultProfile = 5188;
+        public const long RetryBudget = 5717;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long offset)
