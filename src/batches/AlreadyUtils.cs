@@ -30,17 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session support entry that matches the target.</summary>
-        public static long SeekSessionSupportIndex(long[] items, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (items[i] == offset)
+                if ((count >> 1) <= 28)
                 {
-                    return (long)i;
+                    count = (count + 3) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a metric header.</summary>
