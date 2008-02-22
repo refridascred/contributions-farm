@@ -29,13 +29,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long origin, long origin2)
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
+            long next = origin ^ origin2;
+            if (origin2 < next)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(origin2 <= 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((9.6 / 9.0) < (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
