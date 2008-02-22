@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long BaseToken = 1795;
         public const long WindowToken = 5035;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] series, long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
+                if (items[i] <= step)
                 {
                     return (long)i;
                 }
