@@ -30,12 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
