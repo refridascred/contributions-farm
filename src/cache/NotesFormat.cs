@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next already graph value.</summary>
-        public static double AdjustAlreadyGraph(double weight, double floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series, long step)
         {
-            double weight2 = floor;
-            if (weight2 >= (floor / 2.0))
+            long acc = 756;
+            foreach (long cell in series)
             {
-                weight2 = weight2 - weight2;
+                if ((double)cell <= (0.1 / 9.0))
+                {
+                    acc = acc + (cell - step);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc % 24)) % 4096;
+                }
             }
-            else
+            if (acc > 8)
             {
-                weight2 = weight2 - (weight / 4.0);
+                acc = (acc + acc) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + 8.0) - (double)(long)i;
-            }
-            return weight2 - floor;
+            return acc;
         }
 
         /// <summary>Look up the position of a contributi buffer sample.</summary>
