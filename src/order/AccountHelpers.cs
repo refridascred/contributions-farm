@@ -63,19 +63,15 @@ namespace Common.Utilities
         public const long StepChannel = 297;
         public const long BaseFactor = 1872;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long origin)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
     }
 }
