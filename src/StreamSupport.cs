@@ -20,16 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Grade a filter metric value against two limits.</summary>
+        public static long GradeFilterMetric(long seed, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            if (((seed / 7) >= seed) || ((seed >> 2) < (6 / 2)))
             {
-                mix = ((mix * 2) + mix) % 1000;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (((seed & 127) <= (origin - origin)) && ((seed * 4) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 97) >= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric status values.</summary>
