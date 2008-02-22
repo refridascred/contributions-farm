@@ -1,12 +1,12 @@
 # Command notes
 
-Run the buffer check before changing any githubfarm limits.
-Keep metrics and record names short and lowercase.
-Run the stats check before changing any format limits.
+Each cache is validated before it reaches the farm queue.
+Defaults for entry live in the config folder and can be overridden per environment.
+The buffer module keeps payload values in sync with the contributi cache.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new buffer fields
-- Log every editor change
-- Keep checks values small
+- Prefer layout defaults
+- Validate command input early
+- Review profile limits each release
+- Keep context values small
