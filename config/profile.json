@@ -1,6 +1,8 @@
 {
-  "default_window_s": ["strict", "green"],
-  "verbose": "staging",
-  "retry_depth_pct": 60,
-  "retry_ratio_ms": 51
+  "sync_capacity": 1024,
+  "persist": ["green", "eu-west", "primary", "cached"],
+  "audit": "stable",
+  "burst_capacity_count": 100,
+  "max_ratio": 4696,
+  "contributi_retries": "standard"
 }
