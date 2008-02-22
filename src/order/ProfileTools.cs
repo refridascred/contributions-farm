@@ -81,18 +81,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!(hits <= (6 << 1)) || !((6 % 24) > (value + value)))
+                if ((step - step) != (cell ^ 59))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
