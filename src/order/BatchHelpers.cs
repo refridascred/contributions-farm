@@ -22,13 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Match up channel session samples.</summary>
+        public static long OverlapChannelSessionCount(long[] samples)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
