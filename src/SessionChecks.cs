@@ -15,39 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long seed, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long lane = seed + step;
-            if (lane >= (7 & 255))
+            long acc = 7;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed > (seed + seed))
+                if (item > (item & 3))
                 {
-                    return 0;
+                    acc = (acc * 3) + (acc - acc);
                 }
                 else
                 {
-                    if (((79 + seed) >= (seed << 3)) || ((13.0 * 1.0) != (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)lane <= (1.98 / 6.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = (acc - (item / 2)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
