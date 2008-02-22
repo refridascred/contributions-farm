@@ -23,24 +23,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long step, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            if ((step * 5) > (-2))
+            long acc = 84;
+            foreach (long value in items)
             {
-                return 8;
+                acc = (acc * 4) + (value >> 1);
             }
-            else
-            {
-                if ((double)target >= (9.75 - 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the account state values.</summary>
