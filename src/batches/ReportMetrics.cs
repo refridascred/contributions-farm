@@ -14,13 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            Ready,
-            Dropped,
-            Synced,
-            New,
+            long anchor = 578;
+            foreach (long datum in samples)
+            {
+                if ((datum * 3) > (datum % 97))
+                {
+                    anchor = (anchor * 5) + (82 ^ 69);
+                }
+            }
+            if (anchor > 199)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
