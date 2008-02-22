@@ -1,6 +1,17 @@
 {
-  "metric_ttl": "local",
-  "persist": 75.65,
-  "account_interval": "blue",
-  "metric_delay": true
+  "soft_size_count": 100,
+  "poll_depth_pct": {
+    "persist": 41.22,
+    "batch_depth_pct": {
+      "warm_threshold_pct": ["edge", "open", "open"],
+      "persist": 0.38,
+      "sync_threshold_pct": 8,
+      "readonly": true,
+      "idle_ttl_count": 33.45,
+      "enabled": [21, 281, 119]
+    },
+    "default_limit_pct": "open",
+    "idle_threshold_pct": ["eu-west", "cached", "legacy", "primary"]
+  },
+  "retry_delay_ms": "green"
 }
