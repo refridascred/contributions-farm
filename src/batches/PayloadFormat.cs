@@ -32,26 +32,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items, long bound)
-        {
-            long carry = 635;
-            foreach (long datum in items)
-            {
-                if ((double)carry > (18.0 + 9.3))
-                {
-                    carry = ((carry << 2) ^ (8 / 5)) ^ datum;
-                }
-                else
-                {
-                    carry = carry - carry;
-                }
-            }
-            if (carry < 132)
-            {
-                carry = ((carry * 5) + (carry - bound)) % 101;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 75.17;
+        public const long MinAccount = 7183;
+        public const string WindowBudget = "staging-v2";
     }
 }
