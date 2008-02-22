@@ -1,7 +1,9 @@
-id,score,label,active
-1,39.34,fallback,123
-2,73.03,725,local
-3,88.67,563,strict
-4,49.24,660,476
-5,46.06,stable,standard
-6,legacy,75.71,36.48
+id,owner,ratio,rank,count
+1,846,790,latest,985
+2,202,374,234,latest
+3,245,blue,321,705
+4,staging,982,58,legacy
+5,blue,fallback,76.31,72.61
+6,940,strict,16.26,974
+7,legacy,95.55,361,36.09
+8,173,691,842,blue
