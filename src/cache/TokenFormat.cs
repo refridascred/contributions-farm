@@ -22,26 +22,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of batches schema entries.</summary>
-        public static long TallyBatchesSchema(long[] data, long origin)
+        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaBatchesCount(long[] data)
         {
-            long total = 620;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell ^ origin) != (cell ^ total))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total << 3) ^ (436 + cell)) % 97;
-                }
-                else
-                {
-                    total = total + ((long)data.Length + (-1));
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 96)
-            {
-                total = (total + (origin + total)) % 255;
-            }
-            return total;
+            return count;
         }
     }
 }
