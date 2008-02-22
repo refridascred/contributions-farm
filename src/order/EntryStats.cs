@@ -20,11 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 5) + ((long)i + state)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the editor phase values.</summary>
