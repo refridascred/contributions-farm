@@ -63,9 +63,19 @@ namespace Common.Utilities
         public const long StepChannel = 297;
         public const long BaseFactor = 1872;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 36.39;
-        public const long RetryBudget = 1142;
-        public const long BaseTools = 5355;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
