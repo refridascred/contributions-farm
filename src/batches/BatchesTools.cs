@@ -26,15 +26,23 @@ namespace Common.Utilities
         public const long LimitLevel = 619;
         public const long StepCount = 9965;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long result = 414;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                result = (result ^ ((long)readings.Length - result)) % 65521;
+                if ((sample / 9) > (result + origin))
+                {
+                    result = (result + (origin & 63)) % 1000;
+                }
             }
-            return acc;
+            if (result < 81)
+            {
+                result = ((result << 3) ^ (result << 1)) % 65521;
+            }
+            return result;
         }
     }
 }
