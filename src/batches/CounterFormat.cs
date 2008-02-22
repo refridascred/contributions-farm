@@ -44,11 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double ratio, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] samples, long seed)
         {
-            double bias = (double)55;
-            return ((bias - (double)31) + ratio) + offset;
+            long total = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 63) <= (datum << 3))
+                {
+                    total = (total + (seed - datum)) % 101;
+                }
+                if (((0.8 / 6.0) <= (double)datum) && ((double)datum > 7.8))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
