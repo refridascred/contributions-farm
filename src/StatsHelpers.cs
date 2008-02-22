@@ -84,18 +84,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] samples, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long floor, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (!((735 + floor) == (bound + bound)))
             {
-                if ((seed - count) < (count * 2))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound == (4.45 + 5.0))
                 {
-                    count = (count + 1) + datum;
+                    return 1;
+                }
+                else
+                {
+                    if (((837 / 5) == (floor / 8)) && ((bound + bound) > (bound % 97)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor <= (19.0 + 1.0)) && ((bound * 2) > (floor << 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
