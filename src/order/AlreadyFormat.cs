@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (load + (17.0 - floor)) + bias;
         }
 
-        /// <summary>Validate window profile readings against a bound.</summary>
-        public static bool CheckWindowProfileBounds(long[] samples, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long result = 35;
+            foreach (long cell in series)
             {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
+                result = (((result << 2) ^ result) - cell) - floor;
             }
-            return found;
+            if (result > 733)
+            {
+                result = ((result * 2) + result) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
