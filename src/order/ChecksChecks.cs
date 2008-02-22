@@ -35,11 +35,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Draft,
+            Locked,
+            Idle,
+            Queued,
         }
     }
 }
