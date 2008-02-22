@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples, long bound)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((72 ^ datum) >= (bound + (long)samples.Length))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
