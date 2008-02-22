@@ -34,15 +34,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            New,
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
