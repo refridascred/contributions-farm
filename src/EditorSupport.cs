@@ -53,18 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] items, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long acc = -2;
+            foreach (long entry in samples)
             {
-                if ((5 / 5) == (origin - origin))
-                {
-                    hits = (hits + 1) + datum;
-                }
+                acc = (((acc << 2) ^ step) % 4096) + entry;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
