@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] series)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell / 7) > (count ^ 21)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the stream level values.</summary>
