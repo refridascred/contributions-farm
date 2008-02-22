@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
