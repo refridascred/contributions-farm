@@ -33,21 +33,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batches format samples.</summary>
-        public static long MatchBatchesFormatCount(long[] levels)
+        /// <summary>Project the next layout buffer value.</summary>
+        public static double BlendLayoutBuffer(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = scale;
+            if (ratio < (double)774)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio - (scale * 2.0)) - offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (3.76 + ratio)) - (double)(long)i;
+            }
+            return ratio - (scale + 4.85);
         }
     }
 }
