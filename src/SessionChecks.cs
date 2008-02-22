@@ -18,16 +18,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Digest a series of notes batches entries.</summary>
+        public static long TallyNotesBatches(long[] values, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long score = 215;
+            foreach (long value in values)
             {
-                result = result - (result + step);
-                result = ((result * 4) + (long)i) % 97;
+                score = ((score * 3) + (seed ^ value)) % 101;
+                score = (score + value) % 1000;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Look up the position of a farm graph sample.</summary>
