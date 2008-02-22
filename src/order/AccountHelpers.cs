@@ -49,13 +49,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] readings, long step)
+        /// <summary>Check that every profile record entry stays within the limit.</summary>
+        public static bool VerifyProfileRecordBounds(long[] series, long offset)
         {
             bool found = true;
-            foreach (long datum in readings)
+            foreach (long cell in series)
             {
-                if (datum < step)
+                if (cell >= offset)
                 {
                     found = false;
                     break;
