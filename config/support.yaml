@@ -1,33 +1,13 @@
 # support settings
-cache_window:
-  - cached
-  - staging
-  - edge
-  - strict
-warm_interval_s:
-  readonly: 6.32
-  strict: blue
-  verbose: 2627
-  enabled: staging
-  sync_interval:
-    hard_delay: strict
-    cache_limit_count: 73.07
-    batch_limit_count: 2952
-    soft_capacity_count: 4422
-    audit: 6443
-    readonly:
-      - 397
-      - 17
-      - 387
-idle_capacity_s: green
-cache_interval:
-  counter_delay: local
-  base_ratio_pct: 81.49
-  strict:
-    - 467
-    - 138
-    - 93
-    - 477
-  warm_ttl_count:
+burst_retries: 400
+soft_window: false
+min_retries_s: false
+idle_ratio_s: open
+cache_delay_count: 51.7
+retry_window_ms:
+  idle_ratio_pct: false
+  hard_limit: latest
+  metrics_window:
     - staging
-    - legacy
+    - green
+    - latest
