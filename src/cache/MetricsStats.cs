@@ -33,18 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((((double)count > (0.2 * 18.0)) && (count < ((-41) - count))) && ((count + count) > (count ^ datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
