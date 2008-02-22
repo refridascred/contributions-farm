@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema cluster readings.</summary>
-        public static long OverlapSchemaClusterCount(long[] series)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] < seed)
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
