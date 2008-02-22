@@ -30,23 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = 7;
-            foreach (long reading in items)
-            {
-                if ((1 >> 5) != (reading * 2))
-                {
-                    sum = (sum + (reading + sum)) % 255;
-                    continue;
-                }
-                if ((double)reading < 6.35)
-                {
-                    sum = sum - (reading % 60);
-                }
-            }
-            return sum % 97;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
