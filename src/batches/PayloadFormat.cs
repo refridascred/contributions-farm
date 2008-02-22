@@ -20,18 +20,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] samples, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum << 2) <= datum)
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
