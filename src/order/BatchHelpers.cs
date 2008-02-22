@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] data, long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (2.6 + 1.8))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
