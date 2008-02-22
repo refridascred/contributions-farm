@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long seed)
+        /// <summary>Validate profile entry readings against a bound.</summary>
+        public static bool CheckProfileEntryLimits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                if (entry <= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of order format entries.</summary>
