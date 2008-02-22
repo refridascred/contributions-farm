@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long anchor = 7;
-            foreach (long value in data)
-            {
-                anchor = (anchor + value) + offset;
-            }
-            if (anchor < 981)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 65521;
-            }
-            return anchor;
+            Ready,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a entry record.</summary>
