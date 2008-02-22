@@ -20,20 +20,31 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] samples, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long limit)
         {
-            long carry = -54;
-            foreach (long cell in samples)
+            if (8.43 > (double)limit)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = carry - (seed ^ cell);
-                    carry = ((carry * 2) + ((long)i * 5)) % 1000;
-                }
-                carry = (carry + (cell ^ cell)) % 1000;
+                return 7;
             }
-            return carry % 97;
+            else
+            {
+                if ((limit << 1) != (floor >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit > 0.52)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
