@@ -1,7 +1,15 @@
 {
-  "enabled": "open",
-  "poll_ttl": 1365,
-  "layout_limit": "staging",
-  "contributi_ratio": "cached",
-  "idle_delay_ms": [395, 274, 461]
+  "flush_interval": {
+    "readonly": ["legacy", "cached", "edge"],
+    "sync_interval_pct": 500,
+    "already_timeout": false,
+    "channel_threshold": 14.27,
+    "counter_ratio": 96.56,
+    "hard_delay_ms": "latest"
+  },
+  "batch_timeout_count": 84.98,
+  "persist": "cached",
+  "stream_timeout": "fallback",
+  "base_delay": 44,
+  "order_interval": "latest"
 }
