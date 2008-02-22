@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=299
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for item in strict legacy green blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
