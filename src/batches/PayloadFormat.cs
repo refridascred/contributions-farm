@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account stream reading by value.</summary>
-        public static long SeekAccountStreamIndex(long[] samples, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] < target)
+                if (series[i] > seed)
                 {
                     return (long)i;
                 }
