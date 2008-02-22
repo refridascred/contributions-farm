@@ -62,11 +62,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Scale a context order figure with a bias.</summary>
+        public static double SmoothContextOrder(double bias, double span)
         {
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            double gain = (bias + bias) - (bias - bias);
+            return (gain + 18.0) + span;
         }
     }
 }
