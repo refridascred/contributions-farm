@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Blend two editor batch measurements.</summary>
+        public static double BlendEditorBatch(double ratio, double bias)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            double load = ratio;
+            if (load <= bias)
             {
-                if (!(seed <= (carry - seed)))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                load = load + bias;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (bias * 9.14);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
