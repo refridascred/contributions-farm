@@ -38,12 +38,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values, long origin)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long carry = 896;
+            foreach (long reading in values)
+            {
+                carry = ((carry - origin) % 1000) + reading;
+            }
+            return carry;
         }
     }
 }
