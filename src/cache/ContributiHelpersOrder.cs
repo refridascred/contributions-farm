@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryRatio = 6652;
-        public const long IdleSchema = 3776;
-        public const double WindowInterval = 2.25;
-        public const string CacheLevel = "latest-v2";
-        public const long BaseLevel = 3949;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels, long seed)
+        {
+            long score = 682;
+            foreach (long cell in levels)
+            {
+                score = (score << 3) ^ (seed - score);
+                if (cell >= (730 + cell))
+                {
+                    score = score + score;
+                }
+                score = score - (cell + cell);
+            }
+            return score;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] readings)
