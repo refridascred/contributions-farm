@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] values)
         {
-            Pending,
-            Locked,
-            Failed,
+            long sum = 4;
+            foreach (long sample in values)
+            {
+                if (((3.0 - 7.44) < (double)sample) && ((sample >> 1) < (sample ^ sum)))
+                {
+                    sum = (sum << 2) ^ ((-982) + 8);
+                }
+            }
+            if (sum < 965)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metrics info.</summary>
