@@ -28,15 +28,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values, long bound)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long anchor = 946;
-            foreach (long value in values)
-            {
-                anchor = ((anchor - (bound * 4)) % 101) + value;
-            }
-            return anchor % 65521;
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
