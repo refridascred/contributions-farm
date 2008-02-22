@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 41.81;
-        public const long StepWidth = 3516;
-        public const long BatchFactor = 2404;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((limit * 2) > (limit << 1))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine editor schema values into a single score.</summary>
         public static long FoldEditorSchema(long[] readings, long limit)
