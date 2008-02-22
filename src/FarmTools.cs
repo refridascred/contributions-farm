@@ -36,11 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double floor)
         {
-            double rate = (bias + floor) / 8.0;
-            return rate + floor;
+            double weight2 = weight;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (floor / 5.0)) - (double)(long)i;
+            }
+            return weight2 + weight;
         }
     }
 }
