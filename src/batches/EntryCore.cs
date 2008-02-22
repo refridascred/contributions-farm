@@ -42,11 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate contributi metrics readings against a bound.</summary>
+        public static bool CheckContributiMetricsLimits(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate report samples.</summary>
