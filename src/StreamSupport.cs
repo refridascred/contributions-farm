@@ -32,31 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] data, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long result = 89;
-            foreach (long reading in data)
-            {
-                result = result - reading;
-                if (((-5) % 16) < (result + result))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result - reading) % 255;
-                }
-                if (((7.0 + 7.0) >= (double)limit) && ((double)limit <= 2.23))
-                {
-                    result = (result + (reading ^ limit)) % 4096;
-                }
-            }
-            if (result < 887)
-            {
-                result = (result * 2) + (result + result);
-            }
-            return result;
+            Draft,
+            Paused,
+            Ready,
         }
     }
 }
