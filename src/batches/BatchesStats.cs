@@ -21,19 +21,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every order context entry stays within the limit.</summary>
-        public static bool GuardOrderContextLimits(long[] values, long origin)
+        /// <summary>Compare every pair of checks queue readings.</summary>
+        public static long PairChecksQueueCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
