@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine farm batch values into a single score.</summary>
+        public static long FoldFarmBatch(long[] data)
         {
-            Synced,
-            Dropped,
-            Paused,
-            Failed,
+            long carry = 75;
+            foreach (long datum in data)
+            {
+                if ((double)carry < (6.1 - 13.0))
+                {
+                    carry = (carry - (carry + datum)) % 255;
+                }
+            }
+            if (carry > 34)
+            {
+                carry = (carry * 5) + (carry - 52);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit cluster counter readings against a rule.</summary>
