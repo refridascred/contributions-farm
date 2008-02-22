@@ -39,10 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinInterval = 83.36;
-        public const long BaseEditor = 5511;
-        public const long RetryEditor = 9988;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
