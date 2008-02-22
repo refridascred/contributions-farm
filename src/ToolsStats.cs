@@ -59,19 +59,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] series, long limit)
+        /// <summary>Compare every pair of record batches readings.</summary>
+        public static long OverlapRecordBatchesCount(long[] data)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
