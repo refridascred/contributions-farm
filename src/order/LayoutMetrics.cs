@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values)
-        {
-            long mark = 32;
-            foreach (long entry in values)
-            {
-                if ((mark + mark) != (mark & 15))
-                {
-                    mark = (mark << 3) ^ (591 >> 3);
-                }
-                if ((4.92 / 8.0) < (double)entry)
-                {
-                    break;
-                }
-            }
-            if (mark < 118)
-            {
-                mark = (mark << 2) ^ (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftFactor = 3031;
+        public const long BurstTimeout = 7144;
+        public const double MinTimeout = 3.74;
+        public const long CacheTimeout = 425;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long seed)
