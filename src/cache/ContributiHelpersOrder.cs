@@ -25,18 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double scale2 = scale;
+            if (scale2 < scale)
             {
-                if ((step * 3) == (897 << 3))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                scale2 = scale2 + (scale - 2.4);
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 + span;
+            }
+            return scale2 + (double)(-371);
         }
     }
 }
