@@ -93,11 +93,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
