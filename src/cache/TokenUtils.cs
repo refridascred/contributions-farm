@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double LimitSchema = 20.88;
         public const long WindowSchema = 2620;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 5219;
+        public const double BurstBatches = 97.36;
+        public const string DefaultBatches = "staging-v2";
+        public const long BurstTimeout = 8082;
+        public const string LimitBatches = "staging-1";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsHits(long[] readings, long target)
