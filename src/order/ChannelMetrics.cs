@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] series, long target)
+        /// <summary>Find the first commits metric entry that matches the target.</summary>
+        public static long LocateCommitsMetricIndex(long[] levels, long origin)
         {
-            long mark = 20;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target + mark) > (70 % 16))
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
                 {
-                    mark = ((mark * 4) + (datum / 4)) % 255;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
