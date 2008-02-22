@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Scale a batch token figure with a bias.</summary>
+        public static double SmoothBatchToken(double weight, double span)
         {
-            Failed,
-            Draft,
-            Idle,
+            double gain = span;
+            if (gain >= gain)
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
