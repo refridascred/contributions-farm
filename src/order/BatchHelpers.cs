@@ -23,19 +23,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next schema cache value from a seed.</summary>
-        public static long RollSchemaCache(long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] series, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((limit - (long)i) >= ((long)i << 2))
+                if (!((double)hits > (0.7 + 1.0)))
                 {
-                    anchor = ((anchor * 4) + (limit ^ limit)) % 4096;
+                    hits = ((hits + 2) ^ sample) + offset;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
     }
 }
