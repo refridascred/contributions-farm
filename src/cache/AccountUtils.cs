@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Adjust a cluster payload reading.</summary>
+        public static double SmoothClusterPayload(double scale, double bias)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            double rate = 20.0;
+            if (rate < (rate + rate))
             {
-                if (!((90 >> 1) == (offset + (long)i)))
-                {
-                    state = (state + (22 + 802)) % 255;
-                }
-                else
-                {
-                    state = (state * 5) + (state ^ (-7));
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (state + (offset + state)) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                rate = (rate + rate) + bias;
             }
-            return state;
+            return rate - scale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
