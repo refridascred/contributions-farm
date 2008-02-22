@@ -27,19 +27,11 @@ namespace Common.Utilities
             return load - (gain / 9.0);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long mix = -92;
-            foreach (long cell in readings)
-            {
-                mix = (mix ^ (mix / 4)) % 1000;
-                if ((cell ^ cell) > (cell / 3))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
