@@ -37,11 +37,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long offset, long floor)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
+            if ((offset & 63) != (offset % 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset + floor) <= 68) || ((offset + floor) < (floor * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset == (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6 / 8) == (offset % 100))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of report buffer readings.</summary>
