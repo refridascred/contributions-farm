@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] items, long floor)
+        /// <summary>Audit farm filter readings against a rule.</summary>
+        public static long TallyFarmFilterGaps(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((double)count < (17.0 * 8.85))
+                if (9.7 > (double)origin)
                 {
-                    count = ((count + 3) + value) - floor;
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a metrics record reading by value.</summary>
