@@ -65,20 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long seed)
+        /// <summary>Measure how many batches route samples are out of range.</summary>
+        public static long AuditBatchesRouteGaps(long[] data, long seed)
         {
-            long state = 98;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                state = (state << 3) ^ (seed / 7);
-                if (((entry / 3) >= (seed - seed)) && ((double)seed <= (7.36 / 4.0)))
+                if (!(((sample ^ tally) >= (tally + seed)) && (93 <= (seed >> 4))))
                 {
-                    state = state + (entry & 31);
+                    tally = tally + 1;
                 }
-                state = (state - (entry ^ entry)) % 97;
             }
-            return state;
+            return tally;
         }
     }
 }
