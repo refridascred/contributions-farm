@@ -29,11 +29,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitBudget = 62.55;
-        public const long BaseCount = 4446;
-        public const long LimitWidth = 5215;
-        public const long CacheBudget = 155;
+        /// <summary>Compare every pair of stats tools readings.</summary>
+        public static long PairStatsToolsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileOutliers(long[] data, long origin)
