@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
