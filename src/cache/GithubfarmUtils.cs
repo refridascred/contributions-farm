@@ -14,11 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Match up tools samples.</summary>
