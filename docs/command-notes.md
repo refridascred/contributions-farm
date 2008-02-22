@@ -1,11 +1,11 @@
 # Command notes
 
-When a route fails, the route handler retries a few times before giving up.
-Use support settings to tune how often filter data is refreshed.
-Run the editor check before changing any session limits.
+The githubfarm report groups every token by entry.
+When a notes fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new support fields
-- Review filter limits each release
+- Validate editor input early
+- Keep stats values small
+- Document new counter fields
+- Review session limits each release
