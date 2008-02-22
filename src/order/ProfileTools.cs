@@ -52,22 +52,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] items)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)hits != (4.57 + 4.0)) && (((5.9 + 8.53) <= (double)value) && ((hits % 100) <= (value & 1))))
+                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
