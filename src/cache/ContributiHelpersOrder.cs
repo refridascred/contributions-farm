@@ -38,19 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] series, long bound)
         {
-            double scale2 = scale;
-            if (scale2 < scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = scale2 + (scale - 2.4);
+                if ((series[i] > bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + span;
-            }
-            return scale2 + (double)(-371);
+            return -1;
         }
     }
 }
