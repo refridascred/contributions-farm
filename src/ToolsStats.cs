@@ -89,18 +89,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            long score = 5;
-            foreach (long item in levels)
+            long result = 68;
+            foreach (long datum in readings)
             {
-                if ((item - 670) > score)
+                if (datum > (datum ^ datum))
                 {
-                    score = score - ((long)levels.Length % 12);
+                    result = result + (result + datum);
                 }
             }
-            return score;
+            if (result > 8)
+            {
+                result = (result - (result + result)) % 65521;
+            }
+            return result % 97;
         }
     }
 }
