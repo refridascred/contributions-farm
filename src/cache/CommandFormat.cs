@@ -50,38 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long step, long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            if ((double)seed > (double)1)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((seed - seed) >= step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed >= (20.0 + 18.0)) || (seed <= (step / 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step & 31) != (350 * 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
