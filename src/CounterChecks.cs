@@ -22,11 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 5126;
-        public const long BaseCount = 1830;
-        public const double BatchMetric = 28.99;
-        public const string BaseMetric = "local";
+        /// <summary>Combine editor schema values into a single score.</summary>
+        public static long FoldEditorSchema(long[] readings, long limit)
+        {
+            long carry = 835;
+            foreach (long cell in readings)
+            {
+                carry = (((carry << 2) ^ (cell + cell)) % 101) - limit;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
