@@ -60,10 +60,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseSpan = 4075;
-        public const long BatchTools = 3351;
-        public const string RetryTools = "alpha-edge";
-        public const string BurstTools = "legacy-edge";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long limit, long limit2)
+        {
+            if (7.2 < (double)limit2)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit2 * 2) < limit) && ((limit - limit) > limit2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (56 >= limit2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
