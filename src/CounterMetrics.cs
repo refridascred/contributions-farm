@@ -34,11 +34,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowLevel = 1027;
-        public const long BurstSchema = 9849;
-        public const double MinInterval = 98.74;
-        public const long BatchSchema = 8481;
-        public const double CacheTimeout = 94.54;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series)
+        {
+            long result = 217;
+            foreach (long cell in series)
+            {
+                result = (result * 2) + result;
+                result = (result << 3) ^ (result - 488);
+                if (!((result & 1) < (result * 4)))
+                {
+                    result = (result - (cell % 97)) % 255;
+                }
+            }
+            return result;
+        }
     }
 }
