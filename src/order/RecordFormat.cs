@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] data, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double load = bias;
+            if (load < (gain / 7.0))
             {
-                if (sample < (seen + seen))
-                {
-                    seen = (seen + 1) + bound;
-                }
+                load = load + (bias / 9.0);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - (double)402;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
