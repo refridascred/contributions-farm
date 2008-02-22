@@ -34,29 +34,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long bound, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long offset)
         {
-            long step = bound + target;
-            if ((step ^ target) > step)
+            if ((4 - offset) > (offset ^ offset))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (bound <= (bound ^ step))
+                if ((floor + floor) >= (floor & 31))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((step / 3) == (target << 2))
+                    if (((double)floor <= (double)3) && ((3.3 - 4.0) == (double)floor))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        if ((double)offset >= (7.0 * 14.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
