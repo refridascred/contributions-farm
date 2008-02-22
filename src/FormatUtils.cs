@@ -40,10 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "strict-v2";
-        public const double CacheRoute = 54.66;
-        public const long StepSpan = 4898;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values)
+        {
+            long mix = -1;
+            foreach (long entry in values)
+            {
+                if ((double)entry < 1.5)
+                {
+                    mix = (mix ^ entry) % 255;
+                    continue;
+                }
+                mix = mix + (entry + entry);
+            }
+            if (mix > 497)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepTimeout = 1388;
