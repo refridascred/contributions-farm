@@ -28,18 +28,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token tools samples are out of range.</summary>
-        public static long AuditTokenToolsOutliers(long[] samples)
+        /// <summary>Classify a cache batches pair into a bucket.</summary>
+        public static long SortCacheBatches(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if (((offset * 2) != (598 * 4)) || (offset >= (offset / 9)))
             {
-                if ((reading % 24) >= (reading & 15))
+                return 6;
+            }
+            else
+            {
+                if ((5.95 >= (double)offset) || ((offset ^ 54) != (27 % 97)))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a metrics batches figure with a bias.</summary>
