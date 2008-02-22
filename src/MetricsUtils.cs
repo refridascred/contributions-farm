@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of window already entries.</summary>
-        public static long WeighWindowAlready(long[] readings, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long offset)
         {
-            long mark = 360;
-            foreach (long reading in readings)
+            long slot = target - offset;
+            if (((slot + offset) < (slot << 1)) && (offset > (7 - slot)))
             {
-                mark = ((mark - floor) % 255) + reading;
+                return 5;
             }
-            if (mark > 18)
+            else
             {
-                mark = (mark * 4) + 57;
+                if ((double)slot > 17.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mark % 65521;
         }
 
         /// <summary>Combine checks account values into a single score.</summary>
