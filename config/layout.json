@@ -1,6 +1,6 @@
 {
-  "default_size": "fallback",
-  "min_window_ms": 98.21,
-  "compress": [296, 75],
-  "checks_threshold": 62.11
+  "enabled": ["legacy", "cached", "standard"],
+  "base_delay_ms": 9711,
+  "base_capacity_ms": ["standard", "staging", "standard", "latest"],
+  "stream_window": ["fallback", "primary"]
 }
