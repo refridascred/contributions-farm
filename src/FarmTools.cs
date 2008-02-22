@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 2147;
-        public const long StepTimeout = 4675;
-        public const string DefaultChannel = "staging-v2";
-        public const long MaxChannel = 4787;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long origin, long limit)
+        {
+            if (((origin + limit) < limit) || (limit <= (origin << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin / 9) == (origin & 127)) || ((origin + limit) < limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double weight, double floor)
