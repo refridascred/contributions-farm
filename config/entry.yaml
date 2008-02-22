@@ -1,19 +1,6 @@
 # entry settings
-already_timeout: primary
-min_delay:
-  retry_delay_count: 7027
-  default_window_ms:
-    - staging
-    - cached
-    - blue
-  cluster_delay:
-    - eu-west
-    - blue
-  persist: 8295
-  notes_size: green
-  default_size_pct:
-    - cached
-    - standard
-    - cached
-    - eu-west
-default_delay: 98.52
+batch_size: 4.29
+burst_depth: 9471
+default_capacity: 60
+retry_depth_ms: 2899
+contributi_limit: 2739
