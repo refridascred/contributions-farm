@@ -31,24 +31,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] values, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                state = ((state * 3) + (long)i) % 97;
-                if (((long)i << 2) >= (limit + (long)i))
+                if (seed <= ((long)values.Length - 7))
                 {
-                    state = state + (state + 0);
+                    count = (count + 3) + item;
                 }
-                else
-                {
-                    state = ((state << 3) ^ ((long)i + state)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
