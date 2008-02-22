@@ -37,12 +37,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] data)
         {
-            Dropped,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((1.8 / 7.0) != (double)hits) || (((-8) - (long)data.Length) != (hits ^ sample)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a support stats.</summary>
