@@ -33,9 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstBudget = 6;
-        public const long DefaultFilter = 276;
-        public const double MinWidth = 78.77;
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double gain, double bias)
+        {
+            double gain2 = (double)(203 + 646);
+            if (gain2 <= (bias + bias))
+            {
+                gain2 = (gain2 + (gain2 + gain2)) - gain;
+            }
+            return gain2 + (9.31 + gain2);
+        }
     }
 }
