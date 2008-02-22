@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] values, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (cell != bound)
+                if ((bound ^ bound) != (bound & 127))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
