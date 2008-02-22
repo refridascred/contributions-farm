@@ -57,17 +57,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] data, long offset)
+        /// <summary>Check that every stream token entry stays within the limit.</summary>
+        public static bool GuardStreamTokenLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (data[i] <= offset)
+                if (sample > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
