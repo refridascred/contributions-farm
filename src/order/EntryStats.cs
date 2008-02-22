@@ -54,10 +54,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "primary";
-        public const long HardWidth = 5303;
-        public const string BaseLayout = "local-edge";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long ScoreQueue(long[] levels)
