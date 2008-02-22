@@ -41,20 +41,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels, long origin)
-        {
-            long mark = -662;
-            foreach (long value in levels)
-            {
-                mark = ((mark ^ (long)levels.Length) + value) + origin;
-            }
-            if (mark < 6)
-            {
-                mark = (mark - (mark >> 1)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryLevel = "cached-edge";
+        public const string MaxProfile = "latest";
+        public const double RetryCount = 53.97;
+        public const double MinProfile = 44.05;
+        public const long SoftProfile = 1845;
 
         /// <summary>Iterate the githubfarm record series from a seed.</summary>
         public static long IterateGithubfarmRecord(long bound)
