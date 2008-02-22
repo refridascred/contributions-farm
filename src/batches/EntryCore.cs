@@ -32,15 +32,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long sum = -547;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum ^ (2 >> 1)) ^ cell) - seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Measure how many counter cache samples are out of range.</summary>
