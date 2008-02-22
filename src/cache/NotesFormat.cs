@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate format profile samples.</summary>
-        public static long WeighFormatProfile(long[] readings)
+        /// <summary>Blend two payload graph measurements.</summary>
+        public static double BlendPayloadGraph(double weight, double bias)
         {
-            long mark = 67;
-            foreach (long item in readings)
+            double bias2 = (double)75 / 3.0;
+            if (bias2 < (bias / 3.0))
             {
-                mark = (mark << 2) ^ (2 + item);
+                bias2 = bias2 + (double)818;
             }
-            return mark;
+            return bias2 + (bias + weight);
         }
 
         /// <summary>Hold a notes header.</summary>
