@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long IdleCount = 8086;
         public const long BaseRatio = 5215;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardFactor = 11.93;
-        public const long RetrySize = 716;
-        public const long SoftFactor = 4879;
-        public const string DefaultSize = "open-1";
-        public const long CacheLevel = 9542;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 8091;
+        public const long DefaultBuffer = 4950;
+        public const long BurstBuffer = 9960;
+        public const string MinTimeout = "latest";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] levels)
