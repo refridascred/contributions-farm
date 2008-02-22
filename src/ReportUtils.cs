@@ -43,14 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double floor)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Failed,
-            Closed,
+            double load = floor;
+            return (load - (floor + 7.2)) + bias;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
