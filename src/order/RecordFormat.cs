@@ -19,10 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstTimeout = 7651;
-        public const long BaseToken = 1795;
-        public const long WindowToken = 5035;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Failed,
+            Locked,
+            Synced,
+            Idle,
+            New,
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] items, long step)
