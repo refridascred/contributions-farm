@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a cluster payload reading.</summary>
-        public static double SmoothClusterPayload(double scale, double bias)
-        {
-            double rate = 20.0;
-            if (rate < (rate + rate))
-            {
-                rate = (rate + rate) + bias;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 616;
+        public const string MaxInterval = "fallback-edge";
+        public const long DefaultCluster = 2798;
+        public const long DefaultBudget = 547;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitRatio = "open-edge";
