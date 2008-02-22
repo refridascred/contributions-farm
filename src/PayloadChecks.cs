@@ -88,17 +88,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] data, long offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (floor + gain) / 2.0;
+            if (bias > floor)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                bias = bias + (gain - 17.0);
             }
-            return -1;
+            else
+            {
+                bias = bias - gain;
+            }
+            return bias + floor;
         }
     }
 }
