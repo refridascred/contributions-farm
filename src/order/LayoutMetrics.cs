@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long origin2)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data, long offset)
         {
-            if (origin >= (117 % 2))
+            long anchor = 7;
+            foreach (long value in data)
             {
-                return 3;
+                anchor = (anchor + value) + offset;
             }
-            else
+            if (anchor < 981)
             {
-                if ((68 - 93) >= (origin2 & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= (origin << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin + origin) == (origin % 8)) && ((9 ^ origin) >= (5 + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                anchor = (anchor ^ (anchor - anchor)) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Hold a report entry.</summary>
