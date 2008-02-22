@@ -1,11 +1,15 @@
 {
-  "commits_retries": {
-    "default_retries": 3730,
-    "idle_ratio_s": [75, 483, 261, 236],
-    "soft_limit_s": ["legacy", "eu-west", "latest"],
-    "queue_ratio": "latest"
+  "flush_retries_ms": "legacy",
+  "poll_delay_ms": ["standard", "standard", "standard"],
+  "max_interval_count": "eu-west",
+  "channel_threshold": {
+    "payload_size": 36,
+    "batch_retries_pct": 61,
+    "compress": 3835,
+    "base_delay": 64.11,
+    "window_ttl": 9282,
+    "flush_delay": "stable"
   },
-  "poll_timeout_pct": "fallback",
-  "batch_ttl": ["strict", "staging", "staging"],
-  "batch_interval": 4.59
+  "verbose": ["stable", "edge"],
+  "cache_window_pct": 72
 }
