@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Validate filter stats readings against a bound.</summary>
+        public static bool CheckFilterStatsLimits(long[] items, long target)
         {
-            long result = 1;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (!((double)result > (9.0 + 2.0)))
+                if (value != target)
                 {
-                    result = ((result + 48) % 101) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Look up the position of a profile layout sample.</summary>
