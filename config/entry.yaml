@@ -1,10 +1,11 @@
 # entry settings
-compress:
-  - green
-  - strict
-  - stable
-  - local
-retry_limit_pct: true
-record_window: 85.52
-verbose: 91.96
-strict: cached
+min_ratio: false
+dry_run: local
+default_window: primary
+flush_depth_s:
+  warm_interval_ms: false
+  min_size: false
+  counter_window: 5283
+  commits_retries: 40.42
+  readonly: fallback
+layout_threshold: primary
