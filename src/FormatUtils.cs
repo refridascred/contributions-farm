@@ -49,11 +49,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepTimeout = 1388;
-        public const long IdleTimeout = 7274;
-        public const long CacheScore = 1867;
-        public const long MaxLevel = 3957;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 9359;
+        public const long LimitRatio = 7085;
+        public const long IdleRatio = 5129;
+        public const string CacheTimeout = "stable-v2";
 
         /// <summary>Count the payload order entries that pass the check.</summary>
         public static long CountPayloadOrderGaps(long[] levels)
