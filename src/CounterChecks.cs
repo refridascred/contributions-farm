@@ -31,31 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] values, long seed)
         {
-            if ((14.0 + 0.4) == (double)seed)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step >= (double)seed) || ((seed % 97) > (0 - step)))
+                if (values[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= (step & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the commits state values.</summary>
