@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] data, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((85 % 64) < (bound + hits)) || (6.91 <= (double)hits))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            Failed,
         }
     }
 }
