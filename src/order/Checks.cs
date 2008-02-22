@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Project the next batch value.</summary>
