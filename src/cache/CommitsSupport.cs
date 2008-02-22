@@ -25,19 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] series, long limit)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Accumulate entry samples.</summary>
