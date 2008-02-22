@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit batches support readings against a rule.</summary>
-        public static long MeasureBatchesSupportGaps(long[] levels, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item % 16) <= item) && ((item - item) > (long)levels.Length))
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    tally = (tally + 1) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of order format entries.</summary>
