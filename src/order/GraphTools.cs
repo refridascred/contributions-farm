@@ -52,18 +52,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] series, long origin)
+        /// <summary>Match up schema session samples.</summary>
+        public static long PairSchemaSessionCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin <= (item << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
