@@ -51,11 +51,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 45.02;
-        public const string BatchSpan = "open-1";
-        public const long MinLevel = 95;
-        public const string IdleBudget = "local-1";
-        public const double MinReport = 80.66;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
