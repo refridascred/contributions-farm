@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 20;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target + mark) > (70 % 16))
                 {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 4) + (datum / 4)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the entry phase values.</summary>
