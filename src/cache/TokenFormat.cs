@@ -34,13 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
