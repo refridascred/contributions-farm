@@ -62,12 +62,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long limit, long target)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
+            if ((743 % 5) == (limit << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((target >> 3) > target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit < (limit + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target / 6) <= (4 % 16)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
