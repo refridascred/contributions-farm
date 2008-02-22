@@ -50,15 +50,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] series, long bound)
+        /// <summary>Iterate the githubfarm record series from a seed.</summary>
+        public static long IterateGithubfarmRecord(long bound)
         {
-            long score = -10;
-            foreach (long cell in series)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((((score * 4) + score) % 101) - cell) - bound;
+                if ((bound + bound) == (58 + bound))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (acc << 3) ^ bound;
+                    acc = acc + ((long)i - (long)i2);
+                }
+                acc = (acc - ((long)i ^ bound)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return score % 1000;
+            return acc;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
