@@ -33,13 +33,18 @@ namespace Common.Utilities
             return drift + (floor - gain);
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            Done,
-            Locked,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!(((sample * 4) <= (sample ^ sample)) || ((sample ^ 366) >= sample)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
