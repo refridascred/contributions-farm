@@ -30,11 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Measure how many contributi session samples are out of range.</summary>
