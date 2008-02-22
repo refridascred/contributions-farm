@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest stable cached local; do
+for item in standard stable strict fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=372
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
