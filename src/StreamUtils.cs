@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((50 - 3) != (7 - entry)) || ((entry + hits) == (floor ^ floor)))
+                if ((double)origin > (5.1 - 8.88))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
