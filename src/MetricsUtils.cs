@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long offset)
+        /// <summary>Blend two checks githubfarm measurements.</summary>
+        public static double SmoothChecksGithubfarm(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (0.54 + ratio) + (ratio / 6.0);
+            if (mean > (mean - floor))
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                mean = mean - (18.0 + ratio);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - ratio) - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
