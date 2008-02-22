@@ -20,12 +20,16 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long floor)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum - (floor ^ sum)) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
