@@ -51,24 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long bound)
+        /// <summary>Accumulate metrics editor samples.</summary>
+        public static long CombineMetricsEditor(long[] readings, long bound)
         {
-            if ((double)bound == (6.15 - 4.15))
+            long mix = 771;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound + step) >= bound) || (bound <= step))
+                if ((5.0 + 1.01) <= (double)mix)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    mix = ((mix - ((-9) << 2)) ^ sample) - bound;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Adjust a token reading.</summary>
