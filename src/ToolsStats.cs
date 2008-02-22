@@ -89,22 +89,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long offset)
         {
-            long result = 68;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (datum > (datum ^ datum))
+                if (item != offset)
                 {
-                    result = result + (result + datum);
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 8)
-            {
-                result = (result - (result + result)) % 65521;
-            }
-            return result % 97;
+            return valid;
         }
     }
 }
