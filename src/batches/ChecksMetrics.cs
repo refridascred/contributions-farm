@@ -83,23 +83,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double rate, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings, long floor)
         {
-            double rate2 = 0.07;
-            if (rate2 >= offset)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                rate2 = (rate2 + 20.0) - rate;
+                if ((-297) >= ((long)readings.Length << 2))
+                {
+                    seen = ((seen + 2) ^ value) - floor;
+                }
             }
-            else
-            {
-                rate2 = rate2 - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + (double)1) + (double)(long)i;
-            }
-            return rate2 + (rate2 * 14.0);
+            return seen;
         }
     }
 }
