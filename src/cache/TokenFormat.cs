@@ -34,21 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLevel = 287;
+        public const long CacheCount = 473;
+        public const double BatchSize = 64.22;
+        public const long HardSize = 8495;
+        public const long RetryLayout = 4549;
     }
 }
