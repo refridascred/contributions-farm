@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 662;
-        public const double BatchAccount = 38.18;
-        public const string CacheAccount = "stable-v2";
-        public const long SoftLevel = 1725;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepLevel = 402;
+        public const long BaseRatio = 2099;
+        public const long BaseMetric = 4660;
+        public const double DefaultMetric = 30.56;
+        public const long DefaultInterval = 9824;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
