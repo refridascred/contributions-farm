@@ -35,27 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items, long floor)
-        {
-            long carry = 7;
-            foreach (long entry in items)
-            {
-                if ((entry ^ floor) >= (entry - entry))
-                {
-                    carry = (carry - carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ entry;
-                }
-            }
-            if (carry > 992)
-            {
-                carry = ((carry << 2) ^ (carry << 1)) % 255;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 16.73;
+        public const long BatchBudget = 7368;
+        public const long MinBuffer = 4757;
+        public const long DefaultLevel = 9841;
+        public const long HardTimeout = 3963;
 
         /// <summary>Compare every pair of checks window readings.</summary>
         public static long PairChecksWindowCount(long[] items)
