@@ -1,14 +1,14 @@
 # Command notes
 
-When a graph fails, the stream handler retries a few times before giving up.
 Defaults for notes live in the config folder and can be overridden per environment.
-Each account is validated before it reaches the notes queue.
+The session report groups every contributi by queue.
+Each tools is validated before it reaches the buffer queue.
 
-A record that stays idle for too long is moved to the channel list.
-When a editor fails, the order handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
+Run the metrics check before changing any token limits.
 
 ## Guidelines
 
-- Log every counter change
-- Validate account input early
-- Prefer format defaults
+- Prefer order defaults
+- Document new cluster fields
+- Log every buffer change
