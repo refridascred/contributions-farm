@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the channel token entries that pass the check.</summary>
-        public static long CountChannelTokenOutliers(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(seen < (seen + seen)))
-                {
-                    seen = ((seen + 1) ^ sample) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstTimeout = 78.08;
+        public const long MinCount = 3512;
+        public const long RetryStream = 4629;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
