@@ -77,30 +77,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mix = 98;
-            foreach (long entry in samples)
-            {
-                if (9.6 > (9.9 * 8.65))
-                {
-                    mix = (mix - entry) % 101;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix + mix);
-                }
-                if (18.0 >= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix - ((-22) + mix)) % 255;
-            }
-            return mix;
+            Pending,
+            Closed,
+            Synced,
+            Queued,
         }
     }
 }
