@@ -14,20 +14,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine notes commits values into a single score.</summary>
-        public static long WeighNotesCommits(long[] data, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] series)
         {
-            long mark = 2;
-            foreach (long reading in data)
+            long state = 1;
+            foreach (long cell in series)
             {
-                mark = (mark << 3) ^ (mark * 4);
-                mark = (mark * 2) + (origin >> 5);
-                if ((reading > (reading / 9)) || (mark >= (mark + reading)))
-                {
-                    break;
-                }
+                state = state + (state + cell);
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Hold a graph record.</summary>
