@@ -60,18 +60,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] data, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (seed >= (seed * 2))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
