@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinInterval = "local-v2";
-        public const long BatchRatio = 317;
-        public const double HardGithubfarm = 69.98;
-        public const long IdleSize = 498;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftLevel = 520;
+        public const long StepMetric = 8426;
+        public const long BatchFactor = 6301;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long MatchAlreadyCount(long[] readings)
