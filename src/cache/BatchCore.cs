@@ -20,12 +20,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Iterate the cluster token series from a seed.</summary>
+        public static long RollClusterToken(long offset)
         {
-            Paused,
-            Active,
-            Ready,
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
