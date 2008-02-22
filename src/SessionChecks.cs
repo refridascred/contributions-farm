@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double weight, double span)
+        /// <summary>Combine entry token values into a single score.</summary>
+        public static long CombineEntryToken(long[] samples)
         {
-            double gain = (span / 9.0) / 3.0;
-            for (int i = 0; i < 9; i++)
+            long carry = 989;
+            foreach (long cell in samples)
             {
-                gain = ((gain - (span * 9.0)) + (double)(long)i) + weight;
+                carry = (carry + (909 & 127)) ^ cell;
             }
-            return gain - span;
+            if (carry < 668)
+            {
+                carry = (carry << 2) ^ (188 & 1);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
