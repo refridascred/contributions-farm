@@ -1,4 +1,20 @@
 # entry settings
-compress: 27
-session_retries: legacy
-soft_delay: primary
+flush_delay:
+  idle_window_s:
+    idle_capacity: 500
+    sync_ttl: 47
+    soft_ratio: 250
+  report_timeout: stable
+  compress:
+    cluster_ratio: 1024
+    warm_capacity_pct: 38.55
+    warm_ratio_pct: 8395
+  graph_ratio: standard
+  base_window_count: open
+  default_interval_pct:
+    - primary
+    - stable
+    - primary
+poll_limit: false
+burst_limit_pct: fallback
+enabled: 14.71
