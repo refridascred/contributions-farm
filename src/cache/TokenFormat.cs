@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((double)tally <= (double)40))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinSize = 481;
+        public const long StepFarm = 2009;
+        public const long IdleFactor = 1317;
+        public const string BurstFarm = "fallback-edge";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountBounds(long[] samples, long offset)
