@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 6624;
-        public const long BurstChannel = 5396;
-        public const long BurstScore = 7766;
-        public const long WindowChannel = 5111;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitSpan = 5500;
+        public const long StepDepth = 9975;
+        public const long MinFactor = 9858;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
