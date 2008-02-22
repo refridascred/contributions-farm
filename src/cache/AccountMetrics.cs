@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next session buffer value.</summary>
