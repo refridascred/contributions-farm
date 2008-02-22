@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] values, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
