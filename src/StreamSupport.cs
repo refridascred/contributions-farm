@@ -19,29 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long step, long floor)
         {
-            if ((double)origin >= (double)target)
+            if ((floor + floor) != (35 >> 4))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (origin > (0 + origin))
+                if (step <= (step * 3))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (((origin % 16) < (origin - origin)) && (target < (target * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 8;
                 }
             }
         }
