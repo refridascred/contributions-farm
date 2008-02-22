@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Check that every record contributi entry stays within the limit.</summary>
+        public static bool VerifyRecordContributiBounds(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next session buffer value.</summary>
