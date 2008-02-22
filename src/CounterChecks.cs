@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank stats already input into a small class.</summary>
-        public static long GradeStatsAlready(long origin, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] data)
         {
-            if (((origin / 6) != (bound - origin)) || (bound > 0))
+            long state = 8;
+            foreach (long item in data)
             {
-                return 8;
+                state = (state << 2) ^ (item >> 1);
             }
-            else
+            if (state > 9)
             {
-                if (!((7.9 + 2.0) != (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound <= (origin - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound / 2) <= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                state = state + (state & 7);
             }
+            return state % 4096;
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
