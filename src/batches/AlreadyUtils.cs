@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = offset;
+            if (rate <= 16.0)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + rate;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (gain * 5.0);
         }
 
         /// <summary>Find the first session support entry that matches the target.</summary>
