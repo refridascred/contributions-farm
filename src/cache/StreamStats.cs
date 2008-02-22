@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] samples, long bound)
+        /// <summary>Validate order schema readings against a bound.</summary>
+        public static bool ValidateOrderSchemaLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((72 ^ datum) >= (bound + (long)samples.Length))
+                if (item <= target)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
