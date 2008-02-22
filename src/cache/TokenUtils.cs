@@ -22,13 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long offset)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
