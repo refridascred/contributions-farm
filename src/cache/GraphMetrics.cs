@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] data, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long anchor = 0;
-            foreach (long value in data)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor << 3) ^ (0 - anchor);
-                anchor = (anchor - anchor) % 97;
-                if (value > (anchor + floor))
-                {
-                    anchor = (anchor * 4) + (floor - value);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + value;
-                }
+                mix = mix - (mix - floor);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return anchor % 97;
+            return mix;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
