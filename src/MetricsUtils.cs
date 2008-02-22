@@ -48,13 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a support entry.</summary>
