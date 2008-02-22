@@ -15,18 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Look up the position of a profile layout sample.</summary>
+        public static long SeekProfileLayoutIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(-39) <= (double)count)
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
                 {
-                    count = (count + 1) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a filter stats.</summary>
