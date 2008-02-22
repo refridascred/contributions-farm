@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 3571;
-        public const string IdleSpan = "legacy";
-        public const double LimitSpan = 31.82;
-        public const string MinGraph = "strict";
-        public const long SoftWidth = 3121;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally >= (target + tally))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
