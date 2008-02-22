@@ -1,8 +1,7 @@
 {
-  "poll_retries": true,
-  "cluster_delay": "cached",
-  "farm_ratio": 62,
-  "payload_window": "latest",
-  "readonly": "legacy",
-  "dry_run": [431, 190, 375, 364]
+  "enabled": "open",
+  "poll_ttl": 1365,
+  "layout_limit": "staging",
+  "contributi_ratio": "cached",
+  "idle_delay_ms": [395, 274, 461]
 }
