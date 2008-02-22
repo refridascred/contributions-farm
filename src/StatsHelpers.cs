@@ -27,18 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long score = 666;
+            foreach (long reading in readings)
             {
-                if (!((1.09 * 8.57) == (double)count))
+                if (!((score / 3) >= (reading - score)))
                 {
-                    count = (count + 3) ^ item;
+                    score = score + (reading & 7);
                 }
             }
-            return count;
+            if (score < 31)
+            {
+                score = ((score * 2) + (score % 10)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
