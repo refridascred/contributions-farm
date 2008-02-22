@@ -26,13 +26,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels, long offset)
         {
-            Stale,
-            Paused,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (double)hits)
+                {
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
