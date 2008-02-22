@@ -14,20 +14,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items, long offset)
-        {
-            long carry = 680;
-            foreach (long entry in items)
-            {
-                carry = (((carry << 2) ^ (1 >> 2)) % 4096) + entry;
-            }
-            if (carry > 308)
-            {
-                carry = (carry + offset) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9195;
+        public const string SoftWidth = "latest-v2";
+        public const long MinBatch = 491;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long limit)
