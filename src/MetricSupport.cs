@@ -13,39 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long bound, long seed)
+        /// <summary>Count the tools profile entries that pass the check.</summary>
+        public static long TallyToolsProfileHits(long[] levels, long seed)
         {
-            long next = bound ^ seed;
-            if (seed <= bound)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 3) >= bound)
+                if (!((907 + datum) > seen))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((-43) >> 2) < (seed + next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound >= 1.2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 1) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
