@@ -43,19 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] data, long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= offset)
+                if ((items[i] > offset) && ((items[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
