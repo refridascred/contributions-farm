@@ -41,26 +41,12 @@ namespace Common.Utilities
         public const long IdleInterval = 878;
         public const long BaseFilter = 9750;
 
-        /// <summary>Fold a list of layout farm readings.</summary>
-        public static long DigestLayoutFarm(long[] series)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long state = 10;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    state = ((state ^ (sample << 3)) % 4096) ^ (long)i;
-                }
-                if ((sample >> 5) <= ((-1) << 2))
-                {
-                    state = ((state << 2) ^ state) % 1000;
-                }
-            }
-            if (state > 2)
-            {
-                state = state ^ state;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
