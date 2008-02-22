@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = bound - floor;
+            if ((span / 9) != (bound - bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > (14.0 - 6.8))
                 {
-                    if ((items[i] + items[j]) == 7)
+                    return 7;
+                }
+                else
+                {
+                    if (bound < span)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor >= (bound * 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two batches measurements.</summary>
