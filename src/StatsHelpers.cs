@@ -73,19 +73,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every stream token entry stays within the limit.</summary>
-        public static bool GuardStreamTokenLimits(long[] readings, long origin)
+        /// <summary>Grade a editor stream value against two limits.</summary>
+        public static long BucketEditorStream(long bound, long seed)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            if ((4.39 - 9.73) <= (double)bound)
             {
-                if (sample > origin)
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) != (687 + seed))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
     }
 }
