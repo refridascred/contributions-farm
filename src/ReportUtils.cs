@@ -23,19 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] data, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] samples, long target)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long value in samples)
             {
-                if (((double)datum < (double)616) || ((seen % 5) < 45))
+                if ((value & 127) >= (seen / 2))
                 {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) + target;
                 }
             }
             return seen;
