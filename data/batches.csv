@@ -1,8 +1,9 @@
-id,token,active,label
-1,stable,52,standard
-2,92.12,251,87.91
-3,30.7,94.95,fallback
-4,77,175,edge
-5,816,22.25,local
-6,934,85.66,open
-7,749,local,96.12
+id,rank,level
+1,353,65.11
+2,edge,8.08
+3,806,primary
+4,818,635
+5,staging,green
+6,306,79.51
+7,31.14,38.03
+8,blue,fallback
