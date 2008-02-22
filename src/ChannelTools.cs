@@ -28,14 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Queued,
-            Active,
-            Retry,
-            Locked,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
