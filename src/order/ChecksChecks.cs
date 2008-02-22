@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] readings, long offset)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
