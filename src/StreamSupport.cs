@@ -22,24 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command already value against two limits.</summary>
-        public static long ClassifyCommandAlready(long step, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            if (((12.0 / 5.0) <= (double)offset) && ((offset + 3) < (step + step)))
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                mix = ((mix * 2) + mix) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset % 8) <= (step * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
