@@ -20,39 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long limit, long bound)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long lane = limit + bound;
-            if ((limit - limit) > bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)lane >= (1.0 * 9.1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound ^ 116) >= (lane / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (lane <= (lane >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
