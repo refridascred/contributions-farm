@@ -35,13 +35,13 @@ namespace Common.Utilities
         public const long MinTimeout = 8662;
         public const double IdleEntry = 19.28;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Locked,
-            New,
-            Done,
-            Retry,
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate batch session readings against a bound.</summary>
