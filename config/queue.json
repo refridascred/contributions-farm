@@ -1,6 +1,8 @@
 {
-  "default_retries_count": 7,
-  "profile_limit": true,
-  "readonly": 31,
-  "soft_delay": 48.72
+  "flush_size_ms": false,
+  "min_capacity_count": 60,
+  "farm_threshold": 75.87,
+  "verbose": true,
+  "base_window_ms": 60,
+  "min_retries_ms": 4242
 }
