@@ -20,19 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] items, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of support entries.</summary>
