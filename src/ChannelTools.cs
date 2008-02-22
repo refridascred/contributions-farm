@@ -24,11 +24,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - cell) < cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
