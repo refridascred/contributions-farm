@@ -59,15 +59,26 @@ namespace Common.Utilities
         public const double LimitCommand = 84.56;
         public const string BaseDepth = "local-edge";
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double rate, double span)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data)
         {
-            double ratio = (double)(5 / 3);
-            if (ratio >= (double)25)
+            long anchor = 4;
+            foreach (long entry in data)
             {
-                ratio = (ratio + (double)74) - span;
+                if ((anchor < entry) && ((anchor & 1) >= entry))
+                {
+                    anchor = anchor - (98 * 5);
+                }
+                if ((double)entry > (9.4 - 3.2))
+                {
+                    anchor = (anchor - entry) % 4096;
+                }
             }
-            return ratio + rate;
+            if (anchor > 88)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
