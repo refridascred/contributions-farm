@@ -48,10 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "primary";
-        public const long HardBuffer = 5986;
-        public const long RetryLevel = 5827;
-        public const double StepBuffer = 4.79;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
