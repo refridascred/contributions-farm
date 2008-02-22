@@ -32,21 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long bound)
         {
-            long acc = 0;
-            foreach (long entry in series)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc * 5) + 7;
-                acc = (acc << 2) ^ (entry / 6);
-                acc = acc ^ ((-904) - 569);
+                state = state + (state & 63);
+                if ((bound + state) <= (state - bound))
+                {
+                    long slot = (state - bound) / 6;
+                    state = (state * 5) + (slot & 1);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (acc > (-427))
-            {
-                acc = (acc << 3) ^ (floor ^ acc);
-            }
-            return acc;
+            return state;
         }
     }
 }
