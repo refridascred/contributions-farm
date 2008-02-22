@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] levels, long step)
+        /// <summary>Compare every pair of contributi tools readings.</summary>
+        public static long PairContributiToolsCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count & 127) < (count % 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 1) ^ cell) + step;
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first batch format entry that matches the target.</summary>
