@@ -69,9 +69,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4785;
-        public const long HardContributi = 8821;
-        public const long BurstScore = 8524;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((5.8 + 1.0) != (double)cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
