@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const string CacheInterval = "latest-1";
         public const string CacheSize = "fallback";
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 7282;
+        public const long IdleToken = 8941;
+        public const double RetryToken = 19.56;
+        public const long StepCount = 6499;
+        public const long BatchToken = 7519;
     }
 }
