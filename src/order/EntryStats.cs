@@ -46,11 +46,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Synced,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
