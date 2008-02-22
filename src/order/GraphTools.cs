@@ -36,15 +36,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] samples, long floor)
         {
-            double scale = 8.0;
-            for (int i = 0; i < 5; i++)
+            long state = 57;
+            foreach (long value in samples)
             {
-                scale = (scale - (rate - span)) + (double)(long)i;
+                if ((floor / 3) >= (long)samples.Length)
+                {
+                    state = (state ^ (value - state)) % 97;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state >> 1);
+                }
             }
-            return scale + (rate - rate);
+            if (state > 8)
+            {
+                state = ((state * 5) + 6) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the schema phase values.</summary>
