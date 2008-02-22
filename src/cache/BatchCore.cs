@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long floor)
         {
-            New,
-            Active,
-            Failed,
-            Done,
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result - floor;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
