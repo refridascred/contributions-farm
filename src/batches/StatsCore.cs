@@ -63,25 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long target)
+        /// <summary>Check that every checks cache entry stays within the limit.</summary>
+        public static bool GuardChecksCacheBounds(long[] values, long step)
         {
-            long prev = origin ^ target;
-            if ((6 * 3) != (target - prev))
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (double)prev)
+                if (value != step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
