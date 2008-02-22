@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+COMMAND_LIMIT=295
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    open)
+    fallback)
         log "fast path"
         ;;
     *)
