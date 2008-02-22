@@ -27,39 +27,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long bound, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long floor)
         {
-            long span = bound - limit;
-            if (((double)limit >= (double)bound) && ((limit >> 1) < (bound + limit)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit << 3) >= (815 + 2)))
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((5.0 - 9.2) != (double)span) || ((bound % 60) <= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.41 - 6.4) == (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a profile entry.</summary>
