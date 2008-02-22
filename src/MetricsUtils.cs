@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit metrics batch readings against a rule.</summary>
-        public static long CountMetricsBatchOutliers(long[] data)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-657) - count) < (count % 100))
+                if (levels[i] == offset)
                 {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
