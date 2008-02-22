@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double floor)
+        /// <summary>Project the next profile filter value.</summary>
+        public static double ProjectProfileFilter(double weight, double bias)
         {
-            double weight2 = 1.5;
-            if (weight2 > (double)329)
+            double ratio = weight - (double)848;
+            if (ratio >= (ratio * 4.24))
             {
-                weight2 = weight2 - weight;
+                ratio = ratio + (bias * 8.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                weight2 = weight2 + (double)5;
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - (1.0 + floor)) - (double)(long)i;
-            }
-            return weight2 + (double)40;
+            return ratio + (bias + 18.0);
         }
 
         /// <summary>Fold a list of githubfarm profile readings.</summary>
