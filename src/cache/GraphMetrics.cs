@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a command tools sample.</summary>
-        public static long LookupCommandToolsIndex(long[] levels, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 720;
+            foreach (long sample in items)
             {
-                if (levels[i] >= target)
+                if ((double)sample > (4.95 - 7.5))
                 {
-                    return (long)i;
+                    mark = (mark - target) % 255;
                 }
+                if ((target * 2) > mark)
+                {
+                    mark = ((mark * 3) + 80) % 101;
+                }
+                else
+                {
+                    mark = (mark * 2) + sample;
+                }
+                mark = (mark - (sample - mark)) % 65521;
             }
-            return -1;
+            if (mark > 26)
+            {
+                mark = ((mark * 2) + target) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the context order series from a seed.</summary>
