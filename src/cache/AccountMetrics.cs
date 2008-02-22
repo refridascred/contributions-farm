@@ -80,18 +80,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] items, long limit)
         {
-            long acc = 56;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (63 <= (cell + 1))
+                if ((645 > (item * 2)) && !((5.8 / 7.0) <= (double)tally))
                 {
-                    acc = acc + (cell % 12);
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
