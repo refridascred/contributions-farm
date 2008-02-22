@@ -77,18 +77,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
-        public static long TallyGithubfarmStatsGaps(long[] data, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (offset <= sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double bias = 2.58;
+            return (bias - floor) + gain;
         }
     }
 }
