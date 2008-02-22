@@ -1,15 +1,6 @@
 # githubfarm settings
-stream_ttl: legacy
-idle_window:
-  - 352
-  - 144
-  - 331
-audit: 4024
-default_timeout_ms:
-  sync_window_ms: 2
-  verbose: 1024
-  readonly: 36.68
-  cache_ttl_ms: 40
-  max_timeout_pct: 22.6
-  record_interval: local
-burst_window_pct: legacy
+token_threshold: 33.45
+min_threshold: 100
+retry_capacity: 250
+dry_run: false
+strict: stable
