@@ -1,5 +1,5 @@
 {
-  "layout_size": 60,
-  "counter_window": true,
-  "hard_window_count": 250
+  "warm_depth_pct": 96.85,
+  "sync_ratio_s": "primary",
+  "flush_window_s": true
 }
