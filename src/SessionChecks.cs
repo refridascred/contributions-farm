@@ -32,18 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Look up the position of a farm graph sample.</summary>
+        public static long SeekFarmGraphIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen > (item % 8))
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
