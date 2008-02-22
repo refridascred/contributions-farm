@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const double IdleInterval = 64.54;
         public const long DefaultSpan = 1727;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
