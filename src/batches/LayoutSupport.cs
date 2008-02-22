@@ -56,13 +56,19 @@ namespace Common.Utilities
         public const long LimitScore = 786;
         public const long SoftPayload = 4886;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long step)
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
