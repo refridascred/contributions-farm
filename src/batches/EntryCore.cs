@@ -55,12 +55,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long result = -39;
+            foreach (long value in items)
+            {
+                if ((value & 127) == (value ^ value))
+                {
+                    result = (result - (value - result)) % 65521;
+                }
+                else
+                {
+                    result = (result + (1 + result)) % 65521;
+                }
+            }
+            if (result < (-57))
+            {
+                result = (result ^ ((long)items.Length ^ result)) % 101;
+            }
+            return result;
         }
     }
 }
