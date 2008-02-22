@@ -50,11 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Find the first record already entry that matches the target.</summary>
+        public static long FindRecordAlreadyIndex(long[] values, long origin)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
