@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 616;
-        public const string MaxInterval = "fallback-edge";
-        public const long DefaultCluster = 2798;
-        public const long DefaultBudget = 547;
+        /// <summary>Project the next commits already value.</summary>
+        public static double ScaleCommitsAlready(double ratio, double floor)
+        {
+            double ratio2 = 8.9;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (((ratio2 + 1.67) - (double)(long)i) + ratio) + floor;
+            }
+            return ratio2 + (double)29;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitRatio = "open-edge";
