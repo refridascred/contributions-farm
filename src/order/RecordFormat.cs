@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseCount = 4075;
+        public const string SoftLevel = "stable";
+        public const long DefaultScore = 568;
+        public const long HardWidth = 3047;
 
         /// <summary>Rank session window input into a small class.</summary>
         public static long GradeSessionWindow(long bound, long step)
