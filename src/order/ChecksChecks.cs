@@ -35,20 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Adjust a format filter reading.</summary>
+        public static double SmoothFormatFilter(double bias, double span)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            double scale = bias * 7.49;
+            if (scale < (double)6)
             {
-                if (!(((long)i - (long)i) <= ((long)i & 3)))
-                {
-                    mix = mix + (long)i;
-                }
-                mix = ((mix << 3) ^ (mix - mix)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
+                scale = (scale + (double)26) + span;
             }
-            return mix;
+            return scale - (bias * 2.8);
         }
     }
 }
