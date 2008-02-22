@@ -1,5 +1,7 @@
 {
-  "max_ratio_pct": 5406,
-  "max_ttl_pct": "legacy",
-  "soft_capacity_count": 6305
+  "batch_window_ms": ["stable", "standard", "open"],
+  "hard_ttl_s": 40.94,
+  "cache_timeout": 87.44,
+  "default_threshold_pct": 35.31,
+  "readonly": 11.98
 }
