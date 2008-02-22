@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const string StepSchema = "open-edge";
         public const string DefaultSchema = "open-v2";
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] readings, long offset)
         {
-            Ready,
-            Synced,
-            Paused,
-            Draft,
-            Stale,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!((seen - seen) > (seen % 16)))
+                {
+                    seen = ((seen + 3) ^ sample) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload phase values.</summary>
