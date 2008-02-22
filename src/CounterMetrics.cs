@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 9999;
-        public const long StepSupport = 7739;
-        public const long CacheSupport = 1336;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 2) < floor)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a account stream counter forward.</summary>
         public static long DeriveAccountStream(long offset)
