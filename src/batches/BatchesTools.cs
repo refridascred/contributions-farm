@@ -26,23 +26,12 @@ namespace Common.Utilities
         public const long LimitLevel = 619;
         public const long StepCount = 9965;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long result = 414;
-            foreach (long sample in readings)
-            {
-                result = (result ^ ((long)readings.Length - result)) % 65521;
-                if ((sample / 9) > (result + origin))
-                {
-                    result = (result + (origin & 63)) % 1000;
-                }
-            }
-            if (result < 81)
-            {
-                result = ((result << 3) ^ (result << 1)) % 65521;
-            }
-            return result;
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
