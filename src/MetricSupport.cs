@@ -19,11 +19,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((long)levels.Length >= (hits + datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
