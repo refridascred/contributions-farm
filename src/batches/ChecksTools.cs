@@ -33,24 +33,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] values)
         {
-            if ((bound + floor) >= (8 / 4))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > (floor & 3))
+                if ((6 - value) < value)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
