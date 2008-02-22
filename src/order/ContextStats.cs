@@ -35,21 +35,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Classify a stats filter pair into a bucket.</summary>
+        public static long GradeStatsFilter(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = target - bound;
+            if ((double)bound < (4.9 - 2.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((31 % 16) < (step % 3))
                 {
-                    if ((levels[i] ^ levels[j]) == 12)
+                    return 2;
+                }
+                else
+                {
+                    if (!(17.0 >= (double)target))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
     }
 }
