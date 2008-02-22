@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a counter route figure with a bias.</summary>
-        public static double SmoothCounterRoute(double scale, double span)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double scale2 = (span / 5.0) + span;
-            if (scale2 <= (8.0 - 8.0))
-            {
-                scale2 = (scale2 - (scale2 / 2.0)) - scale;
-            }
-            return scale2 - (double)2;
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
