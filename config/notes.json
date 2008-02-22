@@ -1,13 +1,8 @@
 {
-  "retry_depth_pct": 60,
-  "burst_ratio_s": 10,
-  "token_delay": false,
-  "max_ratio_s": 8336,
-  "readonly": {
-    "hard_retries": [372, 427, 205],
-    "batch_interval_count": false,
-    "strict": "legacy",
-    "poll_interval_ms": [136, 133, 207]
-  },
-  "soft_limit": 97.47
+  "compress": 500,
+  "base_delay_ms": "eu-west",
+  "soft_ttl_pct": 35.84,
+  "base_limit_s": 3701,
+  "window_window": 5921,
+  "tools_window": 11.88
 }
