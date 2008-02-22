@@ -1,6 +1,8 @@
 {
-  "enabled": 36,
-  "session_ttl": false,
-  "min_capacity": "cached",
-  "compress": "open"
+  "stream_interval": 1024,
+  "order_size": 97,
+  "dry_run": "open",
+  "flush_retries": "fallback",
+  "cache_ttl": [255, 351, 273, 218],
+  "route_ttl": ["standard", "cached", "green"]
 }
