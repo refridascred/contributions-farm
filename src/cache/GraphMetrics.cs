@@ -25,17 +25,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((values[i] == target) && ((values[i] % 2) != 0))
+                if ((origin << 2) > (5 ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
