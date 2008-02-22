@@ -80,22 +80,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] items, long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((645 > (item * 2)) && !((5.8 / 7.0) <= (double)tally))
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
