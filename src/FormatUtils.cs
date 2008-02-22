@@ -80,11 +80,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 3903;
-        public const long BaseCount = 7404;
-        public const long RetryFarm = 5257;
-        public const long LimitScore = 4309;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long RollAccount(long floor)
