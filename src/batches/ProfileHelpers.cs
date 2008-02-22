@@ -33,12 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseLevel = 7657;
-        public const long BaseRecord = 7800;
-        public const long BurstRecord = 3933;
-        public const long MinRecord = 5824;
-        public const long HardRecord = 7007;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 9974;
