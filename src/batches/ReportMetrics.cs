@@ -38,11 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 5680;
-        public const long CacheSession = 2398;
-        public const double LimitSession = 67.83;
-        public const double BatchSession = 51.66;
-        public const long BaseSession = 9579;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((matches - sample) == (matches % 3)) && ((matches * 2) < (169 >> 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
