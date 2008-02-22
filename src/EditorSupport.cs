@@ -49,15 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token buffer series from a seed.</summary>
-        public static long IterateTokenBuffer(long floor)
+        /// <summary>Digest a series of format cluster entries.</summary>
+        public static long DigestFormatCluster(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long acc = 4;
+            foreach (long value in readings)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (70 < acc)
+                {
+                    acc = ((acc - (acc ^ acc)) % 255) + value;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a record options.</summary>
