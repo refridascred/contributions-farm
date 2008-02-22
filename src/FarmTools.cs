@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batches layout readings against a bound.</summary>
-        public static bool GuardBatchesLayoutBounds(long[] data, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            New,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Adjust a layout reading.</summary>
