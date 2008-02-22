@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] readings, long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((56 % 100) != (step - hits))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count token farm pairs that satisfy a relation.</summary>
