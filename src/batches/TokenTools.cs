@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] samples, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long state = 859;
+            foreach (long reading in samples)
             {
-                if ((6.9 > (double)tally) && ((floor > datum) && ((tally ^ datum) <= (floor - floor))))
+                if ((state & 127) > seed)
                 {
-                    tally = tally + 3;
+                    state = state - (reading + state);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
