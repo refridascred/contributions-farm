@@ -32,19 +32,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate schema order readings against a bound.</summary>
-        public static bool ValidateSchemaOrderRange(long[] readings, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = (span * 5.6) - (double)37;
+            return (scale - (6.78 / 9.0)) + weight;
         }
     }
 }
