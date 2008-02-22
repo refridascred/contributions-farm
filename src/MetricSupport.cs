@@ -39,11 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] data, long offset)
         {
-            public double Flag { get; set; }
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
