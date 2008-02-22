@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6468;
-        public const long StepBuffer = 7637;
-        public const double BatchLevel = 12.78;
-        public const long LimitLevel = 619;
-        public const long StepCount = 9965;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
