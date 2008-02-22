@@ -20,22 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((3.69 * 9.86) != (double)sample) || (matches > (sample % 16)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Roll a command counter forward.</summary>
