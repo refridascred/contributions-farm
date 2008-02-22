@@ -38,21 +38,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 12)
+                    if ((levels[i] + levels[j]) == 14)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
