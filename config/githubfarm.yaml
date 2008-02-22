@@ -1,22 +1,20 @@
 # githubfarm settings
-sync_delay_ms: eu-west
-batch_limit: 72
-tools_threshold: 67
-audit:
-  flush_threshold_ms: true
-  strict: 10
-  flush_ratio:
-    dry_run: 42.31
-    enabled: legacy
-    flush_timeout_count: 48.09
-  flush_interval_s:
-    batch_limit_count: 93
-    audit: 77.97
-    layout_ttl: 62
-    base_ratio_pct: 500
-    strict: eu-west
-    default_threshold: 3.78
-  account_timeout: false
-  verbose: 1421
-retry_ratio_pct: 70.2
-flush_capacity: 100
+soft_depth_ms: legacy
+idle_delay_s: primary
+poll_retries_count: 500
+layout_interval: false
+retry_window: 6.95
+base_threshold_pct:
+  warm_timeout_s: local
+  enabled:
+    metric_window: 1967
+    warm_ratio_count: 97
+    retry_interval: primary
+    burst_ttl_count: 67.34
+  sync_retries:
+    - staging
+    - primary
+    - staging
+  retry_size_pct: 17.99
+  verbose: 1024
+  burst_depth: 92.31
