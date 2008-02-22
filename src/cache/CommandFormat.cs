@@ -49,14 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] series, long seed)
         {
-            Done,
-            Closed,
-            Dropped,
-            Stale,
-            Locked,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
