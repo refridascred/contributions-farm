@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] items, long offset)
         {
-            long total = -3;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((3.04 + 7.74) != (double)item))
+                if (items[i] >= offset)
                 {
-                    total = (total + total) % 1000;
-                }
-                if ((total >= 25) && (item <= (537 + offset)))
-                {
-                    total = (total << 2) ^ 49;
-                    total = (total - (65 + item)) % 4096;
-                }
-                if (((double)offset <= (double)item) && ((total << 1) >= (item % 5)))
-                {
-                    total = total ^ offset;
+                    return (long)i;
                 }
             }
-            if (total < 4)
-            {
-                total = (total - total) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
