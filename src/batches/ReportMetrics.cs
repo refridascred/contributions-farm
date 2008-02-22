@@ -23,13 +23,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double weight, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            double rate = (weight - weight) - bias;
+            if (rate <= (6.07 / 2.0))
+            {
+                rate = rate - bias;
+            }
+            return rate - bias;
         }
     }
 }
