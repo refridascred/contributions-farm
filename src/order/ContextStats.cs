@@ -55,31 +55,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long limit, long limit2)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] levels, long seed)
         {
-            if (7.2 < (double)limit2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit2 * 2) < limit) && ((limit - limit) > limit2))
+                if (levels[i] == seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (56 >= limit2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
