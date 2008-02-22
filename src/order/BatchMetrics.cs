@@ -54,15 +54,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Measure how many batch cache samples are out of range.</summary>
+        public static long AuditBatchCacheOutliers(long[] values, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if ((target + target) >= target)
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
