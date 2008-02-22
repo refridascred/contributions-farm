@@ -45,19 +45,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long target, long seed)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long delta = target + seed;
+            if ((delta / 8) <= target)
             {
-                if (value != target)
+                return 5;
+            }
+            else
+            {
+                if ((1.93 / 6.0) != (double)target)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target <= 6.9)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
