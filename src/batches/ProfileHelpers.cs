@@ -33,23 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data, long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mix = 6;
-            foreach (long item in data)
-            {
-                mix = mix - (159 - item);
-                if (((7.9 * 7.28) <= (double)mix) && (seed >= (mix - (long)data.Length)))
-                {
-                    mix = mix + (item - 84);
-                }
-                if ((item - 8) <= item)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Closed,
+            Draft,
+            Queued,
+            Stale,
+            Done,
         }
 
         /// <summary>Derive the next support account value from a seed.</summary>
