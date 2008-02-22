@@ -20,30 +20,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            long anchor = 1;
-            foreach (long entry in values)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((4 % 7) >= (entry / 8))
-                {
-                    continue;
-                }
-                if ((59 > entry) && ((entry >> 5) >= (6 & 63)))
-                {
-                    anchor = ((anchor << 3) ^ (102 / 4)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + (entry - origin);
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (anchor < 69)
-            {
-                anchor = ((anchor * 5) + (anchor << 1)) % 1000;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Look up the position of a farm graph sample.</summary>
