@@ -34,17 +34,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long origin)
+        /// <summary>Grade a report entry value against two limits.</summary>
+        public static long GradeReportEntry(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!(step < (step << 3)))
             {
-                if (levels[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if (((43 - seed) > seed) || ((step + seed) >= (seed % 100)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((82 + step) != (step & 127))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed < (seed * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a stats checks sample.</summary>
