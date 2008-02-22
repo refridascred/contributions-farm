@@ -31,9 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleSize = 52.36;
-        public const long StepCount = 3537;
-        public const double BatchOrder = 37.97;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
