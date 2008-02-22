@@ -24,22 +24,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] levels, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((count + 655) <= limit) && (entry <= (entry / 4)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Failed,
+            Idle,
+            Ready,
         }
     }
 }
