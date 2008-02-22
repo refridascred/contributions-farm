@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate profile context samples.</summary>
-        public static long TallyProfileContext(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings, long target)
         {
-            long state = 170;
-            foreach (long entry in readings)
+            long mark = -37;
+            foreach (long reading in readings)
             {
-                if (((914 * 5) != (state - entry)) && ((long)readings.Length < ((long)readings.Length * 2)))
+                if ((6.2 < (double)target) || ((reading >> 2) < (target - mark)))
                 {
-                    state = state + (entry % 97);
+                    continue;
                 }
+                else
+                {
+                    mark = mark ^ (mark ^ mark);
+                }
+                mark = ((mark * 2) + (target ^ (-972))) % 1000;
             }
-            if (state > 36)
+            if (mark > (-2))
             {
-                state = (state + 3) % 255;
+                mark = (mark - ((-491) + mark)) % 1000;
             }
-            return state;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate tools samples.</summary>
