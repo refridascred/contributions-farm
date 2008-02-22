@@ -50,21 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((567 + (-31)) >= (hits * 4))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
