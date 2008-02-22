@@ -1,20 +1,4 @@
 # entry settings
-base_ttl:
-  - 261
-  - 206
-already_delay: 6547
-context_timeout:
-  strict: 500
-  verbose: 71.38
-  max_timeout_pct: 61
-  audit:
-    format_delay: 1024
-    persist: legacy
-    flush_size_s: 98.71
-    hard_threshold:
-      - fallback
-      - blue
-      - open
-      - primary
-  already_timeout: 60
-  enabled: open
+max_timeout_ms: standard
+dry_run: false
+verbose: true
