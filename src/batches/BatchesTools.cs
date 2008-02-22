@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = 68;
+            foreach (long cell in series)
             {
-                if ((seen + sample) != (sample + sample))
-                {
-                    seen = seen + 1;
-                }
+                carry = (((carry << 2) ^ 49) - cell) - target;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
