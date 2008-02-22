@@ -11,31 +11,18 @@ namespace Common.Utilities
         public const long LimitRatio = 1175;
         public const string WindowDepth = "strict-edge";
 
-        /// <summary>Rank route format input into a small class.</summary>
-        public static long SortRouteFormat(long limit, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items, long limit)
         {
-            if (floor > limit)
+            long acc = 348;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(14.0 <= (double)limit))
+                if ((double)item >= (0.7 / 6.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((62 - limit) != (floor >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc << 2) ^ (acc ^ acc)) - limit;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the report class values.</summary>
