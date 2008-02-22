@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] levels)
         {
-            Draft,
-            Locked,
-            Idle,
-            Done,
-            Closed,
+            long acc = 7;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((acc ^ item) % 4096) - (long)i;
+                }
+                if (item > 1)
+                {
+                    acc = (acc + (70 & 15)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a account stream counter forward.</summary>
