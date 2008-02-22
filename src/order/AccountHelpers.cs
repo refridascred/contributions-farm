@@ -61,20 +61,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double offset)
-        {
-            double weight2 = (double)75 + (double)5;
-            if (weight2 > (4.9 * 3.0))
-            {
-                weight2 = (weight2 - (double)273) + offset;
-            }
-            else
-            {
-                weight2 = weight2 - (weight + weight2);
-            }
-            return weight2 - weight;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 97.03;
+        public const long LimitToken = 2265;
+        public const long BurstBudget = 1944;
 
         /// <summary>Classify a metrics already pair into a bucket.</summary>
         public static long ClassifyMetricsAlready(long limit, long origin)
