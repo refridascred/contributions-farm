@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] samples)
         {
-            New,
-            Synced,
-            Locked,
-            Pending,
-            Closed,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= (6.47 / 5.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
