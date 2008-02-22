@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] items, long limit)
         {
-            Stale,
-            Synced,
-            Retry,
-            Ready,
-            Queued,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (limit > cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
