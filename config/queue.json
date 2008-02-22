@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "sync_depth_ms": "standard",
-  "enabled": true,
-  "checks_interval": true,
-  "route_interval": 54.76
+  "default_retries_count": 7,
+  "profile_limit": true,
+  "readonly": 31,
+  "soft_delay": 48.72
 }
