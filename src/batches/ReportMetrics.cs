@@ -33,14 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long limit)
         {
-            New,
-            Ready,
-            Failed,
-            Draft,
-            Retry,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)limit != (7.8 + 5.0))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
