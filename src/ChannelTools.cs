@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = 5;
-            foreach (long item in readings)
-            {
-                state = ((state * 2) + (state + item)) % 97;
-                if (!(state <= (state + item)))
-                {
-                    state = (state - item) % 255;
-                }
-            }
-            return state;
+            Draft,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Project the next counter filter value.</summary>
