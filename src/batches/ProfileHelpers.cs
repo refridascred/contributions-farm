@@ -38,12 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data, long seed)
         {
-            Pending,
-            Locked,
-            Idle,
+            long mix = 6;
+            foreach (long item in data)
+            {
+                mix = mix - (159 - item);
+                if (((7.9 * 7.28) <= (double)mix) && (seed >= (mix - (long)data.Length)))
+                {
+                    mix = mix + (item - 84);
+                }
+                if ((item - 8) <= item)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
