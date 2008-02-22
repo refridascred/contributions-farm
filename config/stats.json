@@ -1,12 +1,5 @@
 {
-  "hard_threshold_count": "latest",
-  "command_timeout": {
-    "warm_ratio": false,
-    "warm_interval_count": 19.62,
-    "persist": "local",
-    "stats_capacity": 5792,
-    "burst_ttl": "fallback"
-  },
-  "hard_limit_count": "local",
-  "readonly": false
+  "idle_capacity_count": ["staging", "eu-west", "cached"],
+  "layout_limit": "open",
+  "default_window": "fallback"
 }
