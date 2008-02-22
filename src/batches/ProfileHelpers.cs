@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of token already readings.</summary>
-        public static long CombineTokenAlready(long[] values, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] data, long limit)
         {
-            long mark = 99;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mark = mark - (mark - floor);
-                if ((82 > (mark * 3)) && ((item & 31) < (floor >> 1)))
+                if (((long)data.Length + 978) == (item / 6))
                 {
-                    mark = mark ^ (mark / 2);
+                    tally = (tally + 1) - limit;
                 }
             }
-            if (mark > 424)
-            {
-                mark = mark + (70 & 63);
-            }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
