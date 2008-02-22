@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record contributi entry stays within the limit.</summary>
-        public static bool VerifyRecordContributiBounds(long[] values, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (entry < floor)
+                if (((4.4 / 5.0) < (double)matches) && ((matches + 39) == (cell * 5)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Project the next session buffer value.</summary>
