@@ -34,18 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the command commits entries that pass the check.</summary>
-        public static long TallyCommandCommitsOutliers(long[] samples, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (2.56 <= (double)reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) + floor;
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
