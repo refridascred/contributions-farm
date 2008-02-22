@@ -42,19 +42,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] samples, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Synced,
+            Paused,
+            Closed,
+            Retry,
         }
     }
 }
