@@ -1,7 +1,16 @@
 {
-  "enabled": false,
-  "batches_timeout": "standard",
-  "profile_timeout": 30,
-  "batches_ttl": "green",
-  "batch_depth_s": "blue"
+  "cache_depth_count": [216, 176],
+  "poll_delay_ms": 500,
+  "notes_window": {
+    "graph_retries": 36.11,
+    "compress": 7443,
+    "format_capacity": {
+      "default_window": 46.87,
+      "retry_window": 60,
+      "dry_run": 16
+    },
+    "idle_threshold_ms": "cached",
+    "burst_size_pct": "eu-west",
+    "poll_threshold_pct": "eu-west"
+  }
 }
