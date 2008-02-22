@@ -1,28 +1,7 @@
 # githubfarm settings
-compress: 58
-enabled:
-  cache_retries_ms: true
-  batch_ratio: 8407
-  hard_size_pct: 21
-  cache_timeout:
-    - eu-west
-    - stable
-  soft_interval_count: 100
-base_window_s: 29.61
-sync_window_s: 250
-flush_capacity_s:
-  dry_run: 29.56
-  verbose: 3065
-  poll_retries_ms:
-    dry_run: cached
-    session_limit:
-      - 336
-      - 246
-    retry_size_pct: edge
-    min_window_pct: 30.29
-    default_delay: fallback
-  poll_ratio_count:
-    - 40
-    - 97
-  githubfarm_threshold: 97
-  readonly: 5.73
+warm_ttl: local
+audit: fallback
+support_ratio: 5204
+burst_retries_count: eu-west
+dry_run: staging
+compress: 428
