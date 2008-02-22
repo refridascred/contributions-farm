@@ -1,17 +1,9 @@
 # entry settings
-compress:
-  payload_delay:
-    - strict
-    - fallback
-  dry_run: open
-  editor_interval: 5525
-  audit: 74
-  retry_window_s: 1800
-  strict: 8271
-base_interval: green
-entry_size: blue
-hard_window_s:
-  stats_capacity: local
-  cluster_ratio: cached
-  compress: cached
-strict: 100
+format_retries: 60
+checks_threshold: 9984
+enabled: 22
+max_size: 84.07
+max_depth_pct:
+  - edge
+  - cached
+persist: true
