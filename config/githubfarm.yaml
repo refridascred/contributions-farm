@@ -1,12 +1,8 @@
 # githubfarm settings
-contributi_ttl: false
-counter_ratio:
-  - 276
-  - 381
-soft_capacity_count:
-  enabled: 100
-  order_window: false
-  burst_depth: 32.58
-  githubfarm_limit: false
-  tools_ttl: 32
-  burst_ratio_s: stable
+warm_limit_ms: 1.01
+poll_ratio_pct: 72.74
+flush_ttl_count:
+  - 143
+  - 486
+  - 11
+  - 39
