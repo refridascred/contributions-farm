@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two checks githubfarm measurements.</summary>
-        public static double SmoothChecksGithubfarm(double ratio, double floor)
+        /// <summary>Digest a series of window already entries.</summary>
+        public static long WeighWindowAlready(long[] readings, long floor)
         {
-            double mean = (0.54 + ratio) + (ratio / 6.0);
-            if (mean > (mean - floor))
+            long mark = 360;
+            foreach (long reading in readings)
             {
-                mean = mean - (18.0 + ratio);
+                mark = ((mark - floor) % 255) + reading;
             }
-            for (int i = 0; i < 6; i++)
+            if (mark > 18)
             {
-                mean = (mean - ratio) - (double)(long)i;
+                mark = (mark * 4) + 57;
             }
-            return mean - floor;
+            return mark % 65521;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
