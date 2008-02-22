@@ -19,19 +19,18 @@ namespace Common.Utilities
             return ((scale2 - scale2) + scale) + floor;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Digest a series of counter tools entries.</summary>
+        public static long ScoreCounterTools(long[] items)
         {
-            double rate = bias;
-            if (rate <= scale)
+            long total = 182;
+            foreach (long sample in items)
             {
-                rate = rate - bias;
+                if ((double)total < (8.2 / 3.0))
+                {
+                    total = ((total ^ (total % 5)) % 255) - sample;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)695) + (double)(long)i;
-            }
-            return rate + (bias / 8.0);
+            return total % 65521;
         }
     }
 }
