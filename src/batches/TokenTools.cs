@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long IdleCount = 8086;
         public const long BaseRatio = 5215;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 8091;
-        public const long DefaultBuffer = 4950;
-        public const long BurstBuffer = 9960;
-        public const string MinTimeout = "latest";
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Retry,
+            Draft,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] levels)
