@@ -37,16 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series)
-        {
-            long score = 604;
-            foreach (long datum in series)
-            {
-                score = (score << 2) ^ (datum - datum);
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "standard-1";
+        public const string MinSize = "fallback-1";
+        public const long StepLevel = 4286;
+        public const long DefaultChannel = 7516;
+        public const string HardCount = "legacy";
 
         /// <summary>Fold a list of batches window readings.</summary>
         public static long FoldBatchesWindow(long[] data, long floor)
