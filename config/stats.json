@@ -1,7 +1,16 @@
 {
-  "cache_limit_pct": "blue",
-  "batch_retries": 4381,
-  "compress": 21.8,
-  "flush_threshold_s": [147, 297],
-  "base_interval_s": 54.21
+  "soft_timeout_pct": 100,
+  "audit": 3395,
+  "warm_capacity": true,
+  "burst_size": {
+    "layout_timeout": {
+      "hard_ttl": 22,
+      "dry_run": true,
+      "base_ratio_count": 9284
+    },
+    "retry_capacity_s": "open",
+    "verbose": 67.03,
+    "warm_delay_count": true,
+    "compress": [406, 347]
+  }
 }
