@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Fold a list of profile editor readings.</summary>
+        public static long DigestProfileEditor(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long total = 9;
+            foreach (long reading in samples)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                total = (total ^ (total * 2)) - reading;
             }
-            return result;
+            return total % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
