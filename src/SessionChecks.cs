@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples, long target)
-        {
-            long state = 0;
-            foreach (long entry in samples)
-            {
-                state = (((state << 3) ^ (state << 3)) + entry) + target;
-            }
-            if (state < (-8))
-            {
-                state = state + (0 ^ state);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 4048;
+        public const long IdleWidth = 704;
+        public const long BurstBatches = 1693;
+        public const long SoftBatches = 7490;
+        public const long BaseBatches = 7384;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long step)
