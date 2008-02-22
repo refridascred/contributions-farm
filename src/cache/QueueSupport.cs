@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up tools already samples.</summary>
-        public static long MatchToolsAlreadyCount(long[] values)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = seed - seed2;
+            if ((seed ^ seed2) > seed2)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((seed & 63) == (33 % 97)) && (next < (seed2 / 4)))
                 {
-                    if ((values[i] - values[j]) > 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >> 3) == (next - next))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
