@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] readings, long seed)
         {
-            Stale,
-            Locked,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seed >= (18.0 + 20.0))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
