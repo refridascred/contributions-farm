@@ -34,13 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate schema order readings against a bound.</summary>
