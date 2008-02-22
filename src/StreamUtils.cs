@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] values, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((reading - reading) < hits)
-                {
-                    hits = (hits + 1) + step;
-                }
+                state = (state ^ origin) % 1000;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
