@@ -16,14 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Locked,
-            Done,
-            Synced,
-            Paused,
-            Dropped,
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
