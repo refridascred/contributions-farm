@@ -27,18 +27,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long mix = 3;
-            foreach (long cell in levels)
-            {
-                if (mix > (cell & 7))
-                {
-                    mix = (mix * 2) + (12 + mix);
-                }
-            }
-            return mix;
+            Ready,
+            Done,
+            Active,
+            Failed,
+            Paused,
         }
     }
 }
