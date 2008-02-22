@@ -35,18 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] data, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (2.2 <= (double)matches)
+                if (datum != bound)
                 {
-                    matches = ((matches + 1) - sample) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
