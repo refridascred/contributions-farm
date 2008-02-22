@@ -22,10 +22,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitScore = 982;
-        public const long HardEntry = 6179;
-        public const long CacheDepth = 9271;
-        public const long MaxDepth = 4214;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
