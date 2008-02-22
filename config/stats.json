@@ -1,5 +1,21 @@
 {
-  "counter_threshold": ["latest", "open", "primary", "green"],
-  "cache_ratio_ms": true,
-  "batch_threshold_count": 8519
+  "retry_threshold_ms": 98.07,
+  "soft_timeout_s": true,
+  "command_depth": {
+    "burst_retries_ms": 55,
+    "sync_window": {
+      "hard_window_pct": [249, 349, 66, 267],
+      "readonly": 794,
+      "graph_ratio": ["open", "standard", "strict", "standard"],
+      "metric_retries": 6.59
+    },
+    "hard_delay_ms": [254, 82]
+  },
+  "soft_delay_ms": "blue",
+  "retry_window": {
+    "warm_depth": 60,
+    "entry_capacity": false,
+    "burst_window": "eu-west"
+  },
+  "sync_size_s": [94, 281]
 }
