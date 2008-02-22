@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next batches context value from a seed.</summary>
-        public static long SeriesBatchesContext(long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (values[i] < floor)
                 {
-                    state = (state ^ (78 << 2)) + (long)i2;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
