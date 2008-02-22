@@ -44,15 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples, long step)
+        /// <summary>Look up the position of a token editor sample.</summary>
+        public static long LookupTokenEditorIndex(long[] series, long limit)
         {
-            long acc = -2;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc << 2) ^ step) % 4096) + entry;
+                if ((series[i] >= limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
