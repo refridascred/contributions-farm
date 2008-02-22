@@ -67,18 +67,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long state = 872;
-            foreach (long reading in levels)
-            {
-                if (reading > state)
-                {
-                    state = state + (state + 173);
-                }
-            }
-            return state;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
