@@ -51,19 +51,11 @@ namespace Common.Utilities
         public const long IdleFactor = 7031;
         public const long BatchRoute = 1620;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (seen > (8 ^ sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCluster = "alpha-v2";
+        public const long RetryWidth = 3656;
+        public const string BatchInterval = "staging-edge";
+        public const string WindowLevel = "primary";
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
