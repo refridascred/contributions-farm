@@ -60,11 +60,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
             public bool Count { get; set; }
-            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate queue samples.</summary>
