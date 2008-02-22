@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 786;
+        public const long MinBuffer = 9449;
+        public const string IdleBuffer = "local-edge";
+        public const long BaseBuffer = 8470;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
