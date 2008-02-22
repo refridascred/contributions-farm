@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
