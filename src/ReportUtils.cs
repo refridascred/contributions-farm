@@ -50,17 +50,32 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long origin)
+        /// <summary>Grade a session record value against two limits.</summary>
+        public static long BucketSessionRecord(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = origin - floor;
+            if ((floor ^ 112) == (gap % 100))
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((5.23 - 16.0) <= (double)gap)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (gap + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
