@@ -24,19 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] series, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (datum <= offset)
+                if ((((double)count > (0.2 * 18.0)) && (count < ((-41) - count))) && ((count + count) > (count ^ datum)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
