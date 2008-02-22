@@ -1,20 +1,5 @@
 # githubfarm settings
-cache_interval_ms: 2
-base_retries_s: 500
-audit:
-  stats_retries: cached
-  metric_depth:
-    batches_ttl: 4636
-    channel_capacity: false
-    base_delay_count: eu-west
-    session_size: 2.51
-    idle_timeout_ms: 8711
-    batch_ratio: 84
-  hard_delay:
-    dry_run:
-      - local
-      - blue
-      - stable
-    max_threshold_pct: true
-    default_window_count: false
-  batch_timeout: primary
+cache_capacity_count: eu-west
+verbose: 51
+queue_retries: strict
+min_threshold_pct: latest
