@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state * 4) + (step % 12);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
