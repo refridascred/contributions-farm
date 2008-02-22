@@ -1,16 +1,6 @@
 {
-  "cache_depth_count": [216, 176],
-  "poll_delay_ms": 500,
-  "notes_window": {
-    "graph_retries": 36.11,
-    "compress": 7443,
-    "format_capacity": {
-      "default_window": 46.87,
-      "retry_window": 60,
-      "dry_run": 16
-    },
-    "idle_threshold_ms": "cached",
-    "burst_size_pct": "eu-west",
-    "poll_threshold_pct": "eu-west"
-  }
+  "base_threshold_count": 33.04,
+  "idle_capacity_s": 500,
+  "default_limit": [307, 426, 468, 462],
+  "sync_window_ms": 3886
 }
