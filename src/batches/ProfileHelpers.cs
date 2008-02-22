@@ -60,10 +60,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 84.96;
-        public const double StepWidth = 52.83;
-        public const string MaxCluster = "local-1";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((140 << 3) < (seed / 2))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of stats command readings.</summary>
         public static long OverlapStatsCommandCount(long[] series)
