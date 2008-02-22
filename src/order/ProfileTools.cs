@@ -81,19 +81,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stream route entry stays within the limit.</summary>
-        public static bool GuardStreamRouteRange(long[] items, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (entry != bound)
+                if (!(hits <= (6 << 1)) || !((6 % 24) > (value + value)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
