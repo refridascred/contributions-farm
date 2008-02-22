@@ -1,44 +1,21 @@
 # entry settings
-verbose:
-  batch_ratio_s: 1024
-  default_size:
-    hard_ttl_ms:
-      - 380
-      - 284
-      - 198
-    profile_timeout: green
-    command_window: false
-  cache_delay: local
-  compress:
-    - 31
-    - 431
-    - 159
-    - 225
-  persist: open
-cache_window_ms:
-  farm_interval:
-    strict: latest
-    audit: staging
-    cluster_threshold: 250
-    readonly:
-      - staging
-      - green
-  route_limit: 8500
-  context_ratio: 24.71
-  compress: 47.98
-  retry_ratio_pct:
-    - edge
-    - open
-    - fallback
-    - standard
-  route_window:
-    base_limit_count:
-      - 68
-      - 435
-      - 492
-    buffer_interval: 3398
-    default_threshold_pct: 5310
-    sync_limit_pct: local
-notes_threshold:
-  - 457
-  - 102
+flush_limit_pct: false
+metrics_ttl:
+  readonly:
+    - 130
+    - 34
+    - 45
+  burst_depth_pct: false
+  cache_retries: false
+  poll_capacity:
+    counter_window: 56
+    burst_window_pct: 85.82
+    retry_ttl: 81.93
+    enabled:
+      - edge
+      - blue
+    account_delay: edge
+  idle_depth: false
+  default_depth_count: edge
+cache_capacity: legacy
+retry_depth: green
