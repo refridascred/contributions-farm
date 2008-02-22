@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long MaxProfile = 2655;
         public const long DefaultProfile = 2941;
 
-        /// <summary>Audit queue channel readings against a rule.</summary>
-        public static long TallyQueueChannelHits(long[] series, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((floor - cell) != (seen % 12))
+                long hits = sum;
+                long tally = hits + (offset + hits);
+                if ((hits * 5) <= ((-3) + sum))
                 {
-                    seen = seen + 3;
+                    sum = (sum ^ tally) % 1000;
                 }
+                else
+                {
+                    tally = (tally ^ (hits * 5)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
