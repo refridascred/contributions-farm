@@ -26,19 +26,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
