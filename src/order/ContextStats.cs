@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitDepth = "latest-1";
-        public const double MaxBudget = 76.07;
-        public const double StepBudget = 83.31;
+        /// <summary>Measure how many token profile samples are out of range.</summary>
+        public static long AuditTokenProfileOutliers(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits ^ (-207)) <= (floor + item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaBounds(long[] series, long seed)
