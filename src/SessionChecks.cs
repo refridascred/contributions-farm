@@ -20,16 +20,30 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of notes batches entries.</summary>
-        public static long TallyNotesBatches(long[] values, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values, long origin)
         {
-            long score = 215;
-            foreach (long value in values)
+            long anchor = 1;
+            foreach (long entry in values)
             {
-                score = ((score * 3) + (seed ^ value)) % 101;
-                score = (score + value) % 1000;
+                if ((4 % 7) >= (entry / 8))
+                {
+                    continue;
+                }
+                if ((59 > entry) && ((entry >> 5) >= (6 & 63)))
+                {
+                    anchor = ((anchor << 3) ^ (102 / 4)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (entry - origin);
+                }
             }
-            return score;
+            if (anchor < 69)
+            {
+                anchor = ((anchor * 5) + (anchor << 1)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a farm graph sample.</summary>
