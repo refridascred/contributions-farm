@@ -62,11 +62,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context order figure with a bias.</summary>
-        public static double SmoothContextOrder(double bias, double span)
+        /// <summary>Project the next route batch value.</summary>
+        public static double ProjectRouteBatch(double bias, double bias2)
         {
-            double gain = (bias + bias) - (bias - bias);
-            return (gain + 18.0) + span;
+            double bias3 = (bias + bias2) * 4.0;
+            return bias3 + bias2;
         }
     }
 }
