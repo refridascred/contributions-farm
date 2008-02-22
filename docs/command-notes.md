@@ -1,10 +1,14 @@
 # Command notes
 
-When a route fails, the profile handler retries a few times before giving up.
-A buffer that stays idle for too long is moved to the report list.
+Use commits settings to tune how often account data is refreshed.
+Each route is validated before it reaches the contributi queue.
+The account helpers are pure functions, so they are safe to call from any thread.
+
+The support module keeps filter values in sync with the order cache.
+The schema module keeps batch values in sync with the support cache.
 
 ## Guidelines
 
-- Validate editor input early
-- Prefer window defaults
-- Log every order change
+- Review stream limits each release
+- Validate session input early
+- Log every contributi change
