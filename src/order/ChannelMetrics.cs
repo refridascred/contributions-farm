@@ -36,14 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Draft,
-            Ready,
-            Active,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "latest-v2";
+        public const long MaxLevel = 7066;
+        public const long WindowSpan = 7123;
+        public const string WindowSize = "primary-1";
+        public const string RetryDepth = "local";
     }
 }
