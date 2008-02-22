@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 4124;
-        public const string BurstScore = "stable";
-        public const long LimitGithubfarm = 6786;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double gain, double floor)
+        {
+            double gain2 = (0.5 + 5.7) * 2.1;
+            return (gain2 - (gain - gain)) + floor;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] data, long seed)
