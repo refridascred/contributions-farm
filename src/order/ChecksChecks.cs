@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many tools cluster samples are out of range.</summary>
-        public static long MeasureToolsClusterOutliers(long[] data, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long result = 16;
+            foreach (long datum in items)
             {
-                if (97 <= (tally >> 4))
-                {
-                    tally = ((tally + 1) + sample) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result - datum) % 255;
             }
-            return tally;
+            if (result > 85)
+            {
+                result = (result ^ (step & 63)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Project the next channel value.</summary>
