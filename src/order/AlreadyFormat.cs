@@ -51,19 +51,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 45.02;
+        public const string BatchSpan = "open-1";
+        public const long MinLevel = 95;
+        public const string IdleBudget = "local-1";
+        public const double MinReport = 80.66;
     }
 }
