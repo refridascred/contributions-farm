@@ -46,25 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long offset)
+        /// <summary>Check that every format commits entry stays within the limit.</summary>
+        public static bool VerifyFormatCommitsBounds(long[] samples, long bound)
         {
-            long step2 = step + offset;
-            if (((630 + offset) >= offset) && ((7.79 + 16.0) <= (double)offset))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step2 & 3) <= 6) || ((double)step2 > (8.0 * 2.8)))
+                if (cell <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Project the next layout value.</summary>
