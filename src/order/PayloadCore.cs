@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitSpan = 5500;
-        public const long StepDepth = 9975;
-        public const long MinFactor = 9858;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Paused,
+            Dropped,
+            Draft,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
