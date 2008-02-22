@@ -28,26 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mark = 10;
-            foreach (long datum in levels)
-            {
-                if (((double)mark == (double)datum) || ((17.0 * 3.0) == (double)mark))
-                {
-                    mark = (mark - (datum - mark)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (datum >> 4)) % 1000;
-                }
-            }
-            if (mark > (-766))
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            New,
+            Pending,
+            Dropped,
+            Synced,
+            Failed,
         }
     }
 }
