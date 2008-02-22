@@ -29,14 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Retry,
-            Active,
-            Synced,
-            Failed,
-            Done,
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Locate a account reading by value.</summary>
