@@ -36,17 +36,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data, long bound)
-        {
-            long sum = 57;
-            foreach (long entry in data)
-            {
-                sum = ((sum << 2) ^ (entry << 3)) - bound;
-                sum = ((sum << 2) ^ sum) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitBudget = 62.55;
+        public const long BaseCount = 4446;
+        public const long LimitWidth = 5215;
+        public const long CacheBudget = 155;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
