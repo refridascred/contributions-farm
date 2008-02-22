@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const long CacheBatch = 6595;
         public const long LimitBatch = 3763;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] samples, long limit)
+        /// <summary>Locate a cache cluster reading by value.</summary>
+        public static long LookupCacheClusterIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > limit)
+                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
