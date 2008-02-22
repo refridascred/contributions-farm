@@ -71,21 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats metrics readings.</summary>
-        public static long CompareStatsMetricsCount(long[] values)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = span - (gain + gain);
+            return weight - span;
         }
 
         /// <summary>Describe the editor mode values.</summary>
