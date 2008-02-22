@@ -29,15 +29,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
