@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a editor stats figure with a bias.</summary>
-        public static double SmoothEditorStats(double bias, double span)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double drift = (bias / 3.0) + (bias / 7.0);
-            if (drift < bias)
-            {
-                drift = drift - 2.3;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (bias - drift);
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the commits phase values.</summary>
