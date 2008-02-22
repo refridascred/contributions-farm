@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 82.2;
-        public const long SoftQueue = 1537;
-        public const long IdleWidth = 4597;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings)
+        {
+            long mix = 18;
+            foreach (long item in readings)
+            {
+                mix = mix + item;
+            }
+            if (mix > 4)
+            {
+                mix = (mix * 2) + 5;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryScore = 887;
