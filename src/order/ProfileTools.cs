@@ -38,18 +38,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] values, long seed)
+        /// <summary>Compare every pair of command schema readings.</summary>
+        public static long OverlapCommandSchemaCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seed <= ((long)values.Length - 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + item;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of tools filter readings.</summary>
