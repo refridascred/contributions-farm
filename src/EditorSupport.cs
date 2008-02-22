@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] series, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum + floor) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of tools batches entries.</summary>
