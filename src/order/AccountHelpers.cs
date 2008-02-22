@@ -54,21 +54,21 @@ namespace Common.Utilities
             return mean - (floor / 5.0);
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Iterate the graph order series from a seed.</summary>
+        public static long RollGraphOrder(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long edge = (acc - offset) - offset;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc ^ (edge % 7)) % 101) - (long)i2;
                 }
+                acc = (acc ^ ((long)i + offset)) % 65521;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Blend two channel contributi measurements.</summary>
