@@ -45,15 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph support measurements.</summary>
-        public static double AdjustGraphSupport(double bias, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] values, long target)
         {
-            double gain = bias + bias;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                gain = (gain + bias) - (double)(long)i;
+                if ((double)target <= 1.5)
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            return gain - (offset / 2.0);
+            return hits;
         }
     }
 }
