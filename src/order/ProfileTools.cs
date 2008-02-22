@@ -52,18 +52,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long TallyCacheGraphGaps(long[] readings, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((value * 2) <= (offset ^ value))
+                if (((double)hits != (4.57 + 4.0)) && (((5.9 + 8.53) <= (double)value) && ((hits % 100) <= (value & 1))))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the tools status values.</summary>
