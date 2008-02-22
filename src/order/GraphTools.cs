@@ -19,20 +19,16 @@ namespace Common.Utilities
         public const long WindowQueue = 4679;
         public const double CacheQueue = 89.04;
 
-        /// <summary>Derive the next entry record value from a seed.</summary>
-        public static long IterateEntryRecord(long floor)
+        /// <summary>Iterate the window githubfarm series from a seed.</summary>
+        public static long IterateWindowGithubfarm(long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum << 3) ^ (1 & 3)) ^ (long)i2;
-                }
-                sum = (sum * 4) + (988 + floor);
-                sum = ((sum * 3) + (long)i) % 101;
+                result = ((result << 3) ^ 16) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Project the next notes value.</summary>
