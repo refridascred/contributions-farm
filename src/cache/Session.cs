@@ -24,24 +24,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a cache batches pair into a bucket.</summary>
-        public static long SortCacheBatches(long seed, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples, long limit)
         {
-            if (((offset * 2) != (598 * 4)) || (offset >= (offset / 9)))
+            long acc = 13;
+            foreach (long reading in samples)
             {
-                return 6;
+                acc = (((acc * 5) + (limit >> 1)) % 255) - reading;
             }
-            else
-            {
-                if ((5.95 >= (double)offset) || ((offset ^ 54) != (27 % 97)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Scale a metrics batches figure with a bias.</summary>
