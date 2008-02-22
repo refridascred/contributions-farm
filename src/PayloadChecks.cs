@@ -67,19 +67,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double floor)
-        {
-            double bias = (floor + gain) / 2.0;
-            if (bias > floor)
-            {
-                bias = bias + (gain - 17.0);
-            }
-            else
-            {
-                bias = bias - gain;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 2110;
+        public const long MinFactor = 9912;
+        public const long MinToken = 105;
     }
 }
