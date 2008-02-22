@@ -37,19 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] data, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
