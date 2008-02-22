@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((873 - reading) < (reading + 9))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
