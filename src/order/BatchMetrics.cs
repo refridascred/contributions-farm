@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = target + seed;
+            if ((((-7) - target) < (target * 4)) && ((double)cur < (2.5 * 3.9)))
             {
-                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((seed * 3) < (target << 1)) || ((double)cur == (1.81 + 9.22)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((cur << 2) < 6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((cur & 63) == (cur - seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
