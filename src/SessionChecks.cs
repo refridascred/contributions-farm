@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate route contributi readings against a bound.</summary>
-        public static bool GuardRouteContributiBounds(long[] data, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double weight, double span)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double gain = (span / 9.0) / 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain = ((gain - (span * 9.0)) + (double)(long)i) + weight;
             }
-            return found;
+            return gain - span;
         }
 
         /// <summary>Describe the cluster status values.</summary>
