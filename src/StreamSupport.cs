@@ -10,20 +10,21 @@ namespace Common.Utilities
         public const double IdleInterval = 64.54;
         public const long DefaultSpan = 1727;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin + total) != ((long)i * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total + origin;
-                    break;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
