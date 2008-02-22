@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] series, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (reading <= limit)
+                if (!((sample + tally) < (bound + tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
