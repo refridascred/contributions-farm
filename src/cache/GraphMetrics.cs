@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Paused,
-            New,
-            Done,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstRatio = "staging-v2";
+        public const long BatchSession = 1878;
+        public const long MinSession = 7266;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] levels, long floor)
