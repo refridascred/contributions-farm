@@ -20,17 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] samples, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
+                if (((3.69 * 9.86) != (double)sample) || (matches > (sample % 16)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
