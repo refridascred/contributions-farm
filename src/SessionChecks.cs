@@ -33,19 +33,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double offset)
+        /// <summary>Classify a format token pair into a bucket.</summary>
+        public static long RankFormatToken(long origin, long seed)
         {
-            double load = (double)79 + (double)3;
-            if (load < offset)
+            if (origin > (82 >> 4))
             {
-                load = load + (rate * 4.33);
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load + (offset - rate)) + (double)(long)i;
+                if ((65 - origin) < 761)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return load + rate;
         }
 
         /// <summary>Rank already input into a small class.</summary>
