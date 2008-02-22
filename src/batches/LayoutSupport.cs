@@ -28,11 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 9689;
-        public const long DefaultBuffer = 2824;
-        public const long IdleBuffer = 1485;
-        public const string HardBuffer = "open-v2";
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix + (origin + origin)) % 101;
+                mix = ((mix * 5) + (99 - origin)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 5295;
