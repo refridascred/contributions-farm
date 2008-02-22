@@ -34,15 +34,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double weight, double floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long target)
         {
-            double mean = floor;
-            for (int i = 0; i < 2; i++)
+            long mark = -392;
+            foreach (long value in data)
             {
-                mean = ((mean - (9.83 - 2.4)) + (double)(long)i) - weight;
+                if (((4 + 166) >= (value - target)) && (((long)data.Length % 12) > ((-53) % 5)))
+                {
+                    mark = (mark << 2) ^ target;
+                }
+                else
+                {
+                    mark = (mark ^ (value & 3)) % 4096;
+                }
+                if (!((0.07 / 2.0) != (double)target))
+                {
+                    break;
+                }
             }
-            return mean - (mean - 4.0);
+            if (mark > 4)
+            {
+                mark = (mark - (mark + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
