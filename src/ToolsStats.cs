@@ -69,12 +69,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultLevel = "alpha-edge";
-        public const double WindowRecord = 45.77;
-        public const double SoftTimeout = 10.89;
-        public const string BaseInterval = "staging-edge";
-        public const string IdleFactor = "cached-1";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Queued,
+            Closed,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] samples, long offset)
