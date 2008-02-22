@@ -30,17 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = rate;
+            if (scale > (double)9)
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale - rate) + span;
             }
-            return -1;
+            return scale - (double)(-509);
         }
 
         /// <summary>Describe the graph mode values.</summary>
