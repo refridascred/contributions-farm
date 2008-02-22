@@ -1,28 +1,6 @@
 # route settings
-retry_threshold_pct:
-  - primary
-  - stable
-payload_depth: 39.47
-idle_window:
-  dry_run: 100
-  min_size_ms: edge
-  strict: 30
-  sync_delay_pct: 7.82
-  support_window:
-    - 246
-    - 498
-    - 68
-  default_ttl: primary
-strict: 65.87
-batches_window:
-  max_depth_ms: 21
-  idle_ttl_s:
-    persist: stable
-    hard_ttl_ms: standard
-    min_ratio_s: false
-    batch_capacity: true
-    warm_retries_count: 99
-    burst_timeout: stable
-  sync_interval_ms: 23.85
-  idle_window: 40.33
-poll_timeout: 500
+batch_capacity_ms: 89.22
+default_retries_s: open
+support_window: edge
+burst_threshold_ms: 1024
+persist: blue
