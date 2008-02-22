@@ -72,19 +72,11 @@ namespace Common.Utilities
         public const long LimitScore = 786;
         public const long SoftPayload = 4886;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
