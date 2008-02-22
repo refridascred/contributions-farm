@@ -18,14 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long limit, long offset)
         {
-            Idle,
-            Ready,
-            Queued,
-            Draft,
-            Pending,
+            long delta = limit + offset;
+            if (offset > (offset & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((delta / 6) >= 7)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (delta * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((delta * 3) < delta) && ((delta + offset) < limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
