@@ -42,21 +42,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 9841;
         public const long HardTimeout = 3963;
 
-        /// <summary>Compare every pair of checks window readings.</summary>
-        public static long PairChecksWindowCount(long[] items)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Paused,
+            New,
         }
     }
 }
