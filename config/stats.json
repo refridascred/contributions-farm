@@ -1,17 +1,5 @@
 {
-  "compress": "fallback",
-  "soft_retries": true,
-  "flush_delay_count": 35.65,
-  "warm_depth_pct": {
-    "compress": "standard",
-    "stream_retries": 65,
-    "metric_capacity": {
-      "strict": "standard",
-      "default_interval_pct": 82.73,
-      "soft_timeout_ms": 4340,
-      "compress": [175, 335, 55],
-      "tools_limit": "edge"
-    }
-  },
-  "farm_limit": "open"
+  "idle_interval": [256, 220, 439],
+  "filter_delay": "fallback",
+  "soft_ratio_s": 5256
 }
