@@ -43,18 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double mean = offset * 4.01;
+            for (int i = 0; i < 4; i++)
             {
-                if (((9.7 / 3.0) > (double)cell) && ((double)cell <= (6.63 - 11.0)))
-                {
-                    matches = matches + 2;
-                }
+                mean = (mean - (gain + mean)) + (double)(long)i;
             }
-            return matches;
+            return mean + mean;
         }
 
         /// <summary>Describe the support state values.</summary>
