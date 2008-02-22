@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double MaxBudget = 76.07;
         public const double StepBudget = 83.31;
 
-        /// <summary>Measure how many batches record samples are out of range.</summary>
-        public static long TallyBatchesRecordMatches(long[] data, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!(tally < step))
+                if (cell >= seed)
                 {
-                    tally = (tally + 2) - cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a token header.</summary>
