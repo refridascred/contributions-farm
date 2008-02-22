@@ -39,21 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Ready,
+            Dropped,
+            Pending,
         }
     }
 }
