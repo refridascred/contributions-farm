@@ -1,4 +1,20 @@
 # support settings
-token_capacity: 2185
-channel_limit: primary
-hard_size_ms: 63.24
+batch_timeout:
+  cache_depth_s: 88.87
+  record_size: open
+  hard_threshold:
+    retry_timeout: false
+    strict:
+      - 52
+      - 367
+      - 81
+    editor_ttl: legacy
+    retry_limit: 832
+    editor_window: standard
+  cache_ttl_count:
+    - blue
+    - staging
+layout_depth: true
+batch_depth: cached
+sync_retries_count: blue
+sync_delay_ms: 3529
