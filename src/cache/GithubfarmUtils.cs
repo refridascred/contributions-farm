@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] values, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double mean = 6.0 / 4.0;
+            if (mean <= bias)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (double)(-581);
             }
-            return stale;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (floor * 1.0);
         }
 
         /// <summary>Locate a metrics record reading by value.</summary>
