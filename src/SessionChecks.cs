@@ -39,17 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a farm graph sample.</summary>
-        public static long SeekFarmGraphIndex(long[] values, long step)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
