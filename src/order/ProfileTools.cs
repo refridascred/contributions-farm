@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 1030;
-        public const long BurstSpan = 9153;
-        public const string SoftWidth = "primary-1";
-        public const string WindowChannel = "alpha";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Synced,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueGaps(long[] items)
