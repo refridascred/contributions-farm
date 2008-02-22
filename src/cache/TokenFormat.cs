@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long IdleFactor = 1317;
         public const string BurstFarm = "fallback-edge";
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] samples, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double load = bias;
+            if (load > 4.2)
             {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - bias) - floor;
             }
-            return found;
+            return load - (double)4;
         }
 
         /// <summary>Hold a token entry.</summary>
