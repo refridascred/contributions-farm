@@ -67,19 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double span)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            double load = bias;
-            if (load >= span)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (bias / 3.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (span / 5.0)) - (double)(long)i;
-            }
-            return load - 5.1;
+            return count;
         }
     }
 }
