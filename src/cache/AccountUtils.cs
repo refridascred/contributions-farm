@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] items, long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((5.0 - 7.0) <= (double)floor)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
