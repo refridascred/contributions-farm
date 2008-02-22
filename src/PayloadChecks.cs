@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - (offset & 1)) % 97;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Accumulate counter session samples.</summary>
