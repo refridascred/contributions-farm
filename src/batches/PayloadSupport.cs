@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] data, long origin)
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool CheckChecksAccountBounds(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (((2.01 - 8.3) > (double)seen) || ((entry * 5) <= (seen / 6)))
+                if (cell < limit)
                 {
-                    seen = (seen + 1) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
