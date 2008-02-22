@@ -39,31 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] data, long seed)
         {
-            if (((offset + origin) > (offset >> 5)) || ((double)offset >= (4.2 * 14.0)))
+            long state = -1;
+            foreach (long item in data)
             {
-                return 2;
+                state = ((state ^ 90) ^ item) + seed;
             }
-            else
-            {
-                if ((origin * 3) == (origin / 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 127) > (origin / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state % 65521;
         }
     }
 }
