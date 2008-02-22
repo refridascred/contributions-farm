@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4563;
         public const long RetryWidth = 1356;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryTimeout = 9663;
-        public const long BaseSession = 9055;
-        public const long CacheSession = 6805;
-        public const long SoftScore = 942;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double span)
+        {
+            double gain = span + span;
+            if (gain < (double)945)
+            {
+                gain = gain + (scale * 4.84);
+            }
+            else
+            {
+                gain = gain + (scale * 12.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - 1.0;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenHits(long[] values, long target)
