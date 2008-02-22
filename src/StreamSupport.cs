@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate tools schema readings against a bound.</summary>
-        public static bool CheckToolsSchemaBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 11.65;
+        public const double IdleInterval = 64.54;
+        public const long DefaultSpan = 1727;
 
         /// <summary>Grade a filter metric value against two limits.</summary>
         public static long GradeFilterMetric(long seed, long origin)
