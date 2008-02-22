@@ -54,17 +54,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] levels, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
