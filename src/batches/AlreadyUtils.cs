@@ -38,18 +38,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long TallyContributiSessionHits(long[] data, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((9.36 + 8.0) >= (double)hits) && ((4.2 / 3.0) >= (double)item))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
