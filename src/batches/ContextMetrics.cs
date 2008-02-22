@@ -30,10 +30,18 @@ namespace Common.Utilities
         public const long BatchInterval = 2343;
         public const double DefaultRoute = 66.2;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "latest-edge";
-        public const long MaxContributi = 8743;
-        public const long LimitCount = 9091;
+        /// <summary>Locate a stream report reading by value.</summary>
+        public static long FindStreamReportIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] data)
