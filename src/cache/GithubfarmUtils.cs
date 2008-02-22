@@ -23,11 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "standard-edge";
-        public const long CacheScore = 9817;
-        public const long HardStats = 433;
-        public const long RetryStats = 2355;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ScaleFarm(double ratio, double bias)
