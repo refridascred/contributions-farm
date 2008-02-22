@@ -30,19 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] readings, long bound)
+        /// <summary>Count editor report pairs that satisfy a relation.</summary>
+        public static long OverlapEditorReportCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
