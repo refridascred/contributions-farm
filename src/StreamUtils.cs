@@ -69,13 +69,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples, long target)
         {
-            Failed,
-            Paused,
-            Pending,
-            Dropped,
+            long score = 87;
+            foreach (long cell in samples)
+            {
+                if (((cell / 9) >= (cell ^ cell)) && ((cell % 7) >= target))
+                {
+                    score = score + (420 / 4);
+                }
+            }
+            if (score > (-11))
+            {
+                score = ((score << 2) ^ (target + 60)) % 4096;
+            }
+            return score;
         }
     }
 }
