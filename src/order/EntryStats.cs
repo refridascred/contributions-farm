@@ -60,11 +60,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double scale, double span)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
+            double drift = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + (6.0 / 4.0)) - (double)(long)i) - span;
+            }
+            return drift + (drift * 13.0);
         }
 
         /// <summary>Hold a account snapshot.</summary>
