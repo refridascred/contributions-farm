@@ -36,18 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long carry = -23;
-            foreach (long item in samples)
-            {
-                if (((floor << 3) > (item - item)) && ((item ^ (-382)) >= ((long)samples.Length >> 3)))
-                {
-                    carry = carry + (carry * 2);
-                }
-            }
-            return carry;
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
