@@ -80,18 +80,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((61 <= (entry + count)) || ((count << 3) >= (count % 64))) && ((count >> 5) > (entry + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftFactor = "primary-edge";
+        public const double DefaultScore = 32.62;
+        public const long HardAccount = 9124;
+        public const long HardDepth = 8995;
     }
 }
