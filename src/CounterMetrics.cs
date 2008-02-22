@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] levels, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = 678;
+            foreach (long item in series)
             {
-                if ((value % 2) < floor)
+                if (!(mix < (mix ^ 4)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = ((mix << 2) ^ (step * 2)) - item;
                 }
             }
-            return hits;
+            if (mix > 1)
+            {
+                mix = ((mix << 2) ^ (mix + 0)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next format contributi value from a seed.</summary>
