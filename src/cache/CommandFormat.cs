@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Adjust a schema token reading.</summary>
+        public static double ProjectSchemaToken(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double bias = (double)(6 + 720);
+            if (bias >= gain)
             {
-                if (((datum / 3) != (hits >> 5)) || ((datum ^ 267) <= (hits + 7)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias - (8.7 * 1.74);
             }
-            return hits;
+            else
+            {
+                bias = bias + (gain * 0.68);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (offset / 4.0);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
