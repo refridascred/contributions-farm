@@ -57,22 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum ^ datum) != (datum << 1))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a profile options.</summary>
