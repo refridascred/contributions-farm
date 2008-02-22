@@ -1,5 +1,5 @@
 {
-  "retry_limit_s": ["standard", "standard", "open", "latest"],
-  "buffer_timeout": "eu-west",
-  "default_ratio": "fallback"
+  "counter_window": "open",
+  "poll_window_ms": 655,
+  "idle_retries": 60
 }
