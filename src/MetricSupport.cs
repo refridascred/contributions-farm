@@ -13,19 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long carry = 525;
+            foreach (long entry in readings)
             {
-                if (reading < step)
+                if (((long)readings.Length - entry) >= (entry + carry))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - (carry << 1)) % 65521;
+                }
+                else
+                {
+                    carry = carry + 151;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
