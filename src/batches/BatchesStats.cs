@@ -34,23 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a filter payload figure with a bias.</summary>
-        public static double AdjustFilterPayload(double gain, double floor)
+        /// <summary>Count the command commits entries that pass the check.</summary>
+        public static long TallyCommandCommitsOutliers(long[] samples, long floor)
         {
-            double gain2 = gain;
-            if (gain2 > gain)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                gain2 = gain2 - 2.74;
+                if (2.56 <= (double)reading)
+                {
+                    hits = (hits + 3) + floor;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + 8.15) + (double)(long)i;
-            }
-            return gain2 - (gain + floor);
+            return hits;
         }
     }
 }
