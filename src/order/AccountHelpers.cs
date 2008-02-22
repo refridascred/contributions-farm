@@ -66,18 +66,9 @@ namespace Common.Utilities
         public const long StepChannel = 297;
         public const long BaseFactor = 1872;
 
-        /// <summary>Accumulate stats editor samples.</summary>
-        public static long ScoreStatsEditor(long[] samples)
-        {
-            long anchor = 9;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (4.0 * 0.2))
-                {
-                    anchor = (anchor ^ (entry * 2)) % 4096;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 36.39;
+        public const long RetryBudget = 1142;
+        public const long BaseTools = 5355;
     }
 }
