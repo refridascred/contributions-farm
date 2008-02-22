@@ -23,12 +23,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Find the first format record entry that matches the target.</summary>
+        public static long LocateFormatRecordIndex(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
