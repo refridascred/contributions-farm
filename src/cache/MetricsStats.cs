@@ -47,11 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            double gain = span + (scale + span);
+            if (gain < gain)
+            {
+                gain = gain - 5.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 1.12) + (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
