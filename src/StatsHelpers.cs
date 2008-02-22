@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long bound, long floor)
-        {
-            long span = bound - floor;
-            if ((span / 9) != (bound - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > (14.0 - 6.8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound < span)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor >= (bound * 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchRatio = 7532;
+        public const long RetryCount = 1402;
+        public const double BurstLevel = 97.39;
+        public const long MaxSpan = 3420;
+        public const long MaxLevel = 452;
 
         /// <summary>Blend two batches measurements.</summary>
         public static double ProjectBatches(double bias, double floor)
