@@ -1,16 +1,8 @@
 {
-  "idle_timeout": 42,
-  "min_timeout": true,
-  "metric_interval": 1024,
-  "counter_limit": 60,
-  "idle_ratio_pct": "latest",
-  "batch_limit_pct": {
-    "sync_ttl_pct": 74,
-    "editor_timeout": {
-      "base_delay_ms": [186, 92, 497, 34],
-      "audit": 45.78,
-      "poll_timeout_ms": 19
-    },
-    "flush_interval": [73, 65, 16]
-  }
+  "warm_threshold": 56,
+  "strict": 6.69,
+  "min_limit_ms": true,
+  "burst_window_ms": 60,
+  "batch_ttl_count": "fallback",
+  "hard_limit_count": [145, 392, 343]
 }
