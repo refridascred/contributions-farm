@@ -74,13 +74,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Active,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 8012;
+        public const double SoftDepth = 50.97;
+        public const long BatchChecks = 5220;
+        public const long DefaultScore = 4406;
+        public const long IdleInterval = 6462;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] series, long bound)
