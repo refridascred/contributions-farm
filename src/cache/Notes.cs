@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Measure how many contributi filter samples are out of range.</summary>
+        public static long AuditContributiFilterHits(long[] series, long step)
         {
-            long sum = 5;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!(15.0 < (double)datum))
+                if (sample < (seen ^ step))
                 {
-                    sum = ((sum << 2) ^ (sum * 2)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (sum < 24)
-            {
-                sum = ((sum * 4) + (sum / 8)) % 4096;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
