@@ -43,11 +43,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "stable";
-        public const double MinTools = 3.67;
-        public const long IdleTools = 7235;
-        public const long LimitBudget = 2350;
-        public const string BaseTools = "strict-v2";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
