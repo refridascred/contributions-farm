@@ -1,8 +1,8 @@
 # githubfarm settings
-warm_limit_ms: 1.01
-poll_ratio_pct: 72.74
-flush_ttl_count:
-  - 143
-  - 486
-  - 11
-  - 39
+min_depth_ms: 100
+persist: 7004
+max_threshold_count: 97
+idle_ttl_count:
+  - blue
+  - eu-west
+  - stable
