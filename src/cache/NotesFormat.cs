@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            long acc = 756;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((double)cell <= (0.1 / 9.0))
+                if (!((matches ^ entry) != (entry / 8)) && !((matches + 176) > entry))
                 {
-                    acc = acc + (cell - step);
+                    matches = matches + 1;
                 }
                 else
                 {
-                    acc = ((acc * 5) + (acc % 24)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            if (acc > 8)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
