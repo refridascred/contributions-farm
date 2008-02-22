@@ -65,39 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long offset, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double offset)
         {
-            long span = offset - step;
-            if (((span & 127) < span) && ((span + 43) >= 721))
+            double gain2 = offset * 1.64;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                gain2 = ((gain2 + (double)6) - (double)(long)i) + gain;
             }
-            else
-            {
-                if (((step << 3) > offset) && ((double)step <= (5.25 / 3.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset ^ 57) != (769 ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span / 3) == ((-7) % 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return gain2 + (gain2 + offset);
         }
     }
 }
