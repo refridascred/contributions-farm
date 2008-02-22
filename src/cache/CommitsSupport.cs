@@ -41,21 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -662;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark ^ (long)levels.Length) + value) + origin;
             }
-            return hits;
+            if (mark < 6)
+            {
+                mark = (mark - (mark >> 1)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the githubfarm record series from a seed.</summary>
