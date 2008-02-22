@@ -1,5 +1,19 @@
 # entry settings
-strict: 29.64
-editor_capacity: 39.11
-stream_timeout: 70
-compress: 5.47
+already_timeout: primary
+min_delay:
+  retry_delay_count: 7027
+  default_window_ms:
+    - staging
+    - cached
+    - blue
+  cluster_delay:
+    - eu-west
+    - blue
+  persist: 8295
+  notes_size: green
+  default_size_pct:
+    - cached
+    - standard
+    - cached
+    - eu-west
+default_delay: 98.52
