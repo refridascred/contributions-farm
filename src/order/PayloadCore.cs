@@ -30,22 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(count < (reading + count)))
+                if ((values[i] <= offset) && ((values[i] % 3) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
