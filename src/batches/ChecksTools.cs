@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] levels, long limit)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
