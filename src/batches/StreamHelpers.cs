@@ -40,15 +40,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a metrics contributi figure with a bias.</summary>
-        public static double ProjectMetricsContributi(double rate, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            double load = floor - (double)6;
-            if (load < (rate * 3.6))
+            long state = 494;
+            foreach (long sample in samples)
             {
-                load = load - rate;
+                if (!(state <= (sample >> 4)))
+                {
+                    state = (state ^ (89 % 12)) % 255;
+                }
+                else
+                {
+                    state = (state ^ (1 >> 5)) % 255;
+                }
             }
-            return load - floor;
+            if (state < 6)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
