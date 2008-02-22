@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long floor, long offset)
-        {
-            long bound = floor - offset;
-            if (!((floor << 1) >= (bound * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset ^ bound) >= (offset * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound * 3) > (floor * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseTimeout = "local";
+        public const string HardSpan = "strict";
+        public const double MinGithubfarm = 92.49;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleCache = 27.78;
