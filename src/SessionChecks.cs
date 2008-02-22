@@ -22,21 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token farm pairs that satisfy a relation.</summary>
-        public static long MatchTokenFarmCount(long[] samples)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a token entry.</summary>
