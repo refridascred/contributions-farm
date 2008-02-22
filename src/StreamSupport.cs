@@ -24,12 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Draft,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 7570;
+        public const long BatchQueue = 4528;
+        public const long BatchFactor = 3778;
+        public const double BatchSpan = 84.31;
+        public const long IdleFactor = 4991;
     }
 }
