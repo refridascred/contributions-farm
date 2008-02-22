@@ -29,22 +29,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of payload channel entries.</summary>
-        public static long ScorePayloadChannel(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long score = 413;
-            foreach (long reading in levels)
-            {
-                if (!((double)reading != (8.9 + 9.69)))
-                {
-                    score = score - (reading * 2);
-                }
-                else
-                {
-                    score = (score << 2) ^ (30 / 9);
-                }
-            }
-            return score;
+            Retry,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Compare every pair of stats tools readings.</summary>
