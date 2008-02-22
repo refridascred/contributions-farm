@@ -19,31 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long seed, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if (((seed + seed) < seed) || (limit > (526 + seed)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 4) != (seed + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.91 + 9.0) > (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
