@@ -1,8 +1,13 @@
 # githubfarm settings
-warm_size_count: 92
-soft_interval: stable
-audit:
-  - 33
-  - 133
-  - 79
-  - 257
+burst_delay_s: local
+metric_ttl: 100
+warm_ratio_count:
+  max_depth_pct: staging
+  editor_window: eu-west
+  batch_depth_s: 1024
+  audit: 81.55
+  sync_interval_ms: 30
+  soft_ratio_ms: false
+dry_run: 84.09
+soft_depth_ms: 21.68
+base_limit_pct: 87
