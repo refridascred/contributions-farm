@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first profile editor entry that matches the target.</summary>
-        public static long LocateProfileEditorIndex(long[] values, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= offset)
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
