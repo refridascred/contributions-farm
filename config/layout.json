@@ -1,5 +1,6 @@
 {
-  "cache_window": false,
-  "default_capacity": 553,
-  "min_delay": "standard"
+  "metric_ttl": "local",
+  "persist": 75.65,
+  "account_interval": "blue",
+  "metric_delay": true
 }
