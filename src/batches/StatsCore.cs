@@ -90,38 +90,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long step, long step2)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] items, long bound)
         {
-            if (step2 > (87 * 4))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(step >= (step << 1)))
+                if (sample > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step != (8.52 * 19.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step * 2) == (step + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
