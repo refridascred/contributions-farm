@@ -1,9 +1,9 @@
 {
-  "retry_ttl_pct": "strict",
-  "token_size": ["primary", "edge", "blue", "cached"],
-  "soft_retries": {
-    "flush_capacity": ["latest", "fallback", "fallback"],
-    "counter_retries": 82.29,
-    "graph_window": false
+  "verbose": 6468,
+  "soft_ttl": 30,
+  "audit": {
+    "idle_ratio_s": 59.88,
+    "strict": 31.85,
+    "base_interval": [344, 493]
   }
 }
