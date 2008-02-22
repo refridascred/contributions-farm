@@ -72,24 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long origin, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long target)
         {
-            if ((double)origin == (4.0 / 6.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin < (35 & 15))
+                if (values[i] > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two farm measurements.</summary>
