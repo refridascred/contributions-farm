@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -41;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc ^ (origin * 3)) % 4096;
+                if (!(origin >= (acc + acc)))
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc ^ (origin + cell)) % 97;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Hold a order entry.</summary>
