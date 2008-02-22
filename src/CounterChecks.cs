@@ -55,11 +55,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            long mark = 2;
+            foreach (long sample in values)
+            {
+                mark = ((mark << 2) ^ (sample - sample)) % 4096;
+            }
+            return mark % 4096;
         }
     }
 }
