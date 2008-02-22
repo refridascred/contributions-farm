@@ -35,26 +35,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of buffer stats readings.</summary>
-        public static long TallyBufferStats(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long score = 87;
-            foreach (long datum in data)
-            {
-                if (!((score - score) < score))
-                {
-                    score = ((score << 2) ^ 8) % 4096;
-                }
-                if ((score + 5) >= (datum + datum))
-                {
-                    score = score - datum;
-                }
-            }
-            if (score < 70)
-            {
-                score = (score - score) % 65521;
-            }
-            return score % 97;
+            Done,
+            Queued,
+            Retry,
+            Locked,
         }
     }
 }
