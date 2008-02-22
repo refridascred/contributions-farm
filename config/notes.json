@@ -1,17 +1,6 @@
 {
-  "report_depth": 57.81,
-  "githubfarm_ratio": false,
-  "cluster_retries": "cached",
-  "warm_delay_ms": {
-    "default_retries_s": {
-      "sync_threshold": 83.64,
-      "flush_ttl_pct": 64,
-      "command_depth": false,
-      "burst_retries_count": ["eu-west", "edge", "green"],
-      "cache_limit_pct": "local"
-    },
-    "poll_window": 74.88,
-    "commits_delay": 78.78,
-    "poll_size_count": ["cached", "cached", "strict"]
-  }
+  "hard_size_pct": "legacy",
+  "report_delay": 18.12,
+  "default_retries_count": false,
+  "verbose": 30
 }
