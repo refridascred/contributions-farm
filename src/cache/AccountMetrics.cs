@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of command schema readings.</summary>
-        public static long PairCommandSchemaCount(long[] samples)
+        /// <summary>Audit support token readings against a rule.</summary>
+        public static long MeasureSupportTokenOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell + cell) > (77 + count))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a command stats.</summary>
