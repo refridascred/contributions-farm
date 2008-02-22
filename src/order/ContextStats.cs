@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Idle,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
