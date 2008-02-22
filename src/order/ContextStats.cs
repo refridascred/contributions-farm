@@ -35,32 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stats filter pair into a bucket.</summary>
-        public static long GradeStatsFilter(long target, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double gain, double span)
         {
-            long step = target - bound;
-            if ((double)bound < (4.9 - 2.0))
+            double ratio = span / 4.0;
+            if (ratio < span)
             {
-                return 7;
+                ratio = (ratio - (2.7 - span)) - gain;
             }
-            else
-            {
-                if ((31 % 16) < (step % 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(17.0 >= (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return ratio - span;
         }
     }
 }
