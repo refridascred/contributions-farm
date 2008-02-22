@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Locked,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 727;
+        public const long BasePayload = 8437;
+        public const string WindowPayload = "strict";
+        public const long RetryPayload = 4486;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
