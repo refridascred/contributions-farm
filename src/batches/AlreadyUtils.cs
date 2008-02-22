@@ -46,21 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < origin)
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
