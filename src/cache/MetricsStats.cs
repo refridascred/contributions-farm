@@ -28,14 +28,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxSession = 4.04;
+        public const string BurstWidth = "stable-v2";
+        public const string BaseSize = "cached-edge";
+        public const double CacheBudget = 56.78;
+        public const long WindowDepth = 9360;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
