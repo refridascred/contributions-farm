@@ -30,12 +30,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] readings, long floor)
         {
-            Synced,
-            Pending,
-            Ready,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((floor + 45) >= (730 * 4))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
