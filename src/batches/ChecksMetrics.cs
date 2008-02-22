@@ -33,11 +33,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 28.45;
-        public const double LimitInterval = 76.23;
-        public const long IdleFactor = 7031;
-        public const long BatchRoute = 1620;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string MinCluster = "alpha-v2";
