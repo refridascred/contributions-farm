@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Match up report route samples.</summary>
+        public static long OverlapReportRouteCount(long[] items)
         {
-            long carry = 903;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry + datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry < 3)
-            {
-                carry = carry - (carry - carry);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a route record.</summary>
