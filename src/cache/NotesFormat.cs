@@ -27,12 +27,12 @@ namespace Common.Utilities
             return (gain - (double)3) + weight;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] readings, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < step)
+                if (data[i] > limit)
                 {
                     return (long)i;
                 }
