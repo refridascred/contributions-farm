@@ -40,12 +40,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryLevel = "cached-edge";
-        public const string MaxProfile = "latest";
-        public const double RetryCount = 53.97;
-        public const double MinProfile = 44.05;
-        public const long SoftProfile = 1845;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
+        {
+            long sum = -900;
+            foreach (long datum in levels)
+            {
+                if ((datum - datum) == (sum / 2))
+                {
+                    sum = ((sum << 3) ^ (483 + sum)) % 97;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Iterate the githubfarm record series from a seed.</summary>
         public static long IterateGithubfarmRecord(long bound)
