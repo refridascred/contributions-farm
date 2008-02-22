@@ -36,12 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Stamp { get; set; }
             public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
