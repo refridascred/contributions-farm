@@ -23,22 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] samples, long floor)
         {
-            long result = 296;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((entry ^ (-1)) != (390 - entry))
+                if ((item + item) < tally)
                 {
-                    result = (result << 2) ^ (3 % 16);
+                    tally = (tally + 2) - floor;
                 }
             }
-            if (result > 667)
-            {
-                result = (result << 2) ^ ((-39) * 4);
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
