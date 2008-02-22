@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] data, long seed)
+        /// <summary>Count the queue notes entries that pass the check.</summary>
+        public static long MeasureQueueNotesMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (sample != seed)
+                if (((sample & 15) >= sample) && (((hits % 8) > (sample / 9)) || ((sample - hits) == (sample + hits))))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
