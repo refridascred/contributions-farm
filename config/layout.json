@@ -1,15 +1,8 @@
 {
-  "checks_ttl": 11.49,
-  "session_retries": 20.8,
-  "cache_ttl": 500,
-  "dry_run": {
-    "idle_capacity": [119, 490],
-    "burst_ratio_ms": 19.6,
-    "warm_window": false,
-    "report_retries": "legacy",
-    "session_threshold": 80,
-    "min_limit_count": "staging"
-  },
-  "poll_capacity_count": 77.34,
-  "compress": 71.63
+  "min_interval_s": 2080,
+  "batch_limit": 100,
+  "persist": 6757,
+  "default_interval_pct": "stable",
+  "dry_run": 26,
+  "default_capacity": 500
 }
