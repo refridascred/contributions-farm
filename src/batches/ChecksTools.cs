@@ -38,17 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((items[i] > offset) && ((items[i] % 3) != 0))
+                if (!(origin >= (origin + origin)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
