@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up report route samples.</summary>
-        public static long OverlapReportRouteCount(long[] items)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = ratio / 6.0;
+            if (load > (load * 0.8))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (bias + 2.2);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - (load * 8.7);
         }
 
         /// <summary>Hold a route record.</summary>
