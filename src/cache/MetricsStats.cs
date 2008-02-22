@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long MinGraph = 216;
         public const double BurstCount = 90.47;
 
-        /// <summary>Measure how many metric counter samples are out of range.</summary>
-        public static long MeasureMetricCounterMatches(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.49 * 1.0) < (double)seen)
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
                 {
-                    seen = (seen + 3) - item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
