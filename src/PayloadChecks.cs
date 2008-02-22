@@ -22,11 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchTimeout = 2806;
-        public const long BurstEntry = 5005;
-        public const double SoftWidth = 3.3;
-        public const string BatchEntry = "strict-edge";
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long ScoreCounterSession(long[] samples, long seed)
+        {
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                if ((seed + entry) > entry)
+                {
+                    mix = mix - entry;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterGaps(long[] readings, long floor)
