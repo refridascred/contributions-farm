@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(283 + 37);
+            if (ratio <= ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio + 7.28) + bias;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - 2.1;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Hold a checks summary.</summary>
