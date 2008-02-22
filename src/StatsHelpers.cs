@@ -41,15 +41,28 @@ namespace Common.Utilities
         public const double CacheBudget = 84.11;
         public const string BatchBudget = "primary-v2";
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long mix = 19;
+            foreach (long reading in data)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (!((mix + 3) >= (reading / 8)))
+                {
+                    mix = ((mix << 2) ^ (56 + reading)) % 65521;
+                    mix = (mix << 2) ^ reading;
+                }
+                mix = (mix - (mix * 5)) % 97;
+                if ((double)mix < 5.8)
+                {
+                    mix = ((mix << 3) ^ (reading << 2)) % 1000;
+                }
+                if (72 > (mix + 0))
+                {
+                    break;
+                }
             }
-            return mix;
+            return mix % 65521;
         }
     }
 }
