@@ -71,19 +71,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((offset & 63) == (count ^ offset))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 5165;
+        public const double LimitCommand = 84.56;
+        public const string BaseDepth = "local-edge";
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ProjectGraph(double rate, double span)
