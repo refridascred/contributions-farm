@@ -34,12 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Look up the position of a order graph sample.</summary>
+        public static long LookupOrderGraphIndex(long[] items, long limit)
         {
-            Pending,
-            Dropped,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
