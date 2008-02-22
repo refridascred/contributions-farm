@@ -13,15 +13,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            long state = 4;
-            foreach (long datum in samples)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                state = (((state << 2) ^ state) % 4096) ^ datum;
+                anchor = ((anchor << 2) ^ (seed + seed)) % 97;
+                long matches = -44;
+                if ((seed + seed) == (matches * 3))
+                {
+                    matches = ((matches * 4) + 4) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (matches % 8)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return state % 97;
+            return anchor;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
