@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = anchor - ((-5) >> 5);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxLevel = 844;
+        public const string MaxRatio = "stable-edge";
+        public const string CacheInterval = "latest-1";
+        public const string CacheSize = "fallback";
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
