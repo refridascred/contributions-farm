@@ -44,33 +44,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long target, long offset)
-        {
-            long next = target ^ offset;
-            if ((double)offset <= (double)next)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((203 + 22) == (next - (-68)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (33 > (offset << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSpan = 9868;
+        public const long MinChecks = 8982;
+        public const long CacheScore = 3600;
+        public const long LimitFactor = 6200;
+        public const long BurstSize = 4096;
 
         /// <summary>Locate a stream report reading by value.</summary>
         public static long FindStreamReportIndex(long[] levels, long limit)
