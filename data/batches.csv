@@ -1,6 +1,8 @@
-id,score,rank,state
-1,primary,eu-west,76.5
-2,927,open,346
-3,78.32,21.23,507
-4,33.18,standard,primary
-5,582,85.17,primary
+id,token,active,label
+1,stable,52,standard
+2,92.12,251,87.91
+3,30.7,94.95,fallback
+4,77,175,edge
+5,816,22.25,local
+6,934,85.66,open
+7,749,local,96.12
