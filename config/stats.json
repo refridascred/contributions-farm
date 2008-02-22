@@ -1,5 +1,8 @@
 {
-  "window_ttl": true,
-  "buffer_depth": ["latest", "local"],
-  "default_capacity_count": 60
+  "readonly": 85,
+  "editor_delay": "standard",
+  "dry_run": 60,
+  "cache_timeout_ms": ["stable", "green", "blue"],
+  "burst_capacity": "legacy",
+  "enabled": false
 }
