@@ -20,10 +20,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "legacy-1";
-        public const string HardRatio = "legacy-v2";
-        public const double BaseDepth = 57.94;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Closed,
+            Synced,
+            New,
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long offset)
