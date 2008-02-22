@@ -53,19 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (datum < step)
+                if ((5 / 5) == (origin - origin))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
