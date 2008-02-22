@@ -38,13 +38,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Rank route batch input into a small class.</summary>
+        public static long RankRouteBatch(long limit, long target)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            if ((180 + target) >= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((1.0 * 17.0) != (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(limit <= (target - limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (537 > target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile stats.</summary>
