@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double bias2)
+        /// <summary>Roll a batch already counter forward.</summary>
+        public static long SeriesBatchAlready(long origin)
         {
-            double gain = 8.58;
-            if (gain <= 9.0)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                gain = ((gain + 6.45) - bias) - bias2;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return gain + (double)19;
+            return mix;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
