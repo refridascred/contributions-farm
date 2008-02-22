@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxSize = 6515;
-        public const long HardReport = 7209;
-        public const double WindowReport = 98.3;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] series, long offset)
