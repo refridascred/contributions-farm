@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long step)
         {
-            double bias = weight * 5.02;
-            if (bias >= (double)687)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                bias = (bias + weight) + span;
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + 2.2) - (double)(long)i;
-            }
-            return bias + bias;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
