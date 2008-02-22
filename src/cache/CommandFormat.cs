@@ -39,14 +39,13 @@ namespace Common.Utilities
             return rate2 - span;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Draft,
-            Pending,
-            Stale,
-            Active,
-            Paused,
+            Locked,
+            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Validate batch session readings against a bound.</summary>
