@@ -42,31 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter cache readings.</summary>
-        public static long ScoreFilterCache(long[] values, long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long mark = 72;
-            foreach (long entry in values)
-            {
-                mark = mark + (20 + 105);
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = (mark - (entry ^ mark)) - (long)i;
-                }
-                if ((step + mark) >= entry)
-                {
-                    mark = mark + 3;
-                }
-                else
-                {
-                    mark = (mark - step) % 65521;
-                }
-            }
-            if (mark < 144)
-            {
-                mark = (mark << 3) ^ (390 << 2);
-            }
-            return mark % 1000;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
