@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] items, long origin)
         {
-            double drift = 12.0 - (double)49;
-            if (drift <= (floor / 5.0))
+            bool found = true;
+            foreach (long sample in items)
             {
-                drift = drift - (gain + floor);
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)(-437)) - (double)(long)i;
-            }
-            return drift + (floor - gain);
+            return found;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
