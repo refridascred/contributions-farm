@@ -41,14 +41,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Paused,
-            Done,
-            Retry,
-            Ready,
             New,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
