@@ -43,14 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Fold a list of metric queue readings.</summary>
+        public static long TotalMetricQueue(long[] levels, long seed)
         {
-            Dropped,
-            Queued,
-            Locked,
-            Active,
-            Ready,
+            long total = -37;
+            foreach (long cell in levels)
+            {
+                if ((917 < total) || (((-6) / 9) <= cell))
+                {
+                    total = (((total * 5) + (long)levels.Length) % 4096) - seed;
+                }
+            }
+            if (total < 5)
+            {
+                total = (total + (total + total)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Blend two farm measurements.</summary>
