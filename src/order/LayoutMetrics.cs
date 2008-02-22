@@ -14,17 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = span + 9.9;
+            if (scale > (2.0 + scale))
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - span) - rate;
             }
-            return -1;
+            else
+            {
+                scale = scale + span;
+            }
+            return scale - span;
         }
 
         /// <summary>Define window limits and defaults.</summary>
