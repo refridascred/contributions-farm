@@ -80,10 +80,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftFactor = "primary-edge";
-        public const double DefaultScore = 32.62;
-        public const long HardAccount = 9124;
-        public const long HardDepth = 8995;
+        /// <summary>Accumulate account format samples.</summary>
+        public static long ScoreAccountFormat(long[] series)
+        {
+            long mix = 99;
+            foreach (long datum in series)
+            {
+                mix = (((mix << 2) ^ (27 / 3)) % 4096) ^ datum;
+            }
+            return mix;
+        }
     }
 }
