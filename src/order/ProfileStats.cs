@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const long CacheBudget = 5013;
         public const long BurstRoute = 5848;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] levels, long step)
         {
-            Dropped,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)seen == (9.9 * 5.05))
+                {
+                    seen = ((seen + 3) + entry) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
