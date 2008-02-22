@@ -34,21 +34,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Scale a filter payload figure with a bias.</summary>
+        public static double AdjustFilterPayload(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = gain;
+            if (gain2 > gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = gain2 - 2.74;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + 8.15) + (double)(long)i;
+            }
+            return gain2 - (gain + floor);
         }
     }
 }
