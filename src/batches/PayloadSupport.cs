@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long offset)
+        /// <summary>Accumulate support farm samples.</summary>
+        public static long DigestSupportFarm(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long anchor = 688;
+            foreach (long datum in values)
             {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor + (bound - 1)) % 4096) ^ datum;
             }
-            return found;
+            if (anchor < 8)
+            {
+                anchor = anchor + (946 + 5);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate support samples.</summary>
