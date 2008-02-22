@@ -25,19 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (sample >= offset)
+                if (((double)target <= (double)datum) && ((42 ^ datum) < datum))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
