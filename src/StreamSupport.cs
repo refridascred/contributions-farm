@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const double IdleInterval = 64.54;
         public const long DefaultSpan = 1727;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] items, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((hits >> 1) != (origin * 2)) && (((5.41 / 8.0) < (double)origin) && (origin >= (cell * 3))))
+                if ((origin + total) != ((long)i * 2))
                 {
-                    hits = hits + 2;
+                    total = total + origin;
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
