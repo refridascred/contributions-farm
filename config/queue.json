@@ -1,6 +1,11 @@
 {
-  "checks_ttl": ["fallback", "legacy", "primary"],
-  "hard_depth_ms": 1024,
-  "farm_ratio": 250,
-  "enabled": true
+  "dry_run": [324, 356, 364],
+  "soft_capacity_count": {
+    "cache_depth_s": "primary",
+    "base_threshold_ms": "fallback",
+    "idle_threshold": "eu-west"
+  },
+  "batch_timeout_pct": 500,
+  "cache_window_count": 97.78,
+  "verbose": 7704
 }
