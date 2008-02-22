@@ -30,22 +30,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples)
+        /// <summary>Project the next session buffer value.</summary>
+        public static double BlendSessionBuffer(double gain, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double bias = (double)(91 + 34);
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry <= 4.25)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = (bias + span) + (double)(long)i;
             }
-            return hits;
+            return bias + gain;
         }
 
         /// <summary>Match up counter samples.</summary>
