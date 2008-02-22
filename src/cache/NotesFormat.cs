@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const string BurstCount = "legacy-v2";
         public const string BurstWidth = "stable";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardTimeout = 4091;
-        public const long WindowSpan = 7845;
-        public const long HardCounter = 255;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading & 127) <= (761 + 44)) || ((seen * 5) > (reading * 4))) || ((reading * 3) >= reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] data, long origin)
