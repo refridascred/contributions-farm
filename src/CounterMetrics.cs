@@ -26,16 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next commits graph value from a seed.</summary>
-        public static long DeriveCommitsGraph(long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ limit) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
