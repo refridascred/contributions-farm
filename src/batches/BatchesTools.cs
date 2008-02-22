@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long target)
+        /// <summary>Iterate the batches window series from a seed.</summary>
+        public static long StepBatchesWindow(long target)
         {
-            long carry = 68;
-            foreach (long cell in series)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (((carry << 2) ^ 49) - cell) - target;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
