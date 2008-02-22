@@ -41,18 +41,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen >> 2) != (seen % 97))
+                if ((result + bound) != (bound / 9))
                 {
-                    seen = (seen + 1) + entry;
+                    result = (result ^ (810 + bound)) % 65521;
                 }
+                result = (result - (8 * 5)) % 97;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
