@@ -36,17 +36,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long seed)
+        /// <summary>Rank command entry input into a small class.</summary>
+        public static long GradeCommandEntry(long offset, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((double)seed >= (8.0 - 7.4)) || (seed <= (offset + offset)))
             {
-                if (series[i] > seed)
+                return 6;
+            }
+            else
+            {
+                if (!((double)seed > (7.4 * 8.9)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
