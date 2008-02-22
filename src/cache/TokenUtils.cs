@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double load = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + floor) - (double)(long)i;
-            }
-            return load - (double)1;
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
