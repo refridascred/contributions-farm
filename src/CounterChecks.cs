@@ -27,12 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftWidth = 4078;
+        public const long StepCount = 9549;
+        public const long HardRatio = 2271;
+        public const long MinBatch = 7457;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long floor)
