@@ -15,11 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Combine farm stats values into a single score.</summary>
+        public static long WeighFarmStats(long[] samples, long offset)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            long sum = 793;
+            foreach (long entry in samples)
+            {
+                sum = ((sum * 2) + (offset ^ 3)) % 101;
+                if (((offset << 3) == (offset ^ sum)) || (entry > (39 << 3)))
+                {
+                    sum = (sum - (offset - sum)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
