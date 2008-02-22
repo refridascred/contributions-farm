@@ -36,22 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)limit != (7.8 + 5.0))
-                {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 5680;
+        public const long CacheSession = 2398;
+        public const double LimitSession = 67.83;
+        public const double BatchSession = 51.66;
+        public const long BaseSession = 9579;
     }
 }
