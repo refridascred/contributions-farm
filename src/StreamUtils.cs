@@ -62,18 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long CountContributiEditorHits(long[] values, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((target ^ target) <= (entry + target))
+                if (sample > limit)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
