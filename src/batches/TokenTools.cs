@@ -56,13 +56,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            Stale,
-            Queued,
-            Retry,
-            Active,
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((long)i > sum)
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum ^ sum;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum * 3) + (8 << 2)) - (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
