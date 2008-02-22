@@ -53,12 +53,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Derive the next graph tools value from a seed.</summary>
+        public static long SeriesGraphTools(long offset)
         {
-            Ready,
-            Pending,
-            Retry,
+            long score = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                long prev = (offset * 4) >> 5;
+                if ((prev >> 3) == ((long)i * 4))
+                {
+                    break;
+                }
+                else
+                {
+                    prev = (prev + (score << 2)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
