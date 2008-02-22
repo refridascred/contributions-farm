@@ -1,20 +1,12 @@
 # support settings
-soft_window: 65
-soft_limit_count:
-  enabled:
-    - blue
-    - primary
-    - latest
-  sync_delay:
-    - 44
-    - 264
-  batch_retries: cached
-  dry_run: stable
-  verbose: 1024
-idle_interval:
-  - 176
-  - 205
-  - 351
-warm_limit: legacy
-retry_threshold_pct: false
-enabled: 5.54
+hard_depth: fallback
+contributi_timeout:
+  compress: 24
+  min_depth: stable
+  idle_retries_count: 47.73
+  readonly: false
+  cache_limit_pct: cached
+  enabled: 30
+poll_size: staging
+record_timeout: open
+filter_threshold: 75
