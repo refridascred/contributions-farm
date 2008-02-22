@@ -27,17 +27,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultInterval = "fallback-v2";
+        public const double HardOrder = 71.12;
+        public const double DefaultSpan = 52.05;
+        public const double WindowOrder = 69.79;
     }
 }
