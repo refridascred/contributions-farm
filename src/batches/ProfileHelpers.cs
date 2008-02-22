@@ -30,21 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor report pairs that satisfy a relation.</summary>
-        public static long OverlapEditorReportCount(long[] samples)
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long WeighToolsAccount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -8;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((239 & 31) < (176 + value))
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 5) + acc) % 101;
+                }
+                if ((2 & 1) != (value - acc))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
