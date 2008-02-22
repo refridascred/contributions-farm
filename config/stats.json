@@ -1,8 +1,23 @@
 {
-  "readonly": 85,
-  "editor_delay": "standard",
-  "dry_run": 60,
-  "cache_timeout_ms": ["stable", "green", "blue"],
-  "burst_capacity": "legacy",
-  "enabled": false
+  "strict": true,
+  "soft_window_s": [238, 5, 67, 145],
+  "persist": "eu-west",
+  "retry_ratio": {
+    "verbose": {
+      "support_ratio": "local",
+      "batches_retries": "eu-west",
+      "buffer_limit": 84,
+      "default_capacity_count": true
+    },
+    "idle_retries_s": {
+      "warm_ratio_ms": 4,
+      "min_ratio_s": 45.89,
+      "cache_window_pct": ["green", "standard", "open"]
+    },
+    "strict": 1024,
+    "audit": ["stable", "standard", "latest"],
+    "retry_interval_pct": "local"
+  },
+  "burst_limit": "local",
+  "verbose": ["cached", "local"]
 }
