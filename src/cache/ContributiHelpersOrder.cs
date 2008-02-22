@@ -11,28 +11,36 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7988;
         public const long SoftSize = 9767;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long target, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long limit, long target)
         {
-            if ((4.0 + 1.5) == (double)target)
+            long next = limit + target;
+            if ((target - limit) >= (next + 3))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((offset * 4) >= (target >> 5))
+                if (64 > (target - 4))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset > (target * 5)) && ((target + target) == (307 - target)))
+                    if ((655 % 97) > target)
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        return 7;
+                        if ((target + 1) != (61 - next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
