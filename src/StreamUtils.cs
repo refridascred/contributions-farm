@@ -42,14 +42,18 @@ namespace Common.Utilities
         public const long LimitWidth = 5215;
         public const long CacheBudget = 155;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] data, long origin)
         {
-            Queued,
-            Closed,
-            Draft,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (origin > datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
