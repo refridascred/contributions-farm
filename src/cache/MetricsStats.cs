@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long MinGraph = 216;
         public const double BurstCount = 90.47;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                if (cell <= (matches & 63))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
