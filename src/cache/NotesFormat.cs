@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (!((matches ^ entry) != (entry / 8)) && !((matches + 176) > entry))
+                if (cell != step)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate format profile samples.</summary>
