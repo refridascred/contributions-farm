@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of order format entries.</summary>
+        public static long TallyOrderFormat(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long anchor = 51;
+            foreach (long entry in levels)
+            {
+                anchor = (((anchor * 3) + anchor) % 101) + entry;
+            }
+            if (anchor < 32)
+            {
+                anchor = (anchor * 4) + (anchor / 3);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next commits graph value from a seed.</summary>
