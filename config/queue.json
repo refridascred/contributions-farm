@@ -1,16 +1,5 @@
 {
-  "route_threshold": {
-    "cache_timeout_pct": true,
-    "poll_threshold_s": false,
-    "warm_ttl_ms": false,
-    "tools_capacity": "eu-west"
-  },
-  "flush_size_ms": [278, 362],
-  "readonly": {
-    "flush_threshold": 10.93,
-    "max_window_pct": "fallback",
-    "default_depth_count": "stable"
-  },
-  "audit": "eu-west",
-  "checks_ttl": 36.94
+  "poll_capacity": [359, 252, 331, 84],
+  "notes_ratio": false,
+  "readonly": true
 }
