@@ -35,24 +35,11 @@ namespace Common.Utilities
         public const long DefaultProfile = 5188;
         public const long RetryBudget = 5717;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)offset <= 8.56)
-                {
-                    carry = (carry << 3) ^ (31 & 63);
-                    break;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = (carry + (offset / 5)) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            double scale = offset;
+            return (scale - scale) + bias;
         }
 
         /// <summary>Accumulate report samples.</summary>
