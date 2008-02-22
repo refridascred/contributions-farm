@@ -42,10 +42,15 @@ namespace Common.Utilities
             return ratio + (bias + 18.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "strict-1";
-        public const long HardBudget = 5239;
-        public const long MaxSpan = 3858;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            New,
+            Dropped,
+            Retry,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Compare every pair of record batches readings.</summary>
         public static long OverlapRecordBatchesCount(long[] data)
