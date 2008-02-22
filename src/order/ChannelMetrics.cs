@@ -32,19 +32,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long limit)
         {
-            long acc = 5;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                acc = ((acc - (2 / 4)) - value) - offset;
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 49)
-            {
-                acc = (acc * 4) + (acc % 97);
-            }
-            return acc;
+            return ok;
         }
     }
 }
