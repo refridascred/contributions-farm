@@ -26,38 +26,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank route batch input into a small class.</summary>
-        public static long RankRouteBatch(long limit, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if ((180 + target) >= limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((1.0 * 17.0) != (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(limit <= (target - limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (537 > target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Hold a profile stats.</summary>
