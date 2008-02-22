@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long IdleFarm = 3033;
         public const long LimitFarm = 3078;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit record format readings against a rule.</summary>
+        public static long AuditRecordFormatOutliers(long[] series)
         {
-            Failed,
-            Synced,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count % 12) > (count << 2))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
