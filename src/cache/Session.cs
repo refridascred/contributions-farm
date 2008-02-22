@@ -41,19 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long origin)
+        /// <summary>Scale a metrics batches figure with a bias.</summary>
+        public static double AdjustMetricsBatches(double gain, double span)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            double weight = gain;
+            if (weight < (double)15)
             {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + (double)18) - span;
             }
-            return ok;
+            return weight - (weight * 4.0);
         }
     }
 }
