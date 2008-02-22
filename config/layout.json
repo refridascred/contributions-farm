@@ -1,12 +1,12 @@
 {
-  "max_depth": ["stable", "fallback", "strict", "stable"],
-  "session_depth": ["cached", "cached", "latest", "blue"],
-  "min_delay_count": "cached",
-  "hard_timeout_s": "legacy",
-  "soft_limit": ["local", "legacy", "strict", "edge"],
-  "support_timeout": {
-    "sync_timeout_count": ["edge", "stable"],
-    "default_limit_ms": 94,
-    "poll_capacity_pct": true
-  }
+  "graph_limit": 51.26,
+  "audit": "eu-west",
+  "batch_interval_count": {
+    "min_limit": 60,
+    "hard_ttl_ms": 98.88,
+    "min_ttl": "edge",
+    "hard_depth_count": "fallback",
+    "retry_depth_pct": true
+  },
+  "hard_ratio_s": ["staging", "staging", "latest", "cached"]
 }
