@@ -42,19 +42,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] samples, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] levels, long floor)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            foreach (long cell in levels)
             {
-                if ((origin & 15) > (6 + origin))
+                if ((cell + 83) <= (cell - (-117)))
                 {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) - floor;
                 }
             }
             return seen;
