@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Done,
-            New,
-            Ready,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftWidth = 277;
+        public const long MinLevel = 719;
+        public const long SoftContributi = 7226;
 
         /// <summary>Find the first filter githubfarm entry that matches the target.</summary>
         public static long LocateFilterGithubfarmIndex(long[] series, long target)
