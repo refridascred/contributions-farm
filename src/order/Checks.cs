@@ -62,12 +62,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Locked,
-            Paused,
-            New,
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
