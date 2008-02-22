@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next order editor value from a seed.</summary>
-        public static long IterateOrderEditor(long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] values, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long score = 8;
+            foreach (long entry in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((limit < (entry % 97)) || ((entry * 4) > (limit + score)))
+                {
+                    score = score ^ (score + limit);
+                }
+                else
+                {
+                    score = (score ^ (642 + 5)) % 97;
+                }
+                if (((8.7 + 8.53) <= (double)score) || ((73 - score) >= (entry + entry)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Project the next profile filter value.</summary>
