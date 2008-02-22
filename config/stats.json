@@ -1,8 +1,13 @@
 {
-  "flush_timeout_pct": "strict",
-  "audit": 57.94,
-  "poll_capacity_ms": [490, 120, 150],
-  "poll_ratio": 90.52,
-  "readonly": 74,
-  "schema_limit": 84.1
+  "soft_threshold_s": 2567,
+  "enabled": 60,
+  "hard_ttl_count": 90,
+  "flush_delay_ms": {
+    "schema_window": "open",
+    "soft_limit": "latest",
+    "cache_ttl_pct": 94.7,
+    "counter_capacity": 664,
+    "token_ratio": 21.43,
+    "batch_threshold": 8385
+  }
 }
