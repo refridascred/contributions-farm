@@ -47,17 +47,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 240;
+        public const string DefaultTimeout = "stable-v2";
+        public const string BaseOrder = "primary";
+        public const double LimitWidth = 55.56;
+        public const long HardOrder = 134;
     }
 }
