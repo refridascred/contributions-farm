@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] values, long bound)
         {
-            long score = 23;
-            foreach (long item in series)
+            long sum = 551;
+            foreach (long cell in values)
             {
-                score = ((score ^ (origin << 1)) % 65521) ^ item;
+                sum = ((((sum << 3) ^ 65) % 4096) ^ cell) - bound;
+                sum = (sum * 3) + (sum - 91);
             }
-            return score;
+            return sum % 65521;
         }
 
         /// <summary>Project the next layout value.</summary>
