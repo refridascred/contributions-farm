@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double gain, double offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            double rate = offset;
-            if (rate <= 16.0)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (gain * 5.0);
+            return matches;
         }
 
         /// <summary>Find the first session support entry that matches the target.</summary>
