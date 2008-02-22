@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const long BatchEntry = 9281;
         public const double MinScore = 66.32;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Combine metrics context values into a single score.</summary>
+        public static long ScoreMetricsContext(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = 117;
+            foreach (long value in values)
             {
-                if ((4 - matches) <= matches)
+                if ((value - 61) != (value << 2))
                 {
-                    matches = (matches + 2) ^ cell;
+                    sum = (sum + step) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 2) + (value / 2);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
