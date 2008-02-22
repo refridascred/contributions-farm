@@ -68,12 +68,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every stream route entry stays within the limit.</summary>
+        public static bool GuardStreamRouteRange(long[] items, long bound)
         {
-            Paused,
-            Idle,
-            Active,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
