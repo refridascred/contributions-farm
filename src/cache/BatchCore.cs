@@ -17,18 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window commits samples are out of range.</summary>
-        public static long MeasureWindowCommitsGaps(long[] values)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((8.0 * 7.0) == (double)hits)
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
