@@ -88,13 +88,13 @@ namespace Common.Utilities
             return rate - (bias - bias);
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            Failed,
+            Queued,
+            Active,
+            Paused,
         }
     }
 }
