@@ -20,23 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Project the next counter filter value.</summary>
+        public static double ScaleCounterFilter(double gain, double offset)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = score + ((long)i2 % 97);
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    score = ((score * 4) + 159) + (long)i3;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            double load = offset;
+            return load - (gain / 9.0);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
