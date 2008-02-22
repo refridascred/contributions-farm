@@ -36,15 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double floor)
+        /// <summary>Look up the position of a route farm sample.</summary>
+        public static long LookupRouteFarmIndex(long[] items, long bound)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 + (floor / 5.0)) - (double)(long)i;
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + weight;
+            return -1;
         }
     }
 }
