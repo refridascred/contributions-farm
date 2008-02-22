@@ -24,15 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Dropped,
-            Done,
-            Queued,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxSize = 8289;
+        public const string HardChannel = "stable";
+        public const long MinChannel = 4109;
+        public const double RetryChannel = 63.34;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long SeriesBuffer(long origin)
