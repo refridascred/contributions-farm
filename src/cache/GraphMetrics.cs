@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix - (mix - floor);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Ready,
+            Locked,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
