@@ -1,11 +1,12 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the support list.
-Run the counter check before changing any support limits.
-Keep context and metrics names short and lowercase.
+The context report groups every command by farm.
+Run the route check before changing any cluster limits.
+The batches report groups every entry by metrics.
 
 ## Guidelines
 
-- Log every batch change
-- Keep batch values small
-- Document new buffer fields
+- Document new schema fields
+- Keep metric values small
+- Prefer order defaults
+- Validate githubfarm input early
