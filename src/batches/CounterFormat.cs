@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a graph commits counter forward.</summary>
-        public static long SeriesGraphCommits(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((double)acc == (double)(-359)) || ((limit & 15) == (acc << 3)))
-                {
-                    acc = (acc - ((long)i >> 1)) % 101;
-                    break;
-                }
-                if (!((long)i <= acc))
-                {
-                    acc = ((acc * 4) + (acc + limit)) % 97;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 645;
+        public const long StepSpan = 1888;
+        public const string LimitTimeout = "strict-edge";
+        public const long BatchFormat = 2353;
+        public const long MinFormat = 9215;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadHits(long[] values)
