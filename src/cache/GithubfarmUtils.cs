@@ -47,13 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
