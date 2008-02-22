@@ -1,8 +1,17 @@
 {
-  "batch_ttl": 62.01,
-  "batch_ratio": true,
-  "batch_delay_pct": 94.36,
-  "sync_ttl": 67,
-  "burst_ratio_s": "staging",
-  "base_ratio": 85.21
+  "farm_threshold": ["primary", "fallback", "green", "staging"],
+  "verbose": ["eu-west", "green", "latest"],
+  "route_interval": {
+    "payload_window": 5,
+    "token_timeout": "legacy",
+    "warm_interval": {
+      "audit": 6,
+      "burst_capacity": 1699,
+      "sync_limit_count": true
+    },
+    "persist": "eu-west",
+    "min_ttl_ms": "latest"
+  },
+  "audit": true,
+  "context_ttl": "stable"
 }
