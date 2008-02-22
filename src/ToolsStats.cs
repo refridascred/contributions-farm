@@ -42,22 +42,21 @@ namespace Common.Utilities
             return ratio + (bias + 18.0);
         }
 
-        /// <summary>Fold a list of githubfarm profile readings.</summary>
-        public static long DigestGithubfarmProfile(long[] data, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            long carry = 83;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.23 / 2.0) != (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry << 2) ^ (item * 3);
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 17)
-            {
-                carry = ((carry << 2) ^ bound) % 4096;
-            }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
