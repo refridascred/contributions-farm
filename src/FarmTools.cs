@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data, long offset)
+        /// <summary>Validate batches layout readings against a bound.</summary>
+        public static bool GuardBatchesLayoutBounds(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((reading / 9) < (61 & 3))
+                if (value != limit)
                 {
-                    tally = (tally + 2) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Fold a list of format readings.</summary>
