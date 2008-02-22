@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context token readings against a bound.</summary>
-        public static bool ValidateContextTokenBounds(long[] series, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (value < seed)
+                if (((datum >> 3) < (datum - datum)) && (((long)levels.Length & 15) < tally))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
