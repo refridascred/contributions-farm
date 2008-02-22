@@ -33,16 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the window githubfarm series from a seed.</summary>
-        public static long IterateWindowGithubfarm(long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                result = ((result << 3) ^ 16) % 1000;
-                result = ((result * 4) + (long)i) % 101;
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Project the next notes value.</summary>
