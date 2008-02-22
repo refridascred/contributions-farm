@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double MaxBudget = 76.07;
         public const double StepBudget = 83.31;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Measure how many batches record samples are out of range.</summary>
+        public static long TallyBatchesRecordMatches(long[] data, long step)
         {
-            long carry = 740;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                carry = carry - (carry - 6);
-                if ((((-97) & 63) <= carry) || ((double)reading > (8.41 * 1.8)))
+                if (!(tally < step))
                 {
-                    break;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Derive the next buffer tools value from a seed.</summary>
