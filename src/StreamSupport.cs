@@ -43,24 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long step, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if ((double)origin == (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin & 63) != (step << 2)) || ((13.0 + 6.4) >= (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Dropped,
+            Closed,
         }
     }
 }
