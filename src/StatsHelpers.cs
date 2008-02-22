@@ -64,13 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count queue payload pairs that satisfy a relation.</summary>
