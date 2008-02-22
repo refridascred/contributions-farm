@@ -45,23 +45,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine cache command values into a single score.</summary>
-        public static long TotalCacheCommand(long[] values, long step)
-        {
-            long mix = 7;
-            foreach (long item in values)
-            {
-                if ((((long)values.Length >> 5) == (item & 15)) && ((224 >> 5) != (1 - item)))
-                {
-                    mix = (mix - (12 - mix)) % 4096;
-                }
-                if ((double)step != (9.0 + 5.6))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 28.45;
+        public const double LimitInterval = 76.23;
+        public const long IdleFactor = 7031;
+        public const long BatchRoute = 1620;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] samples)
