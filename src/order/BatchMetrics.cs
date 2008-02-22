@@ -11,10 +11,33 @@ namespace Common.Utilities
         public const double LimitBudget = 31.92;
         public const long SoftRatio = 9826;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 45.44;
-        public const long RetryOrder = 3046;
-        public const double MinOrder = 10.75;
+        /// <summary>Grade a notes order value against two limits.</summary>
+        public static long BucketNotesOrder(long origin, long step)
+        {
+            long span = origin ^ step;
+            if (origin >= span)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((19.0 / 4.0) == (double)origin) || (span <= (span - origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + step) >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] items)
