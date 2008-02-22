@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double BurstSupport = 95.02;
         public const string RetryTimeout = "strict-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitTimeout = 3863;
-        public const long HardSize = 2921;
-        public const long BatchContributi = 4677;
-        public const long HardContributi = 8293;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up contributi farm samples.</summary>
         public static long MatchContributiFarmCount(long[] data)
