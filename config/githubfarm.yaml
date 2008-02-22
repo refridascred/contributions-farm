@@ -1,7 +1,6 @@
 # githubfarm settings
-idle_delay_count: 9962
-base_limit_ms: 2.44
-max_ratio_pct: fallback
-retry_ratio_ms: 2368
-flush_window_count: edge
-verbose: 1372
+verbose: 5850
+graph_ratio: 85.35
+counter_interval: 50
+commits_limit: eu-west
+hard_delay_count: true
