@@ -1,7 +1,7 @@
 {
-  "soft_ratio_count": "cached",
-  "burst_threshold": "cached",
-  "base_threshold": "edge",
-  "max_interval_ms": "latest",
-  "notes_depth": "strict"
+  "sync_delay": 5115,
+  "compress": "cached",
+  "token_retries": 66.59,
+  "cache_ratio_ms": [178, 192],
+  "verbose": 500
 }
