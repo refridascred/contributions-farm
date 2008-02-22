@@ -67,17 +67,19 @@ namespace Common.Utilities
         public const long SoftScore = 4854;
         public const long RetrySpan = 8318;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = offset * 5.06;
+            if (ratio > (ratio + 11.0))
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (ratio * 2.7);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            return ratio - (double)889;
         }
     }
 }
