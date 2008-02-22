@@ -13,10 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultBudget = 1035;
-        public const long CacheBudget = 5013;
-        public const long BurstRoute = 5848;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long CombinePayload(long[] samples, long bound)
