@@ -59,18 +59,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seen > (8 ^ sample))
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
