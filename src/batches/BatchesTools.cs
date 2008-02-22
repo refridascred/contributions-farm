@@ -54,18 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data)
+        /// <summary>Count the commits payload entries that pass the check.</summary>
+        public static long CountCommitsPayloadHits(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((567 + (-31)) >= (hits * 4))
+                if (tally < 93)
                 {
-                    hits = (hits + 3) ^ item;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
