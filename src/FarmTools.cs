@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string HardReport = "alpha-edge";
         public const long BaseReport = 4017;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (data[i] == offset)
+                if ((reading / 9) < (61 & 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many entry buffer samples are out of range.</summary>
