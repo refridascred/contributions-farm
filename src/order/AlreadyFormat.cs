@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (load + (17.0 - floor)) + bias;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] < floor)
+                if ((values[i] < step) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
