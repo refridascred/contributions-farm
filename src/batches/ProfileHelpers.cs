@@ -50,13 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            Pending,
+            Queued,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
