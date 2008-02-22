@@ -85,19 +85,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] items, long bound)
+        /// <summary>Project the next support batches value.</summary>
+        public static double ScaleSupportBatches(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double gain = 4.88;
+            if (gain > 4.0)
             {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + ratio;
             }
-            return found;
+            else
+            {
+                gain = gain + (ratio - 12.0);
+            }
+            return gain - (gain + bias);
         }
     }
 }
