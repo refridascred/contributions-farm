@@ -1,4 +1,15 @@
 # support settings
-format_delay: 34.6
-record_retries: 1024
-support_window: standard
+compress: 100
+default_capacity:
+  enabled: 6469
+  sync_ttl: 59.04
+  cache_limit: 7740
+  warm_size_s:
+    poll_size: 500
+    poll_size_ms: false
+    tools_window: true
+    compress: 250
+    soft_size_s: 83.38
+  poll_size_pct: true
+dry_run: 1024
+max_capacity_pct: true
