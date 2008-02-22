@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] series)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((-4) <= matches) || (((double)sample >= (0.79 - 11.0)) || ((sample + matches) < (sample ^ sample))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Ready,
         }
 
         /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
