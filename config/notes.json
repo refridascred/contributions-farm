@@ -1,5 +1,15 @@
 {
-  "readonly": 7,
-  "enabled": 3799,
-  "cache_window_s": false
+  "enabled": [428, 117],
+  "warm_ratio_ms": 37.2,
+  "base_capacity_ms": "staging",
+  "strict": {
+    "dry_run": 4.21,
+    "idle_retries_count": 100,
+    "profile_depth": {
+      "strict": [345, 175, 493],
+      "notes_timeout": "legacy",
+      "route_retries": "edge",
+      "sync_window_pct": 1024
+    }
+  }
 }
