@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] items, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] data, long origin)
         {
-            long anchor = 229;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (anchor >= offset)
+                if (!((double)item <= (5.5 / 7.0)))
                 {
-                    anchor = anchor + (sample % 5);
+                    seen = (seen + 2) - origin;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
