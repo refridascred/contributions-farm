@@ -28,15 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (!((0.9 * 5.7) == (double)seen))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
