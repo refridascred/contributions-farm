@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            Retry,
+            Stale,
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Compare every pair of buffer queue readings.</summary>
