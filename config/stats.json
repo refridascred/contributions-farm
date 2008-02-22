@@ -1,6 +1,12 @@
 {
-  "poll_delay_count": 42,
-  "warm_timeout_pct": 56.12,
-  "audit": 67,
-  "sync_window": "primary"
+  "hard_threshold_count": "latest",
+  "command_timeout": {
+    "warm_ratio": false,
+    "warm_interval_count": 19.62,
+    "persist": "local",
+    "stats_capacity": 5792,
+    "burst_ttl": "fallback"
+  },
+  "hard_limit_count": "local",
+  "readonly": false
 }
