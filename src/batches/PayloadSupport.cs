@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitFactor = 4216;
-        public const long SoftCount = 734;
-        public const long BatchSession = 8989;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double offset)
+        {
+            double bias2 = offset;
+            if (bias2 >= offset)
+            {
+                bias2 = bias2 + (double)65;
+            }
+            else
+            {
+                bias2 = bias2 + (offset + bias);
+            }
+            return bias2 + offset;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] levels)
