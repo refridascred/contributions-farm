@@ -37,21 +37,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of command schema readings.</summary>
-        public static long OverlapCommandSchemaCount(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value >= origin)
                 {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two batches measurements.</summary>
