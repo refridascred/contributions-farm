@@ -41,9 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstTimeout = 874;
-        public const long LimitSpan = 8984;
-        public const long BatchCounter = 7365;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches & 63) < (matches >> 1))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
