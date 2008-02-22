@@ -22,12 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            Locked,
-            Active,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
