@@ -74,26 +74,21 @@ namespace Common.Utilities
             return rate + (rate + 3.0);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Compare every pair of stats command readings.</summary>
+        public static long OverlapStatsCommandCount(long[] series)
         {
-            long anchor = 4;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor < entry) && ((anchor & 1) >= entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (98 * 5);
-                }
-                if ((double)entry > (9.4 - 3.2))
-                {
-                    anchor = (anchor - entry) % 4096;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 88)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
