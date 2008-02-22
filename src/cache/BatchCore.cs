@@ -17,21 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Measure how many window commits samples are out of range.</summary>
+        public static long MeasureWindowCommitsGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.0 * 7.0) == (double)hits)
                 {
-                    if ((levels[i] - levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) - sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
