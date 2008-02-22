@@ -1,14 +1,8 @@
 # support settings
-burst_retries_s: 15.78
-schema_limit:
-  min_limit_ms: true
-  burst_ttl_s:
-    - 196
-    - 143
-    - 162
-    - 253
-  readonly: 9135
-  flush_window_s: 500
-  retry_ttl: eu-west
-default_size_ms: 7698
-contributi_size: 12
+stream_window: false
+min_window: 5009
+base_window:
+  - edge
+  - latest
+base_threshold: 21
+idle_ratio: 6327
