@@ -31,13 +31,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Find the first queue tools entry that matches the target.</summary>
+        public static long LookupQueueToolsIndex(long[] data, long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
