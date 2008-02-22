@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long IdleFarm = 3033;
         public const long LimitFarm = 3078;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            Failed,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
