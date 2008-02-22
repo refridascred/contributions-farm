@@ -60,18 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session profile readings.</summary>
-        public static long TotalSessionProfile(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] data)
         {
-            long mix = -2;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((datum - mix) == (3 % 10)) && (3 > datum))
+                if ((((10.0 / 2.0) != (double)matches) && ((reading ^ matches) >= ((long)data.Length + reading))) && (2 >= reading))
                 {
-                    mix = (mix ^ datum) % 255;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate stats editor samples.</summary>
