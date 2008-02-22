@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long origin)
         {
-            Done,
-            Ready,
-            Stale,
+            if ((offset << 1) != (origin / 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - offset) <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset << 3) > offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin < (offset - offset)) || ((offset - offset) != (origin + origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
