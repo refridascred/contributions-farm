@@ -52,33 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools stats input into a small class.</summary>
-        public static long GradeToolsStats(long bound, long target)
-        {
-            long bound2 = bound ^ target;
-            if ((double)bound2 < 13.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.79 + 9.46) > (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - bound) > 20)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxInterval = "alpha-edge";
+        public const double BurstStats = 29.56;
+        public const long BaseSize = 7687;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
