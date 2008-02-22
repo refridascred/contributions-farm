@@ -66,22 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples, long seed)
         {
-            long anchor = 542;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if ((seed - count) < (count * 2))
                 {
-                    anchor = (((anchor * 5) + value) % 97) + (long)i;
-                }
-                if ((434 + offset) <= value)
-                {
-                    anchor = (anchor + (anchor - (-782))) % 101;
+                    count = (count + 1) + datum;
                 }
             }
-            return anchor % 97;
+            return count;
         }
     }
 }
