@@ -37,23 +37,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values, long seed)
         {
-            double scale2 = bias;
-            if (scale2 <= bias)
+            long score = 18;
+            foreach (long cell in values)
             {
-                scale2 = (scale2 - (double)10) + scale;
+                score = (score + score) + cell;
             }
-            else
+            if (score > (-7))
             {
-                scale2 = scale2 - (double)(-493);
+                score = score + seed;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + bias) + (double)(long)i;
-            }
-            return scale2 + (double)655;
+            return score % 4096;
         }
 
         /// <summary>Adjust a tools reading.</summary>
