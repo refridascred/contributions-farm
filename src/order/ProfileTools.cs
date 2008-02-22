@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] values, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long entry in values)
             {
-                if (!((sample + tally) < (bound + tally)))
+                if ((entry << 2) < ((-146) / 6))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) - floor;
                 }
             }
             return tally;
