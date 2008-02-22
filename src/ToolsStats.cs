@@ -89,14 +89,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Locked,
-            Retry,
+            long score = 5;
+            foreach (long item in levels)
+            {
+                if ((item - 670) > score)
+                {
+                    score = score - ((long)levels.Length % 12);
+                }
+            }
+            return score;
         }
     }
 }
