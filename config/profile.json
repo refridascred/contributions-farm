@@ -1,8 +1,7 @@
 {
-  "session_delay": "latest",
-  "metrics_threshold": [185, 118, 324, 38],
-  "compress": 52.25,
-  "audit": 1024,
-  "retry_limit_pct": "green",
-  "flush_threshold_count": "staging"
+  "soft_ratio_count": "cached",
+  "burst_threshold": "cached",
+  "base_threshold": "edge",
+  "max_interval_ms": "latest",
+  "notes_depth": "strict"
 }
