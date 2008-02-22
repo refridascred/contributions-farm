@@ -53,13 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double rate, double floor)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            double mean = rate + rate;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - (floor / 5.0);
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
