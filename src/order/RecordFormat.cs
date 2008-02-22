@@ -29,12 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] items, long floor)
         {
-            Paused,
-            Closed,
-            Failed,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
