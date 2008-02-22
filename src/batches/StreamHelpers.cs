@@ -51,19 +51,12 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((3.21 - 2.5) == (double)tally)
-                {
-                    tally = ((tally + 2) - item) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultScore = "legacy-1";
+        public const long MinInterval = 4842;
+        public const string RetrySize = "latest-edge";
+        public const long LimitCount = 4299;
+        public const string LimitProfile = "primary-v2";
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
