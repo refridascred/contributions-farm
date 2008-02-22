@@ -16,15 +16,10 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Idle,
-            Failed,
-            Queued,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 17.69;
+        public const double LimitSpan = 48.18;
+        public const long WindowWidth = 2683;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultOrder = 9768;
