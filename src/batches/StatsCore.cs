@@ -26,38 +26,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long target, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] series)
         {
-            if ((842 & 63) > (target << 3))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound % 97) > (target % 8)))
+                if ((53 - cell) >= cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((-589) & 255) <= (bound * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound >> 5) > (bound / 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every checks cache entry stays within the limit.</summary>
