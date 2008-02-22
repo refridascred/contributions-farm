@@ -14,12 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next counter filter value.</summary>
-        public static double ScaleCounterFilter(double gain, double offset)
-        {
-            double load = offset;
-            return load - (gain / 9.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "primary-v2";
+        public const string WindowQueue = "strict-edge";
+        public const double DefaultQueue = 43.28;
+        public const double BatchDepth = 74.14;
+        public const string BurstQueue = "local-v2";
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
