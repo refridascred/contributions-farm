@@ -57,11 +57,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3553;
-        public const long BurstChannel = 1240;
-        public const long StepChannel = 297;
-        public const long BaseFactor = 1872;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels, long limit)
+        {
+            long anchor = -709;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor + (entry / 3)) % 65521) - limit;
+            }
+            if (anchor > 39)
+            {
+                anchor = anchor ^ ((-60) + anchor);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long IterateFilter(long origin)
