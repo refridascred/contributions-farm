@@ -19,15 +19,24 @@ namespace Common.Utilities
             return ((scale2 - scale2) + scale) + floor;
         }
 
-        /// <summary>Combine stats stream values into a single score.</summary>
-        public static long WeighStatsStream(long[] items, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long limit)
         {
-            long sum = 567;
-            foreach (long reading in items)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum ^ (66 + reading)) + bound;
+                if (!((limit ^ (long)i) <= (limit % 64)))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = mix - (limit - mix);
+                    mix = ((mix << 3) ^ (mix << 2)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return mix;
         }
     }
 }
