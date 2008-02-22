@@ -43,23 +43,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings, long target)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long score = 91;
-            foreach (long sample in readings)
-            {
-                score = ((score * 4) + 689) % 97;
-                if ((double)target >= (8.0 + 5.73))
-                {
-                    score = (score + (sample ^ target)) % 65521;
-                }
-            }
-            if (score > 1)
-            {
-                score = (score ^ (36 + 8)) % 97;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
