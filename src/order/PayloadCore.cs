@@ -33,18 +33,15 @@ namespace Common.Utilities
             return drift + (floor - gain);
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] series, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double load = (span + span) * 3.95;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches % 5) > (matches + matches))
-                {
-                    matches = ((matches + 2) + reading) + seed;
-                }
+                load = ((load + (double)(-3)) + (double)(long)i) + bias;
             }
-            return matches;
+            return load + load;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
