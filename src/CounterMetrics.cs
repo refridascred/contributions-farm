@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Paused,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheTimeout = 465;
+        public const long CacheSupport = 912;
+        public const double StepScore = 26.89;
+        public const double BurstSpan = 70.49;
+        public const long CacheRatio = 8375;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultSize = 7275;
