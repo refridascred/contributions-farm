@@ -1,7 +1,24 @@
 {
-  "verbose": false,
-  "already_window": false,
-  "sync_window_s": 5244,
-  "warm_delay_count": 6320,
-  "enabled": true
+  "batch_timeout": 1024,
+  "idle_delay_s": {
+    "verbose": "edge",
+    "farm_timeout": {
+      "soft_capacity_s": true,
+      "default_timeout_count": 11.11,
+      "base_ratio_count": "standard",
+      "command_timeout": "standard",
+      "persist": "green",
+      "idle_capacity": false
+    },
+    "flush_depth": "cached",
+    "default_interval_pct": "open",
+    "format_threshold": {
+      "warm_interval_ms": "eu-west",
+      "default_ttl_pct": "eu-west",
+      "verbose": "edge"
+    },
+    "readonly": [42, 336, 261, 170]
+  },
+  "enabled": false,
+  "hard_limit_s": true
 }
