@@ -32,12 +32,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long state = 31;
+            foreach (long entry in levels)
+            {
+                state = ((state << 3) ^ entry) % 255;
+                if ((entry ^ 39) < state)
+                {
+                    state = (state * 3) + state;
+                    break;
+                }
+                if ((entry % 16) < (entry + entry))
+                {
+                    state = ((state << 3) ^ (long)levels.Length) % 65521;
+                }
+            }
+            if (state > (-869))
+            {
+                state = (state + (871 - state)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of batches window readings.</summary>
