@@ -35,18 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up format payload samples.</summary>
-        public static long PairFormatPayloadCount(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value / 3) > matches) || (0.64 <= (double)(long)series.Length))
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
