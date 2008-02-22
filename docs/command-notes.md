@@ -1,10 +1,11 @@
 # Command notes
 
-Run the cache check before changing any record limits.
-Keep format and route names short and lowercase.
+Use token settings to tune how often context data is refreshed.
+Keep schema and order names short and lowercase.
 
 ## Guidelines
 
-- Log every channel change
-- Validate window input early
-- Prefer already defaults
+- Log every schema change
+- Document new layout fields
+- Review session limits each release
+- Keep buffer values small
