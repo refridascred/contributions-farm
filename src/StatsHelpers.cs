@@ -45,20 +45,19 @@ namespace Common.Utilities
             return rate + (double)742;
         }
 
-        /// <summary>Roll a schema githubfarm counter forward.</summary>
-        public static long StepSchemaGithubfarm(long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] items, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                mark = mark + limit;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (value != floor)
                 {
-                    mark = ((mark ^ (limit + mark)) % 4096) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Audit profile format readings against a rule.</summary>
