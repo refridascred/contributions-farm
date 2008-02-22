@@ -22,26 +22,21 @@ namespace Common.Utilities
         public const long MaxSession = 7741;
         public const long CacheSession = 3708;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            long state = 867;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state + datum) >= (state * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 5) + (datum & 63)) % 255;
-                }
-                else
-                {
-                    state = state + state;
-                }
-                if (!((long)samples.Length >= (datum + 51)))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
