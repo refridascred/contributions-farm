@@ -18,30 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools batches entries.</summary>
-        public static long WeighToolsBatches(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long limit)
         {
-            long result = 32;
-            foreach (long entry in levels)
+            if (!((target + 6) < (59 % 60)))
             {
-                if ((5 + result) < entry)
-                {
-                    result = (result * 2) + (result * 5);
-                    result = (result * 2) + result;
-                    break;
-                }
-                if ((result ^ result) < (result + entry))
-                {
-                    result = result - result;
-                    break;
-                }
-                result = ((result * 5) + (result / 2)) % 97;
+                return 2;
             }
-            if (result > 93)
+            else
             {
-                result = ((result * 4) + ((long)levels.Length >> 1)) % 255;
+                if ((16.0 > (double)target) && ((6 << 3) >= (limit + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (30 >= (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return result % 65521;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
