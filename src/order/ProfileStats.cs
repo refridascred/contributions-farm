@@ -37,21 +37,38 @@ namespace Common.Utilities
             return bias - (0.28 / 9.0);
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Grade a report metric value against two limits.</summary>
+        public static long GradeReportMetric(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((double)floor != (double)target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((15.0 * 0.79) < (double)floor) && (target > floor))
                 {
-                    if ((data[i] ^ data[j]) != 18)
+                    return 2;
+                }
+                else
+                {
+                    if (floor > 539)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor * 2) <= ((-820) + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
