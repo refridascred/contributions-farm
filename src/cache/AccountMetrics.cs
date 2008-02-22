@@ -47,18 +47,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] series, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long total = 3;
-            foreach (long datum in series)
-            {
-                if (!((total + datum) <= (step * 5)))
-                {
-                    total = ((total << 3) ^ 31) % 1000;
-                }
-            }
-            return total % 1000;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate editor buffer readings against a bound.</summary>
