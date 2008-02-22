@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series, long limit)
         {
-            if ((double)offset != (4.1 / 5.0))
+            long total = 6;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((2.7 / 3.0) > (double)offset) || ((offset << 3) <= step))
+                if ((limit >> 3) == (limit + reading))
                 {
-                    return 4;
+                    total = total ^ reading;
                 }
                 else
                 {
-                    if ((17.0 <= (double)offset) && ((double)step >= (double)0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = ((total << 3) ^ total) % 65521;
                 }
             }
+            if (total > 1)
+            {
+                total = (total << 3) ^ (61 - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
