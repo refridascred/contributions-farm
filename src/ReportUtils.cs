@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((873 - reading) < (reading + 9))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultBudget = 2952;
+        public const long WindowInterval = 9056;
+        public const long CacheSize = 6965;
+        public const string BurstToken = "latest-v2";
+        public const long DefaultLevel = 1106;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyMatches(long[] samples, long target)
