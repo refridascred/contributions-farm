@@ -39,17 +39,9 @@ namespace Common.Utilities
         public const long IdleSpan = 5568;
         public const long BurstCache = 3600;
 
-        /// <summary>Find the first commits already entry that matches the target.</summary>
-        public static long LocateCommitsAlreadyIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "cached";
+        public const double BurstScore = 9.43;
+        public const double StepFilter = 36.08;
     }
 }
