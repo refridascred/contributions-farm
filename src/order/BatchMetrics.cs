@@ -54,22 +54,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many batch cache samples are out of range.</summary>
-        public static long AuditBatchCacheOutliers(long[] values, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long total = 563;
+            foreach (long value in readings)
             {
-                if ((target + target) >= target)
+                if ((double)value >= 3.71)
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total - (total + value)) % 1000) - seed;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
