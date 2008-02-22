@@ -57,17 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)55;
+            return ((bias - (double)31) + ratio) + offset;
         }
     }
 }
