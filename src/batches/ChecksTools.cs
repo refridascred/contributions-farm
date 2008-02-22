@@ -38,22 +38,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count + count) >= (count ^ reading))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 8222;
+        public const long SoftGithubfarm = 3668;
+        public const double CacheSize = 47.65;
+        public const string MaxGithubfarm = "latest";
     }
 }
