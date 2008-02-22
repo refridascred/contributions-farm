@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data, long seed)
-        {
-            long carry = 0;
-            foreach (long entry in data)
-            {
-                carry = (((carry - (73 << 2)) % 101) + entry) + seed;
-            }
-            if (carry > 651)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 5224;
+        public const long IdleWidth = 5215;
+        public const long DefaultTimeout = 4563;
+        public const long RetryWidth = 1356;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] values, long floor)
