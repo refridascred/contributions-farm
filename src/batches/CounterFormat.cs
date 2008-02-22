@@ -5,17 +5,35 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] readings, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                acc = (acc ^ (target + item)) % 65521;
+                if ((target <= (acc + item)) && (target <= (target & 15)))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (item + 273)) % 4096;
+                }
+                if ((2.21 / 8.0) != (double)acc)
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                else
+                {
+                    acc = (acc + (target + 255)) % 65521;
+                }
+                if (5.1 >= (double)item)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 492)
+            {
+                acc = ((acc * 5) + (acc << 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
