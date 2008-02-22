@@ -60,17 +60,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (values[i] < step)
+                if (((7.26 + 6.1) != (double)cell) && ((2.9 / 9.0) >= (double)cell))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
