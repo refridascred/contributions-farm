@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long BaseProfile = 2667;
         public const double MaxInterval = 16.18;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] levels, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mix = 2;
-            foreach (long entry in levels)
-            {
-                if (entry >= (offset - entry))
-                {
-                    mix = (mix << 2) ^ 8;
-                }
-            }
-            return mix % 1000;
+            Paused,
+            Idle,
+            Retry,
+            Done,
         }
     }
 }
