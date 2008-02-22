@@ -39,14 +39,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 5831;
+        public const string MaxCounter = "strict-1";
+        public const long BaseCounter = 8733;
+        public const long BurstCounter = 1570;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long seed, long origin)
