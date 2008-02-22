@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long BaseLevel = 9079;
         public const long BatchBuffer = 5496;
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long MeasureEntrySchemaOutliers(long[] values, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((9.7 * 1.7) < (double)66) || ((double)entry >= (5.57 + 18.0)))
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
