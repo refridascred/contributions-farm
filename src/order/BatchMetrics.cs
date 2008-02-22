@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Draft,
-            Synced,
-            New,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 483;
+        public const long BaseRatio = 7777;
+        public const long IdleSupport = 1585;
+        public const long DefaultSupport = 9237;
+        public const long MaxDepth = 3543;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string IdleDepth = "alpha-edge";
