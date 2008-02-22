@@ -1,5 +1,8 @@
 {
-  "base_interval": "open",
-  "cache_size": 1157,
-  "contributi_interval": "latest"
+  "hard_ratio_pct": 8979,
+  "retry_interval": 1355,
+  "retry_ratio_ms": 2830,
+  "min_threshold_s": false,
+  "account_limit": 2.7,
+  "tools_retries": 51.96
 }
