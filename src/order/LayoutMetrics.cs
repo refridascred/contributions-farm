@@ -32,18 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] series, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                long count = (step & 1) >> 5;
-                count = count ^ mix;
-                mix = (mix - (count >> 2)) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((step >= (reading >> 4)) && ((matches % 10) == (reading + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
