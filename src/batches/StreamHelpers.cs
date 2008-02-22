@@ -45,17 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cache checks entry that matches the target.</summary>
-        public static long LocateCacheChecksIndex(long[] readings, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long item in items)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ (item + 14);
             }
-            return -1;
+            if (acc < 81)
+            {
+                acc = (acc << 2) ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
