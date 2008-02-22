@@ -65,19 +65,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next support batches value.</summary>
-        public static double ScaleSupportBatches(double ratio, double bias)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double gain = 4.88;
-            if (gain > 4.0)
-            {
-                gain = gain + ratio;
-            }
-            else
-            {
-                gain = gain + (ratio - 12.0);
-            }
-            return gain - (gain + bias);
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
