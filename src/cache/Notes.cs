@@ -40,13 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            double rate = (double)(2 ^ 68);
+            if (rate <= bias)
+            {
+                rate = (rate - rate) - bias2;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate * 6.37)) + (double)(long)i;
+            }
+            return rate - (bias - bias);
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
