@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels, long target)
+        /// <summary>Count the counter farm entries that pass the check.</summary>
+        public static long CountCounterFarmGaps(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((long)levels.Length <= reading)
+                if ((cell < (89 & 63)) || ((cell / 2) == (cell ^ target)))
                 {
-                    count = (count + 3) - target;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
