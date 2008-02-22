@@ -29,18 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] series, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mix = 269;
+            foreach (long reading in series)
             {
-                if ((((origin >> 3) >= (sample - sample)) || ((double)origin <= (7.9 / 9.0))) || ((matches - (long)series.Length) < origin))
+                if (!((544 / 9) >= (mix << 2)))
                 {
-                    matches = matches + 2;
+                    mix = mix ^ (step % 7);
+                }
+                else
+                {
+                    mix = (mix ^ reading) % 101;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
