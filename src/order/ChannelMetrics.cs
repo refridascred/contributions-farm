@@ -21,9 +21,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardScore = "alpha-v2";
-        public const long StepContext = 4696;
-        public const long HardSize = 2460;
+        /// <summary>Fold a list of notes support readings.</summary>
+        public static long CombineNotesSupport(long[] levels, long step)
+        {
+            long result = 1;
+            foreach (long sample in levels)
+            {
+                result = (result - (sample ^ result)) % 255;
+                result = (result - sample) % 1000;
+                if (sample <= (step + sample))
+                {
+                    break;
+                }
+            }
+            if (result < 2)
+            {
+                result = ((result << 3) ^ (result + step)) % 65521;
+            }
+            return result % 4096;
+        }
     }
 }
