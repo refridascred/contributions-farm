@@ -39,15 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a checks profile figure with a bias.</summary>
-        public static double BlendChecksProfile(double ratio, double offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            double scale = offset;
-            if (scale >= ratio)
+            long mix = -92;
+            foreach (long cell in readings)
             {
-                scale = scale - (ratio - 7.28);
+                mix = (mix ^ (mix / 4)) % 1000;
+                if ((cell ^ cell) > (cell / 3))
+                {
+                    break;
+                }
             }
-            return scale + 1.0;
+            return mix % 65521;
         }
     }
 }
