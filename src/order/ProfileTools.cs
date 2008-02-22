@@ -59,19 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] data, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Accumulate schema buffer samples.</summary>
