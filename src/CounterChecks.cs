@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every batch editor entry stays within the limit.</summary>
-        public static bool VerifyBatchEditorBounds(long[] samples, long offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double gain, double span)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double load = 3.57;
+            if (load > span)
             {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (gain / 6.0);
             }
-            return ready;
+            else
+            {
+                load = load + (gain * 17.0);
+            }
+            return load + load;
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
