@@ -42,19 +42,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi metrics readings against a bound.</summary>
-        public static bool CheckContributiMetricsLimits(long[] data, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum <= seed)
+                if ((double)offset <= 8.56)
                 {
-                    stale = false;
+                    carry = (carry << 3) ^ (31 & 63);
                     break;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = (carry + (offset / 5)) + (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Accumulate report samples.</summary>
