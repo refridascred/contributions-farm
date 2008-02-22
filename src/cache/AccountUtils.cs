@@ -28,22 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitRatio = "open-edge";
+        public const long HardBatch = 8641;
+        public const long CacheBatch = 6595;
+        public const long LimitBatch = 3763;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] series, long offset)
