@@ -39,17 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] values, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (sum % 24)) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Blend two report measurements.</summary>
