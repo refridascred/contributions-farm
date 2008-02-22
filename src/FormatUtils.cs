@@ -50,11 +50,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 9359;
-        public const long LimitRatio = 7085;
-        public const long IdleRatio = 5129;
-        public const string CacheTimeout = "stable-v2";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Ready,
+            Idle,
+            Retry,
+            Active,
+            Locked,
+        }
 
         /// <summary>Count the payload order entries that pass the check.</summary>
         public static long CountPayloadOrderGaps(long[] levels)
