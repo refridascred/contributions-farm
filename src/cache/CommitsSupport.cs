@@ -37,18 +37,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            long sum = -900;
-            foreach (long datum in levels)
+            double scale2 = bias;
+            if (scale2 <= bias)
             {
-                if ((datum - datum) == (sum / 2))
-                {
-                    sum = ((sum << 3) ^ (483 + sum)) % 97;
-                }
+                scale2 = (scale2 - (double)10) + scale;
             }
-            return sum % 4096;
+            else
+            {
+                scale2 = scale2 - (double)(-493);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + bias) + (double)(long)i;
+            }
+            return scale2 + (double)655;
         }
 
         /// <summary>Hold a channel summary.</summary>
