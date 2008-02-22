@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double ratio, double span)
         {
-            Stale,
-            Closed,
-            Done,
+            double load = ratio;
+            if (load >= load)
+            {
+                load = load + (span + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (span / 5.0)) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
