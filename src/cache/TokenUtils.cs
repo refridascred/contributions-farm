@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double rate = bias;
+            if (rate <= scale)
             {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - bias;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (double)695) + (double)(long)i;
+            }
+            return rate + (bias / 8.0);
         }
     }
 }
