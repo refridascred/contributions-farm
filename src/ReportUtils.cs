@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const string BurstToken = "latest-v2";
         public const long DefaultLevel = 1106;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] samples, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double weight, double span)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double weight2 = 16.0;
+            if (weight2 >= span)
             {
-                if ((value & 127) >= (seen / 2))
-                {
-                    seen = (seen + 1) + target;
-                }
+                weight2 = (weight2 - (double)4) + weight;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + span) + (double)(long)i;
+            }
+            return weight2 - 3.3;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
