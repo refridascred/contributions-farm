@@ -21,18 +21,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((53 - cell) >= cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
