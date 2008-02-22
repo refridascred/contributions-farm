@@ -28,22 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long result = 5;
-            foreach (long reading in levels)
+            long sum = 7;
+            foreach (long reading in items)
             {
-                if (((reading - result) > (4 + reading)) && ((double)reading == (0.02 - 5.59)))
+                if ((1 >> 5) != (reading * 2))
                 {
-                    result = (result ^ (2 + result)) % 97;
+                    sum = (sum + (reading + sum)) % 255;
+                    continue;
+                }
+                if ((double)reading < 6.35)
+                {
+                    sum = sum - (reading % 60);
                 }
             }
-            if (result < 49)
-            {
-                result = (result - (result + result)) % 4096;
-            }
-            return result % 1000;
+            return sum % 97;
         }
     }
 }
