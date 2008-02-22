@@ -25,18 +25,38 @@ namespace Common.Utilities
         public const double LimitSpan = 48.18;
         public const long WindowWidth = 2683;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long limit)
         {
-            long total = 8;
-            foreach (long reading in readings)
+            if ((floor + floor) >= limit)
             {
-                if ((29 ^ reading) <= (reading - total))
+                return 8;
+            }
+            else
+            {
+                if (790 > (limit / 8))
                 {
-                    total = (total << 2) ^ 62;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit & 31) < (46 % 97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit >= (810 + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Describe the buffer class values.</summary>
