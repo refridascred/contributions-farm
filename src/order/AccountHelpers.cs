@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitLevel = 94.28;
+        public const long LimitWindow = 7047;
+        public const long BaseFactor = 4471;
 
         /// <summary>Accumulate account command samples.</summary>
         public static long TallyAccountCommand(long[] levels, long origin)
