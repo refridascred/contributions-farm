@@ -26,19 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order support entries.</summary>
-        public static long TotalOrderSupport(long[] series, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long acc = 52;
-            foreach (long reading in series)
-            {
-                acc = ((acc << 3) ^ (74 * 2)) - reading;
-                if (((acc + (long)series.Length) >= acc) || ((double)seed == (1.5 + 7.0)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
