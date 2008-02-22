@@ -31,17 +31,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] items, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 7;
+            foreach (long cell in levels)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) != 0))
+                mix = (mix ^ origin) % 97;
+                if ((mix + 8) > 86)
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (cell ^ origin)) % 101;
+                }
+                if ((origin << 2) < (mix ^ cell))
+                {
+                    mix = (mix * 5) + (origin + cell);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
