@@ -50,13 +50,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long step)
         {
-            Retry,
-            Synced,
-            Stale,
-            Dropped,
+            if ((14.0 + 0.4) == (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)step >= (double)seed) || ((seed % 97) > (0 - step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (step & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
