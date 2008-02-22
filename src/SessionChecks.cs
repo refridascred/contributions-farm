@@ -40,21 +40,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 32;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total + total) > total)
                 {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 5) + cell) % 1000;
+                }
+                if ((total > (56 >> 2)) || ((double)total <= (7.9 * 19.0)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total % 1000;
         }
     }
 }
