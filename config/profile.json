@@ -1,5 +1,18 @@
 {
-  "verbose": 30.4,
-  "burst_interval_count": "eu-west",
-  "batch_interval": 73.0
+  "order_limit": {
+    "window_window": 85,
+    "max_limit_ms": 52,
+    "cache_timeout_pct": "stable",
+    "farm_delay": [276, 175, 306],
+    "account_ratio": 2875,
+    "tools_timeout": 30
+  },
+  "window_interval": "stable",
+  "default_threshold_pct": "edge",
+  "window_size": {
+    "channel_limit": "strict",
+    "retry_retries_pct": 60,
+    "min_timeout_pct": "latest"
+  },
+  "filter_threshold": 3034
 }
