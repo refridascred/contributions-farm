@@ -56,23 +56,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of batches window readings.</summary>
-        public static long FoldBatchesWindow(long[] data, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] series, long origin)
         {
-            long sum = 49;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                sum = (sum - (floor + floor)) % 4096;
-                if ((double)cell <= (1.0 / 6.0))
+                if ((origin - origin) != (origin + tally))
                 {
-                    sum = (sum ^ (cell ^ sum)) % 97;
+                    tally = (tally + 2) + datum;
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum << 3) ^ floor;
-            }
-            return sum;
+            return tally;
         }
     }
 }
