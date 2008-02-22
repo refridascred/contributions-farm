@@ -45,24 +45,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next graph tools value from a seed.</summary>
-        public static long SeriesGraphTools(long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] data, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                long prev = (offset * 4) >> 5;
-                if ((prev >> 3) == ((long)i * 4))
+                if (cell != floor)
                 {
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    prev = (prev + (score << 2)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
