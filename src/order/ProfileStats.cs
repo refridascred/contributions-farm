@@ -24,21 +24,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up filter window samples.</summary>
-        public static long CompareFilterWindowCount(long[] items)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = gain;
+            if (bias > (double)3)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + bias) + offset;
             }
-            return hits;
+            return bias - (0.28 / 9.0);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
