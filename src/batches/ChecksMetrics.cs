@@ -56,11 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two graph measurements.</summary>
