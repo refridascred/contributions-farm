@@ -1,7 +1,4 @@
 # support settings
-warm_timeout: 31.9
-idle_window_ms: 39.0
-max_limit_s: 20
-hard_delay:
-  - 7
-  - 342
+enabled: 3517
+warm_capacity: 59.13
+retry_ttl_count: strict
