@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a format record pair into a bucket.</summary>
-        public static long RankFormatRecord(long origin, long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if ((double)target <= (1.8 / 8.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target >= (origin / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
