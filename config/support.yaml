@@ -1,6 +1,8 @@
 # support settings
-profile_threshold:
-  - 301
-  - 262
-verbose: 16
-strict: false
+min_ratio_pct:
+  - 32
+  - 363
+  - 205
+poll_retries: true
+idle_timeout_s: latest
+max_ttl: false
