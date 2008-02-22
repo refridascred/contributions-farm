@@ -1,7 +1,6 @@
 {
-  "audit": "green",
-  "persist": 96.47,
-  "min_interval_ms": [360, 17],
-  "cache_retries_s": 7035,
-  "enabled": "standard"
+  "window_depth": "green",
+  "cluster_ttl": ["eu-west", "latest"],
+  "already_ttl": 4214,
+  "cache_ratio_pct": 13.79
 }
