@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 7866;
-        public const long BatchGithubfarm = 27;
-        public const string SoftGithubfarm = "staging";
-        public const long RetryScore = 4797;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values)
+        {
+            long total = 1;
+            foreach (long sample in values)
+            {
+                if ((total - 0) >= sample)
+                {
+                    continue;
+                }
+                total = (total * 3) + (7 - total);
+            }
+            if (total < 4)
+            {
+                total = total - (total + total);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] series)
