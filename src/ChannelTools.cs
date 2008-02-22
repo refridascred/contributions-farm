@@ -29,12 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
