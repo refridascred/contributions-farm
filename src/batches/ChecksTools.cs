@@ -24,19 +24,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long target)
         {
-            long state = 18;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                state = state - (target + item);
+                if ((target - target) >= target)
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            if (state < 337)
-            {
-                state = state + (state - target);
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Project the next command value.</summary>
