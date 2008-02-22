@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long seed)
         {
-            long acc = 29;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc + (acc + acc)) % 1000) + entry;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
