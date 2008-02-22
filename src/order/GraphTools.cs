@@ -36,27 +36,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] samples, long floor)
-        {
-            long state = 57;
-            foreach (long value in samples)
-            {
-                if ((floor / 3) >= (long)samples.Length)
-                {
-                    state = (state ^ (value - state)) % 97;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state >> 1);
-                }
-            }
-            if (state > 8)
-            {
-                state = ((state * 5) + 6) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinWidth = "staging-1";
+        public const long WindowOrder = 2645;
+        public const double SoftFactor = 34.14;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
