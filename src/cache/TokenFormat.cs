@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string StepScore = "stable-v2";
         public const long WindowCounter = 7639;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((((count - count) > (count * 5)) && ((count / 5) >= (reading << 3))) && !((count >> 3) != (reading % 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Match up payload samples.</summary>
