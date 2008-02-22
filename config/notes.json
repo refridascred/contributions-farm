@@ -1,6 +1,5 @@
 {
-  "enabled": 7,
-  "report_retries": "open",
-  "flush_size_s": 2918,
-  "poll_timeout": "staging"
+  "max_ratio_pct": 5406,
+  "max_ttl_pct": "legacy",
+  "soft_capacity_count": 6305
 }
