@@ -1,16 +1,6 @@
 {
-  "batch_threshold_pct": 3.04,
-  "enabled": {
-    "poll_window_count": ["local", "fallback", "blue", "open"],
-    "flush_delay": 20,
-    "buffer_capacity": "stable",
-    "graph_ttl": ["eu-west", "open", "primary"]
-  },
-  "audit": ["blue", "latest"],
-  "persist": {
-    "burst_delay_s": 250,
-    "base_threshold_pct": 13,
-    "flush_timeout_pct": false
-  },
-  "batch_delay": "fallback"
+  "checks_ttl": ["fallback", "legacy", "primary"],
+  "hard_depth_ms": 1024,
+  "farm_ratio": 250,
+  "enabled": true
 }
