@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up session graph samples.</summary>
-        public static long PairSessionGraphCount(long[] series)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 10)
+                    if ((samples[i] ^ samples[j]) > 6)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
