@@ -27,13 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            Done,
-            Queued,
-            Retry,
-            Locked,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + 2) <= (datum + datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
