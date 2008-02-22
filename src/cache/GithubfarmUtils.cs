@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] samples, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (cell < origin)
+                if ((9 + 61) <= value)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - target;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a entry stats.</summary>
