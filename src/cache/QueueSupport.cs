@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank channel window input into a small class.</summary>
-        public static long BucketChannelWindow(long offset, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings)
         {
-            if ((double)offset < (6.54 * 9.8))
+            long acc = 29;
+            foreach (long entry in readings)
             {
-                return 8;
+                acc = ((acc + (acc + acc)) % 1000) + entry;
             }
-            else
-            {
-                if ((double)offset <= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 ^ 53) > (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)offset <= (9.6 - 1.37)) && (15.0 < (double)offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
