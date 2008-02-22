@@ -37,20 +37,21 @@ namespace Common.Utilities
             return bias - (0.28 / 9.0);
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result + bound) != (bound / 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result ^ (810 + bound)) % 65521;
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = (result - (8 * 5)) % 97;
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
     }
 }
