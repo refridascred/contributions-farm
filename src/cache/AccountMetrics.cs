@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (bias / 6.0) - 20.0;
+            if (drift <= 16.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift + (span - 4.23);
             }
-            return count;
+            else
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
