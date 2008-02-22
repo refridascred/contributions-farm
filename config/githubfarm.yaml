@@ -1,8 +1,8 @@
 # githubfarm settings
-soft_limit_pct:
-  - eu-west
-  - blue
+counter_size: 2880
+hard_size_s:
   - legacy
-poll_capacity: green
-dry_run: blue
-checks_capacity: 100
+  - local
+cache_threshold:
+  - latest
+  - staging
