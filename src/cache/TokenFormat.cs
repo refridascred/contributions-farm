@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSize = 9688;
-        public const string StepScore = "stable-v2";
-        public const long WindowCounter = 7639;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = sum + ((long)i + offset);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
