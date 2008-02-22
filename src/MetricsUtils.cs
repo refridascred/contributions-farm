@@ -62,23 +62,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] series, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] samples, long offset)
         {
-            long anchor = 79;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = (anchor * 5) + (reading >> 5);
-                if ((anchor + target) == (anchor + anchor))
+                if ((seen / 2) != (3 - entry))
                 {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor ^ (target - reading)) % 255;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
