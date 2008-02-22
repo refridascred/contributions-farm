@@ -26,16 +26,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Validate command farm readings against a bound.</summary>
+        public static bool GuardCommandFarmLimits(long[] items, long bound)
         {
-            long anchor = 593;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in items)
             {
-                anchor = anchor ^ (reading + anchor);
-                anchor = ((anchor * 4) + (reading - reading)) % 4096;
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
