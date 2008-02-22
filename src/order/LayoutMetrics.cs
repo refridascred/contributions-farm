@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] items, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 32;
+            foreach (long entry in values)
             {
-                if (items[i] >= offset)
+                if ((mark + mark) != (mark & 15))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (591 >> 3);
+                }
+                if ((4.92 / 8.0) < (double)entry)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 118)
+            {
+                mark = (mark << 2) ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
