@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = 416;
+            foreach (long sample in values)
             {
-                if ((seen % 16) >= item)
+                carry = carry + (bound & 7);
+                if ((carry - sample) != (bound << 2))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Find the first filter githubfarm entry that matches the target.</summary>
