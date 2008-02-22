@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double ratio, double span)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double load = ratio;
-            if (load >= load)
-            {
-                load = load + (span + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (span / 5.0)) + (double)(long)i;
-            }
-            return load - span;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
