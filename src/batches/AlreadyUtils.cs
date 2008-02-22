@@ -47,11 +47,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 240;
-        public const string DefaultTimeout = "stable-v2";
-        public const string BaseOrder = "primary";
-        public const double LimitWidth = 55.56;
-        public const long HardOrder = 134;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long seed)
+        {
+            if (((seed & 3) < seed) && ((9.37 - 9.5) > (double)seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)456 <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ 311) > (seed % 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
