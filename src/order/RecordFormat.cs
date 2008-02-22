@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
