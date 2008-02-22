@@ -54,18 +54,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((-44) ^ value) < (value + value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
