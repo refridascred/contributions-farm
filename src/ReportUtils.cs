@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultBudget = 2952;
-        public const long WindowInterval = 9056;
-        public const long CacheSize = 6965;
-        public const string BurstToken = "latest-v2";
-        public const long DefaultLevel = 1106;
+        /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
+        public static long CompareContributiProfileCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ScaleBatch(double weight, double span)
