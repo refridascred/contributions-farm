@@ -16,13 +16,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double bias, double bias2)
         {
-            Idle,
-            Failed,
-            Stale,
-            Done,
+            double rate = bias2;
+            if (rate <= bias2)
+            {
+                rate = (rate - rate) - bias;
+            }
+            else
+            {
+                rate = rate + (double)21;
+            }
+            return rate + bias2;
         }
 
         /// <summary>Hold a checks header.</summary>
