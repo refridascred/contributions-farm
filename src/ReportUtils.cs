@@ -10,16 +10,17 @@ namespace Common.Utilities
         public const long RetrySupport = 4873;
         public const long BaseSpan = 5988;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc << 3) ^ origin;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a notes contributi figure with a bias.</summary>
