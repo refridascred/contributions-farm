@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Ready,
-            Draft,
-            Locked,
-            Idle,
-            Queued,
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
