@@ -1,9 +1,14 @@
 # support settings
-min_interval_s: stable
-profile_ratio:
-  - open
-  - latest
-  - open
-  - edge
-sync_ratio_count: 25.93
-batch_ratio_ms: 22.55
+burst_retries_s: 15.78
+schema_limit:
+  min_limit_ms: true
+  burst_ttl_s:
+    - 196
+    - 143
+    - 162
+    - 253
+  readonly: 9135
+  flush_window_s: 500
+  retry_ttl: eu-west
+default_size_ms: 7698
+contributi_size: 12
