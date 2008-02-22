@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of contributi token entries.</summary>
-        public static long DigestContributiToken(long[] series, long step)
+        /// <summary>Digest a series of counter notes entries.</summary>
+        public static long CombineCounterNotes(long[] samples, long offset)
         {
-            long mark = 526;
-            foreach (long value in series)
+            long carry = 2;
+            foreach (long datum in samples)
             {
-                if ((double)step >= 2.02)
-                {
-                    mark = (mark - (value >> 4)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (value & 1)) % 255;
-                    mark = (mark * 5) + (mark ^ 35);
-                }
-                if ((value % 60) <= step)
-                {
-                    mark = mark ^ 1;
-                }
+                carry = ((((carry << 3) ^ (carry % 97)) % 101) - datum) - offset;
             }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Describe the account class values.</summary>
