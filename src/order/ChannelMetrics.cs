@@ -12,17 +12,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] items, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] > origin) && ((items[i] % 3) == 0))
+                if (8.92 > (1.9 + 8.2))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of notes support readings.</summary>
