@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double ratio, double floor)
         {
-            Locked,
-            Synced,
-            Queued,
-            Ready,
+            double mean = (double)(86 + (-781));
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + (floor + floor)) - (double)(long)i) - ratio;
+            }
+            return mean - (5.17 * 0.6);
         }
 
         /// <summary>Define route limits and defaults.</summary>
