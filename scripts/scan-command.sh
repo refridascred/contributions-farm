@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=53
+log "limit is ${COMMAND_LIMIT}"
 
-for item in blue fallback edge; do
+for item in fallback standard staging legacy; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=73
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
