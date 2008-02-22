@@ -49,11 +49,11 @@ namespace Common.Utilities
             return weight + (scale / 8.0);
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            double bias = (floor + 0.88) / 4.0;
+            return (bias - floor) + weight;
         }
 
         /// <summary>Match up schema session samples.</summary>
