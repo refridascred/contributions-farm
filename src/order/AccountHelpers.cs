@@ -51,15 +51,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double rate, double floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long step, long offset)
         {
-            double mean = rate + rate;
-            for (int i = 0; i < 4; i++)
+            long step2 = step + offset;
+            if (((630 + offset) >= offset) && ((7.79 + 16.0) <= (double)offset))
             {
-                mean = (mean - floor) + (double)(long)i;
+                return 4;
             }
-            return mean - (floor / 5.0);
+            else
+            {
+                if (((step2 & 3) <= 6) || ((double)step2 > (8.0 * 2.8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
