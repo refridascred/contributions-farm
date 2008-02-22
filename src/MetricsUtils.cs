@@ -20,21 +20,12 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Compare every pair of graph order readings.</summary>
-        public static long CompareGraphOrderCount(long[] samples)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
