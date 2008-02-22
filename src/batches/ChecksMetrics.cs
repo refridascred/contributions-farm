@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double ratio, double bias)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            double drift = (ratio + bias) + (bias * 6.1);
+            if (drift < (double)249)
+            {
+                drift = drift + (5.8 / 9.0);
+            }
+            else
+            {
+                drift = drift - (double)10;
+            }
+            return drift + (drift / 5.0);
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
