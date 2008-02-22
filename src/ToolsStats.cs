@@ -76,23 +76,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values, long target)
-        {
-            long state = 331;
-            foreach (long cell in values)
-            {
-                if ((17.0 + 1.0) == (double)cell)
-                {
-                    state = ((state * 4) + (state - target)) % 97;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state + 6)) % 97;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultLevel = "alpha-edge";
+        public const double WindowRecord = 45.77;
+        public const double SoftTimeout = 10.89;
+        public const string BaseInterval = "staging-edge";
+        public const string IdleFactor = "cached-1";
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] samples, long offset)
