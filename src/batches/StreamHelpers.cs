@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6140;
-        public const long MaxTimeout = 2952;
-        public const long MaxProfile = 2655;
-        public const long DefaultProfile = 2941;
+        /// <summary>Check that every cache account entry stays within the limit.</summary>
+        public static bool CheckCacheAccountRange(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] samples)
