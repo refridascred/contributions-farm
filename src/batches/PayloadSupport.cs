@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long BatchBudget = 6773;
         public const double MaxInterval = 31.54;
 
-        /// <summary>Count the filter batches entries that pass the check.</summary>
-        public static long TallyFilterBatchesOutliers(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long acc = 0;
+            foreach (long entry in series)
             {
-                if (582 < (6 - datum))
-                {
-                    hits = hits + 3;
-                }
+                acc = (acc * 5) + 7;
+                acc = (acc << 2) ^ (entry / 6);
+                acc = acc ^ ((-904) - 569);
             }
-            return hits;
+            if (acc > (-427))
+            {
+                acc = (acc << 3) ^ (floor ^ acc);
+            }
+            return acc;
         }
     }
 }
