@@ -35,17 +35,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] data, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = 5.6;
+            if (drift < span)
             {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)(-2)) - weight;
             }
-            return -1;
+            else
+            {
+                drift = drift - 7.79;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)286) + (double)(long)i;
+            }
+            return drift - (double)3;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
