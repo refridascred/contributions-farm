@@ -24,13 +24,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Draft,
-            Stale,
-            Synced,
-            Retry,
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Match up order samples.</summary>
