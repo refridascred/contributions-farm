@@ -65,15 +65,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double gain2 = offset * 1.64;
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = ((gain2 + (double)6) - (double)(long)i) + gain;
-            }
-            return gain2 + (gain2 + offset);
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
