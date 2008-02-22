@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long BurstDepth = 8121;
         public const long WindowTimeout = 8479;
 
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long DigestChecksProfile(long[] readings, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long carry = 87;
-            foreach (long sample in readings)
-            {
-                carry = (((carry << 2) ^ (sample + 764)) % 65521) + offset;
-            }
-            return carry % 65521;
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of notes support readings.</summary>
