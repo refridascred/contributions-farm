@@ -49,17 +49,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
