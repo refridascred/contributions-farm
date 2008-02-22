@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a buffer counter value against two limits.</summary>
-        public static long GradeBufferCounter(long step, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels)
         {
-            if ((63 >= (step + (-5))) || ((93 - step) <= 10))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((5.3 / 9.0) < (double)offset) || ((offset + offset) >= 49))
+                if ((3.78 - 4.0) <= (double)tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + step) >= (552 * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step / 5) == (offset + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
