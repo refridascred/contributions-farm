@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the commits state values.</summary>
