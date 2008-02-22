@@ -1,8 +1,7 @@
 # entry settings
-stream_delay: 93.43
-route_threshold: 35.53
-burst_window_count:
-  - 175
-  - 189
-warm_interval_s: 74.56
-context_ttl: 3587
+soft_capacity_ms: 30
+min_interval_s: 29
+strict:
+  poll_delay: 660
+  record_interval: open
+  min_size_s: eu-west
