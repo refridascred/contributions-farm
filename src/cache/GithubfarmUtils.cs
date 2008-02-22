@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics record reading by value.</summary>
-        public static long SeekMetricsRecordIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "standard-edge";
+        public const long CacheScore = 9817;
+        public const long HardStats = 433;
+        public const long RetryStats = 2355;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ScaleFarm(double ratio, double bias)
