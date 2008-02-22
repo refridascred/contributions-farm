@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const long SoftFilter = 2994;
         public const string StepBudget = "local";
 
-        /// <summary>Measure how many counter command samples are out of range.</summary>
-        public static long CountCounterCommandGaps(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long acc = 758;
+            foreach (long entry in data)
             {
-                if ((47 + value) == (908 / 6))
+                if ((acc - 7) != (limit << 3))
                 {
-                    matches = matches + 1;
+                    acc = ((acc - limit) % 97) ^ entry;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Describe the session class values.</summary>
