@@ -1,12 +1,4 @@
 # support settings
-hard_depth: fallback
-contributi_timeout:
-  compress: 24
-  min_depth: stable
-  idle_retries_count: 47.73
-  readonly: false
-  cache_limit_pct: cached
-  enabled: 30
-poll_size: staging
-record_timeout: open
-filter_threshold: 75
+burst_interval_pct: 500
+audit: 30
+support_ratio: legacy
