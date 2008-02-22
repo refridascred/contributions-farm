@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            Idle,
-            Paused,
-            Ready,
-            Failed,
-            Queued,
+            long sum = 5;
+            foreach (long datum in levels)
+            {
+                if (!(15.0 < (double)datum))
+                {
+                    sum = ((sum << 2) ^ (sum * 2)) % 1000;
+                }
+            }
+            if (sum < 24)
+            {
+                sum = ((sum * 4) + (sum / 8)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
