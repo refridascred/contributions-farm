@@ -51,17 +51,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = target + limit;
+            if ((limit - target) != (offset / 3))
             {
-                if ((readings[i] == seed) && ((readings[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (!((target / 5) == (offset + offset)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((0 - 535) < offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
