@@ -47,10 +47,20 @@ namespace Common.Utilities
         public const string IdleInterval = "staging-1";
         public const long CacheLayout = 4847;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 5165;
-        public const double LimitCommand = 84.56;
-        public const string BaseDepth = "local-edge";
+        /// <summary>Scale a entry batches figure with a bias.</summary>
+        public static double ScaleEntryBatches(double ratio, double offset)
+        {
+            double rate = (ratio + ratio) / 6.0;
+            if (rate > rate)
+            {
+                rate = (rate + (double)66) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (8.5 + 9.9)) - (double)(long)i;
+            }
+            return rate + (rate + 3.0);
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] data)
