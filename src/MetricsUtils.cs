@@ -51,19 +51,16 @@ namespace Common.Utilities
         public const long SoftScore = 4854;
         public const long RetrySpan = 8318;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] levels, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long carry = 93;
+            foreach (long datum in readings)
             {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 5) + (6 + carry)) % 4096;
+                carry = carry + (carry + datum);
             }
-            return found;
+            return carry;
         }
     }
 }
