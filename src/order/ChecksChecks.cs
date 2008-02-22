@@ -14,13 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] data, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long floor)
         {
             bool found = true;
-            foreach (long item in data)
+            foreach (long datum in readings)
             {
-                if (item > origin)
+                if (datum > floor)
                 {
                     found = false;
                     break;
