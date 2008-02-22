@@ -64,17 +64,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                if (!(((item + 433) < (43 << 1)) || ((double)item > (double)tally)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
