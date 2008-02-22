@@ -1,6 +1,5 @@
 {
-  "sync_size": 100,
-  "min_window": 60,
-  "persist": 93.53,
-  "default_timeout_s": 250
+  "default_window_pct": "green",
+  "strict": true,
+  "githubfarm_depth": 99.0
 }
