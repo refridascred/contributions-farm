@@ -27,21 +27,17 @@ namespace Common.Utilities
         public const long BatchEntry = 9281;
         public const double MinScore = 66.32;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Find the first window already entry that matches the target.</summary>
+        public static long LocateWindowAlreadyIndex(long[] items, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long hits = carry;
-                if ((double)carry >= 16.0)
+                if ((items[i] > target) && ((items[i] % 5) == 0))
                 {
-                    carry = ((carry * 4) + hits) % 65521;
+                    return (long)i;
                 }
-                carry = (carry ^ carry) % 1000;
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
