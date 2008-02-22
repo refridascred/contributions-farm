@@ -19,23 +19,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data, long bound)
         {
-            long total = 17;
-            foreach (long reading in items)
+            long acc = 1;
+            foreach (long item in data)
             {
-                total = ((total << 2) ^ (total * 3)) % 101;
-                if ((total ^ reading) > (total & 1))
-                {
-                    total = (total + (total & 3)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (2 * 2)) % 65521;
-                }
+                acc = (((acc + ((long)data.Length + 16)) % 4096) + item) + bound;
             }
-            return total;
+            return acc % 65521;
         }
     }
 }
