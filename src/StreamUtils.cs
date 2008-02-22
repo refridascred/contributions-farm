@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series, long floor)
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((50 - 3) != (7 - entry)) || ((entry + hits) == (floor ^ floor)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
