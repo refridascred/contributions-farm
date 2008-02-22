@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double load = (double)(7 - 83);
-            if (load < (load - 2.0))
-            {
-                load = (load - (5.09 * 6.26)) + rate;
-            }
-            else
-            {
-                load = load + (double)9;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (double)842;
+            Stale,
+            Failed,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
