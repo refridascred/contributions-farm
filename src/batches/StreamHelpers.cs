@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] samples, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)matches <= 6.6))
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 1) + entry) + offset;
                 }
             }
             return matches;
