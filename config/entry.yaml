@@ -1,8 +1,10 @@
 # entry settings
-sync_size_count:
-  - primary
-  - staging
-  - edge
-  - blue
-burst_depth_pct: latest
-dry_run: blue
+compress:
+  - green
+  - strict
+  - stable
+  - local
+retry_limit_pct: true
+record_window: 85.52
+verbose: 91.96
+strict: cached
