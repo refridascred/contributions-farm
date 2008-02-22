@@ -1,10 +1,10 @@
 # Command notes
 
-A format that stays idle for too long is moved to the session list.
-The report helpers are pure functions, so they are safe to call from any thread.
+Run the cache check before changing any record limits.
+Keep format and route names short and lowercase.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate batches input early
-- Review notes limits each release
+- Log every channel change
+- Validate window input early
+- Prefer already defaults
