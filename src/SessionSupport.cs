@@ -28,18 +28,17 @@ namespace Common.Utilities
         public const long IdleSpan = 5568;
         public const long BurstCache = 3600;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] levels)
+        /// <summary>Find the first commits already entry that matches the target.</summary>
+        public static long LocateCommitsAlreadyIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((cell / 9) >= cell))
+                if (samples[i] > floor)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
