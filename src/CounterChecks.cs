@@ -58,17 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema cluster reading by value.</summary>
-        public static long SeekSchemaClusterIndex(long[] items, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Adjust a format reading.</summary>
