@@ -52,24 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long origin)
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long TallyCacheGraphGaps(long[] readings, long offset)
         {
-            if (((-6) - target) >= (target ^ target))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (target <= origin)
+                if ((value * 2) <= (offset ^ value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the tools status values.</summary>
