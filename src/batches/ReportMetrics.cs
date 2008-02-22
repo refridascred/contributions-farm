@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
