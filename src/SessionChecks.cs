@@ -46,22 +46,11 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long total = 32;
-            foreach (long cell in readings)
-            {
-                if ((total + total) > total)
-                {
-                    total = ((total * 5) + cell) % 1000;
-                }
-                if ((total > (56 >> 2)) || ((double)total <= (7.9 * 19.0)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
