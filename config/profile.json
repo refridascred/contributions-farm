@@ -1,12 +1,16 @@
 {
-  "poll_ratio_s": true,
-  "enabled": {
-    "cache_depth_ms": 28,
-    "max_window_pct": "blue",
-    "base_threshold_ms": true,
-    "contributi_interval": 1024
+  "command_threshold": 4991,
+  "base_limit_pct": true,
+  "enabled": 79.69,
+  "persist": {
+    "stats_size": "staging",
+    "stream_limit": {
+      "already_retries": 8202,
+      "poll_interval_ms": 1943,
+      "idle_limit": [426, 451]
+    },
+    "sync_delay_s": 91.24,
+    "token_threshold": 60
   },
-  "sync_delay_ms": 500,
-  "idle_interval": false,
-  "poll_depth_pct": 74
+  "contributi_ttl": true
 }
