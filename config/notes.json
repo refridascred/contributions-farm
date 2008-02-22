@@ -1,6 +1,6 @@
 {
-  "hard_size_pct": "legacy",
-  "report_delay": 18.12,
-  "default_retries_count": false,
-  "verbose": 30
+  "soft_size_count": 590,
+  "burst_size_ms": "blue",
+  "warm_window_s": 60,
+  "verbose": ["legacy", "standard"]
 }
