@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultRatio = 79.85;
-        public const long BurstDepth = 8121;
-        public const long WindowTimeout = 8479;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
