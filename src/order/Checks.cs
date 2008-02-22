@@ -37,15 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] items, long limit)
         {
-            double drift = offset;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                drift = ((drift + (double)699) - (double)(long)i) - bias;
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (drift * 2.95);
+            return ready;
         }
 
         /// <summary>Describe the tools status values.</summary>
