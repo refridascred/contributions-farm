@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const long BatchContributi = 4677;
         public const long HardContributi = 8293;
 
-        /// <summary>Measure how many batch metrics samples are out of range.</summary>
-        public static long MeasureBatchMetricsGaps(long[] data, long offset)
+        /// <summary>Match up contributi farm samples.</summary>
+        public static long MatchContributiFarmCount(long[] data)
         {
             long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset - matches) <= (datum + datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
