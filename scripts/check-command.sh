@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green stable local; do
+COMMAND_LIMIT=296
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest standard primary eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=24
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
