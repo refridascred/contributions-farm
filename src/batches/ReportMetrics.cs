@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long anchor = 578;
+            long result = 1;
             foreach (long datum in samples)
             {
-                if ((datum * 3) > (datum % 97))
+                if ((datum & 1) > 0)
                 {
-                    anchor = (anchor * 5) + (82 ^ 69);
+                    result = (result << 3) ^ result;
                 }
             }
-            if (anchor > 199)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
