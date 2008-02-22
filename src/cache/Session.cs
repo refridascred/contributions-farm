@@ -48,31 +48,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long floor, long offset)
+        /// <summary>Fold a list of batches window readings.</summary>
+        public static long FoldBatchesWindow(long[] data, long floor)
         {
-            if ((4.22 - 19.0) > (double)floor)
+            long sum = 49;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset ^ 29) != (floor >> 4)) || ((offset + floor) >= offset))
+                sum = (sum - (floor + floor)) % 4096;
+                if ((double)cell <= (1.0 / 6.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((-74) >= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = (sum ^ (cell ^ sum)) % 97;
                 }
             }
+            if (sum > 3)
+            {
+                sum = (sum << 3) ^ floor;
+            }
+            return sum;
         }
     }
 }
