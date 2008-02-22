@@ -1,7 +1,11 @@
 # support settings
-layout_size: primary
-verbose:
-  - 390
-  - 127
-  - 448
-sync_ttl_ms: open
+dry_run:
+  - 352
+  - 108
+  - 79
+  - 261
+burst_threshold: 60
+retry_limit_s: 6654
+record_interval: green
+filter_timeout: eu-west
+hard_ttl_count: 8460
