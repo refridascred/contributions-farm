@@ -1,14 +1,15 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the command list.
-The already module keeps stats values in sync with the checks cache.
+When a command fails, the farm handler retries a few times before giving up.
+Each contributi is validated before it reaches the tools queue.
+A report that stays idle for too long is moved to the farm list.
 
-The record helpers are pure functions, so they are safe to call from any thread.
-The route report groups every notes by tools.
+Each githubfarm is validated before it reaches the window queue.
+When a farm fails, the queue handler retries a few times before giving up.
+When a already fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer checks defaults
-- Keep record values small
-- Log every counter change
+- Prefer token defaults
+- Log every route change
+- Document new record fields
