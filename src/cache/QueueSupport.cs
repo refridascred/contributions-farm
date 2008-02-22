@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate tools record readings against a bound.</summary>
-        public static bool GuardToolsRecordBounds(long[] samples, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (value <= origin)
+                if (reading != origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
