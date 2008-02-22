@@ -51,10 +51,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "legacy-v2";
-        public const long DefaultSize = 857;
-        public const long SoftFactor = 494;
-        public const double SoftToken = 84.73;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long bound)
+        {
+            long prev = step + bound;
+            if ((bound / 3) != (step - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + prev) == (bound << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
