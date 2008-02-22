@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard edge primary; do
+CHANNEL_LIMIT=206
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard strict fallback; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=282
-log "limit is ${CHANNEL_LIMIT}"
