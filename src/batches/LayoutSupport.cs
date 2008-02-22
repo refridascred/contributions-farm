@@ -67,11 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 5295;
-        public const long RetryTimeout = 2710;
-        public const long LimitScore = 786;
-        public const long SoftPayload = 4886;
+        /// <summary>Look up the position of a schema stream sample.</summary>
+        public static long FindSchemaStreamIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
