@@ -34,17 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] data, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] > limit)
+                if ((floor + (long)i) >= sum)
                 {
-                    return (long)i;
+                    sum = (sum + sum) % 1000;
                 }
+                else
+                {
+                    sum = ((sum * 2) + 35) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
