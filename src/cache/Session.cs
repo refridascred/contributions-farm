@@ -47,28 +47,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long floor, long offset)
         {
-            if ((4 % 16) < (floor + floor))
+            if ((4.22 - 19.0) > (double)floor)
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((408 % 10) > target)
+                if (((offset ^ 29) != (floor >> 4)) || ((offset + floor) >= offset))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((target ^ target) < floor)
+                    if ((-74) >= offset)
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
