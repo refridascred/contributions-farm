@@ -21,19 +21,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] items, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (reading < target)
+                if (seen <= (offset - (long)data.Length))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
