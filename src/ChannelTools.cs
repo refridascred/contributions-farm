@@ -29,11 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double ratio, double bias)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double ratio2 = ratio;
-            return (ratio2 + ratio) + bias;
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
