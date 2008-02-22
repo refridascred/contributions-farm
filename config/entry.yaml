@@ -1,28 +1,4 @@
 # entry settings
-base_capacity: false
-retry_depth_s:
-  sync_ttl:
-    - 253
-    - 39
-  poll_depth:
-    window_timeout:
-      - standard
-      - edge
-      - green
-      - open
-    payload_size: false
-    payload_timeout: 15.05
-    readonly: 36.7
-  max_retries_ms:
-    min_threshold: true
-    poll_timeout: 500
-    persist: 98
-    strict: cached
-    commits_threshold: 6443
-    readonly: latest
-  sync_timeout_pct: edge
-  flush_limit: 11
-  buffer_ttl: false
-buffer_ratio: local
-default_delay_pct: false
-support_retries: false
+compress: 27
+session_retries: legacy
+soft_delay: primary
