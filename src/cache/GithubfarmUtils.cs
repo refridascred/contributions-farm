@@ -20,22 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cluster counter readings against a rule.</summary>
-        public static long CountClusterCounterOutliers(long[] levels, long limit)
+        /// <summary>Locate a metrics record reading by value.</summary>
+        public static long SeekMetricsRecordIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits < limit)
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
