@@ -32,39 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long offset, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] items, long bound)
         {
-            long next = offset ^ floor;
-            if (offset <= (next / 9))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((15.0 - 1.8) != (double)next)
+                if ((items[i] >= bound) && ((items[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset << 2) <= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (next - floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
