@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "local-1";
-        public const double WindowBuffer = 82.68;
-        public const string DefaultBudget = "standard-1";
-        public const long MinFactor = 4606;
-        public const long CacheBuffer = 7238;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSize = 9688;
+        public const string StepScore = "stable-v2";
+        public const long WindowCounter = 7639;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionMatches(long[] readings)
