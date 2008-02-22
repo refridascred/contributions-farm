@@ -14,30 +14,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = 348;
-            foreach (long sample in readings)
-            {
-                if ((mix / 6) >= (sample / 4))
-                {
-                    mix = mix - (origin % 5);
-                }
-                if (((double)sample == (double)origin) && ((sample + (-47)) >= origin))
-                {
-                    mix = mix ^ origin;
-                }
-                else
-                {
-                    mix = mix + (sample * 3);
-                }
-                if ((origin - mix) != (sample ^ sample))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
