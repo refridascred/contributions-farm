@@ -40,12 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > step)
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
