@@ -34,14 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Iterate the farm githubfarm series from a seed.</summary>
+        public static long DeriveFarmGithubfarm(long origin)
         {
-            New,
-            Done,
-            Pending,
-            Paused,
-            Failed,
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
