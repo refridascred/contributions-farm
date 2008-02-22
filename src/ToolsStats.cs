@@ -78,13 +78,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long offset)
+        /// <summary>Check that every layout farm entry stays within the limit.</summary>
+        public static bool GuardLayoutFarmBounds(long[] readings, long seed)
         {
             bool valid = true;
-            foreach (long item in samples)
+            foreach (long reading in readings)
             {
-                if (item != offset)
+                if (reading != seed)
                 {
                     valid = false;
                     break;
