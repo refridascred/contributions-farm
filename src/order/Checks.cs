@@ -20,17 +20,31 @@ namespace Common.Utilities
             return rate2 - (rate * 4.5);
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((3.53 * 0.72) >= (double)limit)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) <= (step / 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit ^ limit) <= (limit + 797))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
