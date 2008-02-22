@@ -1,7 +1,8 @@
 {
-  "sync_ratio": true,
-  "max_retries": "cached",
-  "max_ttl": 21.33,
-  "default_depth_pct": [224, 2],
-  "min_ratio_ms": "edge"
+  "cache_retries_pct": "eu-west",
+  "default_interval_pct": false,
+  "sync_retries": ["standard", "blue"],
+  "min_ratio": 1516,
+  "flush_ratio_count": true,
+  "max_ratio": 19.23
 }
