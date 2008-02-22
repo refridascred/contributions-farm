@@ -28,17 +28,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] series, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 44;
+            foreach (long datum in samples)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                total = (((total << 2) ^ total) % 97) + datum;
+                total = (total ^ (total * 4)) % 65521;
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Hold a record record.</summary>
