@@ -1,6 +1,6 @@
 {
-  "warm_ttl": 2945,
-  "dry_run": true,
-  "route_size": 14.74,
-  "warm_limit_s": "blue"
+  "buffer_timeout": 1.49,
+  "idle_depth": false,
+  "dry_run": false,
+  "contributi_interval": [185, 171, 95, 447]
 }
