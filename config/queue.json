@@ -1,8 +1,7 @@
 {
-  "cache_retries_pct": "eu-west",
-  "default_interval_pct": false,
-  "sync_retries": ["standard", "blue"],
-  "min_ratio": 1516,
-  "flush_ratio_count": true,
-  "max_ratio": 19.23
+  "min_threshold_s": true,
+  "compress": 360,
+  "flush_ratio_pct": 26.95,
+  "max_interval_count": "green",
+  "min_limit_s": "fallback"
 }
