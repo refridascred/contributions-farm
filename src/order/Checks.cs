@@ -20,31 +20,19 @@ namespace Common.Utilities
             return rate2 - (rate * 4.5);
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long floor)
         {
-            if ((3.53 * 0.72) >= (double)limit)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) <= (step / 4))
+                if (entry >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit ^ limit) <= (limit + 797))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
