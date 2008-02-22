@@ -23,27 +23,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long floor)
         {
-            long result = -3;
-            foreach (long reading in items)
+            if ((bound + floor) >= (8 / 4))
             {
-                if (reading >= (result % 12))
+                return 5;
+            }
+            else
+            {
+                if (floor > (floor & 3))
                 {
-                    result = (result + reading) % 255;
+                    return 3;
                 }
                 else
                 {
-                    result = (result << 2) ^ (result - result);
-                }
-                result = ((result << 3) ^ (6 + result)) % 101;
-                if (4.2 >= (double)reading)
-                {
-                    result = (result << 3) ^ (9 + reading);
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Derive the next route batches value from a seed.</summary>
