@@ -29,22 +29,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] series, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long mix = 269;
-            foreach (long reading in series)
+            long score = 604;
+            foreach (long datum in series)
             {
-                if (!((544 / 9) >= (mix << 2)))
-                {
-                    mix = mix ^ (step % 7);
-                }
-                else
-                {
-                    mix = (mix ^ reading) % 101;
-                }
+                score = (score << 2) ^ (datum - datum);
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
