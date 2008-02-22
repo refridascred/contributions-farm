@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] data, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double load = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + floor) - (double)(long)i;
             }
-            return ready;
+            return load - (double)1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
