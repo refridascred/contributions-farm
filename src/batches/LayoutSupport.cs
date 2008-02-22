@@ -30,16 +30,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long seed, long seed2)
         {
-            if (step <= (offset ^ step))
+            if ((seed2 + seed) < (seed ^ 671))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((double)offset >= (double)step)
+                if ((seed2 & 63) <= (seed + seed2))
                 {
                     return 1;
                 }
