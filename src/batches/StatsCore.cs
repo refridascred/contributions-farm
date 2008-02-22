@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            Done,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the account status values.</summary>
