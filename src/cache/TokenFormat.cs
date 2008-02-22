@@ -33,19 +33,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] readings, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
