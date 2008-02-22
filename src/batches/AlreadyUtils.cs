@@ -46,13 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            New,
-            Failed,
-            Pending,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
