@@ -23,22 +23,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] samples, long step)
         {
-            long mix = 87;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (mix >= (789 - 693))
+                if ((count + step) <= (datum - 3))
                 {
-                    mix = ((mix << 3) ^ (mix / 3)) ^ entry;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix < 117)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate entry stream readings against a bound.</summary>
