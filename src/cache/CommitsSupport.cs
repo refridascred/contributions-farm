@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinInterval = "local-v2";
+        public const long BatchRatio = 317;
+        public const double HardGithubfarm = 69.98;
+        public const long IdleSize = 498;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileOutliers(long[] readings)
