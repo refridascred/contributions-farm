@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            Pending,
-            Draft,
-            Stale,
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
