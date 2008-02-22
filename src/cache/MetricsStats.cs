@@ -19,16 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] samples, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                carry = (carry * 5) + (limit - carry);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (((-53) + tally) >= (long)samples.Length)
+                {
+                    tally = ((tally + 2) ^ item) + target;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
