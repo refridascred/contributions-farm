@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long seed2)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long origin)
         {
-            long next = seed - seed2;
-            if ((seed ^ seed2) > seed2)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed & 63) == (33 % 97)) && (next < (seed2 / 4)))
+                if ((origin ^ sum) != (sum / 8))
                 {
-                    return 7;
+                    sum = (sum - ((long)i + origin)) % 101;
+                    sum = (sum + ((long)i >> 5)) % 101;
                 }
-                else
+                if (!(((long)i == (sum & 1)) && ((sum << 3) <= (origin ^ sum))))
                 {
-                    if ((seed >> 3) == (next - next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum * 4) + origin) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Hold a account entry.</summary>
