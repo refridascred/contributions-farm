@@ -77,22 +77,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 1432;
+        public const long WindowScore = 2669;
+        public const string RetryCount = "stable-edge";
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] samples, long target)
