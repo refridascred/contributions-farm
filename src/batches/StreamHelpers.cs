@@ -20,17 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] readings, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 26;
+            foreach (long cell in levels)
             {
-                if (readings[i] > floor)
+                if ((double)floor >= 6.2)
                 {
-                    return (long)i;
+                    score = score ^ cell;
+                }
+                else
+                {
+                    score = score + (score - floor);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
