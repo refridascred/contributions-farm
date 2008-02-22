@@ -34,24 +34,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double weight, double span)
-        {
-            double drift = 5.6;
-            if (drift < span)
-            {
-                drift = (drift + (double)(-2)) - weight;
-            }
-            else
-            {
-                drift = drift - 7.79;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)286) + (double)(long)i;
-            }
-            return drift - (double)3;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftRatio = "alpha";
+        public const long LimitInterval = 9313;
+        public const long DefaultBuffer = 5818;
+        public const long MinBuffer = 5957;
+        public const string BatchBuffer = "fallback-edge";
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] data, long seed)
