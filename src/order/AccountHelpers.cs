@@ -51,19 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] readings, long step)
         {
-            long anchor = -709;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor + (entry / 3)) % 65521) - limit;
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (anchor > 39)
-            {
-                anchor = anchor ^ ((-60) + anchor);
-            }
-            return anchor % 97;
+            return found;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
