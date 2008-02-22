@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (load + (17.0 - floor)) + bias;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long step)
+        /// <summary>Validate window profile readings against a bound.</summary>
+        public static bool CheckWindowProfileBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((values[i] < step) && ((values[i] % 5) == 0))
+                if (reading != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
