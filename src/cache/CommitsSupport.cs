@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
             public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
