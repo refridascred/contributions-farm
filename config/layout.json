@@ -1,6 +1,6 @@
 {
-  "min_limit_ms": false,
-  "audit": "stable",
-  "flush_delay": [159, 51, 360],
-  "batch_depth": "legacy"
+  "hard_retries_count": "cached",
+  "order_limit": 4700,
+  "soft_depth_ms": 95,
+  "soft_threshold_ms": 91.98
 }
