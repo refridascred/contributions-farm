@@ -32,21 +32,32 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = bound + target;
+            if ((step ^ target) > step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound ^ step))
                 {
-                    if ((values[i] + values[j]) < 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 3) == (target << 2))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
     }
 }
