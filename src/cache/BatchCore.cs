@@ -40,18 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] levels)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches / 6) <= sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Retry,
+            Stale,
+            Ready,
         }
     }
 }
