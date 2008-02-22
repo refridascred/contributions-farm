@@ -72,11 +72,13 @@ namespace Common.Utilities
         public const long LimitScore = 786;
         public const long SoftPayload = 4886;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Active,
+            Draft,
+            New,
         }
     }
 }
