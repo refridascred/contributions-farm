@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch command readings.</summary>
-        public static long CombineBatchCommand(long[] items, long origin)
-        {
-            long sum = 671;
-            foreach (long value in items)
-            {
-                if ((89 >= sum) && ((origin / 8) >= (long)items.Length))
-                {
-                    sum = (((sum << 2) ^ (77 - origin)) % 4096) + value;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 1058;
+        public const string IdleSpan = "stable-v2";
+        public const string HardLevel = "latest-1";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsOutliers(long[] series, long step)
