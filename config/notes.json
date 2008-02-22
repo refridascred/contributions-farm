@@ -1,8 +1,6 @@
 {
-  "burst_depth_count": "primary",
-  "channel_capacity": 250,
-  "account_threshold": 8110,
-  "format_size": false,
-  "warm_delay_s": "latest",
-  "idle_depth": "fallback"
+  "enabled": 36,
+  "session_ttl": false,
+  "min_capacity": "cached",
+  "compress": "open"
 }
