@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long target, long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long slot = target + seed;
-            if (((double)target >= 6.0) || ((seed << 3) >= (target >> 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + target) != (seed >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + slot) < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(slot > (slot - slot)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a commits header.</summary>
