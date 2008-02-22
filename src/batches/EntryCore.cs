@@ -34,38 +34,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a report entry value against two limits.</summary>
-        public static long GradeReportEntry(long step, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if (!(step < (step << 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((43 - seed) > seed) || ((step + seed) >= (seed % 100)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((82 + step) != (step & 127))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed < (seed * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stats checks sample.</summary>
