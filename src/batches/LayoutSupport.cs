@@ -51,12 +51,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Rank tools stats input into a small class.</summary>
+        public static long GradeToolsStats(long bound, long target)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long bound2 = bound ^ target;
+            if ((double)bound2 < 13.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.79 + 9.46) > (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - bound) > 20)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token kind values.</summary>
