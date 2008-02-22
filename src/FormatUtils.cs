@@ -35,19 +35,15 @@ namespace Common.Utilities
             return ratio + (double)966;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] values, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] readings)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long cell in readings)
             {
-                if ((value - seed) > (value + value))
+                if (cell > (379 + count))
                 {
                     count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
