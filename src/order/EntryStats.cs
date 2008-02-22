@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long limit, long target)
         {
-            long total = 0;
-            foreach (long sample in levels)
+            long prev = limit - target;
+            if (target > prev)
             {
-                total = (total * 2) + sample;
-                if (((double)seed <= (6.06 / 2.0)) || ((sample * 3) != (total / 9)))
+                return 5;
+            }
+            else
+            {
+                if (!((double)target == (double)prev))
                 {
-                    total = (total * 5) + sample;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return total;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
