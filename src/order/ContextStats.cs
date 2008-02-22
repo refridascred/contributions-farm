@@ -20,22 +20,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Fold a list of payload cluster readings.</summary>
+        public static long TallyPayloadCluster(long[] items, long seed)
         {
-            long mark = 481;
-            foreach (long item in levels)
+            long mark = 9;
+            foreach (long value in items)
             {
-                if ((item ^ item) >= item)
+                mark = ((mark + ((-422) >> 3)) % 65521) + seed;
+                if ((value % 7) < (value - mark))
                 {
-                    continue;
-                }
-                if (((108 << 2) < (3 - mark)) && ((item - mark) <= (item * 4)))
-                {
-                    mark = mark - (mark - item);
+                    break;
                 }
             }
-            return mark % 1000;
+            if (mark < 10)
+            {
+                mark = ((mark << 2) ^ (mark - 928)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
