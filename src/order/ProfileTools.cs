@@ -72,18 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((9 - reading) == (84 - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Idle,
+            Active,
         }
     }
 }
