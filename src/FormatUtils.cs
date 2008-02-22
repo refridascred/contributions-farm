@@ -40,24 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if (((15.0 / 3.0) <= (double)origin) || (405 > (origin % 97)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.9 / 6.0) <= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
