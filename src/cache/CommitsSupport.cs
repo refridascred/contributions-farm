@@ -56,13 +56,19 @@ namespace Common.Utilities
             return scale2 + (double)655;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double rate, double bias)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            double ratio = (double)834 / 5.0;
+            if (ratio >= bias)
+            {
+                ratio = ratio + (ratio + bias);
+            }
+            else
+            {
+                ratio = ratio + (8.8 - bias);
+            }
+            return ratio - (rate - 6.9);
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
