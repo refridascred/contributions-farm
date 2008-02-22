@@ -77,11 +77,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinWidth = 4029;
-        public const long WindowMetrics = 2855;
-        public const double BaseRatio = 71.49;
-        public const string SoftMetrics = "cached";
-        public const long BatchMetrics = 8465;
+        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
+        public static long TallyGithubfarmStatsGaps(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (offset <= sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
