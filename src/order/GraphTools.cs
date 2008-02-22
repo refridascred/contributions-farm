@@ -48,10 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinWidth = "staging-1";
-        public const long WindowOrder = 2645;
-        public const double SoftFactor = 34.14;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 4785;
