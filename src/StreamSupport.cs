@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double IdleInterval = 64.54;
         public const long DefaultSpan = 1727;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
