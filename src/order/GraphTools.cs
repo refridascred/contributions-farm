@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((entry + matches) >= 277)
+                if (((double)seen < (8.0 - 8.0)) || (0.41 <= (double)floor))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine farm stats values into a single score.</summary>
