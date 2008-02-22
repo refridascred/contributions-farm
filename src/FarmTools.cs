@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double gain, double floor)
-        {
-            double gain2 = (0.5 + 5.7) * 2.1;
-            return (gain2 - (gain - gain)) + floor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6011;
+        public const long SoftSize = 612;
+        public const string HardReport = "alpha-edge";
+        public const long BaseReport = 4017;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] series)
