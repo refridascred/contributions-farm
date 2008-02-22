@@ -1,4 +1,20 @@
 # entry settings
-max_timeout_ms: standard
-dry_run: false
-verbose: true
+hard_depth: 60
+context_interval: 60
+audit:
+  flush_size_s:
+    poll_retries_s: 41
+    default_depth_s: 7944
+    account_capacity: false
+    max_retries_s: 100
+  batches_delay: 1708
+  cache_window:
+    hard_retries: 71
+    default_retries: edge
+    verbose: staging
+    default_window_count: staging
+    editor_limit: fallback
+cluster_size: 15.81
+enabled:
+  - 244
+  - 96
