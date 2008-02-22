@@ -1,14 +1,18 @@
 # support settings
-readonly:
-  - 364
-  - 176
-dry_run:
-  hard_ttl: local
-  filter_interval: 82.8
-  poll_ttl_pct: legacy
-  record_delay: 96.26
-  report_ttl: stable
-window_interval: stable
-retry_threshold: true
-soft_retries_pct: 49.43
-audit: 100
+flush_timeout_count: blue
+default_window_count: 18.72
+notes_retries: local
+strict:
+  max_threshold_ms: edge
+  enabled:
+    soft_interval: 10.95
+    base_limit_ms: 500
+    counter_timeout: 3558
+  base_delay_s: 84
+  burst_window_count: legacy
+  counter_size: open
+base_threshold_pct:
+  - latest
+  - fallback
+  - legacy
+compress: blue
