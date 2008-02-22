@@ -55,19 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics schema values into a single score.</summary>
-        public static long CombineMetricsSchema(long[] data, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long anchor = 37;
-            foreach (long value in data)
-            {
-                if ((double)bound > (double)anchor)
-                {
-                    anchor = ((anchor * 5) + bound) + value;
-                }
-                anchor = ((anchor * 4) + (anchor + bound)) % 1000;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
     }
 }
