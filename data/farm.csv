@@ -1,6 +1,7 @@
-id,active,score
-1,566,94.28
-2,eu-west,479
-3,493,stable
-4,566,24.32
-5,9.0,26.1
+id,count,owner,weight,token
+1,open,232,61.73,19.38
+2,877,137,646,77.14
+3,latest,latest,74,252
+4,990,54.89,519,44.54
+5,standard,630,16.62,legacy
+6,186,21.25,39.51,local
