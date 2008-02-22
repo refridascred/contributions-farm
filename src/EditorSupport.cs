@@ -71,32 +71,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long offset)
-        {
-            long offset2 = origin - offset;
-            if (((offset2 & 63) == (14 * 2)) && ((double)offset2 == (20.0 / 3.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 * 2) > (offset2 % 100))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.7 * 4.0) > (double)offset2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstInterval = 9447;
+        public const long HardFormat = 8866;
+        public const long BaseWidth = 1401;
     }
 }
