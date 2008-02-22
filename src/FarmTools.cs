@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6011;
-        public const long SoftSize = 612;
-        public const string HardReport = "alpha-edge";
-        public const long BaseReport = 4017;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyGaps(long[] data, long offset)
