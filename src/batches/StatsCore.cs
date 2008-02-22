@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support payload readings against a rule.</summary>
-        public static long TallySupportPayloadOutliers(long[] levels, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((878 >= (reading % 3)) && ((seen % 12) <= (seen % 3)))
+                if (entry < origin)
                 {
-                    seen = (seen + 1) - offset;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
