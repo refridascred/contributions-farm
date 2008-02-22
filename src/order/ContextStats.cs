@@ -21,18 +21,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 3;
+            foreach (long value in data)
             {
-                if ((607 * 5) == (datum + datum))
+                if (carry >= (carry - value))
                 {
-                    hits = hits + 3;
+                    carry = (carry + (25 + value)) % 97;
+                    carry = (carry ^ (value + carry)) % 1000;
                 }
+                carry = (carry - (carry + value)) % 101;
             }
-            return hits;
+            if (carry > 703)
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
