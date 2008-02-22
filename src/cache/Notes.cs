@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryTimeout = 983;
-        public const string CacheSpan = "staging-1";
-        public const string BurstSize = "open";
-        public const long LimitBuffer = 2491;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 5801;
+        public const double StepWidth = 70.94;
+        public const long CacheGithubfarm = 2212;
+        public const long MinBudget = 9754;
+        public const long IdleGithubfarm = 1496;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
