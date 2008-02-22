@@ -60,11 +60,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
