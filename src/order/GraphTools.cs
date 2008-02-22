@@ -14,10 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 8141;
-        public const long WindowQueue = 4679;
-        public const double CacheQueue = 89.04;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((floor << 2) == (37 + total))
+                {
+                    total = total - (long)i;
+                }
+                else
+                {
+                    total = (total - (475 ^ (long)i)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the window githubfarm series from a seed.</summary>
         public static long IterateWindowGithubfarm(long step)
