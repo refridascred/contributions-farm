@@ -48,10 +48,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCount = 8611;
-        public const long WindowCommand = 3673;
-        public const string IdleCommand = "cached-1";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Dropped,
+            Done,
+            Queued,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultWidth = 3130;
