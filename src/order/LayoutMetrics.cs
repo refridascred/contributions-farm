@@ -16,18 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)reading == (1.0 + 2.9)) && !((reading >> 1) == (reading ^ 20)))
+                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
