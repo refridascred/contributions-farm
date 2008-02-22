@@ -44,22 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] samples, long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long total = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum & 63) <= (datum << 3))
-                {
-                    total = (total + (seed - datum)) % 101;
-                }
-                if (((0.8 / 6.0) <= (double)datum) && ((double)datum > 7.8))
-                {
-                    break;
-                }
-            }
-            return total;
+            Active,
+            Stale,
+            Queued,
+            Idle,
+            Ready,
         }
     }
 }
