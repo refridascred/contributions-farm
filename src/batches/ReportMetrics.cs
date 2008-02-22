@@ -33,15 +33,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double gain2 = (double)(203 + 646);
-            if (gain2 <= (bias + bias))
-            {
-                gain2 = (gain2 + (gain2 + gain2)) - gain;
-            }
-            return gain2 + (9.31 + gain2);
+            New,
+            Ready,
+            Failed,
+            Draft,
+            Retry,
         }
     }
 }
