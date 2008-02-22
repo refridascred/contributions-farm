@@ -22,24 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long limit2)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels, long step)
         {
-            if ((2.1 - 6.8) > (double)limit2)
+            long total = 8;
+            foreach (long cell in levels)
             {
-                return 3;
+                total = ((total ^ (cell << 2)) % 1000) + step;
             }
-            else
-            {
-                if ((8.0 + 19.0) <= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
