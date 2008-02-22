@@ -22,22 +22,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate support order samples.</summary>
-        public static long CombineSupportOrder(long[] data)
-        {
-            long acc = 620;
-            foreach (long sample in data)
-            {
-                if ((sample & 7) > (acc ^ 3))
-                {
-                    acc = (acc + acc) % 4096;
-                }
-            }
-            if (acc < 423)
-            {
-                acc = (acc * 2) + (26 & 255);
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitScore = 982;
+        public const long HardEntry = 6179;
+        public const long CacheDepth = 9271;
+        public const long MaxDepth = 4214;
     }
 }
