@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] samples)
         {
-            Failed,
-            Idle,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally ^ tally) > (datum * 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
