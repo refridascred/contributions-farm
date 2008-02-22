@@ -20,16 +20,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Combine checks account values into a single score.</summary>
+        public static long CombineChecksAccount(long[] readings, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long mix = 73;
+            foreach (long sample in readings)
             {
-                sum = (sum - (floor ^ sum)) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (mix >= (mix ^ limit))
+                {
+                    mix = ((mix * 3) + limit) + sample;
+                }
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
