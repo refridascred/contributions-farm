@@ -80,22 +80,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Classify a metrics already pair into a bucket.</summary>
+        public static long ClassifyMetricsAlready(long limit, long origin)
         {
-            long state = 72;
-            foreach (long datum in samples)
+            long gap = limit - origin;
+            if ((origin > 3) || ((8.2 / 6.0) > (double)gap))
             {
-                if ((2.71 - 3.7) >= 16.0)
+                return 6;
+            }
+            else
+            {
+                if ((gap - origin) < origin)
                 {
-                    state = (state - (state + state)) % 255;
+                    return 7;
                 }
-                if (((0.6 / 2.0) == (double)datum) || (state <= (18 & 31)))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return state;
         }
     }
 }
