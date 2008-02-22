@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstTimeout = 78.08;
-        public const long MinCount = 3512;
-        public const long RetryStream = 4629;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long CompareMetricCount(long[] series)
