@@ -44,13 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
+            double mean = (double)(1 / 2);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - gain) - (double)(long)i) + span;
+            }
+            return mean + (5.0 + gain);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
