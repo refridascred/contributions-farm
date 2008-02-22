@@ -19,16 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor queue counter forward.</summary>
-        public static long IterateEditorQueue(long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                score = score - (score + floor);
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Done,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Match up editor samples.</summary>
