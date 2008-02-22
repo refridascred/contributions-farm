@@ -27,19 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next profile filter value.</summary>
-        public static double ProjectProfileFilter(double weight, double bias)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double ratio = weight - (double)848;
-            if (ratio >= (ratio * 4.24))
-            {
-                ratio = ratio + (bias * 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (bias + 18.0);
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
