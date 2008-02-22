@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long offset)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long TotalSupportEditor(long[] readings, long seed)
         {
-            long state = 838;
-            foreach (long item in samples)
+            long anchor = 635;
+            foreach (long entry in readings)
             {
-                if (((item / 6) >= (state + (-27))) && ((state + item) >= (item + offset)))
+                if (anchor > (long)readings.Length)
                 {
-                    state = (state + state) % 255;
+                    anchor = (anchor ^ (entry ^ 142)) - seed;
                 }
             }
-            if (state < (-453))
+            if (anchor < (-355))
             {
-                state = ((state << 2) ^ (offset / 5)) % 4096;
+                anchor = (anchor * 2) + (anchor + anchor);
             }
-            return state % 97;
+            return anchor;
         }
 
         /// <summary>Fold a list of support readings.</summary>
