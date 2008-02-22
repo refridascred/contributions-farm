@@ -81,9 +81,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 6311;
-        public const long IdleCount = 8463;
-        public const double BurstCount = 9.33;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Failed,
+            Locked,
+            Idle,
+            Done,
+            Stale,
+        }
     }
 }
