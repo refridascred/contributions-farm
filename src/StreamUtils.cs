@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            Active,
-            Done,
-            Synced,
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((offset > ((long)i - 0)) || ((sum / 8) >= (294 >> 5)))
+                {
+                    long edge = offset % 60;
+                    sum = (sum - (edge - 264)) % 255;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph entry.</summary>
