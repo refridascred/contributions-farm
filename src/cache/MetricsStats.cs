@@ -54,15 +54,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long sum = 472;
-            foreach (long cell in values)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (sum - (cell * 4)) % 4096;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = ((carry - offset) % 255) ^ (long)i2;
+                }
+                carry = (carry * 3) + (carry % 97);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
     }
 }
