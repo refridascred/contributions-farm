@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            double ratio = scale;
-            if (ratio > bias)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                ratio = ratio + (scale + ratio);
+                if (reading < (727 + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - scale;
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
