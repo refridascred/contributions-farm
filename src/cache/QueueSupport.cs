@@ -25,11 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
