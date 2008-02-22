@@ -41,31 +41,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long floor, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] samples)
         {
-            if ((seed ^ 2) == (floor & 15))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor >= 308)
+                if (!((double)seen < (6.0 * 9.2)) || (seen > ((long)samples.Length ^ seen)))
                 {
-                    return 0;
+                    seen = (seen + 1) + cell;
                 }
                 else
                 {
-                    if ((double)411 < (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
