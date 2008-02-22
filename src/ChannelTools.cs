@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches / 5) < (sample + sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
