@@ -1,20 +1,12 @@
 # githubfarm settings
-soft_depth_ms: legacy
-idle_delay_s: primary
-poll_retries_count: 500
-layout_interval: false
-retry_window: 6.95
-base_threshold_pct:
-  warm_timeout_s: local
-  enabled:
-    metric_window: 1967
-    warm_ratio_count: 97
-    retry_interval: primary
-    burst_ttl_count: 67.34
-  sync_retries:
-    - staging
-    - primary
-    - staging
-  retry_size_pct: 17.99
-  verbose: 1024
-  burst_depth: 92.31
+contributi_ttl: false
+counter_ratio:
+  - 276
+  - 381
+soft_capacity_count:
+  enabled: 100
+  order_window: false
+  burst_depth: 32.58
+  githubfarm_limit: false
+  tools_ttl: 32
+  burst_ratio_s: stable
