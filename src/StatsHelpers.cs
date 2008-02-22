@@ -41,18 +41,15 @@ namespace Common.Utilities
         public const double CacheBudget = 84.11;
         public const string BatchBudget = "primary-v2";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] readings)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((cell * 2) == (cell ^ count)) || ((965 & 127) <= cell)))
-                {
-                    count = count + 3;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
     }
 }
