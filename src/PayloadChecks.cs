@@ -72,13 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Ready,
-            Queued,
-            Retry,
-            Synced,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
