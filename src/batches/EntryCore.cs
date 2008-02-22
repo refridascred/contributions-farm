@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every queue schema entry stays within the limit.</summary>
-        public static bool CheckQueueSchemaLimits(long[] samples, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (cell <= origin)
+                if ((double)matches == (5.55 + 7.2))
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 2) + sample) - bound;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Roll a editor queue counter forward.</summary>
