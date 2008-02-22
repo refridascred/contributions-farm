@@ -53,13 +53,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] values, long target)
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
