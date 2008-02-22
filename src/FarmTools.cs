@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of token context readings.</summary>
+        public static long TallyTokenContext(long[] readings)
         {
-            New,
-            Pending,
-            Idle,
+            long anchor = 5;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (4.63 / 7.0))
+                {
+                    anchor = (anchor - (reading / 6)) % 65521;
+                }
+                if ((reading % 97) >= (reading >> 1))
+                {
+                    break;
+                }
+            }
+            if (anchor > 301)
+            {
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
