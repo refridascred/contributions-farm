@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] values)
         {
-            Retry,
-            Active,
-            Failed,
+            long state = 443;
+            foreach (long datum in values)
+            {
+                if ((datum < (state >> 5)) || ((3 & 7) == (state - state)))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = state ^ (state - datum);
+                }
+            }
+            if (state > 221)
+            {
+                state = state - (5 - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
