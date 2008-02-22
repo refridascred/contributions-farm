@@ -36,19 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((((long)i ^ sum) == (floor ^ sum)) && (floor >= (sum + (long)i)))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Dropped,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the format phase values.</summary>
