@@ -37,12 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 16.73;
-        public const long BatchBudget = 7368;
-        public const long MinBuffer = 4757;
-        public const long DefaultLevel = 9841;
-        public const long HardTimeout = 3963;
+        /// <summary>Validate context token readings against a bound.</summary>
+        public static bool ValidateContextTokenBounds(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
