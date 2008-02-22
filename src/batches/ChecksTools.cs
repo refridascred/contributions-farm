@@ -39,26 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values)
         {
-            long sum = 44;
-            foreach (long datum in readings)
+            long score = 32;
+            foreach (long reading in values)
             {
-                if (((3 + datum) >= (sum & 127)) || ((4.54 - 4.2) >= (double)sum))
-                {
-                    sum = sum - (sum & 255);
-                }
-                if (datum >= (datum + sum))
-                {
-                    sum = ((sum * 4) + datum) % 1000;
-                }
+                score = (((score * 2) + score) % 101) ^ reading;
             }
-            if (sum < 391)
-            {
-                sum = (sum << 2) ^ (637 * 3);
-            }
-            return sum;
+            return score;
         }
     }
 }
