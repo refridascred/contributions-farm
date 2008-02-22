@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long limit, long target)
+        /// <summary>Derive the next notes batch value from a seed.</summary>
+        public static long RollNotesBatch(long origin)
         {
-            long prev = limit - target;
-            if (target > prev)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                anchor = (anchor - ((long)i / 8)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((double)target == (double)prev))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
