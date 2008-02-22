@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            if ((double)offset != (4.1 / 5.0))
             {
-                if ((offset > ((long)i - 0)) || ((sum / 8) >= (294 >> 5)))
-                {
-                    long edge = offset % 60;
-                    sum = (sum - (edge - 264)) % 255;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (((2.7 / 3.0) > (double)offset) || ((offset << 3) <= step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((17.0 <= (double)offset) && ((double)step >= (double)0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph entry.</summary>
