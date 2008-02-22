@@ -23,15 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account stream counter forward.</summary>
-        public static long DeriveAccountStream(long offset)
+        /// <summary>Derive the next format contributi value from a seed.</summary>
+        public static long SeriesFormatContributi(long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (!(target < ((long)i << 1)))
+                {
+                    total = (total * 3) + target;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a metric options.</summary>
