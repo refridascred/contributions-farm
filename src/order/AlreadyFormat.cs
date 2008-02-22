@@ -51,17 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] items, long target)
+        /// <summary>Derive the next batches account value from a seed.</summary>
+        public static long StepBatchesAccount(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                if ((sum / 2) < 247)
                 {
-                    return (long)i;
+                    sum = sum ^ (sum + sum);
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
