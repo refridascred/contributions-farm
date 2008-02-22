@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                if (!(((floor & 1) >= 498) && (6 >= floor)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
