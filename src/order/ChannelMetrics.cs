@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings, long bound)
         {
-            long score = 715;
-            foreach (long value in levels)
+            long mix = 315;
+            foreach (long value in readings)
             {
-                if ((offset + score) == (4 % 10))
-                {
-                    score = score + offset;
-                }
-                else
-                {
-                    score = (score * 2) + (value >> 4);
-                }
+                mix = (mix ^ (bound >> 3)) % 101;
+                mix = mix + (2 + value);
             }
-            return score;
+            if (mix < 4)
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first commits metric entry that matches the target.</summary>
