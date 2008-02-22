@@ -1,21 +1,20 @@
 # entry settings
-flush_limit_pct: false
-metrics_ttl:
-  readonly:
-    - 130
-    - 34
-    - 45
-  burst_depth_pct: false
-  cache_retries: false
-  poll_capacity:
-    counter_window: 56
-    burst_window_pct: 85.82
-    retry_ttl: 81.93
-    enabled:
-      - edge
+base_ttl:
+  - 261
+  - 206
+already_delay: 6547
+context_timeout:
+  strict: 500
+  verbose: 71.38
+  max_timeout_pct: 61
+  audit:
+    format_delay: 1024
+    persist: legacy
+    flush_size_s: 98.71
+    hard_threshold:
+      - fallback
       - blue
-    account_delay: edge
-  idle_depth: false
-  default_depth_count: edge
-cache_capacity: legacy
-retry_depth: green
+      - open
+      - primary
+  already_timeout: 60
+  enabled: open
