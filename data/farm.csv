@@ -1,6 +1,8 @@
-id,rank,token,ratio,weight
-1,80.98,local,22.08,open
-2,legacy,36.47,standard,405
-3,616,92.89,90.74,24.79
-4,legacy,39.64,eu-west,stable
-5,open,181,708,legacy
+id,active,count,level,ratio
+1,legacy,137,81.52,392
+2,72.57,legacy,6.52,846
+3,12.24,81.67,10.49,legacy
+4,321,stable,608,fallback
+5,923,stable,78.66,latest
+6,481,staging,594,7.74
+7,10,11.09,406,129
