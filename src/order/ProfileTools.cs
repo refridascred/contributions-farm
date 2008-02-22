@@ -24,22 +24,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long limit)
         {
-            long carry = 844;
-            foreach (long value in series)
+            long edge = bound ^ limit;
+            if ((3.6 + 7.16) >= (double)bound)
             {
-                if (value < (3 / 2))
+                return 5;
+            }
+            else
+            {
+                if ((245 & 31) <= edge)
                 {
-                    carry = ((carry * 2) + (carry - carry)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (limit - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound != (7.6 + 14.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (carry > 10)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 65521;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
