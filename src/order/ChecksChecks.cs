@@ -20,21 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (span * 19.0) + span;
+            if (drift >= 9.6)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - scale;
             }
-            return seen;
+            else
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (scale - 1.3);
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
