@@ -25,12 +25,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long target)
         {
-            Idle,
-            Queued,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
