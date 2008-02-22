@@ -65,11 +65,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftWidth = 5720;
-        public const long IdleRecord = 6901;
-        public const long BurstRecord = 5454;
-        public const string MinRecord = "strict-1";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor + (bound - (long)i)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinWidth = 4029;
