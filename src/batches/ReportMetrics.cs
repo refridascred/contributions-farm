@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] levels, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
