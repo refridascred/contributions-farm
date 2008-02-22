@@ -33,15 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Closed,
-            Draft,
-            Queued,
-            Stale,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseLevel = 7657;
+        public const long BaseRecord = 7800;
+        public const long BurstRecord = 3933;
+        public const long MinRecord = 5824;
+        public const long HardRecord = 7007;
 
         /// <summary>Derive the next support account value from a seed.</summary>
         public static long RollSupportAccount(long floor)
