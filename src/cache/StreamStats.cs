@@ -40,21 +40,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = bias;
+            if (load >= span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - (bias / 3.0);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (span / 5.0)) - (double)(long)i;
+            }
+            return load - 5.1;
         }
     }
 }
