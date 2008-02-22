@@ -45,15 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double bias, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long limit)
         {
-            double weight = floor;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                weight = (weight + (floor * 5.68)) + (double)(long)i;
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - (bias + floor);
+            return flag;
         }
     }
 }
