@@ -44,10 +44,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetrySpan = "open-1";
-        public const long BatchInterval = 1313;
-        public const string StepNotes = "alpha-1";
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] data)
