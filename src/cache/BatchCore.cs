@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double CacheSpan = 9.95;
         public const string BurstLevel = "legacy-v2";
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 2537;
+        public const long SoftDepth = 1882;
+        public const string StepChannel = "staging-1";
+        public const string CacheScore = "latest-1";
+        public const string BaseTimeout = "strict";
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
