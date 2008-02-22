@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] series)
         {
-            long state = 15;
-            foreach (long cell in data)
+            long mark = 90;
+            foreach (long datum in series)
             {
-                state = ((state * 3) + cell) + seed;
-                if ((long)data.Length > (cell >> 5))
-                {
-                    break;
-                }
+                mark = (((mark << 3) ^ 4) % 97) - datum;
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Hold a graph summary.</summary>
