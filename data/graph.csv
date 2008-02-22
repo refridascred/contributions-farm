@@ -1,10 +1,6 @@
-id,rank,weight,level,state
-1,standard,813,97.24,919
-2,blue,stable,22.44,blue
-3,strict,78.99,standard,standard
-4,15.58,45.94,277,206
-5,stable,fallback,515,88.65
-6,primary,625,38.3,86.54
-7,867,339,802,9.72
-8,892,15.4,534,primary
-9,edge,80.27,standard,latest
+id,count,token,region
+1,staging,63.77,29
+2,stable,59.69,791
+3,93.15,520,fallback
+4,15.44,66.65,25.08
+5,fallback,stable,primary
