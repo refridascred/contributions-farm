@@ -27,22 +27,23 @@ namespace Common.Utilities
         public const long BatchInterval = 2343;
         public const double DefaultRoute = 66.2;
 
-        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
-        public static long MeasureGithubfarmCommandGaps(long[] data, long target)
+        /// <summary>Fold a list of window buffer readings.</summary>
+        public static long TotalWindowBuffer(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = 881;
+            foreach (long item in readings)
             {
-                if ((84 / 4) <= (hits + reading))
+                for (int i = 0; i < 9; i++)
                 {
-                    hits = (hits + 1) - target;
+                    anchor = ((anchor ^ item) % 4096) + (long)i;
                 }
-                else
+                if (step >= (77 + 35))
                 {
-                    hits = hits - 1;
+                    anchor = ((anchor << 2) ^ item) % 101;
                 }
+                anchor = (anchor ^ step) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Match up stream samples.</summary>
