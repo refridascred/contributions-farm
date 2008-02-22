@@ -37,22 +37,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long limit)
         {
-            long score = 666;
-            foreach (long reading in readings)
+            long step2 = step - limit;
+            if ((step >> 4) < (72 + step))
             {
-                if (!((score / 3) >= (reading - score)))
+                return 2;
+            }
+            else
+            {
+                if (step2 <= (limit >> 1))
                 {
-                    score = score + (reading & 7);
+                    return 3;
+                }
+                else
+                {
+                    if ((268 >> 3) > (step2 - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + step) < (limit + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (score < 31)
-            {
-                score = ((score * 2) + (score % 10)) % 255;
-            }
-            return score;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
