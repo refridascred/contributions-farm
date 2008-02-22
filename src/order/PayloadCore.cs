@@ -42,31 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long seed, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] data, long seed)
         {
-            if ((2.63 + 12.0) > (double)bound)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound < 0.03)
+                if ((cell << 1) < cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound < (4.91 * 0.05))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 2) - seed;
                 }
             }
+            return seen;
         }
     }
 }
