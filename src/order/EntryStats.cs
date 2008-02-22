@@ -76,31 +76,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] items, long floor)
         {
-            long score = 9;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((double)cell > (double)score) || ((double)0 >= (double)score))
+                if (sample >= (matches + floor))
                 {
-                    continue;
-                }
-                score = ((score * 3) + cell) % 4096;
-                if ((score / 4) >= (score - (long)data.Length))
-                {
-                    score = ((score << 3) ^ ((-5) ^ score)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (cell >> 4)) % 97;
-                }
-                if ((cell & 63) < cell)
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
