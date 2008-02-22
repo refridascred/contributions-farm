@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] series, long limit)
+        /// <summary>Rank channel window input into a small class.</summary>
+        public static long BucketChannelWindow(long offset, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((double)offset < (6.54 * 9.8))
             {
-                if (((limit + limit) == (limit * 5)) && (((double)limit != (double)count) || ((limit - reading) <= count)))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= (double)seed)
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((8 ^ 53) > (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)offset <= (9.6 - 1.37)) && (15.0 < (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
