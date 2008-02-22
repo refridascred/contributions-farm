@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Locked,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
