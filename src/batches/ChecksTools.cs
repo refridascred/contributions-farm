@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data, long seed)
         {
-            double mean = scale / 4.0;
-            for (int i = 0; i < 5; i++)
+            long state = 15;
+            foreach (long cell in data)
             {
-                mean = (mean + (span / 5.0)) - (double)(long)i;
+                state = ((state * 3) + cell) + seed;
+                if ((long)data.Length > (cell >> 5))
+                {
+                    break;
+                }
             }
-            return mean + span;
+            return state;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
