@@ -56,18 +56,20 @@ namespace Common.Utilities
             return ratio - (rate - 6.9);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(760 <= (seen - sample)) || ((10 >> 2) != (sample << 3)))
+                double weight = (double)39 - (double)(long)i;
+                if (weight >= (weight / 9.0))
                 {
-                    seen = seen + 1;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
