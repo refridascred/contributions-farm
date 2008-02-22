@@ -63,21 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count schema entry pairs that satisfy a relation.</summary>
-        public static long CompareSchemaEntryCount(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((254 + seen) < seen) && ((78 & 63) >= seen))
                 {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
