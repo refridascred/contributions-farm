@@ -12,39 +12,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long seed)
         {
-            long slot = offset + target;
-            if ((double)slot == (double)3)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (2 & 31))
+                if (data[i] <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)slot < (6.0 + 6.8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - offset) >= (offset - 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
