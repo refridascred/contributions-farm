@@ -57,18 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            long mark = 314;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!(mark >= (167 << 2)))
+                if ((datum ^ datum) != (datum << 1))
                 {
-                    mark = ((mark * 3) + (floor / 3)) ^ entry;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a profile options.</summary>
