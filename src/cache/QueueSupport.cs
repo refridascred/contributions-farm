@@ -22,22 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long total = -927;
-            foreach (long reading in readings)
-            {
-                if ((7 + reading) != (reading >> 4))
-                {
-                    total = (total ^ (total + 880)) % 1000;
-                }
-                else
-                {
-                    total = (total ^ (reading - total)) % 4096;
-                }
-            }
-            return total;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
