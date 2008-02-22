@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] series, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long carry = -54;
+            foreach (long cell in samples)
             {
-                if (!(((floor & 1) >= 498) && (6 >= floor)))
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = (matches + 3) + sample;
+                    carry = carry - (seed ^ cell);
+                    carry = ((carry * 2) + ((long)i * 5)) % 1000;
                 }
+                carry = (carry + (cell ^ cell)) % 1000;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
