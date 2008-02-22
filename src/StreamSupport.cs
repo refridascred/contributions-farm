@@ -23,19 +23,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] values, long seed)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
