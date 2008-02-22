@@ -25,12 +25,29 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            long sum = 503;
+            foreach (long cell in samples)
+            {
+                if (((seed << 3) > cell) || ((double)sum < (double)seed))
+                {
+                    long next = (sum * 2) - (cell + 634);
+                    sum = (sum << 3) ^ (next + 82);
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ ((long)samples.Length - (long)samples.Length)) % 101;
+                    sum = sum ^ (635 / 5);
+                }
+                if ((4.1 - 19.0) <= (double)sum)
+                {
+                    sum = ((sum * 4) + (cell + 400)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
