@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a route metrics value against two limits.</summary>
-        public static long GradeRouteMetrics(long seed, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            if ((floor % 100) < (seed - floor))
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed < (0.2 - 6.36)))
+                long bound = state - step;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 4;
+                    state = (((state << 3) ^ (bound - bound)) % 255) - (long)i2;
+                    state = state ^ (174 >> 2);
                 }
-                else
-                {
-                    if ((seed % 3) != (seed - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2.11 + 8.5) < (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = (state << 2) ^ (step + state);
+                state = ((state * 3) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Digest a series of support entries.</summary>
