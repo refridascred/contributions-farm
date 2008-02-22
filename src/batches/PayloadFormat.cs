@@ -13,11 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
+            Idle,
+            Active,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
