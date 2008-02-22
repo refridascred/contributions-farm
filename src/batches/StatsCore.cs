@@ -58,14 +58,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
+            Dropped,
+            Idle,
             Done,
-            Synced,
-            Paused,
-            Failed,
-            Pending,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
