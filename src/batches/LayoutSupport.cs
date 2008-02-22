@@ -20,15 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double weight, double span)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double ratio = (double)(76 + (-4));
-            if (ratio > span)
-            {
-                ratio = (ratio + (double)25) - weight;
-            }
-            return ratio - span;
+            Idle,
+            Ready,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
