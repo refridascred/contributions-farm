@@ -34,32 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long bound, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings, long offset)
         {
-            long next = bound + seed;
-            if (!(next >= seed))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + bound) >= 5)
+                if ((5.1 + 5.0) == (double)offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next & 31) > next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a account entry.</summary>
