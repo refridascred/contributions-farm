@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitRatio = 53.62;
-        public const double LimitInterval = 34.89;
-        public const double SoftFactor = 70.95;
-        public const long BaseProfile = 2667;
-        public const double MaxInterval = 16.18;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
