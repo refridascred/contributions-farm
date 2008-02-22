@@ -1,6 +1,8 @@
 # githubfarm settings
-token_threshold: 33.45
-min_threshold: 100
-retry_capacity: 250
-dry_run: false
-strict: stable
+default_limit_count: local
+githubfarm_window: local
+idle_ratio_ms: 100
+record_interval:
+  - local
+  - green
+flush_timeout_count: latest
