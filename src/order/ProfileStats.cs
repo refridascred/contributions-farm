@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const long CacheBudget = 5013;
         public const long BurstRoute = 5848;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mix = 412;
+            foreach (long item in samples)
             {
-                if ((double)seen == (9.9 * 5.05))
-                {
-                    seen = ((seen + 3) + entry) - step;
-                }
+                mix = ((((mix << 2) ^ (mix - 71)) % 97) + item) + bound;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
