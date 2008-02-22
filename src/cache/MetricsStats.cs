@@ -26,22 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] items)
         {
-            long score = 499;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (0 <= (score / 2))
+                if (((double)seen > (double)datum) && ((datum + seen) > seen))
                 {
-                    score = (score - score) + floor;
-                }
-                else
-                {
-                    score = score + (cell - 3);
+                    seen = seen + 2;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
