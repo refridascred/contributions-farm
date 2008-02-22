@@ -31,10 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheCount = 78.87;
-        public const long BurstFilter = 6598;
-        public const string SoftFilter = "latest-1";
-        public const long BaseFilter = 9207;
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long MeasureEntrySchemaOutliers(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((9.7 * 1.7) < (double)66) || ((double)entry >= (5.57 + 18.0)))
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
