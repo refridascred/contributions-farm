@@ -30,18 +30,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] readings, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long cur = bound ^ target;
+            if ((double)cur > (10.0 - 6.1))
             {
-                if ((floor + 45) >= (730 * 4))
+                return 0;
+            }
+            else
+            {
+                if ((target & 31) >= cur)
                 {
-                    tally = (tally + 1) + reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target > (6.0 - 14.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound ^ cur) != (cur ^ cur))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
