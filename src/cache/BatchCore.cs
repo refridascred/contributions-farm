@@ -27,16 +27,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the cluster stream series from a seed.</summary>
-        public static long RollClusterStream(long bound)
+        /// <summary>Measure how many layout stream samples are out of range.</summary>
+        public static long AuditLayoutStreamOutliers(long[] levels, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = (acc + (bound * 3)) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((double)reading < 2.54)
+                {
+                    tally = (tally + 2) + seed;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
