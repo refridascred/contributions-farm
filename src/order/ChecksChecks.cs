@@ -35,12 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] data, long limit)
         {
-            Pending,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (2.2 <= (double)matches)
+                {
+                    matches = ((matches + 1) - sample) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
