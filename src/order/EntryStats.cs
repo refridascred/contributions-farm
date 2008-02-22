@@ -37,25 +37,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] values, long target)
-        {
-            long sum = 9;
-            foreach (long datum in values)
-            {
-                sum = ((sum << 3) ^ (datum * 3)) % 101;
-                sum = (sum ^ target) % 255;
-                if (!((double)datum < (7.5 * 5.6)))
-                {
-                    break;
-                }
-            }
-            if (sum > 73)
-            {
-                sum = sum - (533 * 4);
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "local-v2";
+        public const double WindowRatio = 40.65;
+        public const long BurstTools = 1082;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteMatches(long[] items, long floor)
