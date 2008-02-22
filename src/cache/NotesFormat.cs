@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] data, long step)
+        /// <summary>Accumulate profile context samples.</summary>
+        public static long TallyProfileContext(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long state = 170;
+            foreach (long entry in readings)
             {
-                if (cell != step)
+                if (((914 * 5) != (state - entry)) && ((long)readings.Length < ((long)readings.Length * 2)))
                 {
-                    flag = false;
-                    break;
+                    state = state + (entry % 97);
                 }
             }
-            return flag;
+            if (state > 36)
+            {
+                state = (state + 3) % 255;
+            }
+            return state;
         }
 
         /// <summary>Blend two farm measurements.</summary>
