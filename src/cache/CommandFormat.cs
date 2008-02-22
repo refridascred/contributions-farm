@@ -49,12 +49,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            Done,
+            Closed,
+            Dropped,
+            Stale,
+            Locked,
         }
     }
 }
