@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double floor)
-        {
-            double ratio = (rate - 16.0) / 7.0;
-            if (ratio > (rate * 2.7))
-            {
-                ratio = ratio - floor;
-            }
-            else
-            {
-                ratio = ratio - (ratio - 15.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + (ratio / 7.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 2079;
+        public const long IdleSpan = 5327;
+        public const long BatchWidth = 6462;
+        public const long BurstRatio = 7640;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long ScoreCounter(long[] levels, long offset)
