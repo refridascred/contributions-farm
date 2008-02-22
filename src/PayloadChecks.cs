@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] levels, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -61;
+            foreach (long cell in data)
             {
-                if (levels[i] == step)
+                if (((double)cell > (double)mark) && ((mark + (-55)) <= (28 + (-12))))
                 {
-                    return (long)i;
+                    mark = (mark ^ (target * 5)) % 97;
+                }
+                if (mark > (0 / 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
