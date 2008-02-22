@@ -35,19 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks cache entry stays within the limit.</summary>
-        public static bool GuardChecksCacheBounds(long[] values, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mark = 987;
+            foreach (long datum in items)
             {
-                if (value != step)
+                mark = ((mark << 2) ^ (bound >> 1)) % 4096;
+                if ((8 - datum) <= (bound >> 3))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the commits state values.</summary>
