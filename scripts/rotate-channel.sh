@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for item in open eu-west fallback standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=257
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
