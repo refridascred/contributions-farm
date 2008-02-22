@@ -1,13 +1,7 @@
 {
-  "window_retries": 82,
-  "metric_interval": 74,
-  "min_depth_s": {
-    "cluster_ratio": false,
-    "burst_capacity_count": "strict",
-    "cache_timeout": ["primary", "eu-west", "fallback", "standard"],
-    "cache_limit_ms": "primary",
-    "context_capacity": "open",
-    "readonly": 21.21
-  },
-  "strict": "stable"
+  "compress": true,
+  "sync_depth_ms": "standard",
+  "enabled": true,
+  "checks_interval": true,
+  "route_interval": 54.76
 }
