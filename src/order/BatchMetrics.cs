@@ -36,15 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Validate cache notes readings against a bound.</summary>
+        public static bool VerifyCacheNotesBounds(long[] items, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
