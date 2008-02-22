@@ -72,11 +72,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 23.08;
-        public const long StepPayload = 2155;
-        public const long LimitPayload = 8512;
-        public const double BurstPayload = 23.5;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] values, long target)
+        {
+            long state = 331;
+            foreach (long cell in values)
+            {
+                if ((17.0 + 1.0) == (double)cell)
+                {
+                    state = ((state * 4) + (state - target)) % 97;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state + 6)) % 97;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
