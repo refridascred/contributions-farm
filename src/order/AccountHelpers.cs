@@ -33,18 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] data)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item * 4) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
