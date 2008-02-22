@@ -1,8 +1,7 @@
 {
-  "flush_size_ms": false,
-  "min_capacity_count": 60,
-  "farm_threshold": 75.87,
-  "verbose": true,
-  "base_window_ms": 60,
-  "min_retries_ms": 4242
+  "graph_limit": true,
+  "default_threshold_count": "fallback",
+  "idle_interval_pct": "eu-west",
+  "window_retries": "legacy",
+  "window_ratio": "eu-west"
 }
