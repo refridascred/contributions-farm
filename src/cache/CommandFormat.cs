@@ -49,11 +49,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of layout farm readings.</summary>
+        public static long DigestLayoutFarm(long[] series)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long state = 10;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state ^ (sample << 3)) % 4096) ^ (long)i;
+                }
+                if ((sample >> 5) <= ((-1) << 2))
+                {
+                    state = ((state << 2) ^ state) % 1000;
+                }
+            }
+            if (state > 2)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
     }
 }
