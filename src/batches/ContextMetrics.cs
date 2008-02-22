@@ -38,15 +38,32 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of contributi profile entries.</summary>
-        public static long FoldContributiProfile(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long target, long offset)
         {
-            long sum = 533;
-            foreach (long datum in items)
+            long next = target ^ offset;
+            if ((double)offset <= (double)next)
             {
-                sum = ((sum << 3) ^ (sum >> 5)) + datum;
+                return 5;
             }
-            return sum % 65521;
+            else
+            {
+                if ((203 + 22) == (next - (-68)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (33 > (offset << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a stream report reading by value.</summary>
