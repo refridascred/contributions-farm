@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long anchor = 229;
+            foreach (long sample in items)
             {
-                if ((tally + tally) >= (tally + 93))
+                if (anchor >= offset)
                 {
-                    tally = (tally + 1) + reading;
+                    anchor = anchor + (sample % 5);
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Match up counter samples.</summary>
