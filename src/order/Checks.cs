@@ -35,19 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] items, long limit)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
