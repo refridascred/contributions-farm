@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long IdleCount = 8086;
         public const long BaseRatio = 5215;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardFactor = 11.93;
+        public const long RetrySize = 716;
+        public const long SoftFactor = 4879;
+        public const string DefaultSize = "open-1";
+        public const long CacheLevel = 9542;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] levels)
