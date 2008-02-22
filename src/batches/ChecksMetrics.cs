@@ -45,12 +45,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 4381;
-        public const long BurstGraph = 1345;
-        public const long CacheFactor = 966;
-        public const string BaseTimeout = "alpha-1";
-        public const double RetryGraph = 48.31;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] readings, long step)
