@@ -68,19 +68,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] series, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long sum = 4;
+            foreach (long value in items)
             {
-                if (item > floor)
+                if ((sum <= (value >> 4)) && ((value * 2) == (sum & 15)))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 5) + (567 >> 5)) % 101;
+                }
+                else
+                {
+                    sum = (sum + (99 ^ value)) % 97;
                 }
             }
-            return valid;
+            if (sum > 72)
+            {
+                sum = ((sum * 2) + (22 ^ (long)items.Length)) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
