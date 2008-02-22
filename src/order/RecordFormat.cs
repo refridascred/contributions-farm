@@ -28,12 +28,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the session state values.</summary>
