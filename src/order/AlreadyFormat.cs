@@ -23,10 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseRatio = 4359;
-        public const long MinFactor = 1976;
-        public const string BaseCommits = "cached-v2";
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Stale,
+            Locked,
+            Synced,
+            Done,
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] items, long offset)
