@@ -1,12 +1,5 @@
 {
-  "graph_limit": 51.26,
-  "audit": "eu-west",
-  "batch_interval_count": {
-    "min_limit": 60,
-    "hard_ttl_ms": 98.88,
-    "min_ttl": "edge",
-    "hard_depth_count": "fallback",
-    "retry_depth_pct": true
-  },
-  "hard_ratio_s": ["staging", "staging", "latest", "cached"]
+  "cache_window": false,
+  "default_capacity": 553,
+  "min_delay": "standard"
 }
