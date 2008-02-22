@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 11.65;
-        public const double IdleInterval = 64.54;
-        public const long DefaultSpan = 1727;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double rate, double floor)
+        {
+            double load = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (floor / 8.0)) + (double)(long)i) + rate;
+            }
+            return load + load;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterBounds(long[] values, long seed)
