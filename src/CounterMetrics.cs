@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const double BurstSpan = 70.49;
         public const long CacheRatio = 8375;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSize = 7275;
-        public const long RetryCount = 4199;
-        public const string MinLevel = "strict-v2";
-        public const long CacheChecks = 4180;
-        public const double BaseFactor = 95.09;
+        /// <summary>Adjust a tools report reading.</summary>
+        public static double BlendToolsReport(double weight, double bias)
+        {
+            double scale = (7.37 + weight) / 2.0;
+            if (scale >= (scale - weight))
+            {
+                scale = scale + (bias * 1.9);
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            return scale + (double)4;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
