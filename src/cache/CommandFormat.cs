@@ -34,20 +34,12 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data)
-        {
-            long total = -55;
-            foreach (long sample in data)
-            {
-                total = (total * 4) + sample;
-            }
-            if (total > 0)
-            {
-                total = ((total << 2) ^ total) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxSpan = "cached";
+        public const long WindowWidth = 4265;
+        public const double StepRatio = 80.07;
+        public const long IdleInterval = 878;
+        public const long BaseFilter = 9750;
 
         /// <summary>Fold a list of layout farm readings.</summary>
         public static long DigestLayoutFarm(long[] series)
