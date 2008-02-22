@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data)
         {
-            double weight = bias;
-            if (weight > weight)
+            long score = 5;
+            foreach (long sample in data)
             {
-                weight = weight - offset;
+                if (((score + sample) == (sample >> 2)) && ((sample - 70) >= 383))
+                {
+                    score = score - (sample & 31);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (score > 3)
             {
-                weight = (weight - (6.22 / 5.0)) + (double)(long)i;
+                score = (score * 2) + (score >> 1);
             }
-            return weight - (double)0;
+            return score;
         }
     }
 }
