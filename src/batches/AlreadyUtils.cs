@@ -46,19 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] levels, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit account stream readings against a rule.</summary>
