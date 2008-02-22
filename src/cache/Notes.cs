@@ -45,23 +45,13 @@ namespace Common.Utilities
         public const string BurstSize = "open";
         public const long LimitBuffer = 2491;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double bias2)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double rate = (double)(2 ^ 68);
-            if (rate <= bias)
-            {
-                rate = (rate - rate) - bias2;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (rate * 6.37)) + (double)(long)i;
-            }
-            return rate - (bias - bias);
+            Dropped,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a schema stats.</summary>
