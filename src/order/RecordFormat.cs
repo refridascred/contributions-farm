@@ -19,17 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] readings, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 84;
+            foreach (long entry in samples)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                score = score ^ (entry & 31);
+                if (((entry - score) < (78 ^ score)) || ((4 >> 5) <= (bound + score)))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (bound >> 3)) % 101;
+                }
+                else
+                {
+                    score = score + (entry * 3);
                 }
             }
-            return -1;
+            if (score > 47)
+            {
+                score = (score ^ (bound << 3)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
