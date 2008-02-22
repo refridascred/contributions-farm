@@ -13,22 +13,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long bound, long seed)
         {
-            long sum = 4;
-            foreach (long sample in values)
+            long next = bound ^ seed;
+            if (seed <= bound)
             {
-                if (((3.0 - 7.44) < (double)sample) && ((sample >> 1) < (sample ^ sum)))
+                return 1;
+            }
+            else
+            {
+                if ((bound / 3) >= bound)
                 {
-                    sum = (sum << 2) ^ ((-982) + 8);
+                    return 0;
+                }
+                else
+                {
+                    if (((-43) >> 2) < (seed + next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound >= 1.2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (sum < 965)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
