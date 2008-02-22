@@ -15,13 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
