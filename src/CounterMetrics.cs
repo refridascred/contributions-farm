@@ -13,21 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next format contributi value from a seed.</summary>
-        public static long SeriesFormatContributi(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(target < ((long)i << 1)))
-                {
-                    total = (total * 3) + target;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultSize = 7275;
+        public const long RetryCount = 4199;
+        public const string MinLevel = "strict-v2";
+        public const long CacheChecks = 4180;
+        public const double BaseFactor = 95.09;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
