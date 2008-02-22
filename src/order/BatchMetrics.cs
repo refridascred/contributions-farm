@@ -53,19 +53,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] data, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double rate = 17.0;
+            if (rate < (bias - bias))
             {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + bias;
             }
-            return valid;
+            return rate + gain;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
