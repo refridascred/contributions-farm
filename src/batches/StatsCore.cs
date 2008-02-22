@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches << 3) == (2 * 3))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit support payload readings against a rule.</summary>
