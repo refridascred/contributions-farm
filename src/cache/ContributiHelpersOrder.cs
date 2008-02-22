@@ -38,26 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings, long limit)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long carry = 66;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = ((carry ^ (carry + limit)) % 97) + (long)i;
-                }
-                if ((value & 31) != (limit / 7))
-                {
-                    carry = ((carry * 2) + (value + value)) % 255;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = (carry ^ (limit & 127)) % 255;
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
