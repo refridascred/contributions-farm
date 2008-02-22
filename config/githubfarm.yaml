@@ -1,5 +1,8 @@
 # githubfarm settings
-cache_capacity_count: eu-west
-verbose: 51
-queue_retries: strict
-min_threshold_pct: latest
+warm_window_count: 3
+session_ratio: open
+hard_retries:
+  - cached
+  - green
+  - legacy
+max_interval_s: legacy
