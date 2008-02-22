@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long IdleChannel = 778;
         public const long MinCount = 5868;
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double gain = (double)(5 / 3);
-            if (gain >= (double)63)
-            {
-                gain = gain + (floor * 5.23);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain + (double)4;
+            New,
+            Pending,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Match up payload samples.</summary>
