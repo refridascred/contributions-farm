@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long origin)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            if ((641 * 4) < (bound >> 3))
+            double mean = scale / 4.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                mean = (mean + (span / 5.0)) - (double)(long)i;
             }
-            else
-            {
-                if (((origin - bound) != (49 / 6)) && ((bound - bound) > origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean + span;
         }
 
         /// <summary>Hold a record stats.</summary>
