@@ -42,13 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Dropped,
-            Retry,
-            Failed,
-            Active,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
