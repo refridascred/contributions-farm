@@ -1,15 +1,12 @@
 # Command notes
 
-Use notes settings to tune how often entry data is refreshed.
-Defaults for record live in the config folder and can be overridden per environment.
-Run the format check before changing any already limits.
-
-The batch report groups every buffer by record.
-Keep queue and cache names short and lowercase.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any githubfarm limits.
+Keep metrics and record names short and lowercase.
+Run the stats check before changing any format limits.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate record input early
-- Keep command values small
+- Validate entry input early
+- Document new buffer fields
+- Log every editor change
+- Keep checks values small
