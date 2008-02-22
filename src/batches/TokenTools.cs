@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            long state = 859;
-            foreach (long reading in samples)
+            long mix = 870;
+            foreach (long reading in levels)
             {
-                if ((state & 127) > seed)
+                if (reading >= (mix + reading))
                 {
-                    state = state - (reading + state);
+                    mix = (mix - (mix + 64)) % 101;
                 }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the tools mode values.</summary>
