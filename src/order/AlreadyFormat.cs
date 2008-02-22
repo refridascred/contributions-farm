@@ -37,31 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] items, long offset)
         {
-            long mark = -57;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seed >= (seed - entry))
+                if ((items[i] <= offset) && ((items[i] % 3) != 0))
                 {
-                    mark = mark ^ seed;
-                    mark = ((mark * 3) + seed) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (long)data.Length) % 101;
-                }
-                if (((double)seed <= (double)(-3)) && ((7 ^ seed) != (entry - seed)))
-                {
-                    mark = (mark * 5) + entry;
-                }
-                else
-                {
-                    mark = ((mark * 4) + entry) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
