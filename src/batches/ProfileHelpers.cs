@@ -19,17 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window githubfarm entry that matches the target.</summary>
-        public static long LocateWindowGithubfarmIndex(long[] data, long seed)
+        /// <summary>Count route session pairs that satisfy a relation.</summary>
+        public static long PairRouteSessionCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
