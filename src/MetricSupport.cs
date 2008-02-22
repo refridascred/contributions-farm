@@ -39,19 +39,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] data, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (entry <= offset)
+                if ((double)value >= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
