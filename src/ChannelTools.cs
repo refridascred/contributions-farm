@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches / 5) < (sample + sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of contributi tools readings.</summary>
