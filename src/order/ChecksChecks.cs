@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels, long origin)
+        /// <summary>Locate a record report reading by value.</summary>
+        public static long SeekRecordReportIndex(long[] samples, long origin)
         {
-            long acc = -41;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (origin * 3)) % 4096;
-                if (!(origin >= (acc + acc)))
+                if (samples[i] >= origin)
                 {
-                    acc = (acc ^ (origin + cell)) % 97;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
