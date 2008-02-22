@@ -1,8 +1,9 @@
 # support settings
-min_ratio_pct:
-  - 32
-  - 363
-  - 205
-poll_retries: true
-idle_timeout_s: latest
-max_ttl: false
+strict:
+  - 163
+  - 82
+account_limit: 30
+stats_delay: 1.36
+max_capacity_pct: fallback
+idle_limit_pct: 1024
+base_timeout_count: 250
