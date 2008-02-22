@@ -33,15 +33,13 @@ namespace Common.Utilities
             return drift + (floor - gain);
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double span)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double load = (span + span) * 3.95;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (double)(-3)) + (double)(long)i) + bias;
-            }
-            return load + load;
+            Done,
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
