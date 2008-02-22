@@ -38,9 +38,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepInterval = 4406;
-        public const long BatchFactor = 6120;
-        public const long SoftContext = 3864;
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
