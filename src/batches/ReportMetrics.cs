@@ -14,22 +14,30 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] data, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = 348;
+            foreach (long sample in readings)
             {
-                if ((double)hits < (8.88 / 8.0))
+                if ((mix / 6) >= (sample / 4))
                 {
-                    hits = ((hits + 2) + sample) - step;
+                    mix = mix - (origin % 5);
+                }
+                if (((double)sample == (double)origin) && ((sample + (-47)) >= origin))
+                {
+                    mix = mix ^ origin;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = mix + (sample * 3);
+                }
+                if ((origin - mix) != (sample ^ sample))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Adjust a stats reading.</summary>
