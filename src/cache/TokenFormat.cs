@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long mark = 8;
+            foreach (long item in series)
+            {
+                mark = (mark - (item % 7)) % 101;
+            }
+            if (mark > 71)
+            {
+                mark = (mark + (mark + mark)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count schema batches pairs that satisfy a relation.</summary>
