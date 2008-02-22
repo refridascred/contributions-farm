@@ -30,16 +30,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9768;
+        public const long RetryOrder = 8533;
+        public const long MaxOrder = 7062;
+        public const long SoftOrder = 2558;
 
         /// <summary>Check that every payload buffer entry stays within the limit.</summary>
         public static bool ValidatePayloadBufferBounds(long[] levels, long origin)
