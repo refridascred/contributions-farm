@@ -21,21 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 93;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((value << 3) != (carry * 4)))
                 {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (floor / 9)) % 65521;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of buffer stats readings.</summary>
