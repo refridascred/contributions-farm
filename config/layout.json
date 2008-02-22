@@ -1,9 +1,6 @@
 {
-  "audit": "stable",
-  "metrics_delay": {
-    "schema_depth": "green",
-    "verbose": "strict",
-    "burst_threshold_count": [383, 383, 79, 384]
-  },
-  "batch_ttl_ms": "open"
+  "default_size": "fallback",
+  "min_window_ms": 98.21,
+  "compress": [296, 75],
+  "checks_threshold": 62.11
 }
