@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate checks queue readings against a bound.</summary>
-        public static bool ValidateChecksQueueRange(long[] items, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double weight, double span)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double ratio = (double)(76 + (-4));
+            if (ratio > span)
             {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio + (double)25) - weight;
             }
-            return flag;
+            return ratio - span;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
