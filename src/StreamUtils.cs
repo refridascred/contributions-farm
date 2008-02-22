@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state ^ origin) % 1000;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
