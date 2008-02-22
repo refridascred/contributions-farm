@@ -23,22 +23,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] samples, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] samples, long offset)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long datum in samples)
             {
-                if ((count + step) <= (datum - 3))
+                if ((datum << 2) <= datum)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
