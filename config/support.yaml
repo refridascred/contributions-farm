@@ -1,4 +1,6 @@
 # support settings
-burst_interval_pct: 500
-audit: 30
-support_ratio: legacy
+profile_threshold:
+  - 301
+  - 262
+verbose: 16
+strict: false
