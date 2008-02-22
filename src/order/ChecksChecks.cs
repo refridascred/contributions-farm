@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a batch token figure with a bias.</summary>
-        public static double SmoothBatchToken(double weight, double span)
-        {
-            double gain = span;
-            if (gain >= gain)
-            {
-                gain = gain - span;
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - span) - (double)(long)i;
-            }
-            return gain - span;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinSize = "fallback-edge";
+        public const long SoftSpan = 2524;
+        public const long RetrySpan = 9828;
+        public const string IdleTimeout = "stable";
+        public const long MinBuffer = 5323;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] readings)
