@@ -61,19 +61,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] series)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long value in series)
             {
-                if (((7.26 + 6.1) != (double)cell) && ((2.9 / 9.0) >= (double)cell))
+                if (((-44) ^ value) < (value + value))
                 {
                     hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
                 }
             }
             return hits;
