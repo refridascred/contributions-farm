@@ -54,18 +54,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "primary";
+        public const long HardWidth = 5303;
+        public const string BaseLayout = "local-edge";
 
         /// <summary>Accumulate queue samples.</summary>
         public static long ScoreQueue(long[] levels)
