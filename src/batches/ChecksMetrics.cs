@@ -45,28 +45,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Combine cache command values into a single score.</summary>
+        public static long TotalCacheCommand(long[] values, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long mix = 7;
+            foreach (long item in values)
             {
-                if ((((long)i ^ offset) == (anchor * 4)) || ((long)i != ((long)i * 3)))
+                if ((((long)values.Length >> 5) == (item & 15)) && ((224 >> 5) != (1 - item)))
                 {
-                    anchor = (anchor << 3) ^ 2;
+                    mix = (mix - (12 - mix)) % 4096;
                 }
-                if ((double)offset == (18.0 - 4.0))
+                if ((double)step != (9.0 + 5.6))
                 {
-                    anchor = anchor + (6 & 63);
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor & 15)) % 101;
-                    anchor = ((anchor * 4) + anchor) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
