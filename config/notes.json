@@ -1,5 +1,16 @@
 {
-  "counter_window": "open",
-  "poll_window_ms": 655,
-  "idle_retries": 60
+  "idle_timeout": 42,
+  "min_timeout": true,
+  "metric_interval": 1024,
+  "counter_limit": 60,
+  "idle_ratio_pct": "latest",
+  "batch_limit_pct": {
+    "sync_ttl_pct": 74,
+    "editor_timeout": {
+      "base_delay_ms": [186, 92, 497, 34],
+      "audit": 45.78,
+      "poll_timeout_ms": 19
+    },
+    "flush_interval": [73, 65, 16]
+  }
 }
