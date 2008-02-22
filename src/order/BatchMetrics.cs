@@ -65,22 +65,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metric queue readings.</summary>
-        public static long TotalMetricQueue(long[] levels, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long origin, long limit)
         {
-            long total = -37;
-            foreach (long cell in levels)
+            if ((double)origin == (4.0 / 6.0))
             {
-                if ((917 < total) || (((-6) / 9) <= cell))
+                return 5;
+            }
+            else
+            {
+                if (origin < (35 & 15))
                 {
-                    total = (((total * 5) + (long)levels.Length) % 4096) - seed;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (total < 5)
-            {
-                total = (total + (total + total)) % 65521;
-            }
-            return total % 4096;
         }
 
         /// <summary>Blend two farm measurements.</summary>
