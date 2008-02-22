@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 2079;
-        public const long IdleSpan = 5327;
-        public const long BatchWidth = 6462;
-        public const long BurstRatio = 7640;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitRatio = 53.62;
+        public const double LimitInterval = 34.89;
+        public const double SoftFactor = 70.95;
+        public const long BaseProfile = 2667;
+        public const double MaxInterval = 16.18;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long ScoreCounter(long[] levels, long offset)
