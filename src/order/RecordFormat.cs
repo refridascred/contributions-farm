@@ -35,22 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item < (double)hits)
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
                 {
-                    hits = (hits + 3) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
