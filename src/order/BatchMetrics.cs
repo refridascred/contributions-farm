@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] values)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long entry in values)
             {
-                if ((double)entry <= (7.25 * 7.0))
+                if ((5.0 - 13.0) > (double)seen)
                 {
-                    seen = (seen + 3) - target;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
