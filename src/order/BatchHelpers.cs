@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up channel session samples.</summary>
-        public static long OverlapChannelSessionCount(long[] samples)
+        /// <summary>Accumulate counter order samples.</summary>
+        public static long ScoreCounterOrder(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 10;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry * 2) + carry) % 255) - cell;
             }
-            return hits;
+            if (carry > 72)
+            {
+                carry = carry ^ (3 % 7);
+            }
+            return carry;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
