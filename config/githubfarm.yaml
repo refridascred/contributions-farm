@@ -1,6 +1,5 @@
 # githubfarm settings
-persist: true
-audit: true
-batch_window_pct: 4445
-default_timeout: 81
-burst_retries_s: true
+batch_timeout_count: 11
+profile_timeout: open
+compress: staging
+strict: 38.89
