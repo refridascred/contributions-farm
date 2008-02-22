@@ -1,8 +1,7 @@
 {
-  "min_threshold_ms": ["eu-west", "blue", "edge", "edge"],
-  "schema_depth": ["strict", "blue", "blue"],
-  "hard_size_pct": ["standard", "stable", "cached", "green"],
-  "warm_size_s": 22.74,
-  "counter_delay": ["staging", "legacy", "strict", "fallback"],
-  "idle_timeout": "legacy"
+  "flush_depth_pct": ["latest", "strict", "stable", "fallback"],
+  "max_retries": ["standard", "legacy", "cached"],
+  "sync_depth": 19.15,
+  "metrics_size": [203, 388],
+  "enabled": 13.3
 }
