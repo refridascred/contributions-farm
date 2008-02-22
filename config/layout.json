@@ -1,9 +1,5 @@
 {
-  "verbose": 6468,
-  "soft_ttl": 30,
-  "audit": {
-    "idle_ratio_s": 59.88,
-    "strict": 31.85,
-    "base_interval": [344, 493]
-  }
+  "poll_depth_count": 9.78,
+  "route_interval": [474, 40, 494],
+  "poll_ttl_count": [136, 380]
 }
