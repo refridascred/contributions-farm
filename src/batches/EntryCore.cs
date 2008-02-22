@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values, long bound)
-        {
-            long total = 276;
-            foreach (long entry in values)
-            {
-                total = ((total << 3) ^ (entry * 3)) % 97;
-                if (bound >= (bound + bound))
-                {
-                    break;
-                }
-            }
-            if (total > 8)
-            {
-                total = (total << 2) ^ (total + 8);
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxCount = "primary";
+        public const string MinLayout = "latest-edge";
+        public const long HardDepth = 1381;
+        public const long BurstLayout = 4957;
+        public const double CacheLayout = 76.56;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultLevel = 9024;
