@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BurstMetric = 174;
         public const double MaxDepth = 84.15;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seed ^ cell) >= seed)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 1638;
+        public const double WindowBatch = 90.7;
+        public const double HardBatch = 86.04;
+        public const string MinSpan = "alpha-v2";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long offset, long target)
