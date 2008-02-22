@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long AuditOrderNotesHits(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((floor << 3) < origin)
             {
-                if (!(((2.56 * 2.0) <= (double)cell) || ((seen - cell) >= seen)))
+                return 1;
+            }
+            else
+            {
+                if ((7.0 * 17.0) <= (double)origin)
                 {
-                    seen = seen + 1;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)floor <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)origin >= (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
