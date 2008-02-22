@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile editor readings.</summary>
-        public static long DigestProfileEditor(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples)
         {
-            long total = 9;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                total = (total ^ (total * 2)) - reading;
+                if ((double)count >= (5.83 * 5.4))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
