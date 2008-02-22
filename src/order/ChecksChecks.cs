@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a record report reading by value.</summary>
-        public static long SeekRecordReportIndex(long[] samples, long origin)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
