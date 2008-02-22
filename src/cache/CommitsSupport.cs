@@ -54,25 +54,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the githubfarm record series from a seed.</summary>
-        public static long IterateGithubfarmRecord(long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((bound + bound) == (58 + bound))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc << 3) ^ bound;
-                    acc = acc + ((long)i - (long)i2);
-                }
-                acc = (acc - ((long)i ^ bound)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
