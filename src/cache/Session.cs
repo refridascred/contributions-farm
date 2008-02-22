@@ -13,21 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 588;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-8) + 564) < sample)
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - (acc * 5)) % 255;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
