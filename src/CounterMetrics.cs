@@ -48,18 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long score = 964;
+            foreach (long reading in items)
             {
-                if (!((value % 10) != (2 ^ value)))
+                if ((reading / 5) >= (score + score))
                 {
-                    matches = matches + 2;
+                    score = ((score ^ (score + score)) % 255) - target;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
