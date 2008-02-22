@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate stats account readings against a bound.</summary>
-        public static bool GuardStatsAccountBounds(long[] samples, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
