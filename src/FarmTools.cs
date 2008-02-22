@@ -35,30 +35,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double floor)
         {
-            long anchor = 5;
-            foreach (long reading in readings)
+            double drift = (double)(8 ^ 2);
+            if (drift <= floor)
             {
-                if ((reading * 2) < (anchor + anchor))
-                {
-                    anchor = ((anchor * 3) + (anchor >> 2)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                if ((double)(long)readings.Length >= 13.0)
-                {
-                    break;
-                }
+                drift = drift - (weight - 15.0);
             }
-            if (anchor < (-7))
+            else
             {
-                anchor = (anchor << 2) ^ anchor;
+                drift = drift - (double)546;
             }
-            return anchor % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)39) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
