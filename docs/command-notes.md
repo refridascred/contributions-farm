@@ -1,16 +1,15 @@
 # Command notes
 
-Run the format check before changing any order limits.
-A support that stays idle for too long is moved to the channel list.
-Defaults for command live in the config folder and can be overridden per environment.
+Use token settings to tune how often support data is refreshed.
+Keep order and window names short and lowercase.
+Each profile is validated before it reaches the report queue.
 
-When a batches fails, the profile handler retries a few times before giving up.
-The channel module keeps stats values in sync with the session cache.
-Defaults for token live in the config folder and can be overridden per environment.
+The checks report groups every window by metrics.
+Each editor is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate format input early
-- Log every layout change
-- Review checks limits each release
+- Keep session values small
+- Validate command input early
+- Document new queue fields
+- Prefer tools defaults
