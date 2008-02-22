@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] data)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long entry in data)
             {
-                if ((cell - 964) > tally)
+                if ((double)tally != (double)entry)
                 {
                     tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
