@@ -38,18 +38,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] series)
+        /// <summary>Match up queue farm samples.</summary>
+        public static long OverlapQueueFarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.66 * 6.71) < (double)matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) ^ cell;
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
