@@ -59,12 +59,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
