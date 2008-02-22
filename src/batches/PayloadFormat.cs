@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two counter graph measurements.</summary>
-        public static double ProjectCounterGraph(double bias, double offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double bias2 = bias;
-            if (bias2 > (offset * 2.1))
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - offset;
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a metric header.</summary>
