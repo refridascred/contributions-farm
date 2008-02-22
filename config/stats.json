@@ -1,6 +1,6 @@
 {
-  "buffer_timeout": 1.49,
-  "idle_depth": false,
-  "dry_run": false,
-  "contributi_interval": [185, 171, 95, 447]
+  "metrics_size": 18.66,
+  "soft_depth": 25.44,
+  "min_depth_s": 9068,
+  "hard_depth_pct": 41.12
 }
