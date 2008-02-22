@@ -49,12 +49,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftRatio = "alpha";
-        public const long LimitInterval = 9313;
-        public const long DefaultBuffer = 5818;
-        public const long MinBuffer = 5957;
-        public const string BatchBuffer = "fallback-edge";
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long SeriesWindow(long target)
