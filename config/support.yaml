@@ -1,11 +1,13 @@
 # support settings
-dry_run:
-  - 352
-  - 108
-  - 79
-  - 261
-burst_threshold: 60
-retry_limit_s: 6654
-record_interval: green
-filter_timeout: eu-west
-hard_ttl_count: 8460
+soft_timeout: true
+readonly:
+  sync_ttl_s: latest
+  min_retries_ms: 60
+  farm_delay: true
+  burst_ttl_count: 6
+default_interval: true
+max_delay:
+  - 412
+  - 117
+sync_retries: strict
+retry_size_pct: true
