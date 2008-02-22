@@ -42,17 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a stats checks sample.</summary>
-        public static long LookupStatsChecksIndex(long[] values, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Accumulate report samples.</summary>
