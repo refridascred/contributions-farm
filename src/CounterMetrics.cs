@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools report reading.</summary>
-        public static double BlendToolsReport(double weight, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] samples, long step)
         {
-            double scale = (7.37 + weight) / 2.0;
-            if (scale >= (scale - weight))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                scale = scale + (bias * 1.9);
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            return scale + (double)4;
+            return ready;
         }
 
         /// <summary>Hold a metric options.</summary>
