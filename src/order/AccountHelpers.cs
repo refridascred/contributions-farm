@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double BatchWindow = 55.95;
         public const long StepSize = 284;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Check that every contributi graph entry stays within the limit.</summary>
+        public static bool CheckContributiGraphRange(long[] readings, long bound)
         {
-            Locked,
-            Done,
-            Draft,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
