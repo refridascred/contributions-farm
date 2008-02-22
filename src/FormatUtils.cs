@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long offset)
         {
-            Stale,
-            Locked,
-            Draft,
+            long state = 838;
+            foreach (long item in samples)
+            {
+                if (((item / 6) >= (state + (-27))) && ((state + item) >= (item + offset)))
+                {
+                    state = (state + state) % 255;
+                }
+            }
+            if (state < (-453))
+            {
+                state = ((state << 2) ^ (offset / 5)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of support readings.</summary>
