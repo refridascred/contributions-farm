@@ -39,21 +39,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of record batches readings.</summary>
-        public static long OverlapRecordBatchesCount(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the notes state values.</summary>
