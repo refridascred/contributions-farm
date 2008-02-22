@@ -24,15 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer tools value from a seed.</summary>
-        public static long StepBufferTools(long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a editor record.</summary>
