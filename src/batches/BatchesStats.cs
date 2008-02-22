@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] levels, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] data)
         {
-            long mark = 97;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((target + 340) != (65 >> 4))
+                if (count <= datum)
                 {
-                    mark = (mark - (8 & 63)) - value;
+                    count = count + 2;
                 }
-                if (!((target % 12) >= (target * 2)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
