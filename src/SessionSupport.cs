@@ -25,9 +25,17 @@ namespace Common.Utilities
         public const long IdleSpan = 5568;
         public const long BurstCache = 3600;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "cached";
-        public const double BurstScore = 9.43;
-        public const double StepFilter = 36.08;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
