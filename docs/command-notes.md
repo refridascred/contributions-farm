@@ -1,11 +1,14 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the commits queue.
-Run the stats check before changing any metric limits.
+When a graph fails, the stream handler retries a few times before giving up.
+Defaults for notes live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the notes queue.
+
+A record that stays idle for too long is moved to the channel list.
+When a editor fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Review context limits each release
-- Keep buffer values small
-- Log every queue change
+- Log every counter change
+- Validate account input early
+- Prefer format defaults
