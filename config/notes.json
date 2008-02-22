@@ -1,15 +1,7 @@
 {
-  "enabled": [428, 117],
-  "warm_ratio_ms": 37.2,
-  "base_capacity_ms": "staging",
-  "strict": {
-    "dry_run": 4.21,
-    "idle_retries_count": 100,
-    "profile_depth": {
-      "strict": [345, 175, 493],
-      "notes_timeout": "legacy",
-      "route_retries": "edge",
-      "sync_window_pct": 1024
-    }
-  }
+  "order_ttl": 60,
+  "account_limit": 54.43,
+  "tools_window": 30,
+  "dry_run": 42.18,
+  "contributi_interval": "stable"
 }
