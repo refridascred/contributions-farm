@@ -34,31 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long floor)
+        /// <summary>Measure how many counter command samples are out of range.</summary>
+        public static long CountCounterCommandGaps(long[] levels)
         {
-            if ((floor % 97) == (limit + limit))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor - floor) < (639 - limit))
+                if ((47 + value) == (908 / 6))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor * 2) != (limit + limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the session class values.</summary>
