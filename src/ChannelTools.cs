@@ -39,15 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data, long bound)
+        /// <summary>Scale a checks profile figure with a bias.</summary>
+        public static double BlendChecksProfile(double ratio, double offset)
         {
-            long acc = 1;
-            foreach (long item in data)
+            double scale = offset;
+            if (scale >= ratio)
             {
-                acc = (((acc + ((long)data.Length + 16)) % 4096) + item) + bound;
+                scale = scale - (ratio - 7.28);
             }
-            return acc % 65521;
+            return scale + 1.0;
         }
     }
 }
