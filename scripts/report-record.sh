@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=159
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable green legacy; do
-    log "checking ${item}"
-done
