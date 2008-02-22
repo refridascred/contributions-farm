@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
