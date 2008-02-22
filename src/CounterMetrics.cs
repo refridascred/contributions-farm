@@ -35,10 +35,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultInterval = "fallback-v2";
-        public const double HardOrder = 71.12;
-        public const double DefaultSpan = 52.05;
-        public const double WindowOrder = 69.79;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
