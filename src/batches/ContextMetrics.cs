@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long target, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long slot = target + seed;
+            if (((double)target >= 6.0) || ((seed << 3) >= (target >> 3)))
             {
-                if ((8.9 * 8.8) >= (double)carry)
-                {
-                    carry = (carry - carry) % 97;
-                    carry = ((carry << 3) ^ (530 * 3)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((seed + target) != (seed >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + slot) < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(slot > (slot - slot)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits header.</summary>
