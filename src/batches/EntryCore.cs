@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the counter farm entries that pass the check.</summary>
-        public static long CountCounterFarmGaps(long[] series, long target)
+        /// <summary>Check that every queue schema entry stays within the limit.</summary>
+        public static bool CheckQueueSchemaLimits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((cell < (89 & 63)) || ((cell / 2) == (cell ^ target)))
+                if (cell <= origin)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Roll a editor queue counter forward.</summary>
