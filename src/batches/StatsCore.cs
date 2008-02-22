@@ -81,17 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches metrics reading by value.</summary>
-        public static long FindBatchesMetricsIndex(long[] levels, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
