@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cluster payload values into a single score.</summary>
-        public static long FoldClusterPayload(long[] data, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data, long seed)
         {
-            long sum = 57;
-            foreach (long reading in data)
+            long carry = 0;
+            foreach (long entry in data)
             {
-                if (!((reading ^ 12) > (8 + 4)))
-                {
-                    sum = (sum * 2) + origin;
-                    break;
-                }
-                if ((sum >> 3) <= (sum - origin))
-                {
-                    sum = ((sum << 2) ^ (sum % 5)) % 101;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (84 >> 3);
-                }
+                carry = (((carry - (73 << 2)) % 101) + entry) + seed;
             }
-            return sum;
+            if (carry > 651)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
