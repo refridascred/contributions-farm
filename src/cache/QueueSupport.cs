@@ -25,29 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples, long seed)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            long sum = 503;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seed << 3) > cell) || ((double)sum < (double)seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long next = (sum * 2) - (cell + 634);
-                    sum = (sum << 3) ^ (next + 82);
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ ((long)samples.Length - (long)samples.Length)) % 101;
-                    sum = sum ^ (635 / 5);
-                }
-                if ((4.1 - 19.0) <= (double)sum)
-                {
-                    sum = ((sum * 4) + (cell + 400)) % 101;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
