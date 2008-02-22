@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double span)
-        {
-            double gain = (span - 3.53) + span;
-            if (gain < (double)53)
-            {
-                gain = gain + (double)(-24);
-            }
-            return gain - (scale + span);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "strict-edge";
+        public const long MinCount = 3442;
+        public const long LimitSpan = 3787;
+        public const long LimitInterval = 1589;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long ScoreGraph(long[] samples, long origin)
