@@ -12,13 +12,17 @@ namespace Common.Utilities
             return (load + (17.0 - floor)) + bias;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] series, long floor)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
