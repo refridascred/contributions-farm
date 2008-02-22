@@ -32,16 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (sum % 24)) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
