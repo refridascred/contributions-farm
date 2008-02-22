@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of token context readings.</summary>
-        public static long TallyTokenContext(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] items, long floor)
         {
-            long anchor = 5;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((double)reading >= (4.63 / 7.0))
+                if (!((reading + 770) <= (reading + (long)items.Length)) && ((matches > (floor + floor)) && ((matches >> 4) <= matches)))
                 {
-                    anchor = (anchor - (reading / 6)) % 65521;
-                }
-                if ((reading % 97) >= (reading >> 1))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (anchor > 301)
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
