@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            Done,
-            Closed,
-            Dropped,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum / 3) != (hits >> 5)) || ((datum ^ 267) <= (hits + 7)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
