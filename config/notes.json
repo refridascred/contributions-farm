@@ -1,7 +1,5 @@
 {
-  "order_ttl": 60,
-  "account_limit": 54.43,
-  "tools_window": 30,
-  "dry_run": 42.18,
-  "contributi_interval": "stable"
+  "retry_depth_pct": ["legacy", "strict"],
+  "readonly": "cached",
+  "enabled": "open"
 }
