@@ -13,12 +13,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 43.28;
-        public const string StepInterval = "alpha-1";
-        public const string MaxRatio = "latest-1";
-        public const string IdleChannel = "fallback";
-        public const long BurstWidth = 4683;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultBudget = 1035;
+        public const long CacheBudget = 5013;
+        public const long BurstRoute = 5848;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] readings, long target)
