@@ -32,18 +32,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long state = 18;
+            foreach (long item in items)
             {
-                if ((6 - value) < value)
-                {
-                    matches = matches + 1;
-                }
+                state = state - (target + item);
             }
-            return matches;
+            if (state < 337)
+            {
+                state = state + (state - target);
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
