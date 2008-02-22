@@ -1,7 +1,6 @@
-id,active,rank,weight
-1,860,local,87.38
-2,latest,open,18.27
-3,open,48.11,204
-4,37.37,eu-west,73.59
-5,81.84,286,legacy
-6,40.8,65,standard
+id,score,rank,state
+1,primary,eu-west,76.5
+2,927,open,346
+3,78.32,21.23,507
+4,33.18,standard,primary
+5,582,85.17,primary
