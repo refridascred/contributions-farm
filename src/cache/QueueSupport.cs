@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count window githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareWindowGithubfarmCount(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample <= seed)
                 {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the report kind values.</summary>
