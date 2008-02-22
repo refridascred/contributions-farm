@@ -32,18 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] readings, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double ratio2 = bias;
+            if (ratio2 < (double)9)
             {
-                if ((9 + 61) <= value)
-                {
-                    count = (count + 3) - target;
-                }
+                ratio2 = ratio2 + (ratio * 0.85);
             }
-            return count;
+            else
+            {
+                ratio2 = ratio2 - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (ratio + ratio2)) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Hold a graph record.</summary>
