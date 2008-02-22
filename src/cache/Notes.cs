@@ -40,11 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 5831;
-        public const string MaxCounter = "strict-1";
-        public const long BaseCounter = 8733;
-        public const long BurstCounter = 1570;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long seed, long origin)
