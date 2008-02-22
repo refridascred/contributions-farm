@@ -51,15 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings, long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long mark = 3;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark - (limit ^ item);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return tally;
         }
     }
 }
