@@ -34,11 +34,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total - (origin - origin)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a stats checks sample.</summary>
