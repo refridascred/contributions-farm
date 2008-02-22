@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheLevel = 9769;
-        public const string BurstScore = "standard";
-        public const long WindowAccount = 8244;
-        public const string MaxCount = "cached-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftDepth = "stable-1";
+        public const string IdleSupport = "legacy-v2";
+        public const long LimitSupport = 2019;
+        public const double BurstSupport = 95.02;
+        public const string RetryTimeout = "strict-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitTimeout = 3863;
