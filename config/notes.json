@@ -1,8 +1,5 @@
 {
-  "compress": 2.41,
-  "base_limit_count": "strict",
-  "readonly": [320, 454, 447, 481],
-  "batch_window": [481, 342, 3],
-  "dry_run": "eu-west",
-  "max_retries": "strict"
+  "readonly": 7,
+  "enabled": 3799,
+  "cache_window_s": false
 }
