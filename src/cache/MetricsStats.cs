@@ -12,14 +12,24 @@ namespace Common.Utilities
         public const long MinGraph = 216;
         public const double BurstCount = 90.47;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items, long target)
         {
-            Failed,
-            Paused,
-            Pending,
-            Retry,
-            Locked,
+            long mix = 12;
+            foreach (long value in items)
+            {
+                mix = ((mix - mix) % 1000) - target;
+                if ((0.64 >= (double)mix) || (mix > (-98)))
+                {
+                    mix = (mix - (mix * 3)) % 4096;
+                    mix = mix - (mix << 1);
+                }
+                if ((value < (value % 24)) || ((double)value < (17.0 - 14.0)))
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
