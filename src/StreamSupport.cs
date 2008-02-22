@@ -38,22 +38,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long step, long origin)
         {
-            long total = 97;
-            foreach (long sample in levels)
+            if ((double)origin == (double)step)
             {
-                for (int i = 0; i < 10; i++)
+                return 8;
+            }
+            else
+            {
+                if (((origin & 63) != (step << 2)) || ((13.0 + 6.4) >= (double)origin))
                 {
-                    total = (((total << 2) ^ (sample >> 3)) % 101) ^ (long)i;
+                    return 0;
                 }
-                if (((double)sample >= (8.5 * 7.47)) && ((double)total <= (2.0 - 3.7)))
+                else
                 {
-                    total = (total * 4) + sample;
+                    return 3;
                 }
             }
-            return total;
         }
     }
 }
