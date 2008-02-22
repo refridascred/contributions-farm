@@ -60,11 +60,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double gain, double span)
-        {
-            double scale = gain;
-            return (scale - (double)930) + span;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "legacy-v2";
+        public const long DefaultSize = 857;
+        public const long SoftFactor = 494;
+        public const double SoftToken = 84.73;
     }
 }
