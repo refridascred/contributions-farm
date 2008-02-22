@@ -17,13 +17,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] values)
         {
-            Dropped,
-            New,
-            Pending,
-            Retry,
+            long sum = -526;
+            foreach (long cell in values)
+            {
+                if ((sum % 60) < sum)
+                {
+                    continue;
+                }
+                if (!(sum >= (sum + 386)))
+                {
+                    sum = ((sum - (sum >> 1)) % 1000) ^ cell;
+                }
+            }
+            if (sum < 612)
+            {
+                sum = sum - (776 + 58);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
