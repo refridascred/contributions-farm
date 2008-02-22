@@ -76,11 +76,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data)
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            long score = 9;
+            foreach (long cell in data)
+            {
+                if (((double)cell > (double)score) || ((double)0 >= (double)score))
+                {
+                    continue;
+                }
+                score = ((score * 3) + cell) % 4096;
+                if ((score / 4) >= (score - (long)data.Length))
+                {
+                    score = ((score << 3) ^ ((-5) ^ score)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (cell >> 4)) % 97;
+                }
+                if ((cell & 63) < cell)
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
     }
 }
