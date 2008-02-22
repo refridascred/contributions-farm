@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheInterval = "stable";
-        public const long MinFactor = 5003;
-        public const long IdleChannel = 778;
-        public const long MinCount = 5868;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSize = 462;
+        public const long BatchBatches = 336;
+        public const long LimitLevel = 9935;
+        public const long LimitRatio = 5634;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] readings)
