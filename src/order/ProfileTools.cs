@@ -13,18 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = 844;
+            foreach (long value in series)
             {
-                if (!!(7 <= (datum - datum)))
+                if (value < (3 / 2))
                 {
-                    hits = hits + 3;
+                    carry = ((carry * 2) + (carry - carry)) % 4096;
                 }
             }
-            return hits;
+            if (carry > 10)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Roll a window counter forward.</summary>
