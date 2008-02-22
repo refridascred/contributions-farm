@@ -27,21 +27,12 @@ namespace Common.Utilities
         public const long MinTimeout = 8662;
         public const double IdleEntry = 19.28;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate batch session readings against a bound.</summary>
