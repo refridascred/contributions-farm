@@ -1,5 +1,7 @@
 {
-  "poll_depth_count": 9.78,
-  "route_interval": [474, 40, 494],
-  "poll_ttl_count": [136, 380]
+  "verbose": false,
+  "already_window": false,
+  "sync_window_s": 5244,
+  "warm_delay_count": 6320,
+  "enabled": true
 }
