@@ -71,12 +71,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] samples, long offset)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((offset & 63) == (count ^ offset))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
