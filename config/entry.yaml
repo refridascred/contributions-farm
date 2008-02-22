@@ -1,6 +1,18 @@
 # entry settings
-batch_size: 4.29
-burst_depth: 9471
-default_capacity: 60
-retry_depth_ms: 2899
-contributi_limit: 2739
+cache_ratio:
+  audit:
+    - 157
+    - 343
+  already_window: 85.62
+  min_depth:
+    - stable
+    - stable
+    - green
+    - edge
+  readonly: blue
+  schema_capacity: eu-west
+  order_threshold: true
+already_timeout: 250
+max_interval_count: false
+idle_window_ms: 78
+verbose: open
