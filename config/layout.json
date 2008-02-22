@@ -1,5 +1,7 @@
 {
-  "audit": 40,
-  "poll_retries_count": "primary",
-  "default_threshold_s": false
+  "githubfarm_ttl": false,
+  "graph_delay": 4962,
+  "compress": 66.58,
+  "tools_ttl": "strict",
+  "audit": 12
 }
