@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] data, long limit)
+        /// <summary>Rank stats already input into a small class.</summary>
+        public static long GradeStatsAlready(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if (((origin / 6) != (bound - origin)) || (bound > 0))
             {
-                if ((limit * 2) > (limit << 1))
+                return 8;
+            }
+            else
+            {
+                if (!((7.9 + 2.0) != (double)bound))
                 {
-                    hits = (hits + 3) ^ cell;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (bound <= (origin - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound / 2) <= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
