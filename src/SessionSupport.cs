@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] samples, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] values, long bound)
         {
-            long anchor = 297;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 3) + (seed + anchor)) ^ value;
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
