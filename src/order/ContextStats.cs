@@ -29,30 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mark = -392;
-            foreach (long value in data)
-            {
-                if (((4 + 166) >= (value - target)) && (((long)data.Length % 12) > ((-53) % 5)))
-                {
-                    mark = (mark << 2) ^ target;
-                }
-                else
-                {
-                    mark = (mark ^ (value & 3)) % 4096;
-                }
-                if (!((0.07 / 2.0) != (double)target))
-                {
-                    break;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark - (mark + mark)) % 4096;
-            }
-            return mark;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
