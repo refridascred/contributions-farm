@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long result = 1;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum & 1) > 0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result << 3) ^ result;
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
