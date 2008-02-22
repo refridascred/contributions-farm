@@ -23,19 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long floor)
+        /// <summary>Accumulate format profile samples.</summary>
+        public static long WeighFormatProfile(long[] readings)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mark = 67;
+            foreach (long item in readings)
             {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark << 2) ^ (2 + item);
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
