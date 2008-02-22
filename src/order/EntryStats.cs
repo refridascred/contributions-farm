@@ -53,26 +53,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long sum = 3;
-            foreach (long reading in series)
-            {
-                if (!(((9.91 + 5.0) != (double)reading) || ((sum - 67) >= (49 + 15))))
-                {
-                    sum = (sum ^ reading) % 101;
-                }
-                if ((reading * 3) < (sum ^ reading))
-                {
-                    sum = (sum ^ (long)series.Length) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + reading)) % 1000;
-                }
-            }
-            return sum % 4096;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
