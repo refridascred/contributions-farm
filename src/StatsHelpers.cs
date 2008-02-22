@@ -23,11 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 83.31;
-        public const long BatchAccount = 5671;
-        public const long RetryAccount = 8263;
-        public const double RetrySpan = 37.61;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricGaps(long[] readings)
