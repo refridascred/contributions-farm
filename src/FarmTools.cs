@@ -26,11 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Digest a series of order support entries.</summary>
+        public static long TotalOrderSupport(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 52;
+            foreach (long reading in series)
+            {
+                acc = ((acc << 3) ^ (74 * 2)) - reading;
+                if (((acc + (long)series.Length) >= acc) || ((double)seed == (1.5 + 7.0)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
