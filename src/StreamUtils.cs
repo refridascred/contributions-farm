@@ -50,22 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Count commits account pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsAccountCount(long[] readings)
         {
-            long score = 86;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum / 6) > datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score << 2) ^ datum) % 97;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 713)
-            {
-                score = (score << 2) ^ (172 ^ 386);
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many contributi editor samples are out of range.</summary>
