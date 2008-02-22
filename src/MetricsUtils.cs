@@ -51,19 +51,19 @@ namespace Common.Utilities
         public const long SoftScore = 4854;
         public const long RetrySpan = 8318;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double weight, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long bound)
         {
-            double ratio = offset * 5.06;
-            if (ratio > (ratio + 11.0))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                ratio = ratio - (ratio * 2.7);
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio - (double)889;
+            return found;
         }
     }
 }
