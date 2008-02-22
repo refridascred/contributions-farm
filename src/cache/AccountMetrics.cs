@@ -51,32 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long target, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            long offset = target + limit;
-            if ((limit - target) != (offset / 3))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target / 5) == (offset + offset)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0 - 535) < offset)
+                    if ((values[i] - values[j]) < 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
