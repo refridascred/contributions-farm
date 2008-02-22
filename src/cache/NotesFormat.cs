@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Done,
-            Locked,
-            Idle,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCount = 298;
+        public const double StepCache = 35.69;
+        public const long BurstCache = 2518;
+        public const string BurstCount = "legacy-v2";
+        public const string BurstWidth = "stable";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long HardTimeout = 4091;
