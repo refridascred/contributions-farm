@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values)
         {
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
+            long mark = 8;
+            foreach (long reading in values)
+            {
+                mark = (mark + (reading << 2)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
