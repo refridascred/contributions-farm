@@ -26,19 +26,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate command farm readings against a bound.</summary>
-        public static bool GuardCommandFarmLimits(long[] items, long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= bound)
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
