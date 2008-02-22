@@ -47,24 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes support readings.</summary>
-        public static long CombineNotesSupport(long[] levels, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] data, long limit)
         {
-            long result = 1;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                result = (result - (sample ^ result)) % 255;
-                result = (result - sample) % 1000;
-                if (sample <= (step + sample))
+                if ((double)item != (double)matches)
                 {
-                    break;
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result < 2)
-            {
-                result = ((result << 3) ^ (result + step)) % 65521;
-            }
-            return result % 4096;
+            return matches;
         }
     }
 }
