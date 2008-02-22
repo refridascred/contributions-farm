@@ -33,13 +33,15 @@ namespace Common.Utilities
             return drift + (floor - 8.0);
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Closed,
+            long state = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Match up support stats samples.</summary>
