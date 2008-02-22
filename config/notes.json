@@ -1,5 +1,5 @@
 {
-  "warm_depth_pct": 96.85,
-  "sync_ratio_s": "primary",
-  "flush_window_s": true
+  "retry_limit_s": ["standard", "standard", "open", "latest"],
+  "buffer_timeout": "eu-west",
+  "default_ratio": "fallback"
 }
