@@ -1,18 +1,12 @@
 {
-  "dry_run": "edge",
-  "enabled": [380, 394],
-  "readonly": {
-    "graph_interval": {
-      "layout_limit": "stable",
-      "warm_depth_ms": "green",
-      "burst_depth_count": "standard",
-      "persist": "green",
-      "payload_size": "standard",
-      "batch_delay_s": "edge"
-    },
-    "burst_interval_ms": 60,
-    "verbose": 96.4,
-    "sync_limit": true
+  "cache_depth_count": 30,
+  "dry_run": 860,
+  "base_size": 57,
+  "context_ratio": {
+    "enabled": 29.98,
+    "max_interval_ms": 100,
+    "contributi_delay": ["latest", "latest"]
   },
-  "graph_size": 32.11
+  "queue_depth": "fallback",
+  "burst_threshold": true
 }
