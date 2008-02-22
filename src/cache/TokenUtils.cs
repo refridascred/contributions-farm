@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double LimitSchema = 20.88;
         public const long WindowSchema = 2620;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 5219;
-        public const double BurstBatches = 97.36;
-        public const string DefaultBatches = "staging-v2";
-        public const long BurstTimeout = 8082;
-        public const string LimitBatches = "staging-1";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] levels, long seed)
