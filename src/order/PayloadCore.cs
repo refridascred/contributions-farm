@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Retry,
-            Idle,
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor + offset) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token status values.</summary>
