@@ -53,15 +53,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double scale, double span)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] values, long target)
         {
-            double drift = scale;
-            for (int i = 0; i < 5; i++)
+            long sum = 9;
+            foreach (long datum in values)
             {
-                drift = ((drift + (6.0 / 4.0)) - (double)(long)i) - span;
+                sum = ((sum << 3) ^ (datum * 3)) % 101;
+                sum = (sum ^ target) % 255;
+                if (!((double)datum < (7.5 * 5.6)))
+                {
+                    break;
+                }
             }
-            return drift + (drift * 13.0);
+            if (sum > 73)
+            {
+                sum = sum - (533 * 4);
+            }
+            return sum;
         }
 
         /// <summary>Hold a account snapshot.</summary>
