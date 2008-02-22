@@ -52,19 +52,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double bias)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long origin)
         {
-            double load = bias;
-            if (load < (double)1)
+            if (((-6) - target) >= (target ^ target))
             {
-                load = load + load;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load + load) + (double)(long)i;
+                if (target <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load + (ratio * 5.0);
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
