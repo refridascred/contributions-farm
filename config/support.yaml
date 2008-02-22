@@ -1,6 +1,11 @@
 # support settings
-enabled: 60
-idle_size_ms:
-  - 265
-  - 386
-audit: 66
+window_limit:
+  - staging
+  - primary
+  - primary
+strict: true
+checks_retries:
+  - primary
+  - cached
+  - cached
+  - stable
