@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate githubfarm counter readings against a bound.</summary>
-        public static bool VerifyGithubfarmCounterBounds(long[] values, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (value >= floor)
+                if (item > seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Validate checks queue readings against a bound.</summary>
