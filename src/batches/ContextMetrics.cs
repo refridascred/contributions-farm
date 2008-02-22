@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] series, long seed)
+        /// <summary>Grade a route metrics value against two limits.</summary>
+        public static long GradeRouteMetrics(long seed, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((floor % 100) < (seed - floor))
             {
-                if (series[i] == seed)
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed < (0.2 - 6.36)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed % 3) != (seed - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2.11 + 8.5) < (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
