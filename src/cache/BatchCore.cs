@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long origin)
         {
-            long mark = 11;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)mark == (12.0 / 5.0))
+                if (!(((long)i & 255) >= ((long)i % 64)))
                 {
-                    mark = ((mark + (cell << 3)) % 101) - offset;
+                    mix = mix ^ mix;
                 }
-                else
-                {
-                    mark = (mark - (mark ^ mark)) % 255;
-                }
-                if ((mark >= cell) && ((mark * 3) < (cell >> 2)))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
