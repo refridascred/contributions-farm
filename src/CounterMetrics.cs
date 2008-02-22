@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of support batch entries.</summary>
-        public static long FoldSupportBatch(long[] levels, long limit)
-        {
-            long carry = 714;
-            foreach (long entry in levels)
-            {
-                if ((entry % 16) != (entry + limit))
-                {
-                    carry = (carry ^ (720 * 2)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 9999;
+        public const long StepSupport = 7739;
+        public const long CacheSupport = 1336;
 
         /// <summary>Roll a account stream counter forward.</summary>
         public static long DeriveAccountStream(long offset)
