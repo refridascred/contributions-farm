@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] samples)
+        /// <summary>Find the first window githubfarm entry that matches the target.</summary>
+        public static long LocateWindowGithubfarmIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits - sample) <= 229)
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
