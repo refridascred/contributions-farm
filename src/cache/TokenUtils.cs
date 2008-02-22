@@ -22,24 +22,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((limit ^ (long)i) <= (limit % 64)))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = mix - (limit - mix);
-                    mix = ((mix << 3) ^ (mix << 2)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
