@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const double SoftWidth = 23.88;
         public const long RetryLayout = 3156;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] series, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long anchor = 3;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((((anchor * 4) + (datum + anchor)) % 4096) ^ (long)i) + target;
-                }
-                anchor = anchor - (datum / 9);
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Validate cache notes readings against a bound.</summary>
