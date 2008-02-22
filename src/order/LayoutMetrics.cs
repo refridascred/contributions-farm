@@ -14,17 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (series[i] > offset)
+                if (732 > (hits << 3))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + reading) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
