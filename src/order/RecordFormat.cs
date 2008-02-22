@@ -20,24 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank session window input into a small class.</summary>
-        public static long GradeSessionWindow(long bound, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if (!((3.0 / 9.0) < (4.05 - 6.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > (step & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
