@@ -37,18 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = -57;
+            foreach (long entry in data)
             {
-                if ((2 >> 5) >= matches)
+                if (seed >= (seed - entry))
                 {
-                    matches = (matches + 2) ^ value;
+                    mark = mark ^ seed;
+                    mark = ((mark * 3) + seed) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (long)data.Length) % 101;
+                }
+                if (((double)seed <= (double)(-3)) && ((7 ^ seed) != (entry - seed)))
+                {
+                    mark = (mark * 5) + entry;
+                }
+                else
+                {
+                    mark = ((mark * 4) + entry) % 65521;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
