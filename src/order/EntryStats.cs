@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleScore = 45.62;
-        public const long BatchCache = 962;
-        public const long CacheTimeout = 1888;
-        public const string RetryCache = "latest-1";
-        public const long BatchRatio = 1533;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
