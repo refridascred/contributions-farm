@@ -36,19 +36,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate schema order readings against a bound.</summary>
-        public static bool GuardSchemaOrderRange(long[] data, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (reading != offset)
+                if (value >= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the counter state values.</summary>
