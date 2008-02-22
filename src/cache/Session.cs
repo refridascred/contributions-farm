@@ -45,21 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 632;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)(long)items.Length > (double)entry))
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state - ((long)items.Length << 2)) % 4096;
+                }
+                if (!((state << 2) >= (state >> 2)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
