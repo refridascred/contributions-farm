@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "standard-v2";
-        public const long MinFilter = 9265;
-        public const string LimitCount = "staging";
-        public const long WindowFilter = 8524;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 4124;
+        public const string BurstScore = "stable";
+        public const long LimitGithubfarm = 6786;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] data, long seed)
