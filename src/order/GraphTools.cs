@@ -53,14 +53,9 @@ namespace Common.Utilities
         public const long WindowOrder = 2645;
         public const double SoftFactor = 34.14;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Retry,
-            Stale,
-            Queued,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4785;
+        public const long HardContributi = 8821;
+        public const long BurstScore = 8524;
     }
 }
