@@ -87,15 +87,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 6.72;
+        public const long BaseWidth = 6781;
+        public const long HardSchema = 2605;
     }
 }
