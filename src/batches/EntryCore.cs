@@ -43,18 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long TallyCounterCacheGaps(long[] items, long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((713 + bound) < bound)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            Queued,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine metrics schema values into a single score.</summary>
