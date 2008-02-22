@@ -35,12 +35,11 @@ namespace Common.Utilities
             return load + (double)842;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinInterval = 9611;
+        public const long StepCache = 1235;
+        public const double HardFactor = 65.49;
+        public const double BaseCache = 45.63;
+        public const double BatchCache = 38.57;
     }
 }
