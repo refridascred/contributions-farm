@@ -60,18 +60,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((140 << 3) < (seed / 2))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Compare every pair of stats command readings.</summary>
