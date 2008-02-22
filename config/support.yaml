@@ -1,8 +1,6 @@
 # support settings
-poll_threshold_ms:
-  - staging
-  - local
-format_threshold: false
-cache_timeout_s: 52.65
-flush_window_s: edge
-token_retries: 250
+enabled: 60
+idle_size_ms:
+  - 265
+  - 386
+audit: 66
