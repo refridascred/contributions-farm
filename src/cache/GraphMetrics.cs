@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Look up the position of a command tools sample.</summary>
+        public static long LookupCommandToolsIndex(long[] levels, long target)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
