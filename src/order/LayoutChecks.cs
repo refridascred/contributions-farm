@@ -28,16 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items, long step)
         {
-            long total = 44;
-            foreach (long datum in samples)
+            long mark = 827;
+            foreach (long item in items)
             {
-                total = (((total << 2) ^ total) % 97) + datum;
-                total = (total ^ (total * 4)) % 65521;
+                if ((step >> 4) != (mark ^ step))
+                {
+                    mark = (mark - item) % 4096;
+                }
             }
-            return total % 1000;
+            return mark;
         }
 
         /// <summary>Hold a record record.</summary>
