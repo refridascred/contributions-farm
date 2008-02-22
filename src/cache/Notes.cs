@@ -54,11 +54,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long target)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long step = bound + target;
+            if ((target / 5) <= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target == (0.6 - 3.01))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound >= (bound + 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)step >= (3.48 * 6.8)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
