@@ -38,22 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long WeighToolsAccount(long[] levels)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long acc = -8;
-            foreach (long value in levels)
-            {
-                if ((239 & 31) < (176 + value))
-                {
-                    acc = ((acc * 5) + acc) % 101;
-                }
-                if ((2 & 1) != (value - acc))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
