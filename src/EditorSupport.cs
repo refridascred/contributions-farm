@@ -69,18 +69,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context farm samples are out of range.</summary>
-        public static long MeasureContextFarmHits(long[] samples, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long offset2 = origin - offset;
+            if (((offset2 & 63) == (14 * 2)) && ((double)offset2 == (20.0 / 3.0)))
             {
-                if ((double)origin != (9.6 + 17.0))
+                return 7;
+            }
+            else
+            {
+                if ((offset2 * 2) > (offset2 % 100))
                 {
-                    seen = (seen + 2) - cell;
+                    return 0;
+                }
+                else
+                {
+                    if ((8.7 * 4.0) > (double)offset2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
