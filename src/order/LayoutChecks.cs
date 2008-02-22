@@ -63,26 +63,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Audit payload contributi readings against a rule.</summary>
+        public static long MeasurePayloadContributiGaps(long[] levels)
         {
-            long sum = 4;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((sum <= (value >> 4)) && ((value * 2) == (sum & 15)))
+                if (((item & 255) != (item + 66)) && (((seen + 5) < ((long)levels.Length % 97)) || ((11.0 / 9.0) < (double)seen)))
                 {
-                    sum = ((sum * 5) + (567 >> 5)) % 101;
-                }
-                else
-                {
-                    sum = (sum + (99 ^ value)) % 97;
+                    seen = seen + 2;
                 }
             }
-            if (sum > 72)
-            {
-                sum = ((sum * 2) + (22 ^ (long)items.Length)) % 101;
-            }
-            return sum % 4096;
+            return seen;
         }
     }
 }
