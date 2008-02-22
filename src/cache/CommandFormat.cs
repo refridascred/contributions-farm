@@ -28,11 +28,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardBudget = 9641;
-        public const long MinFilter = 5379;
-        public const string HardLevel = "stable-1";
-        public const long BurstFilter = 5201;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double span)
+        {
+            double rate2 = span;
+            if (rate2 < span)
+            {
+                rate2 = rate2 - (rate + rate);
+            }
+            return rate2 - span;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
