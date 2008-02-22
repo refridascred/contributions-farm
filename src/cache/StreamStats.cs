@@ -38,9 +38,39 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 4054;
-        public const double BaseCounter = 54.88;
-        public const string DefaultSize = "fallback-v2";
+        /// <summary>Rank queue report input into a small class.</summary>
+        public static long GradeQueueReport(long bound, long seed)
+        {
+            long lane = bound - seed;
+            if (!((double)seed >= (double)bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (lane >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 3) == (8 + lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= 443)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
