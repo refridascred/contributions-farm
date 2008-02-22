@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] data, long seed)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count >> 2) <= ((long)data.Length - 6))
-                {
-                    count = ((count + 2) - entry) - seed;
-                }
-            }
-            return count;
+            Active,
+            Queued,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the tools mode values.</summary>
