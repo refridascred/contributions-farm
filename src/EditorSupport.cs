@@ -49,17 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token editor sample.</summary>
-        public static long LookupTokenEditorIndex(long[] series, long limit)
+        /// <summary>Iterate the token buffer series from a seed.</summary>
+        public static long IterateTokenBuffer(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
