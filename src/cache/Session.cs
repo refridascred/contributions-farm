@@ -53,18 +53,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] series, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((origin - origin) != (origin + tally))
+                if (reading >= origin)
                 {
-                    tally = (tally + 2) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
