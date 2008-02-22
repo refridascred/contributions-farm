@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up support channel samples.</summary>
-        public static long MatchSupportChannelCount(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] values, long target)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((1.0 - 18.0) >= (double)target)
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
             return matches;
