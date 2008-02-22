@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Measure how many entry command samples are out of range.</summary>
+        public static long MeasureEntryCommandHits(long[] samples, long limit)
         {
-            long result = 1;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                result = (result * 3) + 20;
-                result = ((result * 3) + (datum + result)) % 255;
-                result = ((result << 2) ^ 2) % 4096;
+                if ((limit + limit) >= (6 * 3))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            if (result > 8)
-            {
-                result = (result - (result + result)) % 65521;
-            }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
