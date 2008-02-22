@@ -1,7 +1,7 @@
 # githubfarm settings
-warm_ttl: local
-audit: fallback
-support_ratio: 5204
-burst_retries_count: eu-west
-dry_run: staging
-compress: 428
+batch_ratio_s:
+  - 189
+  - 163
+burst_window: stable
+warm_threshold: latest
+base_window_ms: 75.22
