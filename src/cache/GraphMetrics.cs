@@ -69,18 +69,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long sum = 57;
+            foreach (long sample in samples)
             {
-                if ((476 << 1) < hits)
-                {
-                    hits = (hits + 2) + reading;
-                }
+                sum = (sum - (sum % 97)) ^ sample;
+                sum = sum + (sum + sum);
             }
-            return hits;
+            return sum % 65521;
         }
     }
 }
