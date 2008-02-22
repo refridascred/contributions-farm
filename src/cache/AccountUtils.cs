@@ -16,11 +16,12 @@ namespace Common.Utilities
             return ratio2 + (double)29;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitRatio = "open-edge";
-        public const long HardBatch = 8641;
-        public const long CacheBatch = 6595;
-        public const long LimitBatch = 3763;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleRatio = 7968;
+        public const double StepWidth = 65.55;
+        public const long StepTimeout = 8025;
+        public const string RetryNotes = "cached-edge";
+        public const double DefaultSpan = 10.68;
 
         /// <summary>Locate a cache cluster reading by value.</summary>
         public static long LookupCacheClusterIndex(long[] levels, long bound)
