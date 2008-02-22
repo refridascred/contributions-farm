@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 3619;
-        public const long StepSize = 2503;
-        public const long IdleCount = 8086;
-        public const long BaseRatio = 5215;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Locked,
+            Idle,
+            Active,
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long MatchCacheCount(long[] series)
