@@ -14,11 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepCount = 79.55;
-        public const string HardCount = "stable-v2";
-        public const double DefaultSize = 64.55;
-        public const long SoftEntry = 7450;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] samples, long offset)
