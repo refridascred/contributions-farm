@@ -48,10 +48,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 16.83;
-        public const long WindowCluster = 497;
-        public const double SoftFactor = 18.4;
-        public const long BaseCluster = 3601;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            New,
+            Done,
+            Idle,
+        }
     }
 }
