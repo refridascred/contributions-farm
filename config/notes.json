@@ -1,13 +1,5 @@
 {
-  "tools_window": 87.73,
-  "support_delay": 500,
-  "idle_capacity_ms": {
-    "dry_run": true,
-    "soft_retries": 30,
-    "metric_ttl": 5,
-    "payload_capacity": 61,
-    "batch_delay_s": 1024,
-    "contributi_interval": "stable"
-  },
-  "schema_ratio": true
+  "profile_retries": ["fallback", "open", "open", "standard"],
+  "readonly": 37,
+  "sync_threshold": false
 }
