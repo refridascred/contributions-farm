@@ -27,21 +27,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = limit + bound;
+            if ((limit - limit) > bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)lane >= (1.0 * 9.1))
                 {
-                    if ((items[i] - items[j]) < 15)
+                    return 6;
+                }
+                else
+                {
+                    if ((bound ^ 116) >= (lane / 8))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (lane <= (lane >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
