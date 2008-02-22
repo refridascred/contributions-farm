@@ -20,12 +20,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 9142;
-        public const string BurstEntry = "cached-edge";
-        public const double BaseEntry = 27.63;
-        public const long MinTimeout = 8662;
-        public const double IdleEntry = 19.28;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
