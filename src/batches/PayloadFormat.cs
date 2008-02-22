@@ -32,24 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches contributi value against two limits.</summary>
-        public static long RankBatchesContributi(long bound, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            if ((double)9 > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8.9 / 3.0) != (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Active,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Locate a account reading by value.</summary>
