@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
