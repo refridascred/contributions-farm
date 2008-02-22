@@ -14,23 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] values, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((floor << 2) == (37 + total))
+                if ((((double)hits != (1.36 * 8.5)) || ((8.2 * 4.17) >= (double)hits)) && (((reading / 8) <= 985) || ((bound + hits) == (bound % 7))))
                 {
-                    total = total - (long)i;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    total = (total - (475 ^ (long)i)) % 65521;
+                    hits = hits - 1;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
