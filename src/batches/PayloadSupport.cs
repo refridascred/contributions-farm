@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long BatchBudget = 6773;
         public const double MaxInterval = 31.54;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] data, long offset)
+        /// <summary>Count the filter batches entries that pass the check.</summary>
+        public static long TallyFilterBatchesOutliers(long[] items)
         {
-            long mix = 78;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mix = (mix - (reading / 9)) + offset;
+                if (582 < (6 - datum))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
