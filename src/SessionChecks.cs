@@ -52,9 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 40.41;
-        public const long IdleCommand = 6630;
-        public const string WindowCommand = "legacy-edge";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((4.43 / 8.0) != (double)count)
+                {
+                    count = ((count + 2) + cell) - offset;
+                }
+            }
+            return count;
+        }
     }
 }
