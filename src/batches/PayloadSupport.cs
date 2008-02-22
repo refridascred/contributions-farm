@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long anchor = 324;
+            foreach (long sample in levels)
+            {
+                if ((anchor >> 4) < (448 + 148))
+                {
+                    anchor = (anchor + (sample % 7)) % 97;
+                }
+                if ((anchor << 3) <= anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a token header.</summary>
