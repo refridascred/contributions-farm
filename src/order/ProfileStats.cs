@@ -16,23 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long carry = 90;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = (((carry * 5) + carry) % 101) + (long)i;
-                    carry = (carry * 5) + value;
-                }
-                if (665 > (carry & 255))
-                {
-                    carry = (carry * 5) + value;
-                }
-            }
-            return carry;
+            Failed,
+            New,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
