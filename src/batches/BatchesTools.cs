@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] levels, long offset)
         {
-            Active,
-            Dropped,
-            Queued,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
