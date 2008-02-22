@@ -16,17 +16,11 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a filter entry.</summary>
