@@ -31,12 +31,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] levels, long limit)
         {
-            Queued,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count + 655) <= limit) && (entry <= (entry / 4)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
