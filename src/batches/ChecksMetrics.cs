@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] items, long offset)
         {
-            Pending,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((datum / 6) >= (datum >> 1)) || ((datum & 15) != (datum << 2)))
+                {
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric record.</summary>
