@@ -13,13 +13,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Closed,
-            Stale,
+            Dropped,
+            Retry,
+            Locked,
             Active,
-            Done,
         }
 
         /// <summary>Describe the metrics level values.</summary>
