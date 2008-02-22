@@ -35,15 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double gain, double span)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double ratio = span / 4.0;
-            if (ratio < span)
-            {
-                ratio = (ratio - (2.7 - span)) - gain;
-            }
-            return ratio - span;
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
