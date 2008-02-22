@@ -1,11 +1,7 @@
 # support settings
-window_limit:
-  - staging
-  - primary
-  - primary
-strict: true
-checks_retries:
-  - primary
-  - cached
-  - cached
-  - stable
+persist: false
+report_ratio:
+  - 71
+  - 441
+  - 28
+batch_threshold_s: true
