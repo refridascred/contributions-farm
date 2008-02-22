@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double load = span;
+            if (load > gain)
             {
-                if ((9.64 < (double)sample) || (seen > (seed - seed)))
-                {
-                    seen = seen + 1;
-                }
+                load = load - (span + gain);
             }
-            return seen;
+            else
+            {
+                load = load - (1.4 + gain);
+            }
+            return load + (gain * 19.0);
         }
 
         /// <summary>Fold a list of format readings.</summary>
