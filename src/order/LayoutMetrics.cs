@@ -43,11 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "latest-edge";
-        public const string MaxWindow = "staging-1";
-        public const double BurstSize = 57.43;
-        public const double HardWindow = 62.39;
-        public const long RetryScore = 6263;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
