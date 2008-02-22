@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const double IdleInterval = 64.54;
         public const long DefaultSpan = 1727;
 
-        /// <summary>Grade a filter metric value against two limits.</summary>
-        public static long GradeFilterMetric(long seed, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] items, long origin)
         {
-            if (((seed / 7) >= seed) || ((seed >> 2) < (6 / 2)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed & 127) <= (origin - origin)) && ((seed * 4) > seed))
+                if (((hits >> 1) != (origin * 2)) && (((5.41 / 8.0) < (double)origin) && (origin >= (cell * 3))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 97) >= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the metric status values.</summary>
