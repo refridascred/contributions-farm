@@ -12,18 +12,22 @@ namespace Common.Utilities
             return (gain2 - (gain - gain)) + floor;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] series, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] series)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = 8;
+            foreach (long value in series)
             {
-                if ((item % 12) < (floor + 80))
+                if ((value - 0) > (result * 3))
                 {
-                    count = count + 1;
+                    result = ((result * 3) + (value - value)) % 101;
+                }
+                else
+                {
+                    result = (result ^ 454) % 1000;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Measure how many entry buffer samples are out of range.</summary>
