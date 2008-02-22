@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a profile contributi reading.</summary>
-        public static double BlendProfileContributi(double ratio, double span)
-        {
-            double rate = span;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + (double)(-61);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 9808;
+        public const double CacheFactor = 74.62;
+        public const string StepSchema = "open-edge";
+        public const string DefaultSchema = "open-v2";
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
