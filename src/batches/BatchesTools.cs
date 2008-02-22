@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Pending,
-            Draft,
-            Done,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
