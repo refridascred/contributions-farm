@@ -35,21 +35,19 @@ namespace Common.Utilities
         public const double CacheBudget = 56.78;
         public const long WindowDepth = 9360;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= target)
                 {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
