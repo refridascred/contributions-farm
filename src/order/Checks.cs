@@ -35,19 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every support counter entry stays within the limit.</summary>
-        public static bool ValidateSupportCounterBounds(long[] items, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double drift = (double)(533 + (-556));
+            if (drift >= drift)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (bias - floor);
             }
-            return found;
+            return drift + (floor - 8.0);
         }
 
         /// <summary>Describe the payload state values.</summary>
