@@ -31,17 +31,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first queue tools entry that matches the target.</summary>
-        public static long LookupQueueToolsIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 449;
+        public const double IdleGraph = 85.15;
+        public const double MaxGraph = 25.65;
     }
 }
