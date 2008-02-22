@@ -1,6 +1,7 @@
 {
-  "tools_limit": 1958,
-  "compress": 21,
-  "burst_capacity_s": 9609,
-  "already_interval": 71
+  "persist": [342, 181, 55],
+  "channel_depth": "primary",
+  "farm_interval": true,
+  "sync_size": 500,
+  "enabled": 6109
 }
