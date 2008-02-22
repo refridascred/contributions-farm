@@ -31,18 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (seen >= (22 << 3))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
