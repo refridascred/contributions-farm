@@ -21,11 +21,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseFactor = 7354;
-        public const long BaseTimeout = 6405;
-        public const long BaseLevel = 3049;
-        public const long HardEditor = 5667;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] readings, long offset)
