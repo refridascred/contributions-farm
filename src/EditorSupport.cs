@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] data, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((entry >= ((long)data.Length + 8)) || ((double)limit < (9.1 + 3.6)))
+                if (value <= bound)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Look up the position of a token editor sample.</summary>
