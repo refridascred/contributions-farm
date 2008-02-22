@@ -46,11 +46,25 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long offset)
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long next = step + offset;
+            if (next > (step >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((579 & 1) <= next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
