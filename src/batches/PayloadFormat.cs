@@ -16,11 +16,11 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double offset)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            double gain = (double)((-76) - 530);
+            return (gain - (offset + offset)) + bias;
         }
 
         /// <summary>Hold a filter entry.</summary>
