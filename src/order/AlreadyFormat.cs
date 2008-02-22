@@ -45,19 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] samples, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
