@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "standard-1";
-        public const string MinSize = "fallback-1";
-        public const long StepLevel = 4286;
-        public const long DefaultChannel = 7516;
-        public const string HardCount = "legacy";
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Fold a list of batches window readings.</summary>
         public static long FoldBatchesWindow(long[] data, long floor)
