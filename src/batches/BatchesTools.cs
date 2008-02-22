@@ -19,24 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double bias, double floor)
-        {
-            double ratio = (double)(283 + 37);
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + 7.28) + bias;
-            }
-            else
-            {
-                ratio = ratio - 2.1;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 597;
+        public const string SoftSpan = "staging-1";
+        public const long LimitRatio = 9061;
+        public const long RetryCache = 7565;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
