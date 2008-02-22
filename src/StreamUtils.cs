@@ -41,21 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits account pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsAccountCount(long[] readings)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
