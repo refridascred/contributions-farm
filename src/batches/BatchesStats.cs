@@ -21,21 +21,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of checks queue readings.</summary>
-        public static long PairChecksQueueCount(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell < offset)
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Match up checks samples.</summary>
