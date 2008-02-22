@@ -26,21 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] readings, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long anchor = 274;
+            foreach (long cell in readings)
             {
-                state = state + (state & 63);
-                if ((bound + state) <= (state - bound))
-                {
-                    long slot = (state - bound) / 6;
-                    state = (state * 5) + (slot & 1);
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ (cell % 3)) % 65521;
             }
-            return state;
+            if (anchor < 951)
+            {
+                anchor = anchor - (limit + 180);
+            }
+            return anchor;
         }
     }
 }
