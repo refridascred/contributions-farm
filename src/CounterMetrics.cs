@@ -35,17 +35,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] readings, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 8;
+            foreach (long entry in series)
             {
-                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ (mark & 255)) ^ entry) + offset;
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
