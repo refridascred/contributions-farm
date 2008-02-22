@@ -41,22 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] samples)
+        /// <summary>Validate entry stream readings against a bound.</summary>
+        public static bool VerifyEntryStreamBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((double)seen < (6.0 * 9.2)) || (seen > ((long)samples.Length ^ seen)))
+                if (sample < seed)
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
