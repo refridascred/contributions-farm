@@ -49,38 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long floor, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] readings)
         {
-            if (!((735 + floor) == (bound + bound)))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound == (4.45 + 5.0))
+                if (!(((cell * 2) == (cell ^ count)) || ((965 & 127) <= cell)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((837 / 5) == (floor / 8)) && ((bound + bound) > (bound % 97)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor <= (19.0 + 1.0)) && ((bound * 2) > (floor << 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
