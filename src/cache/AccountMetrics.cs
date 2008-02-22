@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] samples, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((4.4 / 5.0) < (double)matches) && ((matches + 39) == (cell * 5)))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next session buffer value.</summary>
