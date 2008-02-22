@@ -68,15 +68,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels, long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long offset)
         {
-            long state = -9;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((((state * 4) + (state - state)) % 255) - datum) - offset;
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
