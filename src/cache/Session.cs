@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 903;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = carry + datum;
             }
-            return seen;
+            if (carry < 3)
+            {
+                carry = carry - (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the already kind values.</summary>
