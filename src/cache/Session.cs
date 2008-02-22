@@ -33,28 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] values, long offset)
         {
-            long state = 31;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                state = ((state << 3) ^ entry) % 255;
-                if ((entry ^ 39) < state)
+                if (item > offset)
                 {
-                    state = (state * 3) + state;
+                    ready = false;
                     break;
                 }
-                if ((entry % 16) < (entry + entry))
-                {
-                    state = ((state << 3) ^ (long)levels.Length) % 65521;
-                }
             }
-            if (state > (-869))
-            {
-                state = (state + (871 - state)) % 97;
-            }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
