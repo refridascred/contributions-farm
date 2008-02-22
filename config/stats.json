@@ -1,10 +1,8 @@
 {
-  "verbose": {
-    "format_limit": "staging",
-    "githubfarm_ttl": "edge",
-    "order_window": 47,
-    "cache_depth": "blue"
-  },
-  "idle_threshold_pct": 34,
-  "channel_delay": ["strict", "stable", "open", "cached"]
+  "schema_timeout": 76.0,
+  "readonly": 7348,
+  "buffer_timeout": [210, 458, 251, 227],
+  "batch_threshold": "edge",
+  "batch_delay_s": "green",
+  "route_ttl": 8.5
 }
