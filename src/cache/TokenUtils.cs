@@ -20,17 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((3.1 >= (double)limit) || ((687 + 733) <= offset))
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((698 >> 5) != (limit >> 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset > (8.0 + 8.37))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
