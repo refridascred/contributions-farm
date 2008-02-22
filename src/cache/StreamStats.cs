@@ -36,26 +36,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long acc = 659;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed ^ 615) >= (acc >> 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (acc + acc)) % 101;
-                }
-                if (((double)reading < (6.5 - 9.3)) && ((seed % 24) == (630 + (-6))))
-                {
-                    acc = (acc - (352 - reading)) % 65521;
-                }
-                if (90 <= acc)
-                {
-                    break;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
