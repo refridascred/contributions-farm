@@ -55,39 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long origin, long target)
+        /// <summary>Match up payload filter samples.</summary>
+        public static long ComparePayloadFilterCount(long[] samples)
         {
-            long diff = origin + target;
-            if ((2.2 * 4.0) <= (double)target)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target % 24) == (209 & 15))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + origin) == (diff * 4))
+                    if ((samples[i] + samples[j]) < 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (11.0 + 8.2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
