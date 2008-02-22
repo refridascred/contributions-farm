@@ -20,23 +20,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of payload cluster readings.</summary>
-        public static long TallyPayloadCluster(long[] items, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] series)
         {
-            long mark = 9;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mark = ((mark + ((-422) >> 3)) % 65521) + seed;
-                if ((value % 7) < (value - mark))
+                if ((607 * 5) == (datum + datum))
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (mark < 10)
-            {
-                mark = ((mark << 2) ^ (mark - 928)) % 101;
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
