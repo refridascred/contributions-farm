@@ -1,5 +1,5 @@
 {
-  "persist": false,
-  "already_limit": "latest",
-  "poll_delay_pct": 10
+  "default_retries_s": [359, 190, 46, 283],
+  "idle_window_ms": 1024,
+  "batch_ttl": 86.57
 }
