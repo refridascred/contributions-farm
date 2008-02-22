@@ -81,13 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double offset)
         {
-            Failed,
-            Pending,
-            Closed,
-            New,
+            double scale = gain;
+            if (scale > (offset * 8.8))
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (double)(-399)) + (double)(long)i;
+            }
+            return scale + (scale + offset);
         }
     }
 }
