@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (data[i] > step)
+                if ((count >> 2) <= ((long)data.Length - 6))
                 {
-                    return (long)i;
+                    count = ((count + 2) - entry) - seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
