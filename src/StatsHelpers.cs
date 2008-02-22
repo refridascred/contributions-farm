@@ -37,15 +37,31 @@ namespace Common.Utilities
             return bias2 - (double)82;
         }
 
-        /// <summary>Adjust a report cluster reading.</summary>
-        public static double ScaleReportCluster(double weight, double bias)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long bound, long step)
         {
-            double rate = weight;
-            if (rate < (double)(-932))
+            if ((bound / 3) >= (bound + bound))
             {
-                rate = (rate - weight) - bias;
+                return 2;
             }
-            return rate + (double)742;
+            else
+            {
+                if ((double)bound >= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound <= 105)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks header.</summary>
