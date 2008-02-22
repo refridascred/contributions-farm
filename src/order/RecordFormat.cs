@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseCount = 4075;
-        public const string SoftLevel = "stable";
-        public const long DefaultScore = 568;
-        public const long HardWidth = 3047;
+        /// <summary>Look up the position of a route contributi sample.</summary>
+        public static long LocateRouteContributiIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank session window input into a small class.</summary>
         public static long GradeSessionWindow(long bound, long step)
