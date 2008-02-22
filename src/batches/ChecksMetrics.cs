@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((datum / 6) >= (datum >> 1)) || ((datum & 15) != (datum << 2)))
-                {
-                    hits = (hits + 3) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTimeout = "stable-edge";
+        public const long MinCount = 5335;
+        public const long BurstTools = 279;
+        public const string StepTools = "cached-edge";
+        public const string HardTimeout = "local-edge";
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
