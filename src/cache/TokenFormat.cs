@@ -22,19 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long limit2)
         {
-            long mark = 8;
-            foreach (long item in series)
+            if ((2.1 - 6.8) > (double)limit2)
             {
-                mark = (mark - (item % 7)) % 101;
+                return 3;
             }
-            if (mark > 71)
+            else
             {
-                mark = (mark + (mark + mark)) % 4096;
+                if ((8.0 + 19.0) <= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mark % 4096;
         }
 
         /// <summary>Count schema batches pairs that satisfy a relation.</summary>
