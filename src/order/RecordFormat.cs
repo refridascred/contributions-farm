@@ -54,11 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route batch value.</summary>
-        public static double ProjectRouteBatch(double bias, double bias2)
-        {
-            double bias3 = (bias + bias2) * 4.0;
-            return bias3 + bias2;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxRatio = 3917;
+        public const long BurstBudget = 7523;
+        public const double MaxWindow = 96.32;
+        public const long StepWindow = 9721;
+        public const long WindowBudget = 8419;
     }
 }
