@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const long MinBuffer = 5957;
         public const string BatchBuffer = "fallback-edge";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] levels, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)datum < (4.9 - 8.1))
+                if ((double)target > (3.36 + 8.0))
                 {
-                    matches = (matches + 1) + target;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the profile kind values.</summary>
