@@ -66,25 +66,15 @@ namespace Common.Utilities
         public const long LimitToken = 2265;
         public const long BurstBudget = 1944;
 
-        /// <summary>Classify a metrics already pair into a bucket.</summary>
-        public static long ClassifyMetricsAlready(long limit, long origin)
+        /// <summary>Scale a githubfarm buffer figure with a bias.</summary>
+        public static double ScaleGithubfarmBuffer(double bias, double offset)
         {
-            long gap = limit - origin;
-            if ((origin > 3) || ((8.2 / 6.0) > (double)gap))
+            double bias2 = 8.02;
+            if (bias2 >= offset)
             {
-                return 6;
+                bias2 = bias2 - (bias2 + offset);
             }
-            else
-            {
-                if ((gap - origin) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return bias2 + (bias / 6.0);
         }
     }
 }
