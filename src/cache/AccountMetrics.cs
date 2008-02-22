@@ -40,16 +40,18 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Fold a list of stats context readings.</summary>
+        public static long TotalStatsContext(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long carry = 0;
+            foreach (long sample in items)
             {
-                sum = (sum - (sum + sum)) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((double)sample == (8.3 + 5.12))
+                {
+                    carry = carry + carry;
+                }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
