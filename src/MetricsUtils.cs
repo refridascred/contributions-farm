@@ -65,12 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 35.68;
+        public const long BurstWidth = 4702;
+        public const long SoftCounter = 224;
+        public const long SoftScore = 4854;
+        public const long RetrySpan = 8318;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] data, long bound)
