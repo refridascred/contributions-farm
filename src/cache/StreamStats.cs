@@ -32,12 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long offset, long floor)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            long next = offset ^ floor;
+            if (offset <= (next / 9))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((15.0 - 1.8) != (double)next)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset << 2) <= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset < (next - floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
