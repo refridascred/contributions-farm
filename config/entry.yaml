@@ -1,15 +1,5 @@
 # entry settings
-min_retries_s: 2315
-channel_depth:
-  default_threshold_count: standard
-  checks_limit: green
-  max_interval_pct: green
-  soft_interval_s: 70.99
-  sync_depth:
-    - strict
-    - staging
-    - green
-    - eu-west
-default_limit_pct:
-  - 171
-  - 357
+token_ratio: primary
+strict: 500
+batch_retries: blue
+verbose: local
