@@ -52,18 +52,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] levels, long floor)
+        /// <summary>Derive the next support account value from a seed.</summary>
+        public static long RollSupportAccount(long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell + 83) <= (cell - (-117)))
-                {
-                    seen = (seen + 2) - floor;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
