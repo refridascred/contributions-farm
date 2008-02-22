@@ -74,17 +74,18 @@ namespace Common.Utilities
         public const long DefaultScore = 4406;
         public const long IdleInterval = 6462;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] series, long bound)
+        /// <summary>Measure how many context farm samples are out of range.</summary>
+        public static long MeasureContextFarmHits(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] >= bound)
+                if ((double)origin != (9.6 + 17.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
