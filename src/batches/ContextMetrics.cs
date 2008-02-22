@@ -36,24 +36,10 @@ namespace Common.Utilities
         public const long BatchInterval = 2343;
         public const double DefaultRoute = 66.2;
 
-        /// <summary>Fold a list of window buffer readings.</summary>
-        public static long TotalWindowBuffer(long[] readings, long step)
-        {
-            long anchor = 881;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor ^ item) % 4096) + (long)i;
-                }
-                if (step >= (77 + 35))
-                {
-                    anchor = ((anchor << 2) ^ item) % 101;
-                }
-                anchor = (anchor ^ step) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "latest-edge";
+        public const long MaxContributi = 8743;
+        public const long LimitCount = 9091;
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] data)
