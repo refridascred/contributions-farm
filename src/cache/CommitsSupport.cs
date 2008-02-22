@@ -10,22 +10,23 @@ namespace Common.Utilities
         public const long StepMetric = 8426;
         public const long BatchFactor = 6301;
 
-        /// <summary>Fold a list of order schema readings.</summary>
-        public static long WeighOrderSchema(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double bias, double floor)
         {
-            long score = 681;
-            foreach (long entry in samples)
+            double weight = (double)(4 >> 3);
+            if (weight < (bias / 6.0))
             {
-                if ((4.45 * 2.7) == (double)entry)
-                {
-                    score = (score + ((-748) - score)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (entry - 49)) % 1000;
-                }
+                weight = weight + floor;
             }
-            return score % 97;
+            else
+            {
+                weight = weight + (double)5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + (double)927;
         }
 
         /// <summary>Describe the metrics status values.</summary>
