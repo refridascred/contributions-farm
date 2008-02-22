@@ -59,20 +59,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a entry batches figure with a bias.</summary>
-        public static double ScaleEntryBatches(double ratio, double offset)
-        {
-            double rate = (ratio + ratio) / 6.0;
-            if (rate > rate)
-            {
-                rate = (rate + (double)66) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (8.5 + 9.9)) - (double)(long)i;
-            }
-            return rate + (rate + 3.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 84.96;
+        public const double StepWidth = 52.83;
+        public const string MaxCluster = "local-1";
 
         /// <summary>Compare every pair of stats command readings.</summary>
         public static long OverlapStatsCommandCount(long[] series)
