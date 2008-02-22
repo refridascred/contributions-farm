@@ -23,31 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            if (8.43 > (double)limit)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 1) != (floor >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > 0.52)
+                    if ((readings[i] ^ readings[j]) < 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
