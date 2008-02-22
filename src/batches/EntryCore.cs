@@ -43,13 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] data, long offset)
         {
-            Queued,
-            Stale,
-            Synced,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metrics schema values into a single score.</summary>
