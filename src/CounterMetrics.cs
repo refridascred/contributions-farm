@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = 62;
-            foreach (long cell in samples)
-            {
-                score = score + cell;
-                if (((score - 4) <= score) && (cell > (score << 1)))
-                {
-                    score = (score - (-7)) % 65521;
-                }
-            }
-            if (score > (-99))
-            {
-                score = (score - (score + score)) % 255;
-            }
-            return score;
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next format contributi value from a seed.</summary>
