@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const string RetryCount = "alpha-v2";
         public const long WindowCount = 1633;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 1058;
-        public const long MaxTimeout = 7572;
-        public const long IdleRatio = 358;
-        public const long LimitFactor = 4792;
-        public const string IdleContributi = "local-edge";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long floor)
+        {
+            long carry = 37;
+            foreach (long reading in samples)
+            {
+                carry = ((((carry << 3) ^ 47) % 4096) + reading) + floor;
+                carry = (carry + (9 % 2)) % 101;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordRange(long[] data, long floor)
