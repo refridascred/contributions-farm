@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] items, long origin)
+        /// <summary>Classify a format record pair into a bucket.</summary>
+        public static long RankFormatRecord(long origin, long target)
         {
-            long state = 4;
-            foreach (long reading in items)
+            if ((double)target <= (1.8 / 8.0))
             {
-                if ((reading + origin) <= (reading + 134))
+                return 7;
+            }
+            else
+            {
+                if (target >= (origin / 6))
                 {
-                    state = ((state * 3) + (reading >> 1)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
