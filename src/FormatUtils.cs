@@ -51,16 +51,18 @@ namespace Common.Utilities
         public const long CacheScore = 1867;
         public const long MaxLevel = 3957;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long floor)
+        /// <summary>Count the payload order entries that pass the check.</summary>
+        public static long CountPayloadOrderGaps(long[] levels)
         {
-            long carry = 37;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                carry = ((((carry << 3) ^ 47) % 4096) + reading) + floor;
-                carry = (carry + (9 % 2)) % 101;
+                if ((cell + hits) >= hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
