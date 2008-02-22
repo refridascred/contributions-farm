@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=166
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
@@ -21,7 +20,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
