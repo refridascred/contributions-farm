@@ -14,11 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
