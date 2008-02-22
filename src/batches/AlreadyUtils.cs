@@ -21,15 +21,19 @@ namespace Common.Utilities
         public const long DefaultRoute = 5158;
         public const string StepRatio = "standard-1";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double ratio, double bias)
+        /// <summary>Project the next stream route value.</summary>
+        public static double ScaleStreamRoute(double gain, double span)
         {
-            double drift = (2.0 / 7.0) + 8.1;
-            if (drift <= 2.99)
+            double mean = 20.0;
+            if (mean < (mean * 4.54))
             {
-                drift = (drift - (double)87) + ratio;
+                mean = (mean + (gain + gain)) + span;
             }
-            return drift - bias;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Combine context values into a single score.</summary>
