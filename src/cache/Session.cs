@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] levels, long seed)
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = 196;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor ^ (seed % 10)) % 4096) ^ datum;
+                anchor = (anchor - (seed >> 5)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
