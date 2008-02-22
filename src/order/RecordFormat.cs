@@ -46,14 +46,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Pending,
-            Idle,
-            Active,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCount = 8611;
+        public const long WindowCommand = 3673;
+        public const string IdleCommand = "cached-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultWidth = 3130;
