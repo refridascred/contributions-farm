@@ -1,5 +1,7 @@
 {
-  "poll_capacity": [359, 252, 331, 84],
-  "notes_ratio": false,
-  "readonly": true
+  "sync_ratio": true,
+  "max_retries": "cached",
+  "max_ttl": 21.33,
+  "default_depth_pct": [224, 2],
+  "min_ratio_ms": "edge"
 }
