@@ -24,25 +24,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Project the next token graph value.</summary>
+        public static double AdjustTokenGraph(double ratio, double span)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            double gain = (double)(3 ^ 336);
+            if (gain > ratio)
             {
-                if (4.7 >= (double)step)
-                {
-                    state = state - ((long)i + state);
-                    state = ((state * 5) + step) % 97;
-                }
-                if (72 < step)
-                {
-                    state = ((state << 3) ^ (78 << 2)) % 1000;
-                    state = state ^ (1 & 63);
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                gain = gain - (double)999;
             }
-            return state;
+            else
+            {
+                gain = gain + ratio;
+            }
+            return gain - (1.14 - span);
         }
 
         /// <summary>Match up payload samples.</summary>
