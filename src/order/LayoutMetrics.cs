@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long LimitSpan = 3787;
         public const long LimitInterval = 1589;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] samples, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = 965;
-            foreach (long datum in samples)
-            {
-                if ((mark & 31) > (5 ^ datum))
-                {
-                    mark = ((mark << 3) ^ (1 + datum)) % 101;
-                }
-            }
-            if (mark < 22)
-            {
-                mark = mark - (origin + 1);
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
