@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            double load = offset;
+            if (load > (load - 4.0))
+            {
+                load = (load - load) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)7) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
