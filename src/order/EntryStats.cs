@@ -82,12 +82,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
