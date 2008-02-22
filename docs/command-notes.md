@@ -1,15 +1,14 @@
 # Command notes
 
-Use token settings to tune how often support data is refreshed.
-Keep order and window names short and lowercase.
-Each profile is validated before it reaches the report queue.
+A channel that stays idle for too long is moved to the command list.
+The already module keeps stats values in sync with the checks cache.
 
-The checks report groups every window by metrics.
-Each editor is validated before it reaches the batch queue.
+The record helpers are pure functions, so they are safe to call from any thread.
+The route report groups every notes by tools.
 
 ## Guidelines
 
-- Keep session values small
-- Validate command input early
-- Document new queue fields
-- Prefer tools defaults
+- Validate counter input early
+- Prefer checks defaults
+- Keep record values small
+- Log every counter change
