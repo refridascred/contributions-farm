@@ -24,13 +24,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] series, long bound)
         {
-            Dropped,
-            Failed,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count + (long)series.Length) == (bound + bound))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
