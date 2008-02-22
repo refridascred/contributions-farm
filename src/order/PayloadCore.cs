@@ -13,13 +13,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
             Dropped,
+            New,
+            Pending,
             Retry,
-            Locked,
-            Active,
         }
 
         /// <summary>Describe the metrics level values.</summary>
