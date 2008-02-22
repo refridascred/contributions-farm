@@ -64,19 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long limit)
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long MeasureNotesProfileHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (datum != limit)
+                if ((2 * 3) >= (datum << 2))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count queue payload pairs that satisfy a relation.</summary>
