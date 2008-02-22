@@ -31,17 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            long anchor = 274;
-            foreach (long cell in readings)
+            long anchor = 593;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor << 2) ^ (cell % 3)) % 65521;
-            }
-            if (anchor < 951)
-            {
-                anchor = anchor - (limit + 180);
+                anchor = anchor ^ (reading + anchor);
+                anchor = ((anchor * 4) + (reading - reading)) % 4096;
             }
             return anchor;
         }
