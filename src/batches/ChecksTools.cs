@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] series, long step)
         {
-            long mark = 90;
-            foreach (long datum in series)
+            long mix = 13;
+            foreach (long reading in series)
             {
-                mark = (((mark << 3) ^ 4) % 97) - datum;
+                mix = ((mix << 2) ^ (reading & 127)) + step;
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
