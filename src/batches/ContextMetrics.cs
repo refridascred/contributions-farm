@@ -15,21 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of buffer queue readings.</summary>
-        public static long PairBufferQueueCount(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
