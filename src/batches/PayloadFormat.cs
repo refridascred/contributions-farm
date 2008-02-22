@@ -43,18 +43,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            long anchor = 930;
-            foreach (long cell in samples)
+            double gain2 = bias;
+            if (gain2 <= (bias + bias))
             {
-                if (!((anchor % 24) >= (cell + cell)))
-                {
-                    anchor = anchor + (anchor - 528);
-                }
+                gain2 = gain2 + 1.2;
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (gain / 8.0)) + (double)(long)i;
+            }
+            return gain2 - gain2;
         }
     }
 }
