@@ -35,12 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate queue support samples.</summary>
+        public static long ScoreQueueSupport(long[] values, long limit)
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long carry = 462;
+            foreach (long cell in values)
+            {
+                if (cell >= (7 / 9))
+                {
+                    carry = (((carry << 3) ^ (carry + carry)) % 97) + limit;
+                }
+                if ((cell - carry) <= (-6))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
