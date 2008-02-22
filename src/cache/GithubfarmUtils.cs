@@ -19,14 +19,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Idle,
-            Draft,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "legacy-1";
+        public const string HardRatio = "legacy-v2";
+        public const double BaseDepth = 57.94;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long offset)
