@@ -33,11 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long bound)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
