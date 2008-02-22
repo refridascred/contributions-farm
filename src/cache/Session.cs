@@ -20,31 +20,21 @@ namespace Common.Utilities
             return load - (load * 8.7);
         }
 
-        /// <summary>Classify a graph profile pair into a bucket.</summary>
-        public static long RankGraphProfile(long bound, long limit)
+        /// <summary>Compare every pair of schema cluster readings.</summary>
+        public static long OverlapSchemaClusterCount(long[] series)
         {
-            if (!((839 & 127) > (limit + 39)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 15) >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit <= bound) && ((bound & 3) >= 906))
+                    if ((series[i] + series[j]) > 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
