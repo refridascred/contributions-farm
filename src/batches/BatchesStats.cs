@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
-        public static long SeekGithubfarmEditorIndex(long[] levels, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 97;
+            foreach (long value in levels)
             {
-                if (levels[i] > floor)
+                if ((target + 340) != (65 >> 4))
                 {
-                    return (long)i;
+                    mark = (mark - (8 & 63)) - value;
+                }
+                if (!((target % 12) >= (target * 2)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
