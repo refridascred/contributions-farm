@@ -64,16 +64,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long sum = 57;
-            foreach (long sample in samples)
-            {
-                sum = (sum - (sum % 97)) ^ sample;
-                sum = sum + (sum + sum);
-            }
-            return sum % 65521;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
