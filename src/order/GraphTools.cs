@@ -69,18 +69,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((5.8 + 1.0) != (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleAlready = 88.52;
+        public const long RetrySize = 6929;
+        public const string BaseTimeout = "staging-edge";
+        public const long CacheCount = 5127;
     }
 }
