@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data, long floor)
+        /// <summary>Derive the next order editor value from a seed.</summary>
+        public static long IterateOrderEditor(long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((35 >> 2) != (cell % 3)) || (((double)floor != (double)916) && ((cell % 16) <= 31)))
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Adjust a token reading.</summary>
