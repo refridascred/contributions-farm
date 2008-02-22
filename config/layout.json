@@ -1,24 +1,11 @@
 {
-  "batch_timeout": 1024,
-  "idle_delay_s": {
-    "verbose": "edge",
-    "farm_timeout": {
-      "soft_capacity_s": true,
-      "default_timeout_count": 11.11,
-      "base_ratio_count": "standard",
-      "command_timeout": "standard",
-      "persist": "green",
-      "idle_capacity": false
-    },
-    "flush_depth": "cached",
-    "default_interval_pct": "open",
-    "format_threshold": {
-      "warm_interval_ms": "eu-west",
-      "default_ttl_pct": "eu-west",
-      "verbose": "edge"
-    },
-    "readonly": [42, 336, 261, 170]
+  "commits_retries": {
+    "default_retries": 3730,
+    "idle_ratio_s": [75, 483, 261, 236],
+    "soft_limit_s": ["legacy", "eu-west", "latest"],
+    "queue_ratio": "latest"
   },
-  "enabled": false,
-  "hard_limit_s": true
+  "poll_timeout_pct": "fallback",
+  "batch_ttl": ["strict", "staging", "staging"],
+  "batch_interval": 4.59
 }
