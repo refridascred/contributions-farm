@@ -37,18 +37,19 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Fold a list of stats context readings.</summary>
-        public static long TotalStatsContext(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long origin)
         {
-            long carry = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((double)sample == (8.3 + 5.12))
+                if (value >= origin)
                 {
-                    carry = carry + carry;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
