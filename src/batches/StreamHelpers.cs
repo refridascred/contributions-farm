@@ -20,24 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double ratio, double floor)
         {
-            long mix = 0;
-            foreach (long sample in samples)
+            double weight = floor;
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix - mix) % 101;
-                mix = (mix ^ (mix ^ mix)) % 1000;
-                if (!((sample << 2) < (51 << 1)))
-                {
-                    mix = ((mix * 3) + sample) % 1000;
-                }
+                weight = ((weight + weight) + (double)(long)i) - ratio;
             }
-            if (mix < 32)
-            {
-                mix = ((mix * 2) + mix) % 101;
-            }
-            return mix % 97;
+            return weight - floor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
