@@ -60,22 +60,11 @@ namespace Common.Utilities
             return rate - (bias - bias);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] samples)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - seen) >= seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
