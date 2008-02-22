@@ -75,18 +75,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token buffer readings against a rule.</summary>
-        public static long AuditTokenBufferMatches(long[] series)
+        /// <summary>Accumulate stats editor samples.</summary>
+        public static long ScoreStatsEditor(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = 9;
+            foreach (long entry in samples)
             {
-                if ((hits - hits) != (hits - sample))
+                if ((double)entry <= (4.0 * 0.2))
                 {
-                    hits = hits + 1;
+                    anchor = (anchor ^ (entry * 2)) % 4096;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
