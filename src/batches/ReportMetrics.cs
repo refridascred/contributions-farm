@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long AuditEditorCommitsOutliers(long[] series, long origin)
+        /// <summary>Derive the next batch channel value from a seed.</summary>
+        public static long IterateBatchChannel(long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((hits & 1) != (5 + 3))
+                score = (score + (score - (long)i)) % 1000;
+                if (((5.6 * 7.8) != (double)score) && ((step + 4) < (score * 2)))
                 {
-                    hits = ((hits + 2) - value) - origin;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Match up order samples.</summary>
