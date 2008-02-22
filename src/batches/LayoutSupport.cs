@@ -33,18 +33,12 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] data)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item > (count & 127)) && (((double)count < (2.6 / 7.0)) || ((3.9 + 17.0) < (double)(long)data.Length)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Project the next report value.</summary>
