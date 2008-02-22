@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] samples)
+        /// <summary>Project the next contributi support value.</summary>
+        public static double AdjustContributiSupport(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double load = (double)((-629) & 127);
+            if (load >= load)
             {
-                if ((double)datum < (2.82 + 0.19))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load - (double)(-5)) + offset;
             }
-            return seen;
+            else
+            {
+                load = load + (load / 3.0);
+            }
+            return load + bias;
         }
 
         /// <summary>Describe the layout status values.</summary>
