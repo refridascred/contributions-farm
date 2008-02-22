@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const long BatchEntry = 9281;
         public const double MinScore = 66.32;
 
-        /// <summary>Match up report cluster samples.</summary>
-        public static long CompareReportClusterCount(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4 - matches) <= matches)
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
