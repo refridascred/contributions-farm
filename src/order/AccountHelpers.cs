@@ -46,19 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format commits entry stays within the limit.</summary>
-        public static bool VerifyFormatCommitsBounds(long[] samples, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (cell <= bound)
+                if ((item * 4) > count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Fold a list of session profile readings.</summary>
