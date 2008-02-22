@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 483;
-        public const long BaseRatio = 7777;
-        public const long IdleSupport = 1585;
-        public const long DefaultSupport = 9237;
-        public const long MaxDepth = 3543;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (7.25 * 7.0))
+                {
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string IdleDepth = "alpha-edge";
