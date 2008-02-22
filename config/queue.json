@@ -1,11 +1,8 @@
 {
-  "min_delay_ms": [65, 79, 424, 56],
-  "hard_timeout_pct": {
-    "hard_depth_pct": "latest",
-    "sync_capacity_ms": "fallback",
-    "sync_size_count": "edge",
-    "poll_delay_s": 53,
-    "max_ttl_s": 100
-  },
-  "farm_interval": false
+  "poll_retries": true,
+  "cluster_delay": "cached",
+  "farm_ratio": 62,
+  "payload_window": "latest",
+  "readonly": "legacy",
+  "dry_run": [431, 190, 375, 364]
 }
