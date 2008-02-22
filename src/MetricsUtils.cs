@@ -32,19 +32,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] levels, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long gap = limit + origin;
+            if ((double)gap > (double)limit)
             {
-                if (cell != step)
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit > 6.27))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit >= (9.14 + 7.56))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
