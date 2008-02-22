@@ -14,31 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long offset, long target)
+        /// <summary>Match up support channel samples.</summary>
+        public static long MatchSupportChannelCount(long[] samples)
         {
-            if ((target % 5) <= (target - offset))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((48 & 63) > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (-708))
+                    if ((samples[i] - samples[j]) > 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up graph samples.</summary>
