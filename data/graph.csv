@@ -1,6 +1,8 @@
-id,token,active
-1,78.53,eu-west
-2,44.94,166
-3,edge,73.26
-4,strict,34.66
-5,93.66,standard
+id,owner,score,rank
+1,5.31,733,54
+2,40,758,40.29
+3,461,19.41,49
+4,705,eu-west,47.36
+5,70.7,4,standard
+6,92.17,eu-west,256
+7,local,79.34,74.04
