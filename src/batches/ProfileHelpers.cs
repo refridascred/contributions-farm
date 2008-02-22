@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstScore = 12.27;
-        public const double LimitFilter = 47.28;
-        public const long CacheFilter = 6059;
+        /// <summary>Fold a list of token already readings.</summary>
+        public static long CombineTokenAlready(long[] values, long floor)
+        {
+            long mark = 99;
+            foreach (long item in values)
+            {
+                mark = mark - (mark - floor);
+                if ((82 > (mark * 3)) && ((item & 31) < (floor >> 1)))
+                {
+                    mark = mark ^ (mark / 2);
+                }
+            }
+            if (mark > 424)
+            {
+                mark = mark + (70 & 63);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] samples)
