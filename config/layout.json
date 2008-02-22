@@ -1,13 +1,6 @@
 {
-  "flush_limit": {
-    "burst_size": "stable",
-    "base_interval_ms": "legacy",
-    "default_delay_s": "open",
-    "verbose": "standard"
-  },
-  "compress": 54.44,
-  "retry_window": 2930,
-  "token_size": "blue",
-  "strict": 25.0,
-  "filter_retries": [295, 108, 18, 466]
+  "min_ttl_s": 4288,
+  "audit": 31.93,
+  "githubfarm_window": "open",
+  "notes_delay": [15, 370]
 }
