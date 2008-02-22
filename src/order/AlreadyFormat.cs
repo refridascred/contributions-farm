@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (load + (17.0 - floor)) + bias;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] samples, long limit)
         {
-            long result = 35;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                result = (((result << 2) ^ result) - cell) - floor;
+                if ((0.98 > (double)datum) || ((658 - seen) > (limit & 255)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (result > 733)
-            {
-                result = ((result * 2) + result) % 1000;
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
