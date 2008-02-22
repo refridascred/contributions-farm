@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 2) < ((-146) / 6))
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 7866;
+        public const long BatchGithubfarm = 27;
+        public const string SoftGithubfarm = "staging";
+        public const long RetryScore = 4797;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] series)
