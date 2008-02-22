@@ -1,6 +1,17 @@
 {
-  "min_ttl_s": 4288,
-  "audit": 31.93,
-  "githubfarm_window": "open",
-  "notes_delay": [15, 370]
+  "session_capacity": 40.76,
+  "audit": "green",
+  "tools_threshold": {
+    "command_threshold": {
+      "filter_ratio": "open",
+      "flush_ratio_pct": 9230,
+      "hard_capacity": "eu-west",
+      "hard_depth": [292, 248, 135],
+      "command_interval": 250
+    },
+    "readonly": 29,
+    "soft_window_count": "open",
+    "farm_window": 11,
+    "notes_limit": 100
+  }
 }
