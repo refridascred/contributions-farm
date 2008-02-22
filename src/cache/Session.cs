@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 3023;
+        public const double SoftTimeout = 15.83;
+        public const long MaxTools = 2418;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
