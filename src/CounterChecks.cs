@@ -44,12 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            Ready,
-            Failed,
-            Paused,
+            long total = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                total = total - (50 - floor);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Adjust a format reading.</summary>
