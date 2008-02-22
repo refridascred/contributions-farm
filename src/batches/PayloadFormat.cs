@@ -43,9 +43,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 75.17;
-        public const long MinAccount = 7183;
-        public const string WindowBudget = "staging-v2";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] samples)
+        {
+            long anchor = 930;
+            foreach (long cell in samples)
+            {
+                if (!((anchor % 24) >= (cell + cell)))
+                {
+                    anchor = anchor + (anchor - 528);
+                }
+            }
+            return anchor;
+        }
     }
 }
