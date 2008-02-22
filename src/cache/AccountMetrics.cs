@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double span)
+        /// <summary>Derive the next batches context value from a seed.</summary>
+        public static long SeriesBatchesContext(long seed)
         {
-            double drift = (bias / 6.0) - 20.0;
-            if (drift <= 16.0)
-            {
-                drift = drift + (span - 4.23);
-            }
-            else
-            {
-                drift = drift - span;
-            }
+            long state = seed;
             for (int i = 0; i < 6; i++)
             {
-                drift = (drift - bias) + (double)(long)i;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (state ^ (78 << 2)) + (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return drift - span;
+            return state;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
