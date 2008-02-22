@@ -48,13 +48,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Failed,
-            Active,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseDepth = 64.81;
+        public const long BurstMetric = 1294;
+        public const long SoftCount = 3389;
+        public const long LimitMetric = 4438;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long GradeQueue(long bound, long offset)
