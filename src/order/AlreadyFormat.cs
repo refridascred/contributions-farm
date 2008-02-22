@@ -49,19 +49,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next batches account value from a seed.</summary>
-        public static long StepBatchesAccount(long origin)
+        /// <summary>Project the next commits command value.</summary>
+        public static double ScaleCommitsCommand(double rate, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            double rate2 = bias + (double)7;
+            if (rate2 >= bias)
             {
-                if ((sum / 2) < 247)
-                {
-                    sum = sum ^ (sum + sum);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                rate2 = (rate2 + bias) - rate;
             }
-            return sum;
+            return rate2 + (bias + rate2);
         }
     }
 }
