@@ -38,19 +38,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate cache notes readings against a bound.</summary>
-        public static bool VerifyCacheNotesBounds(long[] items, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Queued,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Blend two farm measurements.</summary>
