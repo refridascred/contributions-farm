@@ -1,7 +1,23 @@
 # githubfarm settings
-batch_ratio_s:
-  - 189
-  - 163
-burst_window: stable
-warm_threshold: latest
-base_window_ms: 75.22
+cache_delay_ms: local
+poll_depth_s: stable
+warm_size_count:
+  max_window_s:
+    - local
+    - primary
+    - strict
+  idle_ratio:
+    min_threshold_s: staging
+    base_delay: false
+    verbose: primary
+    retry_ttl_pct: open
+    default_delay: 79.25
+  enabled:
+    persist: false
+    cache_ttl: fallback
+    already_size: 77.45
+    graph_timeout: 5012
+  base_delay_s: true
+warm_ttl: staging
+already_ttl: latest
+persist: strict
