@@ -20,10 +20,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 17.69;
-        public const double LimitSpan = 48.18;
-        public const long WindowWidth = 2683;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                result = result - (result + step);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long floor, long limit)
