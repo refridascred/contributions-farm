@@ -1,11 +1,17 @@
 # entry settings
-min_ratio: false
-dry_run: local
-default_window: primary
-flush_depth_s:
-  warm_interval_ms: false
-  min_size: false
-  counter_window: 5283
-  commits_retries: 40.42
-  readonly: fallback
-layout_threshold: primary
+flush_timeout: 1.86
+max_limit:
+  - 418
+  - 473
+  - 207
+  - 276
+base_window:
+  max_capacity:
+    - staging
+    - local
+    - edge
+  verbose: 88.66
+  readonly: staging
+  batch_threshold: false
+  dry_run: true
+dry_run: fallback
