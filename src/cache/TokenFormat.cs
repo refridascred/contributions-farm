@@ -34,11 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLevel = 287;
-        public const long CacheCount = 473;
-        public const double BatchSize = 64.22;
-        public const long HardSize = 8495;
-        public const long RetryLayout = 4549;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
