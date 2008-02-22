@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double span)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            double drift = (span * 19.0) + span;
-            if (drift >= 9.6)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift - scale;
+                anchor = (anchor - 338) % 255;
+                anchor = anchor - 410;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (scale - 1.3);
+            return anchor;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
