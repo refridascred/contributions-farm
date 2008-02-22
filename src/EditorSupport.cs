@@ -12,15 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a batch already counter forward.</summary>
-        public static long SeriesBatchAlready(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (count > (bound * 3))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
