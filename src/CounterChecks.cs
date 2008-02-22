@@ -76,19 +76,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Compare every pair of stats metrics readings.</summary>
+        public static long CompareStatsMetricsCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((78 - target) <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark * 5) + (long)i;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a cluster info.</summary>
