@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Ready,
-            Retry,
-            Stale,
-            Failed,
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first batch format entry that matches the target.</summary>
