@@ -14,11 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double bias = (rate / 6.0) / 4.0;
-            return (bias - rate) + floor;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
