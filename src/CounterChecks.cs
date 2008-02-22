@@ -63,14 +63,12 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            New,
-            Ready,
-            Dropped,
-            Done,
-            Synced,
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
