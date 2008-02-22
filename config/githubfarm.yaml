@@ -1,14 +1,20 @@
 # githubfarm settings
-flush_threshold_count: false
-warm_retries_count: true
-dry_run:
-  - 372
-  - 126
-  - 110
-  - 75
-support_threshold:
-  - standard
-  - blue
-  - blue
-payload_timeout: 71.71
-entry_threshold: 1024
+base_ratio_count:
+  - open
+  - green
+  - stable
+schema_ratio: false
+payload_timeout: 60
+metrics_window:
+  idle_ratio_ms: 10.75
+  soft_timeout_pct: true
+  persist: 28.22
+  idle_threshold_pct: fallback
+  retry_delay_s: 250
+  base_delay_count:
+    sync_ttl_ms: open
+    idle_limit_ms: false
+    base_capacity_count: local
+    default_retries_ms: true
+persist: 1024
+base_ttl_pct: legacy
