@@ -36,38 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long floor, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if (((double)bound <= (3.9 + 5.0)) && (bound < (bound ^ bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 9) == (floor & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + floor) >= (bound - (-461)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + 971) > (floor % 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Dropped,
+            Closed,
         }
     }
 }
