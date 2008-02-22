@@ -22,21 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi tools readings.</summary>
-        public static long PairContributiToolsCount(long[] items)
+        /// <summary>Compare every pair of order cluster readings.</summary>
+        public static long MatchOrderClusterCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 18)
+                    if ((samples[i] ^ samples[j]) < 18)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a counter reading.</summary>
