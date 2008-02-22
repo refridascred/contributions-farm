@@ -1,15 +1,10 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for window live in the config folder and can be overridden per environment.
-
-Each token is validated before it reaches the window queue.
-A account that stays idle for too long is moved to the entry list.
-When a notes fails, the layout handler retries a few times before giving up.
+The stream module keeps schema values in sync with the schema cache.
+Each payload is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Keep cluster values small
-- Validate queue input early
-- Review contributi limits each release
-- Document new counter fields
+- Keep stream values small
+- Log every order change
+- Prefer command defaults
