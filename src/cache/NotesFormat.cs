@@ -27,17 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a contributi buffer sample.</summary>
-        public static long LookupContributiBufferIndex(long[] data, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (data[i] < limit)
+                if (value != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
