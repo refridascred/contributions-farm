@@ -32,16 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the account profile series from a seed.</summary>
-        public static long DeriveAccountProfile(long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total ^ (total + total)) % 1000;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
