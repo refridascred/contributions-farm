@@ -48,15 +48,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 20)
+                    if ((data[i] + data[j]) == 12)
                     {
                         matches = matches + 1;
                     }
