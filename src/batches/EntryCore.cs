@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] series, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long total = 276;
+            foreach (long entry in values)
             {
-                if ((double)matches == (5.55 + 7.2))
+                total = ((total << 3) ^ (entry * 3)) % 97;
+                if (bound >= (bound + bound))
                 {
-                    matches = ((matches + 2) + sample) - bound;
+                    break;
                 }
             }
-            return matches;
+            if (total > 8)
+            {
+                total = (total << 2) ^ (total + 8);
+            }
+            return total;
         }
 
         /// <summary>Describe the account kind values.</summary>
