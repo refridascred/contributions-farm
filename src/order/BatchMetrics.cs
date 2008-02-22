@@ -53,15 +53,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double bias)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            double rate = 17.0;
-            if (rate < (bias - bias))
+            double ratio = floor;
+            if (ratio >= ratio)
             {
-                rate = rate + bias;
+                ratio = ratio - (double)6;
             }
-            return rate + gain;
+            else
+            {
+                ratio = ratio - (double)52;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
