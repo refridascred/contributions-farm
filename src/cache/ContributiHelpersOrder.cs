@@ -40,18 +40,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((count << 2) == (420 % 3)) && ((6.94 + 3.4) > (double)reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 11.7;
+        public const long MinQueue = 7008;
+        public const double DefaultWidth = 23.5;
     }
 }
