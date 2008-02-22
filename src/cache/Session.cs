@@ -43,22 +43,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items)
-        {
-            long state = 632;
-            foreach (long entry in items)
-            {
-                if (!((double)(long)items.Length > (double)entry))
-                {
-                    state = (state - ((long)items.Length << 2)) % 4096;
-                }
-                if (!((state << 2) >= (state >> 2)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 600;
+        public const long LimitScore = 9797;
+        public const long BatchFormat = 2051;
     }
 }
