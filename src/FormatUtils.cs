@@ -24,15 +24,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long floor)
         {
-            double ratio = (double)(955 + 29);
-            for (int i = 0; i < 2; i++)
+            long carry = -23;
+            foreach (long item in samples)
             {
-                ratio = ((ratio - (double)(long)i) + weight) - offset;
+                if (((floor << 3) > (item - item)) && ((item ^ (-382)) >= ((long)samples.Length >> 3)))
+                {
+                    carry = carry + (carry * 2);
+                }
             }
-            return ratio + (double)966;
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
