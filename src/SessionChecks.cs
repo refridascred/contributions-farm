@@ -52,18 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((4.43 / 8.0) != (double)count)
+                if ((4.16 + 9.5) <= (double)item)
                 {
-                    count = ((count + 2) + cell) - offset;
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
