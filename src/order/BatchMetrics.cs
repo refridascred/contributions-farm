@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitWidth = 4539;
+        public const long StepRatio = 7002;
+        public const double LimitBudget = 31.92;
+        public const long SoftRatio = 9826;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheOrder = 45.44;
