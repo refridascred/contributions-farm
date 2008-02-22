@@ -50,16 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            long score = 86;
+            foreach (long datum in series)
             {
-                acc = acc ^ (origin >> 1);
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((datum / 6) > datum)
+                {
+                    score = ((score << 2) ^ datum) % 97;
+                }
             }
-            return acc;
+            if (score > 713)
+            {
+                score = (score << 2) ^ (172 ^ 386);
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of stats tools readings.</summary>
