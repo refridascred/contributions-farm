@@ -39,11 +39,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5437;
-        public const long IdleSpan = 1810;
-        public const double BaseScore = 30.69;
-        public const long IdleContext = 7801;
-        public const double IdleScore = 57.89;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
