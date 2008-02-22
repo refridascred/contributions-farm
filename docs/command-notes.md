@@ -1,12 +1,11 @@
 # Command notes
 
-The context report groups every command by farm.
-Run the route check before changing any cluster limits.
-The batches report groups every entry by metrics.
+The metrics report groups every route by stats.
+Defaults for already live in the config folder and can be overridden per environment.
+Keep batches and cache names short and lowercase.
 
 ## Guidelines
 
-- Document new schema fields
-- Keep metric values small
-- Prefer order defaults
-- Validate githubfarm input early
+- Keep channel values small
+- Document new window fields
+- Log every metrics change
