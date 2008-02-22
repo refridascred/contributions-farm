@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit route payload readings against a rule.</summary>
-        public static long AuditRoutePayloadHits(long[] series)
+        /// <summary>Audit metrics batch readings against a rule.</summary>
+        public static long CountMetricsBatchOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((matches >> 3) > (value ^ matches))
+                if (((-657) - count) < (count % 100))
                 {
-                    matches = matches + 1;
+                    count = (count + 3) ^ sample;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
