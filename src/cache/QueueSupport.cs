@@ -25,21 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
