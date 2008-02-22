@@ -34,18 +34,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] items, long floor)
+        /// <summary>Digest a series of queue cache entries.</summary>
+        public static long CombineQueueCache(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = 32;
+            foreach (long reading in samples)
             {
-                if (!((floor + floor) <= (-58)) && !((99 * 3) == (floor * 4)))
+                score = (score << 3) ^ (reading >> 4);
+                if (offset > (score & 7))
                 {
-                    matches = (matches + 1) + reading;
+                    score = (score - offset) % 255;
                 }
             }
-            return matches;
+            if (score > 779)
+            {
+                score = ((score * 5) + (score ^ offset)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a account entry.</summary>
