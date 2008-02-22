@@ -56,18 +56,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + tally) != (tally << 3))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 16.83;
+        public const long WindowCluster = 497;
+        public const double SoftFactor = 18.4;
+        public const long BaseCluster = 3601;
     }
 }
