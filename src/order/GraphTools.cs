@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long state = -884;
-            foreach (long reading in items)
-            {
-                if ((state ^ state) >= (reading * 5))
-                {
-                    state = ((state << 2) ^ (state + 50)) % 97;
-                }
-            }
-            if (state > 5)
-            {
-                state = state - (state + state);
-            }
-            return state;
+            Retry,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
