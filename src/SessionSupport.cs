@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] series, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] readings)
         {
             long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound ^ bound) != (bound & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - reading;
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
