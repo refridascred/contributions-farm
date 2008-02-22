@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] items)
+        /// <summary>Validate checks queue readings against a bound.</summary>
+        public static bool ValidateChecksQueueRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((value / 7) > (count + 816))
+                if (cell >= origin)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Match up format payload samples.</summary>
