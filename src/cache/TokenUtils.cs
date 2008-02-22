@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const double LimitSchema = 20.88;
         public const long WindowSchema = 2620;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double scale2 = 2.0 / 3.0;
-            return ((scale2 - scale2) + scale) + floor;
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
