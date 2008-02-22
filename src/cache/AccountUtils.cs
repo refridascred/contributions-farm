@@ -16,12 +16,19 @@ namespace Common.Utilities
             return ratio2 + (double)29;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleRatio = 7968;
-        public const double StepWidth = 65.55;
-        public const long StepTimeout = 8025;
-        public const string RetryNotes = "cached-edge";
-        public const double DefaultSpan = 10.68;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((6.5 - 15.0) > (double)value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] samples)
