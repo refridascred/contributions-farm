@@ -1,15 +1,16 @@
 # entry settings
-default_ratio: 64.78
-sync_timeout: 61.71
-dry_run: 5.9
-verbose:
-  idle_threshold: legacy
-  already_ratio: 2509
-  profile_size: blue
-  min_window_pct: 30
-  min_limit_ms:
-    - 258
-    - 96
-    - 373
-    - 41
-  channel_threshold: standard
+token_capacity:
+  channel_threshold: true
+  min_interval: local
+  hard_capacity_ms:
+    compress: true
+    readonly: 8066
+    poll_interval: false
+    batch_interval: 100
+    sync_timeout:
+      - 8
+      - 91
+      - 71
+    max_window_ms: 40.61
+sync_depth_count: 35
+default_size: staging
