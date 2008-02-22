@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const double HardGithubfarm = 69.98;
         public const long IdleSize = 498;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] readings)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((208 << 1) >= (long)readings.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + datum;
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the metrics status values.</summary>
