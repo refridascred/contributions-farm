@@ -58,38 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long offset)
         {
-            if ((floor > (bound ^ 0)) && ((18.0 * 3.6) < (double)floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5 * 3) < (floor * 2)) && ((double)floor < (12.0 / 5.0)))
+                if ((data[i] == offset) && ((data[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - 3) > (floor + 339))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8 + bound) < (floor * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two queue measurements.</summary>
