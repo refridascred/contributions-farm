@@ -24,19 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double bias)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long floor)
         {
-            double scale = (double)((-5) / 4);
-            if (scale > (scale * 4.7))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (weight * 5.9);
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (3.52 - bias);
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
