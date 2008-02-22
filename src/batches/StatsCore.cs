@@ -81,39 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch order pair into a bucket.</summary>
-        public static long GradeBatchOrder(long origin, long target)
+        /// <summary>Locate a batches metrics reading by value.</summary>
+        public static long FindBatchesMetricsIndex(long[] levels, long step)
         {
-            long prev = origin ^ target;
-            if ((3.7 / 6.0) < (double)target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((60 >> 3) < origin))
+                if ((levels[i] < step) && ((levels[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target > (57 + target)) && ((origin % 12) < (92 + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev >> 5) >= (target + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
