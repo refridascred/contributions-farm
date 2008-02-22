@@ -19,13 +19,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((count << 2) == (420 % 3)) && ((6.94 + 3.4) > (double)reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
