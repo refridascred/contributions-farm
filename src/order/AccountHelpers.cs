@@ -66,15 +66,18 @@ namespace Common.Utilities
         public const long LimitToken = 2265;
         public const long BurstBudget = 1944;
 
-        /// <summary>Scale a githubfarm buffer figure with a bias.</summary>
-        public static double ScaleGithubfarmBuffer(double bias, double offset)
+        /// <summary>Audit token buffer readings against a rule.</summary>
+        public static long AuditTokenBufferMatches(long[] series)
         {
-            double bias2 = 8.02;
-            if (bias2 >= offset)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                bias2 = bias2 - (bias2 + offset);
+                if ((hits - hits) != (hits - sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return bias2 + (bias / 6.0);
+            return hits;
         }
     }
 }
