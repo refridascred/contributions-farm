@@ -32,13 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 6) <= (matches ^ datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
