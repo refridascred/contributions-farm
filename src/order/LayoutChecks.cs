@@ -95,13 +95,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Failed,
-            Queued,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 6311;
+        public const long IdleCount = 8463;
+        public const double BurstCount = 9.33;
     }
 }
