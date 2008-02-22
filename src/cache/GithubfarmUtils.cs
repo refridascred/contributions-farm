@@ -41,21 +41,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 852;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result * 3) + (bound >> 1)) ^ cell;
+                if (((result - bound) < (90 + (-238))) || ((double)result != (17.0 * 0.9)))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ bound;
+                }
+                else
+                {
+                    result = ((result * 5) + (result - result)) % 97;
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Describe the entry kind values.</summary>
