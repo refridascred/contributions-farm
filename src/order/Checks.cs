@@ -37,18 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats record samples are out of range.</summary>
-        public static long CountStatsRecordGaps(long[] readings, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double drift = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum + datum) <= (datum % 97))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                drift = ((drift + (double)699) - (double)(long)i) - bias;
             }
-            return tally;
+            return drift - (drift * 2.95);
         }
 
         /// <summary>Describe the tools status values.</summary>
