@@ -68,10 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3237;
-        public const long BaseSize = 2157;
-        public const long HardChannel = 1624;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items, long floor)
+        {
+            long mark = 314;
+            foreach (long entry in items)
+            {
+                if (!(mark >= (167 << 2)))
+                {
+                    mark = ((mark * 3) + (floor / 3)) ^ entry;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] data)
