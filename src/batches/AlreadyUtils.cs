@@ -34,15 +34,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long floor)
         {
-            double load = floor;
-            if (load <= (bias * 3.0))
+            if ((floor % 97) == (limit + limit))
             {
-                load = load + (double)(-6);
+                return 5;
             }
-            return load + (double)92;
+            else
+            {
+                if ((floor - floor) < (639 - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor * 2) != (limit + limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session class values.</summary>
