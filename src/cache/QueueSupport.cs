@@ -36,38 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series, long bound)
         {
-            if ((4 - offset) > (offset ^ offset))
+            long sum = 494;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) >= (floor & 31))
+                if ((double)entry <= (4.2 - 14.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)floor <= (double)3) && ((3.3 - 4.0) == (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (7.0 * 14.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (sum * 5) + (bound - entry);
                 }
             }
+            return sum % 97;
         }
     }
 }
