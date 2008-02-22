@@ -36,18 +36,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = 57;
+            foreach (long entry in data)
             {
-                if (value >= seen)
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum << 2) ^ (entry << 3)) - bound;
+                sum = ((sum << 2) ^ sum) % 97;
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Describe the counter state values.</summary>
