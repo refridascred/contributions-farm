@@ -20,15 +20,18 @@ namespace Common.Utilities
             return rate2 - (rate * 4.5);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] values, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
             long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4 - 148) <= (seen >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 3) - item) - bound;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
