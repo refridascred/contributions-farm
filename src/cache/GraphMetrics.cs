@@ -33,18 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long floor)
         {
-            long anchor = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8 + anchor) != ((-682) ^ anchor))
+                if (levels[i] <= floor)
                 {
-                    anchor = ((anchor << 2) ^ (anchor + cell)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
