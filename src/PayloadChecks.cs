@@ -79,39 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long bound, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long step = bound ^ floor;
-            if ((8.2 / 2.0) == (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - floor) == (75 & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >> 1) > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)589 > (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
