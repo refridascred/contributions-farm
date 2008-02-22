@@ -12,24 +12,16 @@ namespace Common.Utilities
         public const long MinGraph = 216;
         public const double BurstCount = 90.47;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            long mix = 12;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix - mix) % 1000) - target;
-                if ((0.64 >= (double)mix) || (mix > (-98)))
-                {
-                    mix = (mix - (mix * 3)) % 4096;
-                    mix = mix - (mix << 1);
-                }
-                if ((value < (value % 24)) || ((double)value < (17.0 - 14.0)))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
+                carry = (carry * 5) + (limit - carry);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
