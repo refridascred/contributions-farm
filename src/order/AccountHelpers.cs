@@ -60,19 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((((10.0 / 2.0) != (double)matches) && ((reading ^ matches) >= ((long)data.Length + reading))) && (2 >= reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3553;
+        public const long BurstChannel = 1240;
+        public const long StepChannel = 297;
+        public const long BaseFactor = 1872;
 
         /// <summary>Accumulate stats editor samples.</summary>
         public static long ScoreStatsEditor(long[] samples)
