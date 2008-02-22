@@ -21,19 +21,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long DigestChecksProfile(long[] readings, long offset)
         {
-            long total = 57;
-            foreach (long item in readings)
+            long carry = 87;
+            foreach (long sample in readings)
             {
-                total = (total - (1 ^ 453)) ^ item;
+                carry = (((carry << 2) ^ (sample + 764)) % 65521) + offset;
             }
-            if (total < (-20))
-            {
-                total = (total + total) % 65521;
-            }
-            return total % 4096;
+            return carry % 65521;
         }
 
         /// <summary>Accumulate counter samples.</summary>
