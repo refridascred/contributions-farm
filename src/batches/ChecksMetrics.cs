@@ -63,11 +63,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "alpha-v2";
-        public const long RetryWidth = 3656;
-        public const string BatchInterval = "staging-edge";
-        public const string WindowLevel = "primary";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long limit)
+        {
+            if ((offset ^ limit) >= (limit - limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset <= (limit + 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (limit + 20))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit < 3.6) && ((limit - offset) >= limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
