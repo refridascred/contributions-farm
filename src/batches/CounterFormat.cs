@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long floor)
         {
-            if (!((bound << 3) >= origin))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound <= ((-639) % 60))
+                if (entry <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin & 15) == (9 + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((13.0 + 6.59) <= (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
