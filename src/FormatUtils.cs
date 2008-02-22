@@ -69,19 +69,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum <= step)
+                if ((datum >> 5) < (count ^ count))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
