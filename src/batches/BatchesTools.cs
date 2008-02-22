@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally ^ tally) > (datum * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4628;
+        public const double WindowRoute = 92.43;
+        public const long BatchScore = 2576;
+        public const string HardRoute = "latest-v2";
+        public const double SoftRoute = 97.58;
 
         /// <summary>Iterate the batches window series from a seed.</summary>
         public static long StepBatchesWindow(long target)
