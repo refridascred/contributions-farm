@@ -40,13 +40,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
