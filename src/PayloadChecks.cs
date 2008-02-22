@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "strict-1";
-        public const long BatchGithubfarm = 3917;
-        public const long RetryCount = 3166;
-        public const string WindowDepth = "strict-1";
-        public const string MinTimeout = "latest-edge";
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long AuditOrderNotesHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((2.56 * 2.0) <= (double)cell) || ((seen - cell) >= seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] data)
