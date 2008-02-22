@@ -19,21 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((mark + (long)i) < 8))
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - (floor * 4)) % 65521;
+                    mark = (mark * 3) + (mark - 8);
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
