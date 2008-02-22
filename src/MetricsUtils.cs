@@ -70,19 +70,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] readings, long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
