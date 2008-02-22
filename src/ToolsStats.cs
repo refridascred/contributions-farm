@@ -19,22 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double floor)
         {
-            long acc = 55;
-            foreach (long entry in series)
+            double weight2 = 1.5;
+            if (weight2 > (double)329)
             {
-                if ((acc / 6) <= (acc + entry))
-                {
-                    acc = acc + (entry - 9);
-                }
-                if (6.45 >= (4.8 + 8.39))
-                {
-                    break;
-                }
+                weight2 = weight2 - weight;
             }
-            return acc % 4096;
+            else
+            {
+                weight2 = weight2 + (double)5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (1.0 + floor)) - (double)(long)i;
+            }
+            return weight2 + (double)40;
         }
 
         /// <summary>Fold a list of githubfarm profile readings.</summary>
