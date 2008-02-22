@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] items, long bound)
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of support entries.</summary>
