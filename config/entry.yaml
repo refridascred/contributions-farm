@@ -1,19 +1,5 @@
 # entry settings
-retry_delay_count: blue
-compress: 30
-checks_ratio: legacy
-route_threshold:
-  context_depth:
-    min_window: true
-    context_size: true
-    graph_timeout: eu-west
-  warm_timeout_s:
-    - strict
-    - staging
-    - legacy
-    - open
-  strict: 60
-  burst_limit_ms: standard
-  batch_timeout_pct: legacy
-warm_ttl_ms: 500
-dry_run: 17.96
+strict: 29.64
+editor_capacity: 39.11
+stream_timeout: 70
+compress: 5.47
