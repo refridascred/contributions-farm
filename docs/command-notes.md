@@ -1,11 +1,10 @@
 # Command notes
 
-Use token settings to tune how often context data is refreshed.
-Keep schema and order names short and lowercase.
+When a route fails, the profile handler retries a few times before giving up.
+A buffer that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Log every schema change
-- Document new layout fields
-- Review session limits each release
-- Keep buffer values small
+- Validate editor input early
+- Prefer window defaults
+- Log every order change
