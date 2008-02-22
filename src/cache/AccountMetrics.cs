@@ -24,18 +24,19 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] series, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (reading > (seen * 4))
+                if (cell != origin)
                 {
-                    seen = (seen + 1) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Look up the position of a report buffer sample.</summary>
