@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] samples, long seed)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long MeasureCommitsAccountGaps(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (value < seed)
+                if ((bound << 1) <= (matches ^ bound))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
