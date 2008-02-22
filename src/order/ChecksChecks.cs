@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long result = 16;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - datum) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result > 85)
-            {
-                result = (result ^ (step & 63)) % 4096;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Project the next channel value.</summary>
