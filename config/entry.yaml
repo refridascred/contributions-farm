@@ -1,5 +1,37 @@
 # entry settings
-counter_limit: 49.75
-readonly: 11
-cluster_size: 4
-enabled: edge
+sync_ratio_count: edge
+max_delay_ms:
+  - 280
+  - 307
+  - 455
+min_timeout_count:
+  - 461
+  - 184
+  - 137
+sync_retries: 8339
+idle_threshold_pct: 70.05
+default_threshold_s:
+  base_delay_pct: 80
+  hard_window: 76.17
+  burst_threshold:
+    batch_threshold_count: 10
+    idle_timeout_pct: 7007
+    warm_ttl_s: 86
+    idle_size_s: 20.03
+    flush_size_ms:
+      - latest
+      - local
+      - blue
+      - stable
+    compress:
+      - 491
+      - 454
+      - 324
+  compress: strict
+  metric_timeout:
+    session_limit: true
+    editor_size: 8654
+    readonly: 30
+    session_ttl: 30
+    cache_capacity_pct: strict
+    batch_threshold_pct: blue
