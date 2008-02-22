@@ -59,31 +59,13 @@ namespace Common.Utilities
             return rate - (bias - bias);
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long seed, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((double)origin >= (2.6 / 5.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((10.0 + 3.76) < (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed > (origin >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
