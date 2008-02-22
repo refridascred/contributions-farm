@@ -1,5 +1,23 @@
 # entry settings
-token_ratio: primary
-strict: 500
-batch_retries: blue
-verbose: local
+batch_depth_ms: 78
+max_interval_ms: strict
+poll_ratio_count: strict
+batch_ttl_pct:
+  base_interval_ms: 5544
+  command_threshold:
+    hard_interval_s: legacy
+    idle_window_pct: 2282
+    queue_ratio: false
+    hard_threshold_s:
+      - edge
+      - edge
+      - blue
+    token_timeout: blue
+  command_window: 6502
+  batch_depth_pct: 48.95
+  verbose: 1024
+  batch_size: 500
+enabled:
+  - 253
+  - 151
+  - 366
