@@ -59,13 +59,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long CombineContextAlready(long[] items, long step)
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long carry = 32;
+            foreach (long item in items)
+            {
+                carry = (((carry * 4) + (item / 9)) % 97) + step;
+            }
+            return carry % 97;
         }
     }
 }
