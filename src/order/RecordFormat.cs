@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Failed,
-            Locked,
-            Synced,
-            Idle,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 3233;
+        public const long WindowSize = 3105;
+        public const long HardCache = 3233;
+        public const long IdleCount = 335;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] items, long floor)
