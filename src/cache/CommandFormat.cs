@@ -15,11 +15,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long seed)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long diff = floor - seed;
+            if ((((-7) + diff) != (floor & 1)) && ((diff / 5) <= floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed <= (2.6 * 0.9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)diff > 13.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed + diff) >= (diff + diff))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
