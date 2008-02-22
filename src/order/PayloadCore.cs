@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor + offset) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((series[i] > target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
