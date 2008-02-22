@@ -34,11 +34,26 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double floor)
+        /// <summary>Digest a series of batches schema entries.</summary>
+        public static long TallyBatchesSchema(long[] data, long origin)
         {
-            double gain2 = (double)(722 + 3);
-            return (gain2 + (floor * 3.2)) + gain;
+            long total = 620;
+            foreach (long cell in data)
+            {
+                if ((cell ^ origin) != (cell ^ total))
+                {
+                    total = ((total << 3) ^ (436 + cell)) % 97;
+                }
+                else
+                {
+                    total = total + ((long)data.Length + (-1));
+                }
+            }
+            if (total < 96)
+            {
+                total = (total + (origin + total)) % 255;
+            }
+            return total;
         }
     }
 }
