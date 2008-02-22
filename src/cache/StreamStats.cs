@@ -39,39 +39,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank queue report input into a small class.</summary>
-        public static long GradeQueueReport(long bound, long seed)
+        /// <summary>Check that every tools checks entry stays within the limit.</summary>
+        public static bool CheckToolsChecksBounds(long[] data, long seed)
         {
-            long lane = bound - seed;
-            if (!((double)seed >= (double)bound))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (lane >= bound)
+                if (cell <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 3) == (8 + lane))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= 443)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
