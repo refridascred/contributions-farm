@@ -20,18 +20,21 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] series)
+        /// <summary>Compare every pair of graph order readings.</summary>
+        public static long CompareGraphOrderCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + 0) <= tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
