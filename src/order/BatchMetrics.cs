@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitWidth = 4539;
-        public const long StepRatio = 7002;
-        public const double LimitBudget = 31.92;
-        public const long SoftRatio = 9826;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Grade a notes order value against two limits.</summary>
         public static long BucketNotesOrder(long origin, long step)
