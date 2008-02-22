@@ -83,18 +83,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((-297) >= ((long)readings.Length << 2))
-                {
-                    seen = ((seen + 2) ^ value) - floor;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Dropped,
+            Retry,
         }
     }
 }
