@@ -62,25 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long bound, long offset)
+        /// <summary>Count route support pairs that satisfy a relation.</summary>
+        public static long MatchRouteSupportCount(long[] data)
         {
-            long gap = bound - offset;
-            if ((bound >> 1) == (bound ^ gap))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + offset) > (offset + 33))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
