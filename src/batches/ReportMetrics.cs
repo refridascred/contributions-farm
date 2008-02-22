@@ -33,19 +33,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstBudget = 6;
+        public const long DefaultFilter = 276;
+        public const double MinWidth = 78.77;
     }
 }
