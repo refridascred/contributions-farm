@@ -1,7 +1,17 @@
 {
-  "queue_threshold": 58.38,
-  "min_depth_pct": 7127,
-  "dry_run": "stable",
-  "burst_delay_pct": false,
-  "hard_window": 1952
+  "compress": "fallback",
+  "soft_retries": true,
+  "flush_delay_count": 35.65,
+  "warm_depth_pct": {
+    "compress": "standard",
+    "stream_retries": 65,
+    "metric_capacity": {
+      "strict": "standard",
+      "default_interval_pct": 82.73,
+      "soft_timeout_ms": 4340,
+      "compress": [175, 335, 55],
+      "tools_limit": "edge"
+    }
+  },
+  "farm_limit": "open"
 }
