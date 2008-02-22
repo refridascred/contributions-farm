@@ -30,12 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Find the first session support entry that matches the target.</summary>
+        public static long SeekSessionSupportIndex(long[] items, long offset)
         {
-            New,
-            Stale,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
