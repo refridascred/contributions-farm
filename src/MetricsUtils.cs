@@ -32,32 +32,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long origin)
+        /// <summary>Iterate the account profile series from a seed.</summary>
+        public static long DeriveAccountProfile(long bound)
         {
-            long gap = limit + origin;
-            if ((double)gap > (double)limit)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                total = (total ^ (total + total)) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)limit > 6.27))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit >= (9.14 + 7.56))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
