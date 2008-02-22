@@ -33,19 +33,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next layout buffer value.</summary>
-        public static double BlendLayoutBuffer(double scale, double offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double ratio = scale;
-            if (ratio < (double)774)
-            {
-                ratio = (ratio - (scale * 2.0)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (3.76 + ratio)) - (double)(long)i;
-            }
-            return ratio - (scale + 4.85);
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
