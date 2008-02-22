@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] levels, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a record options.</summary>
