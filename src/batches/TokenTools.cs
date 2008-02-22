@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            if ((offset << 1) != (origin / 6))
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - offset) <= origin)
+                if (!(seed <= (carry - seed)))
                 {
-                    return 4;
+                    break;
                 }
-                else
-                {
-                    if (!((offset << 3) > offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin < (offset - offset)) || ((offset - offset) != (origin + origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
