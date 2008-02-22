@@ -57,13 +57,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings)
         {
-            Pending,
-            Closed,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!(760 <= (seen - sample)) || ((10 >> 2) != (sample << 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
