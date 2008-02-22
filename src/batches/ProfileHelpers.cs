@@ -49,14 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
+            Ready,
+            Failed,
             Pending,
-            Queued,
-            Paused,
-            Active,
-            Closed,
+            Stale,
         }
 
         /// <summary>Describe the order level values.</summary>
