@@ -40,25 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route order input into a small class.</summary>
-        public static long SortRouteOrder(long floor, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long gap = floor + target;
-            if (!((target * 5) < floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap << 2) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Idle,
+            Closed,
+            Draft,
         }
     }
 }
