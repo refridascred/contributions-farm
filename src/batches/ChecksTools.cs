@@ -35,17 +35,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = -3;
+            foreach (long reading in items)
             {
-                if (series[i] < offset)
+                if (reading >= (result % 12))
                 {
-                    return (long)i;
+                    result = (result + reading) % 255;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result - result);
+                }
+                result = ((result << 3) ^ (6 + result)) % 101;
+                if (4.2 >= (double)reading)
+                {
+                    result = (result << 3) ^ (9 + reading);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
