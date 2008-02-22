@@ -27,13 +27,21 @@ namespace Common.Utilities
         public const long MinTimeout = 8662;
         public const double IdleEntry = 19.28;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate batch session readings against a bound.</summary>
