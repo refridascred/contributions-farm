@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long CacheBatch = 6595;
         public const long LimitBatch = 3763;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((datum * 5) >= seen)
+                if (cell > limit)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
