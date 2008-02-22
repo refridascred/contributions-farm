@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((matches << 3) == (2 * 3))
+                if (((sample - sample) != (tally >> 5)) || (((sample + sample) >= sample) && ((double)sample <= (13.0 * 11.0))))
                 {
-                    matches = (matches + 3) ^ sample;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
