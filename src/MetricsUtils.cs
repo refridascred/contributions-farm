@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples, long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long sum = 88;
-            foreach (long item in samples)
-            {
-                sum = ((sum * 3) + (38 & 63)) % 97;
-                if ((((-6) + step) == (step + sum)) && ((item & 1) > (11 << 1)))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine checks account values into a single score.</summary>
