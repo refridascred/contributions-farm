@@ -22,17 +22,9 @@ namespace Common.Utilities
         public const long CacheBatch = 6595;
         public const long LimitBatch = 3763;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 29.6;
+        public const double DefaultCounter = 83.77;
+        public const long BurstWidth = 5795;
     }
 }
