@@ -1,6 +1,23 @@
 {
-  "metrics_size": 18.66,
-  "soft_depth": 25.44,
-  "min_depth_s": 9068,
-  "hard_depth_pct": 41.12
+  "flush_ttl": "cached",
+  "enabled": 81.88,
+  "soft_ratio_s": "cached",
+  "burst_ratio_pct": {
+    "max_timeout_pct": {
+      "sync_capacity_count": true,
+      "default_delay": 67,
+      "audit": 48.19
+    },
+    "readonly": [467, 136, 256, 263],
+    "batch_ttl": "legacy",
+    "batch_ratio": {
+      "filter_timeout": "standard",
+      "hard_limit": false,
+      "min_delay_s": 94.47,
+      "max_interval_count": "staging"
+    },
+    "default_timeout_s": 100,
+    "metric_delay": 44.23
+  },
+  "hard_retries_pct": "fallback"
 }
