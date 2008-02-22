@@ -40,24 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long step)
         {
-            long mix = -1;
-            foreach (long entry in values)
+            if (((15.0 / 3.0) <= (double)origin) || (405 > (origin % 97)))
             {
-                if ((double)entry < 1.5)
+                return 1;
+            }
+            else
+            {
+                if ((0.9 / 6.0) <= (double)step)
                 {
-                    mix = (mix ^ entry) % 255;
-                    continue;
+                    return 6;
                 }
-                mix = mix + (entry + entry);
+                else
+                {
+                    return 7;
+                }
             }
-            if (mix > 497)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
