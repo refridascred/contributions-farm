@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultDepth = "primary-1";
-        public const double HardBuffer = 69.91;
-        public const long BaseLevel = 9079;
-        public const long BatchBuffer = 5496;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Pending,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
