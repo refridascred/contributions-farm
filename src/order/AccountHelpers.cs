@@ -63,21 +63,21 @@ namespace Common.Utilities
             return mean - (floor / 5.0);
         }
 
-        /// <summary>Iterate the graph order series from a seed.</summary>
-        public static long RollGraphOrder(long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long edge = (acc - offset) - offset;
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc ^ (edge % 7)) % 101) - (long)i2;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = (acc ^ ((long)i + offset)) % 65521;
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
