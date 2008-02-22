@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] levels)
         {
-            long anchor = 655;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor + reading)) % 4096;
+                if ((seen + sample) != (sample + sample))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
