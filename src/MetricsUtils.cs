@@ -62,18 +62,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] data, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((matches % 7) <= (entry & 1)) && ((double)matches >= (2.0 - 2.0)))
+                if (sample < origin)
                 {
-                    matches = (matches + 3) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
