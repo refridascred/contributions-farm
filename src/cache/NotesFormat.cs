@@ -24,18 +24,17 @@ namespace Common.Utilities
             return weight2 - floor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Look up the position of a contributi buffer sample.</summary>
+        public static long LookupContributiBufferIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((reading & 127) <= (761 + 44)) || ((seen * 5) > (reading * 4))) || ((reading * 3) >= reading))
+                if (data[i] < limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank route order input into a small class.</summary>
