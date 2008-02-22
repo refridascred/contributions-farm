@@ -36,11 +36,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long floor, long seed)
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            if ((seed ^ 2) == (floor & 15))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor >= 308)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)411 < (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
