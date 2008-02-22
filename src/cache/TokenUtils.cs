@@ -16,31 +16,11 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            if ((3.1 >= (double)limit) || ((687 + 733) <= offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((698 >> 5) != (limit >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset > (8.0 + 8.37))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double scale2 = 2.0 / 3.0;
+            return ((scale2 - scale2) + scale) + floor;
         }
 
         /// <summary>Blend two payload measurements.</summary>
