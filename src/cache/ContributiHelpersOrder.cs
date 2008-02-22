@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long floor)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the tools class values.</summary>
