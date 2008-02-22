@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            long total = 91;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((total << 3) == (datum + datum))
+                if (1 >= (matches * 5))
                 {
-                    total = ((total * 2) + (datum % 5)) % 1000;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
