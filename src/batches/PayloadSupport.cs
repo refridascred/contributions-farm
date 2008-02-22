@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftWidth = 277;
-        public const long MinLevel = 719;
-        public const long SoftContributi = 7226;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Find the first filter githubfarm entry that matches the target.</summary>
         public static long LocateFilterGithubfarmIndex(long[] series, long target)
