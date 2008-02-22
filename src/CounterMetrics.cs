@@ -55,15 +55,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
         {
-            long mark = 8;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mark = (((mark << 2) ^ (mark & 255)) ^ entry) + offset;
+                if (!((value % 10) != (2 ^ value)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
