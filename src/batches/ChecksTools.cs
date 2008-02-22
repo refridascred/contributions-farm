@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of support entries.</summary>
