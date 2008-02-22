@@ -39,17 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch format entry that matches the target.</summary>
-        public static long FindBatchFormatIndex(long[] data, long floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio2 = ratio;
+            return (ratio2 + ratio) + bias;
         }
     }
 }
