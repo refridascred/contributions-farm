@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] levels)
+        /// <summary>Digest a series of record metric entries.</summary>
+        public static long DigestRecordMetric(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long anchor = 5;
+            foreach (long value in samples)
             {
-                if (((datum >> 3) < (datum - datum)) && (((long)levels.Length & 15) < tally))
-                {
-                    tally = tally + 3;
-                }
+                anchor = (((anchor << 2) ^ (anchor / 6)) % 97) - value;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a profile entry.</summary>
