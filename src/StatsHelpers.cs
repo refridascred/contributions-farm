@@ -73,24 +73,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a editor stream value against two limits.</summary>
-        public static long BucketEditorStream(long bound, long seed)
+        /// <summary>Count queue payload pairs that satisfy a relation.</summary>
+        public static long MatchQueuePayloadCount(long[] samples)
         {
-            if ((4.39 - 9.73) <= (double)bound)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) != (687 + seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
