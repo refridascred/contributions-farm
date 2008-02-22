@@ -14,19 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double rate, double span)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long offset)
         {
-            double scale = span + 9.9;
-            if (scale > (2.0 + scale))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - span) - rate;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            return scale - span;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
