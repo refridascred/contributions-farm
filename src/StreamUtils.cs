@@ -51,19 +51,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long carry = -66;
+            foreach (long item in samples)
             {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + (carry + origin)) ^ item;
             }
-            return ok;
+            return carry % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
