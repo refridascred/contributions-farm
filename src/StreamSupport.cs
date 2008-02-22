@@ -18,13 +18,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Grade a command already value against two limits.</summary>
+        public static long ClassifyCommandAlready(long step, long offset)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            if (((12.0 / 5.0) <= (double)offset) && ((offset + 3) < (step + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset % 8) <= (step * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
