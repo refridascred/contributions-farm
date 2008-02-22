@@ -66,33 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long origin)
-        {
-            long prev = target ^ origin;
-            if ((prev + origin) == (origin / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(5 < (origin - origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((121 - prev) <= (target + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftWidth = 5720;
+        public const long IdleRecord = 6901;
+        public const long BurstRecord = 5454;
+        public const string MinRecord = "strict-1";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinWidth = 4029;
