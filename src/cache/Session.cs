@@ -17,19 +17,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples)
-        {
-            long acc = 588;
-            foreach (long sample in samples)
-            {
-                if (((-8) + 564) < sample)
-                {
-                    acc = (acc - (acc * 5)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 28.0;
+        public const string BaseMetric = "standard";
+        public const long IdleSpan = 7254;
+        public const long WindowMetric = 7320;
 
         /// <summary>Classify a cache batches pair into a bucket.</summary>
         public static long SortCacheBatches(long seed, long offset)
