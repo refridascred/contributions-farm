@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long seed)
         {
-            Dropped,
-            Active,
-            Retry,
-            Stale,
-            Synced,
+            if ((step >> 4) != (step - 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - seed) > (57 >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a tools header.</summary>
