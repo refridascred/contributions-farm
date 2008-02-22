@@ -1,16 +1,12 @@
 {
-  "command_threshold": 4991,
-  "base_limit_pct": true,
-  "enabled": 79.69,
-  "persist": {
-    "stats_size": "staging",
-    "stream_limit": {
-      "already_retries": 8202,
-      "poll_interval_ms": 1943,
-      "idle_limit": [426, 451]
-    },
-    "sync_delay_s": 91.24,
-    "token_threshold": 60
+  "flush_timeout_pct": "blue",
+  "hard_capacity": false,
+  "flush_capacity_s": {
+    "warm_ttl_pct": "green",
+    "command_limit": 34,
+    "idle_limit_count": "staging",
+    "metrics_ttl": 25.75,
+    "stats_depth": 500
   },
-  "contributi_ttl": true
+  "burst_interval": 60
 }
