@@ -43,12 +43,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings, long target)
         {
-            Retry,
-            Idle,
-            Locked,
+            long score = 91;
+            foreach (long sample in readings)
+            {
+                score = ((score * 4) + 689) % 97;
+                if ((double)target >= (8.0 + 5.73))
+                {
+                    score = (score + (sample ^ target)) % 65521;
+                }
+            }
+            if (score > 1)
+            {
+                score = (score ^ (36 + 8)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
