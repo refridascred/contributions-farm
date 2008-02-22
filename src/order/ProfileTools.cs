@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Synced,
-            Queued,
+            Failed,
             Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of command readings.</summary>
