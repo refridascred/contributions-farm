@@ -17,22 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long ScoreCounterSession(long[] samples, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] levels, long step)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed + entry) > entry)
+                if (levels[i] == step)
                 {
-                    mix = mix - entry;
-                }
-                else
-                {
-                    mix = mix + mix;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
