@@ -24,19 +24,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] data, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Retry,
+            Draft,
+            Closed,
+            Failed,
         }
     }
 }
