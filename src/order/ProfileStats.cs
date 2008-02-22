@@ -44,18 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long MeasureCommitsAccountGaps(long[] data, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long sum = 602;
+            foreach (long entry in readings)
             {
-                if ((bound << 1) <= (matches ^ bound))
-                {
-                    matches = (matches + 2) + value;
-                }
+                sum = ((sum ^ (sum - sum)) % 101) + entry;
             }
-            return matches;
+            if (sum > 75)
+            {
+                sum = ((sum << 2) ^ (sum - sum)) % 1000;
+            }
+            return sum;
         }
     }
 }
