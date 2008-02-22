@@ -47,19 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double gain = span + (scale + span);
-            if (gain < gain)
-            {
-                gain = gain - 5.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 1.12) + (double)(long)i;
-            }
-            return gain - span;
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
