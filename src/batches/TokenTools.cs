@@ -26,39 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long target, long floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            long next = target + floor;
-            if ((floor / 5) <= (33 >> 5))
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)next == (double)floor) && ((target & 127) >= (floor / 6)))
+                if (!(acc < (limit % 10)))
                 {
-                    return 3;
+                    acc = (acc << 3) ^ (limit >> 2);
                 }
-                else
-                {
-                    if (target >= (8 + next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((target - floor) == (target / 2)) && ((0.62 * 9.1) >= (double)next))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
