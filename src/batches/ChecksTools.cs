@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const string CacheWidth = "standard-edge";
         public const string StepDepth = "latest-1";
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
