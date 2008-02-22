@@ -30,19 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] values, long offset)
+        /// <summary>Measure how many token tools samples are out of range.</summary>
+        public static long AuditTokenToolsOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (item > offset)
+                if ((reading % 24) >= (reading & 15))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
