@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Find the first context payload entry that matches the target.</summary>
+        public static long LocateContextPayloadIndex(long[] series, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
