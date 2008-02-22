@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] levels, long step)
         {
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count & 127) < (count % 5))
+                {
+                    count = ((count + 1) ^ cell) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first batch format entry that matches the target.</summary>
