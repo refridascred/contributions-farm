@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit farm filter readings against a rule.</summary>
-        public static long TallyFarmFilterGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (9.7 > (double)origin)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstScore = 1249;
+        public const long SoftFarm = 5361;
+        public const long IdleFarm = 3033;
+        public const long LimitFarm = 3078;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
