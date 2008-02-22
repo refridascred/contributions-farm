@@ -1,7 +1,31 @@
 # entry settings
-soft_capacity_ms: 30
-min_interval_s: 29
-strict:
-  poll_delay: 660
-  record_interval: open
-  min_size_s: eu-west
+idle_ttl:
+  - 199
+  - 229
+  - 143
+dry_run:
+  poll_threshold_ms: 60
+  default_timeout: 69.83
+  record_ratio:
+    - primary
+    - eu-west
+    - cached
+  verbose: 250
+tools_ratio: 30
+sync_interval_pct:
+  min_limit: edge
+  soft_delay_ms:
+    - 437
+    - 434
+  readonly: 3627
+  soft_ratio_pct: true
+  retry_interval_count: green
+  cluster_retries:
+    min_size_s: 100
+    retry_timeout_pct: 30
+    cache_ttl_ms: local
+    readonly: cached
+retry_window_pct:
+  - eu-west
+  - green
+  - legacy
