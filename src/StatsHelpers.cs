@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate entry schema readings against a bound.</summary>
+        public static bool GuardEntrySchemaLimits(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a report cluster reading.</summary>
