@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the queue notes entries that pass the check.</summary>
-        public static long MeasureQueueNotesMatches(long[] levels)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample & 15) >= sample) && (((hits % 8) > (sample / 9)) || ((sample - hits) == (sample + hits))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate entry schema readings against a bound.</summary>
