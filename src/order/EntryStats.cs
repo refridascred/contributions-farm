@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter graph measurements.</summary>
-        public static double SmoothFilterGraph(double bias, double floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data)
         {
-            double mean = bias;
-            if (mean < (bias * 3.0))
+            long total = 91;
+            foreach (long datum in data)
             {
-                mean = mean - (floor - floor);
+                if ((total << 3) == (datum + datum))
+                {
+                    total = ((total * 2) + (datum % 5)) % 1000;
+                }
             }
-            return mean - (floor + floor);
+            return total % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
