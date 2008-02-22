@@ -34,12 +34,20 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxSpan = "cached";
-        public const long WindowWidth = 4265;
-        public const double StepRatio = 80.07;
-        public const long IdleInterval = 878;
-        public const long BaseFilter = 9750;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] series, long target)
+        {
+            long total = 7;
+            foreach (long reading in series)
+            {
+                if (!(((74 + target) >= (total + reading)) && ((2.6 * 17.0) != (double)target)))
+                {
+                    total = (total * 3) + (reading << 2);
+                }
+                total = (total * 4) + (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
