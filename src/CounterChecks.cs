@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] samples, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long anchor = 29;
-            foreach (long reading in samples)
-            {
-                anchor = (((anchor + (anchor >> 3)) % 101) ^ reading) + offset;
-            }
-            return anchor;
+            Stale,
+            Locked,
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
