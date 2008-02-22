@@ -52,10 +52,31 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchRatio = 87.87;
-        public const long RetryEntry = 2558;
-        public const long StepBudget = 5687;
-        public const long LimitEntry = 5938;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long offset)
+        {
+            if ((offset + offset) < (bound + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound << 2) > (offset << 2)) || ((double)bound != (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ offset) > bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
