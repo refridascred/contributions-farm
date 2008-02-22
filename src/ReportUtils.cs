@@ -23,23 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a notes contributi figure with a bias.</summary>
-        public static double ScaleNotesContributi(double scale, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] data, long offset)
         {
-            double ratio = (double)(774 + 5);
-            if (ratio <= (offset + 2.21))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                ratio = ratio - offset;
+                if (((double)datum < (double)616) || ((seen % 5) < 45))
+                {
+                    seen = (seen + 3) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (offset / 9.0)) + (double)(long)i;
-            }
-            return ratio + (double)0;
+            return seen;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
