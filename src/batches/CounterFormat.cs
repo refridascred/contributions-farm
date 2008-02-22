@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload profile readings against a rule.</summary>
-        public static long AuditPayloadProfileHits(long[] samples, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((5.0 * 7.1) >= (double)hits))
+                if ((cell - 964) > tally)
                 {
-                    hits = ((hits + 1) ^ cell) + seed;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
