@@ -41,15 +41,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
