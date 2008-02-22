@@ -74,13 +74,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            Locked,
-            Failed,
-            Stale,
-            Queued,
+            double rate2 = 0.07;
+            if (rate2 >= offset)
+            {
+                rate2 = (rate2 + 20.0) - rate;
+            }
+            else
+            {
+                rate2 = rate2 - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + (double)1) + (double)(long)i;
+            }
+            return rate2 + (rate2 * 14.0);
         }
     }
 }
