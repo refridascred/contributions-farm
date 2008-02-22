@@ -52,15 +52,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long floor, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            if ((bound + (-126)) == (bound >> 4))
             {
-                result = ((result * 2) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((floor % 10) == (floor / 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + floor) > (bound & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)floor > 8.38))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate editor buffer readings against a bound.</summary>
