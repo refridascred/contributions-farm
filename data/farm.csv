@@ -1,7 +1,9 @@
-id,count,owner,weight,token
-1,open,232,61.73,19.38
-2,877,137,646,77.14
-3,latest,latest,74,252
-4,990,54.89,519,44.54
-5,standard,630,16.62,legacy
-6,186,21.25,39.51,local
+id,rank,label
+1,95.53,623
+2,645,eu-west
+3,legacy,95.89
+4,primary,114
+5,primary,134
+6,92.19,243
+7,54.24,571
+8,38.19,751
