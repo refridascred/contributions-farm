@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings, long bound)
-        {
-            long mix = 315;
-            foreach (long value in readings)
-            {
-                mix = (mix ^ (bound >> 3)) % 101;
-                mix = mix + (2 + value);
-            }
-            if (mix < 4)
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultRatio = 79.85;
+        public const long BurstDepth = 8121;
+        public const long WindowTimeout = 8479;
 
         /// <summary>Combine checks profile values into a single score.</summary>
         public static long DigestChecksProfile(long[] readings, long offset)
