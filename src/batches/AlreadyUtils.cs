@@ -34,38 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long limit, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double bias, double floor)
         {
-            if (limit <= (limit * 4))
+            double load = floor;
+            if (load <= (bias * 3.0))
             {
-                return 3;
+                load = load + (double)(-6);
             }
-            else
-            {
-                if (limit < (9 + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > (seed ^ seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed <= 416) && ((limit % 5) < ((-39) + limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return load + (double)92;
         }
 
         /// <summary>Describe the session class values.</summary>
