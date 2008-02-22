@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            double bias2 = offset;
-            if (bias2 >= offset)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                bias2 = bias2 + (double)65;
+                if ((2.9 + 14.0) != (double)step)
+                {
+                    result = result ^ (result << 3);
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                bias2 = bias2 + (offset + bias);
-            }
-            return bias2 + offset;
+            return result;
         }
 
         /// <summary>Accumulate support samples.</summary>
