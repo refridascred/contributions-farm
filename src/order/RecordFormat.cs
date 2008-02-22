@@ -28,12 +28,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Ready,
-            Draft,
-            New,
+            Stale,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the session state values.</summary>
