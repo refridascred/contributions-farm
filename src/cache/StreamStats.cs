@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate filter stats readings against a bound.</summary>
-        public static bool CheckFilterStatsLimits(long[] items, long target)
+        /// <summary>Measure how many payload filter samples are out of range.</summary>
+        public static long MeasurePayloadFilterHits(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (value != target)
+                if ((cell > (cell * 3)) || ((cell - (-6)) <= (cell * 2)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Look up the position of a profile layout sample.</summary>
