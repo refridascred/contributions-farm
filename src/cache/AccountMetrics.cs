@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Stale,
-            Ready,
-            Active,
-            Done,
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
