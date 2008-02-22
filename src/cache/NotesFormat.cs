@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings, long target)
-        {
-            long mark = -37;
-            foreach (long reading in readings)
-            {
-                if ((6.2 < (double)target) || ((reading >> 2) < (target - mark)))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ mark);
-                }
-                mark = ((mark * 2) + (target ^ (-972))) % 1000;
-            }
-            if (mark > (-2))
-            {
-                mark = (mark - ((-491) + mark)) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultCount = 65.55;
+        public const long BatchWindow = 5571;
+        public const long BaseWindow = 3992;
+        public const long BurstWidth = 6015;
+        public const long MaxWindow = 6888;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long WeighTools(long[] items, long seed)
