@@ -56,18 +56,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] levels)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count <= (4.3 + 5.08))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
