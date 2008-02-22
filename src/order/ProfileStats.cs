@@ -16,26 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long sum = 7;
-            foreach (long cell in items)
+            long carry = 90;
+            foreach (long value in samples)
             {
-                if ((6.0 / 7.0) == (double)offset)
+                for (int i = 0; i < 10; i++)
                 {
-                    sum = (((sum << 2) ^ offset) % 101) ^ cell;
+                    carry = (((carry * 5) + carry) % 101) + (long)i;
+                    carry = (carry * 5) + value;
                 }
-                if (sum > offset)
+                if (665 > (carry & 255))
                 {
-                    break;
+                    carry = (carry * 5) + value;
                 }
             }
-            if (sum > 265)
-            {
-                sum = ((sum * 3) + offset) % 4096;
-            }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
