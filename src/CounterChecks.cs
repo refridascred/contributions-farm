@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of token report readings.</summary>
-        public static long MatchTokenReportCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 41.81;
+        public const long StepWidth = 3516;
+        public const long BatchFactor = 2404;
 
         /// <summary>Combine editor schema values into a single score.</summary>
         public static long FoldEditorSchema(long[] readings, long limit)
