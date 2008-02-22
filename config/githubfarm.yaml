@@ -1,8 +1,28 @@
 # githubfarm settings
-default_limit_count: local
-githubfarm_window: local
-idle_ratio_ms: 100
-record_interval:
-  - local
-  - green
-flush_timeout_count: latest
+persist:
+  batch_window:
+    burst_timeout_pct:
+      - local
+      - blue
+    tools_ratio: blue
+    batch_window_s: standard
+  idle_limit_pct: stable
+  cache_interval_ms: primary
+hard_ttl_ms: false
+verbose: 100
+burst_delay: 500
+cache_interval:
+  enabled: 14.49
+  soft_capacity: 45.31
+  cache_window:
+    metric_depth: 790
+    default_delay_s:
+      - latest
+      - latest
+      - stable
+    warm_window: 100
+    verbose: primary
+    stats_threshold: 500
+    metric_capacity: blue
+  hard_window: 60.59
+  verbose: eu-west
