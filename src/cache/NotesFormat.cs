@@ -26,15 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data, long origin)
+        /// <summary>Validate counter account readings against a bound.</summary>
+        public static bool ValidateCounterAccountRange(long[] readings, long origin)
         {
-            long total = -130;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                total = ((((total * 4) + total) % 97) ^ value) - origin;
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 97;
+            return stale;
         }
     }
 }
