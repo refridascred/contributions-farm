@@ -24,11 +24,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleCache = 27.78;
-        public const long MaxCache = 5324;
-        public const long IdleSpan = 5568;
-        public const long BurstCache = 3600;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Draft,
+            Stale,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] data, long step)
