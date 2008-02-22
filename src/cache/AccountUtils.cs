@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseSize = 462;
-        public const long BatchBatches = 336;
-        public const long LimitLevel = 9935;
-        public const long LimitRatio = 5634;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((5.0 - 7.0) <= (double)floor)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] readings)
