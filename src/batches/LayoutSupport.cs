@@ -80,13 +80,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Queued,
-            Active,
-            Draft,
+            Paused,
+            Pending,
             New,
+            Retry,
+            Idle,
         }
     }
 }
