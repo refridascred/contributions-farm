@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Ready,
-            Idle,
-            Dropped,
-            Failed,
-            Active,
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate account command samples.</summary>
