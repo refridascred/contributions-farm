@@ -24,15 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Retry,
-            Ready,
-            Closed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchScore = 32.87;
+        public const long SoftChecks = 2573;
+        public const double LimitFactor = 63.78;
+        public const double MaxLevel = 53.75;
+        public const string BatchSize = "standard-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string SoftRatio = "alpha";
