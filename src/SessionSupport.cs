@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] readings)
-        {
-            long result = 2;
-            foreach (long value in readings)
-            {
-                result = (result << 2) ^ (result % 16);
-                if (((long)readings.Length >> 3) > result)
-                {
-                    result = result - (result >> 5);
-                }
-                else
-                {
-                    result = result + (value - value);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 7166;
+        public const long StepSpan = 8382;
+        public const string CacheSpan = "legacy-v2";
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
