@@ -34,19 +34,38 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] series, long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long step, long seed)
         {
-            long total = 7;
-            foreach (long reading in series)
+            if ((double)seed > (double)1)
             {
-                if (!(((74 + target) >= (total + reading)) && ((2.6 * 17.0) != (double)target)))
-                {
-                    total = (total * 3) + (reading << 2);
-                }
-                total = (total * 4) + (total + total);
+                return 4;
             }
-            return total;
+            else
+            {
+                if (!((seed - seed) >= step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed >= (20.0 + 18.0)) || (seed <= (step / 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 31) != (350 * 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
