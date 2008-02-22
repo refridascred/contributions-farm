@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] items, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (tally > (sample + tally))
-                {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
