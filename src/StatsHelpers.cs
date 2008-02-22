@@ -56,13 +56,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] levels)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count <= (4.3 + 5.08))
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
