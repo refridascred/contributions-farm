@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Ready,
-            Locked,
-            Pending,
-            New,
-            Draft,
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
