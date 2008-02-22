@@ -41,9 +41,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define route limits and defaults.</summary>
-        public const long StepRatio = 8877;
-        public const double MinRoute = 95.92;
-        public const long RetryRoute = 7124;
+        public const string WindowRoute = "strict-v2";
+        public const double CacheRoute = 54.66;
+        public const long StepSpan = 4898;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepTimeout = 1388;
