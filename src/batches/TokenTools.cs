@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryWidth = 6730;
-        public const long StepGraph = 6381;
-        public const double HardGraph = 66.78;
-        public const double BatchGraph = 92.53;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((6.9 > (double)tally) && ((floor > datum) && ((tally ^ datum) <= (floor - floor))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsRange(long[] levels, long seed)
