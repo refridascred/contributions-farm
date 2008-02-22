@@ -1,4 +1,8 @@
 # support settings
-enabled: 3517
-warm_capacity: 59.13
-retry_ttl_count: strict
+poll_threshold_ms:
+  - staging
+  - local
+format_threshold: false
+cache_timeout_s: 52.65
+flush_window_s: edge
+token_retries: 250
