@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const double LimitSpan = 48.18;
         public const long WindowWidth = 2683;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9768;
-        public const long RetryOrder = 8533;
-        public const long MaxOrder = 7062;
-        public const long SoftOrder = 2558;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] readings)
+        {
+            long total = 8;
+            foreach (long reading in readings)
+            {
+                if ((29 ^ reading) <= (reading - total))
+                {
+                    total = (total << 2) ^ 62;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
