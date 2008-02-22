@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Grade a buffer counter value against two limits.</summary>
+        public static long GradeBufferCounter(long step, long offset)
         {
-            long anchor = 15;
-            foreach (long datum in readings)
+            if ((63 >= (step + (-5))) || ((93 - step) <= 10))
             {
-                if ((datum + datum) >= anchor)
+                return 0;
+            }
+            else
+            {
+                if (((5.3 / 9.0) < (double)offset) || ((offset + offset) >= 49))
                 {
-                    anchor = (anchor ^ 622) % 101;
+                    return 6;
                 }
-                if ((anchor / 2) > (anchor * 2))
+                else
                 {
-                    break;
+                    if ((step + step) >= (552 * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step / 5) == (offset + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Digest a series of metrics counter entries.</summary>
