@@ -23,17 +23,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] levels, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long step, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step * 5) > (-2))
             {
-                if (levels[i] < offset)
+                return 8;
+            }
+            else
+            {
+                if ((double)target >= (9.75 - 2.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
