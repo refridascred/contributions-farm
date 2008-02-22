@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values, long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long carry = 416;
-            foreach (long sample in values)
-            {
-                carry = carry + (bound & 7);
-                if ((carry - sample) != (bound << 2))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Find the first filter githubfarm entry that matches the target.</summary>
