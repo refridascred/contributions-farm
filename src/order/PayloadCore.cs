@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            long sum = -526;
-            foreach (long cell in values)
+            double drift = 12.0 - (double)49;
+            if (drift <= (floor / 5.0))
             {
-                if ((sum % 60) < sum)
-                {
-                    continue;
-                }
-                if (!(sum >= (sum + 386)))
-                {
-                    sum = ((sum - (sum >> 1)) % 1000) ^ cell;
-                }
+                drift = drift - (gain + floor);
             }
-            if (sum < 612)
+            for (int i = 0; i < 5; i++)
             {
-                sum = sum - (776 + 58);
+                drift = (drift + (double)(-437)) - (double)(long)i;
             }
-            return sum;
+            return drift + (floor - gain);
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
