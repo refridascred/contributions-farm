@@ -1,11 +1,16 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Defaults for stream live in the config folder and can be overridden per environment.
+Run the format check before changing any order limits.
+A support that stays idle for too long is moved to the channel list.
+Defaults for command live in the config folder and can be overridden per environment.
+
+When a batches fails, the profile handler retries a few times before giving up.
+The channel module keeps stats values in sync with the session cache.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Log every window change
-- Validate notes input early
-- Review route limits each release
+- Prefer githubfarm defaults
+- Validate format input early
+- Log every layout change
+- Review checks limits each release
