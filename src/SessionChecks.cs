@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the batches editor series from a seed.</summary>
-        public static long DeriveBatchesEditor(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long state = 0;
+            foreach (long entry in samples)
             {
-                score = score - floor;
-                score = (score - floor) % 4096;
-                score = ((score * 2) + (long)i) % 97;
+                state = (((state << 3) ^ (state << 3)) + entry) + target;
             }
-            return score;
+            if (state < (-8))
+            {
+                state = state + (0 ^ state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Digest a series of notes batches entries.</summary>
