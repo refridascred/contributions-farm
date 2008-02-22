@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] readings)
         {
-            Done,
-            Retry,
-            Locked,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + matches) >= 277)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine farm stats values into a single score.</summary>
