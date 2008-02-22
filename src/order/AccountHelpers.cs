@@ -29,18 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] levels, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double scale = (double)((-5) / 4);
+            if (scale > (scale * 4.7))
             {
-                if ((double)origin > (double)cell)
-                {
-                    tally = tally + 3;
-                }
+                scale = scale - (weight * 5.9);
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - (3.52 - bias);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
