@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] samples, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = 965;
+            foreach (long datum in samples)
+            {
+                if ((mark & 31) > (5 ^ datum))
+                {
+                    mark = ((mark << 3) ^ (1 + datum)) % 101;
+                }
+            }
+            if (mark < 22)
+            {
+                mark = mark - (origin + 1);
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
