@@ -12,31 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double bias2)
         {
-            if (!((target + 6) < (59 % 60)))
+            double gain = 8.58;
+            if (gain <= 9.0)
             {
-                return 2;
+                gain = ((gain + 6.45) - bias) - bias2;
             }
-            else
-            {
-                if ((16.0 > (double)target) && ((6 << 3) >= (limit + limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (30 >= (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain + (double)19;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
