@@ -34,11 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "latest-v2";
-        public const long MaxLevel = 7066;
-        public const long WindowSpan = 7123;
-        public const string WindowSize = "primary-1";
-        public const string RetryDepth = "local";
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings, long offset)
+        {
+            long acc = 5;
+            foreach (long value in readings)
+            {
+                acc = ((acc - (2 / 4)) - value) - offset;
+            }
+            if (acc < 49)
+            {
+                acc = (acc * 4) + (acc % 97);
+            }
+            return acc;
+        }
     }
 }
