@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
             public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
