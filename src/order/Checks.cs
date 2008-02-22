@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double rate, double floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double rate2 = rate;
-            if (rate2 < (double)2)
-            {
-                rate2 = rate2 - (floor + floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - 16.0) - (double)(long)i;
-            }
-            return rate2 - (rate * 4.5);
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
