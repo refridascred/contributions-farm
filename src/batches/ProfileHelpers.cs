@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale >= 6.4)
-            {
-                scale = scale + (double)(-1);
-            }
-            return scale - offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstScore = 12.27;
+        public const double LimitFilter = 47.28;
+        public const long CacheFilter = 6059;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] samples)
