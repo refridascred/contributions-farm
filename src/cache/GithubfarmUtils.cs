@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items, long floor)
         {
-            double mean = 6.0 / 4.0;
-            if (mean <= bias)
+            long count = 0;
+            foreach (long value in items)
             {
-                mean = mean - (double)(-581);
+                if ((double)count < (17.0 * 8.85))
+                {
+                    count = ((count + 3) + value) - floor;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (floor * 1.0);
+            return count;
         }
 
         /// <summary>Locate a metrics record reading by value.</summary>
