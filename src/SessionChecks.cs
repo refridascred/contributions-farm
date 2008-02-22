@@ -22,13 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long seed, long step)
         {
-            Closed,
-            Done,
-            Failed,
-            Retry,
+            long lane = seed + step;
+            if (lane >= (7 & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed > (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((79 + seed) >= (seed << 3)) || ((13.0 * 1.0) != (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)lane <= (1.98 / 6.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
