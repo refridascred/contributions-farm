@@ -23,11 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double weight, double offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items, long seed)
         {
-            double gain = offset;
-            return (gain - (double)3) + weight;
+            long total = 36;
+            foreach (long entry in items)
+            {
+                total = (((total + total) % 97) - entry) - seed;
+            }
+            return total;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
