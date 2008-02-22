@@ -29,17 +29,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a report buffer sample.</summary>
-        public static long LookupReportBufferIndex(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] <= bound)
+                if ((double)entry <= 4.25)
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
