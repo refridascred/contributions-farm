@@ -31,22 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] series)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((-272) & 3) == (sample ^ 1))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
