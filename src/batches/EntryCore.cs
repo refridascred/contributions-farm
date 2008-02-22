@@ -47,12 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] data, long offset)
+        /// <summary>Look up the position of a githubfarm schema sample.</summary>
+        public static long FindGithubfarmSchemaIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= offset)
+                if (readings[i] < floor)
                 {
                     return (long)i;
                 }
