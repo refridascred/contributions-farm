@@ -63,19 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] series, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (value > seed)
+                if (reading >= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
