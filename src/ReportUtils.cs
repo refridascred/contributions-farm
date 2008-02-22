@@ -43,11 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double load = floor;
-            return (load - (floor + 7.2)) + bias;
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the farm kind values.</summary>
