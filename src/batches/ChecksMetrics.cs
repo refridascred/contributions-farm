@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleLevel = 4621;
-        public const long DefaultInterval = 4689;
-        public const long WindowLevel = 2833;
-        public const long BurstContributi = 7174;
-        public const long LimitContributi = 2467;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Pending,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
