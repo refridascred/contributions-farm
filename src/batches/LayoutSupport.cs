@@ -52,10 +52,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxInterval = "alpha-edge";
-        public const double BurstStats = 29.56;
-        public const long BaseSize = 7687;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long bound)
+        {
+            if ((double)bound == (6.15 - 4.15))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound + step) >= bound) || (bound <= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
