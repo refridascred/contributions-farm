@@ -70,15 +70,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate schema buffer samples.</summary>
-        public static long ScoreSchemaBuffer(long[] readings, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long result = -873;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + item) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
