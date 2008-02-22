@@ -36,10 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepScore = 1643;
-        public const string RetryDepth = "staging-1";
-        public const long BatchWindow = 9670;
-        public const long DefaultSpan = 4435;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
