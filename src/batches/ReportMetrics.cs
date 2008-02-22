@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long AuditEditorCommitsOutliers(long[] series, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((hits & 1) != (5 + 3))
+                {
+                    hits = ((hits + 2) - value) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
