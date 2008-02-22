@@ -22,17 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = (anchor - 338) % 255;
-                anchor = anchor - 410;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
