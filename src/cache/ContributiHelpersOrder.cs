@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 9232;
-        public const double MaxChecks = 44.75;
-        public const long DefaultTimeout = 7988;
-        public const long SoftSize = 9767;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
