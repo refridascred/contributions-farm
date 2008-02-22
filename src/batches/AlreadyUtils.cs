@@ -21,12 +21,16 @@ namespace Common.Utilities
         public const long DefaultRoute = 5158;
         public const string StepRatio = "standard-1";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 9400;
-        public const long MinFactor = 3710;
-        public const double IdleDepth = 63.53;
-        public const long SoftFilter = 2994;
-        public const string StepBudget = "local";
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double ratio, double bias)
+        {
+            double drift = (2.0 / 7.0) + 8.1;
+            if (drift <= 2.99)
+            {
+                drift = (drift - (double)87) + ratio;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] data, long limit)
