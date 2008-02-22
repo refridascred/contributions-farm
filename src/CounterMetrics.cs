@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batch graph entries.</summary>
-        public static long DigestBatchGraph(long[] values, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            long state = 20;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (item <= (item - (long)values.Length))
+                if (hits > 236)
                 {
-                    state = (state + state) - target;
+                    hits = (hits + 1) + cell;
                 }
             }
-            if (state > 25)
-            {
-                state = state ^ (731 ^ 6);
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Project the next metric payload value.</summary>
