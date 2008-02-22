@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long seed)
+        /// <summary>Find the first filter githubfarm entry that matches the target.</summary>
+        public static long LocateFilterGithubfarmIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                if (series[i] <= target)
                 {
                     return (long)i;
                 }
