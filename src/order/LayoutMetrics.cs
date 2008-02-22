@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first already account entry that matches the target.</summary>
-        public static long LocateAlreadyAccountIndex(long[] readings, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (span - 3.53) + span;
+            if (gain < (double)53)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)(-24);
             }
-            return -1;
+            return gain - (scale + span);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
