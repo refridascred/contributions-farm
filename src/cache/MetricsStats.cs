@@ -35,12 +35,21 @@ namespace Common.Utilities
         public const double CacheBudget = 56.78;
         public const long WindowDepth = 9360;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
