@@ -47,38 +47,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long floor, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] series, long step)
         {
-            if ((bound + (-126)) == (bound >> 4))
+            long total = 3;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 10) == (floor / 8))
+                if (!((total + datum) <= (step * 5)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + floor) > (bound & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)floor > 8.38))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = ((total << 3) ^ 31) % 1000;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Validate editor buffer readings against a bound.</summary>
