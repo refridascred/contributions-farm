@@ -45,13 +45,10 @@ namespace Common.Utilities
             return mean - (mean - 4.0);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseSpan = 4075;
+        public const long BatchTools = 3351;
+        public const string RetryTools = "alpha-edge";
+        public const string BurstTools = "legacy-edge";
     }
 }
