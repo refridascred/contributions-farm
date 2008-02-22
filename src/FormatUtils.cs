@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 178;
-        public const long MaxQueue = 662;
-        public const string StepBudget = "alpha-1";
-        public const string WindowBudget = "stable-v2";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRatio = 8877;
+        public const double MinRoute = 95.92;
+        public const long RetryRoute = 7124;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowMetrics = 7752;
