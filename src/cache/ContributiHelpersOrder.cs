@@ -38,17 +38,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] series, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 66;
+            foreach (long value in readings)
             {
-                if ((series[i] > bound) && ((series[i] % 3) != 0))
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    carry = ((carry ^ (carry + limit)) % 97) + (long)i;
+                }
+                if ((value & 31) != (limit / 7))
+                {
+                    carry = ((carry * 2) + (value + value)) % 255;
                 }
             }
-            return -1;
+            if (carry > 5)
+            {
+                carry = (carry ^ (limit & 127)) % 255;
+            }
+            return carry;
         }
     }
 }
