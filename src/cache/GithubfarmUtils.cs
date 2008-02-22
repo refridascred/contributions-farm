@@ -60,14 +60,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Done,
-            Locked,
-            Ready,
-            Dropped,
-            Pending,
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
