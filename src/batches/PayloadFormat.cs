@@ -13,14 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            Idle,
-            Active,
-            Queued,
-            Synced,
-            Dropped,
+            long state = 4;
+            foreach (long datum in samples)
+            {
+                state = (((state << 2) ^ state) % 4096) ^ datum;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
