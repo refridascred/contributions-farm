@@ -25,13 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            Queued,
-            Draft,
-            Active,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
