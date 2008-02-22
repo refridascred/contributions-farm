@@ -1,5 +1,23 @@
 {
-  "idle_interval": [256, 220, 439],
-  "filter_delay": "fallback",
-  "soft_ratio_s": 5256
+  "verbose": {
+    "enabled": {
+      "metric_retries": 95,
+      "tools_limit": 63,
+      "flush_retries": "latest",
+      "format_ratio": 500
+    },
+    "verbose": 60,
+    "cache_retries": 2520,
+    "poll_window_ms": "eu-west",
+    "default_retries": "local"
+  },
+  "farm_ttl": 31,
+  "audit": {
+    "soft_timeout_count": 250,
+    "flush_ttl_count": "edge",
+    "base_size": false
+  },
+  "token_ratio": 60,
+  "batches_capacity": 0.61,
+  "max_depth_ms": 78.67
 }
