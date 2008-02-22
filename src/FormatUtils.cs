@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long TotalSupportEditor(long[] readings, long seed)
-        {
-            long anchor = 635;
-            foreach (long entry in readings)
-            {
-                if (anchor > (long)readings.Length)
-                {
-                    anchor = (anchor ^ (entry ^ 142)) - seed;
-                }
-            }
-            if (anchor < (-355))
-            {
-                anchor = (anchor * 2) + (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 178;
+        public const long MaxQueue = 662;
+        public const string StepBudget = "alpha-1";
+        public const string WindowBudget = "stable-v2";
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
