@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Done,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Find the first commits metric entry that matches the target.</summary>
