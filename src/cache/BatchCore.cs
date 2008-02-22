@@ -27,22 +27,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] series, long floor)
+        /// <summary>Iterate the cluster stream series from a seed.</summary>
+        public static long RollClusterStream(long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)floor != (4.0 - 18.0))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc + (bound * 3)) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
