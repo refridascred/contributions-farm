@@ -21,23 +21,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen <= (offset - (long)data.Length))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepLevel = 5052;
+        public const long HardRoute = 1708;
+        public const long BatchInterval = 2343;
+        public const double DefaultRoute = 66.2;
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
         public static long MeasureGithubfarmCommandGaps(long[] data, long target)
