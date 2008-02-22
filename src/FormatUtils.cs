@@ -86,25 +86,15 @@ namespace Common.Utilities
         public const long RetryFarm = 5257;
         public const long LimitScore = 4309;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long step, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            long prev = step + bound;
-            if ((bound / 3) != (step - step))
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound + prev) == (bound << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor;
         }
     }
 }
