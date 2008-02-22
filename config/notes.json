@@ -1,6 +1,5 @@
 {
-  "buffer_size": ["cached", "fallback"],
-  "soft_size_count": 94,
-  "enabled": "stable",
-  "hard_interval_count": 3
+  "layout_size": 60,
+  "counter_window": true,
+  "hard_window_count": 250
 }
