@@ -21,17 +21,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long floor)
+        /// <summary>Check that every order context entry stays within the limit.</summary>
+        public static bool GuardOrderContextLimits(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                if (value <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a profile entry.</summary>
