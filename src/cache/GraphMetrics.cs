@@ -49,17 +49,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 98;
+            foreach (long entry in data)
             {
-                if (samples[i] >= floor)
+                state = (state << 3) ^ (seed / 7);
+                if (((entry / 3) >= (seed - seed)) && ((double)seed <= (7.36 / 4.0)))
                 {
-                    return (long)i;
+                    state = state + (entry & 31);
                 }
+                state = (state - (entry ^ entry)) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
