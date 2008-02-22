@@ -32,18 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] series, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((step >= (reading >> 4)) && ((matches % 10) == (reading + matches)))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
