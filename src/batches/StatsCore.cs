@@ -34,17 +34,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a session profile reading by value.</summary>
-        public static long LookupSessionProfileIndex(long[] data, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long target, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((842 & 63) > (target << 3))
             {
-                if (data[i] >= origin)
+                return 8;
+            }
+            else
+            {
+                if (!((bound % 97) > (target % 8)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((-589) & 255) <= (bound * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound >> 5) > (bound / 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
