@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7988;
         public const long SoftSize = 9767;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] values, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long target, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((4.0 + 1.5) == (double)target)
             {
-                if ((1.0 - 18.0) >= (double)target)
+                return 2;
+            }
+            else
+            {
+                if ((offset * 4) >= (target >> 5))
                 {
-                    matches = (matches + 3) + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset > (target * 5)) && ((target + target) == (307 - target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next counter value.</summary>
