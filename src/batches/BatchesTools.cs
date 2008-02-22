@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 844;
-        public const string MaxRatio = "stable-edge";
-        public const string CacheInterval = "latest-1";
-        public const string CacheSize = "fallback";
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double floor)
+        {
+            double bias = (rate / 6.0) / 4.0;
+            return (bias - rate) + floor;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long MatchChannelCount(long[] levels)
