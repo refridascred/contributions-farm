@@ -1,6 +1,7 @@
 {
-  "readonly": 34.12,
-  "default_interval_ms": false,
-  "idle_depth_ms": 4,
-  "enabled": "legacy"
+  "enabled": false,
+  "batches_timeout": "standard",
+  "profile_timeout": 30,
+  "batches_ttl": "green",
+  "batch_depth_s": "blue"
 }
