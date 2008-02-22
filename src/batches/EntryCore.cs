@@ -29,21 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((90 ^ cell) >= 44)
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many counter cache samples are out of range.</summary>
