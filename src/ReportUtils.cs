@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const long RetrySupport = 4873;
         public const long BaseSpan = 5988;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((seed + seed) < seed) || (limit > (526 + seed)))
             {
-                if (readings[i] < step)
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 4) != (seed + seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((0.91 + 9.0) > (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
