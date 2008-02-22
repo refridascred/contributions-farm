@@ -34,17 +34,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a order graph sample.</summary>
-        public static long LookupOrderGraphIndex(long[] items, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
