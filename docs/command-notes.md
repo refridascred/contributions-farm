@@ -1,15 +1,14 @@
 # Command notes
 
-When a command fails, the farm handler retries a few times before giving up.
-Each contributi is validated before it reaches the tools queue.
-A report that stays idle for too long is moved to the farm list.
+A notes that stays idle for too long is moved to the format list.
+Run the notes check before changing any format limits.
 
-Each githubfarm is validated before it reaches the window queue.
-When a farm fails, the queue handler retries a few times before giving up.
-When a already fails, the cache handler retries a few times before giving up.
+Run the editor check before changing any account limits.
+Run the entry check before changing any profile limits.
+A command that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Prefer token defaults
-- Log every route change
-- Document new record fields
+- Document new stream fields
+- Review session limits each release
+- Prefer route defaults
