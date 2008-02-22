@@ -35,23 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue support samples.</summary>
-        public static long ScoreQueueSupport(long[] values, long limit)
-        {
-            long carry = 462;
-            foreach (long cell in values)
-            {
-                if (cell >= (7 / 9))
-                {
-                    carry = (((carry << 3) ^ (carry + carry)) % 97) + limit;
-                }
-                if ((cell - carry) <= (-6))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 983;
+        public const string CacheSpan = "staging-1";
+        public const string BurstSize = "open";
+        public const long LimitBuffer = 2491;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double AdjustChecks(double bias, double bias2)
