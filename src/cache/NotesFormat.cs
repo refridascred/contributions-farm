@@ -38,27 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            long score = 11;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                long tally = (step / 8) >> 2;
-                if (step >= (tally & 15))
+                if (seen >= (22 << 3))
                 {
-                    break;
-                }
-                if ((5.96 / 3.0) > (double)datum)
-                {
-                    score = score - (datum - datum);
+                    seen = (seen + 3) + cell;
                 }
             }
-            if (score > 0)
-            {
-                score = (score * 2) + (score - score);
-            }
-            return score;
+            return seen;
         }
     }
 }
