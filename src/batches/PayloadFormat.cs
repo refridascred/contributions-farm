@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] items, long offset)
+        /// <summary>Blend two counter graph measurements.</summary>
+        public static double ProjectCounterGraph(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double bias2 = bias;
+            if (bias2 > (offset * 2.1))
             {
-                if ((matches + offset) < (offset - 30))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
+                bias2 = bias2 + bias2;
             }
-            return matches;
+            return bias2 - offset;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
