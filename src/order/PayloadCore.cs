@@ -33,18 +33,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!(((sample * 4) <= (sample ^ sample)) || ((sample ^ 366) >= sample)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
