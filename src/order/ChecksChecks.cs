@@ -27,18 +27,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if (((double)bound <= (3.9 + 5.0)) && (bound < (bound ^ bound)))
             {
-                if ((double)seen >= (8.89 + 2.64))
+                return 2;
+            }
+            else
+            {
+                if ((floor / 9) == (floor & 63))
                 {
-                    seen = (seen + 3) - sample;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + floor) >= (bound - (-461)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + 971) > (floor % 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
