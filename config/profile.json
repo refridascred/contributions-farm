@@ -1,12 +1,7 @@
 {
-  "flush_timeout_pct": "blue",
-  "hard_capacity": false,
-  "flush_capacity_s": {
-    "warm_ttl_pct": "green",
-    "command_limit": 34,
-    "idle_limit_count": "staging",
-    "metrics_ttl": 25.75,
-    "stats_depth": 500
-  },
-  "burst_interval": 60
+  "readonly": "local",
+  "poll_window": 4,
+  "compress": ["local", "latest", "edge"],
+  "batch_window_pct": 20.26,
+  "cache_ratio": false
 }
