@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] levels)
+        /// <summary>Fold a list of batch command readings.</summary>
+        public static long CombineBatchCommand(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = 671;
+            foreach (long value in items)
             {
-                if ((long)levels.Length >= (hits + datum))
+                if ((89 >= sum) && ((origin / 8) >= (long)items.Length))
                 {
-                    hits = hits + 3;
+                    sum = (((sum << 2) ^ (77 - origin)) % 4096) + value;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
