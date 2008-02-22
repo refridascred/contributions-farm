@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double scale, double offset)
-        {
-            double gain = scale;
-            return (gain - (double)944) + offset;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 2806;
+        public const long BurstEntry = 5005;
+        public const double SoftWidth = 3.3;
+        public const string BatchEntry = "strict-edge";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterGaps(long[] readings, long floor)
