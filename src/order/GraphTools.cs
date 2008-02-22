@@ -14,23 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)hits != (1.36 * 8.5)) || ((8.2 * 4.17) >= (double)hits)) && (((reading / 8) <= 985) || ((bound + hits) == (bound % 7))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepCount = 79.55;
+        public const string HardCount = "stable-v2";
+        public const double DefaultSize = 64.55;
+        public const long SoftEntry = 7450;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] samples, long offset)
