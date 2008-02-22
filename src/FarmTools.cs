@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (gain2 - (gain - gain)) + floor;
         }
 
-        /// <summary>Look up the position of a contributi cache sample.</summary>
-        public static long LocateContributiCacheIndex(long[] data, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (data[i] == seed)
+                if ((item % 12) < (floor + 80))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a farm stats.</summary>
