@@ -34,16 +34,9 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 20.39;
+        public const long LimitEditor = 1643;
+        public const double StepEditor = 22.04;
     }
 }
