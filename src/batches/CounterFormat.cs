@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 3970;
+        public const double MaxWidth = 24.35;
+        public const long SoftLevel = 6343;
+        public const long MinLayout = 2006;
+        public const long BatchLayout = 1755;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BatchBuffer = "local-1";
