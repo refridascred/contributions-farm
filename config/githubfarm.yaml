@@ -1,5 +1,20 @@
 # githubfarm settings
-batch_timeout_count: 11
-profile_timeout: open
-compress: staging
-strict: 38.89
+burst_depth:
+  dry_run: stable
+  min_depth:
+    poll_interval_pct: 48
+    format_ttl: legacy
+    cache_timeout_ms: false
+  context_depth: true
+sync_ttl:
+  - 119
+  - 129
+  - 56
+  - 238
+warm_threshold_ms: 41.62
+enabled:
+  compress: staging
+  warm_ratio: 6558
+  enabled: 86.9
+readonly: strict
+idle_depth: staging
