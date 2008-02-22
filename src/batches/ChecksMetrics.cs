@@ -73,19 +73,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double span)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double rate = (weight - weight) + (span / 7.0);
-            if (rate <= weight)
-            {
-                rate = rate - (weight + weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate + (weight * 1.0);
+            Locked,
+            Failed,
+            Stale,
+            Queued,
         }
     }
 }
