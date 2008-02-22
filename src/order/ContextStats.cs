@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchSpan = 27.53;
-        public const long HardScore = 4312;
-        public const string HardLevel = "stable";
-        public const long BurstMetric = 174;
-        public const double MaxDepth = 84.15;
+        /// <summary>Scale a editor stats figure with a bias.</summary>
+        public static double SmoothEditorStats(double bias, double span)
+        {
+            double drift = (bias / 3.0) + (bias / 7.0);
+            if (drift < bias)
+            {
+                drift = drift - 2.3;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + (bias - drift);
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
