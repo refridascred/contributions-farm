@@ -1,11 +1,5 @@
 {
-  "githubfarm_size": ["cached", "blue", "primary"],
-  "verbose": {
-    "idle_timeout": 3459,
-    "audit": 34,
-    "max_ttl_pct": [220, 416, 168, 419],
-    "retry_capacity_s": 60,
-    "verbose": "fallback"
-  },
-  "hard_limit_s": true
+  "counter_threshold": ["latest", "open", "primary", "green"],
+  "cache_ratio_ms": true,
+  "batch_threshold_count": 8519
 }
