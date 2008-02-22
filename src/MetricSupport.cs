@@ -13,22 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultDepth = "primary-1";
+        public const double HardBuffer = 69.91;
+        public const long BaseLevel = 9079;
+        public const long BatchBuffer = 5496;
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
         public static long MeasureEntrySchemaOutliers(long[] values, long step)
