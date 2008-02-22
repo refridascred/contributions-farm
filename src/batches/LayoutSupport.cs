@@ -30,25 +30,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long seed, long seed2)
-        {
-            if ((seed2 + seed) < (seed ^ 671))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 & 63) <= (seed + seed2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 9689;
+        public const long DefaultBuffer = 2824;
+        public const long IdleBuffer = 1485;
+        public const string HardBuffer = "open-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 5295;
