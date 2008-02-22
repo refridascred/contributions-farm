@@ -63,19 +63,38 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] data, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if (floor <= bound)
             {
-                if (cell != floor)
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 1) >= (463 + floor))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)floor == (1.7 - 1.03)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(26 >= (bound << 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank account input into a small class.</summary>
