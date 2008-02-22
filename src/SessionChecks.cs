@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine entry token values into a single score.</summary>
-        public static long CombineEntryToken(long[] samples)
+        /// <summary>Iterate the batches editor series from a seed.</summary>
+        public static long DeriveBatchesEditor(long floor)
         {
-            long carry = 989;
-            foreach (long cell in samples)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry + (909 & 127)) ^ cell;
+                score = score - floor;
+                score = (score - floor) % 4096;
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (carry < 668)
-            {
-                carry = (carry << 2) ^ (188 & 1);
-            }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
