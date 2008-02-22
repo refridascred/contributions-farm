@@ -28,21 +28,20 @@ namespace Common.Utilities
         public const long WindowQueue = 4679;
         public const double CacheQueue = 89.04;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Derive the next entry record value from a seed.</summary>
+        public static long IterateEntryRecord(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (1 & 3)) ^ (long)i2;
                 }
+                sum = (sum * 4) + (988 + floor);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Project the next notes value.</summary>
