@@ -1,18 +1,33 @@
 # support settings
-batch_retries_pct: 96
-report_size: 1024
-base_delay: standard
-hard_retries_s:
-  batch_interval_s: strict
-  batch_timeout_pct: 18
-  soft_limit:
-    - blue
-    - stable
-  batch_depth_pct: 54
-  warm_capacity: standard
-  token_interval:
-    - primary
-    - primary
-    - cached
-    - latest
-enabled: strict
+cache_window:
+  - cached
+  - staging
+  - edge
+  - strict
+warm_interval_s:
+  readonly: 6.32
+  strict: blue
+  verbose: 2627
+  enabled: staging
+  sync_interval:
+    hard_delay: strict
+    cache_limit_count: 73.07
+    batch_limit_count: 2952
+    soft_capacity_count: 4422
+    audit: 6443
+    readonly:
+      - 397
+      - 17
+      - 387
+idle_capacity_s: green
+cache_interval:
+  counter_delay: local
+  base_ratio_pct: 81.49
+  strict:
+    - 467
+    - 138
+    - 93
+    - 477
+  warm_ttl_count:
+    - staging
+    - legacy
