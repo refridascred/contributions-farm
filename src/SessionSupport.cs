@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] items, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double weight = bias;
+            if (weight > weight)
             {
-                if ((item % 64) <= (seed + seed))
-                {
-                    tally = tally + 3;
-                }
+                weight = weight - offset;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (6.22 / 5.0)) + (double)(long)i;
+            }
+            return weight - (double)0;
         }
     }
 }
