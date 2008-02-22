@@ -34,22 +34,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry buffer samples are out of range.</summary>
-        public static long TallyEntryBufferMatches(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 5;
+            foreach (long reading in readings)
             {
-                if (((seen >> 1) < seen) || ((67 - sample) < (seen - seen)))
+                if ((reading * 2) < (anchor + anchor))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 3) + (anchor >> 2)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor * 4) + anchor;
+                }
+                if ((double)(long)readings.Length >= 13.0)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < (-7))
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 65521;
         }
     }
 }
