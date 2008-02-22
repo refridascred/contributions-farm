@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Validate tools schema readings against a bound.</summary>
+        public static bool CheckToolsSchemaBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < seed)
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
