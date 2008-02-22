@@ -25,13 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((3.66 * 6.71) < (double)matches)
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first cache checks entry that matches the target.</summary>
