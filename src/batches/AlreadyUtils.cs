@@ -61,31 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long seed)
+        /// <summary>Audit account stream readings against a rule.</summary>
+        public static long AuditAccountStreamHits(long[] items, long origin)
         {
-            if (((seed & 3) < seed) && ((9.37 - 9.5) > (double)seed))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)456 <= (double)seed)
+                if ((seen << 1) >= (seen + entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ 311) > (seed % 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 1) + origin;
                 }
             }
+            return seen;
         }
     }
 }
