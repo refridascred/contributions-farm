@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long MinFactor = 4606;
         public const long CacheBuffer = 7238;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] readings)
         {
-            long total = 8;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                total = ((total ^ (cell << 2)) % 1000) + step;
+                if ((((count - count) > (count * 5)) && ((count / 5) >= (reading << 3))) && !((count >> 3) != (reading % 3)))
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
