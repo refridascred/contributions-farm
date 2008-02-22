@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 57;
+            foreach (long item in readings)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (1 ^ 453)) ^ item;
             }
-            return -1;
+            if (total < (-20))
+            {
+                total = (total + total) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate counter samples.</summary>
