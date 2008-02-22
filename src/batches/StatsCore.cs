@@ -81,12 +81,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            Done,
+            Synced,
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
