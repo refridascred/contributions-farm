@@ -1,5 +1,13 @@
 {
-  "idle_limit_s": 500,
-  "poll_size_ms": "latest",
-  "readonly": "primary"
+  "window_retries": 82,
+  "metric_interval": 74,
+  "min_depth_s": {
+    "cluster_ratio": false,
+    "burst_capacity_count": "strict",
+    "cache_timeout": ["primary", "eu-west", "fallback", "standard"],
+    "cache_limit_ms": "primary",
+    "context_capacity": "open",
+    "readonly": 21.21
+  },
+  "strict": "stable"
 }
