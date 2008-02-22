@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Paused,
-            New,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitDepth = "latest-1";
+        public const double MaxBudget = 76.07;
+        public const double StepBudget = 83.31;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] data)
