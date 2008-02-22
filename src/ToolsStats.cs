@@ -42,11 +42,21 @@ namespace Common.Utilities
             return ratio + (bias + 18.0);
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Compare every pair of commits profile readings.</summary>
+        public static long MatchCommitsProfileCount(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
