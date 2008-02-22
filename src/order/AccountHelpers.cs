@@ -15,21 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Accumulate account command samples.</summary>
+        public static long TallyAccountCommand(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 841;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (total < (total - value))
                 {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total * 4) + origin;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
