@@ -20,17 +20,18 @@ namespace Common.Utilities
             return rate2 - (rate * 4.5);
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                if ((4 - 148) <= (seen >> 4))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - item) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many stats record samples are out of range.</summary>
