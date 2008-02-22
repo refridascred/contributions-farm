@@ -14,12 +14,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            Pending,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a session record.</summary>
