@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MinLayout = 2006;
         public const long BatchLayout = 1755;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "local-1";
-        public const long BatchSize = 7617;
-        public const long BurstInterval = 9841;
-        public const long BaseBuffer = 9726;
-        public const long HardInterval = 9019;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!((long)data.Length == (hits << 2)))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
