@@ -6,9 +6,11 @@ namespace Common.Utilities
     public static class AccountHelpers
     {
         /// <summary>Define window limits and defaults.</summary>
-        public const double LimitLevel = 94.28;
-        public const long LimitWindow = 7047;
-        public const long BaseFactor = 4471;
+        public const long BurstWindow = 5396;
+        public const long WindowBudget = 3372;
+        public const long StepWindow = 7960;
+        public const double BatchWindow = 55.95;
+        public const long StepSize = 284;
 
         /// <summary>Accumulate account command samples.</summary>
         public static long TallyAccountCommand(long[] levels, long origin)
