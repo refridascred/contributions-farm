@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many payload filter samples are out of range.</summary>
-        public static long MeasurePayloadFilterHits(long[] data, long limit)
+        /// <summary>Project the next commits route value.</summary>
+        public static double SmoothCommitsRoute(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double load = (double)((-53) << 2);
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell > (cell * 3)) || ((cell - (-6)) <= (cell * 2)))
-                {
-                    tally = (tally + 1) - limit;
-                }
+                load = (((load + (load / 7.0)) - (double)(long)i) - bias) - floor;
             }
-            return tally;
+            return load + 7.2;
         }
 
         /// <summary>Look up the position of a profile layout sample.</summary>
