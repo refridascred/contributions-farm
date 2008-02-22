@@ -17,11 +17,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 28.0;
-        public const string BaseMetric = "standard";
-        public const long IdleSpan = 7254;
-        public const long WindowMetric = 7320;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Classify a cache batches pair into a bucket.</summary>
         public static long SortCacheBatches(long seed, long offset)
