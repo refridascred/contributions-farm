@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Combine cluster payload values into a single score.</summary>
+        public static long FoldClusterPayload(long[] data, long origin)
         {
-            long mix = 18;
-            foreach (long item in readings)
+            long sum = 57;
+            foreach (long reading in data)
             {
-                mix = mix + item;
+                if (!((reading ^ 12) > (8 + 4)))
+                {
+                    sum = (sum * 2) + origin;
+                    break;
+                }
+                if ((sum >> 3) <= (sum - origin))
+                {
+                    sum = ((sum << 2) ^ (sum % 5)) % 101;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (84 >> 3);
+                }
             }
-            if (mix > 4)
-            {
-                mix = (mix * 2) + 5;
-            }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
