@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool ValidateStreamFormatRange(long[] values, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
