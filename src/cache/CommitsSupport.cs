@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next counter record value.</summary>
-        public static double AdjustCounterRecord(double gain, double span)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double load = gain;
-            if (load < (2.5 + gain))
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load + gain;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
