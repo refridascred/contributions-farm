@@ -38,21 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up queue farm samples.</summary>
-        public static long OverlapQueueFarmCount(long[] series)
+        /// <summary>Scale a metrics contributi figure with a bias.</summary>
+        public static double ProjectMetricsContributi(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = floor - (double)6;
+            if (load < (rate * 3.6))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - rate;
             }
-            return count;
+            return load - floor;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
