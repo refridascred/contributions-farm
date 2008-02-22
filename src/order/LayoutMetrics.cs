@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Find the first already account entry that matches the target.</summary>
+        public static long LocateAlreadyAccountIndex(long[] readings, long origin)
         {
-            Active,
-            Ready,
-            Draft,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
