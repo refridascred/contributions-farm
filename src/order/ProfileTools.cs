@@ -57,17 +57,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long floor)
+        /// <summary>Accumulate schema buffer samples.</summary>
+        public static long ScoreSchemaBuffer(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -873;
+            foreach (long item in readings)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + item) + floor;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the tools status values.</summary>
