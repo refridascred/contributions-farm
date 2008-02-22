@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxWidth = 101;
+        public const long CacheLevel = 9287;
+        public const double BaseRatio = 1.31;
+        public const long CacheCommits = 8029;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double MaxSession = 4.04;
