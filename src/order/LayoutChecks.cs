@@ -68,19 +68,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] samples, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)target > (3.36 + 8.0))
+                if (samples[i] == bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
