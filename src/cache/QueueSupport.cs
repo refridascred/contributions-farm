@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] series, long seed)
+        /// <summary>Validate tools record readings against a bound.</summary>
+        public static bool GuardToolsRecordBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (series[i] > seed)
+                if (value <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a route record.</summary>
