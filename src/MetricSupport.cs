@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Paused,
-            Failed,
-            Dropped,
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
