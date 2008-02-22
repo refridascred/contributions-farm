@@ -50,11 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double weight = span - (gain + gain);
-            return weight - span;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
