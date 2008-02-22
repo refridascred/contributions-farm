@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many token profile samples are out of range.</summary>
-        public static long AuditTokenProfileOutliers(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits ^ (-207)) <= (floor + item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 662;
+        public const double BatchAccount = 38.18;
+        public const string CacheAccount = "stable-v2";
+        public const long SoftLevel = 1725;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
