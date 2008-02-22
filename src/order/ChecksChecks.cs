@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every layout already entry stays within the limit.</summary>
-        public static bool CheckLayoutAlreadyLimits(long[] series, long origin)
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long MeasureToolsClusterOutliers(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (value <= origin)
+                if (97 <= (tally >> 4))
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) + sample) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Project the next channel value.</summary>
