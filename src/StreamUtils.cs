@@ -39,13 +39,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            Retry,
-            Active,
-            Dropped,
-            Pending,
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc ^ (origin >> 1);
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of stats tools readings.</summary>
