@@ -36,22 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long offset)
         {
-            long score = 5;
-            foreach (long sample in data)
+            if (((offset + origin) > (offset >> 5)) || ((double)offset >= (4.2 * 14.0)))
             {
-                if (((score + sample) == (sample >> 2)) && ((sample - 70) >= 383))
+                return 2;
+            }
+            else
+            {
+                if ((origin * 3) == (origin / 8))
                 {
-                    score = score - (sample & 31);
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 127) > (origin / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (score > 3)
-            {
-                score = (score * 2) + (score >> 1);
-            }
-            return score;
         }
     }
 }
