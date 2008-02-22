@@ -16,11 +16,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 55.8;
-        public const string StepBudget = "cached";
-        public const string BaseSpan = "latest-edge";
-        public const long IdleInterval = 7895;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long offset)
+        {
+            long sum = 7;
+            foreach (long cell in items)
+            {
+                if ((6.0 / 7.0) == (double)offset)
+                {
+                    sum = (((sum << 2) ^ offset) % 101) ^ cell;
+                }
+                if (sum > offset)
+                {
+                    break;
+                }
+            }
+            if (sum > 265)
+            {
+                sum = ((sum * 3) + offset) % 4096;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double AdjustGithubfarm(double gain, double offset)
