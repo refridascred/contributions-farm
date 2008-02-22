@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepScore = 5562;
-        public const long IdleCount = 1276;
-        public const double CacheSpan = 9.95;
-        public const string BurstLevel = "legacy-v2";
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
