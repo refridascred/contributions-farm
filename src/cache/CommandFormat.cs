@@ -30,22 +30,19 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] values, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long total = -55;
+            foreach (long sample in data)
             {
-                if ((value >> 3) < (target << 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total * 4) + sample;
             }
-            return tally;
+            if (total > 0)
+            {
+                total = ((total << 2) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
