@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items, long origin)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (732 > (hits << 3))
-                {
-                    hits = ((hits + 2) + reading) - origin;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
