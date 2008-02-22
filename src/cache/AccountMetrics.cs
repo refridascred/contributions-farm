@@ -20,19 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] levels, long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Look up the position of a report buffer sample.</summary>
