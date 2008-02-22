@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 6764;
-        public const double IdleSchema = 15.23;
-        public const long DefaultSchema = 146;
-        public const long LimitSchema = 1649;
-        public const long HardDepth = 1559;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBatches = 1613;
