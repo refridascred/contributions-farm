@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const string RetryNotes = "cached-edge";
         public const double DefaultSpan = 10.68;
 
-        /// <summary>Locate a cache cluster reading by value.</summary>
-        public static long LookupCacheClusterIndex(long[] levels, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 813;
+            foreach (long value in samples)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (value - value)) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
