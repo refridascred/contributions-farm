@@ -20,11 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
