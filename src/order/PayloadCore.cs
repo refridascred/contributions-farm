@@ -26,12 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] series, long seed)
         {
-            Done,
-            Pending,
-            Locked,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches % 5) > (matches + matches))
+                {
+                    matches = ((matches + 2) + reading) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
