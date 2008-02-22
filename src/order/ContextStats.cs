@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BurstMetric = 174;
         public const double MaxDepth = 84.15;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 1638;
-        public const double WindowBatch = 90.7;
-        public const double HardBatch = 86.04;
-        public const string MinSpan = "alpha-v2";
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Synced,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long DigestContributi(long[] levels)
