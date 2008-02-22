@@ -70,20 +70,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                double weight = (double)39 - (double)(long)i;
-                if (weight >= (weight / 9.0))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Locked,
+            Done,
+            Draft,
+            Idle,
         }
     }
 }
