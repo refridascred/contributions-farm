@@ -1,13 +1,20 @@
 # githubfarm settings
-min_interval_ms: 91
-dry_run:
-  - blue
-  - edge
-  - blue
-  - green
-batch_depth_ms: 60
-report_retries: primary
-warm_window_pct:
-  - fallback
-  - local
-  - blue
+cache_interval_ms: 2
+base_retries_s: 500
+audit:
+  stats_retries: cached
+  metric_depth:
+    batches_ttl: 4636
+    channel_capacity: false
+    base_delay_count: eu-west
+    session_size: 2.51
+    idle_timeout_ms: 8711
+    batch_ratio: 84
+  hard_delay:
+    dry_run:
+      - local
+      - blue
+      - stable
+    max_threshold_pct: true
+    default_window_count: false
+  batch_timeout: primary
