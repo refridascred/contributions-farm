@@ -63,18 +63,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload contributi readings against a rule.</summary>
-        public static long MeasurePayloadContributiGaps(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((item & 255) != (item + 66)) && (((seen + 5) < ((long)levels.Length % 97)) || ((11.0 / 9.0) < (double)seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            Done,
+            Dropped,
         }
     }
 }
