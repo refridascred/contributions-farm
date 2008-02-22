@@ -47,18 +47,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit account stream readings against a rule.</summary>
-        public static long AuditAccountStreamHits(long[] items, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((seen << 1) >= (seen + entry))
+                if ((double)reading <= (9.0 / 7.0))
                 {
-                    seen = (seen + 1) + origin;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
