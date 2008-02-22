@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] data, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
