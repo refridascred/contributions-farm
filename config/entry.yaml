@@ -1,11 +1,17 @@
 # entry settings
-window_size: true
-verbose:
-  - 145
-  - 21
-  - 229
-batch_ttl:
-  - primary
-  - open
-  - local
-audit: 100
+compress:
+  payload_delay:
+    - strict
+    - fallback
+  dry_run: open
+  editor_interval: 5525
+  audit: 74
+  retry_window_s: 1800
+  strict: 8271
+base_interval: green
+entry_size: blue
+hard_window_s:
+  stats_capacity: local
+  cluster_ratio: cached
+  compress: cached
+strict: 100
