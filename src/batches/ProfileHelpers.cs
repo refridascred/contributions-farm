@@ -64,18 +64,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((item + 433) < (43 << 1)) || ((double)item > (double)tally)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
