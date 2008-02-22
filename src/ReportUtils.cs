@@ -46,32 +46,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a session record value against two limits.</summary>
-        public static long BucketSessionRecord(long origin, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long gap = origin - floor;
-            if ((floor ^ 112) == (gap % 100))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.23 - 16.0) <= (double)gap)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (gap + floor))
+                    if ((levels[i] - levels[j]) < 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
