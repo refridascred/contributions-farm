@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
