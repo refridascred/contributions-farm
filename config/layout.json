@@ -1,7 +1,6 @@
 {
-  "githubfarm_ttl": false,
-  "graph_delay": 4962,
-  "compress": 66.58,
-  "tools_ttl": "strict",
-  "audit": 12
+  "min_limit_ms": false,
+  "audit": "stable",
+  "flush_delay": [159, 51, 360],
+  "batch_depth": "legacy"
 }
