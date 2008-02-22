@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] items, long step)
         {
-            Ready,
-            New,
-            Dropped,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally > (sample + tally))
+                {
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
