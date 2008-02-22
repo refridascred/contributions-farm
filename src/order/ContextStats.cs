@@ -13,17 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] samples, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 740;
+            foreach (long reading in data)
             {
-                if (samples[i] <= seed)
+                carry = carry - (carry - 6);
+                if ((((-97) & 63) <= carry) || ((double)reading > (8.41 * 1.8)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
