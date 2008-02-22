@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long mix = 678;
-            foreach (long item in series)
+            long score = 62;
+            foreach (long cell in samples)
             {
-                if (!(mix < (mix ^ 4)))
+                score = score + cell;
+                if (((score - 4) <= score) && (cell > (score << 1)))
                 {
-                    mix = ((mix << 2) ^ (step * 2)) - item;
+                    score = (score - (-7)) % 65521;
                 }
             }
-            if (mix > 1)
+            if (score > (-99))
             {
-                mix = ((mix << 2) ^ (mix + 0)) % 4096;
+                score = (score - (score + score)) % 255;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Derive the next format contributi value from a seed.</summary>
