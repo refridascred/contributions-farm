@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSize = 96.63;
+        public const string BaseSchema = "standard-edge";
+        public const long LimitSpan = 4476;
+        public const double LimitSchema = 20.88;
+        public const long WindowSchema = 2620;
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double scale, double floor)
