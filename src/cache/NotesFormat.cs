@@ -40,13 +40,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items, long step)
         {
-            Ready,
-            Idle,
-            Closed,
-            Draft,
+            long score = 11;
+            foreach (long datum in items)
+            {
+                long tally = (step / 8) >> 2;
+                if (step >= (tally & 15))
+                {
+                    break;
+                }
+                if ((5.96 / 3.0) > (double)datum)
+                {
+                    score = score - (datum - datum);
+                }
+            }
+            if (score > 0)
+            {
+                score = (score * 2) + (score - score);
+            }
+            return score;
         }
     }
 }
