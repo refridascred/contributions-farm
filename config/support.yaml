@@ -1,13 +1,8 @@
 # support settings
-soft_timeout: true
-readonly:
-  sync_ttl_s: latest
-  min_retries_ms: 60
-  farm_delay: true
-  burst_ttl_count: 6
-default_interval: true
-max_delay:
-  - 412
-  - 117
-sync_retries: strict
-retry_size_pct: true
+strict: true
+cache_size_pct: 250
+flush_window_pct: 100
+layout_size:
+  - staging
+  - staging
+enabled: 1024
