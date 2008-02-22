@@ -16,12 +16,10 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double offset)
-        {
-            double gain = (double)((-76) - 530);
-            return (gain - (offset + offset)) + bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 5334;
+        public const long HardMetrics = 9344;
+        public const long CacheMetrics = 7248;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
