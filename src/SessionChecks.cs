@@ -32,19 +32,13 @@ namespace Common.Utilities
         public const long MaxOrder = 7062;
         public const long SoftOrder = 2558;
 
-        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
-        public static bool ValidatePayloadBufferBounds(long[] levels, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Done,
+            Draft,
+            Paused,
         }
     }
 }
