@@ -21,18 +21,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseFactor = 7354;
+        public const long BaseTimeout = 6405;
+        public const long BaseLevel = 3049;
+        public const long HardEditor = 5667;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] readings, long offset)
