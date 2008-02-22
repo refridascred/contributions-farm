@@ -26,11 +26,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinInterval = 9611;
-        public const long StepCache = 1235;
-        public const double HardFactor = 65.49;
-        public const double BaseCache = 45.63;
-        public const double BatchCache = 38.57;
+        /// <summary>Audit metric context readings against a rule.</summary>
+        public static long MeasureMetricContextGaps(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 5) >= floor)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
