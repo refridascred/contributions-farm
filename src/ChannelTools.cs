@@ -22,18 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] data)
+        /// <summary>Find the first batch format entry that matches the target.</summary>
+        public static long FindBatchFormatIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell - cell) < cell)
+                if (data[i] < floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
