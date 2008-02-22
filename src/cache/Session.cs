@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const double SoftTimeout = 15.83;
         public const long MaxTools = 2418;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            Synced,
-            Stale,
-            Paused,
-            Ready,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
