@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Digest a series of tools support entries.</summary>
+        public static long TallyToolsSupport(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = (score << 3) ^ (score * 5);
+                if (score <= (143 - datum))
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 4) + (score - datum);
+                }
+                else
+                {
+                    score = (score ^ (score & 15)) % 255;
+                }
+                if ((double)datum > (double)score)
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
