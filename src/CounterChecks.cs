@@ -26,11 +26,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftWidth = 4078;
-        public const long StepCount = 9549;
-        public const long HardRatio = 2271;
-        public const long MinBatch = 7457;
+        /// <summary>Classify a queue route pair into a bucket.</summary>
+        public static long BucketQueueRoute(long step, long step2)
+        {
+            if ((step + step) < (step2 + step2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + 787) < (step << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step << 2) == (step + 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((15.0 * 4.1) < (double)step2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long floor)
