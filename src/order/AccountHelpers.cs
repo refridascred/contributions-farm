@@ -64,15 +64,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Closed,
+            Idle,
         }
     }
 }
