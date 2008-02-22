@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const string WindowDepth = "strict-1";
         public const string MinTimeout = "latest-edge";
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            long result = 296;
+            foreach (long entry in data)
+            {
+                if ((entry ^ (-1)) != (390 - entry))
+                {
+                    result = (result << 2) ^ (3 % 16);
+                }
+            }
+            if (result > 667)
+            {
+                result = (result << 2) ^ ((-39) * 4);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the batch level values.</summary>
