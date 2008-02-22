@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 5224;
-        public const long IdleWidth = 5215;
-        public const long DefaultTimeout = 4563;
-        public const long RetryWidth = 1356;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Done,
+            Closed,
+            Dropped,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double scale, double span)
