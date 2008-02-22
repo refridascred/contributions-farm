@@ -1,12 +1,5 @@
 {
-  "compress": 10,
-  "burst_timeout_count": [374, 164, 137, 321],
-  "default_ratio": "strict",
-  "flush_threshold_s": 65,
-  "tools_limit": {
-    "retry_retries_s": 3431,
-    "burst_window_ms": false,
-    "readonly": 3381
-  },
-  "base_limit": 37.7
+  "idle_limit_s": 500,
+  "poll_size_ms": "latest",
+  "readonly": "primary"
 }
