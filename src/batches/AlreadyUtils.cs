@@ -13,23 +13,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long step)
-        {
-            long result = 86;
-            foreach (long entry in levels)
-            {
-                if (result < ((long)levels.Length + result))
-                {
-                    result = ((result ^ (entry * 3)) % 1000) - step;
-                }
-            }
-            if (result > 322)
-            {
-                result = (result - (2 - 9)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5440;
+        public const long DefaultRoute = 5158;
+        public const string StepRatio = "standard-1";
 
         /// <summary>Check that every support layout entry stays within the limit.</summary>
         public static bool ValidateSupportLayoutLimits(long[] levels, long target)
