@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
-        {
-            long mark = 6;
-            foreach (long item in values)
-            {
-                mark = ((mark * 2) + (mark % 7)) ^ item;
-                mark = (mark - (mark << 1)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "local-1";
+        public const long BatchSize = 7617;
+        public const long BurstInterval = 9841;
+        public const long BaseBuffer = 9726;
+        public const long HardInterval = 9019;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
