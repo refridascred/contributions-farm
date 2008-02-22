@@ -1,9 +1,7 @@
-id,region,weight,rank
-1,312,647,strict
-2,54.97,green,103
-3,840,local,fallback
-4,33.49,open,830
-5,98.77,96.03,31.17
-6,667,26.29,502
-7,strict,482,79.64
-8,cached,635,26.66
+id,count,label
+1,171,local
+2,459,587
+3,170,cached
+4,710,804
+5,19.01,71.96
+6,legacy,open
