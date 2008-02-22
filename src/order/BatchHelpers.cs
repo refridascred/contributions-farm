@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Stale,
-            Failed,
-            Ready,
-            Retry,
-            Paused,
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
