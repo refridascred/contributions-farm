@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
+            Done,
             Retry,
             Locked,
-            Paused,
-            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a batches options.</summary>
