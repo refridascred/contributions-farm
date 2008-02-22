@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] data, long floor)
         {
-            long carry = -975;
-            foreach (long reading in series)
+            long anchor = 0;
+            foreach (long value in data)
             {
-                carry = ((carry * 4) + (reading / 2)) + limit;
+                anchor = (anchor << 3) ^ (0 - anchor);
+                anchor = (anchor - anchor) % 97;
+                if (value > (anchor + floor))
+                {
+                    anchor = (anchor * 4) + (floor - value);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + value;
+                }
             }
-            if (carry > 55)
-            {
-                carry = carry + (carry << 1);
-            }
-            return carry;
+            return anchor % 97;
         }
 
         /// <summary>Describe the metric kind values.</summary>
