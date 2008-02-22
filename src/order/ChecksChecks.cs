@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double gain, double floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double gain2 = gain + (double)7;
-            if (gain2 > (gain / 2.0))
-            {
-                gain2 = gain2 + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + floor) + (double)(long)i;
-            }
-            return gain2 - (gain + gain);
+            Pending,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
