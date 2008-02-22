@@ -24,19 +24,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next token graph value.</summary>
-        public static double AdjustTokenGraph(double ratio, double span)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double gain = (double)(3 ^ 336);
-            if (gain > ratio)
-            {
-                gain = gain - (double)999;
-            }
-            else
-            {
-                gain = gain + ratio;
-            }
-            return gain - (1.14 - span);
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
