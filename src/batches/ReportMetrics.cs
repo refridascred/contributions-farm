@@ -29,13 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Dropped,
-            Ready,
-            Retry,
-            Idle,
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
