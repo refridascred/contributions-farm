@@ -47,27 +47,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long floor)
         {
-            long result = 9;
-            foreach (long item in readings)
+            if ((floor > (bound ^ 0)) && ((18.0 * 3.6) < (double)floor))
             {
-                result = result - (item % 5);
-                if ((double)result == (17.0 / 3.0))
+                return 2;
+            }
+            else
+            {
+                if (((5 * 3) < (floor * 2)) && ((double)floor < (12.0 / 5.0)))
                 {
-                    result = (result ^ (item + item)) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    result = (result ^ (876 + 6)) % 65521;
-                }
-                if (((item - item) < item) || ((item - result) >= (result * 4)))
-                {
-                    break;
+                    if ((bound - 3) > (floor + 339))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8 + bound) < (floor * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Describe the buffer class values.</summary>
