@@ -23,19 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((0.98 > (double)datum) || ((658 - seen) > (limit & 255)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseRatio = 4359;
+        public const long MinFactor = 1976;
+        public const string BaseCommits = "cached-v2";
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] items, long offset)
