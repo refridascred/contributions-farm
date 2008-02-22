@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Adjust a profile contributi reading.</summary>
+        public static double BlendProfileContributi(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = span;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - ratio) + (double)(long)i;
             }
-            return tally;
+            return rate + (double)(-61);
         }
 
         /// <summary>Describe the account status values.</summary>
