@@ -71,19 +71,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double scale = gain;
-            if (scale > (offset * 8.8))
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)(-399)) + (double)(long)i;
-            }
-            return scale + (scale + offset);
+            Synced,
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
