@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double LimitSchema = 20.88;
         public const long WindowSchema = 2620;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Failed,
-            Queued,
-            Pending,
+            Locked,
+            Synced,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
