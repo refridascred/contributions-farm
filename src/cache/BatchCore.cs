@@ -41,11 +41,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinLevel = 6888;
+        public const double BatchWindow = 76.41;
+        public const long BatchInterval = 3620;
     }
 }
