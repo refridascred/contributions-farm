@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 7166;
-        public const long StepSpan = 8382;
-        public const string CacheSpan = "legacy-v2";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] values, long seed)
+        {
+            long result = 9;
+            foreach (long datum in values)
+            {
+                if (((result + 448) < (datum + datum)) || ((double)seed >= 2.41))
+                {
+                    result = (result ^ (result + 634)) % 1000;
+                }
+            }
+            if (result > 62)
+            {
+                result = ((result << 3) ^ (seed + result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
