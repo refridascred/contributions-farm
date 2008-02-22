@@ -59,11 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long step)
         {
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
