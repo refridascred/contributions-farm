@@ -48,18 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long limit)
         {
-            long acc = 5;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((5.0 - 4.07) == (double)step) || ((step + acc) <= ((long)series.Length - step)))
+                if (items[i] == limit)
                 {
-                    acc = ((acc * 3) + acc) ^ datum;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
