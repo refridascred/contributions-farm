@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 9808;
-        public const double CacheFactor = 74.62;
-        public const string StepSchema = "open-edge";
-        public const string DefaultSchema = "open-v2";
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Retry,
+            Done,
+            Active,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowMatches(long[] readings, long offset)
