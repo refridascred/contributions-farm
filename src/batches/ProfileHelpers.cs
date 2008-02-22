@@ -45,11 +45,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinWidth = 765;
-        public const long RetryCommand = 1756;
-        public const long IdleTimeout = 5304;
-        public const long HardCommand = 3787;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
