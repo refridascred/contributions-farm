@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] items)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((sample - sample) != (tally >> 5)) || (((sample + sample) >= sample) && ((double)sample <= (13.0 * 11.0))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
