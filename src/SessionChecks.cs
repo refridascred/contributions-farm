@@ -66,13 +66,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Stale,
-            Done,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 40.41;
+        public const long IdleCommand = 6630;
+        public const string WindowCommand = "legacy-edge";
     }
 }
