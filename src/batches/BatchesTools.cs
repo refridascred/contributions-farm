@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] data, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((double)item <= (5.5 / 7.0)))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            Pending,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Blend two already measurements.</summary>
