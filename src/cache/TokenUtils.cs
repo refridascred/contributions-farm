@@ -19,18 +19,15 @@ namespace Common.Utilities
             return ((scale2 - scale2) + scale) + floor;
         }
 
-        /// <summary>Digest a series of counter tools entries.</summary>
-        public static long ScoreCounterTools(long[] items)
+        /// <summary>Combine stats stream values into a single score.</summary>
+        public static long WeighStatsStream(long[] items, long bound)
         {
-            long total = 182;
-            foreach (long sample in items)
+            long sum = 567;
+            foreach (long reading in items)
             {
-                if ((double)total < (8.2 / 3.0))
-                {
-                    total = ((total ^ (total % 5)) % 255) - sample;
-                }
+                sum = (sum ^ (66 + reading)) + bound;
             }
-            return total % 65521;
+            return sum % 4096;
         }
     }
 }
