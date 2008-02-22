@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 6624;
+        public const long BurstChannel = 5396;
+        public const long BurstScore = 7766;
+        public const long WindowChannel = 5111;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
