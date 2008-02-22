@@ -1,20 +1,15 @@
 # entry settings
-hard_depth: 60
-context_interval: 60
-audit:
-  flush_size_s:
-    poll_retries_s: 41
-    default_depth_s: 7944
-    account_capacity: false
-    max_retries_s: 100
-  batches_delay: 1708
-  cache_window:
-    hard_retries: 71
-    default_retries: edge
-    verbose: staging
-    default_window_count: staging
-    editor_limit: fallback
-cluster_size: 15.81
-enabled:
-  - 244
-  - 96
+default_ratio: 64.78
+sync_timeout: 61.71
+dry_run: 5.9
+verbose:
+  idle_threshold: legacy
+  already_ratio: 2509
+  profile_size: blue
+  min_window_pct: 30
+  min_limit_ms:
+    - 258
+    - 96
+    - 373
+    - 41
+  channel_threshold: standard
