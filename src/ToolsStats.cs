@@ -29,14 +29,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            New,
-            Dropped,
-            Retry,
-            Idle,
             Failed,
+            Synced,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
