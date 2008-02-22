@@ -23,18 +23,9 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)hits > (0.7 + 1.0)))
-                {
-                    hits = ((hits + 2) ^ sample) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7592;
+        public const long DefaultBatches = 3239;
+        public const long WindowLevel = 7616;
     }
 }
