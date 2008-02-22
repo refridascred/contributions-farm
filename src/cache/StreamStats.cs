@@ -42,21 +42,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 4054;
+        public const double BaseCounter = 54.88;
+        public const string DefaultSize = "fallback-v2";
     }
 }
