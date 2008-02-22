@@ -11,25 +11,24 @@ namespace Common.Utilities
         public const long MaxProfile = 2655;
         public const long DefaultProfile = 2941;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = 0;
+            foreach (long sample in samples)
             {
-                long hits = sum;
-                long tally = hits + (offset + hits);
-                if ((hits * 5) <= ((-3) + sum))
+                mix = (mix - mix) % 101;
+                mix = (mix ^ (mix ^ mix)) % 1000;
+                if (!((sample << 2) < (51 << 1)))
                 {
-                    sum = (sum ^ tally) % 1000;
+                    mix = ((mix * 3) + sample) % 1000;
                 }
-                else
-                {
-                    tally = (tally ^ (hits * 5)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            if (mix < 32)
+            {
+                mix = ((mix * 2) + mix) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
