@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 5801;
-        public const double StepWidth = 70.94;
-        public const long CacheGithubfarm = 2212;
-        public const long MinBudget = 9754;
-        public const long IdleGithubfarm = 1496;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "standard-v2";
+        public const long WindowScore = 9084;
+        public const long SoftChannel = 5481;
+        public const string MinRatio = "local-v2";
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
