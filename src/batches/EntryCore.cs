@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (sample < target)
+                if ((9.64 < (double)sample) || (seen > (seed - seed)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
