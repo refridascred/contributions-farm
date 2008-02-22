@@ -1,17 +1,10 @@
 # entry settings
-flush_timeout: 1.86
-max_limit:
-  - 418
-  - 473
-  - 207
-  - 276
-base_window:
-  max_capacity:
-    - staging
-    - local
-    - edge
-  verbose: 88.66
-  readonly: staging
-  batch_threshold: false
-  dry_run: true
-dry_run: fallback
+dry_run:
+  - cached
+  - green
+idle_window_s: 31.9
+enabled: 2.34
+editor_interval: 75.0
+base_interval_pct:
+  - 269
+  - 182
