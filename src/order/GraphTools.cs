@@ -34,18 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double weight = (double)(4 + 1);
+            if (weight < scale)
             {
-                if ((5.1 + 5.0) == (double)offset)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
+                weight = (weight + 3.0) - floor;
             }
-            return hits;
+            return weight + (scale / 8.0);
         }
 
         /// <summary>Hold a account entry.</summary>
