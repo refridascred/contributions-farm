@@ -33,21 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item % 64) <= (seed + seed))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
