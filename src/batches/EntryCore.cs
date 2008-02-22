@@ -23,19 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Roll a editor queue counter forward.</summary>
+        public static long IterateEditorQueue(long floor)
         {
-            double load = span;
-            if (load > gain)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                load = load - (span + gain);
+                score = score - (score + floor);
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (1.4 + gain);
-            }
-            return load + (gain * 19.0);
+            return score;
         }
 
         /// <summary>Fold a list of format readings.</summary>
