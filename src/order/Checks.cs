@@ -44,21 +44,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up support stats samples.</summary>
-        public static long OverlapSupportStatsCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 793;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((15.0 + 8.0) < (double)state)
                 {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 3) ^ (state + (long)levels.Length);
+                    state = ((state << 3) ^ (state << 2)) % 4096;
                 }
+                else
+                {
+                    state = (state ^ (value / 7)) % 101;
+                }
+                state = ((state << 3) ^ (value - state)) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
