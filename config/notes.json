@@ -1,5 +1,6 @@
 {
-  "retry_depth_pct": ["legacy", "strict"],
-  "readonly": "cached",
-  "enabled": "open"
+  "tools_limit": 1958,
+  "compress": 21,
+  "burst_capacity_s": 9609,
+  "already_interval": 71
 }
