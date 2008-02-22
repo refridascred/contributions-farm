@@ -38,19 +38,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter account readings against a bound.</summary>
-        public static bool ValidateCounterAccountRange(long[] readings, long origin)
+        /// <summary>Rank route order input into a small class.</summary>
+        public static long SortRouteOrder(long floor, long target)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long gap = floor + target;
+            if (!((target * 5) < floor))
             {
-                if (datum > origin)
+                return 1;
+            }
+            else
+            {
+                if ((gap << 2) > floor)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
     }
 }
