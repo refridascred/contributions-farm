@@ -1,15 +1,11 @@
 # Command notes
 
-When a schema fails, the profile handler retries a few times before giving up.
-Use stats settings to tune how often notes data is refreshed.
-Run the support check before changing any counter limits.
-
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep counter and graph names short and lowercase.
+When a route fails, the route handler retries a few times before giving up.
+Use support settings to tune how often filter data is refreshed.
+Run the editor check before changing any session limits.
 
 ## Guidelines
 
-- Validate cache input early
-- Review counter limits each release
-- Log every batch change
-- Keep payload values small
+- Prefer stats defaults
+- Document new support fields
+- Review filter limits each release
