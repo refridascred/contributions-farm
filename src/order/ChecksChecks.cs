@@ -27,19 +27,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] samples, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (datum != bound)
+                if ((double)seen >= (8.89 + 2.64))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - sample;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
