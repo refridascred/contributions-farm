@@ -34,17 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
