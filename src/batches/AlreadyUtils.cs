@@ -13,21 +13,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 86;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (result < ((long)levels.Length + result))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result ^ (entry * 3)) % 1000) - step;
                 }
             }
-            return matches;
+            if (result > 322)
+            {
+                result = (result - (2 - 9)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
