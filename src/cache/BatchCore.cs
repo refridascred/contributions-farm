@@ -23,15 +23,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the cluster token series from a seed.</summary>
-        public static long RollClusterToken(long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                state = (state ^ state) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Hold a checks entry.</summary>
