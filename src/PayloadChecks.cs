@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long floor, long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            if ((floor << 3) < origin)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.0 * 17.0) <= (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor <= (double)origin)
+                    if ((readings[i] ^ readings[j]) < 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)origin >= (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
