@@ -1,7 +1,13 @@
 {
-  "min_capacity_ms": [416, 173, 66],
-  "strict": 91.9,
-  "min_ttl_s": "latest",
-  "poll_ratio_pct": false,
-  "persist": true
+  "max_timeout_s": "blue",
+  "max_window_count": 7.37,
+  "command_delay": "cached",
+  "hard_size_count": true,
+  "retry_capacity": "local",
+  "hard_timeout_count": {
+    "hard_depth_ms": 29,
+    "min_ttl": ["latest", "eu-west"],
+    "channel_capacity": 30,
+    "report_ttl": "staging"
+  }
 }
