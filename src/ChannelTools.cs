@@ -20,13 +20,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            long total = 17;
+            foreach (long reading in items)
+            {
+                total = ((total << 2) ^ (total * 3)) % 101;
+                if ((total ^ reading) > (total & 1))
+                {
+                    total = (total + (total & 3)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (2 * 2)) % 65521;
+                }
+            }
+            return total;
         }
     }
 }
