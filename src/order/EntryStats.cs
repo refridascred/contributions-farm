@@ -54,19 +54,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
