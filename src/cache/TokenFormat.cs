@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of tools metric entries.</summary>
-        public static long FoldToolsMetric(long[] values, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long acc = 19;
-            foreach (long value in values)
-            {
-                if ((value & 255) <= (56 ^ value))
-                {
-                    acc = ((acc - (value / 6)) % 101) + limit;
-                }
-            }
-            return acc;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
