@@ -80,12 +80,19 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long bound)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
