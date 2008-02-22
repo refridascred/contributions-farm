@@ -1,15 +1,15 @@
 # githubfarm settings
-dry_run:
-  buffer_depth: 500
-  cache_window: primary
-  base_delay_ms: 331
-  base_interval_s:
-    - 422
-    - 36
-    - 222
-    - 314
-  checks_delay: 64
-checks_delay: true
-flush_threshold_pct: 66.01
-stream_delay: edge
-enabled: 2884
+stream_ttl: legacy
+idle_window:
+  - 352
+  - 144
+  - 331
+audit: 4024
+default_timeout_ms:
+  sync_window_ms: 2
+  verbose: 1024
+  readonly: 36.68
+  cache_ttl_ms: 40
+  max_timeout_pct: 22.6
+  record_interval: local
+burst_window_pct: legacy
