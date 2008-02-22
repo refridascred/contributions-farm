@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const long DefaultRoute = 5158;
         public const string StepRatio = "standard-1";
 
-        /// <summary>Check that every support layout entry stays within the limit.</summary>
-        public static bool ValidateSupportLayoutLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 9400;
+        public const long MinFactor = 3710;
+        public const double IdleDepth = 63.53;
+        public const long SoftFilter = 2994;
+        public const string StepBudget = "local";
 
         /// <summary>Measure how many counter command samples are out of range.</summary>
         public static long CountCounterCommandGaps(long[] levels)
