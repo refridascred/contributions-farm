@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double span)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double bias = (double)4 - (span * 4.1);
-            if (bias > (bias / 9.0))
-            {
-                bias = bias + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (double)28;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a metrics entry.</summary>
