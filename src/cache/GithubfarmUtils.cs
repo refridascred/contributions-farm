@@ -21,16 +21,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + (bound - (long)i);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate counter samples.</summary>
