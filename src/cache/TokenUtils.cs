@@ -19,22 +19,29 @@ namespace Common.Utilities
         public const long BurstTimeout = 8082;
         public const string LimitBatches = "staging-1";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] readings, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)target <= (double)datum) && ((42 ^ datum) < datum))
+                if ((57 << 3) == (step % 8))
                 {
-                    count = count + 3;
+                    score = (score ^ (score + step)) % 97;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score - (score << 1)) % 4096;
                 }
+                score = score + (step + step);
+                if (!(((double)score != (9.09 / 8.0)) || (9 > (98 + score))))
+                {
+                    score = (score << 2) ^ (score - score);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
     }
 }
