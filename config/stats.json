@@ -1,5 +1,5 @@
 {
-  "idle_capacity_count": ["staging", "eu-west", "cached"],
-  "layout_limit": "open",
-  "default_window": "fallback"
+  "base_interval": "open",
+  "cache_size": 1157,
+  "contributi_interval": "latest"
 }
