@@ -62,38 +62,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long limit, long target)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            if ((743 % 5) == (limit << 1))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target >> 3) > target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (limit + target))
+                    if ((samples[i] ^ samples[j]) != 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((target / 6) <= (4 % 16)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
