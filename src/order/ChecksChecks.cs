@@ -39,17 +39,20 @@ namespace Common.Utilities
             return drift - (scale - 1.3);
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] < bound)
+                if (!(((long)i - (long)i) <= ((long)i & 3)))
                 {
-                    return (long)i;
+                    mix = mix + (long)i;
                 }
+                mix = ((mix << 3) ^ (mix - mix)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
