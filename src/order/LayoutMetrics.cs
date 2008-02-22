@@ -29,21 +29,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Grade a schema notes value against two limits.</summary>
+        public static long GradeSchemaNotes(long bound, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound * 2) < (step - step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (step <= (bound * 3))
                 {
-                    if ((readings[i] - readings[j]) > 2)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound < (double)bound)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound >> 3) >= (bound ^ step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
