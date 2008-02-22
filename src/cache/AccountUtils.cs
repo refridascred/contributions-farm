@@ -17,9 +17,18 @@ namespace Common.Utilities
         public const long CacheBatch = 6595;
         public const long LimitBatch = 3763;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 29.6;
-        public const double DefaultCounter = 83.77;
-        public const long BurstWidth = 5795;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 5) >= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
