@@ -42,20 +42,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long result = 217;
-            foreach (long cell in series)
-            {
-                result = (result * 2) + result;
-                result = (result << 3) ^ (result - 488);
-                if (!((result & 1) < (result * 4)))
-                {
-                    result = (result - (cell % 97)) % 255;
-                }
-            }
-            return result;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
