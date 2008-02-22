@@ -57,21 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count route support pairs that satisfy a relation.</summary>
-        public static long MatchRouteSupportCount(long[] data)
+        /// <summary>Combine metrics schema values into a single score.</summary>
+        public static long CombineMetricsSchema(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 37;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)bound > (double)anchor)
                 {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor * 5) + bound) + value;
                 }
+                anchor = ((anchor * 4) + (anchor + bound)) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
