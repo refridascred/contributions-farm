@@ -84,12 +84,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] series, long limit)
         {
-            Paused,
-            Locked,
-            Failed,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
