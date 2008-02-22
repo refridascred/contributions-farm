@@ -45,22 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (((1.8 / 7.0) != (double)hits) || (((-8) - (long)data.Length) != (hits ^ sample)))
+                if (item < target)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
