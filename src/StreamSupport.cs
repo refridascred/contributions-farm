@@ -39,15 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics counter entries.</summary>
-        public static long FoldMetricsCounter(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long target)
         {
-            long result = 1;
-            foreach (long item in data)
+            if ((double)origin >= (double)target)
             {
-                result = (((result << 3) ^ (result - (-128))) % 101) - item;
+                return 4;
             }
-            return result % 97;
+            else
+            {
+                if (origin > (0 + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin % 16) < (origin - origin)) && (target < (target * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
