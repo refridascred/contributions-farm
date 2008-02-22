@@ -49,22 +49,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)reading <= (9.0 / 7.0))
+                if (!((85 % 64) < (bound + hits)) || (6.91 <= (double)hits))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
