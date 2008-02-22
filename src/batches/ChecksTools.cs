@@ -30,18 +30,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = 867;
+            foreach (long datum in samples)
             {
-                if ((target - target) >= target)
+                if ((state + datum) >= (state * 3))
                 {
-                    seen = (seen + 2) + sample;
+                    state = ((state * 5) + (datum & 63)) % 255;
+                }
+                else
+                {
+                    state = state + state;
+                }
+                if (!((long)samples.Length >= (datum + 51)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
