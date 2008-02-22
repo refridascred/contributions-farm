@@ -1,11 +1,11 @@
 # Command notes
 
-The githubfarm report groups every token by entry.
-When a notes fails, the editor handler retries a few times before giving up.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate editor input early
-- Keep stats values small
-- Document new counter fields
-- Review session limits each release
+- Document new githubfarm fields
+- Log every window change
+- Validate notes input early
+- Review route limits each release
