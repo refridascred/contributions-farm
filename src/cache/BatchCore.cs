@@ -27,15 +27,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many layout stream samples are out of range.</summary>
-        public static long AuditLayoutStreamOutliers(long[] levels, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long sample in series)
             {
-                if ((double)reading < 2.54)
+                if (((-272) & 3) == (sample ^ 1))
                 {
-                    tally = (tally + 2) + seed;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
