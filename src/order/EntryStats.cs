@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (1 >= (matches * 5))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleScore = 45.62;
+        public const long BatchCache = 962;
+        public const long CacheTimeout = 1888;
+        public const string RetryCache = "latest-1";
+        public const long BatchRatio = 1533;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
