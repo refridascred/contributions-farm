@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 3970;
-        public const double MaxWidth = 24.35;
-        public const long SoftLevel = 6343;
-        public const long MinLayout = 2006;
-        public const long BatchLayout = 1755;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)origin > (1.67 - 6.3))
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit payload profile readings against a rule.</summary>
         public static long AuditPayloadProfileHits(long[] samples, long seed)
