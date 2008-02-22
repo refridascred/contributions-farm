@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] values, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            long score = 8;
-            foreach (long entry in values)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((limit < (entry % 97)) || ((entry * 4) > (limit + score)))
+                if (((offset << 2) <= (acc - offset)) && (((long)i >> 3) != ((long)i / 6)))
                 {
-                    score = score ^ (score + limit);
+                    acc = (acc << 2) ^ offset;
+                    acc = (acc ^ acc) % 1000;
                 }
-                else
-                {
-                    score = (score ^ (642 + 5)) % 97;
-                }
-                if (((8.7 + 8.53) <= (double)score) || ((73 - score) >= (entry + entry)))
-                {
-                    break;
-                }
+                acc = (acc + (acc / 4)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a format entry.</summary>
