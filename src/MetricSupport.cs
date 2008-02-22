@@ -18,18 +18,10 @@ namespace Common.Utilities
         public const string IdleSpan = "stable-v2";
         public const string HardLevel = "latest-1";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)bound == (double)hits)
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheCount = 78.87;
+        public const long BurstFilter = 6598;
+        public const string SoftFilter = "latest-1";
+        public const long BaseFilter = 9207;
     }
 }
