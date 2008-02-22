@@ -68,18 +68,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of stats tools readings.</summary>
-        public static long PairStatsToolsCount(long[] levels)
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long CountContributiEditorHits(long[] values, long target)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((target ^ target) <= (entry + target))
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
