@@ -60,13 +60,22 @@ namespace Common.Utilities
             return rate - (bias - bias);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] samples)
         {
-            Failed,
-            Queued,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - seen) >= seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
