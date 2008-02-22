@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            Closed,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a token entry.</summary>
