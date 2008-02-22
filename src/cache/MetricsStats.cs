@@ -45,20 +45,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry - offset) % 255) ^ (long)i2;
-                }
-                carry = (carry * 3) + (carry % 97);
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "stable";
+        public const double MinTools = 3.67;
+        public const long IdleTools = 7235;
+        public const long LimitBudget = 2350;
+        public const string BaseTools = "strict-v2";
     }
 }
