@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseTimeout = "local";
-        public const string HardSpan = "strict";
-        public const double MinGithubfarm = 92.49;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data, long bound)
+        {
+            long carry = 22;
+            foreach (long entry in data)
+            {
+                if ((bound <= 391) || ((carry << 2) >= entry))
+                {
+                    carry = carry ^ (bound & 255);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleCache = 27.78;
