@@ -1,8 +1,13 @@
 {
-  "warm_threshold": 56,
-  "strict": 6.69,
-  "min_limit_ms": true,
-  "burst_window_ms": 60,
-  "batch_ttl_count": "fallback",
-  "hard_limit_count": [145, 392, 343]
+  "tools_window": 87.73,
+  "support_delay": 500,
+  "idle_capacity_ms": {
+    "dry_run": true,
+    "soft_retries": 30,
+    "metric_ttl": 5,
+    "payload_capacity": 61,
+    "batch_delay_s": 1024,
+    "contributi_interval": "stable"
+  },
+  "schema_ratio": true
 }
