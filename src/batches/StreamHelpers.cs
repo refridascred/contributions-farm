@@ -95,10 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryTimeout = 8392;
-        public const double WindowLevel = 51.52;
-        public const long CacheQueue = 421;
-        public const string RetryQueue = "legacy-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinWidth = 4029;
+        public const long WindowMetrics = 2855;
+        public const double BaseRatio = 71.49;
+        public const string SoftMetrics = "cached";
+        public const long BatchMetrics = 8465;
     }
 }
