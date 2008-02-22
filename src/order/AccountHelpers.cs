@@ -71,11 +71,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two channel contributi measurements.</summary>
-        public static double SmoothChannelContributi(double rate, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings)
         {
-            double weight = (double)(633 + 848);
-            return ((weight + 1.81) + rate) + offset;
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((61 <= (entry + count)) || ((count << 3) >= (count % 64))) && ((count >> 5) > (entry + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
