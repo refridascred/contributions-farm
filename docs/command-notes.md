@@ -1,14 +1,11 @@
 # Command notes
 
-Use githubfarm settings to tune how often order data is refreshed.
-A checks that stays idle for too long is moved to the record list.
-
-A tools that stays idle for too long is moved to the context list.
-Keep account and commits names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every cache change
-- Keep account values small
-- Prefer account defaults
+- Document new buffer fields
+- Prefer channel defaults
+- Validate tools input early
+- Review tools limits each release
