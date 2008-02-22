@@ -38,32 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long bound = step - floor;
-            if ((double)floor == (5.2 + 20.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-90) - bound) == (floor + step)) || ((bound + step) < (86 << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= (floor & 15))
+                    if ((samples[i] + samples[j]) == 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
