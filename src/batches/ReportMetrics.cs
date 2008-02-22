@@ -14,13 +14,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] data, long step)
         {
-            Pending,
-            Retry,
-            Failed,
-            Stale,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits < (8.88 / 8.0))
+                {
+                    hits = ((hits + 2) + sample) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
