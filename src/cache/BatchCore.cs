@@ -36,15 +36,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] series, long floor)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long item in series)
             {
-                if (!((entry & 7) != (entry + matches)))
+                if ((double)floor != (4.0 - 18.0))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
