@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long RetryOrder = 3046;
         public const double MinOrder = 10.75;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] items)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!((0.63 / 2.0) <= (double)matches))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batches phase values.</summary>
