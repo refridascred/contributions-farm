@@ -45,14 +45,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Locked,
-            Active,
-            Retry,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleSize = 52.36;
+        public const long StepCount = 3537;
+        public const double BatchOrder = 37.97;
     }
 }
