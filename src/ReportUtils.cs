@@ -50,19 +50,14 @@ namespace Common.Utilities
             return (load - (floor + 7.2)) + bias;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] values, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Idle,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
