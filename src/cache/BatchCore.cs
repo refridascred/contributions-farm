@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long mark = 11;
+            foreach (long cell in data)
             {
-                result = result - floor;
-                result = ((result * 5) + (long)i) % 4093;
+                if ((double)mark == (12.0 / 5.0))
+                {
+                    mark = ((mark + (cell << 3)) % 101) - offset;
+                }
+                else
+                {
+                    mark = (mark - (mark ^ mark)) % 255;
+                }
+                if ((mark >= cell) && ((mark * 3) < (cell >> 2)))
+                {
+                    break;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Describe the context status values.</summary>
