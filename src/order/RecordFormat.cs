@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] readings, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (readings[i] > floor)
+                if (sample < (seen + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
