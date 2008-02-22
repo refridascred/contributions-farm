@@ -29,13 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            Dropped,
+            Failed,
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Rank queue report input into a small class.</summary>
