@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] samples, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double span)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double bias = (double)4 - (span * 4.1);
+            if (bias > (bias / 9.0))
             {
-                if (((-53) + tally) >= (long)samples.Length)
-                {
-                    tally = ((tally + 2) ^ item) + target;
-                }
+                bias = bias + scale;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (double)28;
         }
 
         /// <summary>Hold a metrics entry.</summary>
