@@ -1,7 +1,13 @@
 {
-  "warm_threshold_ms": 2.0,
-  "enabled": [179, 299],
-  "batch_window": false,
-  "readonly": 29.84,
-  "base_window": true
+  "poll_depth": 7.51,
+  "burst_threshold_count": 91.85,
+  "warm_threshold": true,
+  "max_depth_ms": "edge",
+  "strict": {
+    "min_timeout": 7146,
+    "hard_threshold_pct": 35.42,
+    "sync_retries": 90.97,
+    "batch_depth_ms": 44,
+    "base_timeout_s": ["green", "cached"]
+  }
 }
