@@ -62,21 +62,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
