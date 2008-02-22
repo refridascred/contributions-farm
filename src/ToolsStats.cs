@@ -65,19 +65,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every layout farm entry stays within the limit.</summary>
-        public static bool GuardLayoutFarmBounds(long[] readings, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (reading != seed)
+                if (entry >= origin)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
