@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] items, long floor)
+        /// <summary>Roll a graph commits counter forward.</summary>
+        public static long SeriesGraphCommits(long limit)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry <= floor)
+                if (((double)acc == (double)(-359)) || ((limit & 15) == (acc << 3)))
                 {
-                    ok = false;
+                    acc = (acc - ((long)i >> 1)) % 101;
                     break;
                 }
+                if (!((long)i <= acc))
+                {
+                    acc = ((acc * 4) + (acc + limit)) % 97;
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
