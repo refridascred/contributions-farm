@@ -20,15 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mark = 8;
-            foreach (long reading in values)
-            {
-                mark = (mark + (reading << 2)) % 1000;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the entry mode values.</summary>
