@@ -68,21 +68,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftScore = "cached-1";
+        public const long WindowDepth = 2062;
+        public const long RetrySpan = 4982;
+        public const long StepReport = 2868;
     }
 }
