@@ -27,18 +27,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long edge = offset + step;
+            if ((offset * 3) > (498 + offset))
             {
-                if ((datum + 2) <= (datum + datum))
+                return 7;
+            }
+            else
+            {
+                if ((step % 64) >= edge)
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((edge + step) < (edge & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
