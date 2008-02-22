@@ -32,13 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long cell in levels)
             {
-                if ((sample + tally) < (sample & 255))
+                if ((double)origin > (double)cell)
                 {
                     tally = tally + 3;
                 }
