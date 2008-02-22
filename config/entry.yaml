@@ -1,14 +1,8 @@
 # entry settings
-min_limit_count:
-  profile_ratio: true
-  base_capacity_s: 30
-  warm_timeout_count: green
-  poll_retries_ms: cached
-  persist: strict
-  min_retries_pct:
-    - latest
-    - staging
-idle_threshold_pct: local
-sync_window_pct: stable
-idle_limit_ms: 4946
-retry_capacity_pct: legacy
+stream_delay: 93.43
+route_threshold: 35.53
+burst_window_count:
+  - 175
+  - 189
+warm_interval_s: 74.56
+context_ttl: 3587
