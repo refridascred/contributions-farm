@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Active,
-            Queued,
-            Closed,
-            Ready,
-            Stale,
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the tools mode values.</summary>
