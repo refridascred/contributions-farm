@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "strict-edge";
-        public const long MinCount = 3442;
-        public const long LimitSpan = 3787;
-        public const long LimitInterval = 1589;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double weight, double span)
+        {
+            double gain = span;
+            if (gain < (span - gain))
+            {
+                gain = (gain + span) - weight;
+            }
+            else
+            {
+                gain = gain - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (span / 6.0);
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
