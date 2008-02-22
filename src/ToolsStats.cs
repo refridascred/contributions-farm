@@ -55,19 +55,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] levels, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
