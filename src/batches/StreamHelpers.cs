@@ -80,13 +80,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Synced,
-            Queued,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryTimeout = 8392;
+        public const double WindowLevel = 51.52;
+        public const long CacheQueue = 421;
+        public const string RetryQueue = "legacy-edge";
     }
 }
