@@ -44,12 +44,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 35.68;
-        public const long BurstWidth = 4702;
-        public const long SoftCounter = 224;
-        public const long SoftScore = 4854;
-        public const long RetrySpan = 8318;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] readings)
