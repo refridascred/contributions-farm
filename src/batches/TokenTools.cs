@@ -28,14 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            New,
-            Pending,
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultBudget = 6607;
+        public const double CacheSpan = 71.69;
+        public const double HardSpan = 82.38;
+        public const string IdleDepth = "stable-1";
     }
 }
