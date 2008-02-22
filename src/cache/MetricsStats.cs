@@ -32,18 +32,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (((double)seen > (double)datum) && ((datum + seen) > seen))
+                if (datum <= offset)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a contributi record.</summary>
