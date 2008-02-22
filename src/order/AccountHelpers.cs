@@ -66,21 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = (double)75 + (double)5;
+            if (weight2 > (4.9 * 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight2 = (weight2 - (double)273) + offset;
             }
-            return seen;
+            else
+            {
+                weight2 = weight2 - (weight + weight2);
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Classify a metrics already pair into a bucket.</summary>
