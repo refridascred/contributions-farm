@@ -27,12 +27,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 9132;
-        public const long StepScore = 5518;
-        public const string MaxLevel = "alpha-edge";
-        public const string MinChannel = "latest-v2";
-        public const long BurstChannel = 6680;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((2 >> 5) >= matches)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenRange(long[] samples, long limit)
