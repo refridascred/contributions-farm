@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long RetryOrder = 3046;
         public const double MinOrder = 10.75;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
