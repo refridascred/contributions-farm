@@ -22,10 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinWidth = "open-edge";
-        public const long BatchEntry = 9281;
-        public const double MinScore = 66.32;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long limit)
+        {
+            if (!((double)bound <= (9.7 + 9.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit <= 955)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Fold a list of filter cache readings.</summary>
         public static long ScoreFilterCache(long[] values, long step)
