@@ -26,39 +26,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long limit)
+        /// <summary>Adjust a report cluster reading.</summary>
+        public static double ScaleReportCluster(double weight, double bias)
         {
-            long step2 = step - limit;
-            if ((step >> 4) < (72 + step))
+            double rate = weight;
+            if (rate < (double)(-932))
             {
-                return 2;
+                rate = (rate - weight) - bias;
             }
-            else
-            {
-                if (step2 <= (limit >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((268 >> 3) > (step2 - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + step) < (limit + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return rate + (double)742;
         }
 
         /// <summary>Roll a schema githubfarm counter forward.</summary>
