@@ -30,24 +30,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank command entry input into a small class.</summary>
-        public static long GradeCommandEntry(long offset, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values, long bound)
         {
-            if (((double)seed >= (8.0 - 7.4)) || (seed <= (offset + offset)))
+            long anchor = 946;
+            foreach (long value in values)
             {
-                return 6;
+                anchor = ((anchor - (bound * 4)) % 101) + value;
             }
-            else
-            {
-                if (!((double)seed > (7.4 * 8.9)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor % 65521;
         }
     }
 }
