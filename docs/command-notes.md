@@ -1,14 +1,15 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the format list.
-Run the notes check before changing any format limits.
+Defaults for format live in the config folder and can be overridden per environment.
+A batches that stays idle for too long is moved to the report list.
+The commits module keeps metrics values in sync with the session cache.
 
-Run the editor check before changing any account limits.
-Run the entry check before changing any profile limits.
-A command that stays idle for too long is moved to the session list.
+Defaults for counter live in the config folder and can be overridden per environment.
+Each metrics is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Document new stream fields
-- Review session limits each release
-- Prefer route defaults
+- Prefer account defaults
+- Document new profile fields
+- Log every farm change
+- Review command limits each release
