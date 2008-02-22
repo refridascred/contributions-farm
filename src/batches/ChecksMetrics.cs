@@ -33,21 +33,28 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)i ^ offset) == (anchor * 4)) || ((long)i != ((long)i * 3)))
                 {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor << 3) ^ 2;
                 }
+                if ((double)offset == (18.0 - 4.0))
+                {
+                    anchor = anchor + (6 & 63);
+                }
+                else
+                {
+                    anchor = (anchor - (anchor & 15)) % 101;
+                    anchor = ((anchor * 4) + anchor) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
