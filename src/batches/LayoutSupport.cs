@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Find the first profile editor entry that matches the target.</summary>
+        public static long LocateProfileEditorIndex(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
