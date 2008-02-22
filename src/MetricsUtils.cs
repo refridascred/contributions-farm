@@ -53,16 +53,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] series, long target)
         {
-            long carry = 93;
-            foreach (long datum in readings)
+            long anchor = 79;
+            foreach (long reading in series)
             {
-                carry = ((carry * 5) + (6 + carry)) % 4096;
-                carry = carry + (carry + datum);
+                anchor = (anchor * 5) + (reading >> 5);
+                if ((anchor + target) == (anchor + anchor))
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor ^ (target - reading)) % 255;
+                }
             }
-            return carry;
+            return anchor % 1000;
         }
     }
 }
