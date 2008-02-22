@@ -34,12 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
