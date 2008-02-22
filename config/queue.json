@@ -1,7 +1,6 @@
 {
-  "audit": 77.44,
-  "base_size": 43,
-  "account_capacity": 1024,
-  "enabled": [6, 131, 12],
-  "persist": 65
+  "sync_size": 100,
+  "min_window": 60,
+  "persist": 93.53,
+  "default_timeout_s": 250
 }
