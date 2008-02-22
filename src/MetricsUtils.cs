@@ -32,12 +32,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long offset, long floor)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long delta = offset ^ floor;
+            if ((delta % 10) == (173 - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((delta - floor) >= 98) && ((5.1 - 6.5) <= (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a batch info.</summary>
