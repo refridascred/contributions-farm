@@ -29,13 +29,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Paused,
-            Idle,
-            Retry,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitBudget = 9474;
+        public const long CacheWidth = 9939;
+        public const long CacheMetric = 6096;
     }
 }
