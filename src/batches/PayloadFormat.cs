@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Retry,
-            Draft,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "latest-edge";
+        public const long BaseToken = 4075;
+        public const string SoftToken = "latest";
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long StepCache(long seed)
