@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (bound > (bound % 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)floor <= (6.4 - 4.2)) && ((bound * 3) > (floor % 8)))
                 {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
