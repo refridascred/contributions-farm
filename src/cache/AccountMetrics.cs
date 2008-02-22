@@ -62,12 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate editor buffer readings against a bound.</summary>
+        public static bool VerifyEditorBufferLimits(long[] samples, long step)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
