@@ -29,20 +29,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((long)i % 5) > ((long)i & 255))
-                {
-                    result = (result * 3) + 4;
-                }
-                result = (result ^ limit) % 65521;
-                result = ((result * 3) + (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
     }
 }
