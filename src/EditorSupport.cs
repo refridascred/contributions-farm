@@ -80,9 +80,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstInterval = 9447;
-        public const long HardFormat = 8866;
-        public const long BaseWidth = 1401;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
