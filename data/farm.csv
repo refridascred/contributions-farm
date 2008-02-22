@@ -1,8 +1,8 @@
-id,active,count,level,ratio
-1,legacy,137,81.52,392
-2,72.57,legacy,6.52,846
-3,12.24,81.67,10.49,legacy
-4,321,stable,608,fallback
-5,923,stable,78.66,latest
-6,481,staging,594,7.74
-7,10,11.09,406,129
+id,ratio,state,label
+1,edge,5.01,strict
+2,open,231,565
+3,375,62,65.67
+4,418,378,748
+5,47.42,254,fallback
+6,455,37.21,54.81
+7,162,653,blue
