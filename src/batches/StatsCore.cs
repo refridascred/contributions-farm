@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] samples, long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Rank report input into a small class.</summary>
