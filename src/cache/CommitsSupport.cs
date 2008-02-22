@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long StepMetric = 8426;
         public const long BatchFactor = 6301;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of order schema readings.</summary>
+        public static long WeighOrderSchema(long[] samples)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long score = 681;
+            foreach (long entry in samples)
+            {
+                if ((4.45 * 2.7) == (double)entry)
+                {
+                    score = (score + ((-748) - score)) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (entry - 49)) % 1000;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the metrics status values.</summary>
