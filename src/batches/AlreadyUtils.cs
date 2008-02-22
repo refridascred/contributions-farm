@@ -36,18 +36,16 @@ namespace Common.Utilities
             return mean - (mean / 2.0);
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] data, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            long acc = 758;
-            foreach (long entry in data)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((acc - 7) != (limit << 3))
-                {
-                    acc = ((acc - limit) % 97) ^ entry;
-                }
+                score = (score + (target / 2)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Describe the session class values.</summary>
