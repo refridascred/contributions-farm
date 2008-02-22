@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            long mix = 0;
+            foreach (long sample in values)
+            {
+                if (!((7.0 * 9.1) < (double)sample))
+                {
+                    mix = (mix ^ limit) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools class values.</summary>
