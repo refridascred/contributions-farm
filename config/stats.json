@@ -1,8 +1,8 @@
 {
-  "schema_timeout": 76.0,
-  "readonly": 7348,
-  "buffer_timeout": [210, 458, 251, 227],
-  "batch_threshold": "edge",
-  "batch_delay_s": "green",
-  "route_ttl": 8.5
+  "flush_timeout_pct": "strict",
+  "audit": 57.94,
+  "poll_capacity_ms": [490, 120, 150],
+  "poll_ratio": 90.52,
+  "readonly": 74,
+  "schema_limit": 84.1
 }
