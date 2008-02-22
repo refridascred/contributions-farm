@@ -22,15 +22,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double weight, double bias)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double rate = (weight - weight) - bias;
-            if (rate <= (6.07 / 2.0))
-            {
-                rate = rate - bias;
-            }
-            return rate - bias;
+            Ready,
+            Done,
+            Idle,
+            Draft,
+            Synced,
         }
     }
 }
