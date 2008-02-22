@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the tools account series from a seed.</summary>
-        public static long StepToolsAccount(long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long total = 3;
+            foreach (long sample in levels)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (((675 >> 1) > (total & 63)) || (667 <= sample))
+                {
+                    total = ((total << 2) ^ (24 << 2)) - target;
+                }
             }
-            return result;
+            return total % 1000;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
