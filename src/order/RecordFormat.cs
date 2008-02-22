@@ -56,10 +56,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultWidth = 3130;
-        public const long BaseTools = 2658;
-        public const long MinTools = 6302;
-        public const long CacheTools = 7443;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public double Total { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
