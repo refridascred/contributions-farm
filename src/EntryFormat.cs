@@ -26,32 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long floor)
+        /// <summary>Count support profile pairs that satisfy a relation.</summary>
+        public static long PairSupportProfileCount(long[] samples)
         {
-            long prev = offset ^ floor;
-            if ((double)prev < (18.0 * 7.31))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) >= (floor + floor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (prev < (6 + floor))
+                    if ((samples[i] + samples[j]) != 7)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the payload level values.</summary>
