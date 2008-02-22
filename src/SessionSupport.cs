@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] samples, long seed)
         {
-            long sum = 70;
-            foreach (long entry in samples)
+            long anchor = 297;
+            foreach (long value in samples)
             {
-                sum = (sum ^ (-456)) ^ entry;
+                anchor = ((anchor * 3) + (seed + anchor)) ^ value;
             }
-            if (sum < (-8))
-            {
-                sum = sum ^ (sum - seed);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
