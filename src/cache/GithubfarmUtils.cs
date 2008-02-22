@@ -31,23 +31,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double bias)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double ratio2 = bias;
-            if (ratio2 < (double)9)
-            {
-                ratio2 = ratio2 + (ratio * 0.85);
-            }
-            else
-            {
-                ratio2 = ratio2 - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (ratio + ratio2)) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            Idle,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a graph record.</summary>
