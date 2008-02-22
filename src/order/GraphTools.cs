@@ -55,10 +55,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleAlready = 88.52;
-        public const long RetrySize = 6929;
-        public const string BaseTimeout = "staging-edge";
-        public const long CacheCount = 5127;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
