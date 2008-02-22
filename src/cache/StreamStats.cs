@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            long state = 1;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = state + (state + cell);
+                if ((double)(-39) <= (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
