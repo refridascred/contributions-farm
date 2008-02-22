@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "local-1";
+        public const double WindowBuffer = 82.68;
+        public const string DefaultBudget = "standard-1";
+        public const long MinFactor = 4606;
+        public const long CacheBuffer = 7238;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long FoldStream(long[] levels, long step)
