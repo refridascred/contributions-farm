@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long origin, long origin2)
         {
-            double gain = span;
-            if (gain < (span - gain))
+            if (origin >= (117 % 2))
             {
-                gain = (gain + span) - weight;
+                return 3;
             }
             else
             {
-                gain = gain - span;
+                if ((68 - 93) >= (origin2 & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= (origin << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin + origin) == (origin % 8)) && ((9 ^ origin) >= (5 + origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (span / 6.0);
         }
 
         /// <summary>Hold a report entry.</summary>
