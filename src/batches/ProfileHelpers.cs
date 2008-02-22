@@ -50,12 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 9974;
-        public const long SoftLayout = 6318;
-        public const double MinInterval = 43.66;
-        public const string IdleInterval = "staging-1";
-        public const long CacheLayout = 4847;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Scale a entry batches figure with a bias.</summary>
         public static double ScaleEntryBatches(double ratio, double offset)
