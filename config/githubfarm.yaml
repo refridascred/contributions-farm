@@ -1,15 +1,9 @@
 # githubfarm settings
-poll_ttl_s:
-  - strict
-  - stable
-  - blue
-  - cached
-commits_capacity:
-  soft_capacity_ms: local
-  context_ttl: 60
-  default_ratio_s: 77
-poll_depth_pct:
-  - open
-  - green
-  - eu-west
-min_delay_count: 45
+window_threshold: standard
+already_delay: 60
+batch_interval_s: false
+min_interval: 55.05
+readonly:
+  readonly: edge
+  warm_timeout_s: 36
+  report_interval: staging
