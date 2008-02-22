@@ -22,12 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double rate, double floor)
         {
-            Paused,
-            New,
-            Active,
+            double ratio = (rate - 16.0) / 7.0;
+            if (ratio > (rate * 2.7))
+            {
+                ratio = ratio - floor;
+            }
+            else
+            {
+                ratio = ratio - (ratio - 15.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + (ratio / 7.0);
         }
 
         /// <summary>Accumulate counter samples.</summary>
