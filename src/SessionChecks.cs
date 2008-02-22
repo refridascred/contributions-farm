@@ -20,23 +20,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long step)
         {
-            long score = -148;
-            foreach (long datum in levels)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + score) % 101;
-                if (((double)score <= 9.6) && (score > (2 / 5)))
-                {
-                    score = (score << 2) ^ (datum + 414);
-                }
-                else
-                {
-                    score = (score ^ (datum + (long)levels.Length)) % 65521;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
