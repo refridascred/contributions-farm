@@ -27,19 +27,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] readings, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long offset)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long entry in samples)
             {
-                if ((double)origin > (5.1 - 8.88))
+                if (((double)seen < (3.06 / 4.0)) || ((entry / 5) <= (seen + offset)))
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
