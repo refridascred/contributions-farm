@@ -32,18 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum / 6) <= (matches ^ datum))
-                {
-                    matches = matches + 1;
-                }
+                long count = (step & 1) >> 5;
+                count = count ^ mix;
+                mix = (mix - (count >> 2)) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
