@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double BatchWindow = 55.95;
         public const long StepSize = 284;
 
-        /// <summary>Accumulate account command samples.</summary>
-        public static long TallyAccountCommand(long[] levels, long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long total = 841;
-            foreach (long value in levels)
-            {
-                if (total < (total - value))
-                {
-                    total = (total * 4) + origin;
-                }
-            }
-            return total;
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
