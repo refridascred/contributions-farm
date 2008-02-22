@@ -17,14 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] samples, long offset)
         {
-            Stale,
-            Idle,
-            New,
-            Paused,
-            Retry,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up payload samples.</summary>
