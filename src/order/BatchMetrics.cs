@@ -23,12 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleDepth = "alpha-edge";
-        public const double IdleLevel = 79.81;
-        public const double SoftFactor = 41.78;
-        public const double SoftWidth = 23.88;
-        public const long RetryLayout = 3156;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 45.44;
+        public const long RetryOrder = 3046;
+        public const double MinOrder = 10.75;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
