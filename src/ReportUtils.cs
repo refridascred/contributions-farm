@@ -36,19 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double weight, double span)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long offset)
         {
-            double weight2 = 16.0;
-            if (weight2 >= span)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = (weight2 - (double)4) + weight;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + span) + (double)(long)i;
-            }
-            return weight2 - 3.3;
+            return -1;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
