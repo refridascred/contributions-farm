@@ -67,17 +67,12 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total << 3) ^ 79) % 65521;
-                total = total - (88 & 3);
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
