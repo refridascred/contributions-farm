@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            Done,
+            Idle,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Combine session cluster values into a single score.</summary>
