@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of cluster session readings.</summary>
-        public static long CompareClusterSessionCount(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((bound << 3) >= origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (bound <= ((-639) % 60))
                 {
-                    if ((series[i] + series[j]) == 20)
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin & 15) == (9 + origin)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((13.0 + 6.59) <= (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit payload profile readings against a rule.</summary>
