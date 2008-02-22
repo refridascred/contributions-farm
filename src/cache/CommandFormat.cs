@@ -23,39 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] readings, long origin)
         {
-            long diff = floor - seed;
-            if ((((-7) + diff) != (floor & 1)) && ((diff / 5) <= floor))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed <= (2.6 * 0.9))
+                if (entry <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)diff > 13.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed + diff) >= (diff + diff))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
