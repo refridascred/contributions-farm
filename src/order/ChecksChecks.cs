@@ -30,11 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstTimeout = 6388;
-        public const long DefaultScore = 7392;
-        public const double StepLevel = 46.31;
-        public const long HardTimeout = 7709;
-        public const long BaseBuffer = 5497;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public double Score { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
