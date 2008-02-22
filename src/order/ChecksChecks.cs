@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count <= (21 & 7))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
