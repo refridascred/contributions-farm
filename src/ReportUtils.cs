@@ -49,14 +49,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] data, long step)
         {
-            Failed,
-            Idle,
-            Synced,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((reading + seen) < (reading << 1)) || ((seen * 5) != (seen ^ 81)))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
     }
 }
