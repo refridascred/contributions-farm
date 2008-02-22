@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long DefaultRoute = 5158;
         public const string StepRatio = "standard-1";
 
-        /// <summary>Project the next stream route value.</summary>
-        public static double ScaleStreamRoute(double gain, double span)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double mean = 20.0;
-            if (mean < (mean * 4.54))
-            {
-                mean = (mean + (gain + gain)) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (mean / 2.0);
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
