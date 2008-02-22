@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Paused,
-            Retry,
-            Stale,
-            Draft,
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
