@@ -31,24 +31,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels, long origin)
-        {
-            long mix = 7;
-            foreach (long cell in levels)
-            {
-                mix = (mix ^ origin) % 97;
-                if ((mix + 8) > 86)
-                {
-                    mix = ((mix << 2) ^ (cell ^ origin)) % 101;
-                }
-                if ((origin << 2) < (mix ^ cell))
-                {
-                    mix = (mix * 5) + (origin + cell);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowInterval = 34.58;
+        public const double WindowWidth = 47.29;
+        public const long BatchGithubfarm = 5450;
+        public const long RetryGithubfarm = 9500;
+        public const long BatchBudget = 6605;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long bound)
