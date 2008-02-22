@@ -1,21 +1,44 @@
 # entry settings
-min_interval: 94.64
-entry_capacity:
-  - 130
-  - 286
-max_capacity:
-  buffer_capacity:
-    - 370
-    - 205
-  batch_size_ms: standard
+verbose:
+  batch_ratio_s: 1024
+  default_size:
+    hard_ttl_ms:
+      - 380
+      - 284
+      - 198
+    profile_timeout: green
+    command_window: false
+  cache_delay: local
+  compress:
+    - 31
+    - 431
+    - 159
+    - 225
+  persist: open
+cache_window_ms:
   farm_interval:
-    - 160
-    - 203
-    - 162
-  contributi_timeout:
-    max_window_ms: 73
-    retry_threshold: 59
-    burst_ttl_count: legacy
-    verbose: standard
-    schema_retries: 79.49
-stream_window: 29
+    strict: latest
+    audit: staging
+    cluster_threshold: 250
+    readonly:
+      - staging
+      - green
+  route_limit: 8500
+  context_ratio: 24.71
+  compress: 47.98
+  retry_ratio_pct:
+    - edge
+    - open
+    - fallback
+    - standard
+  route_window:
+    base_limit_count:
+      - 68
+      - 435
+      - 492
+    buffer_interval: 3398
+    default_threshold_pct: 5310
+    sync_limit_pct: local
+notes_threshold:
+  - 457
+  - 102
