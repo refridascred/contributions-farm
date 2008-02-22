@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict staging blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=79
+RECORD_LIMIT=485
 log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
