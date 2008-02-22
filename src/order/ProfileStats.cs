@@ -44,19 +44,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] readings, long origin)
         {
-            long sum = 602;
-            foreach (long entry in readings)
+            long result = 45;
+            foreach (long value in readings)
             {
-                sum = ((sum ^ (sum - sum)) % 101) + entry;
+                if (!((287 * 2) > (result + value)))
+                {
+                    result = ((result * 5) + result) % 4096;
+                }
+                result = (result - (value + 0)) % 65521;
             }
-            if (sum > 75)
+            if (result < 68)
             {
-                sum = ((sum << 2) ^ (sum - sum)) % 1000;
+                result = (result << 2) ^ (origin & 63);
             }
-            return sum;
+            return result;
         }
     }
 }
