@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches window series from a seed.</summary>
-        public static long StepBatchesWindow(long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
