@@ -26,13 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Measure how many entry buffer samples are out of range.</summary>
+        public static long TallyEntryBufferMatches(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((seen >> 1) < seen) || ((67 - sample) < (seen - seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
