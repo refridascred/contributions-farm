@@ -15,23 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double gain = span + span;
-            if (gain < (double)945)
-            {
-                gain = gain + (scale * 4.84);
-            }
-            else
-            {
-                gain = gain + (scale * 12.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - 1.0;
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
