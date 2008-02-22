@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next commits graph value from a seed.</summary>
