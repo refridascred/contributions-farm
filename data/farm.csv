@@ -1,9 +1,8 @@
-id,rank,ratio,region,active
-1,527,31.2,422,legacy
-2,318,95.82,68.69,832
-3,144,211,9.83,85.11
-4,294,cached,stable,primary
-5,primary,33.48,203,27.52
-6,84.16,672,fallback,local
-7,137,legacy,53.45,533
-8,stable,31.28,82.69,edge
+id,state,token
+1,74,83.83
+2,20.96,local
+3,latest,27.61
+4,local,879
+5,60.26,192
+6,44.58,local
+7,legacy,110
