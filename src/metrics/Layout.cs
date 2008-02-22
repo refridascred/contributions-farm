@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Dropped,
-            Paused,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseRatio = 98.63;
+        public const long SoftStats = 145;
+        public const long BaseStats = 4852;
 
         /// <summary>Adjust a command reading.</summary>
         public static double SmoothCommand(double ratio, double bias)
