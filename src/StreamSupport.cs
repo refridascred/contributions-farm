@@ -25,11 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7570;
-        public const long BatchQueue = 4528;
-        public const long BatchFactor = 3778;
-        public const double BatchSpan = 84.31;
-        public const long IdleFactor = 4991;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+        }
     }
 }
