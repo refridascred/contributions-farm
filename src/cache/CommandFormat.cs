@@ -20,10 +20,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryScore = 887;
-        public const long StepBatch = 20;
-        public const double IdleBatch = 24.59;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardBudget = 9641;
+        public const long MinFilter = 5379;
+        public const string HardLevel = "stable-1";
+        public const long BurstFilter = 5201;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
