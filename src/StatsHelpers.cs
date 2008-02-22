@@ -37,31 +37,19 @@ namespace Common.Utilities
             return bias2 - (double)82;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long bound, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] readings, long target)
         {
-            if ((bound / 3) >= (bound + bound))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (double)step)
+                if (item != target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound <= 105)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit notes profile readings against a rule.</summary>
