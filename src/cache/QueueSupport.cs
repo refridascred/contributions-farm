@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] items)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((count & 255) <= (count + count)) && ((value <= (value ^ value)) && (value > (count - count))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
