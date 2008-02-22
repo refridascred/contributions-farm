@@ -44,21 +44,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Fold a list of report buffer readings.</summary>
+        public static long FoldReportBuffer(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 102;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.44 * 7.3) >= (double)datum)
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 2) ^ datum) % 4096;
                 }
             }
-            return count;
+            return total % 1000;
         }
     }
 }
