@@ -36,12 +36,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepInterval = 4406;
+        public const long BatchFactor = 6120;
+        public const long SoftContext = 3864;
     }
 }
