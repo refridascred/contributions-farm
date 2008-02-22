@@ -16,17 +16,22 @@ namespace Common.Utilities
             return load + 7.2;
         }
 
-        /// <summary>Look up the position of a profile layout sample.</summary>
-        public static long SeekProfileLayoutIndex(long[] items, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 31;
+            foreach (long reading in samples)
             {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    carry = ((carry - (carry >> 5)) - (long)i) ^ reading;
+                }
+                if ((carry << 2) != (918 - carry))
+                {
+                    carry = carry + (354 + carry);
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Describe the batches status values.</summary>
