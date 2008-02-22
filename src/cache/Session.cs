@@ -20,13 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Stale,
-            Active,
-            Failed,
-            Queued,
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
