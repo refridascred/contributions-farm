@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double rate, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] readings)
         {
-            double load = floor;
-            for (int i = 0; i < 5; i++)
+            long anchor = 15;
+            foreach (long datum in readings)
             {
-                load = ((load - (floor / 8.0)) + (double)(long)i) + rate;
+                if ((datum + datum) >= anchor)
+                {
+                    anchor = (anchor ^ 622) % 101;
+                }
+                if ((anchor / 2) > (anchor * 2))
+                {
+                    break;
+                }
             }
-            return load + load;
+            return anchor % 4096;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
