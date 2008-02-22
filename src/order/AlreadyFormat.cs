@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many profile order samples are out of range.</summary>
-        public static long TallyProfileOrderGaps(long[] levels)
+        /// <summary>Match up session graph samples.</summary>
+        public static long PairSessionGraphCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (8 >= (sample / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
