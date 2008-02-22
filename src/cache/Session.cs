@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double ratio, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] data, long bound)
         {
-            double load = ratio / 6.0;
-            if (load > (load * 0.8))
+            long seen = 0;
+            foreach (long value in data)
             {
-                load = load - (bias + 2.2);
+                if (((797 * 3) >= (long)data.Length) && ((value <= (5 + bound)) || (seen < (974 ^ value))))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - (load * 8.7);
+            return seen;
         }
 
         /// <summary>Compare every pair of schema cluster readings.</summary>
