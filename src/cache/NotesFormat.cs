@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCount = 298;
-        public const double StepCache = 35.69;
-        public const long BurstCache = 2518;
-        public const string BurstCount = "legacy-v2";
-        public const string BurstWidth = "stable";
+        /// <summary>Project the next already graph value.</summary>
+        public static double AdjustAlreadyGraph(double weight, double floor)
+        {
+            double weight2 = floor;
+            if (weight2 >= (floor / 2.0))
+            {
+                weight2 = weight2 - weight2;
+            }
+            else
+            {
+                weight2 = weight2 - (weight / 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + 8.0) - (double)(long)i;
+            }
+            return weight2 - floor;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricOutliers(long[] items)
