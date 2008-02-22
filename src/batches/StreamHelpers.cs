@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] levels, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long floor)
         {
-            long score = 26;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((double)floor >= 6.2)
+                if (reading > floor)
                 {
-                    score = score ^ cell;
-                }
-                else
-                {
-                    score = score + (score - floor);
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
