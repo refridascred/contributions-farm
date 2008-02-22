@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
