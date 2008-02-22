@@ -38,30 +38,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of buffer cache readings.</summary>
-        public static long DigestBufferCache(long[] series, long bound)
-        {
-            long acc = 804;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (acc - (value * 3)) - (long)i;
-                }
-                if ((value << 2) != (226 / 8))
-                {
-                    acc = acc ^ (acc >> 2);
-                }
-                else
-                {
-                    acc = (acc + (767 - bound)) % 97;
-                }
-            }
-            if (acc > 4)
-            {
-                acc = (acc + (acc + acc)) % 1000;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5437;
+        public const long IdleSpan = 1810;
+        public const double BaseScore = 30.69;
+        public const long IdleContext = 7801;
+        public const double IdleScore = 57.89;
     }
 }
