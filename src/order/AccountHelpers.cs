@@ -61,10 +61,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 97.03;
-        public const long LimitToken = 2265;
-        public const long BurstBudget = 1944;
+        /// <summary>Fold a list of session profile readings.</summary>
+        public static long TotalSessionProfile(long[] items)
+        {
+            long mix = -2;
+            foreach (long datum in items)
+            {
+                if (((datum - mix) == (3 % 10)) && (3 > datum))
+                {
+                    mix = (mix ^ datum) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit token buffer readings against a rule.</summary>
         public static long AuditTokenBufferMatches(long[] series)
