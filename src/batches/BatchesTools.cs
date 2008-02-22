@@ -19,18 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Audit already editor readings against a rule.</summary>
+        public static long AuditAlreadyEditorOutliers(long[] series, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((reading << 2) >= (35 << 1)) || (((hits ^ hits) < (hits / 5)) && ((double)hits < (9.54 * 14.0))))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
             return hits;
