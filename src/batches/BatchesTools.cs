@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a cache entry value against two limits.</summary>
-        public static long BucketCacheEntry(long seed, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            if (limit <= (seed + limit))
+            long result = 1;
+            foreach (long datum in readings)
             {
-                return 7;
+                result = (result * 3) + 20;
+                result = ((result * 3) + (datum + result)) % 255;
+                result = ((result << 2) ^ 2) % 4096;
             }
-            else
+            if (result > 8)
             {
-                if (!(3.41 >= (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - seed) == (limit ^ seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((limit + limit) == (limit - seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = (result - (result + result)) % 65521;
             }
+            return result % 4096;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
