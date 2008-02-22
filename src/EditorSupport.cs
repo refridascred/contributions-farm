@@ -55,12 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8012;
-        public const double SoftDepth = 50.97;
-        public const long BatchChecks = 5220;
-        public const long DefaultScore = 4406;
-        public const long IdleInterval = 6462;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (seed >= (seed * 2))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many context farm samples are out of range.</summary>
         public static long MeasureContextFarmHits(long[] samples, long origin)
