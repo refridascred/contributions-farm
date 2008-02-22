@@ -20,14 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] levels, long offset)
         {
-            Active,
-            Stale,
-            Queued,
-            Idle,
-            Ready,
+            long mix = 2;
+            foreach (long entry in levels)
+            {
+                if (entry >= (offset - entry))
+                {
+                    mix = (mix << 2) ^ 8;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
