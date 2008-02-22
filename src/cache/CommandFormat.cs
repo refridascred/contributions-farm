@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const long CacheSession = 6805;
         public const long SoftScore = 942;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] values, long target)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 3) < (target << 2))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
