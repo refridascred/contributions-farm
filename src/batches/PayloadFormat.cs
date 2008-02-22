@@ -16,10 +16,12 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 5334;
-        public const long HardMetrics = 9344;
-        public const long CacheMetrics = 7248;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Find the first stats queue entry that matches the target.</summary>
         public static long LocateStatsQueueIndex(long[] readings, long step)
