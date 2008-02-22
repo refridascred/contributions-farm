@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate profile entry readings against a bound.</summary>
-        public static bool CheckProfileEntryLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheInterval = "stable";
+        public const long MinFactor = 5003;
+        public const long IdleChannel = 778;
+        public const long MinCount = 5868;
 
         /// <summary>Project the next context value.</summary>
         public static double SmoothContext(double ratio, double floor)
