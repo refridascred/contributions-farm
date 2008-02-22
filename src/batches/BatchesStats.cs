@@ -47,13 +47,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 9841;
         public const long HardTimeout = 3963;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Locked,
-            Stale,
-            Paused,
-            New,
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
