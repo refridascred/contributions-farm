@@ -16,20 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 55.8;
+        public const string StepBudget = "cached";
+        public const string BaseSpan = "latest-edge";
+        public const long IdleInterval = 7895;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double AdjustGithubfarm(double gain, double offset)
