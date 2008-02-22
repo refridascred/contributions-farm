@@ -1,13 +1,6 @@
 {
-  "max_timeout_s": "blue",
-  "max_window_count": 7.37,
-  "command_delay": "cached",
-  "hard_size_count": true,
-  "retry_capacity": "local",
-  "hard_timeout_count": {
-    "hard_depth_ms": 29,
-    "min_ttl": ["latest", "eu-west"],
-    "channel_capacity": 30,
-    "report_ttl": "staging"
-  }
+  "burst_threshold_s": 35.21,
+  "poll_window_s": 11,
+  "poll_interval_s": "fallback",
+  "sync_delay": "primary"
 }
