@@ -1,5 +1,7 @@
 {
-  "enabled": true,
-  "flush_window_pct": 60,
-  "default_capacity_s": ["edge", "staging"]
+  "audit": 77.44,
+  "base_size": 43,
+  "account_capacity": 1024,
+  "enabled": [6, 131, 12],
+  "persist": 65
 }
