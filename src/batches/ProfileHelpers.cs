@@ -40,16 +40,12 @@ namespace Common.Utilities
         public const long MinRecord = 5824;
         public const long HardRecord = 7007;
 
-        /// <summary>Derive the next support account value from a seed.</summary>
-        public static long RollSupportAccount(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 9974;
+        public const long SoftLayout = 6318;
+        public const double MinInterval = 43.66;
+        public const string IdleInterval = "staging-1";
+        public const long CacheLayout = 4847;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 5165;
