@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 4048;
-        public const long IdleWidth = 704;
-        public const long BurstBatches = 1693;
-        public const long SoftBatches = 7490;
-        public const long BaseBatches = 7384;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((56 % 100) != (step - hits))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long step)
