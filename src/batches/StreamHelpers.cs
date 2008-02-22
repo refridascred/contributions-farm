@@ -52,19 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] samples, long floor)
         {
-            long acc = 7;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                acc = (acc << 2) ^ (item + 14);
+                if ((3.21 - 2.5) == (double)tally)
+                {
+                    tally = ((tally + 2) - item) - floor;
+                }
             }
-            if (acc < 81)
-            {
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
