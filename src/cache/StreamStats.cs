@@ -29,32 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long origin, long origin2)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long next = origin ^ origin2;
-            if (origin2 < next)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(origin2 <= 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((9.6 / 9.0) < (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
