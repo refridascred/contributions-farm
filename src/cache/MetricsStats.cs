@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const double CacheBudget = 56.78;
         public const long WindowDepth = 9360;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
