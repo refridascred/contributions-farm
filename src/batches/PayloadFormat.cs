@@ -41,19 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry stream readings against a bound.</summary>
-        public static bool VerifyEntryStreamBounds(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstTimeout = 874;
+        public const long LimitSpan = 8984;
+        public const long BatchCounter = 7365;
     }
 }
