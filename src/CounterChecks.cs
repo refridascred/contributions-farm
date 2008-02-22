@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values, long limit)
+        /// <summary>Compare every pair of token report readings.</summary>
+        public static long MatchTokenReportCount(long[] values)
         {
-            long carry = -236;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit >= (carry / 5)) && (((-8) ^ carry) == (value + carry)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry * 3) + 30;
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
