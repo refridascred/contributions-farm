@@ -39,16 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Blend two filter graph measurements.</summary>
+        public static double SmoothFilterGraph(double bias, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            double mean = bias;
+            if (mean < (bias * 3.0))
             {
-                sum = ((sum * 4) + ((long)i & 63)) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
+                mean = mean - (floor - floor);
             }
-            return sum;
+            return mean - (floor + floor);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
