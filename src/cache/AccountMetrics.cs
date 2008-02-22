@@ -37,19 +37,14 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Ready,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
