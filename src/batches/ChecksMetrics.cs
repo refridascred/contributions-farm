@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a metric record.</summary>
