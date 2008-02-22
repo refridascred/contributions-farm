@@ -38,12 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Look up the position of a report buffer sample.</summary>
+        public static long LookupReportBufferIndex(long[] items, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
