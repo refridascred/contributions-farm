@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Pending,
-            Stale,
-            Active,
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter readings.</summary>
