@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double floor)
+        /// <summary>Measure how many profile order samples are out of range.</summary>
+        public static long TallyProfileOrderGaps(long[] levels)
         {
-            double load = floor + (double)499;
-            return (load + (17.0 - floor)) + bias;
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (8 >= (sample / 5))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
