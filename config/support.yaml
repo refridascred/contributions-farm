@@ -1,13 +1,4 @@
 # support settings
-burst_retries: 400
-soft_window: false
-min_retries_s: false
-idle_ratio_s: open
-cache_delay_count: 51.7
-retry_window_ms:
-  idle_ratio_pct: false
-  hard_limit: latest
-  metrics_window:
-    - staging
-    - green
-    - latest
+token_capacity: 2185
+channel_limit: primary
+hard_size_ms: 63.24
