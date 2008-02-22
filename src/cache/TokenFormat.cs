@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a channel session value against two limits.</summary>
-        public static long SortChannelSession(long seed, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long slot = seed ^ offset;
-            if ((double)seed > (5.0 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((17.0 / 2.0) < (double)slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a record summary.</summary>
