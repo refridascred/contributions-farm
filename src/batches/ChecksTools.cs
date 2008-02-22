@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] series, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mix = 13;
-            foreach (long reading in series)
-            {
-                mix = ((mix << 2) ^ (reading & 127)) + step;
-            }
-            return mix;
+            New,
+            Dropped,
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define session limits and defaults.</summary>
