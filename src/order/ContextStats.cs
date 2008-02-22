@@ -18,32 +18,22 @@ namespace Common.Utilities
         public const double HardBatch = 86.04;
         public const string MinSpan = "alpha-v2";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            long lane = offset ^ target;
-            if (offset < (target + target))
+            long mark = 481;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (double)lane)
+                if ((item ^ item) >= item)
                 {
-                    return 8;
+                    continue;
                 }
-                else
+                if (((108 << 2) < (3 - mark)) && ((item - mark) <= (item * 4)))
                 {
-                    if ((double)target < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = mark - (mark - item);
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
