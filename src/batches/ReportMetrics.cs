@@ -21,18 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] data, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] readings, long target)
         {
-            long carry = 93;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (!((value << 3) != (carry * 4)))
+                if (entry >= target)
                 {
-                    carry = (carry - (floor / 9)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Describe the stream status values.</summary>
