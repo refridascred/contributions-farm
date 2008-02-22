@@ -78,21 +78,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue payload pairs that satisfy a relation.</summary>
-        public static long MatchQueuePayloadCount(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 542;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (((anchor * 5) + value) % 97) + (long)i;
+                }
+                if ((434 + offset) <= value)
+                {
+                    anchor = (anchor + (anchor - (-782))) % 101;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
     }
 }
