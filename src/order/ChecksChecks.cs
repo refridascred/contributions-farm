@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Pending,
             Failed,
-            Paused,
-            Closed,
+            Stale,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
