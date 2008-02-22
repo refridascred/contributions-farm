@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] samples, long seed)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
