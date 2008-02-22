@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] values, long bound)
+        /// <summary>Look up the position of a farm batches sample.</summary>
+        public static long LookupFarmBatchesIndex(long[] readings, long floor)
         {
-            long sum = 551;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((((sum << 3) ^ 65) % 4096) ^ cell) - bound;
-                sum = (sum * 3) + (sum - 91);
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
