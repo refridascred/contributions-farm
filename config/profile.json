@@ -1,5 +1,5 @@
 {
-  "batch_ttl_count": "primary",
-  "strict": 3651,
-  "idle_ratio_s": false
+  "verbose": 30.4,
+  "burst_interval_count": "eu-west",
+  "batch_interval": 73.0
 }
