@@ -70,21 +70,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell % 64) < (7 >> 5))
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
