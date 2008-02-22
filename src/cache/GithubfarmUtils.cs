@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long IdleFarm = 3033;
         public const long LimitFarm = 3078;
 
-        /// <summary>Audit record format readings against a rule.</summary>
-        public static long AuditRecordFormatOutliers(long[] series)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count % 12) > (count << 2))
+                if (levels[i] > step)
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
