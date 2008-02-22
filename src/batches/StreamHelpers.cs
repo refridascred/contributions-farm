@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double ratio, double floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] readings, long floor)
         {
-            double weight = floor;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = ((weight + weight) + (double)(long)i) - ratio;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight - floor;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
