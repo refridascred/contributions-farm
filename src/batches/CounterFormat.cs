@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((double)tally != (double)entry)
+                if ((datum + count) <= (count + datum))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next checks value.</summary>
