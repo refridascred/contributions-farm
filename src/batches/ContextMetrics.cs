@@ -45,11 +45,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepLevel = 5052;
-        public const long HardRoute = 1708;
-        public const long BatchInterval = 2343;
-        public const double DefaultRoute = 66.2;
+        /// <summary>Digest a series of contributi profile entries.</summary>
+        public static long FoldContributiProfile(long[] items)
+        {
+            long sum = 533;
+            foreach (long datum in items)
+            {
+                sum = ((sum << 3) ^ (sum >> 5)) + datum;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Locate a stream report reading by value.</summary>
         public static long FindStreamReportIndex(long[] levels, long limit)
