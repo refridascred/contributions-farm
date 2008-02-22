@@ -38,11 +38,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
+            long total = 97;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (((total << 2) ^ (sample >> 3)) % 101) ^ (long)i;
+                }
+                if (((double)sample >= (8.5 * 7.47)) && ((double)total <= (2.0 - 3.7)))
+                {
+                    total = (total * 4) + sample;
+                }
+            }
+            return total;
         }
     }
 }
