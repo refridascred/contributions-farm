@@ -7,21 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=394
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in eu-west legacy green local; do
+for item in eu-west strict; do
     log "checking ${item}"
 done
