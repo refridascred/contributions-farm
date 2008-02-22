@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] items)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (item != floor)
+                if (((count & 255) <= (count + count)) && ((value <= (value ^ value)) && (value > (count - count))))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
