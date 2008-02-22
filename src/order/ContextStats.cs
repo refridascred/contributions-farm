@@ -34,12 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double weight, double floor)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            double mean = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - (9.83 - 2.4)) + (double)(long)i) - weight;
+            }
+            return mean - (mean - 4.0);
         }
 
         /// <summary>Hold a editor record.</summary>
