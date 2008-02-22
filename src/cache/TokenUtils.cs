@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const double LimitSchema = 20.88;
         public const long WindowSchema = 2620;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] readings, long limit)
         {
-            Locked,
-            Synced,
-            Active,
-            New,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
