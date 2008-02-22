@@ -31,18 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Check that every support layout entry stays within the limit.</summary>
+        public static bool ValidateSupportLayoutLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((count >> 1) <= 28)
+                if (entry != target)
                 {
-                    count = (count + 3) - item;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a metric header.</summary>
