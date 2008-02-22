@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Draft,
+            Done,
             Ready,
-            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
