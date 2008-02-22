@@ -24,14 +24,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            Done,
-            Retry,
-            Draft,
-            Closed,
-            Failed,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (5 >= (seen & 7))
+                {
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
