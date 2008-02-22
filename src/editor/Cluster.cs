@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] items)
+        /// <summary>Accumulate profile queue samples.</summary>
+        public static long WeighProfileQueue(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 66;
+            foreach (long sample in readings)
             {
-                if ((matches + (long)items.Length) < (9 ^ 778))
-                {
-                    matches = (matches + 2) + cell;
-                }
+                score = (((score << 2) ^ (score * 4)) % 65521) - sample;
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
