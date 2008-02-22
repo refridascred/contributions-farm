@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double offset)
+        /// <summary>Count the channel token entries that pass the check.</summary>
+        public static long CountChannelTokenOutliers(long[] samples, long step)
         {
-            double rate = (double)((-979) + 962);
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                rate = (((rate - rate) + (double)(long)i) - ratio) - offset;
+                if (!(seen < (seen + seen)))
+                {
+                    seen = ((seen + 1) ^ sample) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate + (rate * 2.35);
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
