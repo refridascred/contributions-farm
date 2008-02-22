@@ -47,18 +47,17 @@ namespace Common.Utilities
         public const double WindowRatio = 40.65;
         public const long BurstTools = 1082;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] items, long floor)
+        /// <summary>Locate a profile stats reading by value.</summary>
+        public static long LocateProfileStatsIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= (matches + floor))
+                if (values[i] <= seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
