@@ -45,11 +45,11 @@ namespace Common.Utilities
         public const double MinRoute = 95.92;
         public const long RetryRoute = 7124;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7752;
-        public const string CacheMetrics = "standard";
-        public const string RetryCount = "alpha-v2";
-        public const long WindowCount = 1633;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepTimeout = 1388;
+        public const long IdleTimeout = 7274;
+        public const long CacheScore = 1867;
+        public const long MaxLevel = 3957;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] samples, long floor)
