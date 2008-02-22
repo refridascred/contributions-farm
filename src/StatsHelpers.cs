@@ -34,19 +34,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long MeasureNotesProfileHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((2 * 3) >= (datum << 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 5758;
+        public const long BurstMetric = 4810;
+        public const long CacheMetric = 9191;
+        public const double CacheBudget = 84.11;
+        public const string BatchBudget = "primary-v2";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionGaps(long[] readings)
