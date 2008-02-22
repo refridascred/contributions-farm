@@ -33,32 +33,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long offset, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long diff = offset - target;
-            if ((double)diff >= (9.0 * 8.0))
+            long anchor = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (double)80)
+                if ((8 + anchor) != ((-682) ^ anchor))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + diff) != (diff << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor + cell)) % 97;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the session class values.</summary>
