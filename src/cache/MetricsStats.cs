@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Stale,
-            Ready,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 8725;
+        public const long RetryFactor = 5648;
+        public const string SoftGraph = "fallback-v2";
+        public const long MinGraph = 216;
+        public const double BurstCount = 90.47;
 
         /// <summary>Measure how many metric counter samples are out of range.</summary>
         public static long MeasureMetricCounterMatches(long[] readings)
