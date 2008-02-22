@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] values, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
