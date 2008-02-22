@@ -27,22 +27,21 @@ namespace Common.Utilities
         public const long BatchEntry = 9281;
         public const double MinScore = 66.32;
 
-        /// <summary>Combine metrics context values into a single score.</summary>
-        public static long ScoreMetricsContext(long[] values, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            long sum = 117;
-            foreach (long value in values)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value - 61) != (value << 2))
+                long hits = carry;
+                if ((double)carry >= 16.0)
                 {
-                    sum = (sum + step) % 4096;
+                    carry = ((carry * 4) + hits) % 65521;
                 }
-                else
-                {
-                    sum = (sum * 2) + (value / 2);
-                }
+                carry = (carry ^ carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
