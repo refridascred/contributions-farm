@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const string HardReport = "alpha-edge";
         public const long BaseReport = 4017;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long offset)
         {
-            long result = 8;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value - 0) > (result * 3))
+                if (data[i] == offset)
                 {
-                    result = ((result * 3) + (value - value)) % 101;
-                }
-                else
-                {
-                    result = (result ^ 454) % 1000;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Measure how many entry buffer samples are out of range.</summary>
