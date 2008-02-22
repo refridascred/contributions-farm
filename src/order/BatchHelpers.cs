@@ -23,18 +23,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit metric context readings against a rule.</summary>
-        public static long MeasureMetricContextGaps(long[] values, long floor)
+        /// <summary>Derive the next schema cache value from a seed.</summary>
+        public static long RollSchemaCache(long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((entry >> 5) >= floor)
+                if ((limit - (long)i) >= ((long)i << 2))
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor * 4) + (limit ^ limit)) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
