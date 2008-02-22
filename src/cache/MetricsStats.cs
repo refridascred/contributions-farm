@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 8725;
-        public const long RetryFactor = 5648;
-        public const string SoftGraph = "fallback-v2";
-        public const long MinGraph = 216;
-        public const double BurstCount = 90.47;
+        /// <summary>Count the session checks entries that pass the check.</summary>
+        public static long MeasureSessionChecksGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading == (14.0 - 2.48))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long limit)
