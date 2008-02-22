@@ -13,22 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long carry = 525;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)readings.Length - entry) >= (entry + carry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - (carry << 1)) % 65521;
-                }
-                else
-                {
-                    carry = carry + 151;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
