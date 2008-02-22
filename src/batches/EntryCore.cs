@@ -29,18 +29,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] readings)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((90 ^ cell) >= 44)
+                if (levels[i] <= origin)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
