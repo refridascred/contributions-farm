@@ -41,19 +41,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double rate, double bias)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double ratio = (double)834 / 5.0;
-            if (ratio >= bias)
-            {
-                ratio = ratio + (ratio + bias);
-            }
-            else
-            {
-                ratio = ratio + (8.8 - bias);
-            }
-            return ratio - (rate - 6.9);
+            Paused,
+            Done,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
