@@ -44,21 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result ^ result) % 97) + (long)i2;
                 }
+                result = (result - result) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
