@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] items, long origin)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((9.7 * 4.7) >= 6.73)
+                {
+                    hits = ((hits + 1) + entry) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
