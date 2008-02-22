@@ -58,20 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] samples, long step)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                result = ((result << 2) ^ step) % 4096;
-                if ((double)step <= (0.2 * 8.4))
+                if (value >= step)
                 {
-                    continue;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Combine context values into a single score.</summary>
