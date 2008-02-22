@@ -65,16 +65,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor + (bound - (long)i)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
