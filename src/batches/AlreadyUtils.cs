@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
         {
-            Stale,
-            Paused,
-            Active,
-            Ready,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first session support entry that matches the target.</summary>
