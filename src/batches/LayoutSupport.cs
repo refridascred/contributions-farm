@@ -53,17 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                mix = (mix + (origin + origin)) % 101;
-                mix = ((mix * 5) + (99 - origin)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((item > (count & 127)) && (((double)count < (2.6 / 7.0)) || ((3.9 + 17.0) < (double)(long)data.Length)))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
