@@ -1,17 +1,10 @@
 {
-  "farm_threshold": ["primary", "fallback", "green", "staging"],
-  "verbose": ["eu-west", "green", "latest"],
-  "route_interval": {
-    "payload_window": 5,
-    "token_timeout": "legacy",
-    "warm_interval": {
-      "audit": 6,
-      "burst_capacity": 1699,
-      "sync_limit_count": true
-    },
-    "persist": "eu-west",
-    "min_ttl_ms": "latest"
+  "verbose": {
+    "format_limit": "staging",
+    "githubfarm_ttl": "edge",
+    "order_window": 47,
+    "cache_depth": "blue"
   },
-  "audit": true,
-  "context_ttl": "stable"
+  "idle_threshold_pct": 34,
+  "channel_delay": ["strict", "stable", "open", "cached"]
 }
