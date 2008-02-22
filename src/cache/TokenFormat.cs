@@ -20,22 +20,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double floor)
         {
-            long state = 7;
-            foreach (long item in series)
-            {
-                if (((item - 384) <= (item * 5)) || ((6.9 / 2.0) == (double)state))
-                {
-                    state = ((state << 3) ^ (state + 3)) % 97;
-                }
-            }
-            if (state > 24)
-            {
-                state = (state - state) % 97;
-            }
-            return state;
+            double gain2 = (double)(722 + 3);
+            return (gain2 + (floor * 3.2)) + gain;
         }
     }
 }
