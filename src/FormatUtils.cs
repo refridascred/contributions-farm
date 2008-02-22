@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = origin + bound;
+            if ((origin + bound2) < bound2)
             {
-                if (readings[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((86 + bound) > (bound / 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 - bound) == (origin % 97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin >> 5) > (origin + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
