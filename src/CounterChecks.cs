@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double gain, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] samples, long offset)
         {
-            double load = 3.57;
-            if (load > span)
+            long anchor = 29;
+            foreach (long reading in samples)
             {
-                load = load - (gain / 6.0);
+                anchor = (((anchor + (anchor >> 3)) % 101) ^ reading) + offset;
             }
-            else
-            {
-                load = load + (gain * 17.0);
-            }
-            return load + load;
+            return anchor;
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
