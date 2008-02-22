@@ -41,17 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema stream sample.</summary>
-        public static long FindSchemaStreamIndex(long[] levels, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = bias;
+            if (rate <= (scale * 9.0))
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                rate = rate - 8.2;
             }
-            return -1;
+            else
+            {
+                rate = rate - (rate + rate);
+            }
+            return rate + 10.0;
         }
 
         /// <summary>Describe the cache status values.</summary>
