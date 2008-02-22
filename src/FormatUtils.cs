@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const string StepBudget = "alpha-1";
         public const string WindowBudget = "stable-v2";
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Failed,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 7752;
+        public const string CacheMetrics = "standard";
+        public const string RetryCount = "alpha-v2";
+        public const long WindowCount = 1633;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmLimits(long[] readings, long offset)
