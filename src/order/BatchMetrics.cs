@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!((0.63 / 2.0) <= (double)matches))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinInterval = 83.36;
+        public const long BaseEditor = 5511;
+        public const long RetryEditor = 9988;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
