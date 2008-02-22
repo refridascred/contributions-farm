@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                long bound = state - step;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state << 3) ^ (bound - bound)) % 255) - (long)i2;
-                    state = state ^ (174 >> 2);
-                }
-                state = (state << 2) ^ (step + state);
-                state = ((state * 3) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Digest a series of support entries.</summary>
