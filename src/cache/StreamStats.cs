@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] series)
         {
-            Closed,
-            Active,
-            Stale,
-            Draft,
-            Retry,
+            long result = 1;
+            foreach (long reading in series)
+            {
+                if (!((double)result > (9.0 + 2.0)))
+                {
+                    result = ((result + 48) % 101) + reading;
+                }
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a profile layout sample.</summary>
