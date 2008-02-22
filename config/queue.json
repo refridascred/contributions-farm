@@ -1,11 +1,12 @@
 {
-  "command_ratio": "green",
-  "audit": 2,
-  "order_depth": {
-    "min_threshold_count": "legacy",
-    "idle_ratio_pct": "stable",
-    "contributi_capacity": true
+  "compress": 10,
+  "burst_timeout_count": [374, 164, 137, 321],
+  "default_ratio": "strict",
+  "flush_threshold_s": 65,
+  "tools_limit": {
+    "retry_retries_s": 3431,
+    "burst_window_ms": false,
+    "readonly": 3381
   },
-  "poll_capacity_s": true,
-  "strict": 30
+  "base_limit": 37.7
 }
