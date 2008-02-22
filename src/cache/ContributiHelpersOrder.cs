@@ -36,17 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                if ((step * 3) == (897 << 3))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
