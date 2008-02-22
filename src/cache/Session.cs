@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] levels, long seed)
-        {
-            long anchor = 196;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor ^ (seed % 10)) % 4096) ^ datum;
-                anchor = (anchor - (seed >> 5)) % 101;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 15.87;
+        public const long LimitContributi = 2444;
+        public const double WindowCount = 63.56;
+        public const long WindowScore = 6809;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
