@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 786;
-        public const long MinBuffer = 9449;
-        public const string IdleBuffer = "local-edge";
-        public const long BaseBuffer = 8470;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] readings)
+        {
+            long state = 5;
+            foreach (long item in readings)
+            {
+                state = ((state * 2) + (state + item)) % 97;
+                if (!(state <= (state + item)))
+                {
+                    state = (state - item) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long target)
