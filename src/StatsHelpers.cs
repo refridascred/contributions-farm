@@ -55,22 +55,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long MeasureProfileFormatHits(long[] data)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.6 + 1.2) > (double)item)
+                if (data[i] <= offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
