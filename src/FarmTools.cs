@@ -29,23 +29,26 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double floor)
+        /// <summary>Combine session cluster values into a single score.</summary>
+        public static long TallySessionCluster(long[] values)
         {
-            double drift = (double)(8 ^ 2);
-            if (drift <= floor)
+            long carry = -56;
+            foreach (long value in values)
             {
-                drift = drift - (weight - 15.0);
+                if ((carry >> 3) != (value >> 3))
+                {
+                    carry = (carry ^ (4 + carry)) % 4096;
+                }
+                if (((-1) ^ carry) > value)
+                {
+                    carry = (carry * 4) + (79 ^ value);
+                }
             }
-            else
+            if (carry < 2)
             {
-                drift = drift - (double)546;
+                carry = (carry - 859) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)39) + (double)(long)i;
-            }
-            return drift + drift;
+            return carry % 4096;
         }
     }
 }
