@@ -33,17 +33,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] series, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long limit, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (limit <= (limit * 4))
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (limit < (9 + limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (seed > (seed ^ seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed <= 416) && ((limit % 5) < ((-39) + limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
