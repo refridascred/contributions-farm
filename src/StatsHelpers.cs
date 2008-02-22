@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((mark + (long)i) < 8))
-                {
-                    mark = (mark - (floor * 4)) % 65521;
-                    mark = (mark * 3) + (mark - 8);
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
