@@ -1,17 +1,4 @@
 # support settings
-sync_timeout: 1024
-retry_threshold_ms:
-  batch_delay_s: 114
-  order_capacity:
-    - 437
-    - 217
-    - 461
-    - 331
-  sync_capacity_s:
-    max_capacity: 30.62
-    poll_capacity_count: open
-    verbose: false
-audit: 7
-poll_interval_count: legacy
-dry_run: primary
-burst_threshold: stable
+format_delay: 34.6
+record_retries: 1024
+support_window: standard
