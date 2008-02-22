@@ -1,13 +1,18 @@
 # support settings
-retry_threshold: fallback
-warm_depth_count:
-  poll_limit_pct: true
-  batch_size_s: 631
-  account_ttl: 250
-  base_limit_count: green
-  warm_ttl: 500
-  warm_limit_s: 30
-default_interval_s: primary
-retry_ttl: blue
-dry_run: fallback
-persist: eu-west
+batch_retries_pct: 96
+report_size: 1024
+base_delay: standard
+hard_retries_s:
+  batch_interval_s: strict
+  batch_timeout_pct: 18
+  soft_limit:
+    - blue
+    - stable
+  batch_depth_pct: 54
+  warm_capacity: standard
+  token_interval:
+    - primary
+    - primary
+    - cached
+    - latest
+enabled: strict
