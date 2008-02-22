@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items, long offset)
         {
-            New,
-            Done,
-            Paused,
-            Idle,
+            long carry = 680;
+            foreach (long entry in items)
+            {
+                carry = (((carry << 2) ^ (1 >> 2)) % 4096) + entry;
+            }
+            if (carry > 308)
+            {
+                carry = (carry + offset) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
