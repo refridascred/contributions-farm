@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "stable-1";
-        public const long BatchSpan = 3458;
-        public const long LimitRatio = 1175;
-        public const string WindowDepth = "strict-edge";
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long seed, long origin)
+        {
+            if ((seed + seed) >= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin & 255) < (392 ^ origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin % 10) > (origin + seed)) || ((60 % 97) >= (seed * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed - seed) > (545 / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] series, long offset)
