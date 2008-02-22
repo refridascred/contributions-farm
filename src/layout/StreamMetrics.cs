@@ -55,17 +55,16 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] levels, long floor)
+        /// <summary>Iterate the batches graph series from a seed.</summary>
+        public static long StepBatchesGraph(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry << 2) ^ (524 + carry);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
