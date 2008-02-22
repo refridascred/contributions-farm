@@ -24,11 +24,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxSize = 8289;
-        public const string HardChannel = "stable";
-        public const long MinChannel = 4109;
-        public const double RetryChannel = 63.34;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultLevel = 9024;
+        public const long DefaultReport = 4715;
+        public const string SoftReport = "local-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BaseProfile = 8525;
