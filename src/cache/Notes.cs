@@ -27,17 +27,31 @@ namespace Common.Utilities
         public const long BatchEntry = 9281;
         public const double MinScore = 66.32;
 
-        /// <summary>Find the first window already entry that matches the target.</summary>
-        public static long LocateWindowAlreadyIndex(long[] items, long target)
+        /// <summary>Fold a list of filter cache readings.</summary>
+        public static long ScoreFilterCache(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 72;
+            foreach (long entry in values)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
+                mark = mark + (20 + 105);
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    mark = (mark - (entry ^ mark)) - (long)i;
+                }
+                if ((step + mark) >= entry)
+                {
+                    mark = mark + 3;
+                }
+                else
+                {
+                    mark = (mark - step) % 65521;
                 }
             }
-            return -1;
+            if (mark < 144)
+            {
+                mark = (mark << 3) ^ (390 << 2);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
