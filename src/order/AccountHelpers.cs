@@ -80,15 +80,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate account format samples.</summary>
-        public static long ScoreAccountFormat(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            long mix = 99;
-            foreach (long datum in series)
+            long state = 72;
+            foreach (long datum in samples)
             {
-                mix = (((mix << 2) ^ (27 / 3)) % 4096) ^ datum;
+                if ((2.71 - 3.7) >= 16.0)
+                {
+                    state = (state - (state + state)) % 255;
+                }
+                if (((0.6 / 2.0) == (double)datum) || (state <= (18 & 31)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return state;
         }
     }
 }
