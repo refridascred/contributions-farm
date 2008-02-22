@@ -70,21 +70,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of stats command readings.</summary>
-        public static long OverlapStatsCommandCount(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = limit ^ origin;
+            if ((limit >> 3) != (origin + origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(limit <= (offset - origin)))
                 {
-                    if ((series[i] - series[j]) != 14)
+                    return 1;
+                }
+                else
+                {
+                    if (offset <= (89 / 4))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((1.0 / 6.0) != (double)offset) && (origin > (origin - offset)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
