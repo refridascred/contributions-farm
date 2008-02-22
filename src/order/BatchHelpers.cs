@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter order samples.</summary>
-        public static long ScoreCounterOrder(long[] items)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long carry = 10;
-            foreach (long cell in items)
-            {
-                carry = (((carry * 2) + carry) % 255) - cell;
-            }
-            if (carry > 72)
-            {
-                carry = carry ^ (3 % 7);
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
