@@ -1,6 +1,7 @@
 {
-  "verbose": 69.16,
-  "hard_ttl": true,
-  "already_retries": 102,
-  "hard_interval_pct": 100
+  "soft_depth": "latest",
+  "default_window_ms": 7.2,
+  "metric_threshold": true,
+  "persist": 250,
+  "farm_capacity": "legacy"
 }
