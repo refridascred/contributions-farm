@@ -36,19 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double ratio = span + (span + rate);
-            if (ratio <= 5.5)
-            {
-                ratio = ratio - (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (14.0 / 9.0)) + (double)(long)i;
-            }
-            return ratio - (rate / 6.0);
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
