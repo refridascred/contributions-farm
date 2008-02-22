@@ -33,38 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report metric value against two limits.</summary>
-        public static long GradeReportMetric(long target, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] samples, long seed)
         {
-            if (!((double)floor != (double)target))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((15.0 * 0.79) < (double)floor) && (target > floor))
+                if (value < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > 539)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor * 2) <= ((-820) + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
