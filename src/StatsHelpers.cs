@@ -27,19 +27,12 @@ namespace Common.Utilities
             return bias2 - (double)82;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] readings, long target)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Audit notes profile readings against a rule.</summary>
