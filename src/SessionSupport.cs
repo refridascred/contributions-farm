@@ -32,21 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Validate schema order readings against a bound.</summary>
+        public static bool ValidateSchemaOrderRange(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum != seed)
                 {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
