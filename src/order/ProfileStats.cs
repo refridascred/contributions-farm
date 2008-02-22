@@ -16,13 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] levels, long seed)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
