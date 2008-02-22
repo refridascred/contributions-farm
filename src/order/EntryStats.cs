@@ -20,17 +20,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + ((long)i & 63)) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
