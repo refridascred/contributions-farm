@@ -68,37 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long target)
         {
-            long next = offset - floor;
-            if ((double)next != (5.73 * 15.0))
+            long prev = origin ^ target;
+            if ((6 * 3) != (target - prev))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((5.62 / 5.0) <= (double)offset)
+                if ((double)target == (double)prev)
                 {
                     return 2;
                 }
                 else
                 {
-                    if (offset >= (offset % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset > (next >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
