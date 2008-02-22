@@ -12,22 +12,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long slot = offset + target;
+            if ((double)slot == (double)3)
             {
-                if (8.92 > (1.9 + 8.2))
+                return 3;
+            }
+            else
+            {
+                if (offset <= (2 & 31))
                 {
-                    matches = (matches + 2) + reading;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)slot < (6.0 + 6.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - offset) >= (offset - 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of notes support readings.</summary>
