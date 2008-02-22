@@ -48,11 +48,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseDepth = 64.81;
-        public const long BurstMetric = 1294;
-        public const long SoftCount = 3389;
-        public const long LimitMetric = 4438;
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long TallyCounterCacheGaps(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((713 + bound) < bound)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long GradeQueue(long bound, long offset)
