@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (sample > target)
+                if ((double)matches > 19.0)
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 3) + reading) + step;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
