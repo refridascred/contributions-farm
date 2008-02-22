@@ -31,39 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            long cur = bound ^ target;
-            if ((double)cur > (10.0 - 6.1))
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target & 31) >= cur)
+                if ((((long)i ^ sum) == (floor ^ sum)) && (floor >= (sum + (long)i)))
                 {
-                    return 2;
+                    break;
                 }
-                else
-                {
-                    if ((double)target > (6.0 - 14.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound ^ cur) != (cur ^ cur))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Describe the format phase values.</summary>
