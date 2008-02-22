@@ -45,32 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long target, long seed)
+        /// <summary>Compare every pair of tools filter readings.</summary>
+        public static long MatchToolsFilterCount(long[] values)
         {
-            long delta = target + seed;
-            if ((delta / 8) <= target)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.93 / 6.0) != (double)target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target <= 6.9)
+                    if ((values[i] ^ values[j]) < 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
