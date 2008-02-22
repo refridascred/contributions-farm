@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate order schema readings against a bound.</summary>
-        public static bool ValidateOrderSchemaLimits(long[] samples, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Active,
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
