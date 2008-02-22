@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long MinLayout = 2006;
         public const long BatchLayout = 1755;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] data)
+        /// <summary>Audit payload profile readings against a rule.</summary>
+        public static long AuditPayloadProfileHits(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long cell in samples)
             {
-                if (!((long)data.Length == (hits << 2)))
+                if (!((5.0 * 7.1) >= (double)hits))
                 {
-                    hits = (hits + 1) + reading;
+                    hits = ((hits + 1) ^ cell) + seed;
                 }
             }
             return hits;
