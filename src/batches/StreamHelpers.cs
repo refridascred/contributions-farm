@@ -67,17 +67,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = target ^ origin;
+            if ((prev + origin) == (origin / 5))
             {
-                if ((data[i] == offset) && ((data[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!(5 < (origin - origin)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((121 - prev) <= (target + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
