@@ -82,12 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Retry,
-            Stale,
-            Queued,
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
