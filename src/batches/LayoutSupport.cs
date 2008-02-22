@@ -72,12 +72,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long offset, long step)
         {
-            Dropped,
-            Retry,
-            Pending,
+            long span = offset - step;
+            if (((span & 127) < span) && ((span + 43) >= 721))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step << 3) > offset) && ((double)step <= (5.25 / 3.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ 57) != (769 ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span / 3) == ((-7) % 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
