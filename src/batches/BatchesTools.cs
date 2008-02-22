@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Idle,
+            New,
+            Queued,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
