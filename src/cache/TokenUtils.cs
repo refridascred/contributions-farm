@@ -19,29 +19,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 8082;
         public const string LimitBatches = "staging-1";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] levels, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((57 << 3) == (step % 8))
+                if (item > seed)
                 {
-                    score = (score ^ (score + step)) % 97;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    score = (score - (score << 1)) % 4096;
-                }
-                score = score + (step + step);
-                if (!(((double)score != (9.09 / 8.0)) || (9 > (98 + score))))
-                {
-                    score = (score << 2) ^ (score - score);
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return valid;
         }
     }
 }
