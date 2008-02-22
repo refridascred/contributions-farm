@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long total = 3;
-            foreach (long sample in levels)
-            {
-                if (((675 >> 1) > (total & 63)) || (667 <= sample))
-                {
-                    total = ((total << 2) ^ (24 << 2)) - target;
-                }
-            }
-            return total % 1000;
+            Active,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
