@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine farm batch values into a single score.</summary>
-        public static long FoldFarmBatch(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] values, long limit)
         {
-            long carry = 75;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((double)carry < (6.1 - 13.0))
+                if (sample < limit)
                 {
-                    carry = (carry - (carry + datum)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 34)
-            {
-                carry = (carry * 5) + (carry - 52);
-            }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Audit cluster counter readings against a rule.</summary>
