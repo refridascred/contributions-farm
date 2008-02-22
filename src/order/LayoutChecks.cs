@@ -28,18 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mark = 827;
-            foreach (long item in items)
-            {
-                if ((step >> 4) != (mark ^ step))
-                {
-                    mark = (mark - item) % 4096;
-                }
-            }
-            return mark;
+            Queued,
+            Ready,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a record record.</summary>
