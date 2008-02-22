@@ -33,9 +33,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 7592;
-        public const long DefaultBatches = 3239;
-        public const long WindowLevel = 7616;
+        /// <summary>Look up the position of a editor farm sample.</summary>
+        public static long SeekEditorFarmIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
