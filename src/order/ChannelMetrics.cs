@@ -32,17 +32,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardScore = "alpha-v2";
+        public const long StepContext = 4696;
+        public const long HardSize = 2460;
     }
 }
