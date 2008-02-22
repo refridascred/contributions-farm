@@ -13,15 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Failed,
-            New,
-            Done,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 43.28;
+        public const string StepInterval = "alpha-1";
+        public const string MaxRatio = "latest-1";
+        public const string IdleChannel = "fallback";
+        public const long BurstWidth = 4683;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double AdjustGithubfarm(double gain, double offset)
