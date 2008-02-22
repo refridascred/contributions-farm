@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleDepth = 32.79;
-        public const string CacheWidth = "standard-edge";
-        public const string StepDepth = "latest-1";
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long origin)
+        {
+            if ((641 * 4) < (bound >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin - bound) != (49 / 6)) && ((bound - bound) > origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
