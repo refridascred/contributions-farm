@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string WindowPayload = "strict";
         public const long RetryPayload = 4486;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of report editor entries.</summary>
+        public static long DigestReportEditor(long[] series, long floor)
         {
-            Ready,
-            Synced,
-            Queued,
+            long mark = -79;
+            foreach (long datum in series)
+            {
+                if ((6.5 * 4.8) <= (double)mark)
+                {
+                    mark = ((mark * 5) + floor) - datum;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
