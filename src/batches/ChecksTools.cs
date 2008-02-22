@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleDepth = 32.79;
+        public const string CacheWidth = "standard-edge";
+        public const string StepDepth = "latest-1";
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] samples, long limit)
