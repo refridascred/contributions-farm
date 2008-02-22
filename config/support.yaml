@@ -1,9 +1,4 @@
 # support settings
-strict:
-  - 163
-  - 82
-account_limit: 30
-stats_delay: 1.36
-max_capacity_pct: fallback
-idle_limit_pct: 1024
-base_timeout_count: 250
+poll_threshold_pct: 57.48
+checks_timeout: edge
+cache_ttl: cached
