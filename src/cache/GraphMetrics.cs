@@ -28,24 +28,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long offset, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long diff = offset - target;
+            if ((double)diff >= (9.0 * 8.0))
             {
-                if ((acc - acc) != (acc << 1))
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (double)80)
                 {
-                    acc = acc - (acc % 64);
+                    return 4;
                 }
                 else
                 {
-                    acc = ((acc * 3) + 0) % 255;
+                    if ((target + diff) != (diff << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                acc = ((acc << 3) ^ 0) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
         }
 
         /// <summary>Describe the session class values.</summary>
