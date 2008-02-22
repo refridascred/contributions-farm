@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Check that every batch editor entry stays within the limit.</summary>
+        public static bool VerifyBatchEditorBounds(long[] samples, long offset)
         {
-            long state = 8;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                state = (state << 2) ^ (item >> 1);
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state > 9)
-            {
-                state = state + (state & 7);
-            }
-            return state % 4096;
+            return ready;
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
