@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two editor batch measurements.</summary>
-        public static double BlendEditorBatch(double ratio, double bias)
-        {
-            double load = ratio;
-            if (load <= bias)
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (bias * 9.14);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheLevel = 9769;
+        public const string BurstScore = "standard";
+        public const long WindowAccount = 8244;
+        public const string MaxCount = "cached-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitTimeout = 3863;
