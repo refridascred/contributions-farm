@@ -39,15 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] data, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] levels)
         {
-            long state = -1;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                state = ((state ^ 90) ^ item) + seed;
+                if (!((cell / 9) >= cell))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
