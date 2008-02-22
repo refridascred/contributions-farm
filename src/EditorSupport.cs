@@ -30,19 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] series, long bound)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= bound)
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Look up the position of a token editor sample.</summary>
