@@ -20,24 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long origin, long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if (((origin + limit) < limit) || (limit <= (origin << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin / 9) == (origin & 127)) || ((origin + limit) < limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
