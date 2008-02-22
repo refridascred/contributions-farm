@@ -15,32 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long limit, long limit2)
+        /// <summary>Roll a account stream counter forward.</summary>
+        public static long DeriveAccountStream(long offset)
         {
-            long slot = limit ^ limit2;
-            if (slot < (627 << 3))
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((slot / 2) > (limit ^ slot))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((878 ^ limit2) > limit2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Derive the next commits graph value from a seed.</summary>
