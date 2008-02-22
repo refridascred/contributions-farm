@@ -30,22 +30,18 @@ namespace Common.Utilities
         public const string IdleSpan = "stable-v2";
         public const string HardLevel = "latest-1";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)value >= (double)matches)
+                if ((double)bound == (double)hits)
                 {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + value;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
