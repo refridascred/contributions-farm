@@ -17,18 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] series)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - matches) >= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
