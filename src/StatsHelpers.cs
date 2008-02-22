@@ -45,14 +45,13 @@ namespace Common.Utilities
             return rate + (double)742;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Ready,
-            Closed,
-            Retry,
-            Pending,
-            Locked,
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
