@@ -28,24 +28,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long carry = 3;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (carry >= (carry - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry + (25 + value)) % 97;
-                    carry = (carry ^ (value + carry)) % 1000;
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = (carry - (carry + value)) % 101;
             }
-            if (carry > 703)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
