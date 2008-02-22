@@ -60,15 +60,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next commits command value.</summary>
-        public static double ScaleCommitsCommand(double rate, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long step)
         {
-            double rate2 = bias + (double)7;
-            if (rate2 >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = (rate2 + bias) - rate;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + (bias + rate2);
+            return -1;
         }
     }
 }
