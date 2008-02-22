@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of order format entries.</summary>
-        public static long TallyOrderFormat(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double floor)
         {
-            long anchor = 51;
-            foreach (long entry in levels)
+            double gain = (double)(5 / 3);
+            if (gain >= (double)63)
             {
-                anchor = (((anchor * 3) + anchor) % 101) + entry;
+                gain = gain + (floor * 5.23);
             }
-            if (anchor < 32)
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor * 4) + (anchor / 3);
+                gain = (gain + ratio) + (double)(long)i;
             }
-            return anchor;
+            return gain + (double)4;
         }
 
         /// <summary>Match up payload samples.</summary>
