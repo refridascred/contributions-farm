@@ -23,17 +23,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first stats queue entry that matches the target.</summary>
-        public static long LocateStatsQueueIndex(long[] readings, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 87;
+            foreach (long entry in series)
             {
-                if (readings[i] < step)
+                if (mix >= (789 - 693))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix / 3)) ^ entry;
                 }
             }
-            return -1;
+            if (mix < 117)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
