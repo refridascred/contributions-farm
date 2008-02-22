@@ -38,10 +38,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 8222;
-        public const long SoftGithubfarm = 3668;
-        public const double CacheSize = 47.65;
-        public const string MaxGithubfarm = "latest";
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double offset)
+        {
+            double drift = (double)(2 & 15);
+            if (drift <= (offset + 2.4))
+            {
+                drift = (drift + offset) - rate;
+            }
+            return drift - (double)592;
+        }
     }
 }
