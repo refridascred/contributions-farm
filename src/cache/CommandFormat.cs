@@ -28,16 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double span)
-        {
-            double rate2 = span;
-            if (rate2 < span)
-            {
-                rate2 = rate2 - (rate + rate);
-            }
-            return rate2 - span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 9142;
+        public const string BurstEntry = "cached-edge";
+        public const double BaseEntry = 27.63;
+        public const long MinTimeout = 8662;
+        public const double IdleEntry = 19.28;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
