@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] data, long step)
         {
-            long result = 24;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result >> 4) != (value + value))
+                if (data[i] > step)
                 {
-                    result = result + (value & 63);
-                }
-                if (((value + result) < (-83)) || ((result << 2) < (result & 15)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
