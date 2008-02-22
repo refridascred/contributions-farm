@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes order value against two limits.</summary>
-        public static long BucketNotesOrder(long origin, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data, long bound)
         {
-            long span = origin ^ step;
-            if (origin >= span)
+            long carry = 1;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((19.0 / 4.0) == (double)origin) || (span <= (span - origin)))
+                if ((carry * 4) > (datum - bound))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + step) >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = (carry ^ (carry * 5)) % 4096;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
