@@ -1,8 +1,9 @@
-id,region,label
-1,76.58,411
-2,73.22,88
-3,green,staging
-4,85.75,29.93
-5,101,839
-6,22.7,52.72
-7,primary,847
+id,rank,owner
+1,145,blue
+2,cached,266
+3,44.28,172
+4,13.98,85.94
+5,55.61,216
+6,3.18,legacy
+7,fallback,8.62
+8,3.92,staging
