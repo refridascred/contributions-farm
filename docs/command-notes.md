@@ -1,14 +1,15 @@
 # Command notes
 
-Keep profile and stream names short and lowercase.
-Keep contributi and report names short and lowercase.
+When a schema fails, the profile handler retries a few times before giving up.
+Use stats settings to tune how often notes data is refreshed.
+Run the support check before changing any counter limits.
 
-A report that stays idle for too long is moved to the tools list.
-The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep counter and graph names short and lowercase.
 
 ## Guidelines
 
-- Document new stats fields
-- Review queue limits each release
-- Log every report change
-- Validate account input early
+- Validate cache input early
+- Review counter limits each release
+- Log every batch change
+- Keep payload values small
