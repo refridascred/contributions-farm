@@ -50,18 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record already entry that matches the target.</summary>
-        public static long FindRecordAlreadyIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 1.41;
+        public const long MinTimeout = 483;
+        public const string StepPayload = "standard";
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
