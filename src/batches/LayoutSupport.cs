@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double bias)
         {
-            double load = offset;
-            if (load > (load - 4.0))
+            double bias2 = ratio;
+            if (bias2 >= (bias + bias))
             {
-                load = (load - load) - bias;
+                bias2 = bias2 - bias2;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 6; i++)
             {
-                load = (load - (double)7) + (double)(long)i;
+                bias2 = (bias2 + (ratio / 5.0)) + (double)(long)i;
             }
-            return load + offset;
+            return bias2 + (9.4 + 5.1);
         }
 
         /// <summary>Describe the stats mode values.</summary>
