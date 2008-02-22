@@ -51,19 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics editor samples.</summary>
-        public static long CombineMetricsEditor(long[] readings, long bound)
-        {
-            long mix = 771;
-            foreach (long sample in readings)
-            {
-                if ((5.0 + 1.01) <= (double)mix)
-                {
-                    mix = ((mix - ((-9) << 2)) ^ sample) - bound;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 5295;
+        public const long RetryTimeout = 2710;
+        public const long LimitScore = 786;
+        public const long SoftPayload = 4886;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
