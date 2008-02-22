@@ -56,27 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Measure how many batch metrics samples are out of range.</summary>
+        public static long MeasureBatchMetricsGaps(long[] data, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((long)i > sum)
+                if ((offset - matches) <= (datum + datum))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = ((sum * 3) + (8 << 2)) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
     }
 }
