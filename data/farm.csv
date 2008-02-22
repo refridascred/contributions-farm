@@ -1,10 +1,6 @@
-id,active,label,region,level
-1,blue,982,855,824
-2,263,47.05,stable,448
-3,39.37,715,851,18.99
-4,strict,blue,cached,standard
-5,standard,68.15,9.22,881
-6,106,fallback,399,558
-7,498,eu-west,61.22,225
-8,52.42,356,919,395
-9,local,10.98,standard,local
+id,rank,token,ratio,weight
+1,80.98,local,22.08,open
+2,legacy,36.47,standard,405
+3,616,92.89,90.74,24.79
+4,legacy,39.64,eu-west,stable
+5,open,181,708,legacy
