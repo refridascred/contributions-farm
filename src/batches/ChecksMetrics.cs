@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTimeout = "stable-edge";
-        public const long MinCount = 5335;
-        public const long BurstTools = 279;
-        public const string StepTools = "cached-edge";
-        public const string HardTimeout = "local-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3514;
+        public const double SoftSupport = 94.42;
+        public const long BurstScore = 6155;
+        public const long HardScore = 8715;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
