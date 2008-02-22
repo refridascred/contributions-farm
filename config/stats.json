@@ -1,7 +1,5 @@
 {
-  "flush_depth_pct": ["latest", "strict", "stable", "fallback"],
-  "max_retries": ["standard", "legacy", "cached"],
-  "sync_depth": 19.15,
-  "metrics_size": [203, 388],
-  "enabled": 13.3
+  "persist": 59,
+  "metrics_retries": "cached",
+  "hard_delay_ms": 6266
 }
