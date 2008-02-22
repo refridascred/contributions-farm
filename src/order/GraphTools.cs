@@ -34,23 +34,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue cache entries.</summary>
-        public static long CombineQueueCache(long[] samples, long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long bound, long seed)
         {
-            long score = 32;
-            foreach (long reading in samples)
+            long next = bound + seed;
+            if (!(next >= seed))
             {
-                score = (score << 3) ^ (reading >> 4);
-                if (offset > (score & 7))
+                return 0;
+            }
+            else
+            {
+                if ((seed + bound) >= 5)
                 {
-                    score = (score - offset) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if ((next & 31) > next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score > 779)
-            {
-                score = ((score * 5) + (score ^ offset)) % 97;
-            }
-            return score;
         }
 
         /// <summary>Hold a account entry.</summary>
