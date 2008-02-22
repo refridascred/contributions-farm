@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long MinGraph = 216;
         public const double BurstCount = 90.47;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= (matches & 63))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
