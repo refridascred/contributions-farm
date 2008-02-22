@@ -31,13 +31,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            double load = (double)79 + (double)3;
+            if (load < offset)
+            {
+                load = load + (rate * 4.33);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (offset - rate)) + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
