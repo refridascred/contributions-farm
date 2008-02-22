@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MaxSpan = 3420;
         public const long MaxLevel = 452;
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double floor)
+        /// <summary>Audit cluster batches readings against a rule.</summary>
+        public static long AuditClusterBatchesOutliers(long[] data)
         {
-            double bias2 = (double)(131 + 473);
-            if (bias2 <= 7.0)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                bias2 = (bias2 - (double)2) - bias;
+                if (matches >= (matches >> 4))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (9.43 + floor)) + (double)(long)i;
-            }
-            return bias2 - (double)82;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
