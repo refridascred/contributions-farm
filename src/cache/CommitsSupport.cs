@@ -41,13 +41,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
         {
-            Locked,
-            Stale,
-            Draft,
-            Active,
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
