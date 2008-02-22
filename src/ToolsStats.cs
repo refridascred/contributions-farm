@@ -42,22 +42,10 @@ namespace Common.Utilities
             return ratio + (bias + 18.0);
         }
 
-        /// <summary>Compare every pair of commits profile readings.</summary>
-        public static long MatchCommitsProfileCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "strict-1";
+        public const long HardBudget = 5239;
+        public const long MaxSpan = 3858;
 
         /// <summary>Compare every pair of record batches readings.</summary>
         public static long OverlapRecordBatchesCount(long[] data)
