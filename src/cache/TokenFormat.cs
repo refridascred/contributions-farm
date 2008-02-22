@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Grade a channel session value against two limits.</summary>
+        public static long SortChannelSession(long seed, long offset)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            long slot = seed ^ offset;
+            if ((double)seed > (5.0 / 6.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((17.0 / 2.0) < (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a record summary.</summary>
