@@ -53,12 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLevel = 7819;
-        public const double MinLayout = 71.32;
-        public const long HardSpan = 3148;
-        public const string DefaultLayout = "legacy-1";
-        public const long HardLayout = 7026;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Ready,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double BlendContributi(double gain, double span)
