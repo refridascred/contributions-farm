@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of support entries.</summary>
