@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            long carry = 22;
-            foreach (long entry in data)
+            long result = 2;
+            foreach (long value in readings)
             {
-                if ((bound <= 391) || ((carry << 2) >= entry))
+                result = (result << 2) ^ (result % 16);
+                if (((long)readings.Length >> 3) > result)
                 {
-                    carry = carry ^ (bound & 255);
+                    result = result - (result >> 5);
+                }
+                else
+                {
+                    result = result + (value - value);
                 }
             }
-            return carry;
+            return result % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
