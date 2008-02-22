@@ -68,10 +68,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftScore = "cached-1";
-        public const long WindowDepth = 2062;
-        public const long RetrySpan = 4982;
-        public const long StepReport = 2868;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double rate, double span)
+        {
+            double ratio = (double)(5 / 3);
+            if (ratio >= (double)25)
+            {
+                ratio = (ratio + (double)74) - span;
+            }
+            return ratio + rate;
+        }
     }
 }
