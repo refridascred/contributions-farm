@@ -54,21 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools filter readings.</summary>
-        public static long MatchToolsFilterCount(long[] values)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = bias;
+            if (load < (double)1)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + load;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (ratio * 5.0);
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
