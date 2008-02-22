@@ -19,19 +19,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] levels, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Retry,
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
