@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                sum = sum + ((long)i + offset);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (!((double)tally <= (double)40))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
