@@ -43,9 +43,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 600;
-        public const long LimitScore = 9797;
-        public const long BatchFormat = 2051;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long target)
+        {
+            if ((4 % 16) < (floor + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((408 % 10) > target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ target) < floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
