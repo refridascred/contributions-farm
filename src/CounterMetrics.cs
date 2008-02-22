@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] samples, long step)
+        /// <summary>Project the next metric payload value.</summary>
+        public static double BlendMetricPayload(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double scale = floor;
+            if (scale < (bias + scale))
             {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + floor;
             }
-            return ready;
+            else
+            {
+                scale = scale + floor;
+            }
+            return scale - 6.47;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
