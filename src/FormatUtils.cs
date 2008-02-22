@@ -63,39 +63,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long floor)
-        {
-            if (floor <= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 1) >= (463 + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)floor == (1.7 - 1.03)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(26 >= (bound << 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 3903;
+        public const long BaseCount = 7404;
+        public const long RetryFarm = 5257;
+        public const long LimitScore = 4309;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long BucketAccount(long step, long bound)
