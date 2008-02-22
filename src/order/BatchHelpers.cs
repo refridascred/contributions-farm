@@ -24,18 +24,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] series, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((count + (long)series.Length) == (bound + bound))
+                if (value != offset)
                 {
-                    count = (count + 2) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
