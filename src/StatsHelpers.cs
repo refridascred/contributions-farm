@@ -81,11 +81,22 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long MeasureProfileFormatHits(long[] data)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((3.6 + 1.2) > (double)item)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
