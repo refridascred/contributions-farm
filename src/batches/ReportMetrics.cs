@@ -38,18 +38,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] values)
+        /// <summary>Fold a list of buffer stats readings.</summary>
+        public static long TallyBufferStats(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 87;
+            foreach (long datum in data)
             {
-                if (!((matches - sample) == (matches % 3)) && ((matches * 2) < (169 >> 3)))
+                if (!((score - score) < score))
                 {
-                    matches = matches + 3;
+                    score = ((score << 2) ^ 8) % 4096;
+                }
+                if ((score + 5) >= (datum + datum))
+                {
+                    score = score - datum;
                 }
             }
-            return matches;
+            if (score < 70)
+            {
+                score = (score - score) % 65521;
+            }
+            return score % 97;
         }
     }
 }
