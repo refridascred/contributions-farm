@@ -13,10 +13,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 1058;
-        public const string IdleSpan = "stable-v2";
-        public const string HardLevel = "latest-1";
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double weight, double span)
+        {
+            double bias = weight * 5.02;
+            if (bias >= (double)687)
+            {
+                bias = (bias + weight) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + 2.2) - (double)(long)i;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double CacheCount = 78.87;
