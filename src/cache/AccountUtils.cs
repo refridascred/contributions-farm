@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long IdleChannel = 778;
         public const long MinCount = 5868;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            Idle,
-            Failed,
-            Queued,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
