@@ -58,19 +58,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long offset)
+        /// <summary>Derive the next route batches value from a seed.</summary>
+        public static long RollRouteBatches(long floor)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry >= offset)
+                if (!((carry / 7) > floor))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry - (carry * 4)) % 101;
                 }
+                if ((carry >> 1) < ((long)i * 3))
+                {
+                    carry = (carry + (floor >> 3)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
     }
 }
