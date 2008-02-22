@@ -21,12 +21,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first commits metric entry that matches the target.</summary>
-        public static long LocateCommitsMetricIndex(long[] levels, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if (series[i] > target)
                 {
                     return (long)i;
                 }
