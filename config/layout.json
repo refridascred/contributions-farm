@@ -1,6 +1,9 @@
 {
-  "hard_retries_count": "cached",
-  "order_limit": 4700,
-  "soft_depth_ms": 95,
-  "soft_threshold_ms": 91.98
+  "retry_ttl_pct": "strict",
+  "token_size": ["primary", "edge", "blue", "cached"],
+  "soft_retries": {
+    "flush_capacity": ["latest", "fallback", "fallback"],
+    "counter_retries": 82.29,
+    "graph_window": false
+  }
 }
