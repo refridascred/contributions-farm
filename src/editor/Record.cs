@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long RetryProfile = 9620;
         public const double HardLevel = 40.13;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long score = 575;
-            foreach (long datum in series)
-            {
-                score = score + (datum - datum);
-                score = (score ^ (score - 0)) % 65521;
-                if (!((8.68 + 3.25) == (double)datum))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a counter schema reading by value.</summary>
