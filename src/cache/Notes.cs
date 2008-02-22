@@ -22,23 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally >= (target + tally))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinWidth = "open-edge";
+        public const long BatchEntry = 9281;
+        public const double MinScore = 66.32;
 
         /// <summary>Match up report cluster samples.</summary>
         public static long CompareReportClusterCount(long[] levels)
