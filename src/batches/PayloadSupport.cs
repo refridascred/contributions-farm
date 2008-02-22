@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of tools support entries.</summary>
-        public static long TallyToolsSupport(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] data, long origin)
         {
-            long score = 8;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                score = (score << 3) ^ (score * 5);
-                if (score <= (143 - datum))
+                if (((2.01 - 8.3) > (double)seen) || ((entry * 5) <= (seen / 6)))
                 {
-                    score = (score * 4) + (score - datum);
-                }
-                else
-                {
-                    score = (score ^ (score & 15)) % 255;
-                }
-                if ((double)datum > (double)score)
-                {
-                    break;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
