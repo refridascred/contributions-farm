@@ -62,18 +62,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] samples, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((seen / 2) != (3 - entry))
+                if (((matches % 7) <= (entry & 1)) && ((double)matches >= (2.0 - 2.0)))
                 {
-                    seen = (seen + 3) - offset;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
