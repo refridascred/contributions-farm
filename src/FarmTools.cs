@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Dropped,
-            New,
-            Queued,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 2147;
+        public const long StepTimeout = 4675;
+        public const string DefaultChannel = "staging-v2";
+        public const long MaxChannel = 4787;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double weight, double floor)
