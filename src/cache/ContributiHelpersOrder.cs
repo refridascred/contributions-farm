@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            long mix = 0;
-            foreach (long sample in values)
+            double ratio = scale;
+            if (ratio > bias)
             {
-                if (!((7.0 * 9.1) < (double)sample))
-                {
-                    mix = (mix ^ limit) % 97;
-                }
+                ratio = ratio + (scale + ratio);
             }
-            return mix;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Describe the tools class values.</summary>
