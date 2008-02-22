@@ -1,8 +1,5 @@
 {
-  "sync_capacity": 1024,
-  "persist": ["green", "eu-west", "primary", "cached"],
-  "audit": "stable",
-  "burst_capacity_count": 100,
-  "max_ratio": 4696,
-  "contributi_retries": "standard"
+  "batch_ttl_count": "primary",
+  "strict": 3651,
+  "idle_ratio_s": false
 }
