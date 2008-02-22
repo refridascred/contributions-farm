@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((2.9 + 14.0) != (double)step)
-                {
-                    result = result ^ (result << 3);
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Accumulate support samples.</summary>
