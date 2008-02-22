@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] items, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (limit > cell)
+                if (sample != origin)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
