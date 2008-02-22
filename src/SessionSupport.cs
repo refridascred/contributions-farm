@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = floor - offset;
+            if (!((floor << 1) >= (bound * 3)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset ^ bound) >= (offset * 4))
                 {
-                    if ((readings[i] - readings[j]) == 4)
+                    return 7;
+                }
+                else
+                {
+                    if ((bound * 3) > (floor * 2))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
