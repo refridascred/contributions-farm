@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry schema readings against a bound.</summary>
-        public static bool GuardEntrySchemaLimits(long[] readings, long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            double bias2 = (double)(131 + 473);
+            if (bias2 <= 7.0)
             {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = (bias2 - (double)2) - bias;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (9.43 + floor)) + (double)(long)i;
+            }
+            return bias2 - (double)82;
         }
 
         /// <summary>Adjust a report cluster reading.</summary>
