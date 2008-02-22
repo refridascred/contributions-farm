@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((9.7 * 4.7) >= 6.73)
-                {
-                    hits = ((hits + 1) + entry) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "legacy-edge";
+        public const long BatchCount = 2729;
+        public const long MaxSession = 7741;
+        public const long CacheSession = 3708;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] samples)
