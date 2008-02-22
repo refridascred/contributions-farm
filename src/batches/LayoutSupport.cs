@@ -31,18 +31,24 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if (step <= (offset ^ step))
             {
-                if (((value / 3) > matches) || (0.64 <= (double)(long)series.Length))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset >= (double)step)
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
