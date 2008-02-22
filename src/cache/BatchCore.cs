@@ -41,9 +41,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinLevel = 6888;
-        public const double BatchWindow = 76.41;
-        public const long BatchInterval = 3620;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long seed)
+        {
+            long cur = offset + seed;
+            if (((-4) << 3) >= (97 - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((cur & 7) >= 59)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1 * 2) < offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)cur == (double)1)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
