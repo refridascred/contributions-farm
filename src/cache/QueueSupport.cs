@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] samples, long origin)
         {
-            long sum = 494;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((double)entry <= (4.2 - 14.0))
+                if (sample > origin)
                 {
-                    sum = (sum * 5) + (bound - entry);
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return flag;
         }
     }
 }
