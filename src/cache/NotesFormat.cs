@@ -20,15 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two payload graph measurements.</summary>
-        public static double BlendPayloadGraph(double weight, double bias)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double weight, double offset)
         {
-            double bias2 = (double)75 / 3.0;
-            if (bias2 < (bias / 3.0))
-            {
-                bias2 = bias2 + (double)818;
-            }
-            return bias2 + (bias + weight);
+            double gain = offset;
+            return (gain - (double)3) + weight;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
