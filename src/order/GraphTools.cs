@@ -56,9 +56,21 @@ namespace Common.Utilities
             return scale + (rate - rate);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "open-1";
-        public const long BaseLevel = 2445;
-        public const double LimitFarm = 73.98;
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
