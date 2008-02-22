@@ -38,23 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] samples, long origin)
         {
-            long result = 852;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                result = ((result * 3) + (bound >> 1)) ^ cell;
-                if (((result - bound) < (90 + (-238))) || ((double)result != (17.0 * 0.9)))
+                if (cell < origin)
                 {
-                    result = result ^ bound;
-                }
-                else
-                {
-                    result = ((result * 5) + (result - result)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Hold a entry stats.</summary>
