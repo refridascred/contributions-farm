@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long IdleCount = 8086;
         public const long BaseRatio = 5215;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            Retry,
-            Draft,
-            Locked,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of record readings.</summary>
