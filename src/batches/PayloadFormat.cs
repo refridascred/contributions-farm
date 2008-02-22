@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first context payload entry that matches the target.</summary>
-        public static long LocateContextPayloadIndex(long[] series, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                if ((matches + offset) < (offset - 30))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
