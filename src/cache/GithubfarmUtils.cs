@@ -21,12 +21,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
