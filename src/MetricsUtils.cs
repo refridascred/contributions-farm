@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples, long step)
         {
-            long slot = target - offset;
-            if (((slot + offset) < (slot << 1)) && (offset > (7 - slot)))
+            long sum = 88;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)slot > 17.0)
+                sum = ((sum * 3) + (38 & 63)) % 97;
+                if ((((-6) + step) == (step + sum)) && ((item & 1) > (11 << 1)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Combine checks account values into a single score.</summary>
