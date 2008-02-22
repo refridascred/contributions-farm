@@ -19,11 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 597;
-        public const string SoftSpan = "staging-1";
-        public const long LimitRatio = 9061;
-        public const long RetryCache = 7565;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = anchor - ((-5) >> 5);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
