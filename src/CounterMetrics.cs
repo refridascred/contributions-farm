@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long step, long seed)
+        /// <summary>Digest a series of batch graph entries.</summary>
+        public static long DigestBatchGraph(long[] values, long target)
         {
-            if (((step * 3) != (step + 7)) || (121 <= seed))
+            long state = 20;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed >> 1) > 0)
+                if (item <= (item - (long)values.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state + state) - target;
                 }
             }
+            if (state > 25)
+            {
+                state = state ^ (731 ^ 6);
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
