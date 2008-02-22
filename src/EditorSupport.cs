@@ -63,13 +63,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count schema entry pairs that satisfy a relation.</summary>
+        public static long CompareSchemaEntryCount(long[] data)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
