@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Locked,
-            Synced,
-            Queued,
-            Draft,
+            Closed,
+            Retry,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
