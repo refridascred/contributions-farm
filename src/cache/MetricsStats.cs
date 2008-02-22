@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double span)
         {
-            double mean = (double)(1 / 2);
-            for (int i = 0; i < 2; i++)
+            double ratio = span + (span + rate);
+            if (ratio <= 5.5)
             {
-                mean = ((mean - gain) - (double)(long)i) + span;
+                ratio = ratio - (double)1;
             }
-            return mean + (5.0 + gain);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (14.0 / 9.0)) + (double)(long)i;
+            }
+            return ratio - (rate / 6.0);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
