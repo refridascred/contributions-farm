@@ -34,19 +34,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate batch session readings against a bound.</summary>
-        public static bool ValidateBatchSessionLimits(long[] samples, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long acc = 5;
+            foreach (long datum in series)
             {
-                if (cell != seed)
+                if (((5.0 - 4.07) == (double)step) || ((step + acc) <= ((long)series.Length - step)))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 3) + acc) ^ datum;
                 }
             }
-            return ready;
+            return acc;
         }
     }
 }
