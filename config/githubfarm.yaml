@@ -1,6 +1,6 @@
 # githubfarm settings
-verbose: 5850
-graph_ratio: 85.35
-counter_interval: 50
-commits_limit: eu-west
-hard_delay_count: true
+persist: true
+audit: true
+batch_window_pct: 4445
+default_timeout: 81
+burst_retries_s: true
