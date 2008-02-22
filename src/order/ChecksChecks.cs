@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinSize = "fallback-edge";
-        public const long SoftSpan = 2524;
-        public const long RetrySpan = 9828;
-        public const string IdleTimeout = "stable";
-        public const long MinBuffer = 5323;
+        /// <summary>Check that every layout already entry stays within the limit.</summary>
+        public static bool CheckLayoutAlreadyLimits(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] readings)
