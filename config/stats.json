@@ -1,16 +1,5 @@
 {
-  "soft_timeout_pct": 100,
-  "audit": 3395,
-  "warm_capacity": true,
-  "burst_size": {
-    "layout_timeout": {
-      "hard_ttl": 22,
-      "dry_run": true,
-      "base_ratio_count": 9284
-    },
-    "retry_capacity_s": "open",
-    "verbose": 67.03,
-    "warm_delay_count": true,
-    "compress": [406, 347]
-  }
+  "window_ttl": true,
+  "buffer_depth": ["latest", "local"],
+  "default_capacity_count": 60
 }
