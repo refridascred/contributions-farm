@@ -19,19 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already editor readings against a rule.</summary>
-        public static long AuditAlreadyEditorOutliers(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((reading << 2) >= (35 << 1)) || (((hits ^ hits) < (hits / 5)) && ((double)hits < (9.54 * 14.0))))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6468;
+        public const long StepBuffer = 7637;
+        public const double BatchLevel = 12.78;
+        public const long LimitLevel = 619;
+        public const long StepCount = 9965;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long target)
