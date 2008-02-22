@@ -33,11 +33,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((double)value <= 6.9) && ((double)tally == (6.0 + 5.11)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
