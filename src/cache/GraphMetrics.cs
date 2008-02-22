@@ -58,19 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] samples, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Combine context values into a single score.</summary>
