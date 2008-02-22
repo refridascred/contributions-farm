@@ -75,11 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double span)
         {
-            double weight = offset;
-            return (weight - offset) + bias;
+            double rate = (weight - weight) + (span / 7.0);
+            if (rate <= weight)
+            {
+                rate = rate - (weight + weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + (weight * 1.0);
         }
     }
 }
