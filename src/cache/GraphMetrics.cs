@@ -53,17 +53,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -6;
+            foreach (long datum in data)
             {
-                if (levels[i] <= floor)
+                state = (state << 2) ^ (state * 4);
+                if (state < (datum << 1))
                 {
-                    return (long)i;
+                    state = (state * 2) + (bound - state);
+                }
+                else
+                {
+                    state = ((state * 4) + (state & 255)) % 4096;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
