@@ -32,38 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            if ((floor + floor) >= limit)
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (790 > (limit / 8))
+                if (seen > (item % 8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit & 31) < (46 % 97))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit >= (810 + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
