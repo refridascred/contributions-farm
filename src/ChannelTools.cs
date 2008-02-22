@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state * 4) + (step % 12);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
