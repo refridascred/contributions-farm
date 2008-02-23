@@ -41,32 +41,19 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long target, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            long prev = target ^ offset;
-            if ((target / 4) >= (prev % 16))
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - 98) <= (prev / 5))
+                if (((long)i * 2) >= sum)
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    if ((prev < (offset + offset)) || ((target / 8) != (7 * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
+            return sum;
         }
     }
 }
