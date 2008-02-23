@@ -51,18 +51,18 @@ namespace Common.Utilities
         public const long WindowInterval = 9446;
         public const long BurstDepth = 3155;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] items, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] items, long origin)
         {
-            long total = 97;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((7 + reading) <= (reading - reading))
+                if (((-739) >> 4) != (origin % 60))
                 {
-                    total = (total ^ (limit ^ limit)) % 65521;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
