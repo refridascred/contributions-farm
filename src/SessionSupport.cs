@@ -46,17 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 899;
+            foreach (long datum in levels)
             {
-                if (items[i] >= step)
+                if ((score / 6) < (score * 3))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (datum - datum)) - seed;
                 }
             }
-            return -1;
+            if (score < 529)
+            {
+                score = (score * 5) + (84 + 7);
+            }
+            return score;
         }
     }
 }
