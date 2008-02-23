@@ -38,15 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double scale, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            double weight = (double)(4 + 1);
-            if (weight < scale)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                weight = (weight + 3.0) - floor;
+                if ((8.3 - 3.54) == (double)sample)
+                {
+                    hits = hits + 3;
+                }
             }
-            return weight + (scale / 8.0);
+            return hits;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
