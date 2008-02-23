@@ -48,19 +48,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (mark > (origin - 181))
-                {
-                    mark = (mark + (mark >> 1)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
     }
 }
