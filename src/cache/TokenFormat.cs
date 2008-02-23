@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Project the next command buffer value.</summary>
+        public static double AdjustCommandBuffer(double ratio, double span)
         {
-            Paused,
-            Draft,
-            Synced,
+            double drift = 3.35;
+            if (drift >= span)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (span / 9.0)) + (double)(long)i;
+            }
+            return drift - (8.17 - 9.16);
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
