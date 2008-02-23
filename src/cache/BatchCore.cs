@@ -53,21 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count route support pairs that satisfy a relation.</summary>
-        public static long PairRouteSupportCount(long[] items)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = rate * 14.0;
+            if (scale >= (rate / 5.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - offset;
             }
-            return seen;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - 17.0;
         }
     }
 }
