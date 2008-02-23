@@ -25,12 +25,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] data, long floor)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
