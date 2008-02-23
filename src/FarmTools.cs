@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum * 3) != (9 - datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 98.57;
+        public const long HardScore = 1635;
+        public const long BatchWidth = 3532;
+        public const long BatchRatio = 6684;
+        public const long HardFactor = 7034;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
