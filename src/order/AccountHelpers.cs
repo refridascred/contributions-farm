@@ -76,23 +76,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool CheckLayoutContributiBounds(long[] items, long offset)
         {
-            double weight = gain;
-            if (weight < (weight * 6.0))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                weight = (weight + 4.3) - span;
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (16.0 - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight / 5.0)) - (double)(long)i;
-            }
-            return weight - (double)4;
+            return stale;
         }
     }
 }
