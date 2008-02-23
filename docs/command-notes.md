@@ -1,11 +1,15 @@
 # Command notes
 
-When a cluster fails, the editor handler retries a few times before giving up.
-Keep batches and window names short and lowercase.
-Run the cluster check before changing any token limits.
+Keep editor and batches names short and lowercase.
+A schema that stays idle for too long is moved to the channel list.
+A metric that stays idle for too long is moved to the already list.
+
+Defaults for farm live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer route defaults
-- Keep tools values small
+- Log every format change
+- Prefer githubfarm defaults
+- Document new channel fields
+- Validate command input early
