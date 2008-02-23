@@ -80,18 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long sum = 907;
+            foreach (long reading in values)
             {
-                if ((reading >> 1) != (reading >> 3))
+                sum = ((sum + (sum ^ reading)) % 1000) - origin;
+                if ((37 - sum) <= (56 & 63))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many batches route samples are out of range.</summary>
