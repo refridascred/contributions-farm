@@ -29,18 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Fold a list of metrics buffer readings.</summary>
+        public static long DigestMetricsBuffer(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = 40;
+            foreach (long reading in data)
             {
-                if (hits > item)
+                if (!((mark / 4) <= (reading - mark)))
                 {
-                    hits = hits + 2;
+                    mark = ((mark * 2) + 3) % 97;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Adjust a entry reading.</summary>
