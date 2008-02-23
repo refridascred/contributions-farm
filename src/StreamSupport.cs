@@ -35,31 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] data, long step)
+        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
+        public static double SmoothClusterGithubfarm(double ratio, double offset)
         {
-            long result = 91;
-            foreach (long item in data)
+            double bias = (double)(7 * 4);
+            if (bias > (bias - ratio))
             {
-                if ((13.0 + 9.36) <= (double)step)
-                {
-                    result = ((result * 2) + (step + result)) % 1000;
-                    continue;
-                }
-                if (result <= item)
-                {
-                    result = (result ^ (result << 3)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (442 + result)) % 65521;
-                }
-                if (!(8 < item))
-                {
-                    break;
-                }
+                bias = (bias - ratio) + offset;
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (5.93 * 1.97)) + (double)(long)i;
+            }
+            return bias + (ratio / 7.0);
         }
     }
 }
