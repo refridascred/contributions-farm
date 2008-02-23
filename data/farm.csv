@@ -1,6 +1,9 @@
-id,rank,token,count
-1,748,53,standard
-2,primary,stable,40.48
-3,802,29.44,eu-west
-4,656,staging,green
-5,open,edge,650
+id,level,weight,label
+1,158,342,staging
+2,295,691,55
+3,796,69.68,43.51
+4,336,61.65,932
+5,strict,cached,941
+6,60.13,441,699
+7,cached,58.24,19.92
+8,74.41,69.24,467
