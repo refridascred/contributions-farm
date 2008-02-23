@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count - offset) != (offset * 2))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "alpha-1";
+        public const double DefaultProfile = 73.69;
+        public const double RetryInterval = 10.93;
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] data)
