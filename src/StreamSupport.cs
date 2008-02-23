@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] data, long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Active,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
