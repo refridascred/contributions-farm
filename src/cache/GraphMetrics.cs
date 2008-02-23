@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const double WindowInterval = 82.91;
         public const string MaxLevel = "alpha";
 
-        /// <summary>Iterate the context order series from a seed.</summary>
-        public static long DeriveContextOrder(long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry + (carry + limit)) % 101) ^ (long)i2;
-                }
-                carry = (carry << 3) ^ (limit * 4);
-                if ((limit - (long)i) >= (962 / 2))
-                {
-                    carry = carry ^ (limit ^ limit);
-                    carry = (carry ^ (limit >> 2)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            New,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
