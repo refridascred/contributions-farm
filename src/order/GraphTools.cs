@@ -57,19 +57,19 @@ namespace Common.Utilities
             return (bias - floor) + weight;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double bias, double span)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            double gain = (double)(58 >> 2);
+            if (gain > 5.0)
             {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - 19.0) + bias;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + 9.61) + (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
