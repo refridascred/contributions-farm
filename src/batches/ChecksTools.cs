@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (mark > (origin - 181))
                 {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (mark >> 1)) % 1000;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
