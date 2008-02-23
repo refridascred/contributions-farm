@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of payload support entries.</summary>
-        public static long FoldPayloadSupport(long[] levels, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            long score = 129;
-            foreach (long datum in levels)
+            long carry = 5;
+            foreach (long reading in readings)
             {
-                if ((origin >> 3) != (origin + score))
+                for (int i = 0; i < 10; i++)
                 {
-                    score = (score << 2) ^ (datum - datum);
+                    carry = ((carry * 5) + (carry * 5)) % 255;
+                    carry = (carry << 3) ^ (long)i;
                 }
-                else
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    score = ((score * 3) + score) % 255;
+                    carry = (carry + carry) - (long)i2;
+                }
+                if (((carry & 63) > 48) || ((95 >> 4) < (reading + 930)))
+                {
+                    carry = (carry ^ reading) % 101;
                 }
             }
-            return score;
+            if (carry < (-3))
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the entry mode values.</summary>
