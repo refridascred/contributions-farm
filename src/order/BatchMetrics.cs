@@ -54,18 +54,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long mark = 1;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 - 8.8) > (double)value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ (value % 64);
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
