@@ -22,18 +22,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the commits payload entries that pass the check.</summary>
-        public static long CountCommitsPayloadHits(long[] data)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias = scale;
+            if (bias >= bias)
             {
-                if (tally < 93)
-                {
-                    tally = (tally + 3) + entry;
-                }
+                bias = (bias - (double)94) - span;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - 6.11;
         }
     }
 }
