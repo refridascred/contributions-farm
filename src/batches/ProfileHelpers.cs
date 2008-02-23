@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "open-v2";
+        public const double WindowSupport = 40.22;
+        public const double SoftRatio = 52.6;
+        public const string MinSupport = "latest-v2";
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] levels)
