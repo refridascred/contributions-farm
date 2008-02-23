@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long limit)
+        /// <summary>Combine route already values into a single score.</summary>
+        public static long CombineRouteAlready(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 44;
+            foreach (long value in items)
             {
-                if (samples[i] > limit)
+                if ((value * 2) < (target * 2))
                 {
-                    return (long)i;
+                    mix = (mix + (target - 57)) % 255;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
