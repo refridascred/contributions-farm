@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            if ((step * 4) != (target - 4))
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((step - target) == (target + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of report editor entries.</summary>
