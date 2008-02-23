@@ -84,19 +84,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every context report entry stays within the limit.</summary>
-        public static bool VerifyContextReportLimits(long[] readings, long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            New,
+            Dropped,
+            Pending,
+            Idle,
         }
     }
 }
