@@ -27,32 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long step)
-        {
-            long edge = offset + step;
-            if ((offset * 3) > (498 + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step % 64) >= edge)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge + step) < (edge & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardTimeout = 2795;
+        public const string BurstFarm = "cached-edge";
+        public const long DefaultScore = 958;
+        public const long HardScore = 3101;
+        public const long WindowDepth = 2690;
     }
 }
