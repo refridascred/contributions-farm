@@ -46,14 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double bias)
         {
-            Done,
-            Synced,
-            Dropped,
-            Draft,
-            Queued,
+            double drift = scale;
+            return drift + (6.69 + bias);
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
