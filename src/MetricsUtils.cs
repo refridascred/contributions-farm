@@ -41,19 +41,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double span)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long origin, long bound)
         {
-            double weight = gain;
-            if (weight >= (span * 8.0))
+            if ((bound * 2) < (17 ^ bound))
             {
-                weight = weight - weight;
+                return 1;
             }
             else
             {
-                weight = weight + span;
+                if (((7 % 5) < (bound + origin)) || (7 <= (bound << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return weight - (weight + gain);
         }
 
         /// <summary>Grade a already value against two limits.</summary>
