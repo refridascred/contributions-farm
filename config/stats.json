@@ -1,7 +1,5 @@
 {
-  "counter_timeout": ["local", "green"],
-  "poll_ttl": 30,
-  "strict": 100,
-  "cache_retries_ms": false,
-  "command_ratio": ["legacy", "primary", "eu-west", "staging"]
+  "already_ttl": 51.47,
+  "cache_threshold_count": ["stable", "green"],
+  "stats_timeout": 66.3
 }
