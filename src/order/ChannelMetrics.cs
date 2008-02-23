@@ -47,19 +47,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] readings, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
                 {
-                    mix = (((mix << 2) ^ (mix / 7)) % 101) + (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
