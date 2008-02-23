@@ -31,19 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double ratio, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] readings, long offset)
         {
-            double drift = (ratio + bias) + (bias * 6.1);
-            if (drift < (double)249)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                drift = drift + (5.8 / 9.0);
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)10;
-            }
-            return drift + (drift / 5.0);
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
