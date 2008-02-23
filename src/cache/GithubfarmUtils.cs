@@ -20,24 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] readings)
         {
-            if ((target - target) >= (40 + (-412)))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (target < (offset * 2))
+                if (matches > (reading % 24))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count cluster queue pairs that satisfy a relation.</summary>
