@@ -37,18 +37,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] series)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((((double)884 == (double)matches) && ((14 - 45) < (matches - item))) || ((matches << 3) >= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the checks level values.</summary>
