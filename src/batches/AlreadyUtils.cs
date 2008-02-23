@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double ratio, double floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long seed)
         {
-            double mean = (double)(86 + (-781));
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mean = ((mean + (floor + floor)) - (double)(long)i) - ratio;
+                if ((hits + hits) < seed)
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return mean - (5.17 * 0.6);
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
