@@ -94,12 +94,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepScore = 19.17;
-        public const long BurstTimeout = 5631;
-        public const double RetryDepth = 56.1;
-        public const string HardMetric = "fallback";
-        public const double RetrySpan = 69.34;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Failed,
+            Paused,
+            Locked,
+            Active,
+            Retry,
+        }
 
         /// <summary>Accumulate checks window samples.</summary>
         public static long WeighChecksWindow(long[] samples, long target)
