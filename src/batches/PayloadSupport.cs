@@ -19,11 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            long carry = 39;
+            foreach (long entry in items)
+            {
+                carry = (carry ^ carry) ^ entry;
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
