@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long target, long step)
         {
-            Retry,
-            Dropped,
-            Synced,
-            New,
+            long delta = target ^ step;
+            if ((double)step == (double)delta)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)target == (9.32 * 4.89)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a profile entry.</summary>
