@@ -1,8 +1,14 @@
 {
-  "hard_depth": 60,
-  "hard_ratio_pct": true,
-  "burst_interval_pct": 2953,
-  "max_depth_count": 500,
-  "min_limit": 10.71,
-  "strict": 56.79
+  "dry_run": false,
+  "burst_window_count": 60,
+  "batches_ratio": {
+    "idle_size": 6.44,
+    "window_limit": 4944,
+    "order_depth": {
+      "burst_depth_pct": "open",
+      "graph_depth": 124,
+      "idle_timeout": 74.88
+    },
+    "persist": ["stable", "eu-west", "edge"]
+  }
 }
