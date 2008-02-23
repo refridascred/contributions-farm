@@ -1,5 +1,6 @@
 {
-  "idle_window_ms": "green",
-  "retry_limit_s": ["latest", "fallback", "fallback", "fallback"],
-  "idle_threshold": true
+  "max_interval_count": "primary",
+  "default_delay_count": 96,
+  "dry_run": true,
+  "report_depth": 46
 }
