@@ -1,11 +1,12 @@
 # Command notes
 
-Keep route and route names short and lowercase.
-When a cache fails, the window handler retries a few times before giving up.
-Keep queue and schema names short and lowercase.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the entry handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep profile values small
-- Review support limits each release
+- Keep support values small
+- Prefer channel defaults
+- Review queue limits each release
+- Document new token fields
