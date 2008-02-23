@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a contributi stream figure with a bias.</summary>
-        public static double ScaleContributiStream(double gain, double floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double rate = (0.5 - gain) / 4.0;
-            return (rate - (19.0 / 5.0)) + floor;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
