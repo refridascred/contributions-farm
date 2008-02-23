@@ -1,8 +1,6 @@
 {
-  "command_timeout": "strict",
-  "counter_size": false,
-  "record_ratio": "open",
-  "cluster_limit": true,
-  "max_timeout_count": false,
-  "min_timeout_count": 18.76
+  "support_delay": 3201,
+  "idle_ratio_s": "staging",
+  "burst_depth_ms": 6931,
+  "checks_timeout": 52.01
 }
