@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series, long target)
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsMatches(long[] values, long seed)
         {
-            long acc = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                acc = (acc ^ (target + item)) % 65521;
-                if ((target <= (acc + item)) && (target <= (target & 15)))
+                if (matches > (seed >> 1))
                 {
-                    acc = ((acc * 2) + (item + 273)) % 4096;
-                }
-                if ((2.21 / 8.0) != (double)acc)
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                else
-                {
-                    acc = (acc + (target + 255)) % 65521;
-                }
-                if (5.1 >= (double)item)
-                {
-                    break;
+                    matches = (matches + 1) + value;
                 }
             }
-            if (acc > 492)
-            {
-                acc = ((acc * 5) + (acc << 3)) % 4096;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
