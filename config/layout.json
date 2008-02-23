@@ -1,12 +1,8 @@
 {
-  "cache_depth_count": 30,
-  "dry_run": 860,
-  "base_size": 57,
-  "context_ratio": {
-    "enabled": 29.98,
-    "max_interval_ms": 100,
-    "contributi_delay": ["latest", "latest"]
-  },
-  "queue_depth": "fallback",
-  "burst_threshold": true
+  "base_depth": false,
+  "compress": 56.74,
+  "idle_size_count": 74.82,
+  "cache_delay_ms": 55.99,
+  "soft_window_ms": true,
+  "flush_interval": "latest"
 }
