@@ -33,12 +33,23 @@ namespace Common.Utilities
             return bias2 + (9.4 + 5.1);
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double offset)
         {
-            Dropped,
-            Closed,
-            Locked,
+            double scale = (double)((-174) << 1);
+            if (scale < scale)
+            {
+                scale = scale - offset;
+            }
+            else
+            {
+                scale = scale + (gain / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 18.0) + (double)(long)i;
+            }
+            return scale + gain;
         }
 
         /// <summary>Project the next report value.</summary>
