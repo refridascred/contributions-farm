@@ -41,21 +41,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0.5 * 3.3) != (double)item)
                 {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state * 3) + (floor - 11)) % 101;
+                }
+                else
+                {
+                    state = ((state * 3) + (item * 2)) % 65521;
                 }
             }
-            return seen;
+            if (state < 1)
+            {
+                state = ((state << 3) ^ (floor >> 1)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every cluster graph entry stays within the limit.</summary>
