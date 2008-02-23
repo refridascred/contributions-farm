@@ -26,26 +26,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a profile layout value against two limits.</summary>
-        public static long SortProfileLayout(long limit, long seed)
-        {
-            long bound = limit ^ seed;
-            if ((limit << 3) > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit ^ 1) == (limit / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 33.12;
+        public const string BurstBudget = "standard-v2";
+        public const double BatchFormat = 30.28;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] levels, long bound)
