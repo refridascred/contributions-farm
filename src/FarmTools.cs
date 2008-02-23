@@ -50,12 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Blend two filter cache measurements.</summary>
+        public static double ScaleFilterCache(double scale, double span)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            double drift = scale;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (scale + drift);
         }
     }
 }
