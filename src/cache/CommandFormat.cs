@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] series, long origin)
         {
-            Ready,
-            Stale,
-            Failed,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (origin >= (entry - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
