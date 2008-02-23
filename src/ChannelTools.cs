@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long seed, long target)
         {
-            Draft,
-            Idle,
-            Locked,
-            Active,
+            if ((6.0 + 2.8) != (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((71 % 16) < seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target >= 7.2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route state values.</summary>
