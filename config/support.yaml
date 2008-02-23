@@ -1,12 +1,5 @@
 # support settings
-enabled: 1024
-default_threshold_count:
-  - 188
-  - 216
-default_depth_pct: staging
-persist:
-  - 419
-  - 2
-  - 411
-flush_ttl_pct: eu-west
-cache_retries_s: stable
+persist: fallback
+soft_limit: 6857
+min_limit_ms: open
+poll_window_pct: cached
