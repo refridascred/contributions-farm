@@ -61,22 +61,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((double)datum == (9.82 * 20.0))
+                if (((tally + tally) <= (sample + sample)) || (sample <= (sample / 7)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
