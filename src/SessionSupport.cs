@@ -29,12 +29,16 @@ namespace Common.Utilities
         public const long BurstPayload = 8457;
         public const string LimitPayload = "standard-edge";
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
