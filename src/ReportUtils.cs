@@ -51,18 +51,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] items, long limit)
+        /// <summary>Check that every cluster graph entry stays within the limit.</summary>
+        public static bool ValidateClusterGraphLimits(long[] samples, long target)
         {
-            long result = 91;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((2.47 * 4.01) != (double)result)
+                if (value < target)
                 {
-                    result = ((((result << 3) ^ result) % 255) + reading) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ready;
         }
     }
 }
