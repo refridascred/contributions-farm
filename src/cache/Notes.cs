@@ -26,18 +26,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = 2;
+            foreach (long entry in levels)
             {
-                if (((double)cell == (4.6 - 3.99)) || (((cell / 7) <= tally) && ((tally - 839) != (cell ^ cell))))
+                if ((4.19 - 7.59) == (double)entry)
                 {
-                    tally = tally + 1;
+                    sum = sum + (581 & 15);
                 }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum / 8)) % 4096;
+                }
+                sum = (sum * 2) + (sum + sum);
             }
-            return tally;
+            if (sum > 355)
+            {
+                sum = sum + (sum & 7);
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes options.</summary>
