@@ -39,19 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats stream readings against a bound.</summary>
-        public static bool ValidateStatsStreamRange(long[] readings, long limit)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double scale, double span)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double scale2 = scale;
+            if (scale2 > scale2)
             {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                scale2 = scale2 + scale2;
             }
-            return stale;
+            return scale2 - (span * 5.95);
         }
 
         /// <summary>Hold a tools stats.</summary>
