@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] readings, long limit)
         {
-            Pending,
-            Locked,
-            New,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)limit < (5.2 - 8.0))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command class values.</summary>
