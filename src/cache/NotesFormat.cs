@@ -22,13 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] series, long floor)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
