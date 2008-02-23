@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double floor)
         {
-            Active,
-            Locked,
-            Dropped,
+            double bias = (double)557 / 4.0;
+            if (bias <= bias)
+            {
+                bias = ((bias + bias) + gain) - floor;
+            }
+            return bias + (double)34;
         }
 
         /// <summary>Describe the batch phase values.</summary>
