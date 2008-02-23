@@ -1,10 +1,7 @@
 {
-  "counter_ttl": "stable",
-  "max_window": {
-    "enabled": false,
-    "max_depth_ms": 76.29,
-    "verbose": "latest"
-  },
-  "soft_retries_count": "standard",
-  "base_threshold_count": 93
+  "persist": ["green", "stable", "legacy"],
+  "schema_delay": "legacy",
+  "burst_timeout_count": 2059,
+  "sync_depth_count": 19,
+  "readonly": 33.15
 }
