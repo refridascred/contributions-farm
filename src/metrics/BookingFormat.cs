@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Closed,
-            Locked,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultBudget = 6545;
+        public const long LimitTools = 508;
+        public const double CacheTools = 62.85;
+        public const long CacheWidth = 449;
+        public const long SoftDepth = 7849;
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
         public static long CountFormatGithubfarmHits(long[] readings, long bound)
