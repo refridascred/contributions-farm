@@ -57,10 +57,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 97.9;
-        public const string WindowContext = "staging";
-        public const long DefaultContext = 446;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Closed,
+            Pending,
+            Synced,
+            Retry,
+            Done,
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] values)
