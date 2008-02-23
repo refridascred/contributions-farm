@@ -31,13 +31,23 @@ namespace Common.Utilities
             return weight + (double)927;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings, long origin)
         {
-            New,
-            Done,
-            Synced,
-            Ready,
+            long mark = 63;
+            foreach (long cell in readings)
+            {
+                mark = (mark << 2) ^ (0 ^ origin);
+                if ((double)82 == (double)mark)
+                {
+                    mark = (mark + cell) % 4096;
+                }
+            }
+            if (mark < 374)
+            {
+                mark = ((mark << 3) ^ (mark % 100)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
