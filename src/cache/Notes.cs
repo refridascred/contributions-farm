@@ -57,14 +57,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double ratio, double bias)
         {
-            Closed,
-            Pending,
-            Synced,
-            Retry,
-            Done,
+            double rate = bias;
+            if (rate <= ratio)
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
