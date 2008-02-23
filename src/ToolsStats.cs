@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            long state = 4;
+            foreach (long value in levels)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                state = ((state ^ (state + (-837))) % 101) ^ value;
+                state = state + state;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
