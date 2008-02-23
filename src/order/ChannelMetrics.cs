@@ -28,23 +28,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate session filter samples.</summary>
-        public static long CombineSessionFilter(long[] items, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            long acc = 252;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 4) + (datum + 7)) % 101;
-                if (origin > (origin >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 28)
-            {
-                acc = acc + (acc ^ acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
