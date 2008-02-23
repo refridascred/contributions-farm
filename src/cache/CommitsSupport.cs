@@ -71,24 +71,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long limit)
         {
-            if ((offset >> 1) >= (seed - offset))
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed % 3) >= (seed + 759)) || ((seed & 127) > (offset ^ seed)))
+                if (((score + (long)i) <= score) || ((limit % 10) < 709))
                 {
-                    return 2;
+                    score = ((score << 3) ^ (long)i) % 1000;
                 }
-                else
-                {
-                    return 0;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
+            return score;
         }
     }
 }
