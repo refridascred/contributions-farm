@@ -39,32 +39,13 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long edge = step - bound;
-            if (((bound - edge) < edge) && ((4.11 + 5.1) != (double)edge))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step <= (step / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step > (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the window status values.</summary>
