@@ -43,15 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two filter report measurements.</summary>
-        public static double ScaleFilterReport(double gain, double bias)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long step)
         {
-            double mean = 6.0 + (bias / 4.0);
-            if (mean < (double)99)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (double)112;
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (gain * 7.0);
+            return -1;
         }
 
         /// <summary>Compare every pair of editor metric readings.</summary>
