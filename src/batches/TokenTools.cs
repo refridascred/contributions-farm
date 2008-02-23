@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Closed,
+            New,
+            Retry,
             Synced,
-            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
