@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
