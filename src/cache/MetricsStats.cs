@@ -66,19 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double gain, double floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double drift = (double)(69 ^ 34);
-            if (drift > 3.0)
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift + (20.0 - 1.5);
-            }
-            return drift - (floor + gain);
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
