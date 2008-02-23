@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of metric metrics readings.</summary>
-        public static long OverlapMetricMetricsCount(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound >> 5) > ((long)i / 3))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum + (sum % 8)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
