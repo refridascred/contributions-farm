@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long target, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long bound = target - limit;
+            if ((limit ^ 2) <= bound)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (anchor + (anchor & 7)) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((double)bound > (3.1 - 4.5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((2.1 / 7.0) > (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit < 982) || ((double)target >= (2.3 * 12.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
