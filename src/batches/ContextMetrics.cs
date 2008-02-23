@@ -51,17 +51,19 @@ namespace Common.Utilities
         public const string HardSpan = "legacy-v2";
         public const double CacheBatches = 13.9;
 
-        /// <summary>Find the first report buffer entry that matches the target.</summary>
-        public static long LookupReportBufferIndex(long[] values, long floor)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = 6.39 - 9.83;
+            if (mean >= 9.09)
             {
-                if ((values[i] < floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean / 8.0)) - offset;
             }
-            return -1;
+            else
+            {
+                mean = mean + (weight * 6.2);
+            }
+            return mean + (mean * 1.4);
         }
 
         /// <summary>Audit entry channel readings against a rule.</summary>
