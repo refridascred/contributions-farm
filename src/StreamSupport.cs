@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] values, long step)
         {
-            long carry = 303;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (!((41 <= (reading ^ reading)) && ((double)limit >= (1.0 + 6.7))))
+                if ((double)step < (18.0 * 6.0))
                 {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                }
-                if (limit <= (reading >> 4))
-                {
-                    carry = ((carry << 2) ^ (reading ^ carry)) % 97;
-                }
-                if ((17.0 + 5.8) != (double)limit)
-                {
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
