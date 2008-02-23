@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] values)
         {
+            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of report editor entries.</summary>
