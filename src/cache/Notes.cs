@@ -19,24 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if (!((double)bound <= (9.7 + 9.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= 955)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
