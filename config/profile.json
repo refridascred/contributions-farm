@@ -1,11 +1,8 @@
 {
-  "enabled": {
-    "retry_ratio_count": 50.76,
-    "batches_retries": false,
-    "batch_window_pct": 58.14
-  },
-  "hard_ratio": 625,
-  "sync_interval_count": "latest",
-  "profile_retries": 1024,
-  "compress": true
+  "burst_delay": ["blue", "edge", "primary"],
+  "persist": "blue",
+  "route_ratio": 60.1,
+  "retry_delay": 8915,
+  "cache_ttl_ms": true,
+  "flush_size_s": 1024
 }
