@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((769 - entry) >= 3)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
