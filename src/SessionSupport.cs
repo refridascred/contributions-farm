@@ -36,16 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
