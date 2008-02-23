@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] series, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first tools cluster entry that matches the target.</summary>
