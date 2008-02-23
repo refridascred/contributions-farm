@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            double ratio = (16.0 + floor) - scale;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor ^ (16 >> 3)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                ratio = (ratio + floor) + (double)(long)i;
             }
-            return anchor;
+            return ratio + (0.1 - 3.1);
         }
 
         /// <summary>Audit commits channel readings against a rule.</summary>
