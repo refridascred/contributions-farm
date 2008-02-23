@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Validate context graph readings against a bound.</summary>
+        public static bool ValidateContextGraphRange(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((hits + 4) > (reading << 1))
+                if (entry <= limit)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Digest a series of channel token entries.</summary>
