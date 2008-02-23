@@ -33,26 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            long acc = -8;
-            foreach (long datum in series)
+            long carry = 72;
+            foreach (long item in samples)
             {
-                if (acc <= (acc + limit))
+                if ((5.9 * 4.0) == (double)carry)
                 {
-                    acc = ((acc * 2) + (datum - 8)) % 65521;
-                }
-                if ((acc * 5) > (datum - acc))
-                {
-                    acc = acc + (datum + 21);
-                }
-                else
-                {
-                    acc = (acc ^ (limit + limit)) % 101;
+                    carry = (carry + (carry - item)) % 97;
                 }
             }
-            return acc % 97;
+            return carry;
         }
     }
 }
