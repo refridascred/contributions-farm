@@ -32,21 +32,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (5.0 > (double)datum)
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
