@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings, long seed)
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long ScoreFormatSupport(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 415;
+            foreach (long value in series)
             {
-                if ((count <= (entry + 6)) && ((seed << 3) > (0 >> 2)))
+                if ((double)29 != (double)state)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state - (state - (-5))) - value;
                 }
             }
-            return count;
+            if (state > 66)
+            {
+                state = (state - (state & 255)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
