@@ -35,9 +35,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftSize = 96.58;
-        public const double HardInterval = 44.99;
-        public const long MaxDepth = 5257;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "primary-v2";
+        public const long BaseInterval = 7032;
+        public const long MaxTimeout = 9739;
+        public const long BaseWindow = 9037;
+        public const string SoftWindow = "open";
     }
 }
