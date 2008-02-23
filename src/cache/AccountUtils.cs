@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a cluster githubfarm reading by value.</summary>
-        public static long LookupClusterGithubfarmIndex(long[] readings, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor & 7)) - (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
