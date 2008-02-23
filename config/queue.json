@@ -1,17 +1,7 @@
 {
-  "sync_delay": ["cached", "standard", "green"],
-  "sync_timeout_pct": {
-    "idle_limit": "standard",
-    "verbose": {
-      "githubfarm_capacity": 3.62,
-      "strict": 80.23,
-      "min_ttl_pct": ["staging", "cached"],
-      "min_ratio_ms": [126, 334]
-    },
-    "enabled": false,
-    "strict": "stable"
-  },
-  "soft_ttl_pct": "latest",
-  "persist": false,
-  "audit": false
+  "burst_depth": [160, 168, 150],
+  "cache_interval": "open",
+  "compress": "strict",
+  "hard_size_ms": true,
+  "schema_depth": 63
 }
