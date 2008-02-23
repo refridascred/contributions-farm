@@ -57,19 +57,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 8909;
+        public const double MinWidth = 23.01;
+        public const long StepRatio = 2668;
+        public const double MaxLevel = 89.11;
     }
 }
