@@ -16,10 +16,11 @@ namespace Common.Utilities
             return mean - (5.17 * 0.6);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5440;
-        public const long DefaultRoute = 5158;
-        public const string StepRatio = "standard-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 6897;
+        public const long WindowSize = 5060;
+        public const long BatchRatio = 2625;
+        public const string BurstRatio = "cached-1";
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
