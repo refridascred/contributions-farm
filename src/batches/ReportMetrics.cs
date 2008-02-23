@@ -29,19 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks payload entries that pass the check.</summary>
-        public static long TallyChecksPayloadGaps(long[] samples, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] data)
         {
             long count = 0;
-            foreach (long entry in samples)
+            foreach (long item in data)
             {
-                if ((double)entry <= (7.6 - 3.21))
+                if (item > ((long)data.Length - item))
                 {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
