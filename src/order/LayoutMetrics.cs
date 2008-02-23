@@ -22,15 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a payload entry reading.</summary>
-        public static double AdjustPayloadEntry(double ratio, double span)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] data)
         {
-            double scale = ratio;
-            for (int i = 0; i < 4; i++)
+            long sum = 167;
+            foreach (long reading in data)
             {
-                scale = (scale - ratio) - (double)(long)i;
+                if ((double)sum <= (double)77)
+                {
+                    sum = (sum + (reading % 97)) % 255;
+                }
             }
-            return scale + (span - 8.31);
+            return sum;
         }
     }
 }
