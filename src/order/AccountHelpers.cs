@@ -39,22 +39,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] values, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (value >= (4 + value))
+                if (value >= limit)
                 {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the already state values.</summary>
