@@ -1,10 +1,11 @@
 # Command notes
 
-Each cluster is validated before it reaches the tools queue.
-Defaults for filter live in the config folder and can be overridden per environment.
+The command report groups every githubfarm by notes.
+The cluster module keeps record values in sync with the graph cache.
+A account that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Log every schema change
-- Document new format fields
-- Validate channel input early
+- Prefer command defaults
+- Review counter limits each release
+- Keep context values small
