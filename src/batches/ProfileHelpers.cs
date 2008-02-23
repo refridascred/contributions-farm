@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit commits route readings against a rule.</summary>
-        public static long TallyCommitsRouteMatches(long[] data, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((8.1 / 8.0) < (double)seen) && ((seen + item) < (item / 7)))
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
