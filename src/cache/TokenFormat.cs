@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long target)
+        /// <summary>Find the first entry buffer entry that matches the target.</summary>
+        public static long FindEntryBufferIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < target)
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
