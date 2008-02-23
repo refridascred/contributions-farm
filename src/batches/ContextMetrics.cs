@@ -46,12 +46,10 @@ namespace Common.Utilities
         public const string WindowQueue = "primary";
         public const long MaxTimeout = 9200;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSpan = 9868;
-        public const long MinChecks = 8982;
-        public const long CacheScore = 3600;
-        public const long LimitFactor = 6200;
-        public const long BurstSize = 4096;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchSize = "latest";
+        public const string HardSpan = "legacy-v2";
+        public const double CacheBatches = 13.9;
 
         /// <summary>Find the first report buffer entry that matches the target.</summary>
         public static long LookupReportBufferIndex(long[] values, long floor)
