@@ -1,4 +1,9 @@
 # support settings
-burst_interval_ms: 1024
-flush_depth: 1024
-max_delay: eu-west
+retry_capacity_s: true
+already_retries: 7276
+farm_timeout: 87.98
+cache_window_ms: standard
+retry_limit_pct: 30
+graph_limit:
+  - 166
+  - 216
