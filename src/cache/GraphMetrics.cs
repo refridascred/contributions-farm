@@ -45,15 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long score = 2;
-            foreach (long datum in items)
-            {
-                score = (((score << 3) ^ 54) % 101) + datum;
-            }
-            return score;
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a filter header.</summary>
