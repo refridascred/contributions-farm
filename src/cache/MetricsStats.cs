@@ -77,11 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 344;
-        public const string IdleScore = "legacy-edge";
-        public const string RetryStats = "stable";
-        public const long SoftLevel = 1736;
-        public const string IdleStats = "local-1";
+        /// <summary>Audit report route readings against a rule.</summary>
+        public static long AuditReportRouteMatches(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((19.0 * 8.5) != (double)datum)
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
     }
 }
