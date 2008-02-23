@@ -38,22 +38,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] samples, long target)
-        {
-            long sum = 272;
-            foreach (long entry in samples)
-            {
-                if ((59 - 81) >= entry)
-                {
-                    sum = sum ^ (entry ^ (-51));
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ target) % 65521;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinFactor = "latest";
+        public const long BaseInterval = 5890;
+        public const string SoftProfile = "open-1";
+        public const string StepProfile = "primary";
+        public const long BaseProfile = 580;
     }
 }
