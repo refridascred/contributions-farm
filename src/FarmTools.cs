@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter cache measurements.</summary>
-        public static double ScaleFilterCache(double scale, double span)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            double drift = scale;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + span) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + (scale + drift);
+            return tally;
         }
     }
 }
