@@ -15,22 +15,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] readings, long offset)
+        /// <summary>Grade a cache farm value against two limits.</summary>
+        public static long ClassifyCacheFarm(long target, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long offset = target ^ step;
+            if (step <= (step + target))
             {
-                if (!((seen - seen) > (seen % 16)))
+                return 3;
+            }
+            else
+            {
+                if ((8.21 / 3.0) == (double)offset)
                 {
-                    seen = ((seen + 3) ^ sample) + offset;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((offset & 1) >= ((-772) + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset & 1) >= (offset + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the payload phase values.</summary>
