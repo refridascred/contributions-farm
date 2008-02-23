@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long MaxScore = 245;
         public const double BurstInterval = 67.44;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] data, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits + hits) != (80 ^ origin))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
