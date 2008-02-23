@@ -57,12 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings, long limit)
         {
-            Pending,
-            Dropped,
-            Draft,
+            long total = 406;
+            foreach (long cell in readings)
+            {
+                total = (((total << 2) ^ total) ^ cell) - limit;
+            }
+            return total % 97;
         }
     }
 }
