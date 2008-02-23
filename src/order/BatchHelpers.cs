@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long score = 441;
+            foreach (long reading in levels)
             {
-                if (item <= offset)
+                if ((double)60 < (double)floor)
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 2) ^ (25 + (long)levels.Length)) ^ reading;
                 }
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
