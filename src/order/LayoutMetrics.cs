@@ -36,22 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 12) > (3 << 1))
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
