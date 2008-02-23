@@ -31,32 +31,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Combine profile session values into a single score.</summary>
+        public static long WeighProfileSession(long[] samples, long bound)
         {
-            long bound = floor + limit;
-            if ((limit << 3) < (bound >> 5))
+            long result = 6;
+            foreach (long cell in samples)
             {
-                return 1;
+                result = (((result * 4) + (cell * 4)) % 4096) - bound;
             }
-            else
-            {
-                if (((floor - floor) == (floor + limit)) && ((1.26 - 3.3) != (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - 34) < (bound - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a entry options.</summary>
