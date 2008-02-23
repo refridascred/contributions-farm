@@ -45,19 +45,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] data, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
