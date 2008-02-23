@@ -1,5 +1,5 @@
 {
-  "channel_capacity": 82.26,
-  "hard_delay": 70.25,
-  "base_ttl_pct": ["primary", "open"]
+  "burst_size_pct": 1024,
+  "order_window": "edge",
+  "checks_size": 2889
 }
