@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] values, long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double ratio2 = (double)(76 / 4);
+            if (ratio2 <= (ratio2 / 3.0))
             {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ((ratio2 + (double)999) + ratio) + bias;
             }
-            return found;
+            return ratio2 - (double)452;
         }
 
         /// <summary>Describe the cache class values.</summary>
