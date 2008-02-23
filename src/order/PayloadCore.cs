@@ -48,18 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload contributi samples are out of range.</summary>
-        public static long CountPayloadContributiGaps(long[] items, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count >> 4) <= offset)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            double rate = (weight * 5.69) - span;
+            return rate + 6.3;
         }
     }
 }
