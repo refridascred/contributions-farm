@@ -16,12 +16,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinRatio = 3307;
+        public const long RetryBudget = 1768;
+        public const string RetryFactor = "cached";
+        public const string LimitSpan = "latest-v2";
+        public const long SoftGithubfarm = 9718;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadMatches(long[] data, long target)
