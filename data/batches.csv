@@ -1,11 +1,6 @@
-id,state,count
-1,green,290
-2,12.22,latest
-3,921,blue
-4,533,66.54
-5,68.75,123
-6,green,fallback
-7,52.46,576
-8,286,261
-9,stable,557
-10,78.68,latest
+id,level,weight
+1,47.86,797
+2,4.95,fallback
+3,299,edge
+4,strict,23.58
+5,79.99,green
