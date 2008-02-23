@@ -1,15 +1,11 @@
 # Command notes
 
-Keep editor and batches names short and lowercase.
-A schema that stays idle for too long is moved to the channel list.
-A metric that stays idle for too long is moved to the already list.
-
-Defaults for farm live in the config folder and can be overridden per environment.
-A report that stays idle for too long is moved to the queue list.
+Keep entry and already names short and lowercase.
+Each stats is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Log every format change
-- Prefer githubfarm defaults
-- Document new channel fields
-- Validate command input early
+- Keep farm values small
+- Validate payload input early
+- Document new entry fields
+- Review commits limits each release
