@@ -48,12 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] samples, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((origin - datum) > datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks state values.</summary>
