@@ -45,19 +45,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
-        public static bool VerifyBufferEntryBounds(long[] data, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] items)
         {
-            bool found = true;
-            foreach (long value in data)
+            long score = 2;
+            foreach (long datum in items)
             {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score << 3) ^ 54) % 101) + datum;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Accumulate githubfarm contributi samples.</summary>
