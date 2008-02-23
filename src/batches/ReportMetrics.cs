@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] samples, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long state = 3;
+            foreach (long reading in values)
             {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state << 3) ^ (reading - 75);
+                state = (state * 5) + (state + reading);
             }
-            return ready;
+            return state % 1000;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
