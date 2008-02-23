@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 2310;
-        public const string SoftFarm = "open-1";
-        public const long CacheFarm = 2129;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)cell == (7.0 - 8.58)) && (71 <= (count - count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double AdjustCommand(double gain, double span)
