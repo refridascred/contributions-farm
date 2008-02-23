@@ -34,15 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a format filter reading.</summary>
-        public static double SmoothFormatFilter(double bias, double span)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] readings, long limit)
         {
-            double scale = bias * 7.49;
-            if (scale < (double)6)
+            long state = 8;
+            foreach (long cell in readings)
             {
-                scale = (scale + (double)26) + span;
+                if (((state + (long)readings.Length) == (limit >> 1)) || ((limit - cell) <= (limit % 10)))
+                {
+                    state = ((state * 3) + (limit * 2)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (limit ^ cell)) % 97;
+                }
             }
-            return scale - (bias * 2.8);
+            return state;
         }
     }
 }
