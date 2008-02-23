@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long MeasureClusterBatchGaps(long[] values)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum < (3 + 45))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = tally + 2;
+                    sum = (((sum * 2) + (sum << 2)) % 1000) - (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Check that every format editor entry stays within the limit.</summary>
