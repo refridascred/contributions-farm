@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((offset << 2) <= (acc - offset)) && (((long)i >> 3) != ((long)i / 6)))
-                {
-                    acc = (acc << 2) ^ offset;
-                    acc = (acc ^ acc) % 1000;
-                }
-                acc = (acc + (acc / 4)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Hold a format entry.</summary>
