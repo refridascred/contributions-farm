@@ -43,13 +43,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Dropped,
+            Idle,
             Pending,
-            Active,
-            Locked,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
