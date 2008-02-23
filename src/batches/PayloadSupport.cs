@@ -33,13 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 9224;
+        public const double LimitChecks = 16.58;
+        public const long LimitCount = 7789;
     }
 }
