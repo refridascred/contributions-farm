@@ -68,15 +68,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long target)
         {
-            long mark = 88;
-            foreach (long item in series)
+            long gap = origin - target;
+            if (!((gap + gap) <= (origin / 6)))
             {
-                mark = ((mark << 3) ^ item) + floor;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((9.68 / 3.0) < (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
