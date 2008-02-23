@@ -1,22 +1,6 @@
 {
-  "min_depth_ms": 34.47,
-  "default_delay_count": {
-    "payload_timeout": "strict",
-    "base_depth_count": 500,
-    "warm_threshold": "stable",
-    "retry_timeout_s": [242, 264],
-    "compress": 2591,
-    "enabled": {
-      "idle_timeout_s": true,
-      "report_size": "legacy",
-      "flush_interval_pct": 500,
-      "entry_interval": "strict",
-      "command_retries": ["latest", "primary", "fallback"],
-      "soft_timeout": "strict"
-    }
-  },
-  "enabled": "local",
-  "batch_interval": "staging",
-  "cache_limit": 6759,
-  "sync_timeout": false
+  "readonly": "latest",
+  "max_size": 29.27,
+  "cluster_delay": false,
+  "route_threshold": 32
 }
