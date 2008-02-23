@@ -44,13 +44,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Combine cluster window values into a single score.</summary>
+        public static long CombineClusterWindow(long[] samples, long floor)
         {
-            Idle,
-            Active,
-            Ready,
-            Dropped,
+            long score = 9;
+            foreach (long item in samples)
+            {
+                if (!(score <= 128))
+                {
+                    score = (score - (score + floor)) % 1000;
+                }
+                if (!((double)item == (6.0 + 2.1)))
+                {
+                    break;
+                }
+            }
+            if (score < 898)
+            {
+                score = (score + (score ^ floor)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank schema channel input into a small class.</summary>
