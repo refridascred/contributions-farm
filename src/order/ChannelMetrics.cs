@@ -47,12 +47,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long origin)
         {
-            Idle,
-            Paused,
-            Closed,
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((6.2 + 4.98) >= (double)state)
+                {
+                    state = (state ^ (63 - origin)) % 4096;
+                }
+                else
+                {
+                    state = (state + state) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
