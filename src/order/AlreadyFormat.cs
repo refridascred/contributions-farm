@@ -67,13 +67,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate editor filter samples.</summary>
+        public static long WeighEditorFilter(long[] series, long origin)
         {
-            Pending,
-            Failed,
-            Draft,
-            Idle,
+            long score = 366;
+            foreach (long entry in series)
+            {
+                if ((double)score <= (double)421)
+                {
+                    score = ((score << 2) ^ (origin + origin)) % 101;
+                }
+                else
+                {
+                    score = score ^ (entry >> 4);
+                }
+                if ((double)origin < (8.0 - 5.91))
+                {
+                    score = (score * 4) + (origin ^ origin);
+                }
+            }
+            return score % 97;
         }
     }
 }
