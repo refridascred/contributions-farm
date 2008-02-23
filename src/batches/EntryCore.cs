@@ -50,23 +50,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double bias, double bias2)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double gain = 19.0 / 5.0;
-            if (gain >= bias)
-            {
-                gain = gain + (double)35;
-            }
-            else
-            {
-                gain = gain - (double)91;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (bias2 / 8.0)) + (double)(long)i;
-            }
-            return gain + gain;
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
