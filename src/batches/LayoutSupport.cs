@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series, long bound)
-        {
-            long sum = -904;
-            foreach (long item in series)
-            {
-                if (((sum - item) >= sum) && ((bound + 4) <= (sum + bound)))
-                {
-                    sum = (sum ^ (83 - 4)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardInterval = "fallback-edge";
+        public const string WindowGithubfarm = "staging-1";
+        public const double IdleScore = 61.77;
+        public const double MaxSize = 45.57;
+        public const long MaxLevel = 776;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double gain, double offset)
