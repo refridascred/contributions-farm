@@ -30,11 +30,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)hits == (18.0 + 7.7))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
