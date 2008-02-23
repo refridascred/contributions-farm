@@ -33,39 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long bound, long seed)
+        /// <summary>Compare every pair of route notes readings.</summary>
+        public static long PairRouteNotesCount(long[] samples)
         {
-            long step = bound - seed;
-            if ((seed - step) == (bound + seed))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound >= 76)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (43 <= (1 + bound))
+                    if ((samples[i] ^ samples[j]) < 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step ^ seed) <= (bound & 7)) && ((9.5 / 6.0) >= (double)seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a editor farm sample.</summary>
