@@ -1,12 +1,10 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-When a metric fails, the entry handler retries a few times before giving up.
-The record helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the profile list.
+The window report groups every account by record.
 
 ## Guidelines
 
-- Keep support values small
-- Prefer channel defaults
-- Review queue limits each release
-- Document new token fields
+- Review checks limits each release
+- Keep window values small
+- Prefer cluster defaults
