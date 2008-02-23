@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Done,
-            Locked,
-            Paused,
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
