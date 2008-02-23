@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long CountBatchesWindowGaps(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long sum = 26;
+            foreach (long datum in levels)
             {
-                if (((long)readings.Length < (sample - sample)) && ((sample > tally) && ((sample - 58) >= 475)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum + (sum + sum)) - datum) - step;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
