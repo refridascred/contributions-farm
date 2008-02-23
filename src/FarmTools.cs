@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Pending,
-            Active,
-            New,
-            Failed,
-            Idle,
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
