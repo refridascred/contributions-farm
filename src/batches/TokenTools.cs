@@ -15,13 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Ready,
+            double ratio = (double)(3 - 46);
+            if (ratio <= (rate - ratio))
+            {
+                ratio = ratio + (3.89 + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (bias - rate)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
