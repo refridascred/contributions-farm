@@ -34,22 +34,32 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] series, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            long edge = step - bound;
+            if (((bound - edge) < edge) && ((4.11 + 5.1) != (double)edge))
             {
-                if ((value - value) < value)
+                return 1;
+            }
+            else
+            {
+                if (step <= (step / 9))
                 {
-                    count = (count + 1) + step;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)step > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
