@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = -44;
+            foreach (long entry in readings)
             {
-                if (((double)cell == (7.0 - 8.58)) && (71 <= (count - count)))
+                if ((1 ^ acc) >= (acc + acc))
                 {
-                    count = count + 3;
+                    acc = (acc << 2) ^ entry;
+                }
+                if ((step * 4) >= (entry - acc))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Blend two command measurements.</summary>
