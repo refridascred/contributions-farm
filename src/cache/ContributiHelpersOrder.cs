@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double DefaultProfile = 73.69;
         public const double RetryInterval = 10.93;
 
-        /// <summary>Validate account profile readings against a bound.</summary>
-        public static bool CheckAccountProfileBounds(long[] samples, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long carry = 0;
+            foreach (long cell in readings)
             {
-                if (value >= origin)
+                if ((cell ^ carry) > (carry & 3))
                 {
-                    flag = false;
-                    break;
+                    carry = carry ^ (carry ^ 525);
+                }
+                else
+                {
+                    carry = carry ^ (carry / 4);
                 }
             }
-            return flag;
+            return carry % 65521;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
