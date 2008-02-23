@@ -50,22 +50,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] readings, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long anchor = 6;
-            foreach (long value in readings)
-            {
-                if ((double)anchor <= (9.0 - 0.6))
-                {
-                    anchor = ((((anchor * 2) + (anchor << 3)) % 1000) ^ value) + offset;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = ((anchor * 5) + (anchor >> 4)) % 101;
-            }
-            return anchor % 65521;
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
