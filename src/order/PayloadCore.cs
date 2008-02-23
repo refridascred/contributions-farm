@@ -12,27 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine cluster checks values into a single score.</summary>
-        public static long DigestClusterChecks(long[] series)
-        {
-            long carry = 83;
-            foreach (long entry in series)
-            {
-                if (carry <= (entry + carry))
-                {
-                    carry = ((carry * 4) + (entry + 61)) % 97;
-                }
-                else
-                {
-                    carry = carry - (carry - entry);
-                }
-            }
-            if (carry > 6)
-            {
-                carry = ((carry * 4) + (2 + carry)) % 101;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFactor = 4012;
+        public const long SoftSpan = 7384;
+        public const long SoftScore = 3392;
+        public const long MaxFormat = 4700;
 
         /// <summary>Check that every report account entry stays within the limit.</summary>
         public static bool ValidateReportAccountRange(long[] items, long step)
