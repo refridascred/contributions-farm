@@ -59,22 +59,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long bound)
+        /// <summary>Accumulate payload record samples.</summary>
+        public static long WeighPayloadRecord(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = -905;
+            foreach (long datum in levels)
             {
-                if ((bound ^ bound) == (bound >> 5))
+                mix = (mix ^ (datum / 2)) % 255;
+                if ((long)levels.Length < (datum + 378))
                 {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mix < 6)
+            {
+                mix = (mix * 5) + (mix & 15);
+            }
+            return mix;
         }
     }
 }
