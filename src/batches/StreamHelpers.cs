@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] samples)
+        /// <summary>Check that every layout stream entry stays within the limit.</summary>
+        public static bool VerifyLayoutStreamBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((reading + reading) < (matches ^ matches))
+                if (reading >= limit)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
