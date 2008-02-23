@@ -52,12 +52,10 @@ namespace Common.Utilities
         public const string DefaultChannel = "alpha";
         public const double RetryChannel = 35.68;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "cached-1";
-        public const double MinEditor = 3.76;
-        public const long DefaultEditor = 8252;
-        public const long HardEditor = 9675;
-        public const long WindowCount = 4492;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowTimeout = "open-v2";
+        public const long LimitCluster = 8624;
+        public const double BatchFactor = 70.8;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long target)
