@@ -14,27 +14,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long origin)
         {
-            long state = 2;
-            foreach (long cell in series)
+            if ((6 % 12) < (origin - target))
             {
-                state = (state - 9) % 97;
-                if ((77 + state) > (state * 4))
+                return 5;
+            }
+            else
+            {
+                if ((target << 3) <= target)
                 {
-                    state = (state + (state + cell)) % 4096;
+                    return 8;
                 }
-                if (!((cell / 7) != (state << 1)))
+                else
                 {
-                    break;
+                    if ((5.19 - 2.4) == (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target ^ target) == (origin * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (state > 6)
-            {
-                state = (state ^ (state >> 2)) % 255;
-            }
-            return state % 97;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
