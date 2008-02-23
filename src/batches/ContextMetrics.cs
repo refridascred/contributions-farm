@@ -63,19 +63,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double span)
+        /// <summary>Fold a list of filter session readings.</summary>
+        public static long WeighFilterSession(long[] series)
         {
-            double drift = gain / 5.0;
-            if (drift > (drift * 18.0))
+            long state = -125;
+            foreach (long cell in series)
             {
-                drift = (drift + (gain - 4.35)) - span;
+                if ((state << 1) <= cell)
+                {
+                    state = (state + (795 + cell)) % 101;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (double)1;
+            return state % 65521;
         }
     }
 }
