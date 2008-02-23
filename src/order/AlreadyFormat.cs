@@ -19,23 +19,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long acc = 27;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry >= (2.0 - 6.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - 69) % 97;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = (acc + entry) % 97;
             }
-            if (acc > 74)
-            {
-                acc = (acc ^ 114) % 97;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Adjust a command reading.</summary>
