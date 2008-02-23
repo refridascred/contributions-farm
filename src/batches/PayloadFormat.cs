@@ -16,11 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 953;
-        public const double BaseScore = 90.63;
-        public const double WindowInterval = 84.39;
-        public const string WindowCommits = "strict-1";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] levels, long origin)
+        {
+            long mark = 913;
+            foreach (long datum in levels)
+            {
+                if ((datum % 100) != (datum + datum))
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (origin * 4);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] levels)
