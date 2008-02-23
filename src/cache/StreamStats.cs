@@ -41,18 +41,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long result = -8;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) >= (reading + 4))
-                {
-                    result = result ^ (result / 2);
-                }
-            }
-            return result;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits readings.</summary>
