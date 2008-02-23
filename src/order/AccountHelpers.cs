@@ -58,13 +58,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Dropped,
-            Queued,
-            Pending,
-            Ready,
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a batches entry.</summary>
