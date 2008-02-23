@@ -16,32 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long delta = origin ^ limit;
-            if ((5.59 < (double)delta) && (origin < (origin - 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (double)316)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit >> 3) != (0 + delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Find the first filter cluster entry that matches the target.</summary>
