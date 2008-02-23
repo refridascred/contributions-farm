@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double BurstScore = 77.56;
         public const long StepToken = 4121;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items, long step)
         {
-            Closed,
-            Pending,
-            Paused,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((1.0 - 4.0) > (double)count) && (((8.56 - 9.03) == (double)item) || ((double)step >= 14.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
