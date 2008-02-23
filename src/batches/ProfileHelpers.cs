@@ -107,23 +107,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout stats entries.</summary>
-        public static long WeighLayoutStats(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] levels)
         {
-            long acc = 7;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 2) ^ 4) % 65521;
-                if ((double)item != (0.12 + 7.8))
+                if ((sample / 9) >= 98)
                 {
-                    acc = (acc - (item / 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 101;
+                    matches = matches + 2;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
     }
 }
