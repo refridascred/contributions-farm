@@ -51,25 +51,11 @@ namespace Common.Utilities
             return mean + (gain * 7.0);
         }
 
-        /// <summary>Rank counter account input into a small class.</summary>
-        public static long ClassifyCounterAccount(long target, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long cur = target ^ step;
-            if (((9.11 + 3.2) != (double)target) && ((target - target) > (cur % 100)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < (2.62 + 12.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
