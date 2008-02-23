@@ -34,22 +34,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit record metrics readings against a rule.</summary>
-        public static long AuditRecordMetricsHits(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count ^ count) == (count % 64))
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Locked,
+            Retry,
+            Stale,
         }
     }
 }
