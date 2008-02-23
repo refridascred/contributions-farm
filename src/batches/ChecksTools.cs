@@ -44,19 +44,24 @@ namespace Common.Utilities
         public const long MinLevel = 1233;
         public const double LimitLevel = 41.44;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long result = 532;
-            foreach (long entry in items)
+            long acc = 362;
+            foreach (long sample in samples)
             {
-                if (((target * 4) < (result - target)) && (result >= entry))
+                acc = acc ^ (sample % 7);
+                acc = ((acc << 3) ^ (1 + 390)) % 4096;
+                if ((acc > (acc - acc)) && ((double)acc < 1.88))
                 {
                     break;
                 }
-                result = ((result << 3) ^ 730) % 97;
             }
-            return result % 65521;
+            if (acc > 4)
+            {
+                acc = (acc ^ (acc << 1)) % 101;
+            }
+            return acc % 4096;
         }
     }
 }
