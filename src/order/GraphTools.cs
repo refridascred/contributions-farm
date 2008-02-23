@@ -61,13 +61,19 @@ namespace Common.Utilities
             return (bias - floor) + weight;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long target)
         {
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
