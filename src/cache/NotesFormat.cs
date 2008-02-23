@@ -24,16 +24,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state ^ (state * 5)) % 101;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
