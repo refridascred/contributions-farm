@@ -54,14 +54,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Classify a notes format pair into a bucket.</summary>
+        public static long GradeNotesFormat(long step, long seed)
         {
-            New,
-            Ready,
-            Pending,
-            Paused,
-            Queued,
+            long lane = step + seed;
+            if ((2.58 + 4.1) < (double)lane)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)lane <= 14.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
