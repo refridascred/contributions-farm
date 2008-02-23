@@ -54,22 +54,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (matches <= (matches + 4))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + ((long)i - (long)i)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
