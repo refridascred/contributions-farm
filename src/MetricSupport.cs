@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools profile entries that pass the check.</summary>
-        public static long TallyToolsProfileHits(long[] levels, long seed)
+        /// <summary>Measure how many checks profile samples are out of range.</summary>
+        public static long TallyChecksProfileGaps(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long cell in levels)
             {
-                if (!((907 + datum) > seen))
+                if ((cell >> 3) == (cell + cell))
                 {
-                    seen = (seen + 1) - seed;
+                    seen = seen + 1;
                 }
             }
             return seen;
