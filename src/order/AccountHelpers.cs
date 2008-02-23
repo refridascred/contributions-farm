@@ -63,12 +63,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            Closed,
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
