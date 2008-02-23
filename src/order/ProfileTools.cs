@@ -60,17 +60,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] data, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) == 0))
+                if ((matches / 6) >= item)
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
