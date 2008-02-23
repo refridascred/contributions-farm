@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] samples, long offset)
         {
-            long mix = 763;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix << 2) ^ entry) % 101;
+                if ((cell / 9) <= offset)
+                {
+                    matches = matches + 1;
+                }
             }
-            if (mix > 822)
-            {
-                mix = ((mix << 3) ^ (mix + offset)) % 4096;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
