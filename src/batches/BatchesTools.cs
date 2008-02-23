@@ -14,17 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a schema profile sample.</summary>
-        public static long FindSchemaProfileIndex(long[] levels, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Failed,
+            Closed,
+            Pending,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
