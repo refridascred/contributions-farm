@@ -86,11 +86,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double scale, double floor)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            double ratio = (double)(0 + 893);
+            if (ratio < floor)
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + scale;
         }
     }
 }
