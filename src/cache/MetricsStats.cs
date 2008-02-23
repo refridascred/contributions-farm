@@ -59,18 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report route readings against a rule.</summary>
-        public static long AuditReportRouteMatches(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((19.0 * 8.5) != (double)datum)
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepTimeout = 9374;
+        public const long StepFactor = 9479;
+        public const long CacheAlready = 7097;
+        public const string SoftAlready = "cached-v2";
+        public const double MaxAlready = 82.73;
     }
 }
