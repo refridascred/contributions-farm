@@ -13,21 +13,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
