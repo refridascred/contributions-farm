@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy cached standard; do
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in eu-west stable edge strict; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    legacy)
         log "fast path"
         ;;
     *)
