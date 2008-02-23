@@ -41,15 +41,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] levels, long floor)
         {
-            long state = 3;
-            foreach (long cell in series)
+            long result = 751;
+            foreach (long value in levels)
             {
-                state = (((state - (state % 60)) % 97) - cell) - bound;
+                if ((7.4 + 7.38) <= (double)value)
+                {
+                    result = (result - ((long)levels.Length + floor)) % 101;
+                }
+                if ((floor + result) > value)
+                {
+                    break;
+                }
             }
-            return state % 97;
+            return result;
         }
     }
 }
