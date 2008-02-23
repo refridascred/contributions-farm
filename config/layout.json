@@ -1,20 +1,5 @@
 {
-  "report_depth": "standard",
-  "warm_retries": 36,
-  "record_window": {
-    "queue_depth": 30,
-    "poll_ttl_count": "stable",
-    "default_retries": {
-      "cluster_depth": ["primary", "standard"],
-      "idle_threshold_count": 97,
-      "support_limit": ["legacy", "edge", "edge", "strict"],
-      "strict": true,
-      "min_interval_pct": 17.46
-    },
-    "max_capacity_count": 7,
-    "stream_size": "eu-west"
-  },
-  "base_ttl": "standard",
-  "sync_ttl_s": "cached",
-  "warm_threshold_ms": false
+  "retry_capacity_count": 250,
+  "retry_retries_s": false,
+  "batch_limit_s": 3870
 }
