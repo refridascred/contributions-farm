@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            Ready,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits & 7) >= (68 / 8))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
