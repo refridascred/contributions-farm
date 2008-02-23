@@ -13,24 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long floor)
+        /// <summary>Check that every payload session entry stays within the limit.</summary>
+        public static bool GuardPayloadSessionRange(long[] levels, long origin)
         {
-            if ((double)floor < (6.5 * 4.18))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor < (offset & 15))
+                if (reading >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
