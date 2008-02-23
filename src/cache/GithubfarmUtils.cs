@@ -16,18 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batch queue entries that pass the check.</summary>
-        public static long CountBatchQueueGaps(long[] series)
+        /// <summary>Iterate the githubfarm token series from a seed.</summary>
+        public static long IterateGithubfarmToken(long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((4.73 + 0.91) < (double)item) && (12 <= (item >> 1))) && (((169 / 4) != (item >> 2)) && ((0 % 16) > hits)))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry - carry) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
