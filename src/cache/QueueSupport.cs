@@ -32,14 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] levels, long floor)
         {
-            Ready,
-            Failed,
-            Retry,
-            Dropped,
-            Closed,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
