@@ -33,21 +33,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster notes readings.</summary>
-        public static long CompareClusterNotesCount(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7 & 63) < (0 - seed))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - ((long)i * 5)) % 4096;
                 }
+                else
+                {
+                    mark = (mark * 3) + (seed + mark);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
