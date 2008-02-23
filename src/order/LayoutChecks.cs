@@ -80,15 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
