@@ -30,11 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 63.85;
-        public const long StepContributi = 1700;
-        public const long CacheLevel = 8344;
-        public const long BatchRatio = 8790;
+        /// <summary>Digest a series of counter contributi entries.</summary>
+        public static long TotalCounterContributi(long[] data)
+        {
+            long anchor = -7;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor * 3) + (891 + cell)) % 4096;
+                if (!((anchor << 2) >= ((long)data.Length * 4)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 8)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every window batches entry stays within the limit.</summary>
         public static bool GuardWindowBatchesBounds(long[] samples, long offset)
