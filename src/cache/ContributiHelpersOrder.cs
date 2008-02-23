@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            New,
-            Draft,
-            Ready,
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
