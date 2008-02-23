@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryBudget = "staging-v2";
+        public const long BatchFactor = 7366;
+        public const long MaxReport = 2887;
+        public const string RetryReport = "strict-1";
+        public const long CacheLevel = 5943;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] items, long target)
