@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate checks counter samples.</summary>
