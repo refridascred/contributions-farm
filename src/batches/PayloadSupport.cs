@@ -30,11 +30,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 8153;
-        public const long HardOrder = 7860;
-        public const long BatchOrder = 9720;
-        public const long SoftInterval = 3702;
-        public const double MinFactor = 18.74;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Stale,
+            Dropped,
+            Active,
+            Retry,
+        }
     }
 }
