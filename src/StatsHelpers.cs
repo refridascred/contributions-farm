@@ -41,10 +41,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 6802;
-        public const long BatchAccount = 9515;
-        public const double DefaultTimeout = 63.59;
+        /// <summary>Validate stats stream readings against a bound.</summary>
+        public static bool ValidateStatsStreamRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
