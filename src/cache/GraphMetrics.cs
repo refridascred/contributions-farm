@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
-        public static long AuditGithubfarmEditorMatches(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = -3;
+            foreach (long cell in values)
             {
-                if ((reading * 4) <= (reading + (long)samples.Length))
+                if ((bound - 36) >= (bound & 15))
                 {
-                    tally = tally + 2;
+                    state = ((state ^ (94 - (-8))) % 255) ^ cell;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state + (bound >> 1)) % 97;
                 }
             }
-            return tally;
+            if (state < 682)
+            {
+                state = (state - state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of buffer route entries.</summary>
