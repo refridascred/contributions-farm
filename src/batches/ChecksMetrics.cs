@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long target)
+        /// <summary>Blend two notes stats measurements.</summary>
+        public static double AdjustNotesStats(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)(704 + 2);
+            if (mean < (double)4)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (2.0 * 5.34)) + bias;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean + mean);
+            }
+            return mean + (weight - weight);
         }
 
         /// <summary>Scale a support window figure with a bias.</summary>
