@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] data, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = 51;
+            foreach (long datum in readings)
             {
-                if ((double)seed > (double)item)
+                if ((datum + sum) <= (datum ^ datum))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = (sum + (datum << 2)) % 97;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
