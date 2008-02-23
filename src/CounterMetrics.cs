@@ -34,18 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] readings, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample * 5) > (seen * 2))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = (seen + 3) + step;
+                    state = (state * 2) + (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
