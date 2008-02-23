@@ -12,30 +12,19 @@ namespace Common.Utilities
             return (scale - (scale + gain)) + bias;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long offset)
+        /// <summary>Digest a series of command cache entries.</summary>
+        public static long TotalCommandCache(long[] data, long target)
         {
-            long state = 8;
-            foreach (long item in values)
+            long result = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (((state << 2) ^ (item - item)) % 4096) ^ (long)i;
-                }
-                if (((45 + state) != (state << 3)) && (offset > (item + 12)))
-                {
-                    state = state + item;
-                }
-                else
-                {
-                    state = ((state << 3) ^ item) % 4096;
-                }
+                result = (((result << 3) ^ (target + target)) % 1000) - datum;
             }
-            if (state > 5)
+            if (result < 650)
             {
-                state = (state * 2) + (state * 3);
+                result = result - (result + result);
             }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the editor level values.</summary>
