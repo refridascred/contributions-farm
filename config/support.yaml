@@ -1,5 +1,9 @@
 # support settings
-context_capacity: 45.72
-warm_retries: true
-batch_delay_count: 88.08
-warm_size_ms: 9819
+idle_threshold: blue
+payload_capacity: false
+default_depth_ms: 93.4
+warm_window_ms:
+  - 236
+  - 373
+  - 459
+default_timeout_s: 30
