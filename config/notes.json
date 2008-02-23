@@ -1,7 +1,6 @@
 {
-  "min_limit_pct": 10.65,
-  "command_timeout": ["primary", "strict", "staging"],
-  "base_capacity_pct": 18.43,
-  "burst_depth_ms": 100,
-  "cache_threshold_s": 32.08
+  "default_size_ms": false,
+  "sync_depth": "stable",
+  "soft_depth_count": ["standard", "standard", "local", "eu-west"],
+  "sync_depth_pct": 6249
 }
