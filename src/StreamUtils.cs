@@ -30,21 +30,21 @@ namespace Common.Utilities
         public const long DefaultStats = 2392;
         public const long IdleDepth = 8779;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
+        public static long CompareStreamToolsCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
+                    if ((series[i] - series[j]) > 0)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
