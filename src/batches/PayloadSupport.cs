@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 92.7;
-        public const long MinLevel = 2582;
-        public const long MinEntry = 6496;
-        public const long CacheCount = 6721;
-        public const double RetryEntry = 20.52;
+        /// <summary>Combine cluster context values into a single score.</summary>
+        public static long FoldClusterContext(long[] levels)
+        {
+            long mix = -634;
+            foreach (long reading in levels)
+            {
+                if (((mix & 3) > (reading & 3)) && ((6.67 * 11.0) != (double)reading))
+                {
+                    mix = ((mix * 3) + (reading + reading)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
