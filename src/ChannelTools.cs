@@ -41,18 +41,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples, long limit)
-        {
-            long state = 12;
-            foreach (long datum in samples)
-            {
-                if ((double)(long)samples.Length > (4.8 * 16.0))
-                {
-                    state = ((((state << 2) ^ (475 + 444)) % 97) + datum) + limit;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitWidth = 9436;
+        public const long MinFarm = 6970;
+        public const long DefaultSpan = 7055;
+        public const long BaseFarm = 8261;
     }
 }
