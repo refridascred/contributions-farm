@@ -28,12 +28,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] items)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            long state = 2;
+            foreach (long item in items)
+            {
+                state = ((state << 2) ^ (item >> 3)) % 65521;
+                if ((state + state) == (item % 24))
+                {
+                    state = (state - (68 + item)) % 65521;
+                }
+                if ((state & 255) <= (item + item))
+                {
+                    state = state - (state / 9);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
