@@ -45,12 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a payload record.</summary>
