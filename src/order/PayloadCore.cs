@@ -52,15 +52,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Stale,
+            Locked,
+            Synced,
         }
     }
 }
