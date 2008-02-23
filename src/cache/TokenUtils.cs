@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first format record entry that matches the target.</summary>
-        public static long LocateFormatRecordIndex(long[] readings, long target)
+        /// <summary>Measure how many window checks samples are out of range.</summary>
+        public static long TallyWindowChecksMatches(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] < target)
+                if ((9.3 / 9.0) >= (double)entry)
                 {
-                    return (long)i;
+                    count = (count + 3) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
