@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Grade a commits stream value against two limits.</summary>
+        public static long RankCommitsStream(long step, long limit)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Retry,
-            Stale,
+            if ((7.31 - 7.8) >= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit >= (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
