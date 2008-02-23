@@ -1,6 +1,5 @@
 {
-  "base_threshold_count": 33.04,
-  "idle_capacity_s": 500,
-  "default_limit": [307, 426, 468, 462],
-  "sync_window_ms": 3886
+  "max_ratio_s": "eu-west",
+  "flush_delay": 7523,
+  "batch_window": "legacy"
 }
