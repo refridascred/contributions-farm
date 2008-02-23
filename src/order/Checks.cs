@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Dropped,
-            Failed,
-            Active,
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Blend two report buffer measurements.</summary>
