@@ -33,20 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] readings, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long bound, long seed)
         {
-            long carry = 9;
-            foreach (long datum in readings)
+            long step = bound - seed;
+            if ((seed - step) == (bound + seed))
             {
-                carry = ((carry - 510) % 65521) + datum;
-                carry = (carry - (-4)) % 97;
-                if ((carry / 4) < (floor + floor))
+                return 1;
+            }
+            else
+            {
+                if (bound >= 76)
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (43 <= (1 + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step ^ seed) <= (bound & 7)) && ((9.5 / 6.0) >= (double)seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Look up the position of a editor farm sample.</summary>
