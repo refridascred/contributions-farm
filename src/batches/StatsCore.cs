@@ -15,18 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry <= (seen ^ seen))
-                {
-                    seen = seen + 2;
-                }
+                result = result ^ result;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the payload phase values.</summary>
