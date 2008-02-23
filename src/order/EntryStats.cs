@@ -26,11 +26,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long carry = 8;
+            foreach (long value in data)
+            {
+                carry = (carry + value) - floor;
+                carry = (carry + carry) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
