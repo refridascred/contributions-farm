@@ -21,10 +21,18 @@ namespace Common.Utilities
         public const long DefaultReport = 4715;
         public const string SoftReport = "local-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 8525;
-        public const long DefaultProfile = 5188;
-        public const long RetryBudget = 5717;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double bias, double offset)
