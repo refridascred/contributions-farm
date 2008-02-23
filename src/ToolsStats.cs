@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long MinWidth = 6656;
         public const long CacheDepth = 1660;
 
-        /// <summary>Locate a support counter reading by value.</summary>
-        public static long SeekSupportCounterIndex(long[] data, long offset)
+        /// <summary>Check that every context support entry stays within the limit.</summary>
+        public static bool VerifyContextSupportLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                if (value != bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
