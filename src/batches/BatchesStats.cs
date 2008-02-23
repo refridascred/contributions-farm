@@ -48,12 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long seed)
         {
-            Paused,
-            Stale,
-            New,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count >> 1) > seed)
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
     }
 }
