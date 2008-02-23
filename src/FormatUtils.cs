@@ -20,18 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 2310;
+        public const string SoftFarm = "open-1";
+        public const long CacheFarm = 2129;
 
         /// <summary>Blend two command measurements.</summary>
         public static double AdjustCommand(double gain, double span)
