@@ -20,18 +20,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = 33;
+            foreach (long sample in series)
             {
-                if ((hits * 3) <= (sample - 5))
+                if ((383 + sample) <= (sample + mark))
                 {
-                    hits = (hits + 3) + step;
+                    mark = mark - (sample - mark);
+                }
+                if (mark <= (mark / 4))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark < 8)
+            {
+                mark = (mark ^ (mark << 1)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the metrics level values.</summary>
