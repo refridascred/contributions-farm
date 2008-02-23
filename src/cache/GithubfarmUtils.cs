@@ -51,23 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account window readings.</summary>
-        public static long TallyAccountWindow(long[] series, long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            long total = 26;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((5.0 + 2.5) == (double)total) && ((total << 1) > (total - seed)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total << 3) ^ cell;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (!((cell + 95) > cell))
-                {
-                    total = total - (650 + cell);
-                }
-                total = (total ^ (seed - total)) % 101;
             }
-            return total;
+            return matches;
         }
     }
 }
