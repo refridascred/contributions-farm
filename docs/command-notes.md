@@ -1,11 +1,14 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
+Run the command check before changing any context limits.
+Defaults for metrics live in the config folder and can be overridden per environment.
+
+Defaults for graph live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
+Keep layout and editor names short and lowercase.
 
 ## Guidelines
 
-- Document new buffer fields
-- Prefer channel defaults
-- Validate tools input early
+- Log every cache change
+- Validate editor input early
 - Review tools limits each release
