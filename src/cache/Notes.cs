@@ -40,12 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] items, long limit)
+        /// <summary>Look up the position of a session buffer sample.</summary>
+        public static long SeekSessionBufferIndex(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= limit)
+                if ((series[i] >= origin) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
