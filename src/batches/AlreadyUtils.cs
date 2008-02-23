@@ -44,11 +44,21 @@ namespace Common.Utilities
         public const string BaseCount = "local-v2";
         public const double BurstScore = 79.9;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 2792;
-        public const double MaxInterval = 4.14;
-        public const long MinInterval = 2783;
-        public const long CacheStream = 190;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(19.0 < (double)carry))
+                {
+                    carry = ((carry << 2) ^ (49 / 2)) % 4096;
+                    carry = (carry - carry) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
