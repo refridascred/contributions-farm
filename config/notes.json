@@ -1,7 +1,13 @@
 {
-  "sync_depth_count": 31.03,
-  "verbose": 7389,
-  "cluster_depth": 1971,
-  "burst_limit_ms": 33.49,
-  "stream_capacity": "primary"
+  "tools_delay": {
+    "burst_threshold_count": "cached",
+    "flush_ttl_pct": "staging",
+    "burst_size_pct": 18,
+    "metrics_size": 57.27,
+    "flush_depth_s": 52.27
+  },
+  "soft_timeout_pct": "fallback",
+  "base_delay_ms": true,
+  "cluster_window": 69,
+  "editor_threshold": 9943
 }
