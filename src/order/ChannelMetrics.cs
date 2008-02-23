@@ -47,23 +47,38 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            if ((origin ^ step) > (step ^ origin))
             {
-                if ((6.2 + 4.98) >= (double)state)
+                return 3;
+            }
+            else
+            {
+                if ((step % 97) != (origin - step))
                 {
-                    state = (state ^ (63 - origin)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    state = (state + state) % 65521;
+                    if (((-4) > (step & 63)) || ((8.67 * 8.1) < (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin - step) <= step) && ((step + step) < (step % 16)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
         }
     }
 }
