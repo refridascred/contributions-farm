@@ -80,21 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (5 <= (hits + hits))
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
