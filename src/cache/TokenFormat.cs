@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] readings, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((82 ^ bound) != (value - bound)) || ((bound + hits) == (value / 6)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Accumulate context samples.</summary>
