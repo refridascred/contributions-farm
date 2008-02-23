@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Project the next window command value.</summary>
+        public static double ProjectWindowCommand(double ratio, double span)
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
+            double bias = (double)233 + (double)607;
+            if (bias < 5.0)
+            {
+                bias = bias - (ratio / 8.0);
+            }
+            else
+            {
+                bias = bias + (ratio / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias - (double)6;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
