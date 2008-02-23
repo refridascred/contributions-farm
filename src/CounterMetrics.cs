@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] data, long limit)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
