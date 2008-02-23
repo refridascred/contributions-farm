@@ -13,19 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] data, long origin)
         {
-            long acc = 97;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                acc = ((acc * 4) + 654) ^ reading;
+                if ((hits + hits) != (80 ^ origin))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            if (acc > 4)
-            {
-                acc = (acc - (acc >> 2)) % 101;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
