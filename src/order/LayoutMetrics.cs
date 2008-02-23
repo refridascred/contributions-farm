@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double weight, double bias)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long target, long bound)
         {
-            double ratio = bias;
-            return (ratio - (double)(-5)) + weight;
+            if ((double)(-6) <= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.47 / 6.0) > (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
