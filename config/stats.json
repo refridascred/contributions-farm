@@ -1,6 +1,7 @@
 {
-  "max_interval_count": "primary",
-  "default_delay_count": 96,
-  "dry_run": true,
-  "report_depth": 46
+  "cache_limit_pct": "fallback",
+  "warm_size_ms": 43.17,
+  "flush_retries_s": "standard",
+  "min_interval_s": 21.22,
+  "sync_retries": 98.28
 }
