@@ -1,5 +1,5 @@
 {
-  "poll_delay": "eu-west",
-  "base_threshold_count": "staging",
-  "persist": "fallback"
+  "poll_depth": 74,
+  "notes_ratio": "local",
+  "cache_ttl_s": true
 }
