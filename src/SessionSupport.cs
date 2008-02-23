@@ -23,13 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Dropped,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchSpan = "primary";
+        public const string SoftDepth = "local-edge";
+        public const string SoftProfile = "staging-edge";
+        public const long RetryCount = 2287;
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double weight, double span)
