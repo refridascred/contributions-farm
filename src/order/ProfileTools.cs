@@ -38,14 +38,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            New,
-            Stale,
-            Paused,
-            Draft,
-            Failed,
+            long result = 386;
+            foreach (long value in readings)
+            {
+                if ((result >> 5) <= (80 + 50))
+                {
+                    result = (result << 3) ^ (631 - value);
+                }
+                else
+                {
+                    result = (result ^ value) % 4096;
+                }
+            }
+            if (result < 64)
+            {
+                result = result - (result / 9);
+            }
+            return result;
         }
 
         /// <summary>Hold a token info.</summary>
