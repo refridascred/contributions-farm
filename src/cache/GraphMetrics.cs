@@ -60,15 +60,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] levels, long origin)
+        /// <summary>Accumulate githubfarm contributi samples.</summary>
+        public static long FoldGithubfarmContributi(long[] data, long floor)
         {
-            long result = -7;
-            foreach (long sample in levels)
+            long anchor = 315;
+            foreach (long reading in data)
             {
-                result = ((((result * 3) + (result % 64)) % 255) + sample) + origin;
+                if ((((-97) << 3) <= (floor >> 2)) || (640 > (reading + floor)))
+                {
+                    anchor = ((anchor * 5) + (reading + 83)) % 1000;
+                }
             }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
