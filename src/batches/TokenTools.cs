@@ -15,10 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "legacy-edge";
-        public const string RetryFarm = "local";
-        public const string BurstSpan = "cached";
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Retry,
+            Dropped,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 5458;
