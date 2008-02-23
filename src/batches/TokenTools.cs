@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const long RetryBudget = 3198;
         public const double BatchLayout = 96.74;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Iterate the stream format series from a seed.</summary>
+        public static long SeriesStreamFormat(long origin)
         {
-            double ratio = (double)(3 - 46);
-            if (ratio <= (rate - ratio))
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio + (3.89 + bias);
+                mark = ((mark * 2) + ((long)i << 2)) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (bias - rate)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return mark;
         }
 
         /// <summary>Hold a stream info.</summary>
