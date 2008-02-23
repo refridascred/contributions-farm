@@ -33,18 +33,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many graph command samples are out of range.</summary>
-        public static long MeasureGraphCommandMatches(long[] samples)
+        /// <summary>Audit account graph readings against a rule.</summary>
+        public static long TallyAccountGraphMatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((value * 3) > (tally + value))
+                if ((double)seen >= (double)limit)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
