@@ -41,12 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseWidth = 64.49;
-        public const long CacheBudget = 5925;
-        public const long RetryTimeout = 1038;
-        public const long DefaultContributi = 5956;
-        public const double BurstCount = 90.4;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Active,
+            Done,
+            Paused,
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long limit)
