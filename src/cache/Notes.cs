@@ -44,19 +44,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double ratio, double bias)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] data, long step)
         {
-            double rate = bias;
-            if (rate <= ratio)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                rate = rate + rate;
+                if ((hits - hits) >= (step % 7))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate - rate;
+            return hits;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
