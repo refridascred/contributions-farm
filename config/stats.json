@@ -1,7 +1,6 @@
 {
-  "stream_capacity": 39,
-  "cluster_threshold": false,
-  "batches_limit": 83.42,
-  "poll_interval": "cached",
-  "sync_ttl": true
+  "default_size_ms": "cached",
+  "dry_run": 500,
+  "persist": 7.47,
+  "compress": 64
 }
