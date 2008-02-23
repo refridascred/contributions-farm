@@ -34,18 +34,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] data)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long origin, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long bound = origin + step;
+            if (origin < 556)
             {
-                if (item > ((long)data.Length - item))
+                return 8;
+            }
+            else
+            {
+                if ((8.28 - 8.02) > (double)bound)
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + 7) != (bound - 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((-20) <= (step / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
