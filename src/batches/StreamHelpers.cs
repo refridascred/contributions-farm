@@ -68,13 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Paused,
-            Queued,
-            Pending,
-            Dropped,
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
