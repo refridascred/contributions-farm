@@ -75,18 +75,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report buffer readings.</summary>
-        public static long FoldReportBuffer(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long bound)
         {
-            long total = 102;
-            foreach (long datum in data)
+            if (5.44 <= (double)floor)
             {
-                if ((9.44 * 7.3) >= (double)datum)
+                return 1;
+            }
+            else
+            {
+                if (((double)floor != (double)bound) || (floor < 9))
                 {
-                    total = ((total << 2) ^ datum) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    if (floor > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound & 3) < (bound - bound)) && ((double)bound != (4.0 / 5.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
     }
 }
