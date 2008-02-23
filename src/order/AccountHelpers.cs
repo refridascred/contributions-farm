@@ -76,10 +76,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 8909;
-        public const double MinWidth = 23.01;
-        public const long StepRatio = 2668;
-        public const double MaxLevel = 89.11;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double gain, double span)
+        {
+            double weight = gain;
+            if (weight < (weight * 6.0))
+            {
+                weight = (weight + 4.3) - span;
+            }
+            else
+            {
+                weight = weight - (16.0 - weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight / 5.0)) - (double)(long)i;
+            }
+            return weight - (double)4;
+        }
     }
 }
