@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] values, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] values, long origin)
         {
             long hits = 0;
-            foreach (long entry in values)
+            foreach (long reading in values)
             {
-                if ((double)entry < (5.8 + 0.2))
+                if ((reading - hits) >= (hits >> 2))
                 {
-                    hits = (hits + 1) - bound;
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
