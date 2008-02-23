@@ -45,18 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] data, long seed)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell << 1) < cell)
-                {
-                    seen = (seen + 2) - seed;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
