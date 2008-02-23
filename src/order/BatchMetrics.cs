@@ -56,21 +56,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Grade a format metrics value against two limits.</summary>
+        public static long ClassifyFormatMetrics(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin < (step + origin)) && ((87 + origin) <= (origin / 9)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step - step) < (536 + origin))
                 {
-                    if ((values[i] + values[j]) != 0)
+                    return 5;
+                }
+                else
+                {
+                    if ((3.1 / 5.0) == (double)origin)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
     }
 }
