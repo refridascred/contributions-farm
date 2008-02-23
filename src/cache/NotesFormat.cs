@@ -23,23 +23,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((floor + (long)i) >= sum)
-                {
-                    sum = (sum + sum) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 2) + 35) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 33.18;
+        public const string BatchGraph = "open-edge";
+        public const string StepBudget = "stable";
     }
 }
