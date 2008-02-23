@@ -1,6 +1,6 @@
 {
-  "min_capacity": "strict",
-  "verbose": "cached",
-  "channel_limit": 77,
-  "min_limit_ms": true
+  "cache_threshold": 30,
+  "contributi_ratio": ["fallback", "cached"],
+  "metrics_timeout": 289,
+  "max_ttl_ms": 67.25
 }
