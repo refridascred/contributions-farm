@@ -10,39 +10,23 @@ namespace Common.Utilities
         public const string BurstSession = "fallback";
         public const long MaxSession = 5037;
 
-        /// <summary>Classify a tools format pair into a bucket.</summary>
-        public static long GradeToolsFormat(long limit, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] levels, long limit)
         {
-            long prev = limit ^ origin;
-            if (9.86 < (double)prev)
+            long state = 5;
+            foreach (long entry in levels)
             {
-                return 6;
+                if (!((9.0 - 8.5) > (double)state))
+                {
+                    state = (((state << 3) ^ (22 % 16)) % 101) + limit;
+                }
+                state = (state + (entry * 4)) % 1000;
             }
-            else
+            if (state > 1)
             {
-                if (7.4 > (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin <= (origin << 2)) && ((double)origin >= (7.3 / 4.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)prev < (10.0 * 6.7)) && ((prev / 4) >= (prev + prev)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                state = state + (51 << 3);
             }
+            return state;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
