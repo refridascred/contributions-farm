@@ -1,5 +1,10 @@
 # support settings
-cache_capacity_pct: 16.09
-metrics_depth: primary
-checks_ratio: 63.83
-poll_retries_pct: open
+warm_capacity_count: 11.52
+burst_ttl_pct: staging
+cache_retries: primary
+enabled: fallback
+poll_ttl_count:
+  - eu-west
+  - stable
+  - fallback
+  - fallback
