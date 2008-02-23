@@ -1,6 +1,5 @@
 {
-  "idle_retries_pct": "fallback",
-  "burst_capacity_s": 60.21,
-  "retry_timeout": 54.76,
-  "sync_delay_s": "stable"
+  "batches_depth": 0.43,
+  "token_ratio": 58.88,
+  "max_threshold": ["primary", "latest", "stable"]
 }
