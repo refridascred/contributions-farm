@@ -48,19 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double gain2 = bias;
-            if (gain2 <= (bias + bias))
-            {
-                gain2 = gain2 + 1.2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (gain / 8.0)) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            Dropped,
+            Failed,
+            Synced,
+            New,
         }
     }
 }
