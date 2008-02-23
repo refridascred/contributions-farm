@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples, long bound)
         {
-            long result = -10;
-            foreach (long item in values)
+            long mix = 57;
+            foreach (long sample in samples)
             {
-                result = (result << 3) ^ (item / 9);
+                mix = (mix - (sample / 2)) - bound;
+                mix = (mix - (mix * 5)) % 4096;
+                if (!((87 & 3) != (mix - sample)))
+                {
+                    mix = ((mix << 3) ^ (mix >> 1)) % 97;
+                }
+                else
+                {
+                    mix = mix - sample;
+                }
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
