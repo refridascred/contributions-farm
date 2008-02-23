@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            double weight = bias * 9.8;
+            if (weight <= (double)9)
+            {
+                weight = weight - (double)6;
+            }
+            else
+            {
+                weight = weight + (scale * 2.0);
+            }
+            return weight - (double)115;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
