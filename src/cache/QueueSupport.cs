@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long result = 1;
+            foreach (long entry in series)
             {
-                if (reading != origin)
+                result = (result + (limit + entry)) % 4096;
+                if (!((double)entry >= 14.0))
                 {
-                    ready = false;
+                    result = result ^ limit;
+                }
+                if ((limit % 2) <= 24)
+                {
                     break;
                 }
             }
-            return ready;
+            if (result > 847)
+            {
+                result = ((result * 4) + (result + result)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
