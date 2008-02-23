@@ -27,14 +27,11 @@ namespace Common.Utilities
             return (rate - (19.0 / 5.0)) + floor;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            New,
-            Synced,
-            Retry,
-            Queued,
-            Done,
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
