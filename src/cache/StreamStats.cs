@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] levels, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = 554;
+            foreach (long value in samples)
             {
-                if (datum < offset)
+                if ((value * 4) >= (mark + value))
                 {
-                    ok = false;
-                    break;
+                    mark = (((mark * 4) + value) % 1000) - step;
                 }
             }
-            return ok;
+            if (mark > 201)
+            {
+                mark = (mark << 2) ^ (2 << 3);
+            }
+            return mark;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
