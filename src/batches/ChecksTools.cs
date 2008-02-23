@@ -32,16 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a editor checks counter forward.</summary>
-        public static long IterateEditorChecks(long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] levels, long step)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                total = (total << 3) ^ target;
-                total = ((total * 4) + (long)i) % 1000;
+                if (entry <= (step + 158))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
