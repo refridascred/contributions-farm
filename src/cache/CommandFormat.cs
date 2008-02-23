@@ -41,15 +41,24 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const string BatchAccount = "standard";
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double scale, double offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long offset, long seed)
         {
-            double scale2 = offset;
-            if (scale2 > 15.0)
+            if ((offset - seed) > (offset % 16))
             {
-                scale2 = scale2 - offset;
+                return 7;
             }
-            return scale2 + scale;
+            else
+            {
+                if (((offset + seed) < (seed * 3)) && ((seed - seed) != (seed << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
