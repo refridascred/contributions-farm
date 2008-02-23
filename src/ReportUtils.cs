@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 3762;
+        public const long MaxLevel = 8298;
+        public const double MinWidth = 34.8;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ProjectAlready(double ratio, double span)
