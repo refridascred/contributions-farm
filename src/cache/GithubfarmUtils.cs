@@ -19,17 +19,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] levels, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 398;
+            foreach (long cell in levels)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                score = ((((score * 3) + (score & 1)) % 101) + cell) + step;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the farm level values.</summary>
