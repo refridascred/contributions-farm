@@ -66,11 +66,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4740;
-        public const string HardInterval = "fallback-1";
-        public const long MinSize = 8088;
-        public const long BurstFactor = 2526;
-        public const double SoftCount = 47.19;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long floor, long floor2)
+        {
+            if ((3.3 * 4.88) > (double)floor2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor2) >= (floor2 - 41))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
