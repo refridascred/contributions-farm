@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of metric metrics readings.</summary>
+        public static long OverlapMetricMetricsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)limit < (5.2 - 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
