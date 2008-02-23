@@ -1,10 +1,15 @@
 # githubfarm settings
-max_size_ms: 1286
-entry_depth:
-  - 97
-  - 254
-  - 149
-cache_capacity: 50.97
-cache_interval: 69.01
-command_limit: 2393
-session_delay: cached
+compress: 4557
+tools_capacity: true
+cluster_interval:
+  - latest
+  - green
+  - strict
+batch_ttl: true
+min_ttl_ms:
+  retry_retries_pct: primary
+  min_ratio: primary
+  strict: 250
+  default_delay_pct: stable
+  persist: 53.97
+verbose: latest
