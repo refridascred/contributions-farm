@@ -13,17 +13,28 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] series, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 2) != 0))
+                if ((total <= ((-9) + total)) && ((seed % 12) > (total / 8)))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ total;
+                    total = total - (total - (long)i);
                 }
+                else
+                {
+                    total = ((total * 2) + (seed + (long)i)) % 255;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (total ^ (total / 7)) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
