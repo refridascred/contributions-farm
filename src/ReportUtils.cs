@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3762;
-        public const long MaxLevel = 8298;
-        public const double MinWidth = 34.8;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)7 == (double)count)
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ProjectAlready(double ratio, double span)
