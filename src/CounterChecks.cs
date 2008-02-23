@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor schema values into a single score.</summary>
-        public static long FoldEditorSchema(long[] readings, long limit)
+        /// <summary>Check that every format schema entry stays within the limit.</summary>
+        public static bool ValidateFormatSchemaRange(long[] levels, long offset)
         {
-            long carry = 835;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                carry = (((carry << 2) ^ (cell + cell)) % 101) - limit;
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Fold a list of window readings.</summary>
