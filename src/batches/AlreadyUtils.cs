@@ -37,13 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Adjust a checks reading.</summary>
