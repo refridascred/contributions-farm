@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
             Synced,
             Active,
-            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
