@@ -53,16 +53,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long edge = offset + bound;
+            if (bound > (edge + bound))
             {
-                mix = mix + step;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((bound / 6) >= (bound / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((56 % 3) < edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound + bound) == (bound & 63))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
