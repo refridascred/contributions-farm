@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up report cluster samples.</summary>
-        public static long OverlapReportClusterCount(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((double)offset > (double)bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)445 <= (double)bound) || ((double)bound >= 6.2))
                 {
-                    if ((values[i] ^ values[j]) > 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= (6.2 + 14.0))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset & 255) < offset) || ((12.0 - 3.5) <= (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
