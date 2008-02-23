@@ -73,19 +73,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((score + (long)i) <= score) || ((limit % 10) < 709))
-                {
-                    score = ((score << 3) ^ (long)i) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Draft,
+            Ready,
+            Synced,
+            Done,
+            Closed,
         }
     }
 }
