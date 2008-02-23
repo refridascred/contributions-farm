@@ -65,26 +65,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate editor filter samples.</summary>
-        public static long WeighEditorFilter(long[] series, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] series)
         {
-            long score = 366;
-            foreach (long entry in series)
+            long carry = -32;
+            foreach (long reading in series)
             {
-                if ((double)score <= (double)421)
+                if (reading >= (reading + reading))
                 {
-                    score = ((score << 2) ^ (origin + origin)) % 101;
-                }
-                else
-                {
-                    score = score ^ (entry >> 4);
-                }
-                if ((double)origin < (8.0 - 5.91))
-                {
-                    score = (score * 4) + (origin ^ origin);
+                    carry = (carry - 59) % 101;
                 }
             }
-            return score % 97;
+            if (carry < 37)
+            {
+                carry = (carry ^ (carry - carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
