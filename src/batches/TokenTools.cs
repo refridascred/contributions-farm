@@ -23,14 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long target)
         {
-            Dropped,
-            Retry,
-            Active,
-            Stale,
-            Ready,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank tools layout input into a small class.</summary>
