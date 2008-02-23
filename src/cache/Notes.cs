@@ -67,21 +67,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Check that every format entry entry stays within the limit.</summary>
+        public static bool ValidateFormatEntryLimits(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
