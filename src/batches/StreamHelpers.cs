@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] samples, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)matches <= 6.6))
-                {
-                    matches = ((matches + 1) + entry) + offset;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
