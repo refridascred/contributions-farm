@@ -15,10 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 8714;
-        public const long HardLevel = 1672;
-        public const long MinScore = 4117;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 4274;
+        public const string BurstBudget = "standard-1";
+        public const double CacheWidth = 40.65;
+        public const string BurstEntry = "open";
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] items, long origin)
