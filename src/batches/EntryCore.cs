@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate schema stats samples.</summary>
-        public static long ScoreSchemaStats(long[] data, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long anchor = 977;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor + ((long)data.Length + 439)) ^ sample) + step;
-            }
-            return anchor;
+            Closed,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
