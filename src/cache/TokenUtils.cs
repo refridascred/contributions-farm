@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many window checks samples are out of range.</summary>
-        public static long TallyWindowChecksMatches(long[] values, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((9.3 / 9.0) >= (double)entry)
+                if (!(((4.0 / 5.0) < (double)datum) || (hits > (datum << 2))))
                 {
-                    count = (count + 3) + seed;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
