@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long limit, long seed)
         {
-            double scale = gain + 12.0;
-            return (scale - (scale + gain)) + bias;
+            long next = limit + seed;
+            if (((double)next <= (double)limit) && (next < (limit & 255)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit > (seed + next)) && ((limit + limit) > (next % 12)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of command cache entries.</summary>
