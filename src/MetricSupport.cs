@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] values)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if (floor <= (floor * 3))
             {
-                if ((tally + tally) > (250 + 64))
+                return 3;
+            }
+            else
+            {
+                if (((double)floor <= 6.66) && (floor <= (floor ^ offset)))
                 {
-                    tally = (tally + 2) + item;
+                    return 6;
+                }
+                else
+                {
+                    if (((offset - offset) < (95 - floor)) || ((double)offset < (5.3 * 2.3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7 - floor) != (offset ^ offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
