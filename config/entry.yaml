@@ -1,10 +1,10 @@
 # entry settings
-default_threshold_pct: latest
-min_capacity_count: true
-sync_ttl: 6667
-editor_retries:
-  - eu-west
-  - green
-  - standard
-verbose: false
-default_ttl_s: true
+notes_timeout: fallback
+poll_threshold_s:
+  - 13
+  - 324
+  - 268
+cache_delay: 90.35
+flush_ratio_s: true
+audit: open
+strict: true
