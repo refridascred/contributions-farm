@@ -1,8 +1,7 @@
 {
-  "base_depth": false,
-  "compress": 56.74,
-  "idle_size_count": 74.82,
-  "cache_delay_ms": 55.99,
-  "soft_window_ms": true,
-  "flush_interval": "latest"
+  "commits_timeout": 250,
+  "hard_depth": ["standard", "fallback", "local"],
+  "compress": 500,
+  "schema_threshold": ["cached", "primary"],
+  "buffer_limit": false
 }
