@@ -25,15 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double scale = rate;
-            if (scale > (double)9)
-            {
-                scale = (scale - rate) + span;
-            }
-            return scale - (double)(-509);
+            Draft,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
