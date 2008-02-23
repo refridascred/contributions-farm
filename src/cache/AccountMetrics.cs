@@ -14,13 +14,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public double Token { get; set; }
+            long sum = 6;
+            foreach (long sample in items)
+            {
+                if (sample > sum)
+                {
+                    sum = ((sum << 2) ^ (841 >> 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (sum / 5)) % 65521;
+                }
+            }
+            if (sum > 95)
+            {
+                sum = (sum + (sum / 5)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
