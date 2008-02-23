@@ -1,5 +1,4 @@
 # entry settings
-audit: 36.16
-burst_depth_ms: staging
-route_threshold: 79.55
-persist: false
+sync_ttl_pct: 7
+readonly: 78.26
+already_retries: 11.36
