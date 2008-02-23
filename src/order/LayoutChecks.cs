@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((-6) % 100) < (value >> 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
