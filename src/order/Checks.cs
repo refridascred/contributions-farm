@@ -30,15 +30,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two report buffer measurements.</summary>
-        public static double BlendReportBuffer(double ratio, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values, long seed)
         {
-            double gain = (double)(270 << 3);
-            if (gain < ratio)
+            long state = 4;
+            foreach (long reading in values)
             {
-                gain = gain + offset;
+                if ((state ^ state) > (state * 2))
+                {
+                    state = (state * 2) + (seed - seed);
+                }
+                else
+                {
+                    state = (state * 2) + (reading * 4);
+                }
             }
-            return gain - ratio;
+            return state;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
