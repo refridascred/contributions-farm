@@ -38,23 +38,13 @@ namespace Common.Utilities
             return load + (double)1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] readings)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long score = 828;
-            foreach (long reading in readings)
-            {
-                score = ((score * 3) + (score - reading)) % 65521;
-                if ((score % 60) < reading)
-                {
-                    break;
-                }
-            }
-            if (score < 277)
-            {
-                score = (score + score) % 1000;
-            }
-            return score;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
