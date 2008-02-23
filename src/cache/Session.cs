@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long MaxScore = 245;
         public const double BurstInterval = 67.44;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] items, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((638 - tally) == (bound * 3))
+                if (cell <= step)
                 {
-                    tally = (tally + 3) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
