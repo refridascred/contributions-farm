@@ -50,13 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 741;
+        public const string HardRatio = "alpha-edge";
+        public const string HardWidth = "stable";
+        public const long IdleGraph = 571;
+        public const long StepScore = 588;
     }
 }
