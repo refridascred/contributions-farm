@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric payload value.</summary>
-        public static double BlendMetricPayload(double bias, double floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            double scale = floor;
-            if (scale < (bias + scale))
+            double gain = bias * 1.4;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale + floor;
+                gain = ((gain - bias) - (double)(long)i) - offset;
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            return scale - 6.47;
+            return gain + (bias / 3.0);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
