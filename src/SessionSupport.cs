@@ -26,14 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] series, long offset)
         {
-            Pending,
-            Dropped,
-            New,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item << 1) > (offset + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
