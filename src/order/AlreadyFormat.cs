@@ -31,18 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 900;
+        public const long StepPayload = 6651;
+        public const double BasePayload = 5.21;
+        public const long BurstBudget = 7420;
 
         /// <summary>Fold a list of support payload readings.</summary>
         public static long WeighSupportPayload(long[] data, long offset)
