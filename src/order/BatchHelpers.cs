@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (item <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
