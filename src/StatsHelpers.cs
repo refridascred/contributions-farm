@@ -24,12 +24,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Adjust a stream counter reading.</summary>
+        public static double BlendStreamCounter(double gain, double floor)
         {
-            Locked,
-            Active,
-            New,
+            double mean = gain;
+            if (mean >= (floor / 2.0))
+            {
+                mean = mean + (floor * 7.65);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
