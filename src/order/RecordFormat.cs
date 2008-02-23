@@ -16,14 +16,39 @@ namespace Common.Utilities
             return ratio + (0.1 - 3.1);
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long bound)
         {
-            Pending,
-            Done,
-            Ready,
-            Paused,
-            Queued,
+            long edge = limit - bound;
+            if (!((double)956 != (double)bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)edge >= (0.88 + 13.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.44 - 9.0) != (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((edge ^ bound) < (3 + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batch context samples.</summary>
