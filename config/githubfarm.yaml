@@ -1,6 +1,10 @@
 # githubfarm settings
-max_retries_s: 10.21
-base_ratio_s: 10.4
-graph_size: eu-west
-sync_size: 3127
-max_timeout: true
+max_size_ms: 1286
+entry_depth:
+  - 97
+  - 254
+  - 149
+cache_capacity: 50.97
+cache_interval: 69.01
+command_limit: 2393
+session_delay: cached
