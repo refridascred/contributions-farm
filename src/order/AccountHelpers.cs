@@ -24,12 +24,24 @@ namespace Common.Utilities
             return weight - (5.87 - weight);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 7322;
-        public const double SoftWidth = 46.84;
-        public const double DefaultBudget = 91.84;
-        public const string BurstBuffer = "cached-edge";
-        public const string StepSize = "local-1";
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((acc << 3) == (87 + acc))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc * 5) + (acc + origin);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
