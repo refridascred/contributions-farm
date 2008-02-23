@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor ^ (16 >> 3)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a command header.</summary>
