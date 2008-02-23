@@ -1,6 +1,5 @@
 # githubfarm settings
-max_threshold: local
-cache_depth_s: 30
-already_ratio: true
-strict: 99
-compress: 4671
+strict: false
+audit: 42.98
+sync_threshold_pct: 14.15
+base_capacity_count: blue
