@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] series, long floor)
         {
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
