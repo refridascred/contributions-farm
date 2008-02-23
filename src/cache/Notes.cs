@@ -40,22 +40,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] items, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long lane = bound ^ limit;
+            if (((32 ^ 58) > (bound / 3)) && ((8.3 + 4.03) <= (double)bound))
             {
-                if ((9.0 / 3.0) == (double)tally)
+                return 2;
+            }
+            else
+            {
+                if ((7 % 5) >= lane)
                 {
-                    tally = ((tally + 1) + datum) - limit;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
