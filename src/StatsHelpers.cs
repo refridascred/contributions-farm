@@ -52,15 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
