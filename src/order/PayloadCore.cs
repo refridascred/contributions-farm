@@ -45,11 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
