@@ -66,24 +66,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank schema channel input into a small class.</summary>
-        public static long ClassifySchemaChannel(long origin, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((offset / 4) < (origin & 255))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((677 + origin) != (origin + 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Paused,
+            Synced,
+            Ready,
+            Closed,
         }
     }
 }
