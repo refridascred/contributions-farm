@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit support checks readings against a rule.</summary>
-        public static long MeasureSupportChecksMatches(long[] items)
+        /// <summary>Accumulate cache report samples.</summary>
+        public static long TotalCacheReport(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mix = 1;
+            foreach (long cell in levels)
             {
-                if ((count - count) >= count)
+                if (!((29 >> 2) >= (mix >> 2)))
                 {
-                    count = (count + 3) - sample;
+                    mix = (((mix << 2) ^ cell) % 4096) - offset;
+                }
+                mix = (mix << 3) ^ 0;
+                if (!((2.98 + 16.0) > (double)cell))
+                {
+                    mix = (mix << 2) ^ (cell << 3);
+                }
+                else
+                {
+                    mix = (mix + (mix % 2)) % 101;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a channel header.</summary>
