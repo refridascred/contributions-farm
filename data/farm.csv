@@ -1,9 +1,8 @@
-id,region,token
-1,596,774
-2,blue,30.57
-3,31.55,3.39
-4,57,863
-5,91.95,open
-6,standard,897
-7,stable,973
-8,483,18.57
+id,score,state,token,region
+1,290,733,38.28,open
+2,951,open,green,911
+3,28.15,826,774,primary
+4,651,88.56,579,fallback
+5,standard,strict,93,2.65
+6,edge,75.12,819,staging
+7,760,fallback,eu-west,84.71
