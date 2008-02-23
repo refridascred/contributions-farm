@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Paused,
-            Draft,
-            Idle,
-            Done,
+            Pending,
             Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a buffer summary.</summary>
