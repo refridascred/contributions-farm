@@ -57,18 +57,22 @@ namespace Common.Utilities
             return (bias - floor) + weight;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((double)(long)series.Length > (14.0 - 2.31))
+                if (!((offset - datum) <= (datum - datum)))
                 {
-                    hits = (hits + 1) - entry;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
