@@ -1,7 +1,19 @@
 {
-  "persist": ["green", "stable", "legacy"],
-  "schema_delay": "legacy",
-  "burst_timeout_count": 2059,
-  "sync_depth_count": 19,
-  "readonly": 33.15
+  "dry_run": 500,
+  "enabled": ["blue", "blue", "local", "primary"],
+  "cache_retries": {
+    "cache_delay_pct": 31,
+    "poll_window_ms": "primary",
+    "metric_retries": 250,
+    "hard_depth": "staging",
+    "hard_limit": 45.8,
+    "verbose": 63.31
+  },
+  "flush_ttl_count": {
+    "cache_window_ms": 500,
+    "warm_ratio_count": true,
+    "sync_retries": "blue",
+    "warm_size_ms": true
+  },
+  "base_limit_pct": 53.51
 }
