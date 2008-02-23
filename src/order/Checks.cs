@@ -29,22 +29,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] series, long origin)
         {
-            long state = 4;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((state ^ state) > (state * 2))
+                if (((double)origin >= (5.9 / 6.0)) && !(((long)series.Length * 2) >= cell))
                 {
-                    state = (state * 2) + (seed - seed);
+                    tally = tally + 3;
                 }
                 else
                 {
-                    state = (state * 2) + (reading * 4);
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
