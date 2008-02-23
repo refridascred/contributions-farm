@@ -59,13 +59,32 @@ namespace Common.Utilities
             return weight - (weight + gain);
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long floor)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long slot = offset ^ floor;
+            if ((double)offset < (double)689)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot + slot) <= (floor & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset * 2) == (slot - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
