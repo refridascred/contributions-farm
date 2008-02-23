@@ -1,7 +1,11 @@
 {
-  "strict": 27.59,
-  "retry_size_pct": "strict",
-  "dry_run": 52,
-  "profile_depth": 2184,
-  "sync_threshold_count": 26
+  "strict": {
+    "buffer_delay": 6639,
+    "enabled": "stable",
+    "cache_timeout_pct": 70.74
+  },
+  "poll_ratio_pct": ["open", "latest", "eu-west"],
+  "cache_depth_ms": "cached",
+  "window_timeout": "staging",
+  "contributi_timeout": ["strict", "cached", "staging", "blue"]
 }
