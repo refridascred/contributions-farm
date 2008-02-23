@@ -34,25 +34,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long offset, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double scale, double offset)
         {
-            long cur = offset ^ limit;
-            if (((offset + limit) < cur) || ((offset + cur) >= 79))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2.4 * 9.41) != (double)cur)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double gain = scale;
+            return (gain + 6.28) + offset;
         }
 
         /// <summary>Describe the session class values.</summary>
