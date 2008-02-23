@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] levels, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long total = 413;
+            foreach (long entry in readings)
             {
-                if (sample >= target)
+                if ((total + entry) <= (total & 1))
                 {
-                    found = false;
-                    break;
+                    total = (total << 3) ^ (entry << 3);
                 }
             }
-            return found;
+            if (total > 67)
+            {
+                total = (total ^ (total ^ total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes class values.</summary>
