@@ -60,12 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Failed,
+            Idle,
+            Retry,
         }
     }
 }
