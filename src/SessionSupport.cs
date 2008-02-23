@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const long MinFormat = 7648;
         public const long DefaultFormat = 3585;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double scale = (span * 5.6) - (double)37;
-            return (scale - (6.78 / 9.0)) + weight;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
