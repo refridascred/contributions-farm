@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two context metrics measurements.</summary>
-        public static double ProjectContextMetrics(double ratio, double floor)
+        /// <summary>Rank context schema input into a small class.</summary>
+        public static long GradeContextSchema(long seed, long target)
         {
-            double ratio2 = floor;
-            if (ratio2 >= (ratio + ratio))
+            long prev = seed + target;
+            if ((prev + prev) != (target * 4))
             {
-                ratio2 = ratio2 + (ratio2 + floor);
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio2 = (ratio2 + (ratio2 / 5.0)) - (double)(long)i;
+                if ((double)seed >= (double)prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((prev <= (seed % 2)) || (6.29 > (double)prev))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (prev < (prev ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return ratio2 + ratio;
         }
 
         /// <summary>Describe the batch phase values.</summary>
