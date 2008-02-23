@@ -34,19 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long bound, long step)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            if (!((bound + step) > step))
             {
-                if (entry <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)step < 6.27)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Blend two batches measurements.</summary>
