@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Scale a contributi stream figure with a bias.</summary>
+        public static double ScaleContributiStream(double gain, double floor)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 5) + ((long)i + state)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            double rate = (0.5 - gain) / 4.0;
+            return (rate - (19.0 / 5.0)) + floor;
         }
 
         /// <summary>Describe the editor phase values.</summary>
