@@ -48,12 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double rate, double floor)
         {
-            Stale,
-            New,
-            Queued,
+            double bias = (double)(31 + (-246));
+            if (bias > (double)(-6))
+            {
+                bias = (bias + bias) + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - (floor / 2.0);
         }
     }
 }
