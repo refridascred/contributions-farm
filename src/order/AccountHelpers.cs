@@ -41,12 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] series, long bound)
         {
-            Closed,
-            Dropped,
-            Queued,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((bound ^ 509) == (bound + bound))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
