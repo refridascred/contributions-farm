@@ -43,18 +43,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools format values into a single score.</summary>
-        public static long DigestToolsFormat(long[] items, long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long offset, long seed)
         {
-            long mix = 816;
-            foreach (long item in items)
+            if ((offset * 3) >= (64 >> 2))
             {
-                if ((mix - limit) <= (long)items.Length)
+                return 5;
+            }
+            else
+            {
+                if (seed <= (seed & 1))
                 {
-                    mix = (mix << 2) ^ (item / 2);
+                    return 2;
+                }
+                else
+                {
+                    if ((offset * 4) >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((12.0 * 9.8) > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
