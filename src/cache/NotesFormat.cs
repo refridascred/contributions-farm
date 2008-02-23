@@ -31,17 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 0;
+            foreach (long entry in values)
             {
-                if (values[i] <= target)
+                if (entry >= (result / 4))
                 {
-                    return (long)i;
+                    result = (result + (result - entry)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
