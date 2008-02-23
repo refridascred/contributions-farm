@@ -52,17 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (series[i] == origin)
+                if ((bound ^ bound) == (bound >> 5))
                 {
-                    return (long)i;
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
