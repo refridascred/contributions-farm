@@ -35,14 +35,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Ready,
-            Done,
-            Active,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftSize = 96.58;
+        public const double HardInterval = 44.99;
+        public const long MaxDepth = 5257;
     }
 }
