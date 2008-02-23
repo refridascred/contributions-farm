@@ -39,28 +39,19 @@ namespace Common.Utilities
         public const double CacheBudget = 84.11;
         public const string BatchBudget = "primary-v2";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double rate, double bias)
         {
-            long mix = 19;
-            foreach (long reading in data)
+            double drift = bias / 5.0;
+            if (drift < (rate * 7.9))
             {
-                if (!((mix + 3) >= (reading / 8)))
-                {
-                    mix = ((mix << 2) ^ (56 + reading)) % 65521;
-                    mix = (mix << 2) ^ reading;
-                }
-                mix = (mix - (mix * 5)) % 97;
-                if ((double)mix < 5.8)
-                {
-                    mix = ((mix << 3) ^ (reading << 2)) % 1000;
-                }
-                if (72 > (mix + 0))
-                {
-                    break;
-                }
+                drift = drift + (drift - rate);
             }
-            return mix % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (double)4;
         }
     }
 }
