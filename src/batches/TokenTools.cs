@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a stream account pair into a bucket.</summary>
-        public static long BucketStreamAccount(long origin, long step)
-        {
-            long lane = origin - step;
-            if (((step & 7) > (step - origin)) && (origin <= (step % 60)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((6.15 * 19.0) > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - step) > (760 ^ lane))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 9327;
+        public const long MaxScore = 7990;
+        public const long SoftSpan = 4417;
+        public const string HardCount = "primary-v2";
+        public const long BurstWindow = 1791;
 
         /// <summary>Match up githubfarm contributi samples.</summary>
         public static long OverlapGithubfarmContributiCount(long[] readings)
