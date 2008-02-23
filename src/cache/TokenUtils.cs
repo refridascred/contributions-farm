@@ -34,10 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 1595;
-        public const long DefaultScore = 7637;
-        public const long StepCount = 9466;
-        public const long MinToken = 4283;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples, long limit)
+        {
+            long state = 426;
+            foreach (long item in samples)
+            {
+                state = (state << 2) ^ (limit + item);
+                if ((limit < (state + state)) && ((double)3 <= (double)state))
+                {
+                    state = (state * 2) + (limit ^ state);
+                }
+            }
+            if (state > (-7))
+            {
+                state = (state + state) % 4096;
+            }
+            return state % 65521;
+        }
     }
 }
