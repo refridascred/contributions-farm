@@ -30,13 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            Retry,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
