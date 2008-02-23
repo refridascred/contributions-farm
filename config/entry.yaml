@@ -1,22 +1,19 @@
 # entry settings
-retry_ratio:
-  profile_retries: blue
-  sync_threshold_s: 3113
-  hard_interval_count:
-    - fallback
-    - local
-strict: false
-verbose: true
-retry_depth_pct: 6
-max_window: 55
-soft_ratio_pct:
-  batch_delay: green
-  idle_ttl_pct: 100
-  dry_run:
-    strict: 27.26
-    readonly:
-      - 31
-      - 74
-    sync_interval: 100
-  entry_interval: 9
-  compress: 84.1
+base_window_count: 92.98
+readonly:
+  - open
+  - primary
+  - cached
+compress:
+  burst_limit_pct: true
+  route_ttl: edge
+  cache_interval_count: 24
+  notes_depth: edge
+  account_retries: 2.87
+  context_ratio: edge
+max_retries_s: 48
+warm_limit:
+  - 146
+  - 305
+  - 471
+cache_ratio_ms: false
