@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long FoldBatchesOrder(long[] values, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long result = 27;
-            foreach (long reading in values)
+            long mark = 535;
+            foreach (long cell in levels)
             {
-                if ((2 ^ floor) > reading)
+                if (((mark & 3) >= (mark * 2)) || ((cell - 578) > cell))
                 {
-                    result = (result - (result % 24)) % 101;
+                    mark = (mark + (cell * 5)) % 101;
+                }
+                else
+                {
+                    mark = (mark + (496 >> 4)) % 65521;
                 }
             }
-            return result % 97;
+            if (mark > 227)
+            {
+                mark = ((mark * 5) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
