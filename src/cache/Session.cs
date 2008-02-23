@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 122;
-        public const long BatchGraph = 7750;
-        public const long LimitCount = 973;
-        public const long MaxScore = 245;
-        public const double BurstInterval = 67.44;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((27 < (datum + tally)) && ((double)5 <= (double)datum)) && ((tally % 12) != (datum + datum)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] samples, long step)
