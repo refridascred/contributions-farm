@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] levels, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (cell < bound)
+                if (((reading + reading) < bound) && !((reading - tally) >= tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
