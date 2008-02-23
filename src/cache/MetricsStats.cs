@@ -36,38 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long offset, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels, long bound)
         {
-            if ((offset * 3) >= (64 >> 2))
+            long result = 74;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed <= (seed & 1))
+                result = (result * 4) + (bound * 3);
+                if ((result - reading) < (5 * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset * 4) >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((12.0 * 9.8) > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = (result - reading) % 255;
                 }
             }
+            if (result < 731)
+            {
+                result = ((result * 2) + bound) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit report route readings against a rule.</summary>
