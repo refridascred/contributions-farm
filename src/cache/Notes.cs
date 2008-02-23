@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double weight, double span)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            double mean = (span * 8.9) / 8.0;
-            if (mean >= (span - 4.2))
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                mean = (mean + (double)14) - weight;
+                if (step > (result % 10))
+                {
+                    result = ((result << 2) ^ ((-97) + result)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ step) % 4096;
+                }
+                result = result - (3 ^ step);
+                result = result ^ (step >> 3);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return mean - 1.0;
+            return result;
         }
 
         /// <summary>Look up the position of a payload already sample.</summary>
