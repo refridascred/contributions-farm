@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] data, long floor)
         {
             long tally = 0;
-            foreach (long datum in readings)
+            foreach (long reading in data)
             {
-                if ((double)datum > (0.3 - 4.9))
+                if (18.0 >= (double)floor)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) + reading;
                 }
                 else
                 {
