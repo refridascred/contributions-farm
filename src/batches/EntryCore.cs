@@ -51,17 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue report series from a seed.</summary>
-        public static long DeriveQueueReport(long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            double gain = (rate + rate) + (double)223;
+            if (gain < bias)
             {
-                result = result ^ (41 + result);
-                result = result ^ (offset + offset);
-                result = ((result * 2) + (long)i) % 101;
+                gain = gain - bias;
             }
-            return result;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain - bias;
         }
 
         /// <summary>Project the next already value.</summary>
