@@ -16,14 +16,17 @@ namespace Common.Utilities
             return ratio2 - (double)452;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long step)
         {
-            Draft,
-            Stale,
-            Ready,
-            Active,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
