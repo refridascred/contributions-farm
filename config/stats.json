@@ -1,5 +1,7 @@
 {
-  "channel_timeout": true,
-  "session_timeout": "standard",
-  "retry_retries": 86
+  "idle_capacity_ms": 30,
+  "graph_capacity": 29,
+  "batches_depth": "standard",
+  "max_interval_s": 30,
+  "readonly": "open"
 }
