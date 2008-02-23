@@ -18,15 +18,23 @@ namespace Common.Utilities
         public const long SoftScore = 3392;
         public const long MaxFormat = 4700;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            double rate = ratio;
-            for (int i = 0; i < 4; i++)
+            long acc = 69;
+            foreach (long cell in readings)
             {
-                rate = (rate + bias) + (double)(long)i;
+                acc = (acc + (cell ^ acc)) % 4096;
+                if ((23 / 8) > (acc * 2))
+                {
+                    break;
+                }
             }
-            return rate + rate;
+            if (acc < 6)
+            {
+                acc = (acc * 3) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
