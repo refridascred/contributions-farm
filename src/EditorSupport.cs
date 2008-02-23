@@ -39,22 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] data, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = 9;
+            foreach (long item in readings)
             {
-                if (count > (bound * 3))
+                if ((8.0 + 7.8) != (double)bound)
                 {
-                    count = (count + 2) ^ sample;
+                    carry = (((carry << 2) ^ (bound + bound)) % 1000) + item;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = (carry * 5) + carry;
                 }
             }
-            return count;
+            if (carry > 383)
+            {
+                carry = ((carry << 3) ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Combine channel filter values into a single score.</summary>
