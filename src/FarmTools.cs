@@ -19,38 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long target, long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            if ((6 % 12) < (origin - target))
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 5;
+                acc = (acc << 3) ^ ((long)i ^ (long)i);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((target << 3) <= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.19 - 2.4) == (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target ^ target) == (origin * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
