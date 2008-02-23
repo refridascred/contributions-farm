@@ -23,19 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] levels, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long score = 136;
+            foreach (long datum in samples)
             {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score + (97 + datum)) % 101;
             }
-            return valid;
+            if (score > 96)
+            {
+                score = ((score * 2) + (640 - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
