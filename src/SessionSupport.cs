@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] values)
         {
-            long sum = 25;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((entry / 8) == (entry / 9))
+                if ((346 * 4) >= (seen % 12))
                 {
-                    sum = ((sum << 3) ^ floor) % 4096;
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum > 631)
-            {
-                sum = ((sum << 2) ^ (floor / 2)) % 65521;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Classify a entry filter pair into a bucket.</summary>
