@@ -45,11 +45,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Idle,
-            Ready,
+            Locked,
+            Pending,
+            Draft,
             Retry,
         }
 
