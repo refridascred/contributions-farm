@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long total = 85;
-            foreach (long entry in series)
-            {
-                total = (total ^ entry) % 255;
-            }
-            if (total < 1)
-            {
-                total = (total - (total & 7)) % 101;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
