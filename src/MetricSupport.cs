@@ -27,24 +27,17 @@ namespace Common.Utilities
         public const string MinDepth = "latest-v2";
         public const double MaxSpan = 60.15;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long bound2)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long step)
         {
-            if (((bound + bound) <= (bound * 2)) && (bound2 <= (bound2 & 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 < bound) || (((-32) + bound2) >= (bound + bound)))
+                if (data[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
