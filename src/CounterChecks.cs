@@ -43,10 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxFactor = 4979;
-        public const double BurstSpan = 72.52;
-        public const long SoftCount = 2199;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Closed,
+            Ready,
+            Stale,
+            Active,
+            Done,
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] readings)
