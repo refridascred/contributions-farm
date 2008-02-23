@@ -26,22 +26,16 @@ namespace Common.Utilities
         public const long BaseSupport = 957;
         public const long StepWidth = 8380;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] readings, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long state = 8;
-            foreach (long cell in readings)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (((state + (long)readings.Length) == (limit >> 1)) || ((limit - cell) <= (limit % 10)))
-                {
-                    state = ((state * 3) + (limit * 2)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (limit ^ cell)) % 97;
-                }
+                acc = acc ^ floor;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
     }
 }
