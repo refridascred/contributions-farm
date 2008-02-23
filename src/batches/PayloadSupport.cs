@@ -38,15 +38,39 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long origin)
+        /// <summary>Rank buffer support input into a small class.</summary>
+        public static long RankBufferSupport(long target, long limit)
         {
-            long carry = 896;
-            foreach (long reading in values)
+            long step = target + limit;
+            if (817 <= (step + 589))
             {
-                carry = ((carry - origin) % 1000) + reading;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((1 + limit) > (target >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target << 3) <= target) && ((double)limit != (2.8 / 9.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.5 * 9.54) != (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
