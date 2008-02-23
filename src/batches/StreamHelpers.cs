@@ -67,21 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report session pairs that satisfy a relation.</summary>
-        public static long OverlapReportSessionCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((reading >> 1) > (reading + reading)))
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
