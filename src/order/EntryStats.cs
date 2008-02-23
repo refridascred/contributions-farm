@@ -24,11 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowInterval = 3121;
-        public const long IdleBudget = 4386;
-        public const long SoftWidth = 7006;
-        public const long StepTimeout = 4132;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 6699;
+        public const long SoftSupport = 9258;
+        public const long BurstSupport = 1300;
+        public const double BatchSupport = 25.03;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] items, long offset)
