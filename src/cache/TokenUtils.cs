@@ -34,23 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long state = 426;
-            foreach (long item in samples)
-            {
-                state = (state << 2) ^ (limit + item);
-                if ((limit < (state + state)) && ((double)3 <= (double)state))
-                {
-                    state = (state * 2) + (limit ^ state);
-                }
-            }
-            if (state > (-7))
-            {
-                state = (state + state) % 4096;
-            }
-            return state % 65521;
+            Retry,
+            Ready,
+            Idle,
+            Dropped,
         }
     }
 }
