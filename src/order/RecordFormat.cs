@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            double load = bias;
-            if (load < (gain / 7.0))
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                load = load + (bias / 9.0);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - (double)402;
+            return mark;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
