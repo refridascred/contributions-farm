@@ -53,23 +53,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long step, long floor)
         {
-            long state = -6;
-            foreach (long datum in data)
+            if ((floor + 52) >= (step + step))
             {
-                state = (state << 2) ^ (state * 4);
-                if (state < (datum << 1))
+                return 1;
+            }
+            else
+            {
+                if ((step + floor) < 316)
                 {
-                    state = (state * 2) + (bound - state);
+                    return 0;
                 }
                 else
                 {
-                    state = ((state * 4) + (state & 255)) % 4096;
+                    if ((floor ^ 553) <= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
