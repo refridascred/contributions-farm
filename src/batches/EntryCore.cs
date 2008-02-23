@@ -56,18 +56,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((double)entry <= (6.58 * 6.51)) && ((2 - entry) <= (40 * 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
