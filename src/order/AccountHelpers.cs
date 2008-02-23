@@ -61,13 +61,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = acc ^ ((long)i + (long)i);
+                acc = (acc << 2) ^ (acc + 50);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
