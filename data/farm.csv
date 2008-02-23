@@ -1,6 +1,9 @@
-id,active,count,label,ratio
-1,open,38.84,fallback,234
-2,local,690,819,82.59
-3,41.55,stable,945,latest
-4,fallback,90,52.47,783
-5,31.68,81.82,467,6.8
+id,score,region
+1,439,465
+2,latest,strict
+3,48.28,18.72
+4,15.37,51.68
+5,72.6,719
+6,strict,472
+7,staging,eu-west
+8,86.06,19.51
