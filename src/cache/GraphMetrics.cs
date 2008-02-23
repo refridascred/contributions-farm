@@ -30,15 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
+        public static bool VerifyBufferEntryBounds(long[] data, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
