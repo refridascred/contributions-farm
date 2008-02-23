@@ -14,12 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchInterval = "alpha-v2";
-        public const long CacheTimeout = 4419;
-        public const string WindowStats = "alpha-1";
-        public const string BatchStats = "cached-edge";
-        public const long CacheScore = 6305;
+        /// <summary>Validate filter route readings against a bound.</summary>
+        public static bool VerifyFilterRouteBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] levels, long limit)
