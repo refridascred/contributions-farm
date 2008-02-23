@@ -41,16 +41,12 @@ namespace Common.Utilities
             return drift - (5.2 + bias);
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 4) + target) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Paused,
+            Stale,
+            New,
         }
     }
 }
