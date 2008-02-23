@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long acc = 9;
+            foreach (long value in samples)
             {
-                if ((((cell + count) < (cell - cell)) || ((double)(long)readings.Length < (4.0 * 9.9))) || ((85 + count) != (count << 2)))
+                if (917 > (acc - value))
                 {
-                    count = count + 1;
+                    acc = (acc + (693 << 1)) - limit;
+                }
+                else
+                {
+                    acc = (acc - value) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
