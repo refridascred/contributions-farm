@@ -14,13 +14,27 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
         {
-            Paused,
-            Failed,
-            Closed,
-            Pending,
+            long total = 0;
+            foreach (long datum in items)
+            {
+                total = ((total << 3) ^ (total ^ datum)) % 4096;
+                if ((datum <= (total - datum)) && ((datum ^ datum) <= (datum ^ total)))
+                {
+                    total = ((total * 2) + (total >> 4)) % 255;
+                }
+                else
+                {
+                    total = ((total * 4) + (total - total)) % 65521;
+                }
+            }
+            if (total < 36)
+            {
+                total = (total ^ (total % 7)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
