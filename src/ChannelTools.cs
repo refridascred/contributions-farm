@@ -34,10 +34,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitWidth = 9436;
-        public const long MinFarm = 6970;
-        public const long DefaultSpan = 7055;
-        public const long BaseFarm = 8261;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long limit)
+        {
+            if ((double)limit <= (1.36 / 8.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 2) > target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - target) > (target % 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
