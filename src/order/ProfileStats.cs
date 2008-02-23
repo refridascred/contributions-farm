@@ -38,18 +38,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = 19;
+            foreach (long sample in series)
             {
-                if (((reading + reading) < bound) && !((reading - tally) >= tally))
+                if ((sample - sample) <= ((long)series.Length + sample))
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor * 3) + sample) % 255;
+                }
+                if ((4 - 4) != (anchor + target))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 80)
+            {
+                anchor = anchor + (target + anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
