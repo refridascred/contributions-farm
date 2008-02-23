@@ -46,14 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Dropped,
             Ready,
-            Retry,
+            Done,
+            Idle,
+            Failed,
             New,
-            Closed,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
