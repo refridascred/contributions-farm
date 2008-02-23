@@ -20,39 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long floor)
         {
-            long step = offset - origin;
-            if ((924 - 34) < (origin * 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step ^ origin) < step) && (2.14 <= (double)offset))
+                if (items[i] <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset / 2) >= (origin / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset < 5.4)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
