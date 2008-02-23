@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const string BurstBuffer = "cached-edge";
         public const string StepSize = "local-1";
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the already state values.</summary>
