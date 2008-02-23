@@ -31,13 +31,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a counter options.</summary>
