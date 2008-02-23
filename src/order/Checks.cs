@@ -28,15 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double bias, double floor)
+        /// <summary>Blend two report buffer measurements.</summary>
+        public static double BlendReportBuffer(double ratio, double offset)
         {
-            double drift = (double)(533 + (-556));
-            if (drift >= drift)
+            double gain = (double)(270 << 3);
+            if (gain < ratio)
             {
-                drift = drift + (bias - floor);
+                gain = gain + offset;
             }
-            return drift + (floor - 8.0);
+            return gain - ratio;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
