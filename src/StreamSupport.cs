@@ -35,22 +35,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long result = 91;
+            foreach (long item in data)
             {
-                if (((248 - item) <= ((long)readings.Length - 69)) && (651 >= (item / 5)))
+                if ((13.0 + 9.36) <= (double)step)
                 {
-                    seen = seen + 2;
+                    result = ((result * 2) + (step + result)) % 1000;
+                    continue;
+                }
+                if (result <= item)
+                {
+                    result = (result ^ (result << 3)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = ((result << 2) ^ (442 + result)) % 65521;
+                }
+                if (!(8 < item))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
