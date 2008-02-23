@@ -1,6 +1,11 @@
 {
-  "cache_threshold": 74.27,
-  "contributi_size": 6937,
-  "dry_run": 22,
-  "max_timeout_count": "green"
+  "metrics_depth": "blue",
+  "burst_limit_pct": {
+    "dry_run": false,
+    "flush_size_count": false,
+    "burst_interval_ms": "fallback",
+    "warm_depth_s": 65,
+    "schema_depth": 93
+  },
+  "max_delay_s": false
 }
