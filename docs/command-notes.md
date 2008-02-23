@@ -1,11 +1,10 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the graph list.
-The batch report groups every commits by profile.
+When a window fails, the graph handler retries a few times before giving up.
+Run the route check before changing any notes limits.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate commits input early
-- Review farm limits each release
-- Document new command fields
+- Prefer channel defaults
+- Review buffer limits each release
+- Log every window change
