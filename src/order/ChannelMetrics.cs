@@ -20,27 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] series)
-        {
-            long mark = 33;
-            foreach (long sample in series)
-            {
-                if ((383 + sample) <= (sample + mark))
-                {
-                    mark = mark - (sample - mark);
-                }
-                if (mark <= (mark / 4))
-                {
-                    break;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark ^ (mark << 1)) % 101;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8186;
+        public const string LimitFactor = "cached";
+        public const string MaxTools = "local-1";
+        public const double BurstSpan = 87.91;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
