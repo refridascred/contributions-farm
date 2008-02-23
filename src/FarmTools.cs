@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
