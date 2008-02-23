@@ -46,11 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitTimeout = 7045;
-        public const long IdleCache = 5105;
-        public const long DefaultCache = 1441;
-        public const long RetryCache = 1685;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Dropped,
+            Ready,
+            Retry,
+            New,
+            Closed,
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
