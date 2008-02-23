@@ -51,11 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstRatio = "open-v2";
-        public const double CacheFactor = 40.52;
-        public const string SoftChecks = "open-edge";
-        public const long IdleChecks = 2989;
-        public const long IdleSize = 8092;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 20.83;
+        public const long MaxCluster = 8136;
+        public const double StepCluster = 40.49;
+        public const long HardWidth = 5857;
     }
 }
