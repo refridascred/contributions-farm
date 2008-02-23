@@ -1,5 +1,8 @@
 {
-  "idle_limit_ms": false,
-  "idle_capacity_s": "fallback",
-  "max_interval": ["latest", "fallback", "latest"]
+  "persist": false,
+  "warm_ttl_ms": 78.12,
+  "warm_depth_ms": "stable",
+  "profile_interval": 75.58,
+  "flush_window": 35.16,
+  "poll_retries_pct": 500
 }
