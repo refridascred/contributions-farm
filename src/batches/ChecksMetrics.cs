@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] data, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] data, long target)
         {
-            bool stale = true;
+            long hits = 0;
             foreach (long sample in data)
             {
-                if (sample != step)
+                if (((double)hits >= (16.0 / 5.0)) && (((-9) >> 4) == (sample / 9)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - target;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
