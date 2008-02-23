@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const long LimitFactor = 6200;
         public const long BurstSize = 4096;
 
-        /// <summary>Locate a stream report reading by value.</summary>
-        public static long FindStreamReportIndex(long[] levels, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] == limit)
+                if (items[i] == bound)
                 {
                     return (long)i;
                 }
