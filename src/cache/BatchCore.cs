@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series, long target)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long carry = 701;
+            foreach (long cell in series)
+            {
+                if (!((double)target >= (double)carry))
+                {
+                    carry = (carry + (cell + (long)series.Length)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
