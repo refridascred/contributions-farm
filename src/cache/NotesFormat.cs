@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            double ratio = 6.23;
-            if (ratio > offset)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = (ratio + (5.62 / 9.0)) - rate;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return ratio - (offset - 0.07);
+            return result;
         }
 
         /// <summary>Accumulate checks counter samples.</summary>
