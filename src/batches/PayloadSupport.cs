@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long carry = 39;
-            foreach (long entry in items)
-            {
-                carry = (carry ^ carry) ^ entry;
-            }
-            return carry;
+            Pending,
+            Done,
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
