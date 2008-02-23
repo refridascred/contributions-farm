@@ -41,19 +41,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] items, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long result = -8;
+            foreach (long reading in values)
             {
-                if (cell != target)
+                if ((reading + reading) >= (reading + 4))
                 {
-                    valid = false;
-                    break;
+                    result = result ^ (result / 2);
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Hold a already header.</summary>
