@@ -50,10 +50,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 95.77;
-        public const double IdleFactor = 39.06;
-        public const double LimitBudget = 93.86;
-        public const double SoftRatio = 9.89;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long origin)
+        {
+            long total = 529;
+            foreach (long sample in items)
+            {
+                total = (((total << 3) ^ total) % 97) - sample;
+            }
+            if (total > 2)
+            {
+                total = (total - (origin ^ (-3))) % 255;
+            }
+            return total % 4096;
+        }
     }
 }
