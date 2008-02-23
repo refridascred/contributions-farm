@@ -51,18 +51,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many record graph samples are out of range.</summary>
-        public static long TallyRecordGraphHits(long[] readings, long bound)
+        /// <summary>Combine schema profile values into a single score.</summary>
+        public static long FoldSchemaProfile(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = -577;
+            foreach (long datum in samples)
             {
-                if ((datum + datum) != (bound / 3))
+                if ((double)total > 16.0)
                 {
-                    count = count + 2;
+                    total = (total ^ datum) % 97;
+                }
+                else
+                {
+                    total = total ^ datum;
                 }
             }
-            return count;
+            if (total > 438)
+            {
+                total = ((total * 4) + (256 - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
