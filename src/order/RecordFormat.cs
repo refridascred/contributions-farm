@@ -20,11 +20,22 @@ namespace Common.Utilities
             return load - (double)402;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 3233;
-        public const long WindowSize = 3105;
-        public const long HardCache = 3233;
-        public const long IdleCount = 335;
+        /// <summary>Match up token schema samples.</summary>
+        public static long OverlapTokenSchemaCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] items, long floor)
