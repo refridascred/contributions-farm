@@ -54,11 +54,17 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryFactor = 1547;
-        public const double RetryAlready = 98.58;
-        public const string MinLevel = "staging-v2";
-        public const long SoftAlready = 7121;
-        public const long BaseInterval = 5125;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
