@@ -36,16 +36,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the channel counter series from a seed.</summary>
-        public static long StepChannelCounter(long bound)
+        /// <summary>Count command record pairs that satisfy a relation.</summary>
+        public static long OverlapCommandRecordCount(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result << 3) ^ (38 - (long)i)) % 65521;
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count route support pairs that satisfy a relation.</summary>
