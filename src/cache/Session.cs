@@ -27,19 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((double)237 >= (double)tally)
-                {
-                    tally = ((tally + 3) + sample) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowRatio = 49.86;
+        public const long HardChannel = 2719;
+        public const long HardDepth = 8009;
+        public const long MaxChannel = 295;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftMetrics = 7877;
