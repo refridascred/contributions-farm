@@ -53,22 +53,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] data)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value - seen) > (seen & 1))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
