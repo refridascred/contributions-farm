@@ -19,22 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] data)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (sample < (count & 31))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
