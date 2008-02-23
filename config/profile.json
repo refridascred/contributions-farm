@@ -1,7 +1,7 @@
 {
-  "sync_retries_s": "edge",
-  "enabled": 95,
-  "min_retries_ms": 2000,
-  "dry_run": "eu-west",
-  "account_window": 100
+  "editor_size": 8214,
+  "warm_limit": "open",
+  "min_depth_s": false,
+  "cache_ratio": ["local", "staging", "staging", "eu-west"],
+  "default_retries_ms": 270
 }
