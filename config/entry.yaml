@@ -1,23 +1,6 @@
 # entry settings
-max_size_s:
-  githubfarm_limit:
-    filter_ratio: green
-    already_delay: strict
-    stream_timeout: blue
-  profile_window:
-    poll_retries: 1132
-    batch_retries_ms: 2239
-    audit: 60
-    cache_size_count: false
-  default_ratio:
-    idle_depth_pct: 72
-    idle_delay_ms: true
-    hard_threshold_count: 83
-  token_limit: 80
-  readonly: 37
-  idle_window:
-    - 269
-    - 227
-    - 153
-flush_ratio_count: cached
-compress: staging
+context_window: 60
+dry_run: 1041
+commits_capacity: 77.53
+audit: blue
+cache_depth: fallback
