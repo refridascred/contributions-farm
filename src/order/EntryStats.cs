@@ -24,17 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] data, long floor)
-        {
-            long carry = 8;
-            foreach (long value in data)
-            {
-                carry = (carry + value) - floor;
-                carry = (carry + carry) % 97;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowInterval = 3121;
+        public const long IdleBudget = 4386;
+        public const long SoftWidth = 7006;
+        public const long StepTimeout = 4132;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] items, long offset)
