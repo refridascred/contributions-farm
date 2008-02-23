@@ -1,6 +1,7 @@
 {
-  "readonly": "edge",
-  "counter_capacity": true,
-  "warm_delay": "eu-west",
-  "max_ttl": 54
+  "min_capacity_pct": 43.8,
+  "batch_window": ["cached", "cached", "stable", "legacy"],
+  "retry_depth_count": 9,
+  "base_threshold_ms": true,
+  "soft_retries_pct": 1106
 }
