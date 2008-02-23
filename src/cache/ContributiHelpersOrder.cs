@@ -21,21 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a support entry.</summary>
