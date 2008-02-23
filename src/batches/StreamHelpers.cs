@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] series, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)target >= 4.1)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
