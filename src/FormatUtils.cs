@@ -21,21 +21,25 @@ namespace Common.Utilities
         public const string LimitTimeout = "open-v2";
         public const long IdleMetric = 8648;
 
-        /// <summary>Compare every pair of layout already readings.</summary>
-        public static long PairLayoutAlreadyCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (total * 4) + total;
+                if ((62 + 0) >= total)
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total ^ (total / 5);
+                    total = total ^ (total << 1);
                 }
+                total = ((total * 5) + (sample & 255)) % 101;
             }
-            return tally;
+            if (total < 6)
+            {
+                total = total - (total - 69);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the payload order entries that pass the check.</summary>
