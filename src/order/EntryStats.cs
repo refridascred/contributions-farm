@@ -33,10 +33,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "local-v2";
-        public const double WindowRatio = 40.65;
-        public const long BurstTools = 1082;
+        /// <summary>Measure how many graph command samples are out of range.</summary>
+        public static long MeasureGraphCommandMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 3) > (tally + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] values)
