@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (bias2 - (double)88) + gain;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] items, long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] < step)
+                if (series[i] <= target)
                 {
                     return (long)i;
                 }
