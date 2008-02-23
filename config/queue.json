@@ -1,7 +1,7 @@
 {
-  "burst_depth": [160, 168, 150],
-  "cache_interval": "open",
-  "compress": "strict",
-  "hard_size_ms": true,
-  "schema_depth": 63
+  "stats_capacity": ["local", "stable", "legacy", "strict"],
+  "support_retries": 79,
+  "batch_ratio_s": 41.74,
+  "strict": "blue",
+  "readonly": 71.39
 }
