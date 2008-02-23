@@ -86,18 +86,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((254 + seen) < seen) && ((78 & 63) >= seen))
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 3) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
