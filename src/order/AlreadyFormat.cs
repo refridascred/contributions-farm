@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] values, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long sum = 58;
-            foreach (long reading in values)
-            {
-                if ((target + reading) >= (37 * 4))
-                {
-                    sum = (sum << 3) ^ (target - sum);
-                }
-            }
-            return sum % 1000;
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every format editor entry stays within the limit.</summary>
