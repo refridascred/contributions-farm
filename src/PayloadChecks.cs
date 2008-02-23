@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell > floor)
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a cluster stats.</summary>
