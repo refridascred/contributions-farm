@@ -43,12 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Grade a stats context value against two limits.</summary>
+        public static long ClassifyStatsContext(long origin, long step)
         {
-            New,
-            Queued,
-            Locked,
+            long span = origin - step;
+            if ((step + span) != (step % 100))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin ^ span) != (36 + span)) && (step > (span + 253)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
