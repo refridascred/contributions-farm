@@ -53,11 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            double ratio = scale;
+            if (ratio < scale)
+            {
+                ratio = (ratio - (double)(-880)) - offset;
+            }
+            else
+            {
+                ratio = ratio + (9.7 + ratio);
+            }
+            return ratio + ratio;
         }
     }
 }
