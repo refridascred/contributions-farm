@@ -39,15 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double scale, double span)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] samples, long seed)
         {
-            double scale2 = scale;
-            if (scale2 > scale2)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                scale2 = scale2 + scale2;
+                if (sample > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale2 - (span * 5.95);
+            return valid;
         }
 
         /// <summary>Describe the context class values.</summary>
