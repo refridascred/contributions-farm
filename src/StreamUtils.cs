@@ -55,23 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long anchor = 530;
-            foreach (long sample in readings)
-            {
-                if ((2.6 * 3.8) != (double)anchor)
-                {
-                    anchor = anchor + (anchor - sample);
-                }
-                anchor = (anchor + (anchor % 97)) % 255;
-                if (anchor >= (anchor + (long)readings.Length))
-                {
-                    anchor = (anchor + (sample << 2)) % 4096;
-                }
-            }
-            return anchor % 65521;
+            Locked,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Accumulate batches samples.</summary>
