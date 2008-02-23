@@ -32,12 +32,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            Synced,
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Adjust a cache batch reading.</summary>
