@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout stream entry stays within the limit.</summary>
-        public static bool VerifyLayoutStreamBounds(long[] values, long limit)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
