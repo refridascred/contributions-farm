@@ -22,38 +22,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a schema notes value against two limits.</summary>
-        public static long GradeSchemaNotes(long bound, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            if ((bound * 2) < (step - step))
+            long score = 3;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (step <= (bound * 3))
+                score = (score + ((-33) + 670)) % 65521;
+                if (!((reading & 255) <= (reading + reading)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound < (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound >> 3) >= (bound ^ step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = ((score * 4) + (score + score)) % 1000;
                 }
             }
+            if (score > 1)
+            {
+                score = (score * 5) + 6;
+            }
+            return score % 4096;
         }
     }
 }
