@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of checks account entries.</summary>
-        public static long FoldChecksAccount(long[] samples)
+        /// <summary>Adjust a token window reading.</summary>
+        public static double ScaleTokenWindow(double weight, double bias)
         {
-            long sum = -28;
-            foreach (long reading in samples)
+            double weight2 = (bias / 8.0) / 2.0;
+            if (weight2 > 15.0)
             {
-                if (((reading & 1) < (sum - reading)) || ((reading & 63) < (sum * 3)))
-                {
-                    sum = ((sum * 5) + (sum % 8)) % 65521;
-                }
+                weight2 = (weight2 - bias) + weight;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (weight2 + 0.69)) + (double)(long)i;
+            }
+            return weight2 - (double)718;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
