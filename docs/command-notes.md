@@ -1,16 +1,15 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the notes list.
-Each buffer is validated before it reaches the contributi queue.
-The checks report groups every counter by filter.
+Defaults for layout live in the config folder and can be overridden per environment.
+Each token is validated before it reaches the route queue.
 
-A command that stays idle for too long is moved to the account list.
-Use entry settings to tune how often layout data is refreshed.
-Each notes is validated before it reaches the cluster queue.
+Each metrics is validated before it reaches the command queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate notes input early
-- Keep command values small
-- Document new report fields
-- Log every commits change
+- Keep buffer values small
+- Review batches limits each release
+- Log every stream change
+- Prefer batches defaults
