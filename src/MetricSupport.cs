@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheScore = "legacy-edge";
-        public const long BaseSpan = 2687;
-        public const string StepSupport = "primary";
-        public const long WindowSupport = 5484;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
+        {
+            double load = (double)(42 + 8);
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + load) + (double)(long)i) - gain;
+            }
+            return load + (bias * 16.0);
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TotalCounter(long[] samples)
