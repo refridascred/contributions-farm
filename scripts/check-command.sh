@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-cached}"
+mode="${1:-latest}"
 case "${mode}" in
-    staging)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -22,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+COMMAND_LIMIT=246
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
