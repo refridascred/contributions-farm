@@ -27,22 +27,24 @@ namespace Common.Utilities
         public const string MinDepth = "latest-v2";
         public const double MaxSpan = 60.15;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] samples, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if (((bound + bound) <= (bound * 2)) && (bound2 <= (bound2 & 3)))
             {
-                if ((8.9 - 8.4) <= (double)datum)
+                return 1;
+            }
+            else
+            {
+                if ((bound2 < bound) || (((-32) + bound2) >= (bound + bound)))
                 {
-                    hits = (hits + 3) + origin;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
