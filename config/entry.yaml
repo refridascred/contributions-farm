@@ -1,4 +1,9 @@
 # entry settings
-sync_ttl_pct: 7
-readonly: 78.26
-already_retries: 11.36
+base_limit: false
+sync_size_s:
+  - stable
+  - blue
+  - blue
+retry_depth_s:
+  - latest
+  - green
