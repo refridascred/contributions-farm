@@ -33,24 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a format token pair into a bucket.</summary>
-        public static long RankFormatToken(long origin, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long origin)
         {
-            if (origin > (82 >> 4))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((65 - origin) < 761)
+                if (items[i] < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank already input into a small class.</summary>
