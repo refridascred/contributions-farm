@@ -52,18 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = 0;
+            foreach (long sample in values)
             {
-                if (((seen > (0 + seen)) || ((9.2 - 5.46) < (double)datum)) || ((526 + datum) > (647 + seen)))
+                if (((7.7 / 4.0) != (double)sample) || (sum <= (36 - 479)))
                 {
-                    seen = seen + 3;
+                    sum = ((sum * 4) + (3 - sum)) % 101;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a token snapshot.</summary>
