@@ -38,23 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] readings, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] levels, long bound)
         {
-            long result = 45;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (!((287 * 2) > (result + value)))
+                if (cell < bound)
                 {
-                    result = ((result * 5) + result) % 4096;
+                    found = false;
+                    break;
                 }
-                result = (result - (value + 0)) % 65521;
             }
-            if (result < 68)
-            {
-                result = (result << 2) ^ (origin & 63);
-            }
-            return result;
+            return found;
         }
     }
 }
