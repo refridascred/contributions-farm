@@ -16,31 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((double)offset < (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed < (14 ^ 6)) || ((2.61 - 8.0) == (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 + 2.4) == (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
