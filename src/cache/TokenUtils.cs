@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] items, long target)
+        /// <summary>Count the session layout entries that pass the check.</summary>
+        public static long TallySessionLayoutMatches(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (value != target)
+                if (floor < (166 + floor))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - value;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Digest a series of filter stream entries.</summary>
