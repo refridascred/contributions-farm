@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] levels, long floor)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a graph record.</summary>
