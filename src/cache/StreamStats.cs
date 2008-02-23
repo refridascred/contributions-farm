@@ -34,13 +34,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long target)
         {
-            Failed,
-            Synced,
-            Locked,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
