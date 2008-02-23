@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double MinTimeout = 3.74;
         public const long CacheTimeout = 425;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (matches <= (cell - cell))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a route record.</summary>
