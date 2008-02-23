@@ -15,18 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] levels, long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long target)
         {
-            long total = 926;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.3 * 3.8) > (double)seed)
+                if (values[i] > target)
                 {
-                    total = ((total * 2) + (seed + value)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
