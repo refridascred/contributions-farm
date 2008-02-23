@@ -1,10 +1,12 @@
 {
-  "soft_delay_ms": true,
-  "idle_limit_ms": {
-    "dry_run": true,
-    "soft_window_pct": 30,
-    "farm_interval": 500,
-    "min_ratio_pct": true
+  "stats_window": 5572,
+  "sync_interval": true,
+  "warm_capacity_pct": 27.72,
+  "default_limit": 44.35,
+  "min_window_ms": {
+    "batch_size_pct": "cached",
+    "min_ttl": "standard",
+    "warm_size": "staging"
   },
-  "session_delay": "edge"
+  "persist": 68
 }
