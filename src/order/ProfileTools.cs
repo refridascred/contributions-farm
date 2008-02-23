@@ -48,19 +48,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool CheckFarmProfileRange(long[] values, long seed)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a context summary.</summary>
