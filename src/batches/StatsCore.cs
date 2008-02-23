@@ -27,14 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double scale, double floor)
         {
-            Closed,
-            Stale,
-            Idle,
-            Retry,
-            Draft,
+            double load = scale;
+            return load + floor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
