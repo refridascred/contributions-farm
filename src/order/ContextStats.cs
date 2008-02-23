@@ -22,10 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinFactor = 44.14;
-        public const string HardEditor = "legacy";
-        public const double MinEditor = 6.87;
+        /// <summary>Count context counter pairs that satisfy a relation.</summary>
+        public static long MatchContextCounterCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
