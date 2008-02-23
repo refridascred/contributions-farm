@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double bias)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double bias2 = bias;
-            if (bias2 > (double)59)
-            {
-                bias2 = bias2 - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (bias / 3.0);
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
