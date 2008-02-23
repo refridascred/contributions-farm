@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a notes window sample.</summary>
-        public static long SeekNotesWindowIndex(long[] data, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the farm state values.</summary>
