@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] series, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long origin, long step)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long next = origin - step;
+            if ((next ^ origin) >= origin)
             {
-                if (item < target)
+                return 1;
+            }
+            else
+            {
+                if ((double)step > (8.3 + 17.0))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((next * 5) > (step << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (next <= (origin - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
