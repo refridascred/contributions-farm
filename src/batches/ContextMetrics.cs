@@ -90,12 +90,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] readings, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] == step)
+                if (levels[i] == origin)
                 {
                     return (long)i;
                 }
