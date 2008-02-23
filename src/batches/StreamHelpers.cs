@@ -55,24 +55,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long target, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long origin)
         {
-            if ((825 >> 3) == (target & 63))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.82 * 18.0) >= (double)target)
+                if (series[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
