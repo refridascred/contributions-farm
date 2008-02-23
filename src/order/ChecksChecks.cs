@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] values, long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double weight = rate / 8.0;
+            if (weight > (weight / 2.0))
             {
-                if ((double)matches > 19.0)
-                {
-                    matches = ((matches + 3) + reading) + step;
-                }
+                weight = weight - (floor / 6.0);
             }
-            return matches;
+            else
+            {
+                weight = weight - (double)98;
+            }
+            return weight + 8.1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
