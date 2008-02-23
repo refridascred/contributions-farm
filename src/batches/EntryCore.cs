@@ -46,11 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double scale = offset;
-            return (scale - scale) + bias;
+            Done,
+            Synced,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
