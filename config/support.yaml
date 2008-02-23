@@ -1,4 +1,4 @@
 # support settings
-format_threshold: blue
-max_timeout_count: blue
-flush_threshold: eu-west
+context_window: standard
+poll_delay_ms: 50
+compress: 98
