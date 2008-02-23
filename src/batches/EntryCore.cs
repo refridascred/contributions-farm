@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxCount = "primary";
-        public const string MinLayout = "latest-edge";
-        public const long HardDepth = 1381;
-        public const long BurstLayout = 4957;
-        public const double CacheLayout = 76.56;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values, long limit)
+        {
+            long mix = 82;
+            foreach (long entry in values)
+            {
+                mix = ((mix - 2) ^ entry) - limit;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultLevel = 9024;
