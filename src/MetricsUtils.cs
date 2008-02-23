@@ -30,18 +30,15 @@ namespace Common.Utilities
             return bias + (double)34;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] values, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] values)
         {
-            long state = 21;
-            foreach (long cell in values)
+            long total = 0;
+            foreach (long datum in values)
             {
-                if ((offset + state) >= ((-4) / 7))
-                {
-                    state = state - cell;
-                }
+                total = (total ^ (datum - datum)) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Blend two batches measurements.</summary>
