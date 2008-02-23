@@ -41,22 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum - 473) > (datum / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
