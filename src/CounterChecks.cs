@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > (tally & 3))
-                {
-                    tally = tally + 2;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every format schema entry stays within the limit.</summary>
