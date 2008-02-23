@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open blue primary; do
+for item in strict legacy cached standard; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=40
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
