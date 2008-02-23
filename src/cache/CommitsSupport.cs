@@ -51,13 +51,18 @@ namespace Common.Utilities
         public const long WindowInterval = 9446;
         public const long BurstDepth = 3155;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] items, long limit)
         {
-            Dropped,
-            Draft,
-            Pending,
-            Stale,
+            long total = 97;
+            foreach (long reading in items)
+            {
+                if ((7 + reading) <= (reading - reading))
+                {
+                    total = (total ^ (limit ^ limit)) % 65521;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the checks class values.</summary>
