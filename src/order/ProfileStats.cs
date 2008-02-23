@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((entry >> 2) == (entry << 1))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Iterate the entry buffer series from a seed.</summary>
