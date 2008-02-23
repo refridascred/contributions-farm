@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings, long limit)
         {
-            Queued,
-            Pending,
-            Retry,
+            long carry = 303;
+            foreach (long reading in readings)
+            {
+                if (!((41 <= (reading ^ reading)) && ((double)limit >= (1.0 + 6.7))))
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
+                if (limit <= (reading >> 4))
+                {
+                    carry = ((carry << 2) ^ (reading ^ carry)) % 97;
+                }
+                if ((17.0 + 5.8) != (double)limit)
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
