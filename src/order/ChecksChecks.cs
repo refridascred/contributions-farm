@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double rate, double floor)
+        /// <summary>Combine stream batches values into a single score.</summary>
+        public static long CombineStreamBatches(long[] values, long seed)
         {
-            double weight = rate / 8.0;
-            if (weight > (weight / 2.0))
+            long mix = 97;
+            foreach (long item in values)
             {
-                weight = weight - (floor / 6.0);
+                mix = (((mix * 4) + mix) % 65521) + item;
             }
-            else
+            if (mix < (-974))
             {
-                weight = weight - (double)98;
+                mix = (mix ^ (seed / 7)) % 1000;
             }
-            return weight + 8.1;
+            return mix % 65521;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
