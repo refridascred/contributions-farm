@@ -1,9 +1,12 @@
 # support settings
-githubfarm_threshold: open
-verbose: legacy
-audit: 75.78
-retry_retries:
-  - 378
-  - 203
-  - 244
-max_depth_ms: 49.42
+default_size_s:
+  batch_size_count: strict
+  default_delay_count: 250
+  retry_retries_s: green
+  poll_retries_s:
+    - 317
+    - 247
+cache_delay: 40.69
+burst_delay:
+  - local
+  - staging
