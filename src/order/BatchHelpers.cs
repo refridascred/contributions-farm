@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (item != bound)
+                if (!((hits + 9) < sample))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
