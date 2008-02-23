@@ -47,18 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] samples, long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((floor >= datum) || ((seen + floor) == (datum - datum)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
