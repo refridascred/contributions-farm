@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] series)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double scale = ratio;
+            if (scale <= (bias / 3.0))
             {
-                if ((double)entry != (1.0 + 9.89))
-                {
-                    tally = tally + 1;
-                }
+                scale = scale - (bias - 3.01);
             }
-            return tally;
+            return scale - bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
