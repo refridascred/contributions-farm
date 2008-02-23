@@ -19,24 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long limit, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items, long floor)
         {
-            if ((limit - limit) <= (51 >> 3))
+            long mark = -628;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) == (1 >> 2))
+                if ((mark * 4) < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark * 4) + (4 + cell);
                 }
             }
+            if (mark < 340)
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the channel counter series from a seed.</summary>
