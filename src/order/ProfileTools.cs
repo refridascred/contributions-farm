@@ -24,39 +24,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long step)
         {
-            long edge = bound ^ limit;
-            if ((3.6 + 7.16) >= (double)bound)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                anchor = (anchor + (70 >> 4)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((245 & 31) <= edge)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (limit - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound != (7.6 + 14.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
