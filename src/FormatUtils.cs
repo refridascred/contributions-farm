@@ -49,18 +49,11 @@ namespace Common.Utilities
             return drift - (drift - span);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading << 3) == (reading - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
