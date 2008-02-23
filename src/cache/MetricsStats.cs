@@ -32,20 +32,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Digest a series of layout record entries.</summary>
+        public static long CombineLayoutRecord(long[] samples, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long sum = 886;
+            foreach (long reading in samples)
             {
-                acc = acc + (floor ^ (long)i);
-                if (!((floor + floor) > acc))
+                if (!((sum / 4) < (seed / 4)))
                 {
-                    acc = (acc - floor) % 4096;
+                    sum = ((sum * 3) + (reading / 4)) % 97;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
+                else
+                {
+                    sum = (sum << 2) ^ (seed << 2);
+                }
+                if ((sum >> 1) == (seed & 1))
+                {
+                    break;
+                }
             }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Classify a format batches pair into a bucket.</summary>
