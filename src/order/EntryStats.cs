@@ -47,21 +47,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSize = 242;
+        public const string BatchScore = "latest";
+        public const long MaxRatio = 4672;
     }
 }
