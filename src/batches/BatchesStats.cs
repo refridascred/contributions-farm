@@ -30,21 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Project the next window format value.</summary>
+        public static double AdjustWindowFormat(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 6.1;
+            if (drift < 7.8)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - 9.0) - span;
             }
-            return count;
+            return drift - (5.2 + bias);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
