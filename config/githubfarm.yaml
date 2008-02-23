@@ -1,8 +1,11 @@
 # githubfarm settings
-counter_size: 2880
-hard_size_s:
-  - legacy
-  - local
-cache_threshold:
-  - latest
-  - staging
+checks_retries:
+  cache_threshold_ms: 250
+  contributi_ttl: 51.1
+  poll_retries_count: 1024
+  context_window: stable
+stream_ratio: false
+cache_threshold_pct:
+  - 128
+  - 39
+min_ratio: 79.39
