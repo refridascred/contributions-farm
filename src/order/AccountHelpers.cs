@@ -55,12 +55,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
