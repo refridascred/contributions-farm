@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine cluster context values into a single score.</summary>
-        public static long FoldClusterContext(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] levels, long floor)
         {
-            long mix = -634;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (((mix & 3) > (reading & 3)) && ((6.67 * 11.0) != (double)reading))
+                if (entry <= floor)
                 {
-                    mix = ((mix * 3) + (reading + reading)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Digest a series of account entries.</summary>
