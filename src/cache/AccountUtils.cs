@@ -16,18 +16,17 @@ namespace Common.Utilities
             return ratio2 + (double)29;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((6.5 - 15.0) > (double)value))
+                if (samples[i] >= step)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
