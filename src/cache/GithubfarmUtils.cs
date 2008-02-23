@@ -26,24 +26,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long bound, long step)
+        /// <summary>Find the first window cluster entry that matches the target.</summary>
+        public static long SeekWindowClusterIndex(long[] samples, long floor)
         {
-            if (!((bound + step) > step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < 6.27)
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
