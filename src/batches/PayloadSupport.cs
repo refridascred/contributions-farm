@@ -20,22 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long bound)
         {
-            long anchor = 324;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor >> 4) < (448 + 148))
+                if (levels[i] >= bound)
                 {
-                    anchor = (anchor + (sample % 7)) % 97;
-                }
-                if ((anchor << 3) <= anchor)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
