@@ -30,18 +30,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the payload order entries that pass the check.</summary>
-        public static long CountPayloadOrderGaps(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((cell + hits) >= hits)
+                if ((seen * 4) == (item & 127))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
