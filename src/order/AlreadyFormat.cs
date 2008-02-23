@@ -46,20 +46,22 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 9500;
         public const long BatchBudget = 6605;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Fold a list of support payload readings.</summary>
+        public static long WeighSupportPayload(long[] data, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = 79;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((offset / 5) != (offset - anchor))
                 {
-                    result = ((result ^ result) % 97) + (long)i2;
+                    anchor = anchor - (cell << 1);
                 }
-                result = (result - result) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            if (anchor > (-33))
+            {
+                anchor = (anchor + (anchor % 60)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of context already readings.</summary>
