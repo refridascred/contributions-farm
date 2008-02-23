@@ -23,22 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long carry = 31;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry - (carry >> 5)) - (long)i) ^ reading;
-                }
-                if ((carry << 2) != (918 - carry))
-                {
-                    carry = carry + (354 + carry);
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Hold a format stats.</summary>
