@@ -21,17 +21,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] data, long floor)
+        /// <summary>Adjust a payload entry reading.</summary>
+        public static double AdjustPayloadEntry(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                scale = (scale - ratio) - (double)(long)i;
             }
-            return -1;
+            return scale + (span - 8.31);
         }
     }
 }
