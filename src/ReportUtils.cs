@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Paused,
-            New,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 2658;
+        public const double MinCommits = 43.87;
+        public const double StepCommits = 89.62;
+        public const string DefaultCommits = "cached-edge";
+        public const string BurstSpan = "stable-1";
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] values, long limit)
