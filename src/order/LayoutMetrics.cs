@@ -32,18 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((double)count <= (19.0 / 2.0))
+                if ((datum % 12) > (3 << 1))
                 {
-                    count = ((count + 3) + datum) - origin;
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
