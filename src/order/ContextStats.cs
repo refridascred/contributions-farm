@@ -16,13 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Synced,
-            Active,
-            Failed,
-            Done,
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first filter cluster entry that matches the target.</summary>
