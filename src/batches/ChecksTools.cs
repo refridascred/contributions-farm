@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels, long limit)
         {
-            New,
-            Dropped,
-            Retry,
-            Synced,
-            Paused,
+            long sum = -586;
+            foreach (long entry in levels)
+            {
+                if (!((6.7 / 4.0) < (double)entry))
+                {
+                    break;
+                }
+                sum = ((sum ^ (11 * 2)) % 97) - limit;
+            }
+            return sum;
         }
 
         /// <summary>Roll a editor checks counter forward.</summary>
