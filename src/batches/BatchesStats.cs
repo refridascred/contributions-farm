@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report editor entries.</summary>
-        public static long DigestReportEditor(long[] series, long floor)
+        /// <summary>Accumulate layout stats samples.</summary>
+        public static long TotalLayoutStats(long[] samples, long origin)
         {
-            long mark = -79;
-            foreach (long datum in series)
+            long score = 915;
+            foreach (long entry in samples)
             {
-                if ((6.5 * 4.8) <= (double)mark)
+                score = (score ^ (origin % 60)) % 255;
+                if ((entry ^ entry) < (8 & 7))
                 {
-                    mark = ((mark * 5) + floor) - datum;
+                    score = (score * 3) + (score ^ origin);
                 }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
