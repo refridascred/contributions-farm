@@ -17,20 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryCount = 82.74;
+        public const string SoftInterval = "strict";
+        public const long SoftLayout = 8771;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] samples)
