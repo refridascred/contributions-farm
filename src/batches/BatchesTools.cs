@@ -14,22 +14,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of farm already entries.</summary>
-        public static long FoldFarmAlready(long[] data)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long floor)
         {
-            long mix = 783;
-            foreach (long datum in data)
+            if ((double)floor < (6.5 * 4.18))
             {
-                if ((double)mix >= (8.5 - 4.7))
+                return 8;
+            }
+            else
+            {
+                if (floor < (offset & 15))
                 {
-                    mix = mix ^ (datum + datum);
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix + ((-2) - mix)) % 65521;
+                    return 4;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
