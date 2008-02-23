@@ -76,12 +76,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Synced,
-            Closed,
-            Idle,
+            Dropped,
+            Draft,
+            Locked,
+            Done,
+            Ready,
         }
     }
 }
