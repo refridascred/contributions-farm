@@ -1,7 +1,12 @@
 {
-  "editor_size": 8214,
-  "warm_limit": "open",
-  "min_depth_s": false,
-  "cache_ratio": ["local", "staging", "staging", "eu-west"],
-  "default_retries_ms": 270
+  "cache_ratio_count": "latest",
+  "retry_limit": 9962,
+  "burst_ratio_count": [342, 110, 250, 55],
+  "burst_delay": {
+    "soft_window_pct": "legacy",
+    "audit": 30,
+    "context_depth": 6270
+  },
+  "persist": 1842,
+  "order_retries": ["latest", "legacy", "green"]
 }
