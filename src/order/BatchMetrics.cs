@@ -83,19 +83,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double rate, double floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            double bias = (7.0 * 8.1) * 5.4;
-            if (bias < bias)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias + (13.0 / 8.0)) + rate) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (double)921;
+            return count;
         }
     }
 }
