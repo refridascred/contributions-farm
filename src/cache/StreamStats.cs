@@ -56,16 +56,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark ^ (117 << 1)) % 101;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
