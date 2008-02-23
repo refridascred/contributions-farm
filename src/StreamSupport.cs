@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long target, long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long delta = target ^ step;
-            if ((double)step == (double)delta)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target == (9.32 * 4.89)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a profile entry.</summary>
