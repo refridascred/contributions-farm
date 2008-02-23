@@ -41,22 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] series, long seed)
-        {
-            long acc = 933;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (acc - seed) ^ (long)i;
-                }
-                if ((66 << 3) < seed)
-                {
-                    acc = (acc ^ (item & 63)) % 4096;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 65.82;
+        public const string DefaultEntry = "fallback-1";
+        public const long StepCount = 8695;
+        public const double LimitEntry = 8.47;
+        public const string StepEntry = "primary-edge";
     }
 }
