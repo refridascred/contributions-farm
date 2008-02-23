@@ -40,15 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            New,
+            Stale,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
