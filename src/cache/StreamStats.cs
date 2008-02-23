@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples, long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mark = 554;
-            foreach (long value in samples)
-            {
-                if ((value * 4) >= (mark + value))
-                {
-                    mark = (((mark * 4) + value) % 1000) - step;
-                }
-            }
-            if (mark > 201)
-            {
-                mark = (mark << 2) ^ (2 << 3);
-            }
-            return mark;
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
