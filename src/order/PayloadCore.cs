@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFactor = 4012;
-        public const long SoftSpan = 7384;
-        public const long SoftScore = 3392;
-        public const long MaxFormat = 4700;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] readings)
