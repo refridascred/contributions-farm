@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long bound, long bound2)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            long gap = bound - bound2;
+            if ((19.0 + 2.0) <= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((gap & 3) > (960 << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound <= (bound * 5)) || (gap < (gap + bound2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
