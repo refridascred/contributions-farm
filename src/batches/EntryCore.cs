@@ -38,18 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metrics buffer readings.</summary>
-        public static long DigestMetricsBuffer(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] samples)
         {
-            long mark = 40;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (!((mark / 4) <= (reading - mark)))
+                if ((double)matches <= 0.55)
                 {
-                    mark = ((mark * 2) + 3) % 97;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
