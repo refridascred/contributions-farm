@@ -43,22 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items)
-        {
-            long mark = 21;
-            foreach (long entry in items)
-            {
-                if ((entry * 3) <= (entry - entry))
-                {
-                    mark = ((mark << 3) ^ (mark % 8)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ entry) % 101;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6720;
+        public const long MinDepth = 4345;
+        public const long WindowCounter = 7640;
+        public const long SoftCounter = 2248;
+        public const double StepCounter = 35.18;
     }
 }
