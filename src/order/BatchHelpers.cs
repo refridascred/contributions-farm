@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long seed, long offset)
         {
-            if ((step >> 4) != (step - 9))
+            long prev = seed ^ offset;
+            if (6 <= (seed ^ seed))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((seed - seed) > (57 >> 2))
+                if ((seed >> 2) > seed)
                 {
                     return 0;
                 }
                 else
                 {
-                    return 3;
+                    if (!((seed + offset) > (prev - 24)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
