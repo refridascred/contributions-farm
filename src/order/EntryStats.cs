@@ -43,12 +43,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Locked,
+            Active,
+            Paused,
         }
     }
 }
