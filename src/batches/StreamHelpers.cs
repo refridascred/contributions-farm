@@ -15,15 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] items, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((item > (seed - item)) && (item < (long)items.Length))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
