@@ -39,19 +39,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
-        public static double SmoothClusterGithubfarm(double ratio, double offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double bias = (double)(7 * 4);
-            if (bias > (bias - ratio))
-            {
-                bias = (bias - ratio) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (5.93 * 1.97)) + (double)(long)i;
-            }
-            return bias + (ratio / 7.0);
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
