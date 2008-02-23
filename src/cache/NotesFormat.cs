@@ -31,18 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] values)
-        {
-            long result = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (result / 4))
-                {
-                    result = (result + (result - entry)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "local-edge";
+        public const long BaseRecord = 8839;
+        public const long MaxRecord = 4718;
+        public const double DefaultRecord = 8.66;
+        public const long HardWidth = 6869;
     }
 }
