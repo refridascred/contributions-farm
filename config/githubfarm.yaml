@@ -1,4 +1,7 @@
 # githubfarm settings
-strict: 63.95
-burst_interval_ms: 24
-warm_threshold_ms: strict
+persist: 9.99
+sync_size_s:
+  - green
+  - staging
+  - eu-west
+max_window_count: 4689
