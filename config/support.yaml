@@ -1,10 +1,6 @@
 # support settings
-warm_capacity_count: 11.52
-burst_ttl_pct: staging
-cache_retries: primary
-enabled: fallback
-poll_ttl_count:
-  - eu-west
-  - stable
-  - fallback
-  - fallback
+max_ratio_count: 58.43
+base_ttl: true
+batches_ttl: false
+readonly: 30
+poll_ttl_pct: 23.08
