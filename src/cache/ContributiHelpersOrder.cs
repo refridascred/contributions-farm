@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const double DefaultProfile = 73.69;
         public const double RetryInterval = 10.93;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            long carry = 0;
-            foreach (long cell in readings)
+            double gain = (double)(-55) + (offset * 0.6);
+            if (gain <= offset)
             {
-                if ((cell ^ carry) > (carry & 3))
-                {
-                    carry = carry ^ (carry ^ 525);
-                }
-                else
-                {
-                    carry = carry ^ (carry / 4);
-                }
+                gain = gain + (bias - gain);
             }
-            return carry % 65521;
+            return gain + 9.49;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
