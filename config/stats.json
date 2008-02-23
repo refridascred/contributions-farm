@@ -1,12 +1,12 @@
 {
-  "default_delay_ms": 30,
-  "strict": [173, 474, 153, 488],
-  "cache_threshold": ["fallback", "green", "stable", "local"],
-  "poll_window": {
-    "dry_run": 7,
-    "flush_limit_pct": true,
-    "burst_depth": [399, 263, 69],
-    "readonly": 5369,
-    "batch_delay_count": 63.23
-  }
+  "sync_ttl_s": false,
+  "readonly": ["standard", "open", "cached", "latest"],
+  "session_interval": "eu-west",
+  "tools_interval": {
+    "base_capacity_ms": ["primary", "fallback"],
+    "tools_delay": 98,
+    "min_depth_ms": true,
+    "default_limit_s": false
+  },
+  "dry_run": "primary"
 }
