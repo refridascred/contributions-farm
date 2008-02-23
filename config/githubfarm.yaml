@@ -1,4 +1,6 @@
 # githubfarm settings
-compress: staging
-cache_threshold: true
-context_window: staging
+max_threshold: local
+cache_depth_s: 30
+already_ratio: true
+strict: 99
+compress: 4671
