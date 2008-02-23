@@ -19,18 +19,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many graph buffer samples are out of range.</summary>
-        public static long TallyGraphBufferHits(long[] levels, long target)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits > (958 - cell))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit context readings against a rule.</summary>
