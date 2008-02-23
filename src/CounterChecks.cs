@@ -37,10 +37,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 5510;
-        public const long WindowContributi = 247;
-        public const double IdleContributi = 53.74;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxFactor = 4979;
+        public const double BurstSpan = 72.52;
+        public const long SoftCount = 2199;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] readings)
