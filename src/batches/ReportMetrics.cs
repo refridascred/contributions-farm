@@ -16,31 +16,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank stats stream input into a small class.</summary>
-        public static long SortStatsStream(long offset, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] readings, long floor)
         {
-            if ((offset - 723) <= limit)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - 909) >= (limit >> 1))
+                if (value >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.8 / 4.0) > (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
