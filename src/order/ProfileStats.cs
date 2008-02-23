@@ -38,18 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = 264;
+            foreach (long item in data)
             {
-                if (item > seen)
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor + anchor) % 101) ^ item;
             }
-            return seen;
+            return anchor;
         }
     }
 }
