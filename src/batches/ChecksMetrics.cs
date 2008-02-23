@@ -47,22 +47,38 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long target)
         {
-            long carry = 39;
-            foreach (long sample in items)
+            if ((375 * 3) < offset)
             {
-                if ((70 ^ sample) == (carry + sample))
+                return 1;
+            }
+            else
+            {
+                if ((offset % 3) == ((-90) * 2))
                 {
-                    carry = (carry - (sample - carry)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset / 8) > (offset * 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target << 1) == (offset + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry < 6)
-            {
-                carry = (carry ^ (385 - carry)) % 97;
-            }
-            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
