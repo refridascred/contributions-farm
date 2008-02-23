@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] values)
+        /// <summary>Accumulate record buffer samples.</summary>
+        public static long WeighRecordBuffer(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = 8;
+            foreach (long entry in items)
             {
-                if (hits > 236)
+                if ((entry & 7) > (result - result))
                 {
-                    hits = (hits + 1) + cell;
+                    long span = entry + entry;
+                    result = result ^ span;
+                    break;
+                }
+                if ((9.6 + 2.08) >= (double)result)
+                {
+                    result = result ^ (result ^ 154);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Adjust a channel reading.</summary>
