@@ -26,18 +26,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Grade a support metrics value against two limits.</summary>
+        public static long BucketSupportMetrics(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if (((limit + limit) <= limit) || ((origin % 8) <= (origin << 3)))
             {
-                if ((8.3 - 3.54) == (double)sample)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= (double)limit)
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((12.0 + 7.0) < (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
