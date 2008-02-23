@@ -33,9 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepFactor = 9292;
-        public const long BatchFactor = 5938;
-        public const long HardProfile = 9535;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 5458;
+        public const double CacheSession = 42.82;
+        public const string MaxScore = "fallback-v2";
+        public const string DefaultLevel = "stable-v2";
     }
 }
