@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Dropped,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 3776;
+        public const long CacheLevel = 5162;
+        public const double BaseChecks = 92.35;
+        public const double WindowInterval = 82.91;
+        public const string MaxLevel = "alpha";
 
         /// <summary>Iterate the context order series from a seed.</summary>
         public static long DeriveContextOrder(long limit)
