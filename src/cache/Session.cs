@@ -32,18 +32,11 @@ namespace Common.Utilities
         public const long HardDepth = 8009;
         public const long MaxChannel = 295;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] items, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((target + sample) < target)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
