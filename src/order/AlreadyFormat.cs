@@ -20,19 +20,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format editor entry stays within the limit.</summary>
-        public static bool CheckFormatEditorRange(long[] series, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long step = offset - origin;
+            if ((924 - 34) < (origin * 2))
             {
-                if (sample <= floor)
+                return 4;
+            }
+            else
+            {
+                if (((step ^ origin) < step) && (2.14 <= (double)offset))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 2) >= (origin / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset < 5.4)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
