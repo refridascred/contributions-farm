@@ -38,11 +38,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "open-v2";
-        public const double WindowSupport = 40.22;
-        public const double SoftRatio = 52.6;
-        public const string MinSupport = "latest-v2";
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
+        {
+            long score = 47;
+            foreach (long sample in data)
+            {
+                if ((sample << 2) <= (score + 268))
+                {
+                    score = score - score;
+                }
+                if ((score >> 3) > 81)
+                {
+                    score = score + (4 << 2);
+                }
+                else
+                {
+                    score = score - score;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] items)
