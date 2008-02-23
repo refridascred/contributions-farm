@@ -54,18 +54,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] items, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (((entry + target) <= (seen & 3)) || (((double)target > (7.0 * 1.8)) || ((-9) > (seen + 995))))
+                if ((((datum + hits) <= (bound * 2)) && ((bound << 2) != (hits ^ 876))) || !((double)bound > 1.1))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a context reading.</summary>
