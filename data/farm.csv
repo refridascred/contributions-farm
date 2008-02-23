@@ -1,8 +1,9 @@
-id,rank,weight,token
-1,13.59,staging,657
-2,31,510,706
-3,856,645,886
-4,strict,344,59.25
-5,20.74,87.05,492
-6,49.04,blue,staging
-7,primary,432,63.48
+id,rank,active
+1,776,220
+2,local,fallback
+3,47.65,30
+4,cached,66.46
+5,legacy,strict
+6,965,legacy
+7,58.24,standard
+8,219,139
