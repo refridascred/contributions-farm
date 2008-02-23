@@ -1,13 +1,10 @@
 # entry settings
-poll_capacity: open
-session_retries:
+retry_threshold_ms:
   - local
-  - blue
-  - local
-min_capacity: 86.06
-soft_interval: 37.59
-compress:
-  - local
-  - fallback
-  - cached
-batch_limit: 76.74
+  - green
+base_ttl:
+  audit: 6560
+  persist: false
+  strict: strict
+cache_capacity_ms: green
+cache_ratio_pct: 60
