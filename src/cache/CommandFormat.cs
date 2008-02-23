@@ -56,11 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7129;
-        public const double DefaultInterval = 86.95;
-        public const double WindowContributi = 9.27;
-        public const string DefaultContributi = "cached";
-        public const double StepContributi = 80.04;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
