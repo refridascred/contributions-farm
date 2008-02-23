@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many filter farm samples are out of range.</summary>
-        public static long CountFilterFarmOutliers(long[] items, long step)
+        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
+        public static long AuditAlreadyGithubfarmHits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!((0.63 - 5.05) > (double)step))
+                if ((49 + (long)samples.Length) <= (datum - count))
                 {
-                    hits = (hits + 2) + reading;
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
