@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinSize = "fallback-1";
-        public const long MinDepth = 3919;
-        public const double BatchRecord = 86.73;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items, long step)
+        {
+            long acc = 2;
+            foreach (long cell in items)
+            {
+                if ((cell / 7) == (step ^ step))
+                {
+                    acc = ((acc << 3) ^ acc) % 255;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstDepth = "alpha-v2";
