@@ -27,13 +27,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Retry,
-            Stale,
-            New,
-            Pending,
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
