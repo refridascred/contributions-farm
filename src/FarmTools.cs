@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long limit)
         {
-            Draft,
-            Idle,
-            Synced,
-            Failed,
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
