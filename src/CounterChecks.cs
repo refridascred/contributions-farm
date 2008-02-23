@@ -66,15 +66,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values)
-        {
-            long mark = 2;
-            foreach (long sample in values)
-            {
-                mark = ((mark << 2) ^ (sample - sample)) % 4096;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4740;
+        public const string HardInterval = "fallback-1";
+        public const long MinSize = 8088;
+        public const long BurstFactor = 2526;
+        public const double SoftCount = 47.19;
     }
 }
