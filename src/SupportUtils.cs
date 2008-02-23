@@ -19,19 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings, long offset)
-        {
-            long anchor = 8;
-            foreach (long entry in readings)
-            {
-                if ((entry - anchor) >= anchor)
-                {
-                    anchor = (((anchor * 5) + (entry / 8)) % 97) + offset;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5573;
+        public const string DefaultScore = "latest";
+        public const string IdleLevel = "local-v2";
+        public const long DefaultEntry = 8030;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
