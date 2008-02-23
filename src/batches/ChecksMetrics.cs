@@ -95,17 +95,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long bound)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = ratio;
+            return (gain + ratio) + offset;
         }
     }
 }
