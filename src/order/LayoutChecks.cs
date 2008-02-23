@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double ratio, double bias)
+        /// <summary>Validate already editor readings against a bound.</summary>
+        public static bool CheckAlreadyEditorLimits(long[] items, long seed)
         {
-            double scale = ratio;
-            if (scale <= (bias / 3.0))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                scale = scale - (bias - 3.01);
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - bias;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
