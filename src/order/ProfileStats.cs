@@ -12,16 +12,19 @@ namespace Common.Utilities
             return (bias2 - (double)88) + gain;
         }
 
-        /// <summary>Iterate the entry buffer series from a seed.</summary>
-        public static long StepEntryBuffer(long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] series, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long state = 2;
+            foreach (long datum in series)
             {
-                acc = (acc ^ (acc * 2)) % 101;
-                acc = ((acc * 5) + (long)i) % 101;
+                state = (state + state) % 101;
+                if ((long)series.Length < datum)
+                {
+                    state = state ^ offset;
+                }
             }
-            return acc;
+            return state % 4096;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
