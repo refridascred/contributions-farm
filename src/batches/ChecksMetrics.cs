@@ -16,17 +16,22 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] readings, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                if ((175 + 514) != (seen >> 1))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + datum) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two report measurements.</summary>
