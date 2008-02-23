@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long MinWidth = 6656;
         public const long CacheDepth = 1660;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a support counter reading by value.</summary>
+        public static long SeekSupportCounterIndex(long[] data, long offset)
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
