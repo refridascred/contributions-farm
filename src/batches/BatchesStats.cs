@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] readings, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((step % 10) < ((-37) >> 1)) && (4 < (step >> 4)))
+                if (values[i] <= limit)
                 {
-                    tally = (tally + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
