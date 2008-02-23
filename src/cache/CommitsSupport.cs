@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long LimitFormat = 8704;
         public const double StepCount = 33.89;
 
-        /// <summary>Match up counter account samples.</summary>
-        public static long PairCounterAccountCount(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (tally >= (58 + tally))
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
