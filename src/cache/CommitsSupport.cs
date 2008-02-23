@@ -23,18 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] levels, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((origin + tally) >= (tally / 9))
+                if ((total >> 3) >= bound)
                 {
-                    tally = (tally + 3) - value;
+                    total = (total + (total - (long)i)) % 1000;
                 }
+                if ((double)total > (2.2 + 2.7))
+                {
+                    total = (total - bound) % 65521;
+                    total = (total + ((long)i % 64)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Blend two filter report measurements.</summary>
