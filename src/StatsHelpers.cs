@@ -52,22 +52,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long MeasureMetricClusterOutliers(long[] series, long bound)
+        /// <summary>Iterate the report cache series from a seed.</summary>
+        public static long RollReportCache(long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (bound <= (tally * 2))
-                {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Rank session input into a small class.</summary>
