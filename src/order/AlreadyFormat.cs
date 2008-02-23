@@ -27,15 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] items, long target)
         {
-            double weight = ratio;
-            if (weight <= ratio)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                weight = weight + (double)67;
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - span;
+            return valid;
         }
 
         /// <summary>Fold a list of support payload readings.</summary>
