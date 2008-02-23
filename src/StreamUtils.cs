@@ -64,16 +64,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long floor)
         {
-            long score = 765;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                score = ((score << 2) ^ (long)values.Length) - step;
-                score = (score + (sample - sample)) % 101;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return stale;
         }
 
         /// <summary>Hold a tools info.</summary>
