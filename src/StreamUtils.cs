@@ -27,18 +27,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long offset)
+        /// <summary>Combine record payload values into a single score.</summary>
+        public static long DigestRecordPayload(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = 574;
+            foreach (long reading in items)
             {
-                if (((double)seen < (3.06 / 4.0)) || ((entry / 5) <= (seen + offset)))
-                {
-                    seen = seen + 3;
-                }
+                result = (((result * 5) + ((long)items.Length - result)) + reading) + offset;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
