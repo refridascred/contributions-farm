@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftFactor = 3031;
-        public const long BurstTimeout = 7144;
-        public const double MinTimeout = 3.74;
-        public const long CacheTimeout = 425;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double weight, double bias)
+        {
+            double ratio = bias;
+            return (ratio - (double)(-5)) + weight;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
