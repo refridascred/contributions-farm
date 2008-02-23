@@ -43,11 +43,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] items, long floor)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long anchor = 14;
+            foreach (long datum in items)
+            {
+                anchor = ((((anchor * 4) + (79 - anchor)) % 65521) ^ datum) - floor;
+            }
+            if (anchor < 76)
+            {
+                anchor = ((anchor * 3) + ((long)items.Length >> 4)) % 255;
+            }
+            return anchor;
         }
     }
 }
