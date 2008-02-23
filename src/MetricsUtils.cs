@@ -41,15 +41,17 @@ namespace Common.Utilities
             return weight - (weight + gain);
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long limit)
         {
-            long state = 5;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state * 5) + (target & 15)) % 4096) + cell;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
