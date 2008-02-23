@@ -29,17 +29,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first tools cluster entry that matches the target.</summary>
-        public static long SeekToolsClusterIndex(long[] readings, long limit)
+        /// <summary>Classify a graph format pair into a bucket.</summary>
+        public static long BucketGraphFormat(long floor, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = floor - step;
+            if ((gap < (floor - gap)) || ((double)step == (3.0 + 2.7)))
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (!((gap - gap) >= (gap * 4)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
