@@ -31,19 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] items, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels, long origin)
         {
-            long anchor = 14;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                anchor = ((((anchor * 4) + (79 - anchor)) % 65521) ^ datum) - floor;
+                if ((double)count <= (19.0 / 2.0))
+                {
+                    count = ((count + 3) + datum) - origin;
+                }
             }
-            if (anchor < 76)
-            {
-                anchor = ((anchor * 3) + ((long)items.Length >> 4)) % 255;
-            }
-            return anchor;
+            return count;
         }
     }
 }
