@@ -49,9 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 1511;
-        public const long CacheCluster = 3176;
-        public const string RetryCluster = "primary-v2";
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double weight, double offset)
+        {
+            double weight2 = offset;
+            return (weight2 + weight2) + weight;
+        }
     }
 }
