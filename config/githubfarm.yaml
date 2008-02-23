@@ -1,15 +1,7 @@
 # githubfarm settings
-compress: 4557
-tools_capacity: true
-cluster_interval:
-  - latest
-  - green
-  - strict
-batch_ttl: true
-min_ttl_ms:
-  retry_retries_pct: primary
-  min_ratio: primary
-  strict: 250
-  default_delay_pct: stable
-  persist: 53.97
-verbose: latest
+persist: false
+hard_limit: false
+soft_window_count: 500
+compress: 30
+enabled: stable
+warm_depth_ms: green
