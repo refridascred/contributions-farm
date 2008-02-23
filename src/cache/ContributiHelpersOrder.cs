@@ -32,9 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 683;
-        public const double DefaultDepth = 64.59;
-        public const long RetryCommand = 4983;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (15.0 <= (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
