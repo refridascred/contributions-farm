@@ -14,22 +14,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long offset)
         {
-            long result = 55;
-            foreach (long cell in items)
+            long cur = step + offset;
+            if ((64 < (cur - cur)) && ((cur ^ cur) < (106 + cur)))
             {
-                if ((result * 3) < limit)
+                return 8;
+            }
+            else
+            {
+                if ((cur % 10) <= step)
                 {
-                    result = result - (result / 9);
+                    return 5;
                 }
-                if ((cell + result) > (cell / 3))
+                else
                 {
-                    break;
+                    if ((98 + 82) < (7 - cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset >= cur) && (step < cur))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
