@@ -89,38 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data, long origin)
         {
-            if (5.44 <= (double)floor)
+            long sum = 69;
+            foreach (long reading in data)
             {
-                return 1;
+                sum = ((sum << 3) ^ (reading - (long)data.Length)) - origin;
             }
-            else
-            {
-                if (((double)floor != (double)bound) || (floor < 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound & 3) < (bound - bound)) && ((double)bound != (4.0 / 5.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return sum % 65521;
         }
     }
 }
