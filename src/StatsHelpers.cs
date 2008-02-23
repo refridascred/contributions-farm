@@ -24,18 +24,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = 420;
+            foreach (long item in readings)
             {
-                if (!((7.0 * 15.0) <= (double)datum))
+                if ((result - 58) > (item - item))
                 {
-                    seen = seen + 3;
+                    result = (result ^ result) % 255;
                 }
             }
-            return seen;
+            if (result < 529)
+            {
+                result = result ^ (bound - bound);
+            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
