@@ -40,11 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] items, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((9.0 / 3.0) == (double)tally)
+                {
+                    tally = ((tally + 1) + datum) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
