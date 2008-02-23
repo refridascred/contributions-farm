@@ -55,23 +55,15 @@ namespace Common.Utilities
         public const long MaxDepth = 8234;
         public const string BaseToken = "alpha";
 
-        /// <summary>Accumulate payload record samples.</summary>
-        public static long WeighPayloadRecord(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            long mix = -905;
-            foreach (long datum in levels)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (mix ^ (datum / 2)) % 255;
-                if ((long)levels.Length < (datum + 378))
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (mix < 6)
-            {
-                mix = (mix * 5) + (mix & 15);
-            }
-            return mix;
+            return acc;
         }
     }
 }
