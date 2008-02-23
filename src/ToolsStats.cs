@@ -25,23 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (5.0 > (double)datum)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 9331;
+        public const long BaseGraph = 8397;
+        public const long IdleCount = 8648;
+        public const long RetryFactor = 8866;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] readings)
