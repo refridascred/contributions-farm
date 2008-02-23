@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchRatio = 7532;
-        public const long RetryCount = 1402;
-        public const double BurstLevel = 97.39;
-        public const long MaxSpan = 3420;
-        public const long MaxLevel = 452;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Paused,
+            Draft,
+            Idle,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long OverlapOrderCount(long[] levels)
