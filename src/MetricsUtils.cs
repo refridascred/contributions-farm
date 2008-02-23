@@ -11,28 +11,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 1492;
         public const long CacheEditor = 9054;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((total <= ((-9) + total)) && ((seed % 12) > (total / 8)))
-                {
-                    total = (total << 2) ^ total;
-                    total = total - (total - (long)i);
-                }
-                else
-                {
-                    total = ((total * 2) + (seed + (long)i)) % 255;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (total ^ (total / 7)) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
