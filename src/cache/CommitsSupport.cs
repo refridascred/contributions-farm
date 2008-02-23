@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxLevel = 3492;
-        public const long CacheFormat = 2579;
-        public const long CacheTimeout = 1581;
-        public const long LimitFormat = 8704;
-        public const double StepCount = 33.89;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] samples, long seed)
