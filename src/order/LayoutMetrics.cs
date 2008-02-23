@@ -43,21 +43,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix * 3) + bound;
-                if ((768 ^ bound) > (long)i)
-                {
-                    mix = (mix ^ (mix / 6)) % 4096;
-                    mix = mix ^ (bound >> 1);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
