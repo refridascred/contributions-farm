@@ -1,6 +1,7 @@
-id,active,level
-1,standard,staging
-2,57.43,77.92
-3,593,120
-4,538,43.48
-5,87.0,legacy
+id,rank,region,ratio,label
+1,stable,860,47,eu-west
+2,33.99,green,36.13,621
+3,green,234,63.55,54.06
+4,69.53,730,344,6.86
+5,strict,610,0.59,stable
+6,standard,5,741,stable
