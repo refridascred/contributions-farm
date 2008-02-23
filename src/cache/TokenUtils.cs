@@ -30,19 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate layout payload readings against a bound.</summary>
-        public static bool GuardLayoutPayloadLimits(long[] series, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long score = 2;
+            foreach (long sample in levels)
             {
-                if (reading >= bound)
+                if ((score - sample) == (score % 10))
                 {
-                    valid = false;
-                    break;
+                    score = (score - (score - score)) % 101;
+                }
+                else
+                {
+                    score = score + (score / 2);
                 }
             }
-            return valid;
+            return score % 65521;
         }
     }
 }
