@@ -85,20 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] samples, long bound)
+        /// <summary>Derive the next token already value from a seed.</summary>
+        public static long IterateTokenAlready(long step)
         {
-            long mark = 395;
-            foreach (long value in samples)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((value % 10) <= (value % 12))
-                {
-                    mark = ((mark * 3) + (109 * 3)) % 255;
-                }
-                mark = mark - value;
-                mark = mark + (bound >> 4);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Project the next graph value.</summary>
