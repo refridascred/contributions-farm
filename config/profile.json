@@ -1,10 +1,17 @@
 {
-  "cache_size_pct": 32.54,
-  "dry_run": {
-    "compress": true,
-    "cache_depth": 35,
-    "layout_depth": "latest"
+  "compress": "latest",
+  "strict": {
+    "verbose": 86.38,
+    "sync_limit_count": {
+      "layout_size": 68.11,
+      "hard_depth": true,
+      "compress": "legacy"
+    },
+    "strict": 500,
+    "hard_size": "latest"
   },
-  "farm_retries": "edge",
-  "session_retries": "stable"
+  "retry_threshold_pct": [374, 32, 471, 363],
+  "sync_limit_count": 12.41,
+  "batch_window_pct": true,
+  "soft_limit_count": 100
 }
