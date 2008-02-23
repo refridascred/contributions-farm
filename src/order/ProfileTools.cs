@@ -51,11 +51,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstScore = "strict";
+        public const double DefaultSpan = 79.31;
+        public const long BaseContributi = 3693;
     }
 }
