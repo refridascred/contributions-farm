@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                long tally = (long)i;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    tally = (((tally * 3) + step) % 4096) ^ (long)i2;
-                }
-                acc = (acc - (tally - (long)i)) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
