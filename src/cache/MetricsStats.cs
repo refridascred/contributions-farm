@@ -48,18 +48,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Classify a format batches pair into a bucket.</summary>
+        public static long SortFormatBatches(long seed, long target)
         {
-            long sum = 0;
-            foreach (long sample in values)
+            long prev = seed - target;
+            if ((8 - seed) > (7 ^ target))
             {
-                if (((7.7 / 4.0) != (double)sample) || (sum <= (36 - 479)))
+                return 4;
+            }
+            else
+            {
+                if ((double)prev >= (double)75)
                 {
-                    sum = ((sum * 4) + (3 - sum)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if (!((prev & 15) > (prev - 82)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target % 97) >= (prev & 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Adjust a context reading.</summary>
