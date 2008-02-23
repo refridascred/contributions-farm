@@ -12,15 +12,27 @@ namespace Common.Utilities
         public const long BurstWidth = 6015;
         public const long MaxWindow = 6888;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items, long seed)
         {
-            long total = 36;
-            foreach (long entry in items)
+            long carry = 1;
+            foreach (long datum in items)
             {
-                total = (((total + total) % 97) - entry) - seed;
+                if (((carry / 5) < (datum - 729)) && (seed < (90 / 6)))
+                {
+                    carry = (carry + (seed + 992)) % 255;
+                    carry = carry ^ carry;
+                }
+                if ((double)datum < (3.0 * 20.0))
+                {
+                    carry = (carry - (carry / 4)) % 4096;
+                }
+                if (((11.0 - 9.6) < (double)datum) && (datum <= (seed * 3)))
+                {
+                    break;
+                }
             }
-            return total;
+            return carry % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
