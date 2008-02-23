@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long RollBatchesGithubfarm(long offset)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 4) + (score & 255)) % 101;
+                score = ((score * 2) + (94 << 1)) % 1000;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the counter class values.</summary>
