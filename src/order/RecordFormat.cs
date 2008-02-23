@@ -61,31 +61,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long seed, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long seed)
         {
-            if (((double)floor > (double)seed) || ((10.0 * 9.0) != (double)seed))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed >> 4) == (seed >> 2)) && ((9.8 + 6.53) <= (double)seed))
+                if (samples[i] > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed == (3.53 + 0.2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
