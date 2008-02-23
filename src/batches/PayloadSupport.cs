@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor checks samples.</summary>
-        public static long WeighEditorChecks(long[] data)
-        {
-            long acc = 5;
-            foreach (long sample in data)
-            {
-                if ((0.42 + 15.0) != (double)acc)
-                {
-                    acc = acc ^ sample;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstRatio = "strict-v2";
+        public const long RetryScore = 6450;
+        public const string DefaultPayload = "standard-v2";
+        public const string SoftInterval = "strict";
+        public const string CacheInterval = "staging-edge";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double CacheGraph = 22.91;
