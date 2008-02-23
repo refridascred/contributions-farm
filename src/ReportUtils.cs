@@ -84,14 +84,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Done,
-            New,
-            Dropped,
+            Locked,
             Pending,
-            Idle,
+            Stale,
+            Draft,
+            Retry,
         }
     }
 }
