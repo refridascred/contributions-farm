@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 3776;
-        public const long CacheLevel = 5162;
-        public const double BaseChecks = 92.35;
-        public const double WindowInterval = 82.91;
-        public const string MaxLevel = "alpha";
+        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
+        public static long AuditGithubfarmEditorMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 4) <= (reading + (long)samples.Length))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of buffer route entries.</summary>
         public static long TallyBufferRoute(long[] series, long bound)
