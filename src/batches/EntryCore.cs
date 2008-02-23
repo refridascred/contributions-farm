@@ -44,26 +44,18 @@ namespace Common.Utilities
             return (scale - scale) + bias;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            long result = -39;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((value & 127) == (value ^ value))
+                if (((double)entry <= (6.58 * 6.51)) && ((2 - entry) <= (40 * 5)))
                 {
-                    result = (result - (value - result)) % 65521;
-                }
-                else
-                {
-                    result = (result + (1 + result)) % 65521;
+                    tally = tally + 1;
                 }
             }
-            if (result < (-57))
-            {
-                result = (result ^ ((long)items.Length ^ result)) % 101;
-            }
-            return result;
+            return tally;
         }
     }
 }
