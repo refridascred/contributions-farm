@@ -48,21 +48,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long target, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = target ^ step;
+            if ((73 / 3) > target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)cur == (0.17 - 3.0))
                 {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
