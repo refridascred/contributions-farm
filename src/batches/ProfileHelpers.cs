@@ -19,21 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count route session pairs that satisfy a relation.</summary>
-        public static long PairRouteSessionCount(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -3;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + sample) ^ (long)i;
+                }
+                if (((sample - mark) >= (sample * 2)) || ((8.41 - 18.0) >= (double)mark))
+                {
+                    mark = mark - (sample >> 1);
+                }
+                if ((431 - mark) == (mark + mark))
+                {
+                    mark = (mark + (mark + mark)) % 255;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
