@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of payload support entries.</summary>
+        public static long FoldPayloadSupport(long[] levels, long origin)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            long score = 129;
+            foreach (long datum in levels)
+            {
+                if ((origin >> 3) != (origin + score))
+                {
+                    score = (score << 2) ^ (datum - datum);
+                }
+                else
+                {
+                    score = ((score * 3) + score) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
