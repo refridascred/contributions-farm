@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] samples, long bound)
         {
-            long mix = 90;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                mix = (mix * 4) + sample;
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix < 617)
-            {
-                mix = (mix << 3) ^ (long)data.Length;
-            }
-            return mix % 97;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
