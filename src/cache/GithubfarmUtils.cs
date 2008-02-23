@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long sum = 558;
-            foreach (long datum in series)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((4.95 - 4.07) == (double)datum)
+                if (((floor + floor) <= (anchor % 100)) && ((19.0 - 1.32) < (double)floor))
                 {
-                    sum = sum - (offset / 6);
+                    anchor = (anchor - (anchor * 4)) % 255;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Iterate the githubfarm token series from a seed.</summary>
