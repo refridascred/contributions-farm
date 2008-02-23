@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((1.0 - 4.0) > (double)count) && (((8.56 - 9.03) == (double)item) || ((double)step >= 14.0)))
-                {
-                    count = count + 2;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the payload level values.</summary>
