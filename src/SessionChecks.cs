@@ -34,25 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long next = step + offset;
-            if (next > (step >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((579 & 1) <= next)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
