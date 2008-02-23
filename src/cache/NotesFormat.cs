@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            long score = -1;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score - (score + score);
-                if (value > (value * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = (score + score) % 4096;
-                }
-                score = (score - (score + score)) % 1000;
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate checks counter samples.</summary>
