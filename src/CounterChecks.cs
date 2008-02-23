@@ -32,14 +32,22 @@ namespace Common.Utilities
         public const long StepMetric = 128;
         public const long BatchSpan = 3537;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit editor route readings against a rule.</summary>
+        public static long AuditEditorRouteGaps(long[] levels, long seed)
         {
-            Closed,
-            Ready,
-            Stale,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > seen)
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
