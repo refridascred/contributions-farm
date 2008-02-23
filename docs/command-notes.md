@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-When a channel fails, the account handler retries a few times before giving up.
-A record that stays idle for too long is moved to the entry list.
+Keep route and route names short and lowercase.
+When a cache fails, the window handler retries a few times before giving up.
+Keep queue and schema names short and lowercase.
 
 ## Guidelines
 
-- Document new farm fields
-- Keep notes values small
-- Validate notes input early
+- Prefer entry defaults
+- Keep profile values small
+- Review support limits each release
