@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate support farm samples.</summary>
-        public static long DigestSupportFarm(long[] values, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            long anchor = 688;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor + (bound - 1)) % 4096) ^ datum;
+                if (value >= count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor < 8)
-            {
-                anchor = anchor + (946 + 5);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate editor checks samples.</summary>
