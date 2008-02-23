@@ -38,12 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Dropped,
-            Ready,
-            Pending,
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
