@@ -1,6 +1,11 @@
 {
-  "batch_threshold_ms": "open",
-  "support_depth": ["eu-west", "local"],
-  "hard_ratio": "open",
-  "report_timeout": 66.56
+  "enabled": {
+    "retry_ratio_count": 50.76,
+    "batches_retries": false,
+    "batch_window_pct": 58.14
+  },
+  "hard_ratio": 625,
+  "sync_interval_count": "latest",
+  "profile_retries": 1024,
+  "compress": true
 }
