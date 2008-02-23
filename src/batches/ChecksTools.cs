@@ -32,19 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout checks entry stays within the limit.</summary>
-        public static bool VerifyLayoutChecksRange(long[] data, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > bound)
+                if (readings[i] > bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
