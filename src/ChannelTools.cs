@@ -30,15 +30,31 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            if (((double)91 >= (double)target) && (8.2 <= (double)floor))
             {
-                result = ((result * 3) + (long)i) % 65521;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((double)floor <= 2.98)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor <= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
