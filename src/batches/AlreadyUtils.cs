@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate cache report samples.</summary>
-        public static long TotalCacheReport(long[] levels, long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] items, long origin)
         {
-            long mix = 1;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (!((29 >> 2) >= (mix >> 2)))
+                if (reading >= origin)
                 {
-                    mix = (((mix << 2) ^ cell) % 4096) - offset;
-                }
-                mix = (mix << 3) ^ 0;
-                if (!((2.98 + 16.0) > (double)cell))
-                {
-                    mix = (mix << 2) ^ (cell << 3);
-                }
-                else
-                {
-                    mix = (mix + (mix % 2)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the graph status values.</summary>
