@@ -60,14 +60,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] items, long bound)
         {
-            Paused,
-            Pending,
-            New,
-            Retry,
-            Idle,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
