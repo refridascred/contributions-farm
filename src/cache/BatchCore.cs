@@ -51,19 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Validate session metric readings against a bound.</summary>
+        public static bool CheckSessionMetricBounds(long[] series, long target)
         {
-            double bias = (double)(31 + (-246));
-            if (bias > (double)(-6))
+            bool found = true;
+            foreach (long cell in series)
             {
-                bias = (bias + bias) + rate;
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - (floor / 2.0);
+            return found;
         }
     }
 }
