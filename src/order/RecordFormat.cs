@@ -41,35 +41,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long offset, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long seed, long floor)
         {
-            if ((offset & 63) != (offset % 5))
+            if (((double)floor > (double)seed) || ((10.0 * 9.0) != (double)seed))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((offset + floor) <= 68) || ((offset + floor) < (floor * 3)))
+                if (((seed >> 4) == (seed >> 2)) && ((9.8 + 6.53) <= (double)seed))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)offset == (double)floor)
+                    if ((double)seed == (3.53 + 0.2))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if ((6 / 8) == (offset % 100))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 8;
                     }
                 }
             }
