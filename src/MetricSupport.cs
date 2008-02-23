@@ -28,17 +28,22 @@ namespace Common.Utilities
         public const string StepSupport = "primary";
         public const long WindowSupport = 5484;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] data, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 8;
+            foreach (long entry in samples)
             {
-                if (data[i] < step)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    carry = carry + (entry - (long)i);
+                }
+                if ((entry & 255) >= (carry >> 5))
+                {
+                    carry = ((carry << 2) ^ (carry + entry)) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
