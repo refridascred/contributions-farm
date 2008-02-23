@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] levels, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long score = -1;
+            foreach (long value in series)
             {
-                if (reading <= bound)
+                score = score - (score + score);
+                if (value > (value * 3))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    score = (score + score) % 4096;
+                }
+                score = (score - (score + score)) % 1000;
             }
-            return ready;
+            return score % 4096;
         }
 
         /// <summary>Accumulate checks counter samples.</summary>
