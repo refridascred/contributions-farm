@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long MinScore = 2057;
         public const long MinCommand = 5609;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] items, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = (mark ^ mark) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((floor / 7) >= (floor / 5))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the session status values.</summary>
