@@ -77,13 +77,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            Done,
+            Idle,
+            New,
         }
     }
 }
