@@ -17,13 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long CountCommitsChannelOutliers(long[] series, long target)
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((double)entry == (9.37 - 0.03)) && ((7.27 - 6.5) < (double)entry)) || ((entry & 3) >= (36 % 7)))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
