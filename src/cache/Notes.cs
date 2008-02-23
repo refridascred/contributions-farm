@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const long SoftChannel = 5481;
         public const string MinRatio = "local-v2";
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            Dropped,
-            Closed,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((-715) <= (hits + hits))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
