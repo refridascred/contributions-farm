@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double ratio, double offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double rate = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (offset + ratio)) + (double)(long)i;
-            }
-            return rate - rate;
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
