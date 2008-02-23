@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes stats measurements.</summary>
-        public static double AdjustNotesStats(double weight, double bias)
-        {
-            double mean = (double)(704 + 2);
-            if (mean < (double)4)
-            {
-                mean = (mean - (2.0 * 5.34)) + bias;
-            }
-            else
-            {
-                mean = mean + (mean + mean);
-            }
-            return mean + (weight - weight);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 4316;
+        public const string StepChecks = "standard";
+        public const long SoftCount = 9793;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
