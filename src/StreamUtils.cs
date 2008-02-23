@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long total = 3;
-            foreach (long reading in values)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (((total + reading) >= (reading << 3)) && ((double)total <= (double)reading))
-                {
-                    total = (total - (reading / 3)) % 101;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (total < (-1))
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
