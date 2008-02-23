@@ -1,16 +1,6 @@
 {
-  "poll_ratio_s": 8012,
-  "sync_threshold": {
-    "default_ttl": "eu-west",
-    "poll_size_s": {
-      "sync_capacity_pct": "strict",
-      "payload_ratio": "local",
-      "dry_run": 30
-    },
-    "persist": "open"
-  },
-  "idle_delay": "blue",
-  "retry_size": 11.9,
-  "batch_timeout": "edge",
-  "buffer_timeout": 75.55
+  "min_capacity": "strict",
+  "verbose": "cached",
+  "channel_limit": 77,
+  "min_limit_ms": true
 }
