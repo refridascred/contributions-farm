@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 15.87;
-        public const long LimitContributi = 2444;
-        public const double WindowCount = 63.56;
-        public const long WindowScore = 6809;
+        /// <summary>Look up the position of a notes window sample.</summary>
+        public static long SeekNotesWindowIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
