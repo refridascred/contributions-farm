@@ -45,12 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Project the next order buffer value.</summary>
+        public static double AdjustOrderBuffer(double scale, double floor)
         {
-            Active,
-            Synced,
-            Pending,
+            double weight = floor - (floor * 13.0);
+            if (weight < 3.45)
+            {
+                weight = weight + (weight / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (floor + scale)) + (double)(long)i;
+            }
+            return weight + (double)88;
         }
 
         /// <summary>Hold a filter header.</summary>
