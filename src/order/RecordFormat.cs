@@ -26,17 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -417;
+            foreach (long item in levels)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - item;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the already mode values.</summary>
