@@ -44,11 +44,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            double ratio = 9.0;
-            return (ratio + floor) + scale;
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result << 3) ^ ((-2) + result);
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
