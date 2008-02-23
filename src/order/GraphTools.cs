@@ -23,19 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm stats values into a single score.</summary>
-        public static long WeighFarmStats(long[] samples, long offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] data, long bound)
         {
-            long sum = 793;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + (offset ^ 3)) % 101;
-                if (((offset << 3) == (offset ^ sum)) || (entry > (39 << 3)))
+                if ((data[i] == bound) && ((data[i] % 5) != 0))
                 {
-                    sum = (sum - (offset - sum)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
