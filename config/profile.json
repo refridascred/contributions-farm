@@ -1,14 +1,5 @@
 {
-  "dry_run": false,
-  "burst_window_count": 60,
-  "batches_ratio": {
-    "idle_size": 6.44,
-    "window_limit": 4944,
-    "order_depth": {
-      "burst_depth_pct": "open",
-      "graph_depth": 124,
-      "idle_timeout": 74.88
-    },
-    "persist": ["stable", "eu-west", "edge"]
-  }
+  "cache_ttl_count": false,
+  "base_interval_s": true,
+  "default_interval_ms": false
 }
