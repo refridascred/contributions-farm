@@ -50,38 +50,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] samples, long bound)
         {
-            if ((offset ^ limit) >= (limit - limit))
+            long mark = 395;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (limit + 5))
+                if ((value % 10) <= (value % 12))
                 {
-                    return 2;
+                    mark = ((mark * 3) + (109 * 3)) % 255;
                 }
-                else
-                {
-                    if (limit <= (limit + 20))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit < 3.6) && ((limit - offset) >= limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mark = mark - value;
+                mark = mark + (bound >> 4);
             }
+            return mark;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
