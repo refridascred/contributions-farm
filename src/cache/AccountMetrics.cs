@@ -52,11 +52,14 @@ namespace Common.Utilities
         public const long BatchRecord = 2298;
         public const long MaxLevel = 7157;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepRatio = 7868;
-        public const long RetrySchema = 3096;
-        public const double CacheSchema = 5.91;
-        public const string DefaultScore = "standard-1";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
