@@ -34,21 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Scale a support window figure with a bias.</summary>
+        public static double ScaleSupportWindow(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = weight - offset;
+            if (bias <= (bias + bias))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - offset;
             }
-            return hits;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (weight - offset)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
