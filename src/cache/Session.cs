@@ -34,21 +34,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of notes cluster readings.</summary>
-        public static long PairNotesClusterCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 97;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading % 12) < (anchor >> 5))
                 {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ (reading + reading)) % 97;
+                }
+                else
+                {
+                    anchor = anchor - (anchor - anchor);
                 }
             }
-            return hits;
+            if (anchor > 28)
+            {
+                anchor = anchor - (anchor + 46);
+            }
+            return anchor;
         }
     }
 }
