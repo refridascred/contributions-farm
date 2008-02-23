@@ -1,11 +1,4 @@
 # githubfarm settings
-sync_limit_count: 13
-verbose:
-  - cached
-  - stable
-  - staging
-  - blue
-dry_run: false
-persist: 80
-base_ttl_pct: false
-window_window: 12.11
+compress: staging
+cache_threshold: true
+context_window: staging
