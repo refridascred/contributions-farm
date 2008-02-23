@@ -37,9 +37,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 9224;
-        public const double LimitChecks = 16.58;
-        public const long LimitCount = 7789;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 22.91;
+        public const long BaseLevel = 7571;
+        public const long WindowGraph = 3179;
+        public const string DefaultScore = "latest-edge";
     }
 }
