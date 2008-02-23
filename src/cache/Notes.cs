@@ -48,19 +48,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((-715) <= (hits + hits))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 97.9;
+        public const string WindowContext = "staging";
+        public const long DefaultContext = 446;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] values)
