@@ -22,15 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Failed,
-            Idle,
-            Locked,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinFactor = 44.14;
+        public const string HardEditor = "legacy";
+        public const double MinEditor = 6.87;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
