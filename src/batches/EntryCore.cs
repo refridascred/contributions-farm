@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values, long limit)
+        /// <summary>Accumulate batches farm samples.</summary>
+        public static long TotalBatchesFarm(long[] samples)
         {
-            long mix = 82;
-            foreach (long entry in values)
+            long sum = 79;
+            foreach (long datum in samples)
             {
-                mix = ((mix - 2) ^ entry) - limit;
+                if ((6.86 * 15.0) != (double)sum)
+                {
+                    sum = ((sum - (sum + sum)) % 1000) ^ datum;
+                }
             }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
