@@ -1,9 +1,13 @@
 # support settings
-readonly:
-  batch_retries_pct: 34
-  schema_retries: true
-  sync_depth: strict
-  poll_interval: 780
-  enabled: false
-poll_delay: 77
-cache_retries_pct: green
+flush_delay_pct: strict
+stream_size: 30
+token_ttl: 5938
+flush_limit_count:
+  default_size_pct:
+    - standard
+    - fallback
+    - open
+  soft_interval: 31.55
+  min_retries_count: local
+window_threshold: primary
+poll_delay_s: 250
