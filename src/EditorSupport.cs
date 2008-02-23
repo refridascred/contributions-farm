@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long origin, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((origin << 1) <= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 % 64) <= (limit >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((11.0 - 20.0) >= (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.5 * 0.4) <= (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Draft,
+            Ready,
+            Paused,
+            Active,
         }
 
         /// <summary>Accumulate window samples.</summary>
