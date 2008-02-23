@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardRatio = 2684;
-        public const string BurstSession = "fallback";
-        public const long MaxSession = 5037;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Mode { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long seed)
