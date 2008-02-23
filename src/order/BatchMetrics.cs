@@ -107,19 +107,12 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long bound)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Done,
+            Draft,
         }
     }
 }
