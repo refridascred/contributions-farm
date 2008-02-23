@@ -15,39 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a cache farm value against two limits.</summary>
-        public static long ClassifyCacheFarm(long target, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            long offset = target ^ step;
-            if (step <= (step + target))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.21 / 3.0) == (double)offset)
+                if (entry <= (seen ^ seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset & 1) >= ((-772) + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset & 1) >= (offset + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the payload phase values.</summary>
