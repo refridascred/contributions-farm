@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmEditorLimits(long[] items, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (reading >= target)
+                if (!(((8.63 + 2.0) < (double)reading) || ((hits & 3) <= (hits + reading))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
