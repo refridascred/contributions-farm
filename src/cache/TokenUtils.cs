@@ -28,23 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((7 & 63) < (0 - seed))
-                {
-                    mark = (mark - ((long)i * 5)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 3) + (seed + mark);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchSpan = "fallback-v2";
+        public const long BatchContributi = 1456;
+        public const double CacheContributi = 63.82;
+        public const string DefaultContributi = "staging-1";
+        public const double BaseContributi = 96.58;
     }
 }
