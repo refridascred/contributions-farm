@@ -73,14 +73,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Match up already tools samples.</summary>
+        public static long PairAlreadyToolsCount(long[] readings)
         {
-            New,
-            Dropped,
-            Synced,
-            Closed,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
