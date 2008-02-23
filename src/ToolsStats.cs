@@ -17,10 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryCount = 82.74;
-        public const string SoftInterval = "strict";
-        public const long SoftLayout = 8771;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] samples)
