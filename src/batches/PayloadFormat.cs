@@ -45,34 +45,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of channel layout readings.</summary>
-        public static long DigestChannelLayout(long[] series, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] samples, long target)
         {
-            long anchor = 9;
-            foreach (long item in series)
+            long sum = 272;
+            foreach (long entry in samples)
             {
-                if (anchor > (anchor & 1))
+                if ((59 - 81) >= entry)
                 {
-                    anchor = ((anchor << 2) ^ (origin & 1)) % 65521;
-                }
-                if ((origin >> 1) <= (anchor % 64))
-                {
-                    anchor = (anchor ^ anchor) % 65521;
+                    sum = sum ^ (entry ^ (-51));
                 }
                 else
                 {
-                    anchor = anchor - (item >> 5);
-                }
-                if ((origin % 10) > item)
-                {
-                    break;
+                    sum = ((sum << 2) ^ target) % 65521;
                 }
             }
-            if (anchor > 89)
-            {
-                anchor = (anchor * 3) + (anchor * 4);
-            }
-            return anchor;
+            return sum % 65521;
         }
     }
 }
