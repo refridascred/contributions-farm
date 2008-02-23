@@ -47,23 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] readings)
-        {
-            long acc = 27;
-            foreach (long reading in readings)
-            {
-                if ((acc >> 5) > (702 + (-817)))
-                {
-                    acc = (acc << 3) ^ (reading & 255);
-                }
-                else
-                {
-                    acc = acc ^ (reading - acc);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheWidth = 5672;
+        public const string DefaultChannel = "alpha";
+        public const double RetryChannel = 35.68;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long step)
