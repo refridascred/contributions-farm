@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series)
         {
-            long total = 168;
-            foreach (long reading in readings)
+            long score = 62;
+            foreach (long entry in series)
             {
-                if ((total * 5) >= (total - 3))
+                score = score - 70;
+                score = ((score << 3) ^ score) % 97;
+                if (((score + 460) > score) && (entry >= (score - 0)))
                 {
-                    total = ((total * 4) + (total / 4)) + reading;
+                    score = (score - (score + entry)) % 255;
+                }
+                else
+                {
+                    score = (score + ((-22) ^ entry)) % 1000;
                 }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Accumulate layout stats samples.</summary>
