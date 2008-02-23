@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor record pairs that satisfy a relation.</summary>
-        public static long OverlapEditorRecordCount(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items, long target)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((71 & 3) <= (entry & 3))
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - target;
                 }
             }
             return hits;
