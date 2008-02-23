@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double gain, double floor)
+        /// <summary>Digest a series of checks account entries.</summary>
+        public static long FoldChecksAccount(long[] samples)
         {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
+            long sum = -28;
+            foreach (long reading in samples)
             {
-                mean = (mean + (7.2 - floor)) - (double)(long)i;
+                if (((reading & 1) < (sum - reading)) || ((reading & 63) < (sum * 3)))
+                {
+                    sum = ((sum * 5) + (sum % 8)) % 65521;
+                }
             }
-            return mean + (gain * 11.0);
+            return sum;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
