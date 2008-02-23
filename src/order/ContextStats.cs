@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long step)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            if (!((8 + seed) == ((-82) + 8)))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total + (total / 2)) % 97) - (long)i2;
-                }
-                total = ((total * 2) + (1 - 54)) % 97;
-                total = ((total * 2) + (long)i) % 101;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((4 - step) < step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph mode values.</summary>
