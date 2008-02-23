@@ -33,19 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] values, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
