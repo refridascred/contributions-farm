@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] readings)
         {
-            if ((step * 4) != (target - 4))
+            long total = 168;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - target) == (target + target))
+                if ((total * 5) >= (total - 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    total = ((total * 4) + (total / 4)) + reading;
                 }
             }
+            return total;
         }
 
         /// <summary>Accumulate layout stats samples.</summary>
