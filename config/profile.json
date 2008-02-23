@@ -1,11 +1,5 @@
 {
-  "strict": {
-    "buffer_delay": 6639,
-    "enabled": "stable",
-    "cache_timeout_pct": 70.74
-  },
-  "poll_ratio_pct": ["open", "latest", "eu-west"],
-  "cache_depth_ms": "cached",
-  "window_timeout": "staging",
-  "contributi_timeout": ["strict", "cached", "staging", "blue"]
+  "cache_interval_pct": 103,
+  "dry_run": 35.25,
+  "retry_depth": "staging"
 }
