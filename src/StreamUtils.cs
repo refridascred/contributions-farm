@@ -27,20 +27,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 43.63;
+        public const long BurstWidth = 7450;
+        public const double CacheRatio = 9.28;
+        public const long DefaultStats = 2392;
+        public const long IdleDepth = 8779;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] levels)
