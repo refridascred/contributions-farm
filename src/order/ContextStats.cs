@@ -32,14 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] readings, long seed)
         {
-            Draft,
-            Ready,
-            Active,
-            Paused,
-            Synced,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seed + seed) <= item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
