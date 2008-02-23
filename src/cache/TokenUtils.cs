@@ -36,19 +36,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] levels, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long target, long bound)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            if (bound < target)
             {
-                if (item > seed)
+                return 6;
+            }
+            else
+            {
+                if (((5.26 * 4.8) >= (double)bound) || ((10.0 - 8.6) >= (double)target))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 3) != (target + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (16 > (bound << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
