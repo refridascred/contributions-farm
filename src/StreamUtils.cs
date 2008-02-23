@@ -76,12 +76,11 @@ namespace Common.Utilities
         public const long WindowSupport = 4077;
         public const long BatchSize = 8907;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Done,
-            Idle,
-            New,
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
