@@ -1,20 +1,7 @@
 {
-  "batch_ratio": false,
-  "format_delay": {
-    "base_size_s": {
-      "persist": 7154,
-      "idle_delay_s": 53.26,
-      "hard_timeout_pct": 81.66,
-      "min_interval": 34.91,
-      "hard_threshold_ms": 30,
-      "readonly": 22
-    },
-    "sync_retries_s": [413, 359],
-    "flush_retries_count": 1024,
-    "notes_threshold": "staging",
-    "readonly": "legacy",
-    "cache_capacity_s": "eu-west"
-  },
-  "idle_delay_ms": true,
-  "verbose": 100
+  "sync_retries_s": "edge",
+  "enabled": 95,
+  "min_retries_ms": 2000,
+  "dry_run": "eu-west",
+  "account_window": 100
 }
