@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long LimitFormat = 8704;
         public const double StepCount = 33.89;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double bias, double floor)
+        /// <summary>Match up counter account samples.</summary>
+        public static long PairCounterAccountCount(long[] samples)
         {
-            double weight = (double)(4 >> 3);
-            if (weight < (bias / 6.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)5;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + (double)927;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
