@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Closed,
-            Draft,
-            Dropped,
-            Done,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
