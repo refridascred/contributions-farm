@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 4;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc + entry) % 65521) - step;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
