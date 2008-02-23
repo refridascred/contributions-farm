@@ -39,12 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Find the first filter cluster entry that matches the target.</summary>
+        public static long SeekFilterClusterIndex(long[] readings, long target)
         {
-            Failed,
-            Idle,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
