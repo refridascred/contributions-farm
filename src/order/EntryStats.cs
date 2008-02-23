@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (item < limit)
+                if ((count - value) < count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Scale a contributi stream figure with a bias.</summary>
