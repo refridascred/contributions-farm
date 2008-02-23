@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate buffer support readings against a bound.</summary>
+        public static bool GuardBufferSupportRange(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a notes reading.</summary>
