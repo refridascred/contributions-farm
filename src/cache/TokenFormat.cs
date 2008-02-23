@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next command buffer value.</summary>
-        public static double AdjustCommandBuffer(double ratio, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            double drift = 3.35;
-            if (drift >= span)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (span / 9.0)) + (double)(long)i;
-            }
-            return drift - (8.17 - 9.16);
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
