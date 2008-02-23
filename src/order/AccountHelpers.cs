@@ -63,13 +63,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long floor)
         {
-            Closed,
-            Done,
-            Dropped,
-            Locked,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
