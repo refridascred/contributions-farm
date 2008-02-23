@@ -30,19 +30,11 @@ namespace Common.Utilities
             return gain + (bias / 3.0);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)bound < (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 63.85;
+        public const long StepContributi = 1700;
+        public const long CacheLevel = 8344;
+        public const long BatchRatio = 8790;
 
         /// <summary>Check that every window batches entry stays within the limit.</summary>
         public static bool GuardWindowBatchesBounds(long[] samples, long offset)
