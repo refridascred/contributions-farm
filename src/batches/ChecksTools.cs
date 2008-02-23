@@ -32,12 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Check that every layout checks entry stays within the limit.</summary>
+        public static bool VerifyLayoutChecksRange(long[] data, long bound)
         {
-            Idle,
-            Done,
-            Pending,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a commits entry.</summary>
