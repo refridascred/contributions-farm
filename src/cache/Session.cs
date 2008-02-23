@@ -26,11 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowRatio = 49.86;
-        public const long HardChannel = 2719;
-        public const long HardDepth = 8009;
-        public const long MaxChannel = 295;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBudget = "standard-1";
+        public const double CacheBatches = 49.66;
+        public const string BurstTimeout = "strict-v2";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
