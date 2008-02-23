@@ -39,20 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] items, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] levels, long offset)
         {
-            long result = 963;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                result = ((result - (entry * 5)) % 65521) - offset;
-                result = ((result * 4) + (entry - 500)) % 97;
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result < 2)
-            {
-                result = (result + result) % 101;
-            }
-            return result;
+            return valid;
         }
     }
 }
