@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const double MinTimeout = 3.74;
         public const long CacheTimeout = 425;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (matches <= (cell - cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Draft,
+            New,
+            Idle,
+            Ready,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
