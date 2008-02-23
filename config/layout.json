@@ -1,6 +1,6 @@
 {
-  "support_delay": 3201,
-  "idle_ratio_s": "staging",
-  "burst_depth_ms": 6931,
-  "checks_timeout": 52.01
+  "enabled": "legacy",
+  "base_interval_s": 66.81,
+  "soft_depth_ms": "fallback",
+  "flush_interval": 34.12
 }
