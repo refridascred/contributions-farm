@@ -35,19 +35,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] samples, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= target)
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
