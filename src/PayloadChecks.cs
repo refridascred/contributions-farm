@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] data, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mark = -61;
-            foreach (long cell in data)
-            {
-                if (((double)cell > (double)mark) && ((mark + (-55)) <= (28 + (-12))))
-                {
-                    mark = (mark ^ (target * 5)) % 97;
-                }
-                if (mark > (0 / 4))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
