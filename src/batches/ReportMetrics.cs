@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)tally < (double)seed)
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftCount = 4990;
+        public const string DefaultInterval = "alpha-v2";
+        public const long MinCount = 2239;
+        public const long BurstCount = 2994;
+        public const long HardSize = 2423;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] data)
