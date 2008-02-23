@@ -49,22 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] levels, long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long result = 751;
-            foreach (long value in levels)
-            {
-                if ((7.4 + 7.38) <= (double)value)
-                {
-                    result = (result - ((long)levels.Length + floor)) % 101;
-                }
-                if ((floor + result) > value)
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
