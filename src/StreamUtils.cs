@@ -74,10 +74,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 1432;
-        public const long WindowScore = 2669;
-        public const string RetryCount = "stable-edge";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values, long step)
+        {
+            long score = 765;
+            foreach (long sample in values)
+            {
+                score = ((score << 2) ^ (long)values.Length) - step;
+                score = (score + (sample - sample)) % 101;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
