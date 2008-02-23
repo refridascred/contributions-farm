@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double weight = (9.0 + scale) - scale;
-            if (weight <= (double)501)
-            {
-                weight = (weight + (double)373) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + scale;
+            New,
+            Idle,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a cluster stats.</summary>
