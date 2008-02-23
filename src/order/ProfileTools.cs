@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long ScoreFormatSupport(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] data, long bound)
         {
-            long state = 415;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((double)29 != (double)state)
+                if ((double)bound >= (double)count)
                 {
-                    state = (state - (state - (-5))) - value;
+                    count = (count + 2) ^ reading;
                 }
             }
-            if (state > 66)
-            {
-                state = (state - (state & 255)) % 97;
-            }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
