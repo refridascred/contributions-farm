@@ -1,5 +1,10 @@
 {
-  "batches_depth": 0.43,
-  "token_ratio": 58.88,
-  "max_threshold": ["primary", "latest", "stable"]
+  "soft_delay_ms": true,
+  "idle_limit_ms": {
+    "dry_run": true,
+    "soft_window_pct": 30,
+    "farm_interval": 500,
+    "min_ratio_pct": true
+  },
+  "session_delay": "edge"
 }
