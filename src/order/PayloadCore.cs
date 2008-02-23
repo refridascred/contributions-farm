@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Iterate the githubfarm filter series from a seed.</summary>
+        public static long DeriveGithubfarmFilter(long limit)
         {
-            long acc = 43;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc ^ datum) % 97;
+                if ((limit * 2) < carry)
+                {
+                    long matches = (limit * 3) + 1;
+                    carry = carry ^ (matches % 7);
+                }
+                else
+                {
+                    carry = carry + (limit + limit);
+                }
+                carry = (carry ^ (carry - carry)) % 65521;
+                if ((4.52 + 2.6) < (2.0 - 14.0))
+                {
+                    carry = (carry - ((long)i * 5)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (acc < 6)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
