@@ -34,22 +34,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the report editor entries that pass the check.</summary>
-        public static long AuditReportEditorHits(long[] readings)
+        /// <summary>Audit record metrics readings against a rule.</summary>
+        public static long AuditRecordMetricsHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((double)item <= (20.0 / 6.0))
+                if ((count ^ count) == (count % 64))
                 {
-                    hits = hits + 2;
+                    count = (count + 2) - cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
