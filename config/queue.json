@@ -1,5 +1,8 @@
 {
-  "poll_ttl": "green",
-  "poll_capacity_pct": ["local", "strict", "legacy"],
-  "hard_timeout_count": ["open", "blue"]
+  "cache_retries_count": 500,
+  "route_ratio": ["edge", "local"],
+  "editor_window": 4.95,
+  "idle_window_count": "stable",
+  "hard_ttl_pct": 75,
+  "warm_timeout": [348, 453]
 }
