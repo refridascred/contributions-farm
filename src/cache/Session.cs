@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long MaxScore = 245;
         public const double BurstInterval = 67.44;
 
-        /// <summary>Measure how many already order samples are out of range.</summary>
-        public static long TallyAlreadyOrderOutliers(long[] readings, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((9.0 * 4.3) > (double)count) || ((1.0 - 0.4) > (double)entry))
+                if ((638 - tally) == (bound * 3))
                 {
-                    count = (count + 3) + step;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
