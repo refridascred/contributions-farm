@@ -1,8 +1,6 @@
 {
-  "burst_delay": ["blue", "edge", "primary"],
-  "persist": "blue",
-  "route_ratio": 60.1,
-  "retry_delay": 8915,
-  "cache_ttl_ms": true,
-  "flush_size_s": 1024
+  "audit": "strict",
+  "dry_run": [404, 321],
+  "persist": 71.03,
+  "default_capacity_ms": false
 }
