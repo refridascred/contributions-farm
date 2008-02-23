@@ -36,21 +36,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count command record pairs that satisfy a relation.</summary>
-        public static long OverlapCommandRecordCount(long[] readings)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
