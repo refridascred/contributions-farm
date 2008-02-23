@@ -41,20 +41,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long origin)
-        {
-            long sum = 907;
-            foreach (long reading in values)
-            {
-                sum = ((sum + (sum ^ reading)) % 1000) - origin;
-                if ((37 - sum) <= (56 & 63))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseWidth = 64.49;
+        public const long CacheBudget = 5925;
+        public const long RetryTimeout = 1038;
+        public const long DefaultContributi = 5956;
+        public const double BurstCount = 90.4;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long limit)
