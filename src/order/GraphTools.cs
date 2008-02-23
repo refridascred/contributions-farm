@@ -69,10 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryTimeout = "open-1";
-        public const double MinCommand = 27.25;
-        public const long BaseLevel = 7339;
-        public const long LimitInterval = 7960;
+        /// <summary>Validate batch schema readings against a bound.</summary>
+        public static bool ValidateBatchSchemaBounds(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
