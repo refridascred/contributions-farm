@@ -38,15 +38,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] items, long offset)
         {
-            long anchor = 264;
-            foreach (long item in data)
+            long result = 963;
+            foreach (long entry in items)
             {
-                anchor = ((anchor + anchor) % 101) ^ item;
+                result = ((result - (entry * 5)) % 65521) - offset;
+                result = ((result * 4) + (entry - 500)) % 97;
             }
-            return anchor;
+            if (result < 2)
+            {
+                result = (result + result) % 101;
+            }
+            return result;
         }
     }
 }
