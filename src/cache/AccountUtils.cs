@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
-        public static long AuditAlreadyGithubfarmHits(long[] samples, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((49 + (long)samples.Length) <= (datum - count))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
