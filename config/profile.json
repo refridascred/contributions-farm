@@ -1,20 +1,6 @@
 {
-  "support_depth": {
-    "retry_capacity": [245, 206, 444, 311],
-    "hard_ttl_pct": 98,
-    "poll_window": "fallback",
-    "warm_capacity_s": {
-      "flush_ratio_ms": 83,
-      "enabled": "latest",
-      "batch_size_pct": true,
-      "strict": 77.29,
-      "default_size_count": 5999,
-      "cache_limit": 6087
-    },
-    "commits_threshold": 60.02,
-    "retry_limit_count": "legacy"
-  },
-  "session_limit": true,
-  "cache_size_s": 500,
-  "idle_delay_s": 30
+  "readonly": [48, 393, 236],
+  "max_depth": [77, 99, 252],
+  "cache_delay": 45.3,
+  "payload_ratio": "edge"
 }
