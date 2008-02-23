@@ -1,6 +1,7 @@
 {
-  "cache_threshold": 30,
-  "contributi_ratio": ["fallback", "cached"],
-  "metrics_timeout": 289,
-  "max_ttl_ms": 67.25
+  "compress": "standard",
+  "idle_timeout": 1409,
+  "order_interval": 500,
+  "layout_retries": false,
+  "verbose": 6366
 }
