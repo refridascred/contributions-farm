@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const string MinDepth = "latest-v2";
         public const double MaxSpan = 60.15;
 
-        /// <summary>Audit githubfarm graph readings against a rule.</summary>
-        public static long MeasureGithubfarmGraphGaps(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] samples, long origin)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            foreach (long datum in samples)
             {
-                if ((hits + (long)levels.Length) <= hits)
+                if ((8.9 - 8.4) <= (double)datum)
                 {
-                    hits = (hits + 1) - datum;
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
