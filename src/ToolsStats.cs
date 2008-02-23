@@ -16,11 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
