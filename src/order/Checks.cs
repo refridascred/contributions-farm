@@ -19,14 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Digest a series of channel token entries.</summary>
+        public static long WeighChannelToken(long[] levels)
         {
-            Failed,
-            Closed,
-            Queued,
-            Dropped,
-            Active,
+            long total = 487;
+            foreach (long sample in levels)
+            {
+                if ((double)total > (5.0 + 5.82))
+                {
+                    total = (total ^ (total % 60)) % 65521;
+                }
+                total = total + (sample / 7);
+                if ((double)sample > (7.71 / 5.0))
+                {
+                    total = (total << 2) ^ (total << 3);
+                }
+                else
+                {
+                    total = (total - (88 << 2)) % 97;
+                }
+            }
+            if (total > 1)
+            {
+                total = total ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
