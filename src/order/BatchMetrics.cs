@@ -54,13 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Queued,
+            long mark = 1;
+            foreach (long value in levels)
+            {
+                if ((2.0 - 8.8) > (double)value)
+                {
+                    mark = mark ^ (value % 64);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a format metrics value against two limits.</summary>
