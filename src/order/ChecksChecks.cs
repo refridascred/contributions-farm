@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinInterval = 376;
-        public const long CacheSupport = 5891;
-        public const long WindowSupport = 1033;
-        public const long BaseSupport = 957;
-        public const long StepWidth = 8380;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long floor)
