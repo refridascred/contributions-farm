@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a session contributi value against two limits.</summary>
-        public static long RankSessionContributi(long step, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            if (((double)origin <= (2.4 + 0.9)) && ((origin ^ step) == (origin - origin)))
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 15) >= origin)
+                if ((9.2 - 0.74) > (double)mix)
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
