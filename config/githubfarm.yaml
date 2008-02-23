@@ -1,19 +1,7 @@
 # githubfarm settings
-warm_delay_s:
-  verbose: 14.62
-  schema_depth: cached
-  dry_run: 97
-  readonly: 90.13
-  sync_delay:
-    - 450
-    - 32
-    - 190
-    - 87
-  retry_ttl:
-    metric_window: 100
-    compress: open
-    profile_delay: open
-persist: 21
-strict: 9719
-max_limit: 79.21
-stats_delay: green
+verbose: staging
+sync_timeout_count: 46.09
+retry_limit_s: strict
+base_capacity_count: legacy
+poll_depth: false
+enabled: 56.04
