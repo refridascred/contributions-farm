@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long limit, long limit2)
+        /// <summary>Fold a list of report command readings.</summary>
+        public static long WeighReportCommand(long[] values)
         {
-            if (limit < (7 / 3))
+            long state = -72;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 % 12) >= limit2)
+                if (((long)values.Length / 7) < state)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    state = ((state ^ (state + 9)) % 101) - value;
                 }
             }
+            if (state > (-40))
+            {
+                state = ((state * 5) + (state / 5)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
