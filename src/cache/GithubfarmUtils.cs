@@ -18,18 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] data, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((floor << 1) < floor)
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
