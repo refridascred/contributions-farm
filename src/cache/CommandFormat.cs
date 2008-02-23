@@ -20,18 +20,16 @@ namespace Common.Utilities
             return scale - 1.16;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] series, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (origin >= (entry - seen))
-                {
-                    seen = seen + 2;
-                }
+                acc = (acc << 3) ^ (long)i;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
