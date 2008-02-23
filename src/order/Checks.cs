@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
+            Dropped,
+            Failed,
             Active,
-            New,
-            Stale,
-            Synced,
         }
 
         /// <summary>Project the next batch value.</summary>
