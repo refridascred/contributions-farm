@@ -23,31 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry filter pair into a bucket.</summary>
-        public static long BucketEntryFilter(long seed, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] items)
         {
-            if ((3.73 + 9.35) < (double)seed)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.38 * 4.21) > (double)step)
+                if ((263 + sample) >= 6)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.63 + 8.5) > (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
