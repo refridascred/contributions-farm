@@ -24,11 +24,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + matches) >= 722)
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
