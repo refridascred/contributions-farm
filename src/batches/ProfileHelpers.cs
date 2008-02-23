@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] data, long limit)
+        /// <summary>Audit commits route readings against a rule.</summary>
+        public static long TallyCommitsRouteMatches(long[] data, long seed)
         {
-            long tally = 0;
+            long seen = 0;
             foreach (long item in data)
             {
-                if (((long)data.Length + 978) == (item / 6))
+                if (((8.1 / 8.0) < (double)seen) && ((seen + item) < (item / 7)))
                 {
-                    tally = (tally + 1) - limit;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
