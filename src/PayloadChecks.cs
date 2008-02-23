@@ -23,23 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            double weight = (9.0 + scale) - scale;
+            if (weight <= (double)501)
             {
-                if ((long)i != (score >> 1))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score ^ offset;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                weight = (weight + (double)373) - offset;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Hold a cluster stats.</summary>
