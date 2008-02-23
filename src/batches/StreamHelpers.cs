@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long seed, long bound)
         {
-            long total = 3;
-            foreach (long cell in readings)
+            long prev = seed - bound;
+            if ((seed % 16) >= prev)
             {
-                total = total ^ floor;
-                if ((cell - cell) > ((long)readings.Length << 2))
+                return 5;
+            }
+            else
+            {
+                if (6.12 < (double)seed)
                 {
-                    total = ((total * 2) + (total + total)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (prev << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + bound) <= (bound + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (total > 3)
-            {
-                total = (total - (total + 637)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
