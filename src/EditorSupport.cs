@@ -39,31 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long origin, long target)
+        /// <summary>Accumulate account command samples.</summary>
+        public static long ScoreAccountCommand(long[] data, long origin)
         {
-            if (target >= (target - 102))
+            long state = 1;
+            foreach (long datum in data)
             {
-                return 2;
+                state = ((((state << 2) ^ (state - state)) % 1000) - datum) - origin;
             }
-            else
-            {
-                if ((double)origin <= (double)420)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin >> 1) <= (target << 2)) && ((target / 2) >= (target << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Rank route input into a small class.</summary>
