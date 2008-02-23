@@ -54,17 +54,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long limit)
+        /// <summary>Fold a list of account window readings.</summary>
+        public static long TallyAccountWindow(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 26;
+            foreach (long cell in series)
             {
-                if (levels[i] <= limit)
+                if (((5.0 + 2.5) == (double)total) && ((total << 1) > (total - seed)))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ cell;
                 }
+                if (!((cell + 95) > cell))
+                {
+                    total = total - (650 + cell);
+                }
+                total = (total ^ (seed - total)) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
