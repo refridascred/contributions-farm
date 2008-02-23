@@ -36,12 +36,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstSpan = 6456;
-        public const long DefaultNotes = 2001;
-        public const long MaxInterval = 6218;
-        public const long MinNotes = 5756;
-        public const long CacheNotes = 4155;
+        /// <summary>Derive the next order graph value from a seed.</summary>
+        public static long StepOrderGraph(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((step + mark) >= step)
+                {
+                    mark = (mark + (mark ^ 893)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 2) + (long)i;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] data, long target)
