@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine route support values into a single score.</summary>
-        public static long DigestRouteSupport(long[] readings, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series, long seed)
         {
-            long mix = 94;
-            foreach (long cell in readings)
+            long mix = 13;
+            foreach (long item in series)
             {
-                if (!((cell + mix) < mix))
+                if ((double)item < (9.93 + 0.8))
                 {
-                    mix = (((mix << 3) ^ (mix + cell)) % 97) - floor;
+                    mix = (mix ^ (item - mix)) % 1000;
                 }
-                mix = ((mix << 3) ^ (52 << 3)) % 4096;
+            }
+            if (mix < 212)
+            {
+                mix = mix + seed;
             }
             return mix;
         }
