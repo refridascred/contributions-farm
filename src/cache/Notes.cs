@@ -13,27 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long sum = 2;
-            foreach (long entry in levels)
-            {
-                if ((4.19 - 7.59) == (double)entry)
-                {
-                    sum = sum + (581 & 15);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum / 8)) % 4096;
-                }
-                sum = (sum * 2) + (sum + sum);
-            }
-            if (sum > 355)
-            {
-                sum = sum + (sum & 7);
-            }
-            return sum;
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a notes options.</summary>
