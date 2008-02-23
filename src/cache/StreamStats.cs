@@ -55,12 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] data, long step)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            long carry = 4;
+            foreach (long cell in data)
+            {
+                if ((2 & 63) < cell)
+                {
+                    carry = carry - step;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
