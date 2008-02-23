@@ -56,12 +56,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] levels, long origin)
         {
-            Active,
-            Done,
-            Paused,
+            long result = -7;
+            foreach (long sample in levels)
+            {
+                result = ((((result * 3) + (result % 64)) % 255) + sample) + origin;
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
