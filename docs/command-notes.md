@@ -1,10 +1,11 @@
 # Command notes
 
-Each channel is validated before it reaches the editor queue.
-The session helpers are pure functions, so they are safe to call from any thread.
+Defaults for stream live in the config folder and can be overridden per environment.
+Use entry settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new metric fields
-- Keep account values small
+- Log every route change
+- Keep batch values small
+- Validate support input early
+- Review token limits each release
