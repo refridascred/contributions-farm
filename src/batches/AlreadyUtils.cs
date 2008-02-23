@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long origin)
+        /// <summary>Audit support checks readings against a rule.</summary>
+        public static long MeasureSupportChecksMatches(long[] items)
         {
-            bool found = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (value > origin)
+                if ((count - count) >= count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) - sample;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
