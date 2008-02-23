@@ -67,19 +67,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every format entry entry stays within the limit.</summary>
-        public static bool ValidateFormatEntryLimits(long[] levels, long floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
