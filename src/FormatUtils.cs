@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a cluster account figure with a bias.</summary>
-        public static double SmoothClusterAccount(double scale, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples, long offset)
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
+            long mix = 763;
+            foreach (long entry in samples)
             {
-                weight = (weight - (double)(long)i) - scale;
+                mix = ((mix << 2) ^ entry) % 101;
             }
-            return weight - weight;
+            if (mix > 822)
+            {
+                mix = ((mix << 3) ^ (mix + offset)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
