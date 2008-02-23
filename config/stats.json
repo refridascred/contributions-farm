@@ -1,11 +1,5 @@
 {
-  "account_threshold": ["green", "staging", "local"],
-  "batch_delay": 61.8,
-  "soft_limit_pct": false,
-  "burst_retries": {
-    "verbose": 95.76,
-    "persist": 250,
-    "cache_timeout_pct": 1.0,
-    "default_depth_ms": ["fallback", "strict"]
-  }
+  "soft_capacity_count": "green",
+  "queue_window": [385, 20],
+  "contributi_retries": 100
 }
