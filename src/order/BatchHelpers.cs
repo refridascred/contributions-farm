@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long bound)
         {
-            New,
-            Ready,
-            Stale,
-            Pending,
-            Retry,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
