@@ -16,22 +16,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series, long target)
+        /// <summary>Rank stats stream input into a small class.</summary>
+        public static long SortStatsStream(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((offset - 723) <= limit)
             {
-                if ((((5.0 * 2.55) < (double)seen) && ((6.7 / 8.0) == (double)item)) && (((item - item) <= 66) && ((double)seen >= (1.2 + 0.67))))
+                return 4;
+            }
+            else
+            {
+                if ((limit - 909) >= (limit >> 1))
                 {
-                    seen = (seen + 3) - target;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((7.8 / 4.0) > (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
