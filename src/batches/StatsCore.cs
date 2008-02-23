@@ -57,38 +57,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a format graph value against two limits.</summary>
-        public static long RankFormatGraph(long origin, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] items, long seed)
         {
-            if (((0 - origin) == (origin + step)) && ((double)62 == (double)step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.3 / 3.0) < (double)step)
+                if ((items[i] == seed) && ((items[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(8.8 <= (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.9 + 3.45) == (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
