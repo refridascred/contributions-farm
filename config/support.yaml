@@ -1,5 +1,4 @@
 # support settings
-max_delay: 23.27
-metric_retries: 30
-warm_retries_count: blue
-farm_window: stable
+burst_interval_ms: 1024
+flush_depth: 1024
+max_delay: eu-west
