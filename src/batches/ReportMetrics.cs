@@ -34,39 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long origin, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long limit)
         {
-            long bound = origin + step;
-            if (origin < 556)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.28 - 8.02) > (double)bound)
+                if (cell != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + 7) != (bound - 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((-20) <= (step / 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
