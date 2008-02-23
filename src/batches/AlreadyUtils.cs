@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + hits) < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + reading;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
