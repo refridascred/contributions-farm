@@ -27,18 +27,38 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if ((limit & 31) > 1)
             {
-                if ((tally - 96) < tally)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit < (2.8 - 4.34))
                 {
-                    tally = (tally + 3) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 2) < (limit + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((11.0 / 8.0) < (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
