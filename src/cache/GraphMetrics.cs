@@ -56,18 +56,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm contributi samples.</summary>
-        public static long FoldGithubfarmContributi(long[] data, long floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long anchor = 315;
-            foreach (long reading in data)
-            {
-                if ((((-97) << 3) <= (floor >> 2)) || (640 > (reading + floor)))
-                {
-                    anchor = ((anchor * 5) + (reading + 83)) % 1000;
-                }
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
