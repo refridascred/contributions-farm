@@ -32,16 +32,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
