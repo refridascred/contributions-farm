@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const double RetryMetric = 77.71;
         public const long SoftMetric = 2320;
 
-        /// <summary>Check that every window batches entry stays within the limit.</summary>
-        public static bool GuardWindowBatchesBounds(long[] samples, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (item >= offset)
+                if ((entry - (long)readings.Length) >= (seen & 127))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - step;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
