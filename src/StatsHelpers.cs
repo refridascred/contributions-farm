@@ -14,14 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 7873;
+        public const long CacheSession = 4887;
+        public const string SoftSize = "alpha";
+        public const long SoftSession = 5864;
+        public const long StepSession = 1489;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long CombineNotes(long[] readings, long bound)
