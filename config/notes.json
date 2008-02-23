@@ -1,8 +1,15 @@
 {
-  "batch_threshold_s": false,
-  "strict": true,
-  "buffer_depth": "primary",
-  "graph_size": false,
-  "poll_window_pct": true,
-  "sync_depth_ms": false
+  "retry_ratio": {
+    "burst_size_pct": [371, 261, 109],
+    "account_delay": "green",
+    "checks_ratio": [103, 430, 167],
+    "base_depth": ["open", "eu-west", "staging", "blue"],
+    "hard_capacity_s": 29.32,
+    "audit": [230, 134, 483, 210]
+  },
+  "farm_threshold": "open",
+  "base_capacity_s": 100,
+  "queue_interval": 44.2,
+  "sync_capacity": false,
+  "warm_delay_ms": 8
 }
