@@ -21,15 +21,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double ratio, double span)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            double scale = (double)(9 & 127);
+            double mean = 7.9 / 9.0;
+            if (mean < (double)73)
+            {
+                mean = (mean - span) + scale;
+            }
             for (int i = 0; i < 5; i++)
             {
-                scale = ((scale - scale) + (double)(long)i) - span;
+                mean = (mean - mean) - (double)(long)i;
             }
-            return scale - (11.0 + ratio);
+            return mean - (span / 9.0);
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
