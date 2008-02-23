@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (step > (result % 10))
-                {
-                    result = ((result << 2) ^ ((-97) + result)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ step) % 4096;
-                }
-                result = result - (3 ^ step);
-                result = result ^ (step >> 3);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Accumulate batch samples.</summary>
