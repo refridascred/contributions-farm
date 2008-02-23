@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double bias2)
         {
-            Stale,
-            Failed,
-            Draft,
-            Paused,
-            Pending,
+            double mean = bias2;
+            return mean + bias;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
