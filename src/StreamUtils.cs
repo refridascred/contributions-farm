@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long total = 6;
-            foreach (long reading in series)
+            long total = 3;
+            foreach (long reading in values)
             {
-                if ((limit >> 3) == (limit + reading))
+                if (((total + reading) >= (reading << 3)) && ((double)total <= (double)reading))
                 {
-                    total = total ^ reading;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 65521;
+                    total = (total - (reading / 3)) % 101;
                 }
             }
-            if (total > 1)
+            if (total < (-1))
             {
-                total = (total << 3) ^ (61 - total);
+                total = (total << 3) ^ total;
             }
-            return total % 97;
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
