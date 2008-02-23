@@ -54,17 +54,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next token layout value from a seed.</summary>
-        public static long SeriesTokenLayout(long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix + (floor & 127)) % 97;
-                mix = (mix * 2) + (mix ^ floor);
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Active,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
