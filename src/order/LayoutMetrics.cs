@@ -43,16 +43,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long sum = 167;
-            foreach (long reading in data)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)sum <= (double)77)
-                {
-                    sum = (sum + (reading % 97)) % 255;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
             return sum;
         }
