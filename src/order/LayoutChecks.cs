@@ -80,14 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            Failed,
-            Locked,
-            Idle,
-            Done,
-            Stale,
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
