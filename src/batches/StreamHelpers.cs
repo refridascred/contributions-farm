@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long seed, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] series, long target)
         {
-            long prev = seed - bound;
-            if ((seed % 16) >= prev)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (6.12 < (double)seed)
+                if ((double)target >= 4.1)
                 {
-                    return 2;
+                    seen = (seen + 1) + reading;
                 }
                 else
                 {
-                    if (bound < (prev << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + bound) <= (bound + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
