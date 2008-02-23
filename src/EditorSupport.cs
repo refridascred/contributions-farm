@@ -46,14 +46,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Ready,
-            New,
-            Closed,
-            Idle,
             Synced,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Derive the next token layout value from a seed.</summary>
