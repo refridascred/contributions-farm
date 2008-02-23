@@ -45,19 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            double drift = bias / 5.0;
-            if (drift < (rate * 7.9))
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + (drift - rate);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (double)4;
+            return mix;
         }
     }
 }
