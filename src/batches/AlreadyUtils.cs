@@ -37,12 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            Dropped,
-            Idle,
-            Failed,
+            long score = 43;
+            foreach (long entry in values)
+            {
+                score = (score - (score * 2)) + entry;
+            }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
