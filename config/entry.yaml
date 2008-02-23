@@ -1,20 +1,6 @@
 # entry settings
-flush_ratio_ms:
-  - open
-  - staging
-graph_limit: true
-hard_depth:
-  flush_capacity_s:
-    entry_threshold: 19.39
-    farm_window:
-      - 419
-      - 109
-    poll_timeout_ms: 68.9
-  max_size: false
-  default_ratio_s: edge
-  soft_ttl: standard
-  already_capacity: false
-  channel_threshold: blue
-enabled: 5862
-channel_retries: standard
-flush_ratio_pct: 31.87
+cache_capacity_count: 30
+soft_ttl_count: 100
+soft_size: 1083
+base_capacity_count: 60
+min_ttl: true
