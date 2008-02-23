@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            Retry,
-            Pending,
-            Paused,
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
