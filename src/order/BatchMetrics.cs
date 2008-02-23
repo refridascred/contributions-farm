@@ -53,22 +53,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] data, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item >> 5) > (step ^ item))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
