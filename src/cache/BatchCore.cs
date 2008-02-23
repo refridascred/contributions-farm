@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next stats value.</summary>
