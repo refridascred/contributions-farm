@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "strict-edge";
-        public const long RetryStream = 7494;
-        public const string WindowBudget = "local";
-        public const double HardStream = 79.19;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Synced,
+            Failed,
+            Ready,
+            Done,
+            Idle,
+        }
 
         /// <summary>Validate order channel readings against a bound.</summary>
         public static bool ValidateOrderChannelRange(long[] values, long step)
