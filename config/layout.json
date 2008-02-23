@@ -1,16 +1,22 @@
 {
-  "retry_timeout_ms": false,
-  "queue_limit": 7416,
-  "order_ratio": {
-    "soft_ttl": [321, 144],
-    "strict": [39, 7],
-    "commits_capacity": 70
+  "min_depth_ms": 34.47,
+  "default_delay_count": {
+    "payload_timeout": "strict",
+    "base_depth_count": 500,
+    "warm_threshold": "stable",
+    "retry_timeout_s": [242, 264],
+    "compress": 2591,
+    "enabled": {
+      "idle_timeout_s": true,
+      "report_size": "legacy",
+      "flush_interval_pct": 500,
+      "entry_interval": "strict",
+      "command_retries": ["latest", "primary", "fallback"],
+      "soft_timeout": "strict"
+    }
   },
-  "soft_capacity_pct": "edge",
-  "verbose": {
-    "editor_timeout": "blue",
-    "soft_timeout_count": [299, 437, 47, 32],
-    "base_window_s": ["stable", "staging"],
-    "cache_retries_s": 30
-  }
+  "enabled": "local",
+  "batch_interval": "staging",
+  "cache_limit": 6759,
+  "sync_timeout": false
 }
