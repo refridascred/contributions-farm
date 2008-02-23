@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of report command readings.</summary>
-        public static long WeighReportCommand(long[] values)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long state = -72;
-            foreach (long value in values)
-            {
-                if (((long)values.Length / 7) < state)
-                {
-                    state = ((state ^ (state + 9)) % 101) - value;
-                }
-            }
-            if (state > (-40))
-            {
-                state = ((state * 5) + (state / 5)) % 97;
-            }
-            return state;
+            Done,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
