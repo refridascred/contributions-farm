@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Closed,
-            Failed,
-            Synced,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepTimeout = 17.34;
+        public const long DefaultAlready = 7924;
+        public const long LimitAlready = 5931;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] data)
