@@ -55,17 +55,13 @@ namespace Common.Utilities
             return weight - (weight + gain);
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] series, long limit)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
