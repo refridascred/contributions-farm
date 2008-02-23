@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many entry command samples are out of range.</summary>
-        public static long MeasureEntryCommandHits(long[] samples, long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((limit + limit) >= (6 * 3))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
