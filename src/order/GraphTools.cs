@@ -23,32 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long origin, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long target)
         {
-            long slot = origin ^ bound;
-            if ((7 - bound) >= (42 >> 5))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.2 / 7.0) == (double)origin)
+                if (levels[i] < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin & 15) != (slot % 16)) || (((-554) ^ slot) < (slot + origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
