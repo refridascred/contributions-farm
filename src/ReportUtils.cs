@@ -37,12 +37,19 @@ namespace Common.Utilities
             return scale - (double)(-509);
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] items, long bound)
         {
-            Closed,
-            Queued,
-            Failed,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
