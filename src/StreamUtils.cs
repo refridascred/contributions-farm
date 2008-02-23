@@ -62,19 +62,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long floor)
+        /// <summary>Digest a series of metrics stats entries.</summary>
+        public static long TotalMetricsStats(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long anchor = 5;
+            foreach (long entry in values)
             {
-                if (sample >= floor)
+                long matches = (anchor + anchor) + (836 & 7);
+                if ((anchor - matches) > (anchor - entry))
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches * 5) + anchor) % 1000;
+                    anchor = (anchor - entry) % 65521;
+                }
+                if ((0 / 9) >= anchor)
+                {
+                    anchor = (anchor + (5 + entry)) % 1000;
                 }
             }
-            return stale;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the format kind values.</summary>
