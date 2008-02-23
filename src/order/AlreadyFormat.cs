@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (((sum * 2) + (sum << 2)) % 1000) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
