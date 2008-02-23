@@ -39,18 +39,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((0.9 * 5.7) == (double)seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + item;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
