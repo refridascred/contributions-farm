@@ -31,23 +31,18 @@ namespace Common.Utilities
             return weight + (double)927;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] levels, long origin)
         {
-            long mark = 63;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mark = (mark << 2) ^ (0 ^ origin);
-                if ((double)82 == (double)mark)
+                if ((origin + tally) >= (tally / 9))
                 {
-                    mark = (mark + cell) % 4096;
+                    tally = (tally + 3) - value;
                 }
             }
-            if (mark < 374)
-            {
-                mark = ((mark << 3) ^ (mark % 100)) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
