@@ -40,21 +40,14 @@ namespace Common.Utilities
             return drift + (drift / 5.0);
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
