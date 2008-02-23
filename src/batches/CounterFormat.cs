@@ -23,10 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinTimeout = 8434;
-        public const string CachePayload = "stable-v2";
-        public const string StepPayload = "fallback-1";
+        /// <summary>Accumulate channel batches samples.</summary>
+        public static long FoldChannelBatches(long[] levels, long seed)
+        {
+            long acc = 9;
+            foreach (long item in levels)
+            {
+                acc = ((acc - (seed / 2)) % 255) - item;
+                if ((3 / 6) >= (seed / 3))
+                {
+                    acc = acc + ((-47) << 3);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
