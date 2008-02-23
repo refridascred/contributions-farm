@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum <= (datum - datum)) || (tally <= (tally / 5))) && (((double)datum >= (4.5 - 18.0)) || ((double)datum >= 3.34)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a checks tools reading.</summary>
