@@ -52,22 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            long anchor = 47;
-            foreach (long sample in series)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((anchor % 2) <= (sample + (long)series.Length))
+                if (!((result + result) == (bound / 8)))
                 {
-                    anchor = anchor + (1 + (long)series.Length);
+                    result = result + (result & 127);
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            if (anchor < 29)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
-            }
-            return anchor % 97;
+            return result;
         }
     }
 }
