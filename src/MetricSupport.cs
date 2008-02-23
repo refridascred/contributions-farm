@@ -20,22 +20,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine farm token values into a single score.</summary>
-        public static long WeighFarmToken(long[] series, long offset)
+        /// <summary>Audit githubfarm graph readings against a rule.</summary>
+        public static long MeasureGithubfarmGraphGaps(long[] levels)
         {
-            long mark = 6;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (offset <= (offset % 100))
+                if ((hits + (long)levels.Length) <= hits)
                 {
-                    mark = (mark << 2) ^ (value + offset);
+                    hits = (hits + 1) - datum;
                 }
             }
-            if (mark < 213)
-            {
-                mark = mark - (offset - 1);
-            }
-            return mark;
+            return hits;
         }
     }
 }
