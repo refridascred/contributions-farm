@@ -14,26 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate channel githubfarm samples.</summary>
-        public static long ScoreChannelGithubfarm(long[] data, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long score = 4;
-            foreach (long item in data)
-            {
-                if (!((item ^ item) == (seed >> 4)))
-                {
-                    score = score - (score >> 4);
-                }
-                if (score < (seed - item))
-                {
-                    score = score ^ item;
-                }
-                else
-                {
-                    score = (score * 3) + (score & 31);
-                }
-            }
-            return score;
+            Paused,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine farm token values into a single score.</summary>
