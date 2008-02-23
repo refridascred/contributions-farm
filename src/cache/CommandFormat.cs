@@ -32,14 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Synced,
-            Stale,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 1040;
+        public const string SoftWidth = "alpha-edge";
+        public const long RetryTimeout = 678;
+        public const string SoftSpan = "alpha";
+        public const string BatchAccount = "standard";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BatchEntry = 65.82;
