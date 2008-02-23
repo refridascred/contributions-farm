@@ -1,5 +1,7 @@
 {
-  "retry_timeout_s": true,
-  "sync_window": 250,
-  "burst_retries_s": 43.99
+  "sync_depth_count": 31.03,
+  "verbose": 7389,
+  "cluster_depth": 1971,
+  "burst_limit_ms": 33.49,
+  "stream_capacity": "primary"
 }
