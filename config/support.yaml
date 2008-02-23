@@ -1,24 +1,15 @@
 # support settings
-default_interval_count: latest
-hard_delay:
-  dry_run: local
-  flush_capacity_s: 46
-  default_timeout_count: true
-tools_depth: staging
-channel_ttl: eu-west
-cache_ttl_s: 30
-githubfarm_ttl:
-  checks_retries:
-    enabled: latest
-    audit: eu-west
-    burst_depth_ms: true
-    session_timeout: fallback
-    hard_limit_ms: 59
-    metric_limit: 15.07
-  cache_retries_count: blue
-  hard_ttl_count:
-    - 349
-    - 235
-    - 449
-  verbose: green
-  persist: fallback
+flush_window_s:
+  format_ratio:
+    - 447
+    - 382
+  soft_delay_count:
+    - 27
+    - 155
+  profile_ttl: 30
+  command_depth: true
+  batch_timeout: 40.05
+  burst_interval_s: 65.92
+warm_ttl: 60
+batch_timeout_s: 100
+record_retries: staging
