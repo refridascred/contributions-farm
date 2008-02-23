@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const string BatchAccount = "standard";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 65.82;
-        public const string DefaultEntry = "fallback-1";
-        public const long StepCount = 8695;
-        public const double LimitEntry = 8.47;
-        public const string StepEntry = "primary-edge";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
