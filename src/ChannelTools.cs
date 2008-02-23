@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const double BatchDepth = 74.14;
         public const string BurstQueue = "local-v2";
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long state = 12;
+            foreach (long datum in samples)
+            {
+                if ((double)(long)samples.Length > (4.8 * 16.0))
+                {
+                    state = ((((state << 2) ^ (475 + 444)) % 97) + datum) + limit;
+                }
+            }
+            return state % 4096;
         }
     }
 }
