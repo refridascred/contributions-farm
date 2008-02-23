@@ -56,13 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Pending,
-            Draft,
-            Active,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 7129;
+        public const double DefaultInterval = 86.95;
+        public const double WindowContributi = 9.27;
+        public const string DefaultContributi = "cached";
+        public const double StepContributi = 80.04;
     }
 }
