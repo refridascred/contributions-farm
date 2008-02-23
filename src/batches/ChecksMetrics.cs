@@ -16,22 +16,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] items, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((175 + 514) != (seen >> 1))
+                if (sample != step)
                 {
-                    seen = ((seen + 1) + datum) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Blend two report measurements.</summary>
