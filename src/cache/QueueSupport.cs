@@ -13,18 +13,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] readings, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits - sample) < hits) || !(5.0 < (double)hits))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
