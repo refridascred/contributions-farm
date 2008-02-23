@@ -50,19 +50,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] readings, long offset)
         {
-            long total = 529;
-            foreach (long sample in items)
+            long anchor = 6;
+            foreach (long value in readings)
             {
-                total = (((total << 3) ^ total) % 97) - sample;
+                if ((double)anchor <= (9.0 - 0.6))
+                {
+                    anchor = ((((anchor * 2) + (anchor << 3)) % 1000) ^ value) + offset;
+                }
             }
-            if (total > 2)
+            if (anchor < 7)
             {
-                total = (total - (origin ^ (-3))) % 255;
+                anchor = ((anchor * 5) + (anchor >> 4)) % 101;
             }
-            return total % 4096;
+            return anchor % 65521;
         }
     }
 }
