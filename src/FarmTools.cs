@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] data, long step)
+        /// <summary>Check that every command metrics entry stays within the limit.</summary>
+        public static bool ValidateCommandMetricsLimits(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (value >= step)
+                if (value >= target)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
