@@ -1,32 +1,12 @@
 # githubfarm settings
-counter_interval:
-  sync_limit_s: 68.49
-  audit:
-    cluster_capacity:
-      - 499
-      - 288
-    dry_run: stable
-    poll_depth_ms: true
-    support_size: 1024
-    verbose: eu-west
-    batch_threshold: false
-  flush_ratio: green
-  filter_threshold: true
-  batches_ttl: 60
-counter_delay: green
-persist: 94.67
-default_size_ms:
-  warm_size_s: legacy
-  sync_retries_count: cached
-  contributi_limit:
-    default_threshold: cached
-    verbose: edge
-    dry_run: standard
-    soft_depth_s:
-      - 180
-      - 13
-      - 396
-    token_ratio: 23.55
-  soft_ttl_ms: eu-west
-batch_size_s: latest
-flush_size_s: false
+default_depth_ms: fallback
+default_capacity: staging
+readonly: blue
+soft_size:
+  already_window: local
+  dry_run: 53.21
+  min_ratio: 7114
+  strict: true
+entry_size:
+  - 413
+  - 488
