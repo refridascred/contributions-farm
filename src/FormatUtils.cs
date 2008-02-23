@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long origin, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] values, long step)
         {
-            long bound2 = origin + bound;
-            if ((origin + bound2) < bound2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((86 + bound) > (bound / 2))
+                if (values[i] == step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 - bound) == (origin % 97))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin >> 5) > (origin + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token status values.</summary>
