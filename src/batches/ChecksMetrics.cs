@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long limit)
-        {
-            if (((double)limit >= (7.85 - 8.57)) || ((step % 100) <= (limit << 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) < (limit + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 2083;
+        public const double StepLevel = 73.26;
+        public const long StepSize = 3844;
+        public const long MinSize = 5118;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MaxChecks = 4316;
