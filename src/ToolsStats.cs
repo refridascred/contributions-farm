@@ -42,23 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] readings, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items, long origin)
         {
-            long anchor = 8;
-            foreach (long cell in readings)
+            long state = 61;
+            foreach (long sample in items)
             {
-                anchor = ((anchor - (cell * 3)) % 4096) + floor;
-                if (!((cell + cell) > (cell * 2)))
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell << 2)) % 65521;
-                }
+                state = ((state - (origin ^ state)) % 97) ^ sample;
             }
-            return anchor % 4096;
+            if (state < 44)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Audit cache window readings against a rule.</summary>
