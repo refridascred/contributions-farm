@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] readings, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] data, long step)
         {
-            long result = 1;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                result = (((result - (result % 7)) % 255) - reading) - limit;
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 4)
-            {
-                result = (result + (result << 2)) % 4096;
-            }
-            return result;
+            return found;
         }
     }
 }
