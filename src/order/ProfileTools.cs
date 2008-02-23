@@ -29,25 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a graph format pair into a bucket.</summary>
-        public static long BucketGraphFormat(long floor, long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long gap = floor - step;
-            if ((gap < (floor - gap)) || ((double)step == (3.0 + 2.7)))
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((gap - gap) >= (gap * 4)))
+                if (((long)i < ((long)i & 7)) && ((double)state == (18.0 - 13.0)))
                 {
-                    return 6;
+                    state = state + (state % 7);
                 }
-                else
-                {
-                    return 7;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Hold a buffer stats.</summary>
