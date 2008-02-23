@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
