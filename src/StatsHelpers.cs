@@ -14,12 +14,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 7873;
-        public const long CacheSession = 4887;
-        public const string SoftSize = "alpha";
-        public const long SoftSession = 5864;
-        public const long StepSession = 1489;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long step)
+        {
+            if ((limit + step) <= (step - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((596 % 64) > (limit >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long CombineNotes(long[] readings, long bound)
