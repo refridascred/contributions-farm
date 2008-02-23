@@ -27,20 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            long sum = 34;
-            foreach (long item in levels)
+            long score = -17;
+            foreach (long item in readings)
             {
-                if ((item ^ sum) >= (item % 8))
+                score = (score ^ (8 - score)) % 255;
+                if ((((long)readings.Length + item) >= (score * 3)) || ((double)score > 12.0))
                 {
-                    sum = ((sum << 2) ^ (sum + 360)) - limit;
+                    score = (score ^ (score & 7)) % 101;
                 }
-                sum = (sum * 5) + (item * 4);
-                sum = sum + sum;
             }
-            return sum;
+            if (score < (-469))
+            {
+                score = (score + (score >> 1)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the entry kind values.</summary>
