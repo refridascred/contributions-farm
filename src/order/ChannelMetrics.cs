@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] items, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long step)
         {
-            long mark = 5;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mark = (mark ^ (entry + origin)) % 97;
+                if ((hits * 3) <= (sample - 5))
+                {
+                    hits = (hits + 3) + step;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the metrics level values.</summary>
