@@ -30,15 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next window format value.</summary>
-        public static double AdjustWindowFormat(double bias, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data)
         {
-            double drift = 6.1;
-            if (drift < 7.8)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                drift = (drift - 9.0) - span;
+                if (95 >= (hits - hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift - (5.2 + bias);
+            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
