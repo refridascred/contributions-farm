@@ -49,14 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Closed,
-            Queued,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 9423;
+        public const long MinLevel = 1233;
+        public const double LimitLevel = 41.44;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long DigestWindow(long[] items, long target)
