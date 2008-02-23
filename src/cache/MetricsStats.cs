@@ -68,15 +68,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double scale, double offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            double weight = 8.98;
-            if (weight > (weight - weight))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = ((weight - (19.0 * 7.03)) - scale) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - weight;
+            return tally;
         }
     }
 }
