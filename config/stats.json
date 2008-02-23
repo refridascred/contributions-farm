@@ -1,13 +1,5 @@
 {
-  "filter_ttl": [405, 341, 416, 65],
-  "batch_depth_count": {
-    "commits_depth": "eu-west",
-    "poll_delay_pct": "primary",
-    "idle_capacity_s": false,
-    "warm_ttl_ms": 97.91,
-    "soft_size_s": false
-  },
-  "base_interval_ms": 500,
-  "audit": "open",
-  "sync_window_pct": "latest"
+  "idle_window_ms": "green",
+  "retry_limit_s": ["latest", "fallback", "fallback", "fallback"],
+  "idle_threshold": true
 }
