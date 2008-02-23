@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long origin, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            long step = origin - floor;
-            if (step > origin)
+            long total = 5;
+            foreach (long cell in values)
             {
-                return 2;
+                total = ((total - (5 & 31)) % 1000) + cell;
             }
-            else
-            {
-                if (origin >= (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((85 - origin) >= (floor - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
