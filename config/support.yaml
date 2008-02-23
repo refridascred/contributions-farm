@@ -1,12 +1,13 @@
 # support settings
-persist: cached
-max_ttl_ms: primary
-hard_timeout_ms:
-  - 229
-  - 326
-  - 50
-hard_size:
-  - 148
-  - 291
-  - 27
-  - 361
+audit: primary
+graph_threshold: staging
+editor_limit: 5
+retry_ttl_count: latest
+hard_ttl_ms:
+  hard_ratio_pct:
+    hard_retries: legacy
+    order_window: 6135
+    report_timeout: true
+  base_retries_count: 12
+  hard_window_s: standard
+enabled: 16
