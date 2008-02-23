@@ -54,17 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 4) + ((long)i - (long)i)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 3323;
+        public const double MinGithubfarm = 71.13;
+        public const long BurstGithubfarm = 7711;
+        public const string WindowCount = "stable-v2";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteMatches(long[] levels, long target)
