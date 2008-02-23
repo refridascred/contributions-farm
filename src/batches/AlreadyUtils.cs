@@ -45,12 +45,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double scale, double offset)
-        {
-            double gain = scale;
-            return (gain + 6.28) + offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 2792;
+        public const double MaxInterval = 4.14;
+        public const long MinInterval = 2783;
+        public const long CacheStream = 190;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
