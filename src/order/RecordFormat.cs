@@ -25,18 +25,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Audit record notes readings against a rule.</summary>
+        public static long CountRecordNotesGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((-70) * 2) > (datum & 15))
+                if (95 < (floor << 3))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a already reading by value.</summary>
