@@ -47,12 +47,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long limit)
         {
-            Stale,
-            Locked,
-            Closed,
+            if ((limit - limit) >= (bound / 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((528 / 3) < (limit & 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
