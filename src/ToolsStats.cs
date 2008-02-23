@@ -48,11 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinScore = 9472;
-        public const double IdleTimeout = 8.64;
-        public const long LimitCache = 8895;
-        public const long MinSpan = 1389;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] values)
