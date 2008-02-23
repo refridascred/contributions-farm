@@ -24,15 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] readings, long target)
         {
-            long mix = 412;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                mix = ((((mix << 2) ^ (mix - 71)) % 97) + item) + bound;
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
