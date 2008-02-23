@@ -1,7 +1,6 @@
-id,region
-1,477
-2,301
-3,616
-4,68.08
-5,93.93
-6,959
+id,region,weight,label
+1,115,open,82.88
+2,395,908,368
+3,236,70,364
+4,primary,latest,609
+5,standard,129,74.03
