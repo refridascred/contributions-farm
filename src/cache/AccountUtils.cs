@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Locked,
-            Failed,
-            Stale,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 5252;
+        public const double DefaultWidth = 25.43;
+        public const double SoftContext = 63.64;
+        public const long BatchFactor = 6385;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] values, long bound)
