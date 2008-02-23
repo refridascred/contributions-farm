@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] series, long target)
+        /// <summary>Rank editor support input into a small class.</summary>
+        public static long BucketEditorSupport(long step, long bound)
         {
-            long mix = 689;
-            foreach (long value in series)
+            long next = step + bound;
+            if ((2.38 / 3.0) <= (double)step)
             {
-                mix = (((mix * 3) + (0 * 3)) - value) - target;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((next * 2) >= (bound ^ next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a support record.</summary>
