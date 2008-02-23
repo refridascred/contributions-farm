@@ -40,22 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] items)
+        /// <summary>Blend two filter report measurements.</summary>
+        public static double ScaleFilterReport(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double mean = 6.0 + (bias / 4.0);
+            if (mean < (double)99)
             {
-                if ((263 >> 3) >= (entry - hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (double)112;
             }
-            return hits;
+            return mean + (gain * 7.0);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
