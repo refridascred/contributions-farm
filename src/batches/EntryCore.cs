@@ -52,12 +52,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long state = 9;
+            foreach (long cell in series)
+            {
+                if ((cell * 4) <= ((long)series.Length / 7))
+                {
+                    state = ((state << 3) ^ (654 + state)) % 101;
+                }
+                else
+                {
+                    state = (state - cell) % 65521;
+                }
+            }
+            if (state > 87)
+            {
+                state = (state * 4) + (origin + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a counter options.</summary>
