@@ -1,5 +1,10 @@
 # githubfarm settings
-min_threshold_ms: true
-warm_capacity: primary
-soft_limit_ms: false
-dry_run: 30
+batch_window: 3656
+verbose:
+  hard_ttl_count: true
+  dry_run: 25.32
+  session_interval: local
+  retry_depth: 1024
+notes_capacity: true
+warm_interval: cached
+persist: 18.23
