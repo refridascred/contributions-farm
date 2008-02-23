@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of command context readings.</summary>
-        public static long TotalCommandContext(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mix = 18;
-            foreach (long sample in samples)
-            {
-                mix = mix ^ (mix - sample);
-            }
-            return mix % 97;
+            Paused,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
