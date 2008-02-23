@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const double WindowInterval = 82.91;
         public const string MaxLevel = "alpha";
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Digest a series of buffer route entries.</summary>
+        public static long TallyBufferRoute(long[] series, long bound)
         {
-            double drift = floor;
-            if (drift < drift)
+            long score = -24;
+            foreach (long cell in series)
             {
-                drift = drift + rate;
+                if ((cell << 2) == (score % 60))
+                {
+                    score = (((score * 3) + 68) % 65521) + bound;
+                }
             }
-            else
+            if (score < 53)
             {
-                drift = drift - 10.0;
+                score = (score << 2) ^ (long)series.Length;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)55) - (double)(long)i;
-            }
-            return drift - floor;
+            return score;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
