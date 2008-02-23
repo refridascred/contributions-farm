@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] series, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] items, long origin)
         {
-            long sum = 737;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 6; i++)
+                if (seen > entry)
                 {
-                    sum = (((sum * 3) + item) - (long)i) - bound;
+                    seen = (seen + 1) - origin;
                 }
-                sum = (sum ^ (sum & 31)) % 97;
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
