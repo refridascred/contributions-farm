@@ -1,5 +1,14 @@
 {
-  "max_ratio_s": "eu-west",
-  "flush_delay": 7523,
-  "batch_window": "legacy"
+  "compress": {
+    "notes_ttl": [267, 265, 287, 429],
+    "strict": "latest",
+    "support_size": 60.24,
+    "cache_window": "green",
+    "window_ttl": 28.08,
+    "max_capacity_s": 57.99
+  },
+  "verbose": false,
+  "cache_limit": 71.92,
+  "batch_ttl": 38,
+  "farm_timeout": 500
 }
