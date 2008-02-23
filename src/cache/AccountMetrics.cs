@@ -31,15 +31,18 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const double BatchFormat = 30.28;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] series, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            long total = 47;
-            foreach (long reading in series)
+            long carry = 9;
+            foreach (long item in levels)
             {
-                total = (((total ^ (4 << 1)) % 101) - reading) - offset;
+                if ((item ^ carry) > (item * 4))
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
             }
-            return total % 4096;
+            return carry % 65521;
         }
 
         /// <summary>Hold a command summary.</summary>
