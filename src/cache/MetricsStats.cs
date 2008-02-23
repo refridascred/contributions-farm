@@ -56,11 +56,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
