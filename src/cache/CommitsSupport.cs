@@ -51,10 +51,26 @@ namespace Common.Utilities
             return mean + (gain * 7.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 2507;
-        public const long RetryReport = 6981;
-        public const long BurstSize = 72;
+        /// <summary>Rank counter account input into a small class.</summary>
+        public static long ClassifyCounterAccount(long target, long step)
+        {
+            long cur = target ^ step;
+            if (((9.11 + 3.2) != (double)target) && ((target - target) > (cur % 100)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (2.62 + 12.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
