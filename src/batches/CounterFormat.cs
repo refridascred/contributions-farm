@@ -36,18 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count >= (5.83 * 5.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) ^ cell;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
