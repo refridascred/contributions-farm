@@ -48,21 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up metrics payload samples.</summary>
-        public static long PairMetricsPayloadCount(long[] series)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Queued,
         }
     }
 }
