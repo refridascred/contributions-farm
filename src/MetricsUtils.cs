@@ -57,13 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Classify a stream farm pair into a bucket.</summary>
+        public static long GradeStreamFarm(long step, long bound)
         {
-            Idle,
-            Queued,
-            Ready,
-            Closed,
+            if ((step << 2) != (bound + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ step) <= (bound & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
