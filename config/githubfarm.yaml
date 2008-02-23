@@ -1,18 +1,6 @@
 # githubfarm settings
-poll_window_s:
-  - latest
-  - eu-west
-  - blue
-enabled: local
-metric_limit:
-  - stable
-  - cached
-  - standard
-  - standard
-stream_retries: 59.82
-retry_depth:
-  - 291
-  - 394
-  - 444
-  - 185
-support_capacity: 2005
+max_retries_s: 10.21
+base_ratio_s: 10.4
+graph_size: eu-west
+sync_size: 3127
+max_timeout: true
