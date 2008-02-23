@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            long acc = 87;
+            foreach (long value in levels)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                acc = (acc + (acc - value)) % 101;
+                acc = ((acc << 3) ^ (value ^ value)) % 65521;
             }
-            return carry;
+            if (acc > 44)
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
