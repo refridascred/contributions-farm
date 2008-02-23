@@ -48,13 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] samples)
         {
-            Queued,
-            Closed,
-            Idle,
-            Ready,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((seen & 1) == ((long)samples.Length + seen)) && (((entry + 44) > (seen >> 3)) || ((entry * 5) < (16 - entry))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload stats.</summary>
