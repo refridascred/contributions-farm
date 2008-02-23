@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double gain, double offset)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            double scale = (double)(981 + 4);
+            if (scale < (double)332)
+            {
+                scale = (scale - (scale * 2.9)) - gain;
+            }
+            return scale - offset;
         }
 
         /// <summary>Hold a record info.</summary>
