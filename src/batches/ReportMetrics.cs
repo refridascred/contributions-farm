@@ -16,19 +16,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] readings, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (value >= floor)
+                if (((step % 7) <= (matches * 2)) && ((matches - 646) < step))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
