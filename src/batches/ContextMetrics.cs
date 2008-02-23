@@ -44,31 +44,17 @@ namespace Common.Utilities
         public const long LimitFactor = 6200;
         public const long BurstSize = 4096;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Find the first report buffer entry that matches the target.</summary>
+        public static long LookupReportBufferIndex(long[] values, long floor)
         {
-            long total = 1;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                long seen = (total * 5) + (total << 2);
-                if (((-496) ^ seen) >= item)
+                if ((values[i] < floor) && ((values[i] % 2) != 0))
                 {
-                    continue;
-                }
-                if (total >= item)
-                {
-                    total = (total * 5) + (total / 2);
-                }
-                else
-                {
-                    total = ((total * 2) + (737 << 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (total > 12)
-            {
-                total = ((total * 4) + (total + total)) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit entry channel readings against a rule.</summary>
