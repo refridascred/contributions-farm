@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Draft,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define format limits and defaults.</summary>
