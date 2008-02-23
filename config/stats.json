@@ -1,27 +1,7 @@
 {
-  "soft_window": "latest",
-  "token_depth": {
-    "base_size_pct": "strict",
-    "retry_size_pct": {
-      "dry_run": 87,
-      "min_size_ms": "eu-west",
-      "retry_retries_s": "latest",
-      "token_limit": true,
-      "cache_window": "standard"
-    },
-    "warm_timeout_count": true
-  },
-  "sync_ttl": {
-    "base_ttl_ms": {
-      "idle_capacity_s": "fallback",
-      "schema_interval": 7407,
-      "hard_interval": "cached"
-    },
-    "readonly": "local",
-    "graph_window": 0.42,
-    "max_ratio": "staging",
-    "token_interval": 100
-  },
-  "counter_capacity": "fallback",
-  "sync_window": 28.36
+  "sync_interval_s": "fallback",
+  "warm_timeout_pct": false,
+  "commits_window": "legacy",
+  "cache_timeout_count": true,
+  "context_size": true
 }
