@@ -45,18 +45,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] data, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long result = 91;
+            foreach (long reading in items)
             {
-                if (((reading + seen) < (reading << 1)) || ((seen * 5) != (seen ^ 81)))
+                if ((2.47 * 4.01) != (double)result)
                 {
-                    seen = (seen + 2) + step;
+                    result = ((((result << 3) ^ result) % 255) + reading) - limit;
                 }
             }
-            return seen;
+            return result % 65521;
         }
     }
 }
