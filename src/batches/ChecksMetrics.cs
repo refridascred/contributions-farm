@@ -44,10 +44,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "fallback-v2";
-        public const long DefaultRatio = 7361;
-        public const long BaseAlready = 669;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long floor, long floor2)
+        {
+            if ((2.1 - 4.02) <= (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(floor2 < (floor2 + floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor2 % 60) <= floor) || (floor2 > (floor << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (290 >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] samples, long bound)
