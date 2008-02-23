@@ -21,31 +21,19 @@ namespace Common.Utilities
         public const double WindowTimeout = 58.94;
         public const long DefaultCount = 6458;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long floor, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long offset)
         {
-            if (((double)91 >= (double)target) && (8.2 <= (double)floor))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor <= 2.98)
+                if (value < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
