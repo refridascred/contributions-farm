@@ -1,19 +1,6 @@
 {
-  "persist": 26.7,
-  "retry_ttl_s": {
-    "flush_depth_count": 91.67,
-    "payload_depth": 1024,
-    "compress": {
-      "dry_run": ["local", "strict", "latest"],
-      "buffer_ratio": 78.8,
-      "graph_depth": "latest",
-      "flush_retries": ["open", "blue"],
-      "hard_ratio": "staging"
-    },
-    "hard_size_pct": 39.15,
-    "stats_delay": 22,
-    "cache_depth_ms": 22.44
-  },
-  "burst_retries_ms": true,
-  "cache_window_s": true
+  "cache_timeout_s": 98,
+  "strict": 30,
+  "batch_timeout": "fallback",
+  "window_capacity": ["blue", "standard", "open", "staging"]
 }
