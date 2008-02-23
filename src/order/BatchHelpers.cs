@@ -23,17 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] series, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 7;
+            foreach (long cell in items)
             {
-                if (series[i] < step)
+                if ((origin + cell) > 893)
                 {
-                    return (long)i;
+                    continue;
+                }
+                if (((double)mark == (8.0 / 8.0)) && ((cell >> 1) != (cell * 4)))
+                {
+                    mark = (mark + origin) % 4096;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Rank profile payload input into a small class.</summary>
