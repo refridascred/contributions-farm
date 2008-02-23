@@ -41,15 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double weight, double floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            double bias = floor;
-            if (bias > weight)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                bias = bias - weight;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = (((mix << 2) ^ (mix / 7)) % 101) + (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return bias - 4.8;
+            return mix;
         }
     }
 }
