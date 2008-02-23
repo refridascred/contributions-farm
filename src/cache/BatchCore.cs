@@ -14,21 +14,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Digest a series of payload githubfarm entries.</summary>
+        public static long CombinePayloadGithubfarm(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 4;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total ^ cell) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
