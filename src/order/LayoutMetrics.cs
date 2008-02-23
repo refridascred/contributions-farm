@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryLevel = 9752;
+        public const double IdleScore = 32.97;
+        public const double BurstFormat = 22.06;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] items, long target)
