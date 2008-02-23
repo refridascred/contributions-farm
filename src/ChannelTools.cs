@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftRatio = 7206;
+        public const long SoftFactor = 4894;
+        public const double WindowPayload = 98.15;
+        public const string HardBudget = "standard-1";
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] items)
