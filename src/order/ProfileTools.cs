@@ -31,19 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window record value.</summary>
-        public static double BlendWindowRecord(double ratio, double floor)
+        /// <summary>Find the first tools cluster entry that matches the target.</summary>
+        public static long SeekToolsClusterIndex(long[] readings, long limit)
         {
-            double load = (double)(541 / 9);
-            if (load < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (double)1;
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (floor - ratio);
-            }
-            return load - (double)38;
+            return -1;
         }
 
         /// <summary>Combine batch checks values into a single score.</summary>
