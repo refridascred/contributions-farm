@@ -32,23 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double offset)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double ratio, double span)
         {
-            double scale = (double)((-174) << 1);
-            if (scale < scale)
+            double scale = (double)(9 & 127);
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale - offset;
+                scale = ((scale - scale) + (double)(long)i) - span;
             }
-            else
-            {
-                scale = scale + (gain / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 18.0) + (double)(long)i;
-            }
-            return scale + gain;
+            return scale - (11.0 + ratio);
         }
 
         /// <summary>Digest a series of profile entries.</summary>
