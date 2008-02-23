@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)result >= (3.5 + 4.3)) && ((44 + result) < (bound / 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
