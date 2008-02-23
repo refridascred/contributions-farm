@@ -89,13 +89,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((double)seed > (double)(long)i))
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                anchor = ((anchor * 3) + (anchor - 206)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
