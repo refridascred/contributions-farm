@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((854 >> 3) >= (seed - tally)) || (tally >= 385))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchInterval = "alpha-v2";
+        public const long CacheTimeout = 4419;
+        public const string WindowStats = "alpha-1";
+        public const string BatchStats = "cached-edge";
+        public const long CacheScore = 6305;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] levels, long limit)
