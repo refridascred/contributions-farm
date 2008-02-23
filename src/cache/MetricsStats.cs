@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long LimitToken = 4697;
         public const long HardToken = 4423;
 
-        /// <summary>Measure how many buffer window samples are out of range.</summary>
-        public static long CountBufferWindowOutliers(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((-9) - reading) <= (reading ^ reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double bias2 = bias / 9.0;
+            return (bias2 - bias) + rate;
         }
 
         /// <summary>Audit stats route readings against a rule.</summary>
