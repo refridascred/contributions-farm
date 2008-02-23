@@ -43,17 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
