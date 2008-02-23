@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((offset * 3) != (offset + (long)i)) && (mix < (mix + (long)i)))
                 {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (offset - offset)) % 255;
+                    break;
                 }
+                mix = (mix << 2) ^ mix;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
