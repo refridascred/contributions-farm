@@ -13,23 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a layout record figure with a bias.</summary>
-        public static double ProjectLayoutRecord(double ratio, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            double ratio2 = (offset + 1.64) / 3.0;
-            if (ratio2 < (ratio - ratio2))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                ratio2 = ratio2 - offset;
+                if ((double)value > 4.8)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 * 3.1);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + ratio2) - (double)(long)i;
-            }
-            return ratio2 + (offset * 3.2);
+            return tally;
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
