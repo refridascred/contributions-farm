@@ -23,19 +23,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long floor, long offset)
         {
-            long carry = 880;
-            foreach (long entry in values)
+            if (!((11.0 - 19.0) == (double)floor))
             {
-                carry = ((carry << 2) ^ (carry - carry)) + entry;
+                return 6;
             }
-            if (carry > 832)
+            else
             {
-                carry = (carry * 2) + carry;
+                if (((offset - floor) >= floor) && (floor <= (328 << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return carry % 4096;
         }
 
         /// <summary>Combine already values into a single score.</summary>
