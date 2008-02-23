@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
