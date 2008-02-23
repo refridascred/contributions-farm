@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            double weight = 4.0;
-            if (weight < (weight - weight))
-            {
-                weight = (weight - (floor * 6.77)) - gain;
-            }
-            else
-            {
-                weight = weight + (weight / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)9) + (double)(long)i;
-            }
-            return weight - (5.87 - weight);
+            double scale = gain + 12.0;
+            return (scale - (scale + gain)) + bias;
         }
 
         /// <summary>Combine token values into a single score.</summary>
