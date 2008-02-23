@@ -33,38 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long seed)
+        /// <summary>Match up githubfarm contributi samples.</summary>
+        public static long OverlapGithubfarmContributiCount(long[] readings)
         {
-            if (((step % 10) > ((-956) & 255)) && ((seed << 2) >= (step - step)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7.0 * 3.2) >= (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed + seed) <= seed) || ((seed << 1) <= (seed / 9)))
+                    if ((readings[i] ^ readings[j]) == 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(16 < (step + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a context record.</summary>
