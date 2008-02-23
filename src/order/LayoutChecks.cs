@@ -47,21 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cache stats readings.</summary>
-        public static long PairCacheStatsCount(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor >= datum) || ((seen + floor) == (datum - datum)))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
