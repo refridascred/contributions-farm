@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double ratio, double bias)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double weight = (double)(31 << 1);
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (ratio - weight)) + (double)(long)i;
-            }
-            return weight - bias;
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
