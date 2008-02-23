@@ -1,5 +1,30 @@
 {
-  "cache_ratio_pct": "local",
-  "idle_size_pct": 14,
-  "audit": "green"
+  "idle_size_count": {
+    "idle_window": {
+      "persist": [115, 170, 188],
+      "soft_threshold": false,
+      "cache_threshold_count": 60,
+      "max_capacity_count": true,
+      "session_threshold": "standard"
+    },
+    "verbose": 100,
+    "dry_run": 100,
+    "hard_capacity": true,
+    "farm_capacity": {
+      "batch_depth_count": [239, 195],
+      "soft_delay_ms": 31.82,
+      "metrics_capacity": [7, 399, 499, 206],
+      "contributi_timeout": ["latest", "blue", "standard", "cached"],
+      "commits_timeout": false,
+      "hard_interval_count": "blue"
+    },
+    "flush_timeout_count": {
+      "command_timeout": 4255,
+      "warm_limit": false,
+      "persist": [235, 104, 481, 192]
+    }
+  },
+  "retry_limit_pct": [297, 494, 497],
+  "max_delay_pct": 8.87,
+  "cache_limit_s": false
 }
