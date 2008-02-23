@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Fold a list of command context readings.</summary>
+        public static long TotalCommandContext(long[] samples)
         {
-            long score = 31;
-            foreach (long datum in items)
+            long mix = 18;
+            foreach (long sample in samples)
             {
-                score = (score - (datum >> 4)) % 4096;
+                mix = mix ^ (mix - sample);
             }
-            return score;
+            return mix % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
