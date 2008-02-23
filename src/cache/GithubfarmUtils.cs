@@ -49,21 +49,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = ((load - (bias / 7.0)) + (double)(long)i) - rate;
             }
-            return matches;
+            return load + (bias * 0.7);
         }
     }
 }
