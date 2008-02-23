@@ -22,26 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Validate counter schema readings against a bound.</summary>
+        public static bool CheckCounterSchemaLimits(long[] readings, long floor)
         {
-            long state = 443;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((datum < (state >> 5)) || ((3 & 7) == (state - state)))
+                if (value != floor)
                 {
-                    state = state + state;
-                }
-                else
-                {
-                    state = state ^ (state - datum);
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 221)
-            {
-                state = state - (5 - state);
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
