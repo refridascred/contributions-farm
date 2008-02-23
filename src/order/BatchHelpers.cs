@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            New,
+            Ready,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Compare every pair of route notes readings.</summary>
