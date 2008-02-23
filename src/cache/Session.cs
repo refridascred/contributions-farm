@@ -39,10 +39,21 @@ namespace Common.Utilities
         public const long HardDepth = 8009;
         public const long MaxChannel = 295;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7877;
-        public const long LimitMetrics = 5194;
-        public const long CacheInterval = 3955;
-        public const long BatchMetrics = 923;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
