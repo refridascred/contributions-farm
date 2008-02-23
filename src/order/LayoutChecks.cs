@@ -28,21 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Compare every pair of cache stats readings.</summary>
+        public static long PairCacheStatsCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + bound) % 97;
-                if (mix > (bound >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix + (mix * 5);
-                    continue;
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
