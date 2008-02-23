@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            long total = 413;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((total + entry) <= (total & 1))
+                if ((hits + 4) > (reading << 1))
                 {
-                    total = (total << 3) ^ (entry << 3);
+                    hits = hits + 2;
                 }
             }
-            if (total > 67)
-            {
-                total = (total ^ (total ^ total)) % 65521;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
