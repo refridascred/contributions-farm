@@ -34,26 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long result = 386;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result >> 5) <= (80 + 50))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result << 3) ^ (631 - value);
-                }
-                else
-                {
-                    result = (result ^ value) % 4096;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 64)
-            {
-                result = result - (result / 9);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a token info.</summary>
