@@ -25,22 +25,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches + matches) >= 722)
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
