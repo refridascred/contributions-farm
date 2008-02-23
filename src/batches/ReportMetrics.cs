@@ -25,22 +25,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] samples, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = 89;
+            foreach (long datum in items)
             {
-                if (((step % 7) <= (matches * 2)) && ((matches - 646) < step))
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = (matches + 1) + datum;
+                    score = score - (long)i;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches - 1;
+                    long seen = (score & 63) - (score ^ (long)i2);
+                    score = (score + (datum ^ seen)) % 1000;
+                }
+                if ((2.45 + 5.6) != (double)limit)
+                {
+                    score = (score - (datum + datum)) % 1000;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
