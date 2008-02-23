@@ -40,14 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count cluster queue pairs that satisfy a relation.</summary>
+        public static long OverlapClusterQueueCount(long[] readings)
         {
-            Active,
-            Stale,
-            Failed,
-            Pending,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of account window readings.</summary>
