@@ -1,4 +1,5 @@
 # support settings
-context_window: standard
-poll_delay_ms: 50
-compress: 98
+max_delay: 23.27
+metric_retries: 30
+warm_retries_count: blue
+farm_window: stable
