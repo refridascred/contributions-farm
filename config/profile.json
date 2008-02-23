@@ -1,8 +1,12 @@
 {
-  "readonly": false,
-  "stats_window": true,
-  "context_interval": ["latest", "blue"],
-  "max_limit": 100,
-  "compress": 79.96,
-  "idle_ratio_pct": "strict"
+  "poll_depth_pct": {
+    "poll_timeout_count": "latest",
+    "max_delay": 74.99,
+    "warm_delay_pct": 500
+  },
+  "hard_interval_count": true,
+  "flush_ratio_s": "strict",
+  "stats_delay": ["open", "primary", "legacy"],
+  "hard_ratio_pct": "strict",
+  "layout_size": true
 }
