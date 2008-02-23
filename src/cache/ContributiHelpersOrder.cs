@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const double DefaultProfile = 73.69;
         public const double RetryInterval = 10.93;
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Validate account profile readings against a bound.</summary>
+        public static bool CheckAccountProfileBounds(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value >= origin)
                 {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
