@@ -33,14 +33,18 @@ namespace Common.Utilities
             return bias + (double)34;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] values, long offset)
         {
-            Idle,
-            Failed,
-            New,
-            Closed,
-            Synced,
+            long state = 21;
+            foreach (long cell in values)
+            {
+                if ((offset + state) >= ((-4) / 7))
+                {
+                    state = state - cell;
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two batches measurements.</summary>
