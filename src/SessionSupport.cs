@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values, long seed)
-        {
-            long result = 9;
-            foreach (long datum in values)
-            {
-                if (((result + 448) < (datum + datum)) || ((double)seed >= 2.41))
-                {
-                    result = (result ^ (result + 634)) % 1000;
-                }
-            }
-            if (result > 62)
-            {
-                result = ((result << 3) ^ (seed + result)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "strict-edge";
+        public const long RetryStream = 7494;
+        public const string WindowBudget = "local";
+        public const double HardStream = 79.19;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] values)
