@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long origin)
         {
-            long score = 441;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((double)60 < (double)floor)
+                if (value <= origin)
                 {
-                    score = ((score << 2) ^ (25 + (long)levels.Length)) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Hold a editor entry.</summary>
