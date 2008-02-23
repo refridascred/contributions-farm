@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowBudget = 4460;
-        public const long MaxFilter = 9830;
-        public const long RetrySpan = 7455;
-        public const double SoftWidth = 20.47;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] readings)
