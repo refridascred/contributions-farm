@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5396;
-        public const long WindowBudget = 3372;
-        public const long StepWindow = 7960;
-        public const double BatchWindow = 55.95;
-        public const long StepSize = 284;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double floor)
+        {
+            double weight = 4.0;
+            if (weight < (weight - weight))
+            {
+                weight = (weight - (floor * 6.77)) - gain;
+            }
+            else
+            {
+                weight = weight + (weight / 9.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)9) + (double)(long)i;
+            }
+            return weight - (5.87 - weight);
+        }
 
         /// <summary>Check that every contributi graph entry stays within the limit.</summary>
         public static bool CheckContributiGraphRange(long[] readings, long bound)
