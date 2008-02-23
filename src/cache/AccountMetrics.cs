@@ -23,19 +23,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every context account entry stays within the limit.</summary>
-        public static bool CheckContextAccountRange(long[] items, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long score = 478;
+            foreach (long value in samples)
             {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score + score) % 97) ^ value;
             }
-            return ready;
+            if (score > 13)
+            {
+                score = (score - (score + 4)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many record graph samples are out of range.</summary>
