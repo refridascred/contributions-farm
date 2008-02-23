@@ -45,15 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next tools metric value.</summary>
-        public static double ProjectToolsMetric(double rate, double floor)
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool CheckFarmProfileRange(long[] values, long seed)
         {
-            double mean = (double)((-81) + 150);
-            if (mean <= (rate / 6.0))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                mean = mean - (floor + rate);
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - (double)58;
+            return stale;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
