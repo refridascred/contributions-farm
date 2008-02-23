@@ -39,12 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long MeasureMetricClusterOutliers(long[] series, long bound)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (bound <= (tally * 2))
+                {
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
