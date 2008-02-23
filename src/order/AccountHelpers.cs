@@ -46,19 +46,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate support layout readings against a bound.</summary>
-        public static bool GuardSupportLayoutBounds(long[] items, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long anchor = 30;
+            foreach (long item in series)
             {
-                if (item > target)
+                for (int i = 0; i < 9; i++)
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor ^ (item / 3)) % 97) ^ (long)i;
+                }
+                anchor = (anchor ^ (1 >> 5)) % 4096;
+                if ((item - floor) <= (floor + 933))
+                {
+                    anchor = (anchor - (anchor + floor)) % 101;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
