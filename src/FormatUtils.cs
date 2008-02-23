@@ -16,10 +16,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 42.32;
-        public const string LimitTimeout = "open-v2";
-        public const long IdleMetric = 8648;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
