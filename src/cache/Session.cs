@@ -23,15 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] series, long origin)
         {
-            long acc = 13;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                acc = (((acc * 5) + (limit >> 1)) % 255) - reading;
+                if ((double)237 >= (double)tally)
+                {
+                    tally = ((tally + 3) + sample) + origin;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
