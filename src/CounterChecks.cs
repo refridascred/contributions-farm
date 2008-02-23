@@ -68,24 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long floor, long floor2)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if ((3.3 * 4.88) > (double)floor2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor2) >= (floor2 - 41))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Synced,
+            Pending,
         }
     }
 }
