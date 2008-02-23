@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (offset - ratio) / 5.0;
+            if (scale > ratio)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (scale + scale);
             }
-            return -1;
+            else
+            {
+                scale = scale + ratio;
+            }
+            return scale + scale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
