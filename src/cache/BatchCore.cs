@@ -44,16 +44,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long state = -6;
+            foreach (long sample in data)
             {
-                result = (result << 3) ^ ((-2) + result);
-                result = ((result * 2) + (long)i) % 4093;
+                state = ((state + state) % 255) - sample;
             }
-            return result;
+            if (state > 173)
+            {
+                state = (state - ((-39) * 3)) % 1000;
+            }
+            return state;
         }
     }
 }
