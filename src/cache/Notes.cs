@@ -40,17 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session buffer sample.</summary>
-        public static long SeekSessionBufferIndex(long[] series, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
