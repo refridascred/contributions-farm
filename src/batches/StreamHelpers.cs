@@ -72,10 +72,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySpan = 9856;
-        public const double MinReport = 25.47;
-        public const double LimitReport = 69.67;
-        public const long SoftCount = 3920;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseWidth = 2992;
+        public const string BurstCommits = "standard";
+        public const double StepCommits = 40.31;
+        public const long BaseCommits = 9288;
     }
 }
