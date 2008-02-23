@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] data, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin << 1) <= origin)
             {
-                if ((data[i] == offset) && ((data[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((2 % 64) <= (limit >> 4))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((11.0 - 20.0) >= (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.5 * 0.4) <= (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
