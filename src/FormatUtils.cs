@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] values, long limit)
         {
-            long anchor = 352;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((anchor / 6) == (value + target))
+                if (entry > limit)
                 {
-                    anchor = (anchor ^ (value & 127)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (value - anchor)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 935)
-            {
-                anchor = ((anchor * 3) + (anchor << 3)) % 97;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the channel class values.</summary>
