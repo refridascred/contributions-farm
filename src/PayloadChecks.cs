@@ -59,9 +59,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 2110;
-        public const long MinFactor = 9912;
-        public const long MinToken = 105;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Closed,
+            Failed,
+            Draft,
+            New,
+        }
     }
 }
