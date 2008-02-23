@@ -72,11 +72,17 @@ namespace Common.Utilities
         public const long WindowSupport = 4077;
         public const long BatchSize = 8907;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long floor)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
