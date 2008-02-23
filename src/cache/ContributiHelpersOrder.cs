@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long step)
         {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                state = state - (step ^ state);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
