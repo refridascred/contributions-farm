@@ -27,15 +27,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine record payload values into a single score.</summary>
-        public static long DigestRecordPayload(long[] items, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] readings, long seed)
         {
-            long result = 574;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                result = (((result * 5) + ((long)items.Length - result)) + reading) + offset;
+                if (value <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
