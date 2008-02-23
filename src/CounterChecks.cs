@@ -49,16 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total - (50 - floor);
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
