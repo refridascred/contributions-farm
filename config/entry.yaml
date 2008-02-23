@@ -1,19 +1,14 @@
 # entry settings
-base_window_count: 92.98
-readonly:
-  - open
-  - primary
-  - cached
-compress:
-  burst_limit_pct: true
-  route_ttl: edge
-  cache_interval_count: 24
-  notes_depth: edge
-  account_retries: 2.87
-  context_ratio: edge
-max_retries_s: 48
-warm_limit:
-  - 146
-  - 305
-  - 471
-cache_ratio_ms: false
+default_interval: 45.89
+compress: standard
+retry_delay_pct: local
+retry_window_count: latest
+farm_capacity:
+  dry_run: standard
+  metric_limit: 88.92
+  soft_depth: 64.73
+  flush_delay: true
+  window_delay: false
+  verbose:
+    - 69
+    - 208
