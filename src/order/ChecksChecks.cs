@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((1 / 9) <= (seed + seed)) && (seed <= score))
-                {
-                    score = (score + (score + seed)) % 101;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score ^ (seed * 3)) % 1000) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
