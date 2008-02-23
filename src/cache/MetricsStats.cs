@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long bound, long target)
         {
-            public double Flag { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            if ((double)bound <= 6.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7 * 4) >= (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound ^ bound) <= (target ^ target)) || (bound >= (target & 63)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
