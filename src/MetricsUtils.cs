@@ -35,25 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long offset)
-        {
-            if (485 < offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)offset <= (0.45 * 17.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftInterval = 4353;
+        public const double LimitEntry = 83.01;
+        public const string MaxEntry = "staging-v2";
+        public const long StepRatio = 2518;
+        public const long StepEntry = 4044;
 
         /// <summary>Classify a stream farm pair into a bucket.</summary>
         public static long GradeStreamFarm(long step, long bound)
