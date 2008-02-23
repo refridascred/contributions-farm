@@ -33,13 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
