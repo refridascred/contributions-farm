@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry + bound;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
