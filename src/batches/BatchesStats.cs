@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series)
-        {
-            long score = 62;
-            foreach (long entry in series)
-            {
-                score = score - 70;
-                score = ((score << 3) ^ score) % 97;
-                if (((score + 460) > score) && (entry >= (score - 0)))
-                {
-                    score = (score - (score + entry)) % 255;
-                }
-                else
-                {
-                    score = (score + ((-22) ^ entry)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "legacy-v2";
+        public const long StepRatio = 6945;
+        public const long DefaultTimeout = 2643;
+        public const long MaxBudget = 6246;
+        public const string CacheNotes = "strict-1";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadGaps(long[] data)
