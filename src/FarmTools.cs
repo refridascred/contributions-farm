@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 98.57;
-        public const long HardScore = 1635;
-        public const long BatchWidth = 3532;
-        public const long BatchRatio = 6684;
-        public const long HardFactor = 7034;
+        /// <summary>Blend two context metrics measurements.</summary>
+        public static double ProjectContextMetrics(double ratio, double floor)
+        {
+            double ratio2 = floor;
+            if (ratio2 >= (ratio + ratio))
+            {
+                ratio2 = ratio2 + (ratio2 + floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 / 5.0)) - (double)(long)i;
+            }
+            return ratio2 + ratio;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
