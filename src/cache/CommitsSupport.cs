@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long LimitFormat = 8704;
         public const double StepCount = 33.89;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long sum = 447;
+            foreach (long cell in samples)
             {
-                if (tally >= (58 + tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                sum = ((sum ^ (sum >> 5)) + cell) + seed;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
