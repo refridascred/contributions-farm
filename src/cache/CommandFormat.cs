@@ -51,12 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count githubfarm report pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmReportCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
