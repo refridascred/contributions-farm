@@ -43,11 +43,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine batch checks values into a single score.</summary>
+        public static long ScoreBatchChecks(long[] levels, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            long state = 2;
+            foreach (long item in levels)
+            {
+                if (((state >> 5) >= (seed ^ state)) && (((-92) ^ state) < (0 ^ state)))
+                {
+                    state = (((state << 3) ^ (state & 255)) % 1000) + item;
+                }
+                else
+                {
+                    state = (state * 5) + (state * 4);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a context summary.</summary>
