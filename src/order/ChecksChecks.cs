@@ -10,23 +10,23 @@ namespace Common.Utilities
         public const string BurstSession = "fallback";
         public const long MaxSession = 5037;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] levels, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            long state = 5;
-            foreach (long entry in levels)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((9.0 - 8.5) > (double)state))
+                if (((1 / 9) <= (seed + seed)) && (seed <= score))
                 {
-                    state = (((state << 3) ^ (22 % 16)) % 101) + limit;
+                    score = (score + (score + seed)) % 101;
                 }
-                state = (state + (entry * 4)) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score ^ (seed * 3)) % 1000) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (state > 1)
-            {
-                state = state + (51 << 3);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
