@@ -16,15 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels, long step)
+        /// <summary>Count the batch queue entries that pass the check.</summary>
+        public static long CountBatchQueueGaps(long[] series)
         {
-            long score = 398;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                score = ((((score * 3) + (score & 1)) % 101) + cell) + step;
+                if ((((4.73 + 0.91) < (double)item) && (12 <= (item >> 1))) && (((169 / 4) != (item >> 2)) && ((0 % 16) > hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
