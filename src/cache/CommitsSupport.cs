@@ -54,11 +54,21 @@ namespace Common.Utilities
             return mean + (gain * 7.0);
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Compare every pair of editor metric readings.</summary>
+        public static long CompareEditorMetricCount(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
