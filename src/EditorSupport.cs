@@ -61,12 +61,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Derive the next token layout value from a seed.</summary>
+        public static long SeriesTokenLayout(long floor)
         {
-            Retry,
-            Paused,
-            Closed,
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix + (floor & 127)) % 97;
+                mix = (mix * 2) + (mix ^ floor);
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
