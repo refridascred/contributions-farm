@@ -24,16 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                state = (state ^ state) % 65521;
-                state = ((state * 5) + (long)i) % 101;
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Blend two already measurements.</summary>
