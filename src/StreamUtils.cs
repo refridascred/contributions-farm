@@ -45,22 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] values, long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (6.9 >= (double)matches)
-                {
-                    matches = ((matches + 1) - entry) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of farm commits entries.</summary>
