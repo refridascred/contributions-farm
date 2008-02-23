@@ -1,6 +1,10 @@
 {
-  "readonly": [48, 393, 236],
-  "max_depth": [77, 99, 252],
-  "cache_delay": 45.3,
-  "payload_ratio": "edge"
+  "cache_size_pct": 32.54,
+  "dry_run": {
+    "compress": true,
+    "cache_depth": 35,
+    "layout_depth": "latest"
+  },
+  "farm_retries": "edge",
+  "session_retries": "stable"
 }
