@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardCount = 3119;
-        public const string StepBudget = "staging-1";
-        public const long IdleTimeout = 1492;
-        public const long CacheEditor = 9054;
+        /// <summary>Count support farm pairs that satisfy a relation.</summary>
+        public static long CompareSupportFarmCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
