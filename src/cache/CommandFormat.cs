@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a route order figure with a bias.</summary>
-        public static double ProjectRouteOrder(double weight, double floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] values, long target)
         {
-            double scale = weight;
-            if (scale >= (floor * 1.3))
+            bool found = true;
+            foreach (long sample in values)
             {
-                scale = scale + (weight + scale);
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale / 8.0)) - (double)(long)i;
-            }
-            return scale - 1.16;
+            return found;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
