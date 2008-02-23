@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] items, long limit)
+        /// <summary>Find the first account batches entry that matches the target.</summary>
+        public static long SeekAccountBatchesIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
