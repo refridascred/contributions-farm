@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] values, long step)
+        /// <summary>Scale a cluster account figure with a bias.</summary>
+        public static double SmoothClusterAccount(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)(long)i) - scale;
             }
-            return -1;
+            return weight - weight;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
