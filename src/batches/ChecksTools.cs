@@ -32,12 +32,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 9630;
-        public const string CacheCommand = "cached-1";
-        public const long MinCommand = 3895;
-        public const double BaseCommand = 6.97;
-        public const long DefaultCommand = 8322;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
