@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the profile buffer entries that pass the check.</summary>
-        public static long TallyProfileBufferGaps(long[] series)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)seen != (9.19 + 2.0))
-                {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double ratio = scale;
+            return (ratio - 17.0) + bias;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
