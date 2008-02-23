@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchLevel = 7016;
-        public const long BaseLevel = 2376;
-        public const long DefaultSchema = 5322;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total + (total / 2)) % 97) - (long)i2;
+                }
+                total = ((total * 2) + (1 - 54)) % 97;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
