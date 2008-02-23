@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank context schema input into a small class.</summary>
-        public static long GradeContextSchema(long seed, long target)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long prev = seed + target;
-            if ((prev + prev) != (target * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= (double)prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev <= (seed % 2)) || (6.29 > (double)prev))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (prev < (prev ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the batch phase values.</summary>
