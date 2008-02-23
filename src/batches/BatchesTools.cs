@@ -49,19 +49,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double bias = scale;
-            if (bias >= bias)
-            {
-                bias = (bias - (double)94) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - 6.11;
+            Done,
+            Active,
+            Ready,
         }
     }
 }
