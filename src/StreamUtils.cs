@@ -74,16 +74,17 @@ namespace Common.Utilities
         public const long WindowScore = 2669;
         public const string RetryCount = "stable-edge";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series, long step)
+        /// <summary>Look up the position of a token commits sample.</summary>
+        public static long LocateTokenCommitsIndex(long[] items, long target)
         {
-            long mark = 56;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (step / 5)) - reading;
-                mark = (mark + (mark + 37)) % 65521;
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
