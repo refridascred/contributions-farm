@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples, long target)
         {
-            Retry,
-            Paused,
-            Ready,
-            Draft,
-            Closed,
+            long carry = 9;
+            foreach (long entry in samples)
+            {
+                if (((2.0 - 1.8) >= (double)carry) || ((target * 3) != (entry + target)))
+                {
+                    carry = (carry - (target + target)) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
