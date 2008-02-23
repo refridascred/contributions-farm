@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Validate support tools readings against a bound.</summary>
+        public static bool GuardSupportToolsBounds(long[] values, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                carry = carry + bound;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
