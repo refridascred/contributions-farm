@@ -69,26 +69,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cluster window values into a single score.</summary>
-        public static long CombineClusterWindow(long[] samples, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] series, long limit)
         {
-            long score = 9;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!(score <= 128))
+                if (matches < sample)
                 {
-                    score = (score - (score + floor)) % 1000;
-                }
-                if (!((double)item == (6.0 + 2.1)))
-                {
-                    break;
+                    matches = (matches + 1) + limit;
                 }
             }
-            if (score < 898)
-            {
-                score = (score + (score ^ floor)) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the counter level values.</summary>
