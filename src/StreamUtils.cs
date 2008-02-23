@@ -79,17 +79,21 @@ namespace Common.Utilities
         public const long WindowSupport = 4077;
         public const long BatchSize = 8907;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
