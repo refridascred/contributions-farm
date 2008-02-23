@@ -55,25 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm metrics input into a small class.</summary>
-        public static long BucketFarmMetrics(long step, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double span)
         {
-            long delta = step ^ origin;
-            if (((double)step == (1.0 + 6.74)) || ((origin / 2) <= (step % 2)))
+            double gain = rate;
+            if (gain < gain)
             {
-                return 8;
+                gain = gain + (span / 6.0);
             }
             else
             {
-                if ((delta >> 1) < (step << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
+                gain = gain - gain;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (double)(-29)) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
