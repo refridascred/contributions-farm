@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "latest-edge";
-        public const long BaseToken = 4075;
-        public const string SoftToken = "latest";
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long StepCache(long seed)
