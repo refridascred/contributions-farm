@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double gain = (double)(-55) + (offset * 0.6);
-            if (gain <= offset)
-            {
-                gain = gain + (bias - gain);
-            }
-            return gain + 9.49;
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
