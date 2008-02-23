@@ -13,24 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long step, long floor)
+        /// <summary>Scale a layout record figure with a bias.</summary>
+        public static double ProjectLayoutRecord(double ratio, double offset)
         {
-            if ((floor + floor) != (35 >> 4))
+            double ratio2 = (offset + 1.64) / 3.0;
+            if (ratio2 < (ratio - ratio2))
             {
-                return 3;
+                ratio2 = ratio2 - offset;
             }
             else
             {
-                if (step <= (step * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio2 = ratio2 + (ratio2 * 3.1);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio2) - (double)(long)i;
+            }
+            return ratio2 + (offset * 3.2);
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
