@@ -1,7 +1,8 @@
-id,rank,region,ratio,label
-1,stable,860,47,eu-west
-2,33.99,green,36.13,621
-3,green,234,63.55,54.06
-4,69.53,730,344,6.86
-5,strict,610,0.59,stable
-6,standard,5,741,stable
+id,count,rank,level,score
+1,695,91.57,stable,82
+2,85.32,752,41.68,primary
+3,59.55,55.65,open,stable
+4,73.11,legacy,431,989
+5,272,29.86,open,90.5
+6,776,blue,54.61,796
+7,789,370,898,cached
