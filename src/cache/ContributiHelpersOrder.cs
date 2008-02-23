@@ -21,13 +21,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long seed)
         {
-            New,
-            Failed,
-            Idle,
-            Retry,
+            long edge = origin ^ seed;
+            if ((18.0 * 7.5) > (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 1) > (edge + edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
