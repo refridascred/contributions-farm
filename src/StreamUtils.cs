@@ -74,17 +74,24 @@ namespace Common.Utilities
         public const long WindowScore = 2669;
         public const string RetryCount = "stable-edge";
 
-        /// <summary>Look up the position of a token commits sample.</summary>
-        public static long LocateTokenCommitsIndex(long[] items, long target)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] < target)
+                if (((double)mark < (double)(long)i) || ((mark >> 2) < floor))
                 {
-                    return (long)i;
+                    mark = mark + (floor << 3);
+                    break;
                 }
+                if (((long)i << 1) < floor)
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
