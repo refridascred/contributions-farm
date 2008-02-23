@@ -61,13 +61,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long bound)
         {
-            Queued,
-            Failed,
-            Idle,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
