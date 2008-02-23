@@ -19,14 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Done,
+            Pending,
+            Active,
+            New,
+            Failed,
             Idle,
-            Synced,
-            Closed,
-            Locked,
         }
 
         /// <summary>Combine session cluster values into a single score.</summary>
