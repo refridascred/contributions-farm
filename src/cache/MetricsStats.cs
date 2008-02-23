@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const double CacheBudget = 56.78;
         public const long WindowDepth = 9360;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] levels, long step)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the report state values.</summary>
