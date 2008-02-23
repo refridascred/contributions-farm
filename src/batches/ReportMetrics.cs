@@ -16,17 +16,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a support batches sample.</summary>
-        public static long SeekSupportBatchesIndex(long[] data, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((data[i] > target) && ((data[i] % 3) == 0))
+                if ((((5.0 * 2.55) < (double)seen) && ((6.7 / 8.0) == (double)item)) && (((item - item) <= 66) && ((double)seen >= (1.2 + 0.67))))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
