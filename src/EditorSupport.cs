@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long bound, long seed)
         {
-            Stale,
-            Draft,
-            Ready,
-            Paused,
-            Active,
+            long prev = bound ^ seed;
+            if ((prev / 8) <= (1 + 76))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((483 + prev) == (bound ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate window samples.</summary>
