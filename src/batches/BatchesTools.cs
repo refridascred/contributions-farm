@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Rank metric account input into a small class.</summary>
+        public static long SortMetricAccount(long limit, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long slot = limit + offset;
+            if ((slot % 10) < slot)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((12.0 * 9.77) != (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset >= (319 / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.4 + 4.0) <= (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route options.</summary>
