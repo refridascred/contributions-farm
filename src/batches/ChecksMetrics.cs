@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] data, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)hits >= (16.0 / 5.0)) && (((-9) >> 4) == (sample / 9)))
-                {
-                    hits = (hits + 3) - target;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a support window figure with a bias.</summary>
