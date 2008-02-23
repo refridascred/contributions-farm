@@ -24,18 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the window cache entries that pass the check.</summary>
-        public static long MeasureWindowCacheOutliers(long[] series)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((67 >> 2) < cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
