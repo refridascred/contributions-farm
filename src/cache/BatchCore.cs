@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long floor)
         {
-            long mark = -628;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark * 4) < floor)
+                if (items[i] >= floor)
                 {
-                    mark = (mark * 4) + (4 + cell);
+                    return (long)i;
                 }
             }
-            if (mark < 340)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Hold a stats options.</summary>
