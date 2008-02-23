@@ -28,17 +28,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long bound)
+        /// <summary>Accumulate session filter samples.</summary>
+        public static long CombineSessionFilter(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 252;
+            foreach (long datum in items)
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                acc = ((acc * 4) + (datum + 7)) % 101;
+                if (origin > (origin >> 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc < 28)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
