@@ -1,7 +1,6 @@
 {
-  "persist": [342, 181, 55],
-  "channel_depth": "primary",
-  "farm_interval": true,
-  "sync_size": 500,
-  "enabled": 6109
+  "entry_limit": "staging",
+  "channel_timeout": 37.82,
+  "batch_timeout": 27.04,
+  "default_interval_pct": 32
 }
