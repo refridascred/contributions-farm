@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const string MaxScore = "standard-edge";
         public const long LimitFactor = 1078;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "staging-1";
-        public const long BaseFormat = 762;
-        public const long MinFormat = 7648;
-        public const long DefaultFormat = 3585;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (tally >= (sample * 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
