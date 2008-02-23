@@ -1,7 +1,10 @@
 {
-  "poll_timeout_pct": false,
-  "enabled": 100,
-  "batch_ratio_s": 1374,
-  "order_retries": 2.88,
-  "burst_limit_ms": "stable"
+  "counter_ttl": "stable",
+  "max_window": {
+    "enabled": false,
+    "max_depth_ms": 76.29,
+    "verbose": "latest"
+  },
+  "soft_retries_count": "standard",
+  "base_threshold_count": 93
 }
