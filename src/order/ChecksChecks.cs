@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinInterval = 376;
+        public const long CacheSupport = 5891;
+        public const long WindowSupport = 1033;
+        public const long BaseSupport = 957;
+        public const long StepWidth = 8380;
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] readings, long limit)
