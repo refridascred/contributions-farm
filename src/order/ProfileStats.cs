@@ -14,17 +14,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long limit)
+        /// <summary>Iterate the entry buffer series from a seed.</summary>
+        public static long StepEntryBuffer(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (acc * 2)) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
