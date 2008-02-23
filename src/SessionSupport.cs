@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 413;
+            foreach (long item in readings)
             {
-                if ((values[i] < seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (floor + 649)) - item;
             }
-            return -1;
+            if (acc > 7)
+            {
+                acc = acc ^ (4 ^ 780);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a filter header.</summary>
