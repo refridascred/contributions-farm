@@ -45,18 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] samples, long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + 950) > (long)samples.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) - cell;
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
