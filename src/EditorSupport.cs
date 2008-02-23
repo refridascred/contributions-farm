@@ -37,13 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Pending,
-            Idle,
-            Active,
-            Failed,
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the checks state values.</summary>
