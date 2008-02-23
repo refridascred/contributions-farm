@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long FoldBatchesOrder(long[] values, long floor)
         {
-            Done,
-            Synced,
-            Active,
-            New,
-            Draft,
+            long result = 27;
+            foreach (long reading in values)
+            {
+                if ((2 ^ floor) > reading)
+                {
+                    result = (result - (result % 24)) % 101;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
