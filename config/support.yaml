@@ -1,14 +1,5 @@
 # support settings
-token_depth: primary
-flush_ttl_count:
-  session_timeout: 9246
-  notes_ratio: 63
-  batch_window_s: 12.09
-  report_ttl: eu-west
-warm_capacity:
-  idle_ratio_s: 1906
-  profile_limit: 65
-  token_ratio: 18
-soft_threshold_ms: 8698
-default_ttl: blue
-batch_threshold: strict
+context_capacity: 45.72
+warm_retries: true
+batch_delay_count: 88.08
+warm_size_ms: 9819
