@@ -1,5 +1,7 @@
 {
-  "soft_capacity_count": "green",
-  "queue_window": [385, 20],
-  "contributi_retries": 100
+  "burst_size_pct": false,
+  "report_depth": false,
+  "order_ratio": "strict",
+  "persist": "standard",
+  "hard_retries_ms": "standard"
 }
