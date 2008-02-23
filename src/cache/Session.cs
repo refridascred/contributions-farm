@@ -26,10 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBudget = "standard-1";
-        public const double CacheBatches = 49.66;
-        public const string BurstTimeout = "strict-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftTimeout = 78.15;
+        public const long CacheScore = 5922;
+        public const string DefaultBudget = "staging-v2";
+        public const long BatchDepth = 7828;
+        public const long WindowBatch = 6831;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
