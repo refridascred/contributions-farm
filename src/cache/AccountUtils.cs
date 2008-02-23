@@ -36,21 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio / 2.0;
+            if (gain > (ratio + bias))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + ratio;
             }
-            return seen;
+            return gain + gain;
         }
     }
 }
