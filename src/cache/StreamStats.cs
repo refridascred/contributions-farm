@@ -56,10 +56,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheLevel = 3560;
-        public const long MinChannel = 8565;
-        public const double MinDepth = 85.94;
-        public const double DefaultChannel = 96.92;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark ^ (117 << 1)) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
