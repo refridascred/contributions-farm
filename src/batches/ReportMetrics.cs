@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (cell != limit)
+                if ((step >> 4) <= (step << 1))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
