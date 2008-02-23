@@ -1,19 +1,11 @@
 {
-  "dry_run": 500,
-  "enabled": ["blue", "blue", "local", "primary"],
-  "cache_retries": {
-    "cache_delay_pct": 31,
-    "poll_window_ms": "primary",
-    "metric_retries": 250,
-    "hard_depth": "staging",
-    "hard_limit": 45.8,
-    "verbose": 63.31
+  "route_window": 14,
+  "enabled": 1024,
+  "format_window": {
+    "flush_threshold_s": 8204,
+    "base_retries": true,
+    "burst_ttl_s": ["standard", "edge"],
+    "sync_size_ms": ["primary", "edge"]
   },
-  "flush_ttl_count": {
-    "cache_window_ms": 500,
-    "warm_ratio_count": true,
-    "sync_retries": "blue",
-    "warm_size_ms": true
-  },
-  "base_limit_pct": 53.51
+  "default_capacity": 4549
 }
