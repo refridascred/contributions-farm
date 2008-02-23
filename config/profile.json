@@ -1,7 +1,7 @@
 {
-  "soft_interval_count": false,
-  "retry_delay_ms": 33,
-  "cache_retries_s": 94.59,
-  "compress": ["green", "blue"],
-  "enabled": "standard"
+  "strict": 27.59,
+  "retry_size_pct": "strict",
+  "dry_run": 52,
+  "profile_depth": 2184,
+  "sync_threshold_count": 26
 }
