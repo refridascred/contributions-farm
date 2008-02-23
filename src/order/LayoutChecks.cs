@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] items, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (!((double)carry > 3.0))
+                if (seed > (sample - seen))
                 {
-                    carry = ((carry << 3) ^ (bound - bound)) % 255;
+                    seen = seen + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
