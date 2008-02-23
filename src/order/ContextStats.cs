@@ -38,15 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Draft,
+            Ready,
+            Active,
+            Paused,
+            Synced,
         }
     }
 }
