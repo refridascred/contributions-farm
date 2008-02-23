@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=232
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in primary standard green; do
+for item in open strict local; do
     log "checking ${item}"
 done
