@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long origin, long step)
-        {
-            long next = origin - step;
-            if ((next ^ origin) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > (8.3 + 17.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((next * 5) > (step << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (next <= (origin - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "staging-edge";
+        public const double StepRatio = 51.62;
+        public const long LimitSupport = 4234;
+        public const long WindowSupport = 2028;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long floor, long offset)
