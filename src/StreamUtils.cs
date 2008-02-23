@@ -55,13 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Locked,
-            New,
-            Stale,
-            Retry,
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
