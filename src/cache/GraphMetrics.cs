@@ -64,13 +64,20 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items, long step)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long acc = 3;
+            foreach (long sample in items)
+            {
+                acc = ((((acc * 3) + acc) % 1000) ^ sample) - step;
+                acc = acc ^ (acc % 97);
+            }
+            if (acc < 237)
+            {
+                acc = ((acc << 2) ^ acc) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
