@@ -14,24 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            if ((limit + step) <= (step - step))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((596 % 64) > (limit >> 3))
+                if (((tally + entry) >= (tally + tally)) && ((entry + entry) >= (entry - tally)))
                 {
-                    return 8;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
