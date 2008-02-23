@@ -58,12 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count report session pairs that satisfy a relation.</summary>
+        public static long OverlapReportSessionCount(long[] items)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
