@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] series, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long score = 22;
-            foreach (long value in series)
-            {
-                if (!((758 + value) > (70 >> 1)))
-                {
-                    score = (score - (score - score)) % 255;
-                }
-                else
-                {
-                    score = (score * 5) + (target ^ target);
-                }
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the account mode values.</summary>
