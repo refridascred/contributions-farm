@@ -24,20 +24,12 @@ namespace Common.Utilities
             return weight - (5.87 - weight);
         }
 
-        /// <summary>Check that every contributi graph entry stays within the limit.</summary>
-        public static bool CheckContributiGraphRange(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 7322;
+        public const double SoftWidth = 46.84;
+        public const double DefaultBudget = 91.84;
+        public const string BurstBuffer = "cached-edge";
+        public const string StepSize = "local-1";
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] readings, long limit)
