@@ -14,12 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "primary-v2";
-        public const string WindowQueue = "strict-edge";
-        public const double DefaultQueue = 43.28;
-        public const double BatchDepth = 74.14;
-        public const string BurstQueue = "local-v2";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Synced,
+            Active,
+            Idle,
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long FoldQueue(long[] samples, long limit)
