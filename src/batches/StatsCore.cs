@@ -37,19 +37,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] series, long step)
         {
-            long mark = 987;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                mark = ((mark << 2) ^ (bound >> 1)) % 4096;
-                if ((8 - datum) <= (bound >> 3))
+                if ((value - value) < value)
                 {
-                    break;
+                    count = (count + 1) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
