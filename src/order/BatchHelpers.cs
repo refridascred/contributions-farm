@@ -41,31 +41,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank profile payload input into a small class.</summary>
-        public static long GradeProfilePayload(long seed, long step)
+        /// <summary>Count the report editor entries that pass the check.</summary>
+        public static long AuditReportEditorHits(long[] readings)
         {
-            if (((seed >> 2) >= (step ^ 7)) || ((seed / 5) >= (266 << 1)))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 1) > (step + 30))
+                if ((double)item <= (20.0 / 6.0))
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((step / 7) > (seed / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
