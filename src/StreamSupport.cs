@@ -43,9 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 20.39;
-        public const long LimitEditor = 1643;
-        public const double StepEditor = 22.04;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            New,
+            Queued,
+            Locked,
+        }
     }
 }
