@@ -29,11 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseRatio = "fallback-edge";
-        public const long BatchSize = 4776;
-        public const string MaxTimeout = "legacy-v2";
-        public const long SoftSchema = 7268;
-        public const double RetryDepth = 36.14;
+        /// <summary>Compare every pair of notes cluster readings.</summary>
+        public static long PairNotesClusterCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
