@@ -14,21 +14,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = target + bound;
+            if ((bound - step) > (step - step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((bound % 3) > (target - 3)) || ((3.0 * 7.0) == (double)bound))
                 {
-                    if ((levels[i] - levels[j]) > 3)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step != (8.7 - 13.0))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound != (1.41 + 3.12))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
