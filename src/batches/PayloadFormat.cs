@@ -28,22 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowRatio = 5989;
+        public const double HardCache = 57.11;
+        public const string MaxCache = "strict-edge";
+        public const long HardSize = 259;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] series, long bound)
