@@ -45,11 +45,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "primary-v2";
-        public const long BaseInterval = 7032;
-        public const long MaxTimeout = 9739;
-        public const long BaseWindow = 9037;
-        public const string SoftWindow = "open";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 2240;
+        public const long RetryInterval = 5270;
+        public const double SoftRecord = 53.12;
     }
 }
