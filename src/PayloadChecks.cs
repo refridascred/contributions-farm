@@ -38,11 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
             public long Size { get; set; }
-            public long Owner { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
