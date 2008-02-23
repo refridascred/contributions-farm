@@ -1,10 +1,5 @@
 {
-  "burst_capacity_pct": {
-    "audit": 65.95,
-    "metric_depth": 4683,
-    "flush_delay_count": false
-  },
-  "burst_limit_ms": 250,
-  "graph_threshold": "legacy",
-  "default_ratio": 8046
+  "audit": true,
+  "idle_ratio_pct": [363, 289, 357, 234],
+  "idle_interval": 92
 }
