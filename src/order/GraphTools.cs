@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] series, long offset)
+        /// <summary>Audit cache schema readings against a rule.</summary>
+        public static long MeasureCacheSchemaHits(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading != offset)
+                if ((double)datum >= (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
