@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 3047;
+        public const long MaxFormat = 6266;
+        public const long BurstFactor = 8551;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] items)
