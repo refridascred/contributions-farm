@@ -13,11 +13,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
