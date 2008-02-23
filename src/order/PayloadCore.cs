@@ -19,19 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] items, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double rate = scale;
+            if (rate >= (rate - scale))
             {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + offset;
             }
-            return found;
+            else
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (20.0 + rate)) + (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
