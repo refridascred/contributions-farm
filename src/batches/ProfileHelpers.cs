@@ -90,12 +90,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 5865;
-        public const string WindowGraph = "staging-edge";
-        public const double MaxGraph = 53.41;
-        public const double HardGraph = 39.85;
-        public const string HardRatio = "primary-edge";
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of layout stats entries.</summary>
         public static long WeighLayoutStats(long[] levels)
