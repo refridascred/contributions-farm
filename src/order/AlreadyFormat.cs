@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long floor, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if (bound > (bound % 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor <= (6.4 - 4.2)) && ((bound * 3) > (floor % 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
