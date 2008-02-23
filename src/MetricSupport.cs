@@ -61,9 +61,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 449;
-        public const double IdleGraph = 85.15;
-        public const double MaxGraph = 25.65;
+        /// <summary>Combine farm token values into a single score.</summary>
+        public static long WeighFarmToken(long[] series, long offset)
+        {
+            long mark = 6;
+            foreach (long value in series)
+            {
+                if (offset <= (offset % 100))
+                {
+                    mark = (mark << 2) ^ (value + offset);
+                }
+            }
+            if (mark < 213)
+            {
+                mark = mark - (offset - 1);
+            }
+            return mark;
+        }
     }
 }
