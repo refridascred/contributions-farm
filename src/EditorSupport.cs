@@ -83,20 +83,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
+        public static double SmoothGithubfarmCounter(double rate, double bias)
         {
-            long state = -8;
-            foreach (long value in items)
+            double scale = rate / 5.0;
+            if (scale < 20.0)
             {
-                state = ((state + state) % 97) ^ value;
-                state = ((state * 4) + ((-826) + 5)) % 4096;
-                if ((state + 254) == (931 + state))
-                {
-                    break;
-                }
+                scale = scale - (bias - scale);
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (bias + bias);
         }
     }
 }
