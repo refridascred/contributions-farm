@@ -54,11 +54,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] readings)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long mark = 93;
+            foreach (long datum in readings)
+            {
+                mark = (((mark << 2) ^ mark) % 4096) - datum;
+            }
+            return mark % 1000;
         }
     }
 }
