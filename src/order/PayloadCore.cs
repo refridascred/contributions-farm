@@ -55,18 +55,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache tools samples are out of range.</summary>
-        public static long AuditCacheToolsMatches(long[] readings, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((hits + 47) == (hits / 7))
+                if (((long)i & 255) == (offset - offset))
                 {
-                    hits = ((hits + 3) + item) - origin;
+                    acc = (acc - (acc << 1)) % 4096;
                 }
+                if ((offset & 127) == (offset - (-604)))
+                {
+                    acc = (acc + offset) % 65521;
+                    acc = ((acc << 2) ^ (90 - acc)) % 101;
+                    break;
+                }
+                if (!(((long)i * 4) <= acc))
+                {
+                    acc = ((acc << 3) ^ (long)i) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
