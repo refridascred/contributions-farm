@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double BurstFormat = 7.53;
         public const long RetryRatio = 4922;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] levels, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > floor)
+                if ((items[i] == target) && ((items[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
