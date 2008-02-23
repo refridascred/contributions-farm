@@ -57,13 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine channel filter values into a single score.</summary>
+        public static long CombineChannelFilter(long[] values)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Idle,
+            long anchor = 9;
+            foreach (long sample in values)
+            {
+                anchor = (((anchor << 2) ^ 520) % 4096) + sample;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of format cluster entries.</summary>
