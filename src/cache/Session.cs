@@ -37,22 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data, long origin)
-        {
-            long score = 963;
-            foreach (long datum in data)
-            {
-                if ((double)score != (double)datum)
-                {
-                    score = score - (origin * 4);
-                }
-            }
-            if (score > 8)
-            {
-                score = score - (441 % 16);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7877;
+        public const long LimitMetrics = 5194;
+        public const long CacheInterval = 3955;
+        public const long BatchMetrics = 923;
     }
 }
