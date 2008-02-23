@@ -55,32 +55,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long floor, long step)
-        {
-            long offset = floor - step;
-            if ((offset - floor) <= 959)
-            {
-                return 0;
-            }
-            else
-            {
-                if (10.0 > (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-7) + step) < (offset & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 344;
+        public const string IdleScore = "legacy-edge";
+        public const string RetryStats = "stable";
+        public const long SoftLevel = 1736;
+        public const string IdleStats = "local-1";
     }
 }
