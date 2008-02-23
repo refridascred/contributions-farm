@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long bound)
+        /// <summary>Grade a session contributi value against two limits.</summary>
+        public static long RankSessionContributi(long step, long origin)
         {
-            long score = 0;
-            foreach (long cell in items)
+            if (((double)origin <= (2.4 + 0.9)) && ((origin ^ step) == (origin - origin)))
             {
-                score = (score << 3) ^ (cell + score);
-                if ((bound ^ bound) >= (score + bound))
+                return 2;
+            }
+            else
+            {
+                if ((origin & 15) >= origin)
                 {
-                    score = (score ^ (score * 3)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    score = score - ((long)items.Length << 2);
-                }
-                if ((bound << 2) > (bound - cell))
-                {
-                    break;
+                    return 3;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Match up cluster layout samples.</summary>
