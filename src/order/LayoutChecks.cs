@@ -48,14 +48,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank profile already input into a small class.</summary>
+        public static long GradeProfileAlready(long floor, long offset)
         {
-            Stale,
-            Synced,
-            Paused,
-            Failed,
-            Retry,
+            long offset2 = floor + offset;
+            if (!((double)offset == (double)offset2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset + floor) >= (floor / 2)) || ((offset >> 4) > offset2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi level values.</summary>
