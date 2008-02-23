@@ -41,19 +41,13 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i * 2) >= sum)
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Pending,
+            Locked,
+            Idle,
         }
     }
 }
