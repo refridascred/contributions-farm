@@ -26,39 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long target, long seed)
-        {
-            if ((target > (target - target)) || (seed < (target * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)seed != (7.7 - 6.36)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((8 / 6) >= (seed / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 9783;
+        public const string DefaultCount = "latest";
+        public const double RetryMetric = 77.71;
+        public const long SoftMetric = 2320;
 
         /// <summary>Check that every window batches entry stays within the limit.</summary>
         public static bool GuardWindowBatchesBounds(long[] samples, long offset)
