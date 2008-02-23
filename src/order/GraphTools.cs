@@ -15,18 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] series, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long total = 926;
+            foreach (long value in levels)
             {
-                if ((((19 ^ 11) >= hits) && ((bound + value) > (736 - 80))) || (hits < ((long)series.Length - value)))
+                if ((5.3 * 3.8) > (double)seed)
                 {
-                    hits = hits + 2;
+                    total = ((total * 2) + (seed + value)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
