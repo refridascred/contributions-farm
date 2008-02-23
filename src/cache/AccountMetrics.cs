@@ -57,14 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 74.73;
+        public const long SoftDepth = 5310;
+        public const long SoftRatio = 2236;
+        public const long BatchRatio = 9026;
+        public const double SoftScore = 82.73;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
