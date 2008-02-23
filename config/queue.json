@@ -1,5 +1,7 @@
 {
-  "idle_ratio_pct": "legacy",
-  "idle_threshold_ms": [280, 136, 133, 36],
-  "queue_ratio": 41.9
+  "sync_depth": 60,
+  "metric_delay": [264, 253],
+  "min_size_count": 1.18,
+  "dry_run": "stable",
+  "readonly": true
 }
