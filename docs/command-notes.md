@@ -1,12 +1,11 @@
 # Command notes
 
-The order module keeps metrics values in sync with the checks cache.
-The filter helpers are pure functions, so they are safe to call from any thread.
-The graph module keeps entry values in sync with the cluster cache.
+The queue report groups every order by token.
+Each profile is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate cache input early
-- Prefer tools defaults
-- Document new profile fields
+- Review entry limits each release
+- Prefer entry defaults
+- Keep metric values small
+- Validate tools input early
