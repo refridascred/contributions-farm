@@ -12,39 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long offset, long offset2)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] readings, long bound)
         {
-            long gap = offset ^ offset2;
-            if ((548 - gap) > (gap << 3))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (2 <= (gap >> 4))
+                if (((82 ^ bound) != (value - bound)) || ((bound + hits) == (value / 6)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset2 >= (offset2 ^ offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset2 % 7) < ((-144) % 8)) && ((gap % 2) != (gap - (-70))))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
