@@ -16,12 +16,12 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
