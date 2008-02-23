@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long score = 136;
-            foreach (long datum in samples)
-            {
-                score = (score + (97 + datum)) % 101;
-            }
-            if (score > 96)
-            {
-                score = ((score * 2) + (640 - score)) % 97;
-            }
-            return score;
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
