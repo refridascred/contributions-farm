@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the githubfarm filter series from a seed.</summary>
-        public static long DeriveGithubfarmFilter(long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((limit * 2) < carry)
-                {
-                    long matches = (limit * 3) + 1;
-                    carry = carry ^ (matches % 7);
-                }
-                else
-                {
-                    carry = carry + (limit + limit);
-                }
-                carry = (carry ^ (carry - carry)) % 65521;
-                if ((4.52 + 2.6) < (2.0 - 14.0))
-                {
-                    carry = (carry - ((long)i * 5)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
