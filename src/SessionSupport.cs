@@ -26,13 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Ready,
             Pending,
-            Active,
-            Idle,
+            Dropped,
+            New,
+            Queued,
+            Draft,
         }
     }
 }
