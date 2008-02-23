@@ -46,19 +46,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] items, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            New,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Derive the next token layout value from a seed.</summary>
