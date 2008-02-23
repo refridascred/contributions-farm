@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            New,
-            Retry,
-            Synced,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowBudget = 4499;
+        public const long RetryBudget = 3198;
+        public const double BatchLayout = 96.74;
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double rate, double bias)
