@@ -47,13 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long acc = 27;
+            foreach (long reading in readings)
+            {
+                if ((acc >> 5) > (702 + (-817)))
+                {
+                    acc = (acc << 3) ^ (reading & 255);
+                }
+                else
+                {
+                    acc = acc ^ (reading - acc);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
