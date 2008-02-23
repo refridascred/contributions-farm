@@ -41,13 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - 473) > (datum / 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
