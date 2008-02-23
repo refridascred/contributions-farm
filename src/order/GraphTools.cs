@@ -36,31 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support metrics value against two limits.</summary>
-        public static long BucketSupportMetrics(long limit, long origin)
+        /// <summary>Project the next token channel value.</summary>
+        public static double AdjustTokenChannel(double gain, double offset)
         {
-            if (((limit + limit) <= limit) || ((origin % 8) <= (origin << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((12.0 + 7.0) < (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double bias = gain + 16.0;
+            return (bias + (double)53) + offset;
         }
 
         /// <summary>Match up session samples.</summary>
