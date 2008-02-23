@@ -15,22 +15,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank metrics window input into a small class.</summary>
-        public static long ClassifyMetricsWindow(long offset, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long target)
         {
-            if ((limit & 127) >= 6)
+            long diff = origin + target;
+            if ((origin + diff) != (diff ^ diff))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((6.0 / 9.0) < (double)limit)
+                if (((double)diff == (3.9 - 4.89)) && (origin >= (774 + diff)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((diff % 10) > (target + 79))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
