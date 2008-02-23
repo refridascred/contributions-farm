@@ -14,19 +14,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double gain, double offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long offset)
         {
-            double bias = gain;
-            if (bias > (1.5 / 6.0))
+            if (((double)95 < (double)offset) || ((double)limit != (4.4 / 5.0)))
             {
-                bias = bias + (double)460;
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias = (bias + 2.0) + (double)(long)i;
+                if ((offset & 15) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return bias - (offset * 4.9);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
