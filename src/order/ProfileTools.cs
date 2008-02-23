@@ -23,14 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            Closed,
-            Retry,
-            Pending,
-            Locked,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
