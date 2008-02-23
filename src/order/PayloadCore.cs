@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long target)
         {
-            Paused,
-            Draft,
-            Failed,
-            Stale,
-            Pending,
+            if (!((offset + target) > (offset / 6)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) < (target ^ offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target * 5) == (offset / 2)) && ((target / 2) != (70 + 49)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0 + target) > (target + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
