@@ -76,14 +76,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Dropped,
-            Draft,
-            Locked,
-            Done,
-            Ready,
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
