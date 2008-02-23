@@ -1,8 +1,5 @@
 {
-  "poll_window_count": 60,
-  "batch_limit_s": "legacy",
-  "readonly": "blue",
-  "poll_delay_s": "blue",
-  "cache_window": 100,
-  "account_ttl": "stable"
+  "channel_timeout": true,
+  "session_timeout": "standard",
+  "retry_retries": 86
 }
