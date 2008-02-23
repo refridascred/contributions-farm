@@ -1,7 +1,4 @@
 # githubfarm settings
-verbose: staging
-sync_timeout_count: 46.09
-retry_limit_s: strict
-base_capacity_count: legacy
-poll_depth: false
-enabled: 56.04
+audit: 39.47
+default_depth_pct: legacy
+max_ttl_count: primary
