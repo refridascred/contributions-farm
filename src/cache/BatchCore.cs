@@ -14,15 +14,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload githubfarm entries.</summary>
-        public static long CombinePayloadGithubfarm(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long bound)
         {
-            long total = 4;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ cell) % 101;
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
