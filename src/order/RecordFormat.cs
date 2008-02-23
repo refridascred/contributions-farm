@@ -23,18 +23,27 @@ namespace Common.Utilities
         public const long LimitBudget = 1656;
         public const long RetrySpan = 2089;
 
-        /// <summary>Audit record notes readings against a rule.</summary>
-        public static long CountRecordNotesGaps(long[] readings, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 3;
+            foreach (long cell in items)
             {
-                if (95 < (floor << 3))
+                total = ((total << 3) ^ (cell & 15)) % 4096;
+                if (((floor / 8) < (total ^ cell)) || ((cell - floor) != (total + floor)))
                 {
-                    seen = (seen + 2) + cell;
+                    total = ((total * 3) + 648) % 101;
+                }
+                else
+                {
+                    total = total ^ floor;
                 }
             }
-            return seen;
+            if (total < 0)
+            {
+                total = total + (total & 3);
+            }
+            return total;
         }
 
         /// <summary>Describe the already mode values.</summary>
