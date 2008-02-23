@@ -1,4 +1,5 @@
 # support settings
-metrics_interval: 46
-max_threshold_s: 67
-retry_limit_pct: 63.13
+poll_window_s: edge
+compress: local
+readonly: local
+batch_capacity: local
