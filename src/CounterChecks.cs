@@ -14,19 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate filter route readings against a bound.</summary>
-        public static bool VerifyFilterRouteBounds(long[] samples, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
