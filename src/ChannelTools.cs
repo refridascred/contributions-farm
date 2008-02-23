@@ -28,31 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long limit)
-        {
-            if ((double)limit <= (1.36 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 2) > target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - target) > (target % 24))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstDepth = "alpha-v2";
+        public const long DefaultCache = 812;
+        public const double IdleCache = 16.54;
+        public const long SoftCount = 3231;
     }
 }
