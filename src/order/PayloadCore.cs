@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            New,
+            Ready,
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
