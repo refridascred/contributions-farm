@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string WindowBudget = "local";
         public const double HardStream = 79.19;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Validate order channel readings against a bound.</summary>
+        public static bool ValidateOrderChannelRange(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != step)
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Project the next stream value.</summary>
