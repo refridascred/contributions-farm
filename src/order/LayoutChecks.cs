@@ -81,32 +81,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank profile already input into a small class.</summary>
-        public static long GradeProfileAlready(long floor, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long floor)
         {
-            long offset2 = floor + offset;
-            if (!((double)offset == (double)offset2))
+            long mark = 88;
+            foreach (long item in series)
             {
-                return 7;
+                mark = ((mark << 3) ^ item) + floor;
             }
-            else
-            {
-                if (((offset + floor) >= (floor / 2)) || ((offset >> 4) > offset2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
