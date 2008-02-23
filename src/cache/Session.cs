@@ -37,26 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data, long origin)
         {
-            long anchor = 97;
-            foreach (long reading in items)
+            long score = 963;
+            foreach (long datum in data)
             {
-                if ((reading % 12) < (anchor >> 5))
+                if ((double)score != (double)datum)
                 {
-                    anchor = (anchor ^ (reading + reading)) % 97;
-                }
-                else
-                {
-                    anchor = anchor - (anchor - anchor);
+                    score = score - (origin * 4);
                 }
             }
-            if (anchor > 28)
+            if (score > 8)
             {
-                anchor = anchor - (anchor + 46);
+                score = score - (441 % 16);
             }
-            return anchor;
+            return score % 65521;
         }
     }
 }
