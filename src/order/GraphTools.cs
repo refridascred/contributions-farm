@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Look up the position of a entry already sample.</summary>
+        public static long LookupEntryAlreadyIndex(long[] samples, long target)
         {
-            Draft,
-            Retry,
-            Locked,
-            Pending,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
