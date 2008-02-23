@@ -37,21 +37,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (485 < offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((double)offset <= (0.45 * 17.0)))
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
