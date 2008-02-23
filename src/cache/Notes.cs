@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many contributi filter samples are out of range.</summary>
-        public static long AuditContributiFilterHits(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (sample < (seen ^ step))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 3674;
+        public const string MaxDepth = "alpha-1";
+        public const long IdleReport = 5178;
+        public const long DefaultWidth = 1926;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
