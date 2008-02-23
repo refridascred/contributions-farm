@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Scale a route order figure with a bias.</summary>
+        public static double ProjectRouteOrder(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = weight;
+            if (scale >= (floor * 1.3))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale + (weight + scale);
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale / 8.0)) - (double)(long)i;
+            }
+            return scale - 1.16;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
