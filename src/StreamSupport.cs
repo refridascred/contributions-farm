@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Combine payload session values into a single score.</summary>
+        public static long TallyPayloadSession(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 49;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score + (score ^ item)) % 1000) ^ (long)i;
+                    score = ((score * 3) + bound) % 65521;
                 }
+                score = (score - (item + item)) % 101;
+                score = ((score * 3) + item) % 4096;
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Project the next window command value.</summary>
