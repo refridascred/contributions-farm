@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] items, long step)
         {
-            Dropped,
-            New,
-            Stale,
-            Paused,
-            Queued,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank already input into a small class.</summary>
