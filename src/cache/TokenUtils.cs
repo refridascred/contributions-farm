@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long target)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            if (!(target < (424 % 24)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((5 - seed) <= (target % 8)) && ((seed & 3) > 200))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (seed / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(target > (seed - 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many window checks samples are out of range.</summary>
