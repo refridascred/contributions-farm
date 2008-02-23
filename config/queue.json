@@ -1,5 +1,6 @@
 {
-  "burst_size_pct": 1024,
-  "order_window": "edge",
-  "checks_size": 2889
+  "cache_threshold": 74.27,
+  "contributi_size": 6937,
+  "dry_run": 22,
+  "max_timeout_count": "green"
 }
