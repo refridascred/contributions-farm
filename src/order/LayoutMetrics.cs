@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long target, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            if ((double)(-6) <= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.47 / 6.0) > (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of context readings.</summary>
