@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first account batches entry that matches the target.</summary>
-        public static long SeekAccountBatchesIndex(long[] samples, long seed)
+        /// <summary>Rank command cache input into a small class.</summary>
+        public static long SortCommandCache(long bound, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = bound ^ step;
+            if (!((step << 1) <= step))
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)diff <= 2.68)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((6 ^ step) >= (bound + 0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.3 - 1.8) >= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a route options.</summary>
