@@ -26,18 +26,21 @@ namespace Common.Utilities
             return (bias + 1.81) + floor;
         }
 
-        /// <summary>Count the cluster commits entries that pass the check.</summary>
-        public static long CountClusterCommitsOutliers(long[] items)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > (hits - 79))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
