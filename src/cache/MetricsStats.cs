@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long LimitToken = 4697;
         public const long HardToken = 4423;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Measure how many buffer window samples are out of range.</summary>
+        public static long CountBufferWindowOutliers(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((total >> 1) <= (origin & 127)))
+                if (((-9) - reading) <= (reading ^ reading))
                 {
-                    total = (total ^ total) % 101;
+                    hits = hits + 3;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit stats route readings against a rule.</summary>
