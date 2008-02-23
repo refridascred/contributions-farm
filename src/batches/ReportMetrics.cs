@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a notes record reading.</summary>
+        public static double ScaleNotesRecord(double bias, double bias2)
         {
-            Pending,
-            Active,
-            Dropped,
-            Paused,
+            double ratio = bias2 + bias;
+            if (ratio > (bias - bias2))
+            {
+                ratio = ratio - (ratio / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - bias2) + (double)(long)i;
+            }
+            return ratio + (double)8;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
