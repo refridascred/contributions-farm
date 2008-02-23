@@ -39,21 +39,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (target >= (target - 102))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (double)420)
                 {
-                    if ((samples[i] - samples[j]) != 7)
+                    return 8;
+                }
+                else
+                {
+                    if (((origin >> 1) <= (target << 2)) && ((target / 2) >= (target << 1)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
