@@ -16,14 +16,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long bound)
         {
-            Queued,
-            Ready,
-            Idle,
-            Draft,
-            Synced,
+            long sum = 737;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (((sum * 3) + item) - (long)i) - bound;
+                }
+                sum = (sum ^ (sum & 31)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the channel mode values.</summary>
