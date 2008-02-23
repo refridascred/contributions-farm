@@ -1,6 +1,15 @@
 {
-  "persist": 9671,
-  "sync_limit_count": [359, 291, 345, 244],
-  "batch_size": [421, 386],
-  "compress": 60
+  "strict": 500,
+  "buffer_depth": 1810,
+  "record_window": ["staging", "open"],
+  "default_limit": {
+    "compress": "cached",
+    "batch_limit": "cached",
+    "queue_interval": 100,
+    "notes_ttl": 97.39,
+    "readonly": "staging",
+    "idle_ttl_s": "local"
+  },
+  "retry_delay": 61.56,
+  "poll_interval_pct": "staging"
 }
