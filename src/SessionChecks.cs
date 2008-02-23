@@ -33,19 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] series, long limit)
+        /// <summary>Rank farm metrics input into a small class.</summary>
+        public static long BucketFarmMetrics(long step, long origin)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long delta = step ^ origin;
+            if (((double)step == (1.0 + 6.74)) || ((origin / 2) <= (step % 2)))
             {
-                if (item >= limit)
+                return 8;
+            }
+            else
+            {
+                if ((delta >> 1) < (step << 1))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a buffer stats.</summary>
