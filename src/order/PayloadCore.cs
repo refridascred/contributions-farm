@@ -52,21 +52,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
     }
 }
