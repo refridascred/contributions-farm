@@ -32,11 +32,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 683;
+        public const double DefaultDepth = 64.59;
+        public const long RetryCommand = 4983;
     }
 }
