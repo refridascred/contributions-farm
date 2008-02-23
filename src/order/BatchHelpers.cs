@@ -15,21 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of route notes readings.</summary>
-        public static long PairRouteNotesCount(long[] samples)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] < step)
                 {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor farm sample.</summary>
