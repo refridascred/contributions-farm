@@ -38,9 +38,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 9984;
-        public const long WindowFactor = 8403;
-        public const long BatchSpan = 8693;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
