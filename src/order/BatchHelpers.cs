@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] items)
         {
-            long carry = 72;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((5.9 * 4.0) == (double)carry)
+                if ((tally % 2) < (value & 1))
                 {
-                    carry = (carry + (carry - item)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
