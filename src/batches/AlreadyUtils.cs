@@ -46,20 +46,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!(19.0 < (double)carry))
+                if ((((double)884 == (double)matches) && ((14 - 45) < (matches - item))) || ((matches << 3) >= matches))
                 {
-                    carry = ((carry << 2) ^ (49 / 2)) % 4096;
-                    carry = (carry - carry) % 65521;
+                    matches = matches + 2;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
