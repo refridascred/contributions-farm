@@ -71,11 +71,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double gain = ratio;
-            return (gain + ratio) + offset;
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
