@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = -10;
+            foreach (long item in values)
             {
-                if (!(((8.63 + 2.0) < (double)reading) || ((hits & 3) <= (hits + reading))))
-                {
-                    hits = hits + 2;
-                }
+                result = (result << 3) ^ (item / 9);
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
