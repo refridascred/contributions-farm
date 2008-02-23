@@ -26,27 +26,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long seed)
         {
-            long total = 3;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 3) ^ (cell & 15)) % 4096;
-                if (((floor / 8) < (total ^ cell)) || ((cell - floor) != (total + floor)))
+                if (levels[i] >= seed)
                 {
-                    total = ((total * 3) + 648) % 101;
-                }
-                else
-                {
-                    total = total ^ floor;
+                    return (long)i;
                 }
             }
-            if (total < 0)
-            {
-                total = total + (total & 3);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the already mode values.</summary>
