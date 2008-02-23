@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor already samples are out of range.</summary>
-        public static long MeasureEditorAlreadyGaps(long[] data, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((long)data.Length - item) < (limit + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two batches measurements.</summary>
