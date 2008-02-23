@@ -47,18 +47,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - (long)readings.Length) >= (seen & 127))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 1511;
+        public const long CacheCluster = 3176;
+        public const string RetryCluster = "primary-v2";
     }
 }
