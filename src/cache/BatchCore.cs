@@ -32,19 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] series, long bound)
+        /// <summary>Iterate the channel counter series from a seed.</summary>
+        public static long StepChannelCounter(long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result << 3) ^ (38 - (long)i)) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Match up metrics payload samples.</summary>
