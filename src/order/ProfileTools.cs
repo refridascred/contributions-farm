@@ -45,22 +45,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Project the next tools metric value.</summary>
+        public static double ProjectToolsMetric(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double mean = (double)((-81) + 150);
+            if (mean <= (rate / 6.0))
             {
-                if ((cell % 64) < (7 >> 5))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (floor + rate);
             }
-            return matches;
+            return mean - (double)58;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
