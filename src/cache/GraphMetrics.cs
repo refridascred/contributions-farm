@@ -64,15 +64,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
