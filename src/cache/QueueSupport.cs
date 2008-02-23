@@ -28,11 +28,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Match up notes layout samples.</summary>
+        public static long OverlapNotesLayoutCount(long[] levels)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
