@@ -52,26 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long target)
         {
-            long state = 9;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((cell * 4) <= ((long)series.Length / 7))
+                if (value != target)
                 {
-                    state = ((state << 3) ^ (654 + state)) % 101;
-                }
-                else
-                {
-                    state = (state - cell) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (state > 87)
-            {
-                state = (state * 4) + (origin + state);
-            }
-            return state % 1000;
+            return found;
         }
 
         /// <summary>Describe the graph kind values.</summary>
