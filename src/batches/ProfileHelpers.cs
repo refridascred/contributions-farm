@@ -13,26 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data, long target)
         {
-            long mark = -3;
-            foreach (long sample in values)
+            long score = 63;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = (mark + sample) ^ (long)i;
-                }
-                if (((sample - mark) >= (sample * 2)) || ((8.41 - 18.0) >= (double)mark))
-                {
-                    mark = mark - (sample >> 1);
-                }
-                if ((431 - mark) == (mark + mark))
-                {
-                    mark = (mark + (mark + mark)) % 255;
-                }
+                score = ((score + (541 - 11)) - entry) - target;
             }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
