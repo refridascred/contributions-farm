@@ -15,19 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
