@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long LimitSupport = 4234;
         public const long WindowSupport = 2028;
 
-        /// <summary>Validate context tools readings against a bound.</summary>
-        public static bool ValidateContextToolsBounds(long[] data, long target)
+        /// <summary>Rank metrics window input into a small class.</summary>
+        public static long ClassifyMetricsWindow(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            if ((limit & 127) >= 6)
             {
-                if (entry != target)
+                return 2;
+            }
+            else
+            {
+                if ((6.0 / 9.0) < (double)limit)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
