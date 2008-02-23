@@ -31,13 +31,15 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const double BatchFormat = 30.28;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] series, long offset)
         {
-            New,
-            Retry,
-            Paused,
-            Ready,
+            long total = 47;
+            foreach (long reading in series)
+            {
+                total = (((total ^ (4 << 1)) % 101) - reading) - offset;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a command summary.</summary>
