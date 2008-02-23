@@ -48,16 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 5949;
+        public const long SoftLevel = 7695;
+        public const long IdleSize = 349;
+        public const long MaxDepth = 8234;
+        public const string BaseToken = "alpha";
 
         /// <summary>Accumulate payload record samples.</summary>
         public static long WeighPayloadRecord(long[] levels)
