@@ -1,31 +1,18 @@
 # githubfarm settings
-burst_limit_count: 63
-min_delay_pct:
-  verbose: 8255
-  layout_capacity: 4.48
-  burst_depth_pct: 2283
-  audit:
-    idle_size_pct: blue
-    max_threshold_pct: 1024
-    default_capacity_pct: local
-    flush_window_ms: 7551
-idle_threshold_count: 99
-checks_ratio:
-  - edge
+poll_window_s:
+  - latest
   - eu-west
-window_limit:
-  hard_timeout_pct: false
-  batch_threshold_s:
-    warm_depth: true
-    verbose:
-      - 205
-      - 22
-      - 87
-      - 254
-    poll_timeout: 9120
-    flush_limit_count: true
-    cluster_limit: eu-west
-    order_retries: true
-  max_delay_pct: local
-  channel_ttl: 8835
-  dry_run: 87.67
+  - blue
+enabled: local
+metric_limit:
+  - stable
+  - cached
+  - standard
+  - standard
+stream_retries: 59.82
+retry_depth:
+  - 291
+  - 394
+  - 444
+  - 185
+support_capacity: 2005
