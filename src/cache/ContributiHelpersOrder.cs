@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double gain, double span)
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            double bias = (double)305 - span;
+            if (bias > (double)1)
+            {
+                bias = bias - (bias + gain);
+            }
+            return bias + span;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
