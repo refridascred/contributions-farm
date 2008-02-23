@@ -51,26 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            long score = 47;
-            foreach (long sample in data)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample << 2) <= (score + 268))
+                if (!((step >> 3) != ((long)i + step)))
                 {
-                    score = score - score;
+                    acc = (acc ^ (acc + acc)) % 255;
+                    acc = (acc << 2) ^ (step & 7);
                 }
-                if ((score >> 3) > 81)
-                {
-                    score = score + (4 << 2);
-                }
-                else
-                {
-                    score = score - score;
-                }
+                acc = ((acc << 3) ^ (acc + 3)) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
