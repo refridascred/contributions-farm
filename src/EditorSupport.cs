@@ -37,15 +37,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine channel filter values into a single score.</summary>
-        public static long CombineChannelFilter(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long anchor = 9;
-            foreach (long sample in values)
-            {
-                anchor = (((anchor << 2) ^ 520) % 4096) + sample;
-            }
-            return anchor % 4096;
+            Pending,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
