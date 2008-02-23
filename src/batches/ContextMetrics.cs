@@ -61,20 +61,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long result = 45;
-            foreach (long entry in readings)
-            {
-                result = ((result << 3) ^ 9) % 255;
-                result = (result ^ (entry * 5)) % 101;
-            }
-            if (result > 84)
-            {
-                result = result + (result / 5);
-            }
-            return result;
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first cluster account entry that matches the target.</summary>
