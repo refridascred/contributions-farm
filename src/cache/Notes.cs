@@ -35,13 +35,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long origin)
         {
-            Failed,
-            Idle,
-            Locked,
-            Closed,
+            long step = floor ^ origin;
+            if (((double)step != (1.5 / 4.0)) && ((step >> 4) < (floor - origin)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - floor) != (floor - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 8) >= (origin + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command state values.</summary>
