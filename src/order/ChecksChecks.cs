@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the command class values.</summary>
