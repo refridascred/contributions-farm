@@ -43,25 +43,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long target, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] readings, long step)
         {
-            long cur = target ^ step;
-            if ((73 / 3) > target)
+            long total = 1;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur == (0.17 - 3.0))
+                if ((cell / 7) < (total + cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    total = ((total << 2) ^ (long)readings.Length) + step;
                 }
             }
+            if (total > 20)
+            {
+                total = (total - total) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate batch schema readings against a bound.</summary>
