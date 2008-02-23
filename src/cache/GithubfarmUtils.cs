@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((floor + floor) <= (anchor % 100)) && ((19.0 - 1.32) < (double)floor))
-                {
-                    anchor = (anchor - (anchor * 4)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowBudget = 4460;
+        public const long MaxFilter = 9830;
+        public const long RetrySpan = 7455;
+        public const double SoftWidth = 20.47;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] readings)
