@@ -29,15 +29,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metrics batches figure with a bias.</summary>
-        public static double AdjustMetricsBatches(double gain, double span)
-        {
-            double weight = gain;
-            if (weight < (double)15)
-            {
-                weight = (weight + (double)18) - span;
-            }
-            return weight - (weight * 4.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseRatio = "fallback-edge";
+        public const long BatchSize = 4776;
+        public const string MaxTimeout = "legacy-v2";
+        public const long SoftSchema = 7268;
+        public const double RetryDepth = 36.14;
     }
 }
