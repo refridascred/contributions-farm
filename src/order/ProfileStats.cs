@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            Idle,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Iterate the entry buffer series from a seed.</summary>
