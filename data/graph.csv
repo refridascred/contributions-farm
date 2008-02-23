@@ -1,9 +1,7 @@
-id,token,score,state,owner
-1,154,833,60.27,edge
-2,67.73,31.33,cached,94.49
-3,215,693,legacy,cached
-4,411,664,149,latest
-5,326,33.55,84,222
-6,367,local,956,latest
-7,76.74,317,338,83.93
-8,open,primary,434,cached
+id,count,weight,active
+1,72.37,580,898
+2,33.48,80.1,972
+3,347,primary,cached
+4,306,eu-west,728
+5,711,legacy,eu-west
+6,25.19,386,84.25
