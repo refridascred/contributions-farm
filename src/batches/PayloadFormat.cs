@@ -28,11 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowRatio = 5989;
-        public const double HardCache = 57.11;
-        public const string MaxCache = "strict-edge";
-        public const long HardSize = 259;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark + mark) % 101;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] series, long bound)
