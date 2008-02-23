@@ -37,19 +37,10 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const double BatchFormat = 30.28;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels)
-        {
-            long carry = 9;
-            foreach (long item in levels)
-            {
-                if ((item ^ carry) > (item * 4))
-                {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardSize = 83.41;
+        public const long BatchRecord = 2298;
+        public const long MaxLevel = 7157;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
