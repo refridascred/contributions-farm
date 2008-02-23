@@ -33,19 +33,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Rank tools layout input into a small class.</summary>
+        public static long GradeToolsLayout(long limit, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long offset = limit ^ step;
+            if ((offset - offset) <= 59)
             {
-                if (!(acc < (limit % 10)))
-                {
-                    acc = (acc << 3) ^ (limit >> 2);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (((double)offset == (double)limit) && (26 >= (limit >> 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >= 26) || (281 > (limit << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + limit) != (284 + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
