@@ -34,19 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Project the next window record value.</summary>
+        public static double BlendWindowRecord(double ratio, double floor)
         {
-            long acc = -70;
-            foreach (long reading in values)
+            double load = (double)(541 / 9);
+            if (load < floor)
             {
-                acc = (acc << 2) ^ (reading >> 5);
+                load = load + (double)1;
             }
-            if (acc < 20)
+            else
             {
-                acc = (acc ^ (acc + acc)) % 4096;
+                load = load + (floor - ratio);
             }
-            return acc % 4096;
+            return load - (double)38;
         }
 
         /// <summary>Combine batch checks values into a single score.</summary>
