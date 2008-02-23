@@ -45,13 +45,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
