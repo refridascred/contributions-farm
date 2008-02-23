@@ -54,15 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double load = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - (bias / 7.0)) + (double)(long)i) - rate;
-            }
-            return load + (bias * 0.7);
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
