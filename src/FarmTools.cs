@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] items, long limit)
         {
-            Pending,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((limit / 2) >= (count & 3))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
