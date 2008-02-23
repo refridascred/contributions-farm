@@ -50,19 +50,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 95.77;
+        public const double IdleFactor = 39.06;
+        public const double LimitBudget = 93.86;
+        public const double SoftRatio = 9.89;
     }
 }
