@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Queued,
-            Closed,
-            Failed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheScore = "legacy-edge";
+        public const long BaseSpan = 2687;
+        public const string StepSupport = "primary";
+        public const long WindowSupport = 5484;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] data, long step)
