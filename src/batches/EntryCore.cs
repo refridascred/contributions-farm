@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate batches farm samples.</summary>
-        public static long TotalBatchesFarm(long[] samples)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long sum = 79;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.86 * 15.0) != (double)sum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum - (sum + sum)) % 1000) ^ datum;
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the entry session entries that pass the check.</summary>
