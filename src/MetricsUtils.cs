@@ -16,18 +16,15 @@ namespace Common.Utilities
             return load - (1.0 / 8.0);
         }
 
-        /// <summary>Combine checks account values into a single score.</summary>
-        public static long CombineChecksAccount(long[] readings, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long mix = 73;
-            foreach (long sample in readings)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (mix >= (mix ^ limit))
-                {
-                    mix = ((mix * 3) + limit) + sample;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
