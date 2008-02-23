@@ -1,6 +1,5 @@
 # githubfarm settings
-persist: true
-githubfarm_size: green
-queue_size: 7687
-hard_delay_count: 1024
-readonly: 1.48
+idle_size_ms: 1963
+hard_interval: local
+verbose: fallback
+checks_delay: stable
