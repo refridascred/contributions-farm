@@ -14,10 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxLevel = 2516;
-        public const string SoftDepth = "latest-1";
-        public const string HardSpan = "strict";
+        /// <summary>Digest a series of farm already entries.</summary>
+        public static long FoldFarmAlready(long[] data)
+        {
+            long mix = 783;
+            foreach (long datum in data)
+            {
+                if ((double)mix >= (8.5 - 4.7))
+                {
+                    mix = mix ^ (datum + datum);
+                }
+                else
+                {
+                    mix = (mix + ((-2) - mix)) % 65521;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long limit, long offset)
