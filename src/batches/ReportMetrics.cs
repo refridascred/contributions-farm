@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a buffer graph value against two limits.</summary>
-        public static long SortBufferGraph(long floor, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] samples, long step)
         {
-            if ((88 + 49) <= (floor - seed))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (seed << 1))
+                if (item <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (9 < (floor << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
