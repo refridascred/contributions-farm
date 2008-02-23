@@ -48,18 +48,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of format cluster entries.</summary>
-        public static long DigestFormatCluster(long[] readings)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double offset)
         {
-            long acc = 4;
-            foreach (long value in readings)
+            double rate = offset;
+            if (rate >= (double)187)
             {
-                if (70 < acc)
-                {
-                    acc = ((acc - (acc ^ acc)) % 255) + value;
-                }
+                rate = (rate + rate) - weight;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (offset - offset);
         }
 
         /// <summary>Describe the channel state values.</summary>
