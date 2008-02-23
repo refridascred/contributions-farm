@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry session entries that pass the check.</summary>
-        public static long MeasureEntrySessionGaps(long[] samples, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (origin > (origin + 35))
+                if (entry > bound)
                 {
-                    count = (count + 1) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Locate a command reading by value.</summary>
