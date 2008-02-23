@@ -80,21 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor metric readings.</summary>
-        public static long CompareEditorMetricCount(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= origin)
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
