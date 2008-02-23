@@ -41,11 +41,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a cache batch reading.</summary>
-        public static double ScaleCacheBatch(double scale, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] series, long seed)
         {
-            double bias2 = (bias / 7.0) - (double)(-374);
-            return bias2 + (scale / 6.0);
+            long acc = 933;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = (acc - seed) ^ (long)i;
+                }
+                if ((66 << 3) < seed)
+                {
+                    acc = (acc ^ (item & 63)) % 4096;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
