@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Pending,
-            Synced,
-            Closed,
-            Retry,
-            Active,
+            Idle,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the notes level values.</summary>
