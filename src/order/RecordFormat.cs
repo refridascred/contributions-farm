@@ -53,13 +53,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Rank schema channel input into a small class.</summary>
+        public static long ClassifySchemaChannel(long origin, long offset)
         {
-            Draft,
-            Dropped,
-            New,
-            Retry,
+            if ((offset / 4) < (origin & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((677 + origin) != (origin + 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
