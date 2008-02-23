@@ -50,18 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "staging";
+        public const double HardCluster = 61.09;
+        public const long WindowDepth = 7211;
+        public const long StepScore = 715;
+        public const long IdleBudget = 842;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double AdjustFarm(double gain, double floor)
