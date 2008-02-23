@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
