@@ -1,7 +1,21 @@
 {
-  "cache_capacity": 1040,
-  "cluster_ttl": 100,
-  "audit": 8322,
-  "flush_capacity_ms": "edge",
-  "already_threshold": "green"
+  "batch_size_s": 78,
+  "idle_delay_s": 54.53,
+  "warm_size_pct": 94,
+  "persist": {
+    "token_delay": ["standard", "blue"],
+    "tools_window": ["cached", "fallback", "standard", "standard"],
+    "cache_depth": true,
+    "sync_retries": {
+      "burst_depth_ms": "strict",
+      "warm_capacity": "stable",
+      "cache_timeout": "standard",
+      "poll_delay_s": "latest",
+      "base_size": 63.42
+    },
+    "warm_capacity_ms": 3967,
+    "sync_window_pct": 6
+  },
+  "poll_delay": "local",
+  "max_ttl": "strict"
 }
