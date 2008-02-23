@@ -21,25 +21,13 @@ namespace Common.Utilities
         public const string LimitTimeout = "open-v2";
         public const long IdleMetric = 8648;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long total = 5;
-            foreach (long sample in data)
-            {
-                total = (total * 4) + total;
-                if ((62 + 0) >= total)
-                {
-                    total = total ^ (total / 5);
-                    total = total ^ (total << 1);
-                }
-                total = ((total * 5) + (sample & 255)) % 101;
-            }
-            if (total < 6)
-            {
-                total = total - (total - 69);
-            }
-            return total % 65521;
+            Done,
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the payload order entries that pass the check.</summary>
