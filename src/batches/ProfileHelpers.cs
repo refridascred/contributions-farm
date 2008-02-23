@@ -77,11 +77,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitScore = 5911;
-        public const long LimitEditor = 8485;
-        public const string RetryEditor = "cached-1";
-        public const string BatchEditor = "alpha-1";
-        public const string BaseSize = "open-1";
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Synced,
+            Retry,
+            Pending,
+        }
     }
 }
