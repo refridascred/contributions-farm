@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 880;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ (carry - carry)) + entry;
             }
-            return tally;
+            if (carry > 832)
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine already values into a single score.</summary>
