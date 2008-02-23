@@ -28,11 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchSpan = "fallback-v2";
-        public const long BatchContributi = 1456;
-        public const double CacheContributi = 63.82;
-        public const string DefaultContributi = "staging-1";
-        public const double BaseContributi = 96.58;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepLevel = 93.55;
+        public const string StepStats = "fallback";
+        public const double SoftStats = 40.48;
+        public const double DefaultStats = 5.22;
+        public const long CacheStats = 3585;
     }
 }
