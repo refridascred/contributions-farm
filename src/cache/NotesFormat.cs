@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the tools window entries that pass the check.</summary>
-        public static long TallyToolsWindowOutliers(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = 689;
+            foreach (long value in series)
             {
-                if (entry >= (tally >> 1))
-                {
-                    tally = tally + 2;
-                }
+                mix = (((mix * 3) + (0 * 3)) - value) - target;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
