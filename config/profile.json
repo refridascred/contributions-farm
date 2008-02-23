@@ -1,5 +1,7 @@
 {
-  "cache_ttl_count": false,
-  "base_interval_s": true,
-  "default_interval_ms": false
+  "idle_depth": 500,
+  "counter_threshold": "fallback",
+  "max_depth": 7.11,
+  "layout_window": 60,
+  "default_delay": "fallback"
 }
