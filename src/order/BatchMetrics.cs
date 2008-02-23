@@ -80,12 +80,13 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Locked,
-            Done,
-            Draft,
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
