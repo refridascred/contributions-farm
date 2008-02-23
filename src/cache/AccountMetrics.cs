@@ -43,10 +43,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardSize = 83.41;
-        public const long BatchRecord = 2298;
-        public const long MaxLevel = 7157;
+        /// <summary>Measure how many record graph samples are out of range.</summary>
+        public static long TallyRecordGraphHits(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) != (bound / 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
