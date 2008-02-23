@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit cache schema readings against a rule.</summary>
-        public static long MeasureCacheSchemaHits(long[] samples, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= (double)matches)
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            double rate = (double)934 + (ratio * 6.79);
+            return (rate - 3.14) + offset;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
