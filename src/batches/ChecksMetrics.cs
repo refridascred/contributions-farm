@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a route reading by value.</summary>
