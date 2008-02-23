@@ -1,7 +1,7 @@
-id,token,owner
-1,edge,82.06
-2,29.96,353
-3,711,green
-4,legacy,edge
-5,strict,49.27
-6,464,988
+id,score,weight,state,owner
+1,474,81.07,60.31,standard
+2,green,7,51.66,legacy
+3,383,cached,84.59,996
+4,eu-west,588,26,702
+5,50.77,746,506,402
+6,cached,478,72,623
