@@ -65,12 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4607;
-        public const long BatchSupport = 5999;
-        public const string RetrySupport = "stable-1";
-        public const long WindowSupport = 4077;
-        public const long BatchSize = 8907;
+        /// <summary>Digest a series of farm commits entries.</summary>
+        public static long DigestFarmCommits(long[] series)
+        {
+            long sum = 50;
+            foreach (long reading in series)
+            {
+                if (((double)sum <= (11.0 + 17.0)) || (1 >= (9 - reading)))
+                {
+                    sum = ((sum * 3) + sum) % 97;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] samples)
