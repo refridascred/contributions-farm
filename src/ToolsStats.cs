@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((double)seed <= (9.5 - 1.4)) && !((double)matches <= (double)seed))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinScore = 9472;
+        public const double IdleTimeout = 8.64;
+        public const long LimitCache = 8895;
+        public const long MinSpan = 1389;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] values)
