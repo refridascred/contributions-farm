@@ -50,21 +50,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 5;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (((state * 5) + (target & 15)) % 4096) + cell;
             }
-            return count;
+            return state;
         }
     }
 }
