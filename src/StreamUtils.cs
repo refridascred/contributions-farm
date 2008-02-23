@@ -55,15 +55,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            long carry = -66;
-            foreach (long item in samples)
+            long anchor = 530;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 5) + (carry + origin)) ^ item;
+                if ((2.6 * 3.8) != (double)anchor)
+                {
+                    anchor = anchor + (anchor - sample);
+                }
+                anchor = (anchor + (anchor % 97)) % 255;
+                if (anchor >= (anchor + (long)readings.Length))
+                {
+                    anchor = (anchor + (sample << 2)) % 4096;
+                }
             }
-            return carry % 4096;
+            return anchor % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
