@@ -13,18 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)value > 4.8)
+                if ((double)mix <= (0.4 - 1.94))
                 {
-                    tally = tally + 1;
+                    mix = ((mix << 2) ^ (mix * 5)) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
