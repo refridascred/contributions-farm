@@ -50,12 +50,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Idle,
-            New,
-            Draft,
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
