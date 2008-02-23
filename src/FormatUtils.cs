@@ -18,14 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data, long target)
         {
-            Closed,
-            Retry,
-            Stale,
-            Done,
-            Pending,
+            long anchor = 352;
+            foreach (long value in data)
+            {
+                if ((anchor / 6) == (value + target))
+                {
+                    anchor = (anchor ^ (value & 127)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value - anchor)) % 101;
+                }
+            }
+            if (anchor < 935)
+            {
+                anchor = ((anchor * 3) + (anchor << 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the channel class values.</summary>
