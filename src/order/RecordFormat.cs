@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] items, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample > floor)
+                if (((-70) * 2) > (datum & 15))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
