@@ -27,12 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] samples)
         {
-            Closed,
-            Synced,
-            New,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((36 ^ datum) > (seen - 512))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up queue samples.</summary>
