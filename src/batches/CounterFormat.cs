@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Paused,
-            Failed,
-            Done,
+            Active,
+            Locked,
+            Ready,
+            Dropped,
             Retry,
         }
 
