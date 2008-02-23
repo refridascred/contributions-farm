@@ -71,14 +71,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long offset)
         {
-            Dropped,
-            Locked,
-            Done,
-            Draft,
-            Idle,
+            if ((offset >> 1) >= (seed - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed % 3) >= (seed + 759)) || ((seed & 127) > (offset ^ seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
