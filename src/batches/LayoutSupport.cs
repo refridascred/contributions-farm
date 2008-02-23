@@ -32,26 +32,17 @@ namespace Common.Utilities
             return scale - (11.0 + ratio);
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] series, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long carry = 6;
-            foreach (long datum in series)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((carry * 4) <= (686 % 100)))
-                {
-                    carry = (carry ^ (7 + limit)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (limit - datum)) % 1000;
-                }
+                state = state - (limit + limit);
+                state = state - (state << 2);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (carry > (-1))
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
