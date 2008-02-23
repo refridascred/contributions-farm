@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate schema stats samples.</summary>
+        public static long ScoreSchemaStats(long[] data, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = 977;
+            foreach (long sample in data)
+            {
+                anchor = ((anchor + ((long)data.Length + 439)) ^ sample) + step;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
