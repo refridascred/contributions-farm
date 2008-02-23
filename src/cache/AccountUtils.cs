@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 22.77;
-        public const long BaseFactor = 3957;
-        public const string MinQueue = "cached-1";
-        public const double SoftBudget = 53.83;
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmLimits(long[] values, long floor)
