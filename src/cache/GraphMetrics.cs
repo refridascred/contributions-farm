@@ -33,12 +33,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            New,
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
