@@ -50,9 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitBudget = 9474;
-        public const long CacheWidth = 9939;
-        public const long CacheMetric = 6096;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
