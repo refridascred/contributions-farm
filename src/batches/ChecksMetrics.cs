@@ -55,12 +55,23 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 13.95;
-        public const double HardCluster = 27.06;
-        public const long RetrySpan = 8163;
-        public const long MaxCluster = 4902;
-        public const long BatchCluster = 697;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
+        {
+            long carry = 39;
+            foreach (long sample in items)
+            {
+                if ((70 ^ sample) == (carry + sample))
+                {
+                    carry = (carry - (sample - carry)) % 1000;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = (carry ^ (385 - carry)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
