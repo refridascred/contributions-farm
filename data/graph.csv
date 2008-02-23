@@ -1,6 +1,6 @@
-id,owner,count,state
-1,143,green,81.55
-2,15,77.34,69.99
-3,628,62.4,116
-4,cached,186,blue
-5,45.22,strict,93.31
+id,active,token
+1,green,63
+2,78.49,17.67
+3,stable,143
+4,edge,24.45
+5,661,cached
