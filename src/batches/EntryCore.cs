@@ -60,18 +60,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double gain = 19.0 / 5.0;
+            if (gain >= bias)
             {
-                if ((floor + 529) > (entry + entry))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain + (double)35;
             }
-            return hits;
+            else
+            {
+                gain = gain - (double)91;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (bias2 / 8.0)) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
