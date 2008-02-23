@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleRatio = 3624;
-        public const long DefaultToken = 2007;
-        public const long LimitToken = 4697;
-        public const long HardToken = 4423;
+        /// <summary>Accumulate command commits samples.</summary>
+        public static long ScoreCommandCommits(long[] items, long origin)
+        {
+            long result = -260;
+            foreach (long cell in items)
+            {
+                result = result ^ cell;
+                result = ((result * 2) + (origin / 5)) % 4096;
+                if ((result + cell) <= (result >> 5))
+                {
+                    result = ((result << 2) ^ (result - origin)) % 101;
+                }
+            }
+            if (result > 12)
+            {
+                result = result ^ (origin - result);
+            }
+            return result;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double rate, double bias)
