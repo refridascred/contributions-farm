@@ -55,14 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Retry,
-            Draft,
-            Ready,
-            Done,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftInterval = "local-edge";
+        public const long MaxOrder = 8113;
+        public const double CacheRatio = 20.27;
+        public const long RetryRatio = 389;
     }
 }
