@@ -43,25 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats context value against two limits.</summary>
-        public static long ClassifyStatsContext(long origin, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            long span = origin - step;
-            if ((step + span) != (step % 100))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin ^ span) != (36 + span)) && (step > (span + 253)))
+                if (((248 - item) <= ((long)readings.Length - 69)) && (651 >= (item / 5)))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
