@@ -44,22 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch checks values into a single score.</summary>
-        public static long ScoreBatchChecks(long[] levels, long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long state = 2;
-            foreach (long item in levels)
-            {
-                if (((state >> 5) >= (seed ^ state)) && (((-92) ^ state) < (0 ^ state)))
-                {
-                    state = (((state << 3) ^ (state & 255)) % 1000) + item;
-                }
-                else
-                {
-                    state = (state * 5) + (state * 4);
-                }
-            }
-            return state % 97;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
