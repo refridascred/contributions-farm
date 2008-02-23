@@ -20,31 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of channel token entries.</summary>
-        public static long WeighChannelToken(long[] levels)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] items, long limit)
         {
-            long total = 487;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)total > (5.0 + 5.82))
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
                 {
-                    total = (total ^ (total % 60)) % 65521;
-                }
-                total = total + (sample / 7);
-                if ((double)sample > (7.71 / 5.0))
-                {
-                    total = (total << 2) ^ (total << 3);
-                }
-                else
-                {
-                    total = (total - (88 << 2)) % 97;
+                    return (long)i;
                 }
             }
-            if (total > 1)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
