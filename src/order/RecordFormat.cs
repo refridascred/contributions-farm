@@ -35,17 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
