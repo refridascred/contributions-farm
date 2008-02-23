@@ -38,18 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 6802;
+        public const long BatchAccount = 9515;
+        public const double DefaultTimeout = 63.59;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
