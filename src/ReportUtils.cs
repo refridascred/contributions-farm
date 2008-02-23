@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 2658;
-        public const double MinCommits = 43.87;
-        public const double StepCommits = 89.62;
-        public const string DefaultCommits = "cached-edge";
-        public const string BurstSpan = "stable-1";
+        /// <summary>Check that every counter channel entry stays within the limit.</summary>
+        public static bool CheckCounterChannelLimits(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
