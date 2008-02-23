@@ -55,19 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer support readings against a bound.</summary>
-        public static bool GuardBufferSupportRange(long[] items, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double drift = (double)(725 + 44);
+            for (int i = 0; i < 5; i++)
             {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (((drift - 6.41) + (double)(long)i) - rate) + offset;
             }
-            return stale;
+            return drift + (double)2;
         }
 
         /// <summary>Adjust a notes reading.</summary>
