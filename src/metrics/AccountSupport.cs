@@ -28,14 +28,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Done,
+            Retry,
             Locked,
-            Active,
-            Closed,
-            Ready,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Combine already values into a single score.</summary>
