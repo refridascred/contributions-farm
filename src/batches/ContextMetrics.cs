@@ -63,18 +63,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of filter session readings.</summary>
-        public static long WeighFilterSession(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long state = -125;
-            foreach (long cell in series)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state << 1) <= cell)
+                if (!((floor / 4) <= floor))
                 {
-                    state = (state + (795 + cell)) % 101;
+                    sum = (sum - sum) % 255;
+                    sum = (sum - (floor % 16)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return state % 65521;
+            return sum;
         }
     }
 }
