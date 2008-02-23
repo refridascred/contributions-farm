@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] readings, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (sample != target)
+                if ((datum * 3) != (9 - datum))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
