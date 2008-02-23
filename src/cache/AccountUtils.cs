@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long target, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long bound = target - limit;
-            if ((limit ^ 2) <= bound)
+            long mark = 6;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > (3.1 - 4.5))
+                if ((double)mark <= (double)sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((2.1 / 7.0) > (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit < 982) || ((double)target >= (2.3 * 12.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = (mark ^ (mark / 6)) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Blend two format measurements.</summary>
