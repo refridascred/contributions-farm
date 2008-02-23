@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long mark = 6;
-            foreach (long sample in samples)
-            {
-                if ((double)mark <= (double)sample)
-                {
-                    mark = (mark ^ (mark / 6)) % 65521;
-                }
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count window contributi pairs that satisfy a relation.</summary>
