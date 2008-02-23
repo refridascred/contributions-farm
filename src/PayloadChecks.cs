@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] data, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell > floor)
+                if (((long)i * 2) >= ((long)i + acc))
                 {
-                    stale = false;
                     break;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a already snapshot.</summary>
