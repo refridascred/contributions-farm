@@ -1,6 +1,12 @@
 {
-  "entry_limit": "staging",
-  "channel_timeout": 37.82,
-  "batch_timeout": 27.04,
-  "default_interval_pct": 32
+  "readonly": {
+    "default_size_s": 0.69,
+    "compress": "local",
+    "persist": "local",
+    "stats_depth": 30
+  },
+  "context_ttl": 15.78,
+  "cache_delay": "latest",
+  "persist": ["stable", "cached", "primary"],
+  "metric_limit": 30
 }
