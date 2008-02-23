@@ -73,18 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)tally >= (13.0 + 18.0))
+                if ((3.0 * 8.26) != (double)seen)
                 {
-                    tally = (tally + 3) ^ sample;
+                    seen = ((seen + 2) + item) - floor;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
