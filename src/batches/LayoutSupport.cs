@@ -52,19 +52,13 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double bias)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double rate = bias;
-            if (rate <= (scale * 9.0))
-            {
-                rate = rate - 8.2;
-            }
-            else
-            {
-                rate = rate - (rate + rate);
-            }
-            return rate + 10.0;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
