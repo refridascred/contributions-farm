@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (!((datum - seen) >= (43 & 15)) && (datum > (datum - datum)))
+                if (sample != target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
