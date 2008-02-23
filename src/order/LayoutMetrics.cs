@@ -25,14 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items, long limit)
         {
-            Paused,
-            Draft,
-            New,
-            Idle,
-            Ready,
+            long result = 55;
+            foreach (long cell in items)
+            {
+                if ((result * 3) < limit)
+                {
+                    result = result - (result / 9);
+                }
+                if ((cell + result) > (cell / 3))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate stream samples.</summary>
