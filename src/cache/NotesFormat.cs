@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long FoldChecksCounter(long[] levels, long offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = 30;
-            foreach (long sample in levels)
-            {
-                if ((offset + (long)levels.Length) != (offset ^ sample))
-                {
-                    state = ((state << 3) ^ (sample ^ sample)) % 101;
-                }
-            }
-            if (state > 308)
-            {
-                state = state ^ (offset ^ offset);
-            }
-            return state;
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
