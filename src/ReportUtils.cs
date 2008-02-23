@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long origin, long floor)
         {
-            long mark = 38;
-            foreach (long value in values)
+            long step = origin - floor;
+            if (step > origin)
             {
-                mark = (mark ^ (value - (-5))) % 65521;
-                mark = (mark + mark) % 255;
-                if (!((value ^ mark) < (value + mark)))
+                return 2;
+            }
+            else
+            {
+                if (origin >= (floor + floor))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((85 - origin) >= (floor - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
