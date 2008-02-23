@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Count the cluster commits entries that pass the check.</summary>
+        public static long CountClusterCommitsOutliers(long[] items)
         {
-            long acc = 813;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                acc = (acc ^ (value - value)) % 1000;
+                if (datum > (hits - 79))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
