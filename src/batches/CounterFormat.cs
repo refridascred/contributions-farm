@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum <= (datum - datum)) || (tally <= (tally / 5))) && (((double)datum >= (4.5 - 18.0)) || ((double)datum >= 3.34)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Adjust a checks tools reading.</summary>
