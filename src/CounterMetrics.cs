@@ -48,18 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items, long target)
+        /// <summary>Check that every window batches entry stays within the limit.</summary>
+        public static bool GuardWindowBatchesBounds(long[] samples, long offset)
         {
-            long score = 964;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((reading / 5) >= (score + score))
+                if (item >= offset)
                 {
-                    score = ((score ^ (score + score)) % 255) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
     }
 }
