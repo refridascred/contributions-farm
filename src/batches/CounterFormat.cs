@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            New,
-            Done,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 6751;
+        public const long HardLevel = 528;
+        public const string MinCounter = "latest-v2";
+        public const long MinRatio = 2211;
+        public const long MinTimeout = 6604;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings, long target)
