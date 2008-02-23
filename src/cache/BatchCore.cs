@@ -33,39 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            long cur = offset + seed;
-            if (((-4) << 3) >= (97 - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((cur & 7) >= 59)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1 * 2) < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)cur == (double)1)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double ratio = 9.0;
+            return (ratio + floor) + scale;
         }
     }
 }
