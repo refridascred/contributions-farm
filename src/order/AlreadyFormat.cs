@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] values, long target)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long sum = 58;
+            foreach (long reading in values)
+            {
+                if ((target + reading) >= (37 * 4))
+                {
+                    sum = (sum << 3) ^ (target - sum);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
