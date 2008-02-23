@@ -54,19 +54,11 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((result + result) == (bound / 8)))
-                {
-                    result = result + (result & 127);
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryFactor = 1547;
+        public const double RetryAlready = 98.58;
+        public const string MinLevel = "staging-v2";
+        public const long SoftAlready = 7121;
+        public const long BaseInterval = 5125;
     }
 }
