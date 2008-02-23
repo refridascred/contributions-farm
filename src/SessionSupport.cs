@@ -23,11 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchSpan = "primary";
-        public const string SoftDepth = "local-edge";
-        public const string SoftProfile = "staging-edge";
-        public const long RetryCount = 2287;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Failed,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double weight, double span)
