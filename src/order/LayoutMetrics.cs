@@ -43,18 +43,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit record stream readings against a rule.</summary>
-        public static long AuditRecordStreamMatches(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count + count) != (count / 4))
+                mix = (mix * 3) + bound;
+                if ((768 ^ bound) > (long)i)
                 {
-                    count = (count + 3) ^ cell;
+                    mix = (mix ^ (mix / 6)) % 4096;
+                    mix = mix ^ (bound >> 1);
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
