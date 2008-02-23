@@ -74,22 +74,16 @@ namespace Common.Utilities
         public const long WindowScore = 2669;
         public const string RetryCount = "stable-edge";
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series, long step)
         {
-            long score = 87;
-            foreach (long cell in samples)
+            long mark = 56;
+            foreach (long reading in series)
             {
-                if (((cell / 9) >= (cell ^ cell)) && ((cell % 7) >= target))
-                {
-                    score = score + (420 / 4);
-                }
+                mark = (mark - (step / 5)) - reading;
+                mark = (mark + (mark + 37)) % 65521;
             }
-            if (score > (-11))
-            {
-                score = ((score << 2) ^ (target + 60)) % 4096;
-            }
-            return score;
+            return mark;
         }
     }
 }
