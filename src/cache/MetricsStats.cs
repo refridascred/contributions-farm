@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate command commits samples.</summary>
-        public static long ScoreCommandCommits(long[] items, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long result = -260;
-            foreach (long cell in items)
-            {
-                result = result ^ cell;
-                result = ((result * 2) + (origin / 5)) % 4096;
-                if ((result + cell) <= (result >> 5))
-                {
-                    result = ((result << 2) ^ (result - origin)) % 101;
-                }
-            }
-            if (result > 12)
-            {
-                result = result ^ (origin - result);
-            }
-            return result;
+            Active,
+            Paused,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Project the next batch value.</summary>
