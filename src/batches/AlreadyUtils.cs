@@ -44,12 +44,13 @@ namespace Common.Utilities
             return (gain + 6.28) + offset;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
             Queued,
-            Paused,
-            Failed,
+            Dropped,
+            Closed,
+            Pending,
         }
     }
 }
