@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items, long origin)
+        /// <summary>Measure how many graph buffer samples are out of range.</summary>
+        public static long TallyGraphBufferHits(long[] levels, long target)
         {
-            long mark = 7;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((origin + cell) > 893)
+                if (hits > (958 - cell))
                 {
-                    continue;
-                }
-                if (((double)mark == (8.0 / 8.0)) && ((cell >> 1) != (cell * 4)))
-                {
-                    mark = (mark + origin) % 4096;
+                    hits = (hits + 3) - target;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Describe the notes mode values.</summary>
