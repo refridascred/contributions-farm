@@ -53,19 +53,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen * 5) > item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 13.95;
+        public const double HardCluster = 27.06;
+        public const long RetrySpan = 8163;
+        public const long MaxCluster = 4902;
+        public const long BatchCluster = 697;
 
         /// <summary>Derive the next token already value from a seed.</summary>
         public static long IterateTokenAlready(long step)
