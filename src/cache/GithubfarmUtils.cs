@@ -34,12 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardLevel = "stable-1";
-        public const long LimitTimeout = 6273;
-        public const string DefaultLevel = "local-1";
-        public const long SoftWidth = 2808;
-        public const long BaseInterval = 2243;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double ScaleBatches(double rate, double bias)
