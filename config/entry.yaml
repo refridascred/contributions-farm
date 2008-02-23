@@ -1,6 +1,13 @@
 # entry settings
-cache_capacity_count: 30
-soft_ttl_count: 100
-soft_size: 1083
-base_capacity_count: 60
-min_ttl: true
+idle_delay_ms: staging
+graph_ratio:
+  - 24
+  - 486
+  - 177
+  - 73
+batch_threshold_pct: cached
+verbose: latest
+hard_window_s:
+  - 428
+  - 447
+cache_window: 63.65
