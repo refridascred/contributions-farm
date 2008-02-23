@@ -13,11 +13,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two batches measurements.</summary>
