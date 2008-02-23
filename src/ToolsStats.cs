@@ -66,19 +66,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmAlreadyRange(long[] items, long bound)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
