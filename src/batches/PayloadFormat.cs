@@ -35,18 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] data)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches * 5) == (cell / 3))
+                if (values[i] > limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a entry stats.</summary>
