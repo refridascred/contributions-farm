@@ -63,19 +63,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every profile record entry stays within the limit.</summary>
-        public static bool VerifyProfileRecordBounds(long[] series, long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a farm summary.</summary>
