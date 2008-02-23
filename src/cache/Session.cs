@@ -13,14 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings)
         {
-            Queued,
-            Retry,
-            Stale,
-            Active,
-            Done,
+            long acc = 97;
+            foreach (long reading in readings)
+            {
+                acc = ((acc * 4) + 654) ^ reading;
+            }
+            if (acc > 4)
+            {
+                acc = (acc - (acc >> 2)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
