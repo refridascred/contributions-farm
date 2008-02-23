@@ -1,8 +1,8 @@
 {
-  "dry_run": "edge",
-  "readonly": 8106,
-  "sync_depth_pct": "legacy",
-  "max_timeout_ms": 88.28,
-  "poll_limit_s": 10,
-  "persist": [157, 186, 87, 211]
+  "readonly": false,
+  "stats_window": true,
+  "context_interval": ["latest", "blue"],
+  "max_limit": 100,
+  "compress": 79.96,
+  "idle_ratio_pct": "strict"
 }
