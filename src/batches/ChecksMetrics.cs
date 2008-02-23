@@ -44,15 +44,10 @@ namespace Common.Utilities
             return drift + (drift / 5.0);
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            New,
-            Retry,
-            Stale,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "fallback-v2";
+        public const long DefaultRatio = 7361;
+        public const long BaseAlready = 669;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] samples, long bound)
