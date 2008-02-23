@@ -21,11 +21,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] items, long target)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long total = 44;
+            foreach (long cell in items)
+            {
+                if ((double)target <= (18.0 + 9.1))
+                {
+                    total = (total - (total / 9)) - cell;
+                }
+            }
+            return total;
         }
     }
 }
