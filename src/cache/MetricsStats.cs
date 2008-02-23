@@ -26,19 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] values, long origin)
+        /// <summary>Audit stats route readings against a rule.</summary>
+        public static long MeasureStatsRouteOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sample < origin)
+                if (((count - cell) < (cell + cell)) && (((count % 12) > (cell * 5)) || ((2 - 207) <= cell)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Combine tools format values into a single score.</summary>
