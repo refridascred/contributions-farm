@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 62.27;
+        public const long SoftFarm = 8826;
+        public const string MaxScore = "standard-edge";
+        public const long LimitFactor = 1078;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string WindowFormat = "staging-1";
