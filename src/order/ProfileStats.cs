@@ -31,38 +31,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long bound, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if ((limit & 31) > 1)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit < (2.8 - 4.34))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit * 2) < (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((11.0 / 8.0) < (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
