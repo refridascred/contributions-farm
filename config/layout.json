@@ -1,5 +1,7 @@
 {
-  "audit": "local",
-  "sync_retries_count": 4055,
-  "flush_interval_count": true
+  "cache_capacity": 1040,
+  "cluster_ttl": 100,
+  "audit": 8322,
+  "flush_capacity_ms": "edge",
+  "already_threshold": "green"
 }
