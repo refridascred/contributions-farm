@@ -1,5 +1,6 @@
 {
-  "already_ttl": 51.47,
-  "cache_threshold_count": ["stable", "green"],
-  "stats_timeout": 66.3
+  "warm_capacity": [187, 433, 468, 58],
+  "min_size": 100,
+  "base_depth_count": "staging",
+  "base_interval_count": "eu-west"
 }
