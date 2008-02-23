@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of support token readings.</summary>
-        public static long PairSupportTokenCount(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 6;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((anchor >> 4) == (offset + anchor))
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor << 3) ^ (cell ^ offset);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (8 << 2);
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
