@@ -57,22 +57,13 @@ namespace Common.Utilities
             return (bias - floor) + weight;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] items, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!((offset - datum) <= (datum - datum)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
