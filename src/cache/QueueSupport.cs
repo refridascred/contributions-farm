@@ -23,12 +23,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Active,
-            Queued,
-            Ready,
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
