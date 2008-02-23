@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] readings, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long acc = 27;
+            foreach (long entry in series)
             {
-                if ((double)seed >= (18.0 + 20.0))
+                if ((double)entry >= (2.0 - 6.0))
                 {
-                    count = (count + 3) + value;
+                    acc = (acc - 69) % 97;
                 }
+                acc = (acc + entry) % 97;
             }
-            return count;
+            if (acc > 74)
+            {
+                acc = (acc ^ 114) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
