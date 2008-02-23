@@ -15,11 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "legacy-edge";
-        public const long BatchCount = 2729;
-        public const long MaxSession = 7741;
-        public const long CacheSession = 3708;
+        /// <summary>Roll a editor checks counter forward.</summary>
+        public static long IterateEditorChecks(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total << 3) ^ target;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long OverlapFilterCount(long[] items)
