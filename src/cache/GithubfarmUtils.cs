@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long offset)
         {
-            long result = -3;
-            foreach (long cell in readings)
+            long sum = 558;
+            foreach (long datum in series)
             {
-                result = result ^ (cell + cell);
+                if ((4.95 - 4.07) == (double)datum)
+                {
+                    sum = sum - (offset / 6);
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Iterate the githubfarm token series from a seed.</summary>
