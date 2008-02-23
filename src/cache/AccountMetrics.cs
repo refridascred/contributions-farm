@@ -37,14 +37,11 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Retry,
-            Ready,
-            Stale,
-            Closed,
-            Failed,
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
