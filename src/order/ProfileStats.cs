@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long offset, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long bound = offset - origin;
-            if (!(bound <= (bound - (-59))))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound % 24) < (bound % 10)) || ((origin << 2) >= (origin << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin << 3) <= (bound % 2)) && ((offset / 4) != (bound + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
