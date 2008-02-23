@@ -86,19 +86,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double scale, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long floor)
         {
-            double ratio = (double)(0 + 893);
-            if (ratio < floor)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                ratio = ratio + ratio;
+                if (reading <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + scale;
+            return valid;
         }
     }
 }
