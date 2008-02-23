@@ -23,21 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = origin ^ bound;
+            if ((7 - bound) >= (42 >> 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((2.2 / 7.0) == (double)origin)
                 {
-                    if ((items[i] + items[j]) < 14)
+                    return 2;
+                }
+                else
+                {
+                    if (((origin & 15) != (slot % 16)) || (((-554) ^ slot) < (slot + origin)))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
