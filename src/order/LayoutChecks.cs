@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long bound, long bound2)
+        /// <summary>Locate a stream route reading by value.</summary>
+        public static long LocateStreamRouteIndex(long[] samples, long step)
         {
-            long gap = bound - bound2;
-            if ((19.0 + 2.0) <= (double)bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((gap & 3) > (960 << 3))
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound <= (bound * 5)) || (gap < (gap + bound2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate already editor readings against a bound.</summary>
