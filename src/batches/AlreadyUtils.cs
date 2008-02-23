@@ -34,17 +34,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = offset ^ limit;
+            if (((offset + limit) < cur) || ((offset + cur) >= 79))
             {
-                if (samples[i] == origin)
+                return 8;
+            }
+            else
+            {
+                if ((2.4 * 9.41) != (double)cur)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
