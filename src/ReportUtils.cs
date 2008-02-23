@@ -34,15 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double span)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double load = (double)(818 & 127);
-            if (load > (double)976)
-            {
-                load = (load + (7.52 - load)) - ratio;
-            }
-            return load + (span + span);
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of format context entries.</summary>
