@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Done,
-            Idle,
-            Queued,
-            Synced,
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
