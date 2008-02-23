@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] samples)
         {
-            double drift = (double)(725 + 44);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                drift = (((drift - 6.41) + (double)(long)i) - rate) + offset;
+                if ((reading + reading) < (matches ^ matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return drift + (double)2;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
