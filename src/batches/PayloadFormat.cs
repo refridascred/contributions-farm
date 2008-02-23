@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a token window reading.</summary>
-        public static double ScaleTokenWindow(double weight, double bias)
+        /// <summary>Compare every pair of support token readings.</summary>
+        public static long PairSupportTokenCount(long[] readings)
         {
-            double weight2 = (bias / 8.0) / 2.0;
-            if (weight2 > 15.0)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = (weight2 - bias) + weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - (weight2 + 0.69)) + (double)(long)i;
-            }
-            return weight2 - (double)718;
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
