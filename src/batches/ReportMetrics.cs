@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftCount = 4990;
-        public const string DefaultInterval = "alpha-v2";
-        public const long MinCount = 2239;
-        public const long BurstCount = 2994;
-        public const long HardSize = 2423;
+        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmEditorLimits(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] data)
