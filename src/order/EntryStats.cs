@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchLevel = 9394;
+        public const string MinInterval = "standard";
+        public const double BurstFormat = 7.53;
+        public const long RetryRatio = 4922;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheRange(long[] levels, long floor)
