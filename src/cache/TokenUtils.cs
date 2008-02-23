@@ -37,38 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long target, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            if (bound < target)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((5.26 * 4.8) >= (double)bound) || ((10.0 - 8.6) >= (double)target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 3) != (target + bound))
+                    if ((readings[i] + readings[j]) > 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (16 > (bound << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
