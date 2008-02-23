@@ -57,13 +57,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((2 - 48) < (cell % 60))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
