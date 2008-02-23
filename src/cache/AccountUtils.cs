@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next commits already value.</summary>
-        public static double ScaleCommitsAlready(double ratio, double floor)
+        /// <summary>Locate a cluster githubfarm reading by value.</summary>
+        public static long LookupClusterGithubfarmIndex(long[] readings, long target)
         {
-            double ratio2 = 8.9;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (((ratio2 + 1.67) - (double)(long)i) + ratio) + floor;
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (double)29;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
