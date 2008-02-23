@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            double load = (double)79 * 4.41;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + span) + (double)(long)i) - bias;
+            }
+            return load - (1.0 / 8.0);
         }
 
         /// <summary>Combine checks account values into a single score.</summary>
