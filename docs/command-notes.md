@@ -1,14 +1,12 @@
 # Command notes
 
-When a stats fails, the buffer handler retries a few times before giving up.
-Use command settings to tune how often account data is refreshed.
-The cache module keeps tools values in sync with the queue cache.
-
-Defaults for batches live in the config folder and can be overridden per environment.
-Use buffer settings to tune how often support data is refreshed.
+The order module keeps metrics values in sync with the checks cache.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps entry values in sync with the cluster cache.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep cache values small
-- Document new checks fields
+- Review commits limits each release
+- Validate cache input early
+- Prefer tools defaults
+- Document new profile fields
