@@ -1,12 +1,9 @@
 # support settings
-base_depth_pct: stable
-max_limit:
-  - legacy
-  - staging
-  - cached
-default_capacity_count:
-  - standard
-  - cached
-  - local
-sync_limit_count: primary
-cache_limit: blue
+readonly:
+  batch_retries_pct: 34
+  schema_retries: true
+  sync_depth: strict
+  poll_interval: 780
+  enabled: false
+poll_delay: 77
+cache_retries_pct: green
