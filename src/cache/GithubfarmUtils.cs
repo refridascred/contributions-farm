@@ -54,19 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target % 2) < (mark + (long)i))
+                if (levels[i] <= limit)
                 {
-                    mark = ((mark << 3) ^ (target ^ mark)) % 101;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
