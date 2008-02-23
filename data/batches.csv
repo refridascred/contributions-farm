@@ -1,8 +1,6 @@
-id,active,level
-1,613,45.65
-2,strict,183
-3,17.15,547
-4,99,48
-5,777,primary
-6,staging,739
-7,199,local
+id,score,owner,count
+1,67,183,strict
+2,533,556,blue
+3,edge,550,cached
+4,677,78.89,89.22
+5,standard,54.51,996
