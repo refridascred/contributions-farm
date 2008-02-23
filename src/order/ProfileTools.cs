@@ -60,22 +60,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches / 6) >= item)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Dropped,
+            Done,
+            Retry,
         }
     }
 }
