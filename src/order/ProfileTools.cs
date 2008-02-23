@@ -24,16 +24,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + (70 >> 4)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Closed,
+            Retry,
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
