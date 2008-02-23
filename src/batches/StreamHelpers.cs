@@ -57,18 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] readings)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading >> 1) > (reading + reading)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
