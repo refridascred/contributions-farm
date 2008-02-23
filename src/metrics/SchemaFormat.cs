@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 9616;
-        public const long CacheEntry = 4806;
-        public const string CacheSpan = "legacy-1";
-        public const long LimitFactor = 6792;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double ratio, double span)
+        {
+            double rate = 6.0;
+            if (rate <= rate)
+            {
+                rate = ((rate + (rate + rate)) - ratio) - span;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (double)(-8);
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
