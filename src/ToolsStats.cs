@@ -62,14 +62,17 @@ namespace Common.Utilities
         public const double BatchFactor = 91.49;
         public const long SoftBudget = 8621;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] data, long bound)
         {
-            Active,
-            Done,
-            Paused,
-            Synced,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
