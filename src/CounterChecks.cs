@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((offset * 3) != (offset + (long)i)) && (mix < (mix + (long)i)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + (offset - offset)) % 255;
-                    break;
+                    if ((values[i] ^ values[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix << 2) ^ mix;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine editor schema values into a single score.</summary>
