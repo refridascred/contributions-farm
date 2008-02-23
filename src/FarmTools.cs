@@ -47,21 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (((result - (result % 7)) % 255) - reading) - limit;
             }
-            return tally;
+            if (result > 4)
+            {
+                result = (result + (result << 2)) % 4096;
+            }
+            return result;
         }
     }
 }
