@@ -26,11 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 9783;
-        public const string DefaultCount = "latest";
-        public const double RetryMetric = 77.71;
-        public const long SoftMetric = 2320;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 5) > (seen * 2))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowGaps(long[] readings, long step)
