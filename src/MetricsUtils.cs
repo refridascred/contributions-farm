@@ -27,25 +27,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long offset, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long delta = offset ^ floor;
-            if ((delta % 10) == (173 - offset))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((delta - floor) >= 98) && ((5.1 - 6.5) <= (double)floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
