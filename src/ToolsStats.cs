@@ -55,20 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinMetrics = "local";
+        public const double CacheMetrics = 51.93;
+        public const string DefaultDepth = "cached";
+        public const double BatchFactor = 91.49;
+        public const long SoftBudget = 8621;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] values)
