@@ -1,6 +1,5 @@
 {
-  "default_size_ms": false,
-  "sync_depth": "stable",
-  "soft_depth_count": ["standard", "standard", "local", "eu-west"],
-  "sync_depth_pct": 6249
+  "retry_timeout_s": true,
+  "sync_window": 250,
+  "burst_retries_s": 43.99
 }
