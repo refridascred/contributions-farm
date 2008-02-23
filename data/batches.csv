@@ -1,6 +1,10 @@
-id,active,score,ratio
-1,194,847,331
-2,269,65.81,76.07
-3,eu-west,300,622
-4,352,latest,strict
-5,60.16,104,754
+id,weight,score
+1,83.66,57.25
+2,latest,818
+3,24.01,105
+4,57.46,latest
+5,913,green
+6,2.15,95.88
+7,17.09,546
+8,5.55,stable
+9,cached,179
