@@ -38,22 +38,14 @@ namespace Common.Utilities
         public const long BurstTools = 7545;
         public const double LimitTools = 31.33;
 
-        /// <summary>Fold a list of support payload readings.</summary>
-        public static long WeighSupportPayload(long[] data, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long anchor = 79;
-            foreach (long cell in data)
-            {
-                if ((offset / 5) != (offset - anchor))
-                {
-                    anchor = anchor - (cell << 1);
-                }
-            }
-            if (anchor > (-33))
-            {
-                anchor = (anchor + (anchor % 60)) % 1000;
-            }
-            return anchor;
+            Paused,
+            Ready,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the tools status values.</summary>
