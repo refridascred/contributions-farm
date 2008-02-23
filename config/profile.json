@@ -1,14 +1,14 @@
 {
-  "compress": {
-    "notes_ttl": [267, 265, 287, 429],
-    "strict": "latest",
-    "support_size": 60.24,
-    "cache_window": "green",
-    "window_ttl": 28.08,
-    "max_capacity_s": 57.99
+  "enabled": {
+    "enabled": ["open", "open", "stable"],
+    "batch_limit_ms": "edge",
+    "layout_depth": "eu-west",
+    "audit": 7311,
+    "verbose": ["green", "legacy", "edge", "legacy"]
   },
-  "verbose": false,
-  "cache_limit": 71.92,
-  "batch_ttl": 38,
-  "farm_timeout": 500
+  "cache_threshold_count": 15.62,
+  "counter_depth": true,
+  "cache_retries_ms": 93.89,
+  "persist": 8030,
+  "soft_timeout": 76.14
 }
