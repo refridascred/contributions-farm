@@ -38,15 +38,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double gain, double span)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] readings, long limit)
         {
-            double drift = 2.14 * 4.62;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift + (double)2) + (double)(long)i) - gain;
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (drift - span);
+            return -1;
         }
 
         /// <summary>Hold a editor header.</summary>
