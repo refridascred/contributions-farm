@@ -32,19 +32,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command route value.</summary>
-        public static double BlendCommandRoute(double weight, double offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            double rate = (offset - offset) / 5.0;
-            if (rate <= (weight - 8.71))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (double)2;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate - (rate + offset);
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
