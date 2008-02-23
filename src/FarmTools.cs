@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] items, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((limit / 2) >= (count & 3))
+                if (!((reading + tally) < (392 + tally)) && ((tally * 4) <= (5 << 3)))
                 {
-                    count = (count + 2) + reading;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
