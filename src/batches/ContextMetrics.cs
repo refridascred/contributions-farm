@@ -70,17 +70,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first cluster account entry that matches the target.</summary>
-        public static long LocateClusterAccountIndex(long[] values, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
