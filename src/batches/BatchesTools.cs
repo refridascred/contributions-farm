@@ -38,12 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] values)
         {
-            Draft,
-            Done,
-            Pending,
+            long state = 6;
+            foreach (long entry in values)
+            {
+                if (!(((double)state > (6.0 - 8.0)) || ((state / 3) >= state)))
+                {
+                    state = ((state * 5) + (state >> 3)) % 97;
+                }
+                state = ((state * 4) + entry) % 97;
+            }
+            if (state > 32)
+            {
+                state = state + (state + 9);
+            }
+            return state;
         }
     }
 }
