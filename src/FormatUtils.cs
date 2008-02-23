@@ -33,15 +33,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Ready,
-            Idle,
-            Retry,
-            Active,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstTimeout = 9.52;
+        public const string MaxCommand = "fallback-edge";
+        public const long BaseCommand = 8306;
 
         /// <summary>Count the payload order entries that pass the check.</summary>
         public static long CountPayloadOrderGaps(long[] levels)
