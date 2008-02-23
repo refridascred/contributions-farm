@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Stale,
-            Paused,
-            Done,
+            Failed,
+            Closed,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Blend two report buffer measurements.</summary>
