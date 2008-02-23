@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Iterate the channel tools series from a seed.</summary>
+        public static long DeriveChannelTools(long step)
         {
-            long total = 5;
-            foreach (long cell in values)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total - (5 & 31)) % 1000) + cell;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
