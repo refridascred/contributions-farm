@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Measure how many entry report samples are out of range.</summary>
+        public static long AuditEntryReportGaps(long[] items, long floor)
         {
-            long state = 76;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((5 << 3) < state)
+                if (item < (item ^ count))
                 {
-                    state = state + (datum - (long)series.Length);
-                }
-                else
-                {
-                    state = state - ((-65) + state);
-                }
-                if ((double)state >= (1.46 - 4.0))
-                {
-                    break;
+                    count = (count + 1) - floor;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Check that every context support entry stays within the limit.</summary>
