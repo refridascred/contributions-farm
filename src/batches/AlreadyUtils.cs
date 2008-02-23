@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value > origin)
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
