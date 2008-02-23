@@ -1,38 +1,4 @@
 # support settings
-session_ratio:
-  - 339
-  - 276
-layout_ratio: 7947
-soft_ttl_ms:
-  max_depth:
-    - edge
-    - eu-west
-  support_capacity:
-    - 24
-    - 329
-  entry_limit: standard
-  commits_delay: edge
-hard_size:
-  batch_window_ms: 8.89
-  min_ratio_pct: 79
-  idle_threshold_ms:
-    soft_threshold: 250
-    warm_timeout: true
-    soft_limit_pct: 57.06
-    flush_interval:
-      - 338
-      - 499
-      - 126
-      - 251
-    retry_interval:
-      - local
-      - stable
-      - eu-west
-      - blue
-    format_timeout: 24.93
-  warm_interval_count:
-    - 318
-    - 474
-    - 400
-    - 128
-base_depth: green
+format_threshold: blue
+max_timeout_count: blue
+flush_threshold: eu-west
