@@ -40,31 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long target, long step)
+        /// <summary>Look up the position of a schema profile sample.</summary>
+        public static long FindSchemaProfileIndex(long[] levels, long offset)
         {
-            if (step >= (target * 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target < (step << 2)) && ((step + target) < (target + step)))
+                if (levels[i] < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (step * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
