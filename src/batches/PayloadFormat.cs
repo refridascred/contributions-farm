@@ -51,13 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstRatio = "open-v2";
+        public const double CacheFactor = 40.52;
+        public const string SoftChecks = "open-edge";
+        public const long IdleChecks = 2989;
+        public const long IdleSize = 8092;
     }
 }
