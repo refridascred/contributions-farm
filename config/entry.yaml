@@ -1,7 +1,31 @@
 # entry settings
-already_interval: false
-compress: 62.05
-flush_ratio: false
-metric_retries: standard
-dry_run: true
-batch_window_pct: local
+hard_delay_count:
+  sync_ttl_pct:
+    persist: fallback
+    stats_ratio: 500
+    readonly: standard
+    base_timeout_ms: 41.55
+    base_ratio_count: 36
+    soft_delay_pct: 7572
+  sync_ratio_count:
+    - cached
+    - green
+    - local
+  warm_retries_count: 8928
+  batch_depth_s:
+    persist: edge
+    hard_retries: 46.8
+    metrics_threshold:
+      - 408
+      - 460
+      - 422
+  githubfarm_window: 15.63
+cache_timeout_count: true
+format_retries:
+  - 71
+  - 310
+  - 105
+  - 417
+filter_ttl: false
+notes_threshold: eu-west
+compress: legacy
