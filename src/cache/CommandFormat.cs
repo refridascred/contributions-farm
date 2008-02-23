@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            long total = 85;
+            foreach (long entry in series)
+            {
+                total = (total ^ entry) % 255;
+            }
+            if (total < 1)
+            {
+                total = (total - (total & 7)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
