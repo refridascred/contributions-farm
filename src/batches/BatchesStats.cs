@@ -25,19 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate context notes readings against a bound.</summary>
-        public static bool VerifyContextNotesBounds(long[] samples, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (value >= bound)
+                if (sample < (count & 31))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
