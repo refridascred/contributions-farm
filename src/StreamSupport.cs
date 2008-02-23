@@ -27,19 +27,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)mix <= (0.4 - 1.94))
-                {
-                    mix = ((mix << 2) ^ (mix * 5)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
