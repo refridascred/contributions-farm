@@ -21,18 +21,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] items, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long target, long offset)
         {
-            long total = 44;
-            foreach (long cell in items)
+            long prev = target ^ offset;
+            if ((target / 4) >= (prev % 16))
             {
-                if ((double)target <= (18.0 + 9.1))
+                return 4;
+            }
+            else
+            {
+                if ((offset - 98) <= (prev / 5))
                 {
-                    total = (total - (total / 9)) - cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((prev < (offset + offset)) || ((target / 8) != (7 * 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
     }
 }
