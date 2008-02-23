@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,14 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict latest fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
