@@ -64,9 +64,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstScore = "strict";
-        public const double DefaultSpan = 79.31;
-        public const long BaseContributi = 3693;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (entry <= (tally * 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
