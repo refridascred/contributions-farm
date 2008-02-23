@@ -1,5 +1,11 @@
 # githubfarm settings
-strict: false
-audit: 42.98
-sync_threshold_pct: 14.15
-base_capacity_count: blue
+schema_timeout: open
+cache_threshold_ms:
+  - 185
+  - 165
+  - 454
+  - 496
+poll_timeout_ms: 98.68
+readonly: false
+dry_run: fallback
+metric_size: 30
