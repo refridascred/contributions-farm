@@ -31,13 +31,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Closed,
-            Paused,
-            Done,
             New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a profile stats.</summary>
