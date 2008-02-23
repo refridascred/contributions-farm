@@ -30,19 +30,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter contributi entries.</summary>
-        public static long TotalCounterContributi(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long target, long seed)
         {
-            long anchor = -7;
-            foreach (long cell in data)
+            if ((target > (target - target)) || (seed < (target * 5)))
             {
-                anchor = ((anchor * 3) + (891 + cell)) % 4096;
-                if (!((anchor << 2) >= ((long)data.Length * 4)))
+                return 6;
+            }
+            else
+            {
+                if (!((double)seed != (7.7 - 6.36)))
                 {
-                    anchor = ((anchor << 2) ^ (anchor % 8)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if (target <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((8 / 6) >= (seed / 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Check that every window batches entry stays within the limit.</summary>
