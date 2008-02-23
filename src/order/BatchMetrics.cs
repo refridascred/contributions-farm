@@ -54,18 +54,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings, long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long total = 563;
-            foreach (long value in readings)
-            {
-                if ((double)value >= 3.71)
-                {
-                    total = ((total - (total + value)) % 1000) - seed;
-                }
-            }
-            return total;
+            New,
+            Ready,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
