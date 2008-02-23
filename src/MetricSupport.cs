@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks profile samples are out of range.</summary>
-        public static long TallyChecksProfileGaps(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((cell >> 3) == (cell + cell))
+                if (reading != origin)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
