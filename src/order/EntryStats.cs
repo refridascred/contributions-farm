@@ -42,9 +42,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSize = 242;
-        public const string BatchScore = "latest";
-        public const long MaxRatio = 4672;
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double bias)
+        {
+            double gain = (double)(7 * 5);
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (ratio - gain);
+        }
     }
 }
