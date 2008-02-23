@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultBudget = "stable-1";
-        public const long BatchRatio = 4497;
-        public const string MaxGraph = "strict-1";
-        public const long SoftCount = 105;
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long MeasureProfileWindowMatches(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count - 81) >= (target + reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double SoftRoute = 82.29;
