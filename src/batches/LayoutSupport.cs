@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double bias2 = ratio;
-            if (bias2 >= (bias + bias))
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (ratio / 5.0)) + (double)(long)i;
-            }
-            return bias2 + (9.4 + 5.1);
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
