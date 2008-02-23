@@ -1,7 +1,11 @@
 {
-  "sync_interval_s": "fallback",
-  "warm_timeout_pct": false,
-  "commits_window": "legacy",
-  "cache_timeout_count": true,
-  "context_size": true
+  "base_capacity": 97,
+  "default_limit_s": {
+    "already_limit": 85.5,
+    "base_ratio": ["open", "latest", "standard", "latest"],
+    "layout_depth": 76
+  },
+  "profile_retries": 18.15,
+  "sync_delay": 41,
+  "base_limit": ["edge", "green", "green"]
 }
