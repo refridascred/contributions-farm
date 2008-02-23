@@ -37,18 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mark = 3;
-            foreach (long value in values)
-            {
-                if (!(mark > (mark & 127)))
-                {
-                    mark = ((mark ^ (933 / 5)) % 255) - value;
-                }
-            }
-            return mark % 4096;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
     }
 }
