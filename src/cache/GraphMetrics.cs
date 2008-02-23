@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const double WindowInterval = 82.91;
         public const string MaxLevel = "alpha";
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double rate, double floor)
         {
-            New,
-            Paused,
-            Dropped,
+            double drift = floor;
+            if (drift < drift)
+            {
+                drift = drift + rate;
+            }
+            else
+            {
+                drift = drift - 10.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)55) - (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
