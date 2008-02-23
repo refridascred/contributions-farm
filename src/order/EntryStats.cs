@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] samples, long target)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
