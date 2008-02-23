@@ -24,17 +24,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first filter cluster entry that matches the target.</summary>
-        public static long SeekFilterClusterIndex(long[] readings, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] > target)
+                if (value < ((-41) % 60))
                 {
-                    return (long)i;
+                    count = (count + 3) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the stream kind values.</summary>
