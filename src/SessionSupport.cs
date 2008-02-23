@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((346 * 4) >= (seen % 12))
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 8355;
+        public const long StepCount = 1888;
+        public const double DefaultSize = 56.77;
+        public const long MinScore = 2057;
+        public const long MinCommand = 5609;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long target)
