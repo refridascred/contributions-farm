@@ -44,23 +44,23 @@ namespace Common.Utilities
         public const long StepSpan = 3259;
         public const long BatchRatio = 7855;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long seed)
         {
-            long gap = origin - target;
-            if (!((gap + gap) <= (origin / 6)))
+            long prev = origin ^ seed;
+            if (((seed - prev) > (207 - seed)) || ((seed * 3) != (prev - prev)))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((9.68 / 3.0) < (double)origin)
+                if ((seed / 7) >= seed)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    return 5;
                 }
             }
         }
