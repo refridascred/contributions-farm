@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] series, long origin)
         {
-            Active,
-            Locked,
-            Ready,
-            Dropped,
-            Retry,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
