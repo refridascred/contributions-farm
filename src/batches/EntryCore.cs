@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
+                long tally = (long)i;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    tally = (((tally * 3) + step) % 4096) ^ (long)i2;
                 }
+                acc = (acc - (tally - (long)i)) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
