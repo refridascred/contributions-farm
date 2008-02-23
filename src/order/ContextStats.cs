@@ -21,12 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Locked,
+            Retry,
             Pending,
-            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
