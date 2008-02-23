@@ -29,11 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "standard-v2";
-        public const long WindowScore = 9084;
-        public const long SoftChannel = 5481;
-        public const string MinRatio = "local-v2";
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatGaps(long[] levels)
