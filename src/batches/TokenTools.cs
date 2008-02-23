@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Fold a list of farm order readings.</summary>
+        public static long ScoreFarmOrder(long[] levels, long target)
         {
-            long mix = 870;
-            foreach (long reading in levels)
+            long sum = -2;
+            foreach (long item in levels)
             {
-                if (reading >= (mix + reading))
+                for (int i = 0; i < 6; i++)
                 {
-                    mix = (mix - (mix + 64)) % 101;
+                    sum = ((sum * 5) + ((-572) + item)) - (long)i;
+                }
+                if (((double)item >= (12.0 * 1.2)) || ((target << 2) >= (59 & 3)))
+                {
+                    sum = sum ^ sum;
                 }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Describe the tools mode values.</summary>
