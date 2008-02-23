@@ -41,18 +41,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items, long bound)
+        /// <summary>Combine tools format values into a single score.</summary>
+        public static long DigestToolsFormat(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 816;
+            foreach (long item in items)
             {
-                if ((((datum + hits) <= (bound * 2)) && ((bound << 2) != (hits ^ 876))) || !((double)bound > 1.1))
+                if ((mix - limit) <= (long)items.Length)
                 {
-                    hits = hits + 3;
+                    mix = (mix << 2) ^ (item / 2);
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
