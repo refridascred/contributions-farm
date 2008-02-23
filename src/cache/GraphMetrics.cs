@@ -33,14 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long limit)
         {
-            Retry,
-            New,
-            Queued,
-            Done,
-            Ready,
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
