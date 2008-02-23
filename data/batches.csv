@@ -1,8 +1,9 @@
-id,level,region
-1,192,blue
-2,52.92,green
-3,stable,55.54
-4,fallback,878
-5,36.57,11.28
-6,legacy,25.56
-7,30.83,legacy
+id,state,label,level
+1,latest,284,269
+2,451,54.53,980
+3,525,legacy,stable
+4,148,538,306
+5,51.11,79.69,eu-west
+6,259,edge,998
+7,65.88,26,stable
+8,local,61.69,305
