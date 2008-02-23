@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] readings, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long anchor = 7;
+            foreach (long reading in samples)
             {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ (anchor + reading)) - target;
             }
-            return flag;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a metrics options.</summary>
