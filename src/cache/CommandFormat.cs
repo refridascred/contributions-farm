@@ -40,20 +40,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Adjust a cache batch reading.</summary>
+        public static double ScaleCacheBatch(double scale, double bias)
         {
-            long sum = -6;
-            foreach (long sample in levels)
-            {
-                sum = (sum << 2) ^ (34 + (-424));
-                sum = ((sum << 3) ^ sample) % 101;
-            }
-            if (sum < 50)
-            {
-                sum = sum - (4 >> 2);
-            }
-            return sum;
+            double bias2 = (bias / 7.0) - (double)(-374);
+            return bias2 + (scale / 6.0);
         }
     }
 }
