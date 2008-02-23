@@ -34,20 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] readings, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long result = 420;
-            foreach (long item in readings)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((result - 58) > (item - item))
+                result = (result << 2) ^ 0;
+                if ((16 + 14) > result)
                 {
-                    result = (result ^ result) % 255;
+                    result = (result + (result ^ 1)) % 65521;
                 }
-            }
-            if (result < 529)
-            {
-                result = result ^ (bound - bound);
+                else
+                {
+                    result = (result - floor) % 255;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
             return result;
         }
