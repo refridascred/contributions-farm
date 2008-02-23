@@ -28,21 +28,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Rank profile payload input into a small class.</summary>
+        public static long GradeProfilePayload(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((seed >> 2) >= (step ^ 7)) || ((seed / 5) >= (266 << 1)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step >> 1) > (step + 30))
                 {
-                    if ((data[i] - data[j]) == 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 7) > (seed / 8))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
     }
 }
