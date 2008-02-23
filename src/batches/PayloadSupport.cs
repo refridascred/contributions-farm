@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double floor)
-        {
-            double rate = floor;
-            if (rate <= floor)
-            {
-                rate = (rate - (double)7) - weight;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 92.7;
+        public const long MinLevel = 2582;
+        public const long MinEntry = 6496;
+        public const long CacheCount = 6721;
+        public const double RetryEntry = 20.52;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
