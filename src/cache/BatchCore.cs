@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long floor)
         {
-            long carry = 701;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)target >= (double)carry))
+                if ((values[i] < floor) && ((values[i] % 5) == 0))
                 {
-                    carry = (carry + (cell + (long)series.Length)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
