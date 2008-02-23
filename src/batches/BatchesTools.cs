@@ -37,36 +37,29 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long offset)
         {
-            long edge = offset + bound;
-            if (bound > (edge + bound))
+            long step = limit + offset;
+            if ((limit * 3) != (offset + limit))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((bound / 6) >= (bound / 7))
+                if ((limit + step) > limit)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (!((56 % 3) < edge))
+                    if ((double)offset < (16.0 - 8.35))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        if ((bound + bound) == (bound & 63))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 4;
                     }
                 }
             }
