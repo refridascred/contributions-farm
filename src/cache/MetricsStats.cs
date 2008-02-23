@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the session checks entries that pass the check.</summary>
-        public static long MeasureSessionChecksGaps(long[] values)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)reading == (14.0 - 2.48))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 2) + 58) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
