@@ -1,7 +1,14 @@
 {
-  "burst_size_pct": false,
-  "report_depth": false,
-  "order_ratio": "strict",
-  "persist": "standard",
-  "hard_retries_ms": "standard"
+  "readonly": 61.23,
+  "idle_interval": ["blue", "green", "primary", "primary"],
+  "default_capacity_count": {
+    "persist": "local",
+    "window_delay": "primary",
+    "retry_interval_ms": false,
+    "batch_threshold": [44, 3],
+    "retry_capacity": 8.38,
+    "layout_size": "edge"
+  },
+  "token_interval": 69.08,
+  "cache_capacity_s": "open"
 }
