@@ -23,13 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            New,
-            Idle,
-            Closed,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster stats.</summary>
