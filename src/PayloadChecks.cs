@@ -77,19 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] items, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (reading < seed)
+                if (sample > target)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
