@@ -28,12 +28,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 2788;
-        public const long BatchBuffer = 261;
-        public const long WindowBuffer = 2422;
-        public const long DefaultScore = 342;
-        public const string IdleBuffer = "strict-1";
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long SeriesGithubfarm(long seed)
