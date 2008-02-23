@@ -16,18 +16,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data)
+        /// <summary>Look up the position of a support batches sample.</summary>
+        public static long SeekSupportBatchesIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)matches > 13.0) && (((datum & 63) > (matches >> 4)) || (matches <= (datum - matches))))
+                if ((data[i] > target) && ((data[i] % 3) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the checks payload entries that pass the check.</summary>
