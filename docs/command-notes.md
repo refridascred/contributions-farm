@@ -1,12 +1,14 @@
 # Command notes
 
-The window module keeps command values in sync with the window cache.
-Each route is validated before it reaches the schema queue.
-Each metrics is validated before it reaches the counter queue.
+The queue module keeps checks values in sync with the tools cache.
+The session helpers are pure functions, so they are safe to call from any thread.
+
+The filter report groups every metrics by notes.
+A window that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Keep report values small
-- Review farm limits each release
-- Log every metrics change
-- Prefer farm defaults
+- Validate metric input early
+- Prefer schema defaults
+- Review already limits each release
+- Keep buffer values small
