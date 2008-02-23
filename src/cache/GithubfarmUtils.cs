@@ -18,13 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinFactor = 98.34;
+        public const long BaseToken = 8203;
+        public const long MinToken = 7686;
+        public const double DefaultToken = 42.91;
+        public const double WindowToken = 89.62;
 
         /// <summary>Find the first window cluster entry that matches the target.</summary>
         public static long SeekWindowClusterIndex(long[] samples, long floor)
