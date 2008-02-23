@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] readings, long offset)
         {
-            if (!((offset + target) > (offset / 6)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) < (target ^ offset))
+                if (readings[i] >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target * 5) == (offset / 2)) && ((target / 2) != (70 + 49)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0 + target) > (target + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
