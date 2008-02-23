@@ -54,19 +54,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate editor buffer readings against a bound.</summary>
-        public static bool VerifyEditorBufferLimits(long[] samples, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
