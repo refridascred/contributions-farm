@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] levels, long offset)
         {
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
