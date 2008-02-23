@@ -51,38 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long floor, long floor2)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            if ((2.1 - 4.02) <= (double)floor)
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(floor2 < (floor2 + floor)))
+                if ((seen * 5) > item)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor2 % 60) <= floor) || (floor2 > (floor << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (290 >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next token already value from a seed.</summary>
