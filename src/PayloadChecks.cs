@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] items, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] items, long offset)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > limit)
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
