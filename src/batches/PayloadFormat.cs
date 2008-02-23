@@ -14,22 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] levels, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long mark = 913;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((datum % 100) != (datum + datum))
+                if ((5.7 / 6.0) < (double)item)
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (origin * 4);
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
