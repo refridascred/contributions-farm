@@ -48,12 +48,11 @@ namespace Common.Utilities
         public const double CacheSchema = 5.91;
         public const string DefaultScore = "standard-1";
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
