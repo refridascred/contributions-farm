@@ -43,19 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] samples, long target)
         {
-            long score = 258;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = (((score * 2) + item) % 65521) - step;
-                if ((9.14 * 7.86) <= (double)(long)levels.Length)
+                if ((target + 950) > (long)samples.Length)
                 {
-                    score = score ^ (5 + score);
+                    count = (count + 2) - cell;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
