@@ -55,19 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            long state = 9;
-            foreach (long cell in values)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                state = (((state << 3) ^ (171 + state)) % 4096) ^ cell;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (state < 4)
-            {
-                state = (state * 3) + state;
-            }
-            return state;
+            return mix;
         }
     }
 }
