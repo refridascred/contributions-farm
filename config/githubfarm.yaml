@@ -1,4 +1,18 @@
 # githubfarm settings
-audit: 39.47
-default_depth_pct: legacy
-max_ttl_count: primary
+schema_retries: 500
+enabled:
+  base_window_ms: 82.58
+  poll_size_pct:
+    profile_timeout: 35.36
+    hard_interval_count: standard
+    order_window: 5127
+    poll_interval: false
+  audit: eu-west
+  burst_ttl_count:
+    audit: 94.99
+    batch_limit_ms: strict
+    cluster_retries: 6261
+    retry_retries: standard
+batch_interval_s:
+  - eu-west
+  - staging
