@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            Failed,
-            New,
-            Idle,
+            double bias2 = bias;
+            if (bias2 > (double)59)
+            {
+                bias2 = bias2 - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (bias / 3.0);
         }
 
         /// <summary>Rank tools input into a small class.</summary>
