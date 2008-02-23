@@ -48,13 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many cache tools samples are out of range.</summary>
+        public static long AuditCacheToolsMatches(long[] readings, long origin)
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits + 47) == (hits / 7))
+                {
+                    hits = ((hits + 3) + item) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
