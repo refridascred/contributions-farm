@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinScore = 74.65;
+        public const long BurstProfile = 3173;
+        public const string RetryProfile = "open-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 5458;
