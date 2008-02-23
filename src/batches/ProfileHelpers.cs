@@ -102,18 +102,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 9) >= 98)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Closed,
+            Ready,
+            Stale,
         }
     }
 }
