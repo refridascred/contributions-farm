@@ -1,34 +1,4 @@
 # githubfarm settings
-poll_window_count:
-  base_ratio: 90.37
-  verbose: false
-  min_depth_s: 43
-  base_depth_pct:
-    enabled: false
-    notes_ratio: 63
-    max_timeout_s: strict
-    flush_ratio_s: 71.37
-    hard_retries_count: 35.87
-    verbose: false
-  base_timeout:
-    - latest
-    - stable
-    - legacy
-    - green
-  warm_threshold: true
-channel_ttl:
-  persist:
-    default_size: standard
-    idle_ratio: true
-    dry_run: 84
-    flush_ttl_pct: latest
-    queue_ratio: true
-    warm_retries: 100
-  dry_run: false
-  filter_threshold:
-    - primary
-    - legacy
-    - legacy
-    - open
-  schema_limit: 2414
-dry_run: 64.52
+strict: 63.95
+burst_interval_ms: 24
+warm_threshold_ms: strict
