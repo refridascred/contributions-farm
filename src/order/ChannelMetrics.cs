@@ -33,38 +33,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long origin, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] readings, long seed)
         {
-            if ((origin ^ step) > (step ^ origin))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step % 97) != (origin - step))
+                if (((seed + item) <= (item >> 4)) || ((matches % 100) != ((-1) / 4)))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (((-4) > (step & 63)) || ((8.67 * 8.1) < (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin - step) <= step) && ((step + step) < (step % 16)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
