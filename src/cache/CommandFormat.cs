@@ -35,10 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 1.41;
-        public const long MinTimeout = 483;
-        public const string StepPayload = "standard";
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
