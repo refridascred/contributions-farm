@@ -1,13 +1,7 @@
 {
-  "tools_delay": {
-    "burst_threshold_count": "cached",
-    "flush_ttl_pct": "staging",
-    "burst_size_pct": 18,
-    "metrics_size": 57.27,
-    "flush_depth_s": 52.27
-  },
-  "soft_timeout_pct": "fallback",
-  "base_delay_ms": true,
-  "cluster_window": 69,
-  "editor_threshold": 9943
+  "poll_timeout_pct": false,
+  "enabled": 100,
+  "batch_ratio_s": 1374,
+  "order_retries": 2.88,
+  "burst_limit_ms": "stable"
 }
