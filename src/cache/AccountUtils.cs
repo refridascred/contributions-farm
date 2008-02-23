@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)entry < (5.8 + 0.2))
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
