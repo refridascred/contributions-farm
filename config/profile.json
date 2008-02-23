@@ -1,7 +1,6 @@
 {
-  "idle_depth": 500,
-  "counter_threshold": "fallback",
-  "max_depth": 7.11,
-  "layout_window": 60,
-  "default_delay": "fallback"
+  "audit": 21.6,
+  "queue_ratio": 8.23,
+  "already_delay": 250,
+  "batch_capacity_pct": "standard"
 }
