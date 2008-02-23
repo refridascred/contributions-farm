@@ -36,13 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Dropped,
-            New,
-            Active,
-            Draft,
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
