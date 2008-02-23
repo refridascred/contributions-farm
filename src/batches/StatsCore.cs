@@ -15,16 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                result = result ^ result;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
