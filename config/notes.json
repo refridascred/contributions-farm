@@ -1,12 +1,8 @@
 {
-  "stats_window": 5572,
-  "sync_interval": true,
-  "warm_capacity_pct": 27.72,
-  "default_limit": 44.35,
-  "min_window_ms": {
-    "batch_size_pct": "cached",
-    "min_ttl": "standard",
-    "warm_size": "staging"
-  },
-  "persist": 68
+  "batch_threshold_s": false,
+  "strict": true,
+  "buffer_depth": "primary",
+  "graph_size": false,
+  "poll_window_pct": true,
+  "sync_depth_ms": false
 }
