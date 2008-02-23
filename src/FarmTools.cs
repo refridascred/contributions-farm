@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell < (9.6 - 12.0))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
