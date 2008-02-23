@@ -39,12 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowInterval = 34.58;
-        public const double WindowWidth = 47.29;
-        public const long BatchGithubfarm = 5450;
-        public const long RetryGithubfarm = 9500;
-        public const long BatchBudget = 6605;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of support payload readings.</summary>
         public static long WeighSupportPayload(long[] data, long offset)
