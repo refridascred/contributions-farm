@@ -31,28 +31,13 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const double BatchFormat = 30.28;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] levels, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long mark = 63;
-            foreach (long reading in levels)
-            {
-                if ((bound >> 1) == ((long)levels.Length / 8))
-                {
-                    mark = ((mark << 2) ^ (10 % 8)) + reading;
-                    mark = ((mark * 4) + (mark << 3)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - bound) % 65521;
-                }
-                mark = (mark << 3) ^ 890;
-            }
-            if (mark > 4)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
+            New,
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a command summary.</summary>
