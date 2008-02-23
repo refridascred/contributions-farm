@@ -33,16 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream format series from a seed.</summary>
-        public static long SeriesStreamFormat(long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long step, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            if (((step % 10) > ((-956) & 255)) && ((seed << 2) >= (step - step)))
             {
-                mark = ((mark * 2) + ((long)i << 2)) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((7.0 * 3.2) >= (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed + seed) <= seed) || ((seed << 1) <= (seed / 9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(16 < (step + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context record.</summary>
