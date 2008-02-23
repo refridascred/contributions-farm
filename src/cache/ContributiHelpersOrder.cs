@@ -25,16 +25,13 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                state = state - (step ^ state);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Failed,
+            Pending,
+            Ready,
         }
     }
 }
