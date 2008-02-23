@@ -28,12 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix + bound) % 97;
+                if (mix > (bound >> 1))
+                {
+                    mix = mix + (mix * 5);
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
