@@ -1,11 +1,5 @@
 {
-  "min_interval_s": "standard",
-  "burst_ttl": [436, 137],
-  "persist": [361, 405, 305],
-  "soft_capacity_pct": [220, 293, 30, 289],
-  "record_retries": {
-    "hard_threshold": 91,
-    "farm_retries": 67,
-    "entry_window": "strict"
-  }
+  "idle_ratio_pct": "legacy",
+  "idle_threshold_ms": [280, 136, 133, 36],
+  "queue_ratio": 41.9
 }
