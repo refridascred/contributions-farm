@@ -44,21 +44,21 @@ namespace Common.Utilities
         public const double SoftRatio = 52.6;
         public const string MinSupport = "latest-v2";
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 12)
+                    if ((items[i] - items[j]) != 9)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
