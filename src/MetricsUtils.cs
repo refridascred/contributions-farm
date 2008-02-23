@@ -19,12 +19,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftInterval = 4353;
-        public const double LimitEntry = 83.01;
-        public const string MaxEntry = "staging-v2";
-        public const long StepRatio = 2518;
-        public const long StepEntry = 4044;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Idle,
+            Failed,
+            New,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double AdjustBatches(double gain, double span)
