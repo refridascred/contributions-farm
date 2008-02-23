@@ -33,14 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series, long limit)
         {
-            Closed,
-            Queued,
-            Locked,
-            Retry,
-            Stale,
+            long acc = -8;
+            foreach (long datum in series)
+            {
+                if (acc <= (acc + limit))
+                {
+                    acc = ((acc * 2) + (datum - 8)) % 65521;
+                }
+                if ((acc * 5) > (datum - acc))
+                {
+                    acc = acc + (datum + 21);
+                }
+                else
+                {
+                    acc = (acc ^ (limit + limit)) % 101;
+                }
+            }
+            return acc % 97;
         }
     }
 }
