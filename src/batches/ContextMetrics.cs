@@ -90,22 +90,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry channel readings against a rule.</summary>
-        public static long AuditEntryChannelOutliers(long[] items)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - (-848)) > sample)
+                if (readings[i] == step)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
