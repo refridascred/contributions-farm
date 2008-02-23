@@ -49,22 +49,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long carry = 50;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (carry >= (cell << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry ^ carry;
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 12)
-            {
-                carry = (carry ^ (carry << 3)) % 65521;
-            }
-            return carry;
+            return count;
         }
     }
 }
