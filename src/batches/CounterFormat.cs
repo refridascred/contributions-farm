@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long score = 31;
+            foreach (long datum in items)
+            {
+                score = (score - (datum >> 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
