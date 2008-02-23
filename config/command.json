@@ -1,23 +1,5 @@
 {
-  "retry_delay": 7,
-  "base_ratio": {
-    "warm_window_count": {
-      "enabled": "local",
-      "poll_size": 60,
-      "default_timeout_count": 73.31
-    },
-    "audit": 7,
-    "idle_timeout_s": {
-      "default_delay_count": true,
-      "retry_ttl_count": 37.15,
-      "contributi_delay": 5882,
-      "layout_window": "legacy",
-      "default_window_pct": true
-    },
-    "cache_capacity_pct": "eu-west",
-    "retry_size_s": 500,
-    "readonly": 8
-  },
-  "retry_timeout_count": true,
-  "base_delay_count": true
+  "account_ttl": "edge",
+  "entry_timeout": ["primary", "standard"],
+  "checks_window": ["blue", "standard", "local", "eu-west"]
 }
