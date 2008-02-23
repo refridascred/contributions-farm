@@ -53,31 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long step, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            if ((floor + 52) >= (step + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + floor) < 316)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor ^ 553) <= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of payload entries.</summary>
