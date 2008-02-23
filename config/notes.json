@@ -1,12 +1,8 @@
 {
-  "readonly": {
-    "default_size_s": 0.69,
-    "compress": "local",
-    "persist": "local",
-    "stats_depth": 30
-  },
-  "context_ttl": 15.78,
-  "cache_delay": "latest",
-  "persist": ["stable", "cached", "primary"],
-  "metric_limit": 30
+  "burst_limit_count": ["green", "staging"],
+  "persist": "fallback",
+  "base_interval_ms": "standard",
+  "cache_delay": 54.39,
+  "soft_retries": 5,
+  "enabled": "edge"
 }
