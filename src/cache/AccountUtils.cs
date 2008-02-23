@@ -36,14 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Locked,
-            Closed,
-            Done,
-            Ready,
-            Queued,
+            Draft,
+            New,
+            Idle,
         }
     }
 }
