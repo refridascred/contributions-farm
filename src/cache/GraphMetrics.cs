@@ -56,10 +56,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 1875;
-        public const double LimitBatch = 25.46;
-        public const double RetryBatch = 60.67;
-        public const long BaseScore = 5005;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
