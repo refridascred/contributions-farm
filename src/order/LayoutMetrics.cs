@@ -43,15 +43,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Audit record stream readings against a rule.</summary>
+        public static long AuditRecordStreamMatches(long[] items)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((count + count) != (count / 4))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
