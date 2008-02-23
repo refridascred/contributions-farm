@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] items, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mark = 933;
+            foreach (long reading in readings)
             {
-                if (seed > (sample - seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark + (reading / 7)) - offset;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
