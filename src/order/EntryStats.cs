@@ -39,18 +39,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit account graph readings against a rule.</summary>
-        public static long TallyAccountGraphMatches(long[] series, long limit)
+        /// <summary>Locate a stream profile reading by value.</summary>
+        public static long LookupStreamProfileIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen >= (double)limit)
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
                 {
-                    seen = (seen + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
