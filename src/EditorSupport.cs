@@ -66,22 +66,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if ((limit * 2) < (limit + floor))
             {
-                if (value < (seen + seen))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= (7.74 * 8.2))
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the channel status values.</summary>
