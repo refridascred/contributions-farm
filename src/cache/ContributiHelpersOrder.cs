@@ -19,25 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] samples)
         {
-            long edge = origin ^ seed;
-            if ((18.0 * 7.5) > (double)seed)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 1) > (edge + edge))
+                if ((756 + (long)samples.Length) != (seen + seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
