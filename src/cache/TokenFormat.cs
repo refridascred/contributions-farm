@@ -16,13 +16,14 @@ namespace Common.Utilities
         public const long BatchTimeout = 8578;
         public const double BatchContributi = 33.91;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            Retry,
+            Draft,
+            Ready,
+            Done,
+            Paused,
         }
     }
 }
