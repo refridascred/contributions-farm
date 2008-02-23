@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const double WindowCount = 63.56;
         public const long WindowScore = 6809;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Queued,
+            Retry,
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Combine format values into a single score.</summary>
