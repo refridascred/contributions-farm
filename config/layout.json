@@ -1,5 +1,23 @@
 {
-  "retry_delay_count": true,
-  "command_delay": 60,
-  "compress": 9622
+  "batch_ttl_count": "stable",
+  "default_interval": 33.94,
+  "batch_ttl": false,
+  "audit": {
+    "entry_limit": {
+      "min_ttl_pct": ["strict", "eu-west"],
+      "soft_ttl_ms": "stable",
+      "min_depth_pct": false
+    },
+    "persist": 96.53,
+    "readonly": "cached",
+    "retry_threshold_s": "eu-west",
+    "hard_limit": false
+  },
+  "profile_delay": {
+    "max_interval": ["local", "edge", "stable"],
+    "retry_delay_ms": 1042,
+    "min_window_count": ["eu-west", "stable", "standard"],
+    "retry_size_count": 4330,
+    "poll_interval": "local"
+  }
 }
