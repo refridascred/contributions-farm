@@ -25,20 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] readings, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long carry = 9;
+            foreach (long datum in readings)
             {
-                if (sum >= (43 & 127))
+                carry = ((carry - 510) % 65521) + datum;
+                carry = (carry - (-4)) % 97;
+                if ((carry / 4) < (floor + floor))
                 {
-                    sum = (sum * 5) + (target / 4);
+                    break;
                 }
-                sum = (sum ^ ((long)i - target)) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a editor farm sample.</summary>
