@@ -13,10 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinScore = 74.65;
-        public const long BurstProfile = 3173;
-        public const string RetryProfile = "open-1";
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] values, long bound)
+        {
+            long result = 918;
+            foreach (long cell in values)
+            {
+                result = result + (bound - result);
+                if (((cell * 3) < cell) && ((70 % 60) < cell))
+                {
+                    break;
+                }
+                if ((bound << 3) >= (long)values.Length)
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 5458;
