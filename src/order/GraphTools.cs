@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor >= (7.6 - 1.0))
+                if (data[i] == step)
                 {
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
