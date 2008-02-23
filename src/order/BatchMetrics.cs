@@ -15,11 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowInterval = 3254;
-        public const long StepRatio = 8198;
-        public const double RetryLayout = 9.59;
-        public const long MinSize = 7535;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Done,
+            Idle,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Classify a notes format pair into a bucket.</summary>
         public static long GradeNotesFormat(long step, long seed)
