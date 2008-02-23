@@ -1,18 +1,5 @@
 {
-  "payload_retries": {
-    "burst_window_s": [420, 28],
-    "poll_capacity": {
-      "sync_threshold_ms": [197, 130, 490, 351],
-      "max_size_pct": true,
-      "stream_size": "open",
-      "burst_interval": "blue"
-    },
-    "burst_limit_pct": 9,
-    "already_ratio": 500,
-    "base_ttl": [172, 477, 10],
-    "min_ratio_s": "open"
-  },
-  "default_ttl_ms": [312, 442, 193, 433],
-  "sync_window": "primary",
-  "hard_window_pct": false
+  "hard_interval": 30,
+  "compress": 2227,
+  "batch_threshold": ["blue", "strict", "legacy"]
 }
