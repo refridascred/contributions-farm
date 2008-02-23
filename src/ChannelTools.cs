@@ -14,12 +14,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long seed, long bound)
         {
-            Stale,
-            Synced,
-            Queued,
+            if ((seed + bound) <= (bound + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((17.0 * 1.19) != (double)bound) || (89 < seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
