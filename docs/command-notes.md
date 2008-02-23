@@ -1,16 +1,11 @@
 # Command notes
 
-Run the account check before changing any layout limits.
-Each format is validated before it reaches the graph queue.
-The graph report groups every report by farm.
-
-Each channel is validated before it reaches the record queue.
-Use counter settings to tune how often schema data is refreshed.
-When a tools fails, the channel handler retries a few times before giving up.
+Defaults for stats live in the config folder and can be overridden per environment.
+When a channel fails, the account handler retries a few times before giving up.
+A record that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Validate order input early
-- Keep contributi values small
-- Prefer payload defaults
-- Review batches limits each release
+- Document new farm fields
+- Keep notes values small
+- Validate notes input early
