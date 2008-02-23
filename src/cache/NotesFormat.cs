@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultCount = 65.55;
-        public const long BatchWindow = 5571;
-        public const long BaseWindow = 3992;
-        public const long BurstWidth = 6015;
-        public const long MaxWindow = 6888;
+        /// <summary>Count the tools window entries that pass the check.</summary>
+        public static long TallyToolsWindowOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (tally >> 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphMatches(long[] data, long seed)
