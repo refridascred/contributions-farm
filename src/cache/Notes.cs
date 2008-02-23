@@ -43,18 +43,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] data, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits - hits) >= (step % 7))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
