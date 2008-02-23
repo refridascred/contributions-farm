@@ -1,9 +1,8 @@
-id,label,ratio,region,score
-1,643,67.57,stable,72.84
-2,edge,edge,fallback,local
-3,green,177,green,564
-4,56.41,71.74,green,64.49
-5,cached,standard,67.56,836
-6,13.23,84.22,1.71,74
-7,560,local,15.67,88.72
-8,948,latest,blue,39.17
+id,level,rank,token,count
+1,staging,794,422,540
+2,797,816,429,128
+3,563,762,primary,965
+4,1.37,898,851,42.09
+5,438,509,70.42,448
+6,91.11,223,15.68,658
+7,blue,35.56,strict,93.05
