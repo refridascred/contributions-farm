@@ -1,11 +1,14 @@
 # Command notes
 
-Keep entry and already names short and lowercase.
-Each stats is validated before it reaches the report queue.
+Run the tools check before changing any channel limits.
+A context that stays idle for too long is moved to the entry list.
+
+The already module keeps stream values in sync with the githubfarm cache.
+When a context fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep farm values small
-- Validate payload input early
-- Document new entry fields
-- Review commits limits each release
+- Document new command fields
+- Review command limits each release
+- Keep order values small
+- Log every channel change
