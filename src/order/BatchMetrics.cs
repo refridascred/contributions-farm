@@ -61,23 +61,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] data, long step)
         {
-            double ratio = floor;
-            if (ratio >= ratio)
+            long hits = 0;
+            foreach (long item in data)
             {
-                ratio = ratio - (double)6;
+                if ((item >> 5) > (step ^ item))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)52;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + gain;
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
