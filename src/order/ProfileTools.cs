@@ -66,14 +66,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Draft,
-            Closed,
-            Dropped,
-            Done,
-            Retry,
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
