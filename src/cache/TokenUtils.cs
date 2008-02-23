@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the session layout entries that pass the check.</summary>
-        public static long TallySessionLayoutMatches(long[] data, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (floor < (166 + floor))
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Digest a series of filter stream entries.</summary>
