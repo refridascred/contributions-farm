@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] series, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (reading < origin)
+                if ((((cell + count) < (cell - cell)) || ((double)(long)readings.Length < (4.0 * 9.9))) || ((85 + count) != (count << 2)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
