@@ -62,21 +62,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = floor - step;
+            if ((offset - floor) <= 959)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (10.0 > (double)floor)
                 {
-                    if ((readings[i] - readings[j]) == 5)
+                    return 4;
+                }
+                else
+                {
+                    if (((-7) + step) < (offset & 15))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
     }
 }
