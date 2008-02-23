@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if (floor <= (floor * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor <= 6.66) && (floor <= (floor ^ offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset - offset) < (95 - floor)) || ((double)offset < (5.3 * 2.3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7 - floor) != (offset ^ offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate channel githubfarm samples.</summary>
