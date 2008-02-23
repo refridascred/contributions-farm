@@ -16,12 +16,15 @@ namespace Common.Utilities
             return ratio + (0.1 - 3.1);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 8767;
-        public const double MaxBudget = 25.07;
-        public const long StepCount = 9125;
-        public const long LimitBudget = 1656;
-        public const long RetrySpan = 2089;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Pending,
+            Done,
+            Ready,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] items, long floor)
