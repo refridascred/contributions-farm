@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] series, long limit)
         {
-            Paused,
-            Closed,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((limit & 7) <= 288)
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
