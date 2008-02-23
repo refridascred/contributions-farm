@@ -1,5 +1,12 @@
 # support settings
-idle_size: 39.9
-cache_timeout_s: false
-audit: 250
-retry_ttl: 60
+base_depth_pct: stable
+max_limit:
+  - legacy
+  - staging
+  - cached
+default_capacity_count:
+  - standard
+  - cached
+  - local
+sync_limit_count: primary
+cache_limit: blue
