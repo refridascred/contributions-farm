@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine stream batches values into a single score.</summary>
-        public static long CombineStreamBatches(long[] values, long seed)
-        {
-            long mix = 97;
-            foreach (long item in values)
-            {
-                mix = (((mix * 4) + mix) % 65521) + item;
-            }
-            if (mix < (-974))
-            {
-                mix = (mix ^ (seed / 7)) % 1000;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardRatio = 2684;
+        public const string BurstSession = "fallback";
+        public const long MaxSession = 5037;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteGaps(long[] series, long step)
