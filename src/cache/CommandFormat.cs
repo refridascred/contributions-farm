@@ -32,12 +32,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Idle,
+            Ready,
             Stale,
             Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
