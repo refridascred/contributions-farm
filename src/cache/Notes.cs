@@ -43,39 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] series, long step)
         {
-            long step = bound + target;
-            if ((target / 5) <= target)
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target == (0.6 - 3.01))
+                if (step <= sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound >= (bound + 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)step >= (3.48 * 6.8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
