@@ -18,15 +18,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] data, long floor)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long entry in data)
             {
-                if (matches > (reading % 24))
+                if ((floor << 1) < floor)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) - entry;
                 }
             }
             return matches;
