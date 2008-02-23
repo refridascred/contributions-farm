@@ -85,21 +85,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report command readings.</summary>
-        public static long MatchReportCommandCount(long[] values)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((2.59 + 4.5) < (double)bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((double)limit != (2.7 * 6.65)) && ((double)bound < (9.49 * 2.59)))
                 {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
