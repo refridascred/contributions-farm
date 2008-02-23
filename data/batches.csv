@@ -1,11 +1,6 @@
-id,region,rank
-1,strict,63.85
-2,541,standard
-3,892,70
-4,17,55.18
-5,15,47.53
-6,95.71,97.9
-7,78.06,74
-8,standard,cached
-9,strict,72.03
-10,44.92,87.05
+id,rank,owner,active
+1,green,232,742
+2,open,76.15,643
+3,29.55,124,114
+4,standard,blue,55.96
+5,fallback,547,open
