@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue primary strict edge; do
+for item in cached staging open latest; do
     log "checking ${item}"
 done
