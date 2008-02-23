@@ -1,7 +1,8 @@
-id,level,active
-1,strict,blue
-2,primary,350
-3,fallback,91.51
-4,latest,880
-5,318,legacy
-6,818,65.86
+id,ratio,rank,label
+1,71,local,primary
+2,595,edge,307
+3,57,61,749
+4,169,edge,23.11
+5,45.67,green,19.54
+6,292,892,13.63
+7,87.63,local,51.91
