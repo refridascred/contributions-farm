@@ -1,14 +1,10 @@
 {
-  "readonly": 61.23,
-  "idle_interval": ["blue", "green", "primary", "primary"],
-  "default_capacity_count": {
-    "persist": "local",
-    "window_delay": "primary",
-    "retry_interval_ms": false,
-    "batch_threshold": [44, 3],
-    "retry_capacity": 8.38,
-    "layout_size": "edge"
+  "burst_capacity_pct": {
+    "audit": 65.95,
+    "metric_depth": 4683,
+    "flush_delay_count": false
   },
-  "token_interval": 69.08,
-  "cache_capacity_s": "open"
+  "burst_limit_ms": 250,
+  "graph_threshold": "legacy",
+  "default_ratio": 8046
 }
