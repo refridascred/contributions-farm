@@ -39,12 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
