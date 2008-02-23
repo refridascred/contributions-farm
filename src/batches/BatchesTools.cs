@@ -40,13 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long target, long step)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            if (step >= (target * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target < (step << 2)) && ((step + target) < (target + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (step * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi status values.</summary>
