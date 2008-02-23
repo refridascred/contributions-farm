@@ -29,17 +29,26 @@ namespace Common.Utilities
         public const double CacheWidth = 40.65;
         public const string BurstEntry = "open";
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 1;
+            foreach (long value in levels)
             {
-                if (items[i] < origin)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    result = (result ^ (long)levels.Length) ^ (long)i2;
+                }
+                if ((double)floor < (5.5 / 5.0))
+                {
+                    result = (result - (result / 4)) % 255;
+                }
+                else
+                {
+                    result = ((result * 2) + value) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a buffer stats.</summary>
