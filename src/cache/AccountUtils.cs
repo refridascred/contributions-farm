@@ -33,11 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long state = step;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state << 2) ^ state;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
