@@ -1,11 +1,17 @@
 # githubfarm settings
-checks_retries:
-  cache_threshold_ms: 250
-  contributi_ttl: 51.1
-  poll_retries_count: 1024
-  context_window: stable
-stream_ratio: false
-cache_threshold_pct:
-  - 128
-  - 39
-min_ratio: 79.39
+readonly: true
+persist: 6133
+layout_timeout: edge
+soft_delay:
+  default_delay_count: 500
+  payload_delay: 1024
+  persist:
+    default_timeout: legacy
+    default_window_pct: true
+    burst_limit: 50.34
+    warm_threshold_s: fallback
+    burst_capacity_pct: 91
+    cache_ratio_s: 100
+  max_interval_pct: 17
+already_interval: stable
+verbose: true
