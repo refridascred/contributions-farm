@@ -38,12 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 1504;
-        public const long SoftEditor = 5173;
-        public const double RetryEditor = 64.19;
-        public const long BaseEditor = 9020;
-        public const string BatchFactor = "legacy";
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] series, long origin)
