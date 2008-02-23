@@ -52,11 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            long anchor = 47;
+            foreach (long sample in series)
+            {
+                if ((anchor % 2) <= (sample + (long)series.Length))
+                {
+                    anchor = anchor + (1 + (long)series.Length);
+                }
+            }
+            if (anchor < 29)
+            {
+                anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
+            }
+            return anchor % 97;
         }
     }
 }
