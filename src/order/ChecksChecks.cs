@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] items, long bound)
+        /// <summary>Locate a cluster profile reading by value.</summary>
+        public static long LocateClusterProfileIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (21 <= (sample - sample))
+                if ((data[i] < seed) && ((data[i] % 2) == 0))
                 {
-                    tally = (tally + 1) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
