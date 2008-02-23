@@ -1,6 +1,5 @@
 # entry settings
-context_window: 60
-dry_run: 1041
-commits_capacity: 77.53
-audit: blue
-cache_depth: fallback
+readonly: local
+base_ttl_count: latest
+base_capacity: 77
+burst_timeout_pct: edge
