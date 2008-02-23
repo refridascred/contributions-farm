@@ -59,9 +59,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 25;
-        public const long HardAlready = 4619;
-        public const long BurstSpan = 6900;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
