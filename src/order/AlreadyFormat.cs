@@ -31,15 +31,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double ratio = 5.9;
-            if (ratio <= bias2)
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + bias;
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the tools status values.</summary>
