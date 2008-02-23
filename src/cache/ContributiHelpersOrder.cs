@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "alpha-1";
-        public const double DefaultProfile = 73.69;
-        public const double RetryInterval = 10.93;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double bias, double offset)
