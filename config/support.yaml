@@ -1,6 +1,14 @@
 # support settings
-max_ratio_count: 58.43
-base_ttl: true
-batches_ttl: false
-readonly: 30
-poll_ttl_pct: 23.08
+token_depth: primary
+flush_ttl_count:
+  session_timeout: 9246
+  notes_ratio: 63
+  batch_window_s: 12.09
+  report_ttl: eu-west
+warm_capacity:
+  idle_ratio_s: 1906
+  profile_limit: 65
+  token_ratio: 18
+soft_threshold_ms: 8698
+default_ttl: blue
+batch_threshold: strict
