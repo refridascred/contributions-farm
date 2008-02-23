@@ -29,20 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel schema samples.</summary>
-        public static long CombineChannelSchema(long[] samples)
-        {
-            long mix = 813;
-            foreach (long sample in samples)
-            {
-                mix = (((mix * 3) + (3 * 5)) % 97) ^ sample;
-            }
-            if (mix < 27)
-            {
-                mix = (mix - (mix % 12)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 2769;
+        public const long BaseInterval = 3430;
+        public const long HardStats = 131;
+        public const long WindowStats = 1061;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long target, long origin)
