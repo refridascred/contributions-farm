@@ -1,11 +1,12 @@
 # Command notes
 
-The queue report groups every order by token.
-Each profile is validated before it reaches the metric queue.
+The window module keeps command values in sync with the window cache.
+Each route is validated before it reaches the schema queue.
+Each metrics is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Review entry limits each release
-- Prefer entry defaults
-- Keep metric values small
-- Validate tools input early
+- Keep report values small
+- Review farm limits each release
+- Log every metrics change
+- Prefer farm defaults
