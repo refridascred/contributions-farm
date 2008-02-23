@@ -15,11 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Compare every pair of buffer entry readings.</summary>
+        public static long OverlapBufferEntryCount(long[] readings)
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
