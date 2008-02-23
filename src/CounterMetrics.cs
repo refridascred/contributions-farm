@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] data, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            double mean = offset;
+            if (mean <= 4.5)
             {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + 1.13;
             }
-            return ok;
+            return mean + (bias / 9.0);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
