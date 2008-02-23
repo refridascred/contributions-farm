@@ -50,14 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Iterate the queue report series from a seed.</summary>
+        public static long DeriveQueueReport(long offset)
         {
-            Ready,
-            Done,
-            Idle,
-            Failed,
-            New,
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                result = result ^ (41 + result);
+                result = result ^ (offset + offset);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Project the next already value.</summary>
