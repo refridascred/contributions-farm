@@ -1,6 +1,6 @@
-id,score,owner,count
-1,67,183,strict
-2,533,556,blue
-3,edge,550,cached
-4,677,78.89,89.22
-5,standard,54.51,996
+id,state,score,count,rank
+1,360,35,standard,213
+2,eu-west,66.84,edge,536
+3,33.49,local,blue,blue
+4,edge,42.23,primary,868
+5,544,19,staging,600
