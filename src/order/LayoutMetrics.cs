@@ -14,39 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long offset)
+        /// <summary>Count editor record pairs that satisfy a relation.</summary>
+        public static long OverlapEditorRecordCount(long[] values)
         {
-            long cur = step + offset;
-            if ((64 < (cur - cur)) && ((cur ^ cur) < (106 + cur)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur % 10) <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((98 + 82) < (7 - cur))
+                    if ((values[i] + values[j]) > 19)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset >= cur) && (step < cur))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
