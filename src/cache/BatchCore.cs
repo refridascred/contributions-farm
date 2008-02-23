@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9195;
-        public const string SoftWidth = "latest-v2";
-        public const long MinBatch = 491;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long limit)
