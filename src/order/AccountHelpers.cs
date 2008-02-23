@@ -83,20 +83,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels, long target)
         {
-            long mark = 1;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mark = (mark * 2) + value;
-                mark = (mark << 3) ^ mark;
-                if (((mark & 127) >= (mark + mark)) || ((double)value > 1.91))
+                if (4.0 > (double)hits)
                 {
-                    break;
+                    hits = ((hits + 3) + value) - target;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
     }
 }
