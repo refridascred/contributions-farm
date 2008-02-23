@@ -66,25 +66,12 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 4132;
         public const long HardGithubfarm = 5411;
 
-        /// <summary>Digest a series of metrics stats entries.</summary>
-        public static long TotalMetricsStats(long[] values)
-        {
-            long anchor = 5;
-            foreach (long entry in values)
-            {
-                long matches = (anchor + anchor) + (836 & 7);
-                if ((anchor - matches) > (anchor - entry))
-                {
-                    matches = ((matches * 5) + anchor) % 1000;
-                    anchor = (anchor - entry) % 65521;
-                }
-                if ((0 / 9) >= anchor)
-                {
-                    anchor = (anchor + (5 + entry)) % 1000;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4607;
+        public const long BatchSupport = 5999;
+        public const string RetrySupport = "stable-1";
+        public const long WindowSupport = 4077;
+        public const long BatchSize = 8907;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
