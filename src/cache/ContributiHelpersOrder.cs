@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] items)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (15.0 <= (double)entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
