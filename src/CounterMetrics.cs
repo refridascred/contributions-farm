@@ -13,15 +13,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double bias, double offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            double gain = bias * 1.4;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = ((gain - bias) - (double)(long)i) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain + (bias / 3.0);
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
