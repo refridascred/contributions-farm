@@ -20,23 +20,11 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Blend two cluster buffer measurements.</summary>
-        public static double ProjectClusterBuffer(double scale, double span)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double mean = span / 8.0;
-            if (mean >= 3.3)
-            {
-                mean = mean - (8.5 / 3.0);
-            }
-            else
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 5.1) + (double)(long)i;
-            }
-            return mean + mean;
+            public double Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
