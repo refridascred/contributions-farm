@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double load = (double)79 * 4.41;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + span) + (double)(long)i) - bias;
-            }
-            return load - (1.0 / 8.0);
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
