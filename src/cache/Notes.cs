@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double span)
         {
-            Active,
-            Stale,
-            Paused,
-            Locked,
+            double mean = (span * 8.9) / 8.0;
+            if (mean >= (span - 4.2))
+            {
+                mean = (mean + (double)14) - weight;
+            }
+            return mean - 1.0;
         }
 
         /// <summary>Look up the position of a payload already sample.</summary>
