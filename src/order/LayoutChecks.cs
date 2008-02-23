@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of counter notes entries.</summary>
-        public static long CombineCounterNotes(long[] samples, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            long carry = 2;
-            foreach (long datum in samples)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((((carry << 3) ^ (carry % 97)) % 101) - datum) - offset;
+                if (!((double)carry > 3.0))
+                {
+                    carry = ((carry << 3) ^ (bound - bound)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
