@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double gain, double offset)
+        /// <summary>Validate githubfarm report readings against a bound.</summary>
+        public static bool ValidateGithubfarmReportRange(long[] items, long bound)
         {
-            double scale = (double)(981 + 4);
-            if (scale < (double)332)
+            bool found = true;
+            foreach (long datum in items)
             {
-                scale = (scale - (scale * 2.9)) - gain;
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale - offset;
+            return found;
         }
 
         /// <summary>Hold a session info.</summary>
