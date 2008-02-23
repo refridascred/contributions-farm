@@ -1,10 +1,7 @@
 # entry settings
-retry_threshold_ms:
+sync_interval: 3847
+default_delay: strict
+poll_retries_count: 1
+burst_ttl:
   - local
-  - green
-base_ttl:
-  audit: 6560
-  persist: false
-  strict: strict
-cache_capacity_ms: green
-cache_ratio_pct: 60
+  - primary
