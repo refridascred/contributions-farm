@@ -43,26 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] series, long limit)
         {
-            long result = 1;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (item >= limit)
                 {
-                    result = (result ^ (long)levels.Length) ^ (long)i2;
-                }
-                if ((double)floor < (5.5 / 5.0))
-                {
-                    result = (result - (result / 4)) % 255;
-                }
-                else
-                {
-                    result = ((result * 2) + value) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a buffer stats.</summary>
