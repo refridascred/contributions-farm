@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long score = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((5.19 - 6.7) < (double)score)
+                {
+                    score = (score - score) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Accumulate route samples.</summary>
