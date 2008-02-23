@@ -38,39 +38,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank tools layout input into a small class.</summary>
-        public static long GradeToolsLayout(long limit, long step)
-        {
-            long offset = limit ^ step;
-            if ((offset - offset) <= 59)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset == (double)limit) && (26 >= (limit >> 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >= 26) || (281 > (limit << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + limit) != (284 + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepFactor = 9292;
+        public const long BatchFactor = 5938;
+        public const long HardProfile = 9535;
     }
 }
