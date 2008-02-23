@@ -42,12 +42,11 @@ namespace Common.Utilities
         public const long BatchRecord = 2298;
         public const long MaxLevel = 7157;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepRatio = 7868;
+        public const long RetrySchema = 3096;
+        public const double CacheSchema = 5.91;
+        public const string DefaultScore = "standard-1";
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
