@@ -37,17 +37,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 2;
+            foreach (long cell in readings)
             {
-                if (items[i] < limit)
+                carry = (carry - cell) % 97;
+                carry = (carry - cell) % 97;
+                if ((4 * 4) > (carry % 5))
                 {
-                    return (long)i;
+                    carry = carry + (carry % 64);
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
