@@ -40,18 +40,19 @@ namespace Common.Utilities
             return drift - (drift - span);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels)
+        /// <summary>Iterate the payload filter series from a seed.</summary>
+        public static long SeriesPayloadFilter(long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen * 4) == (item & 127))
+                if ((-34) > (anchor & 7))
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor * 3) + (anchor >> 5)) % 1000;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
