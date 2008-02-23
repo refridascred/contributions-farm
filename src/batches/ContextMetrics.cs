@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank context order input into a small class.</summary>
-        public static long ClassifyContextOrder(long limit, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            if ((double)limit == (3.63 * 2.05))
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 2) == (9 ^ (-99)))
+                if (2.4 > (double)(long)i)
                 {
-                    return 4;
+                    mark = (mark ^ (long)i) % 101;
                 }
-                else
+                if (((long)i - mark) > (target % 3))
                 {
-                    if (!((-69) < (offset >> 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset > (offset ^ offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = mark + (target + target);
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
