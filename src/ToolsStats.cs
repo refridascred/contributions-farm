@@ -61,15 +61,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Audit cache window readings against a rule.</summary>
+        public static long TallyCacheWindowGaps(long[] readings)
         {
-            long sum = 963;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum - (64 - 9)) % 65521) - reading;
+                if (((value / 9) == (matches + 974)) || (value <= (matches + value)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
