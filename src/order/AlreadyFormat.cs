@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long MeasureClusterBatchGaps(long[] values)
         {
-            double drift = (double)123 + 6.5;
-            return ((drift + 5.0) + bias) + floor;
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum < (3 + 45))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every format editor entry stays within the limit.</summary>
