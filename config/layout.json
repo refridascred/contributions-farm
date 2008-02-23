@@ -1,6 +1,5 @@
 {
-  "batch_ttl": "local",
-  "dry_run": ["eu-west", "open"],
-  "min_limit_count": 6922,
-  "profile_window": 170
+  "audit": "local",
+  "sync_retries_count": 4055,
+  "flush_interval_count": true
 }
