@@ -1,6 +1,11 @@
-id,rank,owner,active
-1,green,232,742
-2,open,76.15,643
-3,29.55,124,114
-4,standard,blue,55.96
-5,fallback,547,open
+id,state,rank,token
+1,92.49,3.7,20.45
+2,edge,19.21,standard
+3,legacy,42.98,181
+4,210,strict,green
+5,23.62,995,138
+6,57.46,eu-west,legacy
+7,fallback,194,764
+8,open,436,983
+9,85.92,415,stable
+10,80,657,28.1
