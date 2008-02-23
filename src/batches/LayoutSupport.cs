@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardInterval = "fallback-edge";
-        public const string WindowGithubfarm = "staging-1";
-        public const double IdleScore = 61.77;
-        public const double MaxSize = 45.57;
-        public const long MaxLevel = 776;
+        /// <summary>Measure how many editor already samples are out of range.</summary>
+        public static long MeasureEditorAlreadyGaps(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length - item) < (limit + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double gain, double offset)
