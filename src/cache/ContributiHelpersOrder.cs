@@ -30,18 +30,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] levels)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits == (18.0 + 7.7))
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
                 {
-                    hits = (hits + 2) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
