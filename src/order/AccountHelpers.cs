@@ -70,15 +70,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] items, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data)
         {
-            long anchor = 414;
-            foreach (long value in items)
+            long mark = 1;
+            foreach (long value in data)
             {
-                anchor = (((anchor - (577 ^ anchor)) % 101) ^ value) + limit;
+                mark = (mark * 2) + value;
+                mark = (mark << 3) ^ mark;
+                if (((mark & 127) >= (mark + mark)) || ((double)value > 1.91))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mark % 65521;
         }
     }
 }
