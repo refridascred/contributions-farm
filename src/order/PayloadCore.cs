@@ -41,18 +41,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit order report readings against a rule.</summary>
-        public static long MeasureOrderReportHits(long[] samples)
+        /// <summary>Check that every report account entry stays within the limit.</summary>
+        public static bool ValidateReportAccountRange(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((reading >> 3) == (reading * 4))
+                if (value <= step)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
