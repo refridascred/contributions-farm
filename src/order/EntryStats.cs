@@ -39,12 +39,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
