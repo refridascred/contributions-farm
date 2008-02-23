@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a cluster profile reading by value.</summary>
-        public static long LocateClusterProfileIndex(long[] data, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] < seed) && ((data[i] % 2) == 0))
+                if (((tally + tally) > step) && ((double)step <= (3.3 - 1.65)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a window filter figure with a bias.</summary>
