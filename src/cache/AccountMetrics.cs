@@ -32,10 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 33.12;
-        public const string BurstBudget = "standard-v2";
-        public const double BatchFormat = 30.28;
+        /// <summary>Check that every context account entry stays within the limit.</summary>
+        public static bool CheckContextAccountRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double HardSize = 83.41;
