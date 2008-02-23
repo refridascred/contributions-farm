@@ -45,19 +45,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data, long floor)
+        /// <summary>Count the tools schema entries that pass the check.</summary>
+        public static long CountToolsSchemaHits(long[] items, long origin)
         {
-            long anchor = 78;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                anchor = (anchor + (entry / 2)) % 1000;
-                if ((double)floor <= (1.99 / 8.0))
+                if ((seen - reading) > seen)
                 {
-                    break;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
