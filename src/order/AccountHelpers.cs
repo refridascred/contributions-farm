@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command cache entries.</summary>
-        public static long TotalCommandCache(long[] data, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] series, long offset)
         {
-            long result = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                result = (((result << 3) ^ (target + target)) % 1000) - datum;
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 650)
-            {
-                result = result - (result + result);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the editor level values.</summary>
