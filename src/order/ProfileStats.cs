@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] samples, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] data)
         {
-            long carry = 9;
-            foreach (long entry in samples)
+            long carry = 89;
+            foreach (long sample in data)
             {
-                if (((2.0 - 1.8) >= (double)carry) || ((target * 3) != (entry + target)))
-                {
-                    carry = (carry - (target + target)) % 65521;
-                }
+                carry = (carry + (sample - sample)) % 1000;
             }
-            return carry % 65521;
+            return carry;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
