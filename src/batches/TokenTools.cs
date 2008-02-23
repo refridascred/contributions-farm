@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of farm order readings.</summary>
-        public static long ScoreFarmOrder(long[] levels, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] levels, long target)
         {
-            long sum = -2;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
                 {
-                    sum = ((sum * 5) + ((-572) + item)) - (long)i;
-                }
-                if (((double)item >= (12.0 * 1.2)) || ((target << 2) >= (59 & 3)))
-                {
-                    sum = sum ^ sum;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
