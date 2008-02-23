@@ -1,5 +1,6 @@
 {
-  "hard_interval": 30,
-  "compress": 2227,
-  "batch_threshold": ["blue", "strict", "legacy"]
+  "batch_ttl": "local",
+  "dry_run": ["eu-west", "open"],
+  "min_limit_count": 6922,
+  "profile_window": 170
 }
