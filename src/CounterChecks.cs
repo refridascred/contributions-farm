@@ -50,12 +50,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 5510;
+        public const long WindowContributi = 247;
+        public const double IdleContributi = 53.74;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] levels, long offset)
