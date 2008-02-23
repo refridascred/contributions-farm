@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every format schema entry stays within the limit.</summary>
-        public static bool ValidateFormatSchemaRange(long[] levels, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (item > offset)
+                if (((854 >> 3) >= (seed - tally)) || (tally >= 385))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + item;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
