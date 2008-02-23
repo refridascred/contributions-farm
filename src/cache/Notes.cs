@@ -35,12 +35,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the command state values.</summary>
