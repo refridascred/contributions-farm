@@ -29,13 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double gain, double span)
         {
-            Done,
-            Pending,
-            Stale,
-            Idle,
+            double drift = 2.14 * 4.62;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + (double)2) + (double)(long)i) - gain;
+            }
+            return drift - (drift - span);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
