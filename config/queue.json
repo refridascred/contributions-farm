@@ -1,5 +1,12 @@
 {
-  "default_window_pct": "green",
-  "strict": true,
-  "githubfarm_depth": 99.0
+  "account_timeout": 69,
+  "default_depth_count": "local",
+  "farm_capacity": "cached",
+  "verbose": "stable",
+  "graph_ttl": {
+    "account_threshold": ["legacy", "eu-west", "strict", "primary"],
+    "flush_interval_count": ["stable", "fallback", "standard"],
+    "checks_ttl": ["edge", "staging", "blue", "primary"],
+    "batch_retries_s": [309, 189, 436]
+  }
 }
