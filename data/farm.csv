@@ -1,7 +1,9 @@
-id,label,count,weight
-1,70.21,edge,538
-2,open,63.44,7
-3,91.87,460,809
-4,latest,51,fallback
-5,188,816,cached
-6,780,721,635
+id,ratio,score,state,count
+1,83.6,818,fallback,stable
+2,696,425,legacy,600
+3,32.62,62.83,25.22,83.46
+4,45.69,542,764,172
+5,617,29,669,835
+6,standard,436,312,primary
+7,69,155,latest,staging
+8,80.66,77.58,64.4,fallback
