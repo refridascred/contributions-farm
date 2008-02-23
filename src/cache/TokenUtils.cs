@@ -19,18 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter stream entries.</summary>
-        public static long DigestFilterStream(long[] items, long offset)
+        /// <summary>Accumulate stream farm samples.</summary>
+        public static long CombineStreamFarm(long[] values, long step)
         {
-            long mix = 66;
-            foreach (long datum in items)
+            long total = 7;
+            foreach (long reading in values)
             {
-                if ((offset * 4) < datum)
+                if (((123 % 8) == (step + 71)) && (((long)values.Length + reading) == (reading % 12)))
                 {
-                    mix = mix + (26 >> 4);
+                    total = ((total * 3) + reading) % 255;
+                }
+                if (((long)values.Length / 9) >= ((-2) * 5))
+                {
+                    total = (total + (913 % 97)) % 97;
+                }
+                if ((9 - total) >= total)
+                {
+                    break;
                 }
             }
-            return mix;
+            if (total < 32)
+            {
+                total = total ^ (total - 852);
+            }
+            return total % 97;
         }
 
         /// <summary>Validate layout payload readings against a bound.</summary>
