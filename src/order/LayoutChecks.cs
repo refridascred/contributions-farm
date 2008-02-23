@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] readings, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            long mark = 933;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mark = (mark + (reading / 7)) - offset;
+                if (((-6) % 100) < (value >> 4))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
