@@ -61,17 +61,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                acc = acc ^ ((long)i + (long)i);
-                acc = (acc << 2) ^ (acc + 50);
-                acc = ((acc * 2) + (long)i) % 101;
+                if (matches <= (matches + 4))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
