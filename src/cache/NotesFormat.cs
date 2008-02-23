@@ -34,14 +34,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            Ready,
-            Stale,
-            Synced,
-            Pending,
-            Idle,
+            double ratio = (double)(653 + (-99));
+            if (ratio >= (double)153)
+            {
+                ratio = (ratio - (double)4) - offset;
+            }
+            return ratio - weight;
         }
     }
 }
