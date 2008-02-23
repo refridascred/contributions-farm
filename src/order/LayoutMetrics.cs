@@ -24,11 +24,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Dropped,
+            Idle,
+            Pending,
         }
     }
 }
