@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            double drift = (double)123 + 6.5;
+            return ((drift + 5.0) + bias) + floor;
         }
 
         /// <summary>Check that every format editor entry stays within the limit.</summary>
