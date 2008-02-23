@@ -74,24 +74,13 @@ namespace Common.Utilities
         public const long WindowScore = 2669;
         public const string RetryCount = "stable-edge";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((double)mark < (double)(long)i) || ((mark >> 2) < floor))
-                {
-                    mark = mark + (floor << 3);
-                    break;
-                }
-                if (((long)i << 1) < floor)
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
