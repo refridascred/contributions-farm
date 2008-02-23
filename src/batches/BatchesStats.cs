@@ -25,19 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate layout stats samples.</summary>
-        public static long TotalLayoutStats(long[] samples, long origin)
+        /// <summary>Validate context notes readings against a bound.</summary>
+        public static bool VerifyContextNotesBounds(long[] samples, long bound)
         {
-            long score = 915;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                score = (score ^ (origin % 60)) % 255;
-                if ((entry ^ entry) < (8 & 7))
+                if (value >= bound)
                 {
-                    score = (score * 3) + (score ^ origin);
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Describe the account kind values.</summary>
