@@ -46,12 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Validate support layout readings against a bound.</summary>
+        public static bool GuardSupportLayoutBounds(long[] items, long target)
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a batches entry.</summary>
