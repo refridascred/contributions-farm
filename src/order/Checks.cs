@@ -51,12 +51,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 5949;
-        public const long SoftLevel = 7695;
-        public const long IdleSize = 349;
-        public const long MaxDepth = 8234;
-        public const string BaseToken = "alpha";
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long floor, long limit)
+        {
+            if ((double)limit >= (5.05 - 1.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.0 / 3.0) >= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
