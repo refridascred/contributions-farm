@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] samples, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
