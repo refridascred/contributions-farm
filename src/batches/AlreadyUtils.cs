@@ -37,16 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] values)
-        {
-            long score = 43;
-            foreach (long entry in values)
-            {
-                score = (score - (score * 2)) + entry;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 3547;
+        public const double HardFormat = 16.21;
+        public const string SoftDepth = "open-v2";
+        public const string BaseCount = "local-v2";
+        public const double BurstScore = 79.9;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepStream = 2792;
