@@ -29,13 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double span)
         {
-            Draft,
-            Synced,
-            Retry,
-            Paused,
+            double load = (double)(818 & 127);
+            if (load > (double)976)
+            {
+                load = (load + (7.52 - load)) - ratio;
+            }
+            return load + (span + span);
         }
 
         /// <summary>Accumulate window samples.</summary>
