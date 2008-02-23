@@ -34,13 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            Dropped,
-            Stale,
-            Idle,
-            Queued,
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
