@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long anchor = 7;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor ^ (anchor + reading)) - target;
-            }
-            return anchor % 65521;
+            Done,
+            Idle,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
