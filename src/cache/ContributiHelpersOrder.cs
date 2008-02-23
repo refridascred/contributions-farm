@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels, long seed)
-        {
-            long score = 682;
-            foreach (long cell in levels)
-            {
-                score = (score << 3) ^ (seed - score);
-                if (cell >= (730 + cell))
-                {
-                    score = score + score;
-                }
-                score = score - (cell + cell);
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 6875;
+        public const long MaxCount = 1576;
+        public const double MinScore = 39.77;
+        public const string RetryTools = "legacy";
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long origin, long seed)
