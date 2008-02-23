@@ -41,22 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] data, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double bias = floor;
+            if (bias > weight)
             {
-                if ((double)item != (double)matches)
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias - weight;
             }
-            return matches;
+            return bias - 4.8;
         }
     }
 }
