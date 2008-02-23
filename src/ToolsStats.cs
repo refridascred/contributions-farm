@@ -44,21 +44,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 963;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum - (64 - 9)) % 65521) - reading;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
