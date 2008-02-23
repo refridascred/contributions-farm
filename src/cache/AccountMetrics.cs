@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
