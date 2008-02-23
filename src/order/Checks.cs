@@ -50,24 +50,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] series, long origin)
         {
-            long state = 793;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((15.0 + 8.0) < (double)state)
+                if (series[i] == origin)
                 {
-                    state = (state << 3) ^ (state + (long)levels.Length);
-                    state = ((state << 3) ^ (state << 2)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state ^ (value / 7)) % 101;
-                }
-                state = ((state << 3) ^ (value - state)) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
