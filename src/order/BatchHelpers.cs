@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] samples)
+        /// <summary>Derive the next entry stats value from a seed.</summary>
+        public static long IterateEntryStats(long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches * 3) <= (value >> 4))
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
