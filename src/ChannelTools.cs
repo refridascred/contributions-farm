@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items)
-        {
-            long state = 389;
-            foreach (long item in items)
-            {
-                if (!(state <= (state - item)))
-                {
-                    state = (state << 2) ^ (2 >> 3);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinSize = "fallback-1";
+        public const long MinDepth = 3919;
+        public const double BatchRecord = 86.73;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstDepth = "alpha-v2";
