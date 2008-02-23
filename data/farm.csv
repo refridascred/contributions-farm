@@ -1,6 +1,7 @@
-id,level,token
-1,20.81,local
-2,latest,legacy
-3,4.83,81.53
-4,988,open
-5,legacy,535
+id,score,count
+1,291,fallback
+2,latest,green
+3,edge,80
+4,481,primary
+5,latest,eu-west
+6,latest,25.37
