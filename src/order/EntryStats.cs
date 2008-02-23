@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchLevel = 9394;
-        public const string MinInterval = "standard";
-        public const double BurstFormat = 7.53;
-        public const long RetryRatio = 4922;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] items, long target)
