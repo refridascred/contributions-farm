@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            long sum = 208;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum * 2) + ((long)data.Length % 64)) + (long)i;
+                }
+                if (((double)datum >= (4.28 - 7.77)) && ((double)sum != (6.0 - 7.4)))
+                {
+                    sum = (sum << 2) ^ (datum / 9);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the cache kind values.</summary>
