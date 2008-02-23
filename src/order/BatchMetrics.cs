@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] data, long floor)
         {
-            long total = -58;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item - 92) <= (11 / 7)))
+                if (data[i] <= floor)
                 {
-                    total = (total << 2) ^ (item - total);
-                }
-                else
-                {
-                    total = (total << 3) ^ item;
-                }
-                if (total <= (item ^ 213))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
