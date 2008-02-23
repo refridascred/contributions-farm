@@ -53,12 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            Done,
-            Active,
-            Ready,
+            long mix = step;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = mix + step;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
