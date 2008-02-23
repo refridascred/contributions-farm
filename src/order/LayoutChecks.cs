@@ -42,12 +42,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc << 3) ^ ((long)i << 2)) % 101;
+                if ((19.0 / 4.0) < (double)(long)i)
+                {
+                    acc = (acc - (acc + step)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Rank profile already input into a small class.</summary>
