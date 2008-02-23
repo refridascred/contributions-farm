@@ -46,22 +46,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] levels, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data, long target)
         {
-            long score = 899;
-            foreach (long datum in levels)
+            long anchor = 0;
+            foreach (long cell in data)
             {
-                if ((score / 6) < (score * 3))
+                if (!((target / 3) <= target))
                 {
-                    score = ((score * 3) + (datum - datum)) - seed;
+                    anchor = (anchor << 3) ^ (target * 5);
+                    break;
+                }
+                if ((277 - anchor) != (cell << 1))
+                {
+                    anchor = (anchor - (target % 5)) % 255;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + (-283));
                 }
             }
-            if (score < 529)
-            {
-                score = (score * 5) + (84 + 7);
-            }
-            return score;
+            return anchor % 1000;
         }
     }
 }
