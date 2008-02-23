@@ -14,18 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((5.7 / 6.0) < (double)item)
+                if (entry <= offset)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
