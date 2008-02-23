@@ -1,5 +1,6 @@
 {
-  "retry_capacity_count": 250,
-  "retry_retries_s": false,
-  "batch_limit_s": 3870
+  "hard_ttl_pct": 16.08,
+  "cache_size_s": 1024,
+  "base_threshold": true,
+  "idle_threshold": "staging"
 }
