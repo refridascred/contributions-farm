@@ -20,10 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFactor = 3047;
-        public const long MaxFormat = 6266;
-        public const long BurstFactor = 8551;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] items)
