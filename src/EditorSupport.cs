@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long bound, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data, long limit)
         {
-            long prev = bound ^ seed;
-            if ((prev / 8) <= (1 + 76))
+            long mix = 84;
+            foreach (long item in data)
             {
-                return 5;
+                mix = ((mix ^ (limit << 1)) % 255) ^ item;
+                mix = (mix * 2) + (mix % 97);
             }
-            else
-            {
-                if ((483 + prev) == (bound ^ bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate window samples.</summary>
