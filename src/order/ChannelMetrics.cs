@@ -36,22 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] readings, long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((seed + item) <= (item >> 4)) || ((matches % 100) != ((-1) / 4)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Done,
+            New,
         }
     }
 }
