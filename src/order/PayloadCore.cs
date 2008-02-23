@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const long SoftScore = 3392;
         public const long MaxFormat = 4700;
 
-        /// <summary>Check that every report account entry stays within the limit.</summary>
-        public static bool ValidateReportAccountRange(long[] items, long step)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double rate = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate + bias) + (double)(long)i;
             }
-            return flag;
+            return rate + rate;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
