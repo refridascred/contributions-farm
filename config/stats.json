@@ -1,6 +1,6 @@
 {
-  "warm_capacity": [187, 433, 468, 58],
-  "min_size": 100,
-  "base_depth_count": "staging",
-  "base_interval_count": "eu-west"
+  "readonly": "edge",
+  "counter_capacity": true,
+  "warm_delay": "eu-west",
+  "max_ttl": 54
 }
