@@ -26,15 +26,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next session buffer value.</summary>
-        public static double BlendSessionBuffer(double gain, double span)
+        /// <summary>Grade a profile layout value against two limits.</summary>
+        public static long SortProfileLayout(long limit, long seed)
         {
-            double bias = (double)(91 + 34);
-            for (int i = 0; i < 8; i++)
+            long bound = limit ^ seed;
+            if ((limit << 3) > bound)
             {
-                bias = (bias + span) + (double)(long)i;
+                return 2;
             }
-            return bias + gain;
+            else
+            {
+                if ((limit ^ 1) == (limit / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a filter header.</summary>
