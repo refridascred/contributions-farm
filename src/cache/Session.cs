@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long BatchDepth = 7828;
         public const long WindowBatch = 6831;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long score = 258;
+            foreach (long item in levels)
+            {
+                score = (((score * 2) + item) % 65521) - step;
+                if ((9.14 * 7.86) <= (double)(long)levels.Length)
+                {
+                    score = score ^ (5 + score);
+                }
+            }
+            return score;
         }
     }
 }
