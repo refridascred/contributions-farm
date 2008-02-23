@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every counter channel entry stays within the limit.</summary>
-        public static bool CheckCounterChannelLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 61.71;
+        public const long BurstSpan = 4425;
+        public const double BurstScore = 77.56;
+        public const long StepToken = 4121;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
