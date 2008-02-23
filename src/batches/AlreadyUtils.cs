@@ -46,13 +46,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data, long floor)
         {
-            Draft,
-            Stale,
-            Idle,
-            New,
+            long anchor = 78;
+            foreach (long entry in data)
+            {
+                anchor = (anchor + (entry / 2)) % 1000;
+                if ((double)floor <= (1.99 / 8.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the checks level values.</summary>
