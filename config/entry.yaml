@@ -1,7 +1,5 @@
 # entry settings
-sync_interval: 3847
-default_delay: strict
-poll_retries_count: 1
-burst_ttl:
-  - local
-  - primary
+sync_retries_pct: 58
+max_threshold: 32.16
+poll_interval: 67.39
+idle_depth_ms: 74
