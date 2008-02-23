@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series, long seed)
+        /// <summary>Match up report cluster samples.</summary>
+        public static long OverlapReportClusterCount(long[] values)
         {
-            long mix = 13;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item < (9.93 + 0.8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (item - mix)) % 1000;
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 212)
-            {
-                mix = mix + seed;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
