@@ -77,19 +77,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Find the first cluster account entry that matches the target.</summary>
+        public static long LocateClusterAccountIndex(long[] values, long floor)
         {
-            double mean = 6.39 - 9.83;
-            if (mean >= 9.09)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (mean / 8.0)) - offset;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (weight * 6.2);
-            }
-            return mean + (mean * 1.4);
+            return -1;
         }
 
         /// <summary>Audit entry channel readings against a rule.</summary>
