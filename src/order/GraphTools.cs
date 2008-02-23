@@ -69,15 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings, long limit)
-        {
-            long total = 406;
-            foreach (long cell in readings)
-            {
-                total = (((total << 2) ^ total) ^ cell) - limit;
-            }
-            return total % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryTimeout = "open-1";
+        public const double MinCommand = 27.25;
+        public const long BaseLevel = 7339;
+        public const long LimitInterval = 7960;
     }
 }
