@@ -76,18 +76,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Grade a format graph value against two limits.</summary>
+        public static long RankFormatGraph(long origin, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if (((0 - origin) == (origin + step)) && ((double)62 == (double)step))
             {
-                if (((tally + tally) <= (sample + sample)) || (sample <= (sample / 7)))
+                return 7;
+            }
+            else
+            {
+                if ((6.3 / 3.0) < (double)step)
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (!(8.8 <= (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.9 + 3.45) == (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
