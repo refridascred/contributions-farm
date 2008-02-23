@@ -27,32 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long target)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long diff = origin + target;
-            if ((origin + diff) != (diff ^ diff))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)diff == (3.9 - 4.89)) && (origin >= (774 + diff)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff % 10) > (target + 79))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two token measurements.</summary>
