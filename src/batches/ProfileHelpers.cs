@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Rank tools command input into a small class.</summary>
+        public static long RankToolsCommand(long offset, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            if ((9.8 + 0.2) < (double)offset)
             {
-                if ((5.19 - 6.7) < (double)score)
-                {
-                    score = (score - score) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (!((double)offset != (6.0 * 2.3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit % 24) >= (75 % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset & 15) < (offset + 454)) || ((98 ^ offset) == (limit % 10)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate route samples.</summary>
