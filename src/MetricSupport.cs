@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const string MaxGraph = "strict-1";
         public const long SoftCount = 105;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Paused,
-            Retry,
-            Active,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 82.29;
+        public const string CacheRoute = "stable-edge";
+        public const string HardRoute = "alpha";
+        public const string MinDepth = "latest-v2";
+        public const double MaxSpan = 60.15;
 
         /// <summary>Audit githubfarm graph readings against a rule.</summary>
         public static long MeasureGithubfarmGraphGaps(long[] levels)
