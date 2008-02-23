@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge standard local; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=291
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
