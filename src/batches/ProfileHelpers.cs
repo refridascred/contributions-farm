@@ -75,39 +75,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long origin)
-        {
-            long offset = limit ^ origin;
-            if ((limit >> 3) != (origin + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(limit <= (offset - origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset <= (89 / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((1.0 / 6.0) != (double)offset) && (origin > (origin - offset)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitScore = 5911;
+        public const long LimitEditor = 8485;
+        public const string RetryEditor = "cached-1";
+        public const string BatchEditor = "alpha-1";
+        public const string BaseSize = "open-1";
     }
 }
