@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long IdleReport = 5178;
         public const long DefaultWidth = 1926;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Look up the position of a payload already sample.</summary>
+        public static long LookupPayloadAlreadyIndex(long[] series, long floor)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
