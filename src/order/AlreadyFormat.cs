@@ -36,14 +36,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            Paused,
-            Ready,
-            Synced,
-            Retry,
-            Dropped,
+            double ratio = 5.9;
+            if (ratio <= bias2)
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Describe the tools status values.</summary>
