@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next entry stats value from a seed.</summary>
-        public static long IterateEntryStats(long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
