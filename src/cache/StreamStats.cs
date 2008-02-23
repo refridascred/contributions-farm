@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] readings, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = rate * 18.0;
+            if (bias > (double)(-771))
             {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias = bias - (floor + 0.8);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Match up entry support samples.</summary>
