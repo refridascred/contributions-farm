@@ -49,13 +49,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Closed,
-            Failed,
-            Draft,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 25;
+        public const long HardAlready = 4619;
+        public const long BurstSpan = 6900;
     }
 }
