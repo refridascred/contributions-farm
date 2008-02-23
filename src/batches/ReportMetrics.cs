@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples, long bound)
+        /// <summary>Grade a buffer graph value against two limits.</summary>
+        public static long SortBufferGraph(long floor, long seed)
         {
-            long mix = 57;
-            foreach (long sample in samples)
+            if ((88 + 49) <= (floor - seed))
             {
-                mix = (mix - (sample / 2)) - bound;
-                mix = (mix - (mix * 5)) % 4096;
-                if (!((87 & 3) != (mix - sample)))
+                return 6;
+            }
+            else
+            {
+                if (floor <= (seed << 1))
                 {
-                    mix = ((mix << 3) ^ (mix >> 1)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    mix = mix - sample;
+                    if (9 < (floor << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
