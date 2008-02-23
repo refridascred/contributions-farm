@@ -64,24 +64,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long bound, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if (bound < (origin * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound * 4) < (bound / 2)) && ((double)origin >= (double)697))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Idle,
+            Ready,
+            Done,
+            Stale,
         }
     }
 }
