@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)bound >= (double)count)
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "primary";
+        public const long HardWidth = 5087;
+        public const long StepRatio = 4370;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] data, long floor)
