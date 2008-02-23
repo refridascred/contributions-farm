@@ -28,23 +28,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Match up cluster layout samples.</summary>
+        public static long OverlapClusterLayoutCount(long[] samples)
         {
-            long state = 2;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 2) ^ (item >> 3)) % 65521;
-                if ((state + state) == (item % 24))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state - (68 + item)) % 65521;
-                }
-                if ((state & 255) <= (item + item))
-                {
-                    state = state - (state / 9);
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
