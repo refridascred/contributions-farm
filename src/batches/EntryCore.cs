@@ -19,10 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 9024;
-        public const long DefaultReport = 4715;
-        public const string SoftReport = "local-1";
+        /// <summary>Count the entry session entries that pass the check.</summary>
+        public static long MeasureEntrySessionGaps(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (origin > (origin + 35))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] items, long limit)
