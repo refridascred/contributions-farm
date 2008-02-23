@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] items, long origin)
         {
-            Done,
-            New,
-            Draft,
+            long mark = 5;
+            foreach (long entry in items)
+            {
+                mark = (mark ^ (entry + origin)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
