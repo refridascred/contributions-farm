@@ -15,19 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data, long bound)
-        {
-            long carry = 1;
-            foreach (long datum in data)
-            {
-                if ((carry * 4) > (datum - bound))
-                {
-                    carry = (carry ^ (carry * 5)) % 4096;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowInterval = 3254;
+        public const long StepRatio = 8198;
+        public const double RetryLayout = 9.59;
+        public const long MinSize = 7535;
 
         /// <summary>Classify a notes format pair into a bucket.</summary>
         public static long GradeNotesFormat(long step, long seed)
