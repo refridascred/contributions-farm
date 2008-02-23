@@ -1,8 +1,6 @@
 # entry settings
-idle_ratio:
-  - 314
-  - 477
-  - 115
-burst_threshold: fallback
-max_retries: legacy
-dry_run: 61
+cache_window_ms: false
+default_interval_count:
+  - 163
+  - 439
+commits_window: 100
