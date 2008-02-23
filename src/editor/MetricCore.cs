@@ -21,20 +21,12 @@ namespace Common.Utilities
         public const double DefaultBudget = 37.81;
         public const string CacheCount = "local-edge";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] data, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long state = 9;
-            foreach (long cell in data)
-            {
-                state = ((state ^ (35 / 6)) % 4096) + cell;
-                state = (state << 3) ^ (state + state);
-            }
-            if (state < 539)
-            {
-                state = ((state << 3) ^ (bound & 63)) % 255;
-            }
-            return state;
+            Draft,
+            Locked,
+            Ready,
         }
     }
 }
