@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Scale a route githubfarm figure with a bias.</summary>
+        public static double ProjectRouteGithubfarm(double gain, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 2) == (entry << 1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double bias2 = bias;
+            return (bias2 - (double)88) + gain;
         }
 
         /// <summary>Iterate the entry buffer series from a seed.</summary>
