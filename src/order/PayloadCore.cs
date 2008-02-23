@@ -49,29 +49,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            long carry = 50;
+            foreach (long cell in samples)
             {
-                if (((long)i & 255) == (offset - offset))
+                if (carry >= (cell << 2))
                 {
-                    acc = (acc - (acc << 1)) % 4096;
+                    carry = carry ^ carry;
                 }
-                if ((offset & 127) == (offset - (-604)))
-                {
-                    acc = (acc + offset) % 65521;
-                    acc = ((acc << 2) ^ (90 - acc)) % 101;
-                    break;
-                }
-                if (!(((long)i * 4) <= acc))
-                {
-                    acc = ((acc << 3) ^ (long)i) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            if (carry < 12)
+            {
+                carry = (carry ^ (carry << 3)) % 65521;
+            }
+            return carry;
         }
     }
 }
