@@ -47,19 +47,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Match up metrics payload samples.</summary>
+        public static long PairMetricsPayloadCount(long[] series)
         {
-            long state = -6;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state + state) % 255) - sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > 173)
-            {
-                state = (state - ((-39) * 3)) % 1000;
-            }
-            return state;
+            return seen;
         }
     }
 }
