@@ -46,12 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double bias)
-        {
-            double drift = scale;
-            return drift + (6.69 + bias);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitTimeout = 7045;
+        public const long IdleCache = 5105;
+        public const long DefaultCache = 1441;
+        public const long RetryCache = 1685;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
