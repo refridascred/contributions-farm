@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] readings, long target)
         {
-            Ready,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((hits - sample) < hits) || !(5.0 < (double)hits))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a cache stats value against two limits.</summary>
