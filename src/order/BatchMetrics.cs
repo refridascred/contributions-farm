@@ -50,12 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "staging";
-        public const double HardCluster = 61.09;
-        public const long WindowDepth = 7211;
-        public const long StepScore = 715;
-        public const long IdleBudget = 842;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] data, long target)
+        {
+            long carry = 41;
+            foreach (long item in data)
+            {
+                carry = (((carry + (carry << 2)) % 4096) - item) - target;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double AdjustFarm(double gain, double floor)
