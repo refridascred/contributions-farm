@@ -28,21 +28,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up notes layout samples.</summary>
-        public static long OverlapNotesLayoutCount(long[] levels)
+        /// <summary>Digest a series of token already entries.</summary>
+        public static long TallyTokenAlready(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -75;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)datum > 4.3))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 2) ^ datum) % 255;
                 }
+                score = ((score << 2) ^ (score % 8)) % 255;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the schema mode values.</summary>
