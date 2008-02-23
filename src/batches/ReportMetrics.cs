@@ -54,16 +54,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor - (54 - seed)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
     }
 }
