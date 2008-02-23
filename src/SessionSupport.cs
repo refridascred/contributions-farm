@@ -23,24 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items, long offset)
-        {
-            long state = 612;
-            foreach (long cell in items)
-            {
-                if ((71 & 63) > state)
-                {
-                    state = ((state * 5) + (offset & 31)) + cell;
-                    break;
-                }
-                if ((918 << 3) != (state ^ state))
-                {
-                    state = state + (offset % 97);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 944;
+        public const double BasePayload = 20.13;
+        public const long BurstPayload = 8457;
+        public const string LimitPayload = "standard-edge";
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
