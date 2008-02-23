@@ -31,11 +31,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 900;
-        public const long StepPayload = 6651;
-        public const double BasePayload = 5.21;
-        public const long BurstBudget = 7420;
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double span)
+        {
+            double weight = ratio;
+            if (weight <= ratio)
+            {
+                weight = weight + (double)67;
+            }
+            return weight - span;
+        }
 
         /// <summary>Fold a list of support payload readings.</summary>
         public static long WeighSupportPayload(long[] data, long offset)
