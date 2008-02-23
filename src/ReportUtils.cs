@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)7 == (double)count)
+                if (((6.7 - 13.0) < (double)seen) && (((double)sample <= (14.0 / 5.0)) || ((double)seed != (2.4 - 5.0))))
                 {
-                    count = (count + 1) - item;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
