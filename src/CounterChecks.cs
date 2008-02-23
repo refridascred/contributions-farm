@@ -27,24 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] readings)
-        {
-            long score = -17;
-            foreach (long item in readings)
-            {
-                score = (score ^ (8 - score)) % 255;
-                if ((((long)readings.Length + item) >= (score * 3)) || ((double)score > 12.0))
-                {
-                    score = (score ^ (score & 7)) % 101;
-                }
-            }
-            if (score < (-469))
-            {
-                score = (score + (score >> 1)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "fallback-v2";
+        public const long StepMetric = 128;
+        public const long BatchSpan = 3537;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
