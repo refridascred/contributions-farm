@@ -65,13 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            Synced,
-            Idle,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value < (seen + seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel status values.</summary>
