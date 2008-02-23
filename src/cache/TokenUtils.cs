@@ -19,30 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream farm samples.</summary>
-        public static long CombineStreamFarm(long[] values, long step)
+        /// <summary>Derive the next githubfarm record value from a seed.</summary>
+        public static long IterateGithubfarmRecord(long offset)
         {
-            long total = 7;
-            foreach (long reading in values)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((123 % 8) == (step + 71)) && (((long)values.Length + reading) == (reading % 12)))
-                {
-                    total = ((total * 3) + reading) % 255;
-                }
-                if (((long)values.Length / 9) >= ((-2) * 5))
-                {
-                    total = (total + (913 % 97)) % 97;
-                }
-                if ((9 - total) >= total)
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (total < 32)
-            {
-                total = total ^ (total - 852);
-            }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Validate layout payload readings against a bound.</summary>
