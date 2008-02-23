@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double bias2)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long floor)
         {
-            double mean = bias2;
-            return mean + bias;
+            long total = 3;
+            foreach (long cell in readings)
+            {
+                total = total ^ floor;
+                if ((cell - cell) > ((long)readings.Length << 2))
+                {
+                    total = ((total * 2) + (total + total)) % 97;
+                }
+            }
+            if (total > 3)
+            {
+                total = (total - (total + 637)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
