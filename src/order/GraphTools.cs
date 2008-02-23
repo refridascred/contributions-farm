@@ -45,11 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double bias = (floor + 0.88) / 4.0;
-            return (bias - floor) + weight;
+            Stale,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the context level values.</summary>
