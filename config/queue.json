@@ -1,7 +1,11 @@
 {
-  "default_ttl": 305,
-  "base_size": "primary",
-  "max_ttl_s": "open",
-  "persist": [105, 80],
-  "format_window": 8.11
+  "min_interval_s": "standard",
+  "burst_ttl": [436, 137],
+  "persist": [361, 405, 305],
+  "soft_capacity_pct": [220, 293, 30, 289],
+  "record_retries": {
+    "hard_threshold": 91,
+    "farm_retries": 67,
+    "entry_window": "strict"
+  }
 }
