@@ -51,21 +51,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long target, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((825 >> 3) == (target & 63))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((3.82 * 18.0) >= (double)target)
                 {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches header.</summary>
