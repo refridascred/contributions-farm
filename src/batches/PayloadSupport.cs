@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (value >= count)
+                if ((double)datum > (0.3 - 4.9))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a session snapshot.</summary>
