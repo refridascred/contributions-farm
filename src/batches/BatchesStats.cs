@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "legacy-v2";
-        public const long StepRatio = 6945;
-        public const long DefaultTimeout = 2643;
-        public const long MaxBudget = 6246;
-        public const string CacheNotes = "strict-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstLevel = 219;
+        public const long WindowCluster = 7646;
+        public const string SoftBudget = "fallback-1";
+        public const double IdleCount = 64.66;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadGaps(long[] data)
