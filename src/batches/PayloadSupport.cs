@@ -20,17 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long bound)
+        /// <summary>Accumulate editor checks samples.</summary>
+        public static long WeighEditorChecks(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 5;
+            foreach (long sample in data)
             {
-                if (levels[i] >= bound)
+                if ((0.42 + 15.0) != (double)acc)
                 {
-                    return (long)i;
+                    acc = acc ^ sample;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
