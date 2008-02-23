@@ -38,12 +38,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 9984;
+        public const long WindowFactor = 8403;
+        public const long BatchSpan = 8693;
     }
 }
