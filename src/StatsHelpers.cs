@@ -50,13 +50,12 @@ namespace Common.Utilities
             return scale2 - (span * 5.95);
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            Stale,
+            Locked,
+            Closed,
         }
     }
 }
