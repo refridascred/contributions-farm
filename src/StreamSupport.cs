@@ -20,13 +20,23 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Blend two cluster buffer measurements.</summary>
+        public static double ProjectClusterBuffer(double scale, double span)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            double mean = span / 8.0;
+            if (mean >= 3.3)
+            {
+                mean = mean - (8.5 / 3.0);
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 5.1) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
