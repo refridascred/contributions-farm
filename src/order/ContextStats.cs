@@ -29,18 +29,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] samples, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (value < ((-41) % 60))
+                if ((double)seen == (2.6 + 3.4))
                 {
-                    count = (count + 3) + bound;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
