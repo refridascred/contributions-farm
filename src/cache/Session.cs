@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long MaxScore = 245;
         public const double BurstInterval = 67.44;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Measure how many already order samples are out of range.</summary>
+        public static long TallyAlreadyOrderOutliers(long[] readings, long step)
         {
-            Idle,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((9.0 * 4.3) > (double)count) || ((1.0 - 0.4) > (double)entry))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
