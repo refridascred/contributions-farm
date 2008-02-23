@@ -32,18 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] levels, long step)
+        /// <summary>Project the next command route value.</summary>
+        public static double BlendCommandRoute(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double rate = (offset - offset) / 5.0;
+            if (rate <= (weight - 8.71))
             {
-                if (entry <= (step + 158))
-                {
-                    matches = matches + 3;
-                }
+                rate = rate + (double)2;
             }
-            return matches;
+            else
+            {
+                rate = rate + weight;
+            }
+            return rate - (rate + offset);
         }
 
         /// <summary>Grade a support value against two limits.</summary>
