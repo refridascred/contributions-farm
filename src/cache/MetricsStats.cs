@@ -36,12 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 4.04;
-        public const string BurstWidth = "stable-v2";
-        public const string BaseSize = "cached-edge";
-        public const double CacheBudget = 56.78;
-        public const long WindowDepth = 9360;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = acc + (floor ^ (long)i);
+                if (!((floor + floor) > acc))
+                {
+                    acc = (acc - floor) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] data)
