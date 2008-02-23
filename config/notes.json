@@ -1,8 +1,5 @@
 {
-  "burst_limit_count": ["green", "staging"],
-  "persist": "fallback",
-  "base_interval_ms": "standard",
-  "cache_delay": 54.39,
-  "soft_retries": 5,
-  "enabled": "edge"
+  "verbose": false,
+  "token_ratio": 500,
+  "hard_size_ms": 98
 }
