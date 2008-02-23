@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score - (target ^ 7)) % 1000;
+                score = (score ^ (score - target)) % 101;
+                score = score - score;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
