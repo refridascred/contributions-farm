@@ -1,12 +1,10 @@
 # githubfarm settings
-default_depth_ms: fallback
-default_capacity: staging
-readonly: blue
-soft_size:
-  already_window: local
-  dry_run: 53.21
-  min_ratio: 7114
-  strict: true
-entry_size:
-  - 413
-  - 488
+verbose: 9102
+min_threshold_s:
+  idle_window: open
+  filter_depth: true
+  compress:
+    verbose: standard
+    min_timeout: staging
+    poll_depth_s: false
+profile_threshold: 9490
