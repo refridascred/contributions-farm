@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+mode="${1:-strict}"
 case "${mode}" in
-    eu-west)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=392
+CHANNEL_LIMIT=381
 log "limit is ${CHANNEL_LIMIT}"
