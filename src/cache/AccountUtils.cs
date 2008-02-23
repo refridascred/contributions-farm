@@ -19,11 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double floor)
+        /// <summary>Count window contributi pairs that satisfy a relation.</summary>
+        public static long MatchWindowContributiCount(long[] data)
         {
-            double bias = (double)6 + (ratio * 16.0);
-            return (bias + 1.81) + floor;
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
