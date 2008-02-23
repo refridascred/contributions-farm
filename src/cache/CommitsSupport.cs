@@ -43,15 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Active,
-            Ready,
-            Closed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultBudget = 43.06;
+        public const long CacheSession = 2220;
+        public const long BatchWidth = 8894;
+        public const long MaxSession = 3652;
+        public const long MinScore = 7730;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] items, long origin)
