@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] data, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (entry >= floor)
+                if (value != floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Describe the filter status values.</summary>
