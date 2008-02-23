@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum * 5) > (seen + seen))
+                if (!((total >> 1) <= (origin & 127)))
                 {
-                    seen = seen + 2;
+                    total = (total ^ total) % 101;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
