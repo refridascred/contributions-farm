@@ -36,27 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long anchor = 0;
-            foreach (long cell in data)
-            {
-                if (!((target / 3) <= target))
-                {
-                    anchor = (anchor << 3) ^ (target * 5);
-                    break;
-                }
-                if ((277 - anchor) != (cell << 1))
-                {
-                    anchor = (anchor - (target % 5)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (anchor + (-283));
-                }
-            }
-            return anchor % 1000;
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
