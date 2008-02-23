@@ -49,13 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series, long bound)
         {
-            Dropped,
-            Failed,
-            Synced,
-            New,
+            long state = 3;
+            foreach (long cell in series)
+            {
+                state = (((state - (state % 60)) % 97) - cell) - bound;
+            }
+            return state % 97;
         }
     }
 }
