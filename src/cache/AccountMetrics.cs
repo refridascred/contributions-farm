@@ -52,19 +52,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long anchor = 38;
-            foreach (long reading in data)
-            {
-                anchor = ((anchor << 2) ^ (5 / 6)) - reading;
-                if (((bound * 5) != (350 - 403)) && ((anchor % 12) != (bound >> 1)))
-                {
-                    anchor = (anchor - 933) % 101;
-                }
-            }
-            return anchor;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
