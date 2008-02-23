@@ -1,8 +1,7 @@
 {
-  "cache_retries_count": 500,
-  "route_ratio": ["edge", "local"],
-  "editor_window": 4.95,
-  "idle_window_count": "stable",
-  "hard_ttl_pct": 75,
-  "warm_timeout": [348, 453]
+  "default_ttl": 305,
+  "base_size": "primary",
+  "max_ttl_s": "open",
+  "persist": [105, 80],
+  "format_window": 8.11
 }
