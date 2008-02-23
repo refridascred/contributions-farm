@@ -1,5 +1,10 @@
 # entry settings
-readonly: local
-base_ttl_count: latest
-base_capacity: 77
-burst_timeout_pct: edge
+idle_window_s: staging
+default_threshold_count: 88.63
+soft_capacity: 33
+strict:
+  - legacy
+  - green
+  - local
+  - stable
+default_size_count: open
