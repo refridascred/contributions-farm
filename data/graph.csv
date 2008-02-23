@@ -1,8 +1,9 @@
-id,active,owner
-1,primary,primary
-2,623,standard
-3,555,27.71
-4,21.28,516
-5,66.32,96
-6,23.05,198
-7,90.52,807
+id,token,score,state,owner
+1,154,833,60.27,edge
+2,67.73,31.33,cached,94.49
+3,215,693,legacy,cached
+4,411,664,149,latest
+5,326,33.55,84,222
+6,367,local,956,latest
+7,76.74,317,338,83.93
+8,open,primary,434,cached
