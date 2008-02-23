@@ -1,11 +1,5 @@
 {
-  "queue_interval": [268, 221, 201],
-  "readonly": "staging",
-  "order_ttl": {
-    "default_capacity": 500,
-    "readonly": [312, 197, 248, 426],
-    "enabled": "primary",
-    "token_ttl": "open"
-  },
-  "hard_threshold_s": 2002
+  "channel_capacity": 82.26,
+  "hard_delay": 70.25,
+  "base_ttl_pct": ["primary", "open"]
 }
