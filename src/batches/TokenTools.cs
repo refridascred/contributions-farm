@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] readings, long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + hits) < 29)
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up githubfarm contributi samples.</summary>
