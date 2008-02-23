@@ -64,21 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Audit entry channel readings against a rule.</summary>
+        public static long AuditEntryChannelOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample - (-848)) > sample)
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
