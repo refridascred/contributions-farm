@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a route githubfarm figure with a bias.</summary>
-        public static double ProjectRouteGithubfarm(double gain, double bias)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long offset, long origin)
         {
-            double bias2 = bias;
-            return (bias2 - (double)88) + gain;
+            long bound = offset - origin;
+            if (!(bound <= (bound - (-59))))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound % 24) < (bound % 10)) || ((origin << 2) >= (origin << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin << 3) <= (bound % 2)) && ((offset / 4) != (bound + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
