@@ -28,15 +28,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long bound = floor + limit;
+            if ((limit << 3) < (bound >> 5))
             {
-                state = ((state * 2) + (long)i) % 101;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (((floor - floor) == (floor + limit)) && ((1.26 - 3.3) != (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - 34) < (bound - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema mode values.</summary>
