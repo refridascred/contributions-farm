@@ -20,19 +20,18 @@ namespace Common.Utilities
             return weight + 8.1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] data, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (item < bound)
+                if (21 <= (sample - sample))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
