@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Look up the position of a format window sample.</summary>
+        public static long LocateFormatWindowIndex(long[] values, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + 58) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
