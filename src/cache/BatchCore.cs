@@ -19,21 +19,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long limit, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit - limit) <= (51 >> 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) == (1 >> 2))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the channel counter series from a seed.</summary>
