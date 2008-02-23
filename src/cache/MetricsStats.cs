@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a format window sample.</summary>
-        public static long LocateFormatWindowIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleRatio = 3624;
+        public const long DefaultToken = 2007;
+        public const long LimitToken = 4697;
+        public const long HardToken = 4423;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long origin)
