@@ -26,24 +26,19 @@ namespace Common.Utilities
         public const long StepRatio = 2518;
         public const long StepEntry = 4044;
 
-        /// <summary>Classify a stream farm pair into a bucket.</summary>
-        public static long GradeStreamFarm(long step, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double span)
         {
-            if ((step << 2) != (bound + bound))
+            double weight = gain;
+            if (weight >= (span * 8.0))
             {
-                return 1;
+                weight = weight - weight;
             }
             else
             {
-                if ((step ^ step) <= (bound & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = weight + span;
             }
+            return weight - (weight + gain);
         }
 
         /// <summary>Accumulate stream samples.</summary>
