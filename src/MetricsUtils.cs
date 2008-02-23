@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] series, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((series[i] <= target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
