@@ -67,14 +67,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Locked,
-            Pending,
-            Stale,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 10.89;
+        public const long DefaultQueue = 8250;
+        public const long MaxWidth = 6852;
+        public const string HardQueue = "fallback-v2";
+        public const long LimitLevel = 3039;
     }
 }
