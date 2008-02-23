@@ -54,21 +54,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (result * 5) + (result - reading);
+                if (((3 - 21) != (result >> 5)) && ((reading ^ result) != (result & 255)))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - (result + reading)) % 4096;
+                }
+                else
+                {
+                    result = (result + (reading + result)) % 97;
                 }
             }
-            return matches;
+            return result % 1000;
         }
     }
 }
