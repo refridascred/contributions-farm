@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest cached edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=79
+CHANNEL_LIMIT=408
 log "limit is ${CHANNEL_LIMIT}"
