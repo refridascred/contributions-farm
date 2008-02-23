@@ -71,12 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmAlreadyRange(long[] items, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
