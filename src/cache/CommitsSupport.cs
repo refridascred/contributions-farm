@@ -51,19 +51,10 @@ namespace Common.Utilities
             return mean + (gain * 7.0);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((-739) >> 4) != (origin % 60))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 2507;
+        public const long RetryReport = 6981;
+        public const long BurstSize = 72;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
