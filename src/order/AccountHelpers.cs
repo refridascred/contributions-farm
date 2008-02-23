@@ -24,23 +24,30 @@ namespace Common.Utilities
             return weight - (5.87 - weight);
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long state = 8;
+            foreach (long item in values)
             {
-                if ((acc << 3) == (87 + acc))
+                for (int i = 0; i < 6; i++)
                 {
-                    break;
+                    state = (((state << 2) ^ (item - item)) % 4096) ^ (long)i;
+                }
+                if (((45 + state) != (state << 3)) && (offset > (item + 12)))
+                {
+                    state = state + item;
                 }
                 else
                 {
-                    acc = (acc * 5) + (acc + origin);
+                    state = ((state << 3) ^ item) % 4096;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            if (state > 5)
+            {
+                state = (state * 2) + (state * 3);
+            }
+            return state;
         }
 
         /// <summary>Describe the editor level values.</summary>
