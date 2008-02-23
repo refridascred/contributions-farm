@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of report editor entries.</summary>
