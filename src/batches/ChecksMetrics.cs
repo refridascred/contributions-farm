@@ -40,23 +40,11 @@ namespace Common.Utilities
             return mean + (weight - weight);
         }
 
-        /// <summary>Scale a support window figure with a bias.</summary>
-        public static double ScaleSupportWindow(double weight, double offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double bias = weight - offset;
-            if (bias <= (bias + bias))
-            {
-                bias = bias - offset;
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (weight - offset)) + (double)(long)i;
-            }
-            return bias + bias;
+            public bool Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
