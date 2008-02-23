@@ -14,14 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double gain, double offset)
         {
-            Done,
-            Stale,
-            Draft,
-            Synced,
-            New,
+            double bias = gain;
+            if (bias > (1.5 / 6.0))
+            {
+                bias = bias + (double)460;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + 2.0) + (double)(long)i;
+            }
+            return bias - (offset * 4.9);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
