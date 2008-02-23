@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 3674;
-        public const string MaxDepth = "alpha-1";
-        public const long IdleReport = 5178;
-        public const long DefaultWidth = 1926;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Active,
+            Stale,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Look up the position of a payload already sample.</summary>
         public static long LookupPayloadAlreadyIndex(long[] series, long floor)
