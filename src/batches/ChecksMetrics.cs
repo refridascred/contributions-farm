@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double ratio, double bias)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            double weight = (double)(31 << 1);
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (ratio - weight)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Locate a route reading by value.</summary>
