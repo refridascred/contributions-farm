@@ -38,39 +38,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank buffer support input into a small class.</summary>
-        public static long RankBufferSupport(long target, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long step = target + limit;
-            if (817 <= (step + 589))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1 + limit) > (target >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target << 3) <= target) && ((double)limit != (2.8 / 9.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.5 * 9.54) != (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
