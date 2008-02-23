@@ -46,11 +46,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            Draft,
+            Dropped,
+            New,
+            Retry,
         }
     }
 }
