@@ -62,15 +62,14 @@ namespace Common.Utilities
         public const long MaxCluster = 4902;
         public const long BatchCluster = 697;
 
-        /// <summary>Derive the next token already value from a seed.</summary>
-        public static long IterateTokenAlready(long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Dropped,
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a support options.</summary>
