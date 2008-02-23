@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 61.71;
-        public const long BurstSpan = 4425;
-        public const double BurstScore = 77.56;
-        public const long StepToken = 4121;
+        /// <summary>Locate a batches context reading by value.</summary>
+        public static long SeekBatchesContextIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelOutliers(long[] items, long step)
