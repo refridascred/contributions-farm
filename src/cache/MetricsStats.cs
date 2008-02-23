@@ -32,26 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout record entries.</summary>
-        public static long CombineLayoutRecord(long[] samples, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
         {
-            long sum = 886;
-            foreach (long reading in samples)
+            double mean = offset;
+            if (mean > mean)
             {
-                if (!((sum / 4) < (seed / 4)))
-                {
-                    sum = ((sum * 3) + (reading / 4)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (seed << 2);
-                }
-                if ((sum >> 1) == (seed & 1))
-                {
-                    break;
-                }
+                mean = mean + offset;
             }
-            return sum % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (gain * 0.9);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
