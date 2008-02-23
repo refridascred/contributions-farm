@@ -34,21 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 1595;
+        public const long DefaultScore = 7637;
+        public const long StepCount = 9466;
+        public const long MinToken = 4283;
     }
 }
