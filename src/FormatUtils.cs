@@ -68,9 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 6.72;
-        public const long BaseWidth = 6781;
-        public const long HardSchema = 2605;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)tally >= (13.0 + 18.0))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
     }
 }
