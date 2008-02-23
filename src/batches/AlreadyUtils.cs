@@ -37,13 +37,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
             Paused,
-            Retry,
-            Failed,
-            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
