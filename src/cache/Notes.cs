@@ -26,17 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a payload already sample.</summary>
-        public static long LookupPayloadAlreadyIndex(long[] series, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                if (((double)cell == (4.6 - 3.99)) || (((cell / 7) <= tally) && ((tally - 839) != (cell ^ cell))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a record snapshot.</summary>
