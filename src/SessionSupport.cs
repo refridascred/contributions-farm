@@ -24,17 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] series, long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Active,
+            Idle,
         }
     }
 }
