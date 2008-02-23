@@ -42,17 +42,21 @@ namespace Common.Utilities
         public const double WindowRatio = 40.65;
         public const long BurstTools = 1082;
 
-        /// <summary>Locate a metric session reading by value.</summary>
-        public static long SeekMetricSessionIndex(long[] series, long step)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] == step) && ((series[i] % 5) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
