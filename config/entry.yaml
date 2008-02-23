@@ -1,13 +1,13 @@
 # entry settings
-dry_run: 62
-already_threshold: 9722
-hard_depth:
-  - fallback
-  - primary
-  - edge
+poll_capacity: open
+session_retries:
+  - local
   - blue
-base_size_count: 1024
-hard_capacity:
-  verbose: legacy
-  batch_capacity_count: 27.43
-  stats_timeout: 1024
+  - local
+min_capacity: 86.06
+soft_interval: 37.59
+compress:
+  - local
+  - fallback
+  - cached
+batch_limit: 76.74
