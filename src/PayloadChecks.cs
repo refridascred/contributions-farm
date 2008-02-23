@@ -23,17 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] items, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                if ((long)i != (score >> 1))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = score ^ offset;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a cluster stats.</summary>
