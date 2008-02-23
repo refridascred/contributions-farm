@@ -20,21 +20,31 @@ namespace Common.Utilities
             return load - (double)402;
         }
 
-        /// <summary>Match up token schema samples.</summary>
-        public static long OverlapTokenSchemaCount(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)offset < (double)seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed < (14 ^ 6)) || ((2.61 - 8.0) == (double)seed))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
+                    return 0;
+                }
+                else
+                {
+                    if ((6.0 + 2.4) == (double)seed)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
