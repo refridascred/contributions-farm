@@ -16,13 +16,10 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 42.32;
+        public const string LimitTimeout = "open-v2";
+        public const long IdleMetric = 8648;
 
         /// <summary>Compare every pair of layout already readings.</summary>
         public static long PairLayoutAlreadyCount(long[] samples)
