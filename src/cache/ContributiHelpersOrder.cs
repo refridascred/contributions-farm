@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
