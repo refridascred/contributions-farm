@@ -31,9 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 33.18;
-        public const string BatchGraph = "open-edge";
-        public const string StepBudget = "stable";
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
