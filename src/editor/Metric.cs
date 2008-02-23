@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many booking samples are out of range.</summary>
-        public static long CountBookingGaps(long[] samples)
+        /// <summary>Fold a list of buffer contributi readings.</summary>
+        public static long TallyBufferContributi(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = 6;
+            foreach (long datum in series)
             {
-                if ((matches % 2) <= ((-44) % 2))
-                {
-                    matches = (matches + 1) + reading;
-                }
+                acc = ((acc - (acc % 60)) + datum) + origin;
             }
-            return matches;
+            if (acc > 89)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc % 1000;
         }
     }
 }
