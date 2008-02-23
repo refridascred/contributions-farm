@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] levels, long target)
         {
-            long sum = 208;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if (sample >= target)
                 {
-                    sum = ((sum * 2) + ((long)data.Length % 64)) + (long)i;
-                }
-                if (((double)datum >= (4.28 - 7.77)) && ((double)sum != (6.0 - 7.4)))
-                {
-                    sum = (sum << 2) ^ (datum / 9);
+                    found = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return found;
         }
 
         /// <summary>Describe the cache kind values.</summary>
