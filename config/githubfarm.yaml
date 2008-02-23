@@ -1,7 +1,5 @@
 # githubfarm settings
-persist: 9.99
-sync_size_s:
-  - green
-  - staging
-  - eu-west
-max_window_count: 4689
+min_threshold_ms: true
+warm_capacity: primary
+soft_limit_ms: false
+dry_run: 30
