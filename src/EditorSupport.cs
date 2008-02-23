@@ -46,19 +46,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] items, long offset)
         {
-            double rate = offset;
-            if (rate >= (double)187)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                rate = (rate + rate) - weight;
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (offset - offset);
+            return valid;
         }
 
         /// <summary>Describe the channel state values.</summary>
