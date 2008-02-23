@@ -1,31 +1,5 @@
 # entry settings
-idle_timeout_ms:
-  poll_size_count:
-    - 374
-    - 478
-  retry_interval_s: 3253
-  min_interval_ms: fallback
-  layout_ratio: false
-flush_threshold_s: standard
-persist: primary
-hard_delay_count:
-  strict:
-    default_ratio_count:
-      - 351
-      - 40
-      - 396
-    default_interval_pct: green
-    hard_ttl:
-      - 141
-      - 97
-      - 250
-      - 248
-    base_timeout:
-      - blue
-      - staging
-      - standard
-      - open
-    compress: true
-  batches_timeout: 96
-  warm_delay: stable
-strict: 45.34
+audit: 36.16
+burst_depth_ms: staging
+route_threshold: 79.55
+persist: false
