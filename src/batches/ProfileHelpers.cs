@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank tools command input into a small class.</summary>
-        public static long RankToolsCommand(long offset, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long offset)
         {
-            if ((9.8 + 0.2) < (double)offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)offset != (6.0 * 2.3)))
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit % 24) >= (75 % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset & 15) < (offset + 454)) || ((98 ^ offset) == (limit % 10)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
