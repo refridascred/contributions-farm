@@ -60,13 +60,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Queued,
-            Dropped,
-            Closed,
-            Pending,
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
