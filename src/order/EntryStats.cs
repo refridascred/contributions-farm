@@ -39,11 +39,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
