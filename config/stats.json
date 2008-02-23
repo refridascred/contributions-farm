@@ -1,7 +1,12 @@
 {
-  "cache_ratio": 7.17,
-  "warm_capacity": "open",
-  "flush_interval": "local",
-  "metrics_size": "latest",
-  "already_interval": "stable"
+  "default_delay_ms": 30,
+  "strict": [173, 474, 153, 488],
+  "cache_threshold": ["fallback", "green", "stable", "local"],
+  "poll_window": {
+    "dry_run": 7,
+    "flush_limit_pct": true,
+    "burst_depth": [399, 263, 69],
+    "readonly": 5369,
+    "batch_delay_count": 63.23
+  }
 }
