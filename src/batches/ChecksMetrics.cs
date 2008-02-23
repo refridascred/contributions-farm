@@ -65,22 +65,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up already tools samples.</summary>
-        public static long PairAlreadyToolsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryLevel = 1499;
+        public const double CacheLevel = 55.11;
+        public const double BaseWindow = 73.58;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] readings, long seed)
