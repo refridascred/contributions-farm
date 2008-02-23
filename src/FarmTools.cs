@@ -20,26 +20,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine session cluster values into a single score.</summary>
-        public static long TallySessionCluster(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long target)
         {
-            long carry = -56;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((carry >> 3) != (value >> 3))
+                if ((double)cell < (9.6 - 12.0))
                 {
-                    carry = (carry ^ (4 + carry)) % 4096;
-                }
-                if (((-1) ^ carry) > value)
-                {
-                    carry = (carry * 4) + (79 ^ value);
+                    hits = (hits + 1) + target;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry - 859) % 1000;
-            }
-            return carry % 4096;
+            return hits;
         }
     }
 }
