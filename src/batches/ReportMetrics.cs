@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] readings, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
