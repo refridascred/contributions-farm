@@ -28,13 +28,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            Closed,
+            Paused,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the route class values.</summary>
