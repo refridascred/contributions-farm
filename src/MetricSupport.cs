@@ -39,19 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] items, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long anchor = 6;
+            foreach (long entry in data)
             {
-                if (reading != origin)
+                if ((entry / 3) > (anchor + anchor))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor * 2) + (entry ^ anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + 34) % 65521;
                 }
             }
-            return ok;
+            if (anchor > 3)
+            {
+                anchor = ((anchor * 2) + (anchor / 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
