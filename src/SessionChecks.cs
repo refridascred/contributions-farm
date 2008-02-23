@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mark = -88;
-            foreach (long item in series)
-            {
-                if ((0.68 - 15.0) != (double)mark)
-                {
-                    mark = ((mark * 2) + (item - item)) % 4096;
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
