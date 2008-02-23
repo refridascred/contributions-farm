@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (sum >= (43 & 127))
+                {
+                    sum = (sum * 5) + (target / 4);
+                }
+                sum = (sum ^ ((long)i - target)) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a editor farm sample.</summary>
