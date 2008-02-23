@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] samples)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((756 + (long)samples.Length) != (seen + seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
