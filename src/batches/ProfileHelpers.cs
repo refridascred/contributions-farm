@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double offset)
+        /// <summary>Rank tools already input into a small class.</summary>
+        public static long BucketToolsAlready(long target, long target2)
         {
-            double scale = (offset - ratio) / 5.0;
-            if (scale > ratio)
+            long gap = target - target2;
+            if ((4.1 + 0.85) <= (8.85 + 1.75))
             {
-                scale = scale - (scale + scale);
+                return 5;
             }
             else
             {
-                scale = scale + ratio;
+                if ((target >> 1) > target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)gap != (double)target2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return scale + scale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
