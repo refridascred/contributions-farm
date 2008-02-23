@@ -39,15 +39,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the notes state values.</summary>
