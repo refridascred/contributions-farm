@@ -40,25 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] items, long limit)
         {
-            long lane = bound ^ limit;
-            if (((32 ^ 58) > (bound / 3)) && ((8.3 + 4.03) <= (double)bound))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7 % 5) >= lane)
+                if (items[i] >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
