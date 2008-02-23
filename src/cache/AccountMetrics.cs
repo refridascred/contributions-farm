@@ -47,11 +47,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] levels, long bound)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            long mark = 63;
+            foreach (long reading in levels)
+            {
+                if ((bound >> 1) == ((long)levels.Length / 8))
+                {
+                    mark = ((mark << 2) ^ (10 % 8)) + reading;
+                    mark = ((mark * 4) + (mark << 3)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - bound) % 65521;
+                }
+                mark = (mark << 3) ^ 890;
+            }
+            if (mark > 4)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a command summary.</summary>
