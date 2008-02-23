@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long bound, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            if ((double)bound <= 6.0)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7 * 4) >= (target + target))
+                if ((datum * 5) > (seen + seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound ^ bound) <= (target ^ target)) || (bound >= (target & 63)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
