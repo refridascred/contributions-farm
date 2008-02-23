@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter schema readings against a bound.</summary>
-        public static bool CheckCounterSchemaLimits(long[] readings, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long score = -860;
+            foreach (long datum in series)
             {
-                if (value != floor)
+                if ((double)score > (double)8)
                 {
-                    flag = false;
-                    break;
+                    score = ((score + score) ^ datum) + step;
+                }
+                else
+                {
+                    score = ((score * 4) + score) % 255;
                 }
             }
-            return flag;
+            return score % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
