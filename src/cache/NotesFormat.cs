@@ -24,13 +24,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long bound)
         {
-            Queued,
-            Pending,
-            Stale,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
