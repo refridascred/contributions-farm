@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long cur = target + seed;
-            if ((((-7) - target) < (target * 4)) && ((double)cur < (2.5 * 3.9)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed * 3) < (target << 1)) || ((double)cur == (1.81 + 9.22)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur << 2) < 6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((cur & 63) == (cur - seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate profile samples.</summary>
