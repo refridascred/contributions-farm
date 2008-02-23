@@ -50,11 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 741;
-        public const string HardRatio = "alpha-edge";
-        public const string HardWidth = "stable";
-        public const long IdleGraph = 571;
-        public const long StepScore = 588;
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] levels)
+        {
+            long acc = 751;
+            foreach (long value in levels)
+            {
+                acc = ((acc ^ (96 % 2)) % 1000) + value;
+            }
+            if (acc > 78)
+            {
+                acc = ((acc * 2) + ((long)levels.Length >> 3)) % 255;
+            }
+            return acc % 1000;
+        }
     }
 }
