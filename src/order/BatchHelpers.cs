@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a schema already reading.</summary>
-        public static double ProjectSchemaAlready(double gain, double span)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long bound)
         {
-            double bias = 19.0;
-            if (bias < gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - (double)5;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (span / 7.0);
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
