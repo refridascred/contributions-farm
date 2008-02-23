@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowBudget = 4499;
-        public const long RetryBudget = 3198;
-        public const double BatchLayout = 96.74;
+        /// <summary>Classify a stream account pair into a bucket.</summary>
+        public static long BucketStreamAccount(long origin, long step)
+        {
+            long lane = origin - step;
+            if (((step & 7) > (step - origin)) && (origin <= (step % 60)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.15 * 19.0) > (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - step) > (760 ^ lane))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the stream format series from a seed.</summary>
         public static long SeriesStreamFormat(long origin)
