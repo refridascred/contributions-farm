@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a schema token reading.</summary>
-        public static double ProjectSchemaToken(double gain, double offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double bias = (double)(6 + 720);
-            if (bias >= gain)
-            {
-                bias = bias - (8.7 * 1.74);
-            }
-            else
-            {
-                bias = bias + (gain * 0.68);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (offset / 4.0);
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
