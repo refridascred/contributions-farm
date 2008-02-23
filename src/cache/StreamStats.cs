@@ -13,15 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Match up entry support samples.</summary>
+        public static long MatchEntrySupportCount(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 20)
+                    if ((readings[i] ^ readings[j]) > 16)
                     {
                         matches = matches + 1;
                     }
