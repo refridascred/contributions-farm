@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftRatio = 7206;
-        public const long SoftFactor = 4894;
-        public const double WindowPayload = 98.15;
-        public const string HardBudget = "standard-1";
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] items)
