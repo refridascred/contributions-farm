@@ -28,19 +28,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of token already entries.</summary>
-        public static long TallyTokenAlready(long[] data)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long seed)
         {
-            long score = -75;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)datum > 4.3))
+                if (values[i] < seed)
                 {
-                    score = ((score << 2) ^ datum) % 255;
+                    return (long)i;
                 }
-                score = ((score << 2) ^ (score % 8)) % 255;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the schema mode values.</summary>
