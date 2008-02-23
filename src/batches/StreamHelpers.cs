@@ -75,10 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseWidth = 2992;
-        public const string BurstCommits = "standard";
-        public const double StepCommits = 40.31;
-        public const long BaseCommits = 9288;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double scale, double bias)
+        {
+            double weight = scale - 1.5;
+            if (weight >= (scale * 19.0))
+            {
+                weight = (weight - (scale / 6.0)) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + weight;
+        }
     }
 }
