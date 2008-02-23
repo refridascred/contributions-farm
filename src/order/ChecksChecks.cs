@@ -35,16 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc ^ floor;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxTimeout = 6202;
+        public const string MinProfile = "legacy-1";
+        public const long BatchProfile = 6634;
+        public const long HardProfile = 2871;
+        public const long SoftProfile = 8809;
     }
 }
