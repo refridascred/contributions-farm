@@ -43,13 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] items)
         {
-            Failed,
-            Locked,
-            Active,
-            Paused,
+            long mark = 21;
+            foreach (long entry in items)
+            {
+                if ((entry * 3) <= (entry - entry))
+                {
+                    mark = ((mark << 3) ^ (mark % 8)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ entry) % 101;
+                }
+            }
+            return mark % 97;
         }
     }
 }
