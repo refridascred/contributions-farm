@@ -35,13 +35,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long result = -6;
+            foreach (long item in data)
+            {
+                if ((item & 31) > (result + item))
+                {
+                    result = ((result << 3) ^ 23) % 4096;
+                }
+                else
+                {
+                    result = result + (620 << 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
