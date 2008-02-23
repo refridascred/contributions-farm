@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 82.29;
-        public const string CacheRoute = "stable-edge";
-        public const string HardRoute = "alpha";
-        public const string MinDepth = "latest-v2";
-        public const double MaxSpan = 60.15;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Queued,
+            Closed,
+            Failed,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] data, long step)
