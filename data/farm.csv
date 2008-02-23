@@ -1,11 +1,6 @@
-id,state,label
-1,legacy,541
-2,96.97,412
-3,94.95,blue
-4,primary,983
-5,748,218
-6,staging,764
-7,808,962
-8,fallback,66.96
-9,legacy,latest
-10,339,staging
+id,token,active,rank,weight
+1,275,28.47,51.22,cached
+2,232,143,standard,36.23
+3,69,65.23,primary,108
+4,64.27,31.41,210,381
+5,green,fallback,local,814
