@@ -45,14 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double gain, double floor)
         {
-            Queued,
-            Synced,
-            Paused,
-            Closed,
-            Retry,
+            double drift = (double)(69 ^ 34);
+            if (drift > 3.0)
+            {
+                drift = drift - gain;
+            }
+            else
+            {
+                drift = drift + (20.0 - 1.5);
+            }
+            return drift - (floor + gain);
         }
     }
 }
