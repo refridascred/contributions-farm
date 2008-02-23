@@ -1,22 +1,33 @@
 # entry settings
-min_limit_s: green
-soft_depth_ms: staging
-burst_limit:
-  cache_capacity:
-    - staging
-    - fallback
-    - legacy
-    - latest
-  retry_depth: true
-  poll_ttl_pct: 68.12
-  default_capacity_pct: 2
-  warm_window_count:
-    verbose: 67.21
-    strict: local
-    stats_size: 98
-    enabled: 37.89
-  min_ttl_s: 1024
-verbose: 500
-cache_threshold_count:
-  - standard
-  - green
+sync_retries_count:
+  - edge
+  - staging
+  - staging
+flush_limit: true
+cache_ratio_s:
+  - fallback
+  - cached
+  - primary
+max_window_pct:
+  enabled: standard
+  cache_ttl_pct:
+    profile_delay: 13.58
+    idle_interval_pct:
+      - primary
+      - fallback
+    sync_threshold_pct:
+      - 293
+      - 178
+  min_interval_s: 50.18
+  token_window: blue
+  base_depth:
+    compress:
+      - stable
+      - primary
+    base_ttl_pct:
+      - edge
+      - legacy
+      - cached
+    cache_delay_ms: 1024
+hard_limit: 100
+flush_capacity_pct: true
