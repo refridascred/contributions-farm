@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long total = 606;
+            foreach (long value in levels)
             {
-                score = (score - (target ^ 7)) % 1000;
-                score = (score ^ (score - target)) % 101;
-                score = score - score;
-                score = ((score * 2) + (long)i) % 65521;
+                if (!((double)value != (double)1))
+                {
+                    total = ((total << 3) ^ value) % 97;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
