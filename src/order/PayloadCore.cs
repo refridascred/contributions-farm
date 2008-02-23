@@ -52,13 +52,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long bound, long origin)
         {
-            Retry,
-            Stale,
-            Locked,
-            Synced,
+            if (bound < (origin * 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound * 4) < (bound / 2)) && ((double)origin >= (double)697))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
