@@ -1,16 +1,14 @@
 # Command notes
 
-Run the metrics check before changing any farm limits.
-The queue helpers are pure functions, so they are safe to call from any thread.
-The buffer report groups every buffer by metric.
+When a stats fails, the buffer handler retries a few times before giving up.
+Use command settings to tune how often account data is refreshed.
+The cache module keeps tools values in sync with the queue cache.
 
-Run the editor check before changing any layout limits.
-The cache report groups every stream by record.
-A payload that stays idle for too long is moved to the contributi list.
+Defaults for batches live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often support data is refreshed.
 
 ## Guidelines
 
 - Validate profile input early
-- Review batch limits each release
-- Log every schema change
-- Keep command values small
+- Keep cache values small
+- Document new checks fields
