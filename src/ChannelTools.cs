@@ -14,13 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Roll a batches report counter forward.</summary>
+        public static long SeriesBatchesReport(long seed)
         {
-            Synced,
-            Active,
-            Locked,
-            Failed,
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
