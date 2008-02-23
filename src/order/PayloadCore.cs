@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long acc = 43;
+            foreach (long datum in samples)
             {
-                if ((double)sample <= (6.47 / 5.0))
-                {
-                    count = count + 3;
-                }
+                acc = (acc ^ datum) % 97;
             }
-            return count;
+            if (acc < 6)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
