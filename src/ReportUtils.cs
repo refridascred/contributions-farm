@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BurstScore = 77.56;
         public const long StepToken = 4121;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the payload level values.</summary>
