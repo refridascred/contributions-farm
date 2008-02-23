@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
