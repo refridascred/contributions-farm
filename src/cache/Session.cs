@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long HardDepth = 8009;
         public const long MaxChannel = 295;
 
-        /// <summary>Find the first already account entry that matches the target.</summary>
-        public static long LookupAlreadyAccountIndex(long[] levels, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] < target)
+                if ((target + sample) < target)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
