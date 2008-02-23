@@ -26,22 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Count the checks payload entries that pass the check.</summary>
+        public static long TallyChecksPayloadGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((seen & 127) != (datum + seen))
+                if ((double)entry <= (7.6 - 3.21))
                 {
-                    seen = seen + 3;
+                    count = (count + 1) - bound;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
