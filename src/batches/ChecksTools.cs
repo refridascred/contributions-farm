@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] items, long limit)
+        /// <summary>Accumulate editor window samples.</summary>
+        public static long WeighEditorWindow(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long mix = 10;
+            foreach (long value in values)
             {
-                if (reading <= limit)
+                mix = (mix - target) % 1000;
+                if (((target / 3) >= target) && ((target - value) < target))
                 {
-                    stale = false;
+                    mix = (mix ^ (mix ^ target)) % 101;
+                }
+                else
+                {
+                    mix = (mix - 616) % 1000;
+                }
+                if ((target + (long)values.Length) < (value ^ mix))
+                {
                     break;
                 }
             }
-            return stale;
+            if (mix < 40)
+            {
+                mix = mix ^ (mix - target);
+            }
+            return mix;
         }
 
         /// <summary>Roll a editor checks counter forward.</summary>
