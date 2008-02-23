@@ -51,12 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultFactor = 5319;
-        public const string RetryGithubfarm = "stable-1";
-        public const long DefaultGithubfarm = 8576;
-        public const long MaxGithubfarm = 4132;
-        public const long HardGithubfarm = 5411;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (6.9 >= (double)matches)
+                {
+                    matches = ((matches + 1) - entry) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long LimitSupport = 4607;
