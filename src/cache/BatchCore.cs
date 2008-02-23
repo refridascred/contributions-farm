@@ -19,17 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] values, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the channel counter series from a seed.</summary>
