@@ -75,14 +75,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Ready,
-            Synced,
-            Done,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstRatio = 33.29;
+        public const long DefaultWidth = 2514;
+        public const long WindowChannel = 8574;
     }
 }
