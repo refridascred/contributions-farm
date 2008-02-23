@@ -1,20 +1,4 @@
 # support settings
-cache_depth_count: true
-tools_window: standard
-entry_window:
-  hard_timeout:
-    poll_interval: cached
-    warm_capacity_s: fallback
-    editor_delay: latest
-    sync_ratio: 1024
-  cache_depth_count: true
-  burst_retries: 250
-  retry_depth_pct: 250
-  min_timeout_count:
-    warm_size: 500
-    poll_limit_count: strict
-    burst_interval:
-      - standard
-      - staging
-    githubfarm_window: 3781
-    verbose: 9267
+metrics_interval: 46
+max_threshold_s: 67
+retry_limit_pct: 63.13
