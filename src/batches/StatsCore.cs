@@ -61,12 +61,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] items)
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (9.82 * 20.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
