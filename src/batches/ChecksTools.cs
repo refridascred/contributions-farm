@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] items, long limit)
         {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a editor checks counter forward.</summary>
