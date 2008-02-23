@@ -56,22 +56,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = -32;
-            foreach (long reading in series)
-            {
-                if (reading >= (reading + reading))
-                {
-                    carry = (carry - 59) % 101;
-                }
-            }
-            if (carry < 37)
-            {
-                carry = (carry ^ (carry - carry)) % 1000;
-            }
-            return carry;
+            Stale,
+            Dropped,
+            New,
+            Active,
+            Paused,
         }
     }
 }
