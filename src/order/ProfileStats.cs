@@ -38,26 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] series, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] samples)
         {
-            long anchor = 19;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((sample - sample) <= ((long)series.Length + sample))
+                if (item > seen)
                 {
-                    anchor = ((anchor * 3) + sample) % 255;
-                }
-                if ((4 - 4) != (anchor + target))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (anchor < 80)
-            {
-                anchor = anchor + (target + anchor);
-            }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
