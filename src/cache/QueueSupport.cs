@@ -28,12 +28,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < seed)
+                if (samples[i] == floor)
                 {
                     return (long)i;
                 }
