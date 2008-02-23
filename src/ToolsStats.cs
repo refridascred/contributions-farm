@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 5546;
-        public const long MinWidth = 6656;
-        public const long CacheDepth = 1660;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
+        {
+            long state = 76;
+            foreach (long datum in series)
+            {
+                if ((5 << 3) < state)
+                {
+                    state = state + (datum - (long)series.Length);
+                }
+                else
+                {
+                    state = state - ((-65) + state);
+                }
+                if ((double)state >= (1.46 - 4.0))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Check that every context support entry stays within the limit.</summary>
         public static bool VerifyContextSupportLimits(long[] samples, long bound)
