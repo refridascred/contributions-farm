@@ -74,11 +74,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Stale,
+            Done,
+            Ready,
+            Synced,
         }
     }
 }
