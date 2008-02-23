@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine route already values into a single score.</summary>
-        public static long CombineRouteAlready(long[] items, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] readings)
         {
-            long mix = 44;
-            foreach (long value in items)
+            long result = -3;
+            foreach (long cell in readings)
             {
-                if ((value * 2) < (target * 2))
-                {
-                    mix = (mix + (target - 57)) % 255;
-                }
+                result = result ^ (cell + cell);
             }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
