@@ -14,18 +14,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm contributi samples.</summary>
-        public static long OverlapGithubfarmContributiCount(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)item >= (6.8 + 0.08)) || (((count * 2) > count) || ((item - item) != (item - 641))))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
