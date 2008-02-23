@@ -1,15 +1,8 @@
 {
-  "batch_timeout": 60,
-  "max_interval_pct": 14.03,
-  "soft_interval_ms": {
-    "graph_ttl": true,
-    "cluster_ttl": {
-      "payload_ttl": 34,
-      "format_limit": 500,
-      "support_timeout": "blue"
-    },
-    "route_threshold": "staging"
-  },
-  "retry_ttl_count": ["staging", "open", "staging"],
-  "min_size": 8
+  "command_timeout": "strict",
+  "counter_size": false,
+  "record_ratio": "open",
+  "cluster_limit": true,
+  "max_timeout_count": false,
+  "min_timeout_count": 18.76
 }
