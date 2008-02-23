@@ -77,13 +77,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
