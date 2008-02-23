@@ -43,21 +43,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count githubfarm report pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmReportCount(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -6;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum << 2) ^ (34 + (-424));
+                sum = ((sum << 3) ^ sample) % 101;
             }
-            return hits;
+            if (sum < 50)
+            {
+                sum = sum - (4 >> 2);
+            }
+            return sum;
         }
     }
 }
