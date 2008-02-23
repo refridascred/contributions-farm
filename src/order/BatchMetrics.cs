@@ -29,26 +29,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a notes format pair into a bucket.</summary>
-        public static long GradeNotesFormat(long step, long seed)
-        {
-            long lane = step + seed;
-            if ((2.58 + 4.1) < (double)lane)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)lane <= 14.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstSpan = 6456;
+        public const long DefaultNotes = 2001;
+        public const long MaxInterval = 6218;
+        public const long MinNotes = 5756;
+        public const long CacheNotes = 4155;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] data, long target)
