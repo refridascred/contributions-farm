@@ -51,18 +51,22 @@ namespace Common.Utilities
         public const long WindowContributi = 247;
         public const double IdleContributi = 53.74;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((2 - 48) < (cell % 60))
+                if ((value % 97) <= (value - 22))
                 {
-                    matches = (matches + 1) - offset;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
