@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] items, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long mix = 90;
+            foreach (long sample in data)
             {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix * 4) + sample;
             }
-            return flag;
+            if (mix < 617)
+            {
+                mix = (mix << 3) ^ (long)data.Length;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
