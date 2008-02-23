@@ -1,33 +1,9 @@
 # entry settings
-sync_retries_count:
-  - edge
-  - staging
-  - staging
-flush_limit: true
-cache_ratio_s:
+poll_window_pct: 74
+record_ratio: true
+readonly:
   - fallback
-  - cached
-  - primary
-max_window_pct:
-  enabled: standard
-  cache_ttl_pct:
-    profile_delay: 13.58
-    idle_interval_pct:
-      - primary
-      - fallback
-    sync_threshold_pct:
-      - 293
-      - 178
-  min_interval_s: 50.18
-  token_window: blue
-  base_depth:
-    compress:
-      - stable
-      - primary
-    base_ttl_pct:
-      - edge
-      - legacy
-      - cached
-    cache_delay_ms: 1024
-hard_limit: 100
-flush_capacity_pct: true
+  - green
+  - stable
+hard_interval: 87.46
+cache_delay_s: false
