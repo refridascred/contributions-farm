@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a batches context reading by value.</summary>
-        public static long SeekBatchesContextIndex(long[] values, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 38;
+            foreach (long value in values)
             {
-                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                mark = (mark ^ (value - (-5))) % 65521;
+                mark = (mark + mark) % 255;
+                if (!((value ^ mark) < (value + mark)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
