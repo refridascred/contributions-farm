@@ -77,22 +77,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 5865;
+        public const string WindowGraph = "staging-edge";
+        public const double MaxGraph = 53.41;
+        public const double HardGraph = 39.85;
+        public const string HardRatio = "primary-edge";
 
         /// <summary>Digest a series of layout stats entries.</summary>
         public static long WeighLayoutStats(long[] levels)
