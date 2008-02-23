@@ -42,12 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((target % 2) < (mark + (long)i))
+                {
+                    mark = ((mark << 3) ^ (target ^ mark)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
