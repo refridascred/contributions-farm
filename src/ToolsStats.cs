@@ -35,12 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] levels, long target)
         {
-            Pending,
-            Draft,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
