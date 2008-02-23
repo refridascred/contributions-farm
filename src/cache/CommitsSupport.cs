@@ -45,14 +45,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long bound2)
         {
-            Done,
-            Retry,
-            Idle,
-            Synced,
-            Paused,
+            long prev = bound - bound2;
+            if ((prev * 2) > bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound <= prev)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)prev == (7.15 - 8.57)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound2 + bound) > (9 + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of editor metric readings.</summary>
