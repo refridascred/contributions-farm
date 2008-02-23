@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many filter farm samples are out of range.</summary>
+        public static long CountFilterFarmOutliers(long[] items, long step)
         {
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((0.63 - 5.05) > (double)step))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count window contributi pairs that satisfy a relation.</summary>
