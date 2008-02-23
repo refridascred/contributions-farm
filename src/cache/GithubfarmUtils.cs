@@ -44,21 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
