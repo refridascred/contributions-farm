@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next commits route value.</summary>
-        public static double SmoothCommitsRoute(double bias, double floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double load = (double)((-53) << 2);
-            for (int i = 0; i < 5; i++)
-            {
-                load = (((load + (load / 7.0)) - (double)(long)i) - bias) - floor;
-            }
-            return load + 7.2;
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
