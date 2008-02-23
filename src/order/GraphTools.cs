@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double scale, double bias)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long floor)
         {
-            double ratio = scale;
-            return (ratio - 17.0) + bias;
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)floor >= (7.6 - 1.0))
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
