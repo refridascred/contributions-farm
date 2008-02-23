@@ -54,19 +54,12 @@ namespace Common.Utilities
             return (bias - floor) + weight;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] values, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Dropped,
+            Draft,
         }
     }
 }
