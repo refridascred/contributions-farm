@@ -19,21 +19,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Check that every format editor entry stays within the limit.</summary>
+        public static bool CheckFormatEditorRange(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= floor)
                 {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Adjust a command reading.</summary>
