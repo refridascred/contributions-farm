@@ -30,15 +30,18 @@ namespace Common.Utilities
             return bias + (double)34;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] levels, long seed)
         {
-            long total = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                total = (total ^ (datum - datum)) % 97;
+                if ((hits + hits) == (45 * 5))
+                {
+                    hits = ((hits + 2) + reading) + seed;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
