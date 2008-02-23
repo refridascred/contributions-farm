@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window contributi pairs that satisfy a relation.</summary>
-        public static long MatchWindowContributiCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 22.77;
+        public const long BaseFactor = 3957;
+        public const string MinQueue = "cached-1";
+        public const double SoftBudget = 53.83;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmLimits(long[] values, long floor)
