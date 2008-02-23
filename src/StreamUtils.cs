@@ -16,18 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] data, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((item / 3) < (item / 4))
-                {
-                    seen = (seen + 2) + target;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count stream tools pairs that satisfy a relation.</summary>
