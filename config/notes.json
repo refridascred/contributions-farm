@@ -1,11 +1,5 @@
 {
-  "route_window": 14,
-  "enabled": 1024,
-  "format_window": {
-    "flush_threshold_s": 8204,
-    "base_retries": true,
-    "burst_ttl_s": ["standard", "edge"],
-    "sync_size_ms": ["primary", "edge"]
-  },
-  "default_capacity": 4549
+  "poll_delay": "eu-west",
+  "base_threshold_count": "staging",
+  "persist": "fallback"
 }
