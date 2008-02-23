@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary green cached; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=346
+BUFFER_LIMIT=310
 log "limit is ${BUFFER_LIMIT}"
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
