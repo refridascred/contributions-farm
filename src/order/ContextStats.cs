@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Find the first filter cluster entry that matches the target.</summary>
