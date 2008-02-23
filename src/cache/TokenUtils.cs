@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] samples)
+        /// <summary>Digest a series of filter stream entries.</summary>
+        public static long DigestFilterStream(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = 66;
+            foreach (long datum in items)
             {
-                if (!(((4.0 / 5.0) < (double)datum) || (hits > (datum << 2))))
+                if ((offset * 4) < datum)
                 {
-                    hits = hits + 2;
+                    mix = mix + (26 >> 4);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
