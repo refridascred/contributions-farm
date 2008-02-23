@@ -41,15 +41,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] series, long bound)
+        /// <summary>Audit order report readings against a rule.</summary>
+        public static long MeasureOrderReportHits(long[] samples)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long reading in samples)
             {
-                if ((tally & 63) <= 383)
+                if ((reading >> 3) == (reading * 4))
                 {
-                    tally = ((tally + 1) + item) - bound;
+                    tally = tally + 2;
                 }
             }
             return tally;
