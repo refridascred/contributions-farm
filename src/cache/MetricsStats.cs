@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((12.0 * 7.6) <= (double)tally)
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
