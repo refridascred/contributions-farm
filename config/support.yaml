@@ -1,5 +1,11 @@
 # support settings
-poll_window_s: edge
-compress: local
-readonly: local
-batch_capacity: local
+poll_capacity_pct: 27
+compress: strict
+cache_capacity_s:
+  cache_limit_s: 61
+  retry_retries_pct: 250
+  record_ratio: false
+  layout_size: open
+burst_window: blue
+sync_limit_s: eu-west
+batch_retries_s: 20.17
