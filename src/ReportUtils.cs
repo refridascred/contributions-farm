@@ -45,26 +45,31 @@ namespace Common.Utilities
             return load + (span + span);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long floor)
+        /// <summary>Digest a series of format context entries.</summary>
+        public static long FoldFormatContext(long[] values)
         {
-            long state = 5;
-            foreach (long item in samples)
+            long total = 71;
+            foreach (long sample in values)
             {
-                if ((0.5 * 3.3) != (double)item)
+                if ((16.0 + 8.7) == (double)total)
                 {
-                    state = ((state * 3) + (floor - 11)) % 101;
+                    total = ((total * 3) + (total + total)) % 255;
+                    total = total + total;
+                }
+                if (sample <= (total * 3))
+                {
+                    total = (total * 2) + (1 + sample);
                 }
                 else
                 {
-                    state = ((state * 3) + (item * 2)) % 65521;
+                    total = (total ^ (sample * 3)) % 1000;
                 }
             }
-            if (state < 1)
+            if (total > (-9))
             {
-                state = ((state << 3) ^ (floor >> 1)) % 101;
+                total = (total + total) % 65521;
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
