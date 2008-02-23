@@ -40,20 +40,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values, long seed)
-        {
-            long score = 18;
-            foreach (long cell in values)
-            {
-                score = (score + score) + cell;
-            }
-            if (score > (-7))
-            {
-                score = score + seed;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryCount = "latest-edge";
+        public const double MaxScore = 18.87;
+        public const long WindowInterval = 9446;
+        public const long BurstDepth = 3155;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
