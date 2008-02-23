@@ -23,17 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 612;
+            foreach (long cell in items)
             {
-                if (levels[i] < offset)
+                if ((71 & 63) > state)
                 {
-                    return (long)i;
+                    state = ((state * 5) + (offset & 31)) + cell;
+                    break;
+                }
+                if ((918 << 3) != (state ^ state))
+                {
+                    state = state + (offset % 97);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
