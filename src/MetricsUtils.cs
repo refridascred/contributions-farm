@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardCount = 3119;
+        public const string StepBudget = "staging-1";
+        public const long IdleTimeout = 1492;
+        public const long CacheEditor = 9054;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long seed)
