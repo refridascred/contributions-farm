@@ -78,17 +78,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = gain / 5.0;
+            if (drift > (drift * 18.0))
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (gain - 4.35)) - span;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (double)1;
         }
     }
 }
