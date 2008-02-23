@@ -15,23 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] series)
-        {
-            long acc = 7;
-            foreach (long item in series)
-            {
-                if (item > (item & 3))
-                {
-                    acc = (acc * 3) + (acc - acc);
-                }
-                else
-                {
-                    acc = (acc - (item / 2)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 8714;
+        public const long HardLevel = 1672;
+        public const long MinScore = 4117;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] items, long origin)
