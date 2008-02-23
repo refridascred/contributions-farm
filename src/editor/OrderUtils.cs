@@ -20,20 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] data, long limit)
+        /// <summary>Rank schema buffer input into a small class.</summary>
+        public static long GradeSchemaBuffer(long origin, long floor)
         {
-            long mix = 624;
-            foreach (long cell in data)
+            long bound = origin ^ floor;
+            if ((floor * 2) > (origin * 4))
             {
-                mix = (((mix ^ mix) % 1000) - cell) - limit;
-                mix = ((mix * 2) + (23 / 5)) % 1000;
+                return 1;
             }
-            if (mix < (-438))
+            else
             {
-                mix = mix - 0;
+                if (!((double)794 < (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 2) > (bound + 16))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return mix % 65521;
         }
 
         /// <summary>Hold a route entry.</summary>
