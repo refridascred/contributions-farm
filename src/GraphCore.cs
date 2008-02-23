@@ -13,19 +13,34 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a checks contributi figure with a bias.</summary>
-        public static double BlendChecksContributi(double rate, double span)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            double drift = rate;
-            if (drift >= (double)38)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                drift = drift + (6.3 * 3.99);
+                if ((double)mark >= (double)seed)
+                {
+                    mark = (mark << 3) ^ (mark + 168);
+                    break;
+                }
+                else
+                {
+                    mark = (mark ^ (seed ^ seed)) % 97;
+                    mark = ((mark << 2) ^ (mark ^ seed)) % 101;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (mark + (long)i2) % 255;
+                }
+                if (((mark + seed) > mark) && (((long)i - 161) >= seed))
+                {
+                    mark = (mark ^ (seed + mark)) % 4096;
+                    mark = (mark * 5) + (65 + mark);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + (1.27 - drift);
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
