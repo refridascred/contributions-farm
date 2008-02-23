@@ -24,19 +24,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a stream counter reading.</summary>
-        public static double BlendStreamCounter(double gain, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] data)
         {
-            double mean = gain;
-            if (mean >= (floor / 2.0))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mean = mean + (floor * 7.65);
+                if (!((7.0 * 15.0) <= (double)datum))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + mean;
+            return seen;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
