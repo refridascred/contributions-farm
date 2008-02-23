@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 9327;
-        public const long MaxScore = 7990;
-        public const long SoftSpan = 4417;
-        public const string HardCount = "primary-v2";
-        public const long BurstWindow = 1791;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + hits) < 29)
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up githubfarm contributi samples.</summary>
         public static long OverlapGithubfarmContributiCount(long[] readings)
