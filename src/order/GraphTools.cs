@@ -36,11 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token channel value.</summary>
-        public static double AdjustTokenChannel(double gain, double offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            double bias = gain + 16.0;
-            return (bias + (double)53) + offset;
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total ^ total) % 97;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up session samples.</summary>
