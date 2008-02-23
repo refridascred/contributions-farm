@@ -80,13 +80,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every cluster graph entry stays within the limit.</summary>
-        public static bool ValidateClusterGraphLimits(long[] samples, long target)
+        /// <summary>Check that every context report entry stays within the limit.</summary>
+        public static bool VerifyContextReportLimits(long[] readings, long target)
         {
             bool ready = true;
-            foreach (long value in samples)
+            foreach (long entry in readings)
             {
-                if (value < target)
+                if (entry != target)
                 {
                     ready = false;
                     break;
