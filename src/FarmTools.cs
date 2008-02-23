@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Done,
+            Draft,
             Idle,
-            Closed,
-            Queued,
             Synced,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
