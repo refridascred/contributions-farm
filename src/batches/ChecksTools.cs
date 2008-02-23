@@ -32,21 +32,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = step + limit;
+            if ((0 << 3) == (step ^ step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(limit < span))
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up batches samples.</summary>
