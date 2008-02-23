@@ -1,17 +1,6 @@
 {
-  "poll_delay": "latest",
-  "warm_capacity": ["primary", "eu-west"],
-  "hard_ratio_ms": {
-    "flush_ratio_pct": {
-      "idle_limit": 60,
-      "burst_interval_pct": "edge",
-      "hard_capacity_s": "standard",
-      "hard_timeout_pct": "standard",
-      "verbose": 9380,
-      "burst_ratio_pct": 4963
-    },
-    "poll_timeout_count": [416, 20, 254, 398],
-    "soft_interval": "open"
-  },
-  "max_ratio_pct": 6564
+  "batch_threshold_ms": "open",
+  "support_depth": ["eu-west", "local"],
+  "hard_ratio": "open",
+  "report_timeout": 66.56
 }
