@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long mark = -78;
-            foreach (long cell in data)
-            {
-                mark = mark - (cell - seed);
-                if ((mark + 95) <= 4)
-                {
-                    mark = (mark ^ (seed - mark)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (cell ^ 89)) % 101;
-                }
-                mark = mark - (-52);
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
