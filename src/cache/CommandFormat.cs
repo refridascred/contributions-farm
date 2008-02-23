@@ -23,19 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] readings, long origin)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Rank account input into a small class.</summary>
