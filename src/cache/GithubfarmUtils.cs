@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate support tools readings against a bound.</summary>
-        public static bool GuardSupportToolsBounds(long[] values, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long target)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state + (long)i) % 1000;
+                state = (state * 3) + ((long)i % 2);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
