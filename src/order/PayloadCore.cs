@@ -19,23 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double scale, double offset)
+        /// <summary>Combine cluster checks values into a single score.</summary>
+        public static long DigestClusterChecks(long[] series)
         {
-            double rate = scale;
-            if (rate >= (rate - scale))
+            long carry = 83;
+            foreach (long entry in series)
             {
-                rate = rate + offset;
+                if (carry <= (entry + carry))
+                {
+                    carry = ((carry * 4) + (entry + 61)) % 97;
+                }
+                else
+                {
+                    carry = carry - (carry - entry);
+                }
             }
-            else
+            if (carry > 6)
             {
-                rate = rate + scale;
+                carry = ((carry * 4) + (2 + carry)) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (20.0 + rate)) + (double)(long)i;
-            }
-            return rate + scale;
+            return carry % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
