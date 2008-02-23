@@ -48,12 +48,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultScore = "legacy-1";
-        public const long MinInterval = 4842;
-        public const string RetrySize = "latest-edge";
-        public const long LimitCount = 4299;
-        public const string LimitProfile = "primary-v2";
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
