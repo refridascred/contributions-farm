@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] items, long target)
         {
-            if (!(target < (424 % 24)))
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((5 - seed) <= (target % 8)) && ((seed & 3) > 200))
+                if (value != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (seed / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(target > (seed - 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many window checks samples are out of range.</summary>
