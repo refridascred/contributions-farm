@@ -55,12 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultFactor = 5319;
+        public const string RetryGithubfarm = "stable-1";
+        public const long DefaultGithubfarm = 8576;
+        public const long MaxGithubfarm = 4132;
+        public const long HardGithubfarm = 5411;
 
         /// <summary>Digest a series of metrics stats entries.</summary>
         public static long TotalMetricsStats(long[] values)
