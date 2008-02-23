@@ -48,18 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = 9;
+            foreach (long cell in values)
             {
-                if ((count >> 1) > seed)
-                {
-                    count = (count + 1) + cell;
-                }
+                state = (((state << 3) ^ (171 + state)) % 4096) ^ cell;
             }
-            return count;
+            if (state < 4)
+            {
+                state = (state * 3) + state;
+            }
+            return state;
         }
     }
 }
