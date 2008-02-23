@@ -19,22 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Classify a entry filter pair into a bucket.</summary>
+        public static long BucketEntryFilter(long seed, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if ((3.73 + 9.35) < (double)seed)
             {
-                if (tally >= (sample * 3))
+                return 8;
+            }
+            else
+            {
+                if ((1.38 * 4.21) > (double)step)
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((2.63 + 8.5) > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools header.</summary>
