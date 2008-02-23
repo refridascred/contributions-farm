@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings, long step)
-        {
-            long acc = 4;
-            foreach (long entry in readings)
-            {
-                acc = ((acc + entry) % 65521) - step;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchLevel = 7016;
+        public const long BaseLevel = 2376;
+        public const long DefaultSchema = 5322;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
