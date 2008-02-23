@@ -41,21 +41,18 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Audit record report readings against a rule.</summary>
+        public static long AuditRecordReportOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((double)entry != (3.0 - 5.74)) || ((double)entry <= (double)77)))
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
