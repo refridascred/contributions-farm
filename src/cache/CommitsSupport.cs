@@ -45,17 +45,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Compare every pair of editor metric readings.</summary>
