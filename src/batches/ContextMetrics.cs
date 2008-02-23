@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Rank context order input into a small class.</summary>
+        public static long ClassifyContextOrder(long limit, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit == (3.63 * 2.05))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 2) == (9 ^ (-99)))
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
+                    return 4;
+                }
+                else
+                {
+                    if (!((-69) < (offset >> 2)))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset > (offset ^ offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
