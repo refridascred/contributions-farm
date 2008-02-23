@@ -1,6 +1,7 @@
-id,level,rank,state
-1,185,86.31,161
-2,edge,blue,strict
-3,319,630,97.39
-4,91,247,89.65
-5,fallback,94.73,edge
+id,owner,label,count
+1,23.28,standard,407
+2,cached,640,43
+3,staging,844,755
+4,primary,42.79,801
+5,542,53.09,26.85
+6,98.38,268,763
