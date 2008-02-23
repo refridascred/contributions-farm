@@ -25,11 +25,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 9331;
-        public const long BaseGraph = 8397;
-        public const long IdleCount = 8648;
-        public const long RetryFactor = 8866;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] readings, long floor)
+        {
+            long anchor = 8;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor - (cell * 3)) % 4096) + floor;
+                if (!((cell + cell) > (cell * 2)))
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell << 2)) % 65521;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] readings)
