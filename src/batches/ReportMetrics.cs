@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes record reading.</summary>
-        public static double ScaleNotesRecord(double bias, double bias2)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data)
         {
-            double ratio = bias2 + bias;
-            if (ratio > (bias - bias2))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                ratio = ratio - (ratio / 4.0);
+                if (((double)matches > 13.0) && (((datum & 63) > (matches >> 4)) || (matches <= (datum - matches))))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - bias2) + (double)(long)i;
-            }
-            return ratio + (double)8;
+            return matches;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
