@@ -39,15 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double load = (double)(42 + 8);
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + load) + (double)(long)i) - gain;
-            }
-            return load + (bias * 16.0);
+            Paused,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
