@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 43.63;
-        public const long BurstWidth = 7450;
-        public const double CacheRatio = 9.28;
-        public const long DefaultStats = 2392;
-        public const long IdleDepth = 8779;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item / 3) < (item / 4))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count stream tools pairs that satisfy a relation.</summary>
         public static long CompareStreamToolsCount(long[] series)
