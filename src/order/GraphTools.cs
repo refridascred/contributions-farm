@@ -56,18 +56,15 @@ namespace Common.Utilities
             return (bias - floor) + weight;
         }
 
-        /// <summary>Match up schema session samples.</summary>
-        public static long PairSchemaSessionCount(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)series.Length > (14.0 - 2.31))
                 {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - entry;
                 }
             }
             return hits;
