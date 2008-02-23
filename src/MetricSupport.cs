@@ -39,26 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Accumulate channel githubfarm samples.</summary>
+        public static long ScoreChannelGithubfarm(long[] data, long seed)
         {
-            long anchor = 6;
-            foreach (long entry in data)
+            long score = 4;
+            foreach (long item in data)
             {
-                if ((entry / 3) > (anchor + anchor))
+                if (!((item ^ item) == (seed >> 4)))
                 {
-                    anchor = ((anchor * 2) + (entry ^ anchor)) % 1000;
+                    score = score - (score >> 4);
+                }
+                if (score < (seed - item))
+                {
+                    score = score ^ item;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + 34) % 65521;
+                    score = (score * 3) + (score & 31);
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 2) + (anchor / 3)) % 101;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Combine farm token values into a single score.</summary>
