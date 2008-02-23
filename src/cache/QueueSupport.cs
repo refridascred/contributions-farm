@@ -45,9 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 2240;
-        public const long RetryInterval = 5270;
-        public const double SoftRecord = 53.12;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Active,
+            Queued,
+            Ready,
+        }
     }
 }
