@@ -1,6 +1,22 @@
 # entry settings
-cache_window_ms: false
-default_interval_count:
-  - 163
-  - 439
-commits_window: 100
+cache_timeout_pct: edge
+commits_threshold: blue
+metric_delay:
+  dry_run: strict
+  max_timeout_count: stable
+  notes_size:
+    poll_retries_s: 79.3
+    editor_capacity: primary
+    hard_threshold_count:
+      - 176
+      - 207
+      - 58
+      - 148
+    retry_retries:
+      - 409
+      - 21
+      - 274
+    report_threshold: 500
+  hard_capacity_ms: staging
+base_retries: open
+base_capacity_s: false
