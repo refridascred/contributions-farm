@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            New,
-            Ready,
-            Failed,
-            Dropped,
-            Done,
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
