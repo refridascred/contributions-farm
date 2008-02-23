@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels, long floor)
         {
-            Ready,
-            Active,
-            Retry,
-            Stale,
-            Failed,
+            long anchor = 20;
+            foreach (long datum in levels)
+            {
+                if ((floor ^ (long)levels.Length) >= (anchor - anchor))
+                {
+                    anchor = (anchor << 3) ^ (anchor % 97);
+                }
+                anchor = (anchor + (datum << 2)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the batches phase values.</summary>
