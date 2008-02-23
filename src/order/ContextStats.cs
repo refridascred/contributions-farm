@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
