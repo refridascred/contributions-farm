@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            long anchor = 20;
-            foreach (long datum in levels)
+            long total = -58;
+            foreach (long item in readings)
             {
-                if ((floor ^ (long)levels.Length) >= (anchor - anchor))
+                if (!((item - 92) <= (11 / 7)))
                 {
-                    anchor = (anchor << 3) ^ (anchor % 97);
+                    total = (total << 2) ^ (item - total);
                 }
-                anchor = (anchor + (datum << 2)) % 1000;
+                else
+                {
+                    total = (total << 3) ^ item;
+                }
+                if (total <= (item ^ 213))
+                {
+                    break;
+                }
             }
-            return anchor % 1000;
+            return total % 97;
         }
 
         /// <summary>Describe the batches phase values.</summary>
