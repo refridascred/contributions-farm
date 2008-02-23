@@ -23,14 +23,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            Failed,
-            Synced,
-            Pending,
-            Dropped,
-            Active,
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the context mode values.</summary>
