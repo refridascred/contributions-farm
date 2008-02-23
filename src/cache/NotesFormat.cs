@@ -12,27 +12,22 @@ namespace Common.Utilities
         public const long BurstWidth = 6015;
         public const long MaxWindow = 6888;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] data, long seed)
         {
-            long carry = 1;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((carry / 5) < (datum - 729)) && (seed < (90 / 6)))
+                if ((double)seed > (double)item)
                 {
-                    carry = (carry + (seed + 992)) % 255;
-                    carry = carry ^ carry;
+                    seen = seen + 2;
                 }
-                if ((double)datum < (3.0 * 20.0))
+                else
                 {
-                    carry = (carry - (carry / 4)) % 4096;
-                }
-                if (((11.0 - 9.6) < (double)datum) && (datum <= (seed * 3)))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
