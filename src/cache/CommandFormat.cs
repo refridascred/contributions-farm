@@ -41,19 +41,15 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const string BatchAccount = "standard";
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] readings, long step)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double scale2 = offset;
+            if (scale2 > 15.0)
             {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 - offset;
             }
-            return found;
+            return scale2 + scale;
         }
     }
 }
