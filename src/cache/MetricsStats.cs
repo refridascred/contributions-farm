@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const double CacheBudget = 56.78;
         public const long WindowDepth = 9360;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] levels, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry < step)
+                if (((seen > (0 + seen)) || ((9.2 - 5.46) < (double)datum)) || ((526 + datum) > (647 + seen)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two schema measurements.</summary>
