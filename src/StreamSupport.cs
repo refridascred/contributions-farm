@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] values, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double bias3 = 8.64;
+            if (bias3 <= bias2)
             {
-                if ((double)step < (18.0 * 6.0))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                bias3 = bias3 - bias;
             }
-            return hits;
+            else
+            {
+                bias3 = bias3 - (14.0 * 8.91);
+            }
+            return bias3 + bias2;
         }
 
         /// <summary>Hold a session info.</summary>
