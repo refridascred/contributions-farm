@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (count <= (item ^ count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a route entry.</summary>
