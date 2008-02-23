@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series, long step)
-        {
-            long score = -860;
-            foreach (long datum in series)
-            {
-                if ((double)score > (double)8)
-                {
-                    score = ((score + score) ^ datum) + step;
-                }
-                else
-                {
-                    score = ((score * 4) + score) % 255;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepSpan = 64.28;
+        public const long DefaultWidth = 1418;
+        public const long IdleBudget = 3657;
+        public const string WindowQueue = "primary";
+        public const long MaxTimeout = 9200;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleSpan = 9868;
