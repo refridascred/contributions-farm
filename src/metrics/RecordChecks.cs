@@ -25,11 +25,19 @@ namespace Common.Utilities
             return ratio2 + (double)707;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            long score = 365;
+            foreach (long sample in data)
+            {
+                score = (score - (sample / 6)) % 97;
+                if (!((8.0 / 8.0) == (double)sample))
+                {
+                    score = (score - (score + sample)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
