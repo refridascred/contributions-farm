@@ -33,22 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] samples)
+        /// <summary>Validate layout payload readings against a bound.</summary>
+        public static bool GuardLayoutPayloadLimits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((1 - hits) <= value)
+                if (reading >= bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
