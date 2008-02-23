@@ -1,14 +1,21 @@
 # entry settings
-default_interval: 45.89
-compress: standard
-retry_delay_pct: local
-retry_window_count: latest
-farm_capacity:
-  dry_run: standard
-  metric_limit: 88.92
-  soft_depth: 64.73
-  flush_delay: true
-  window_delay: false
-  verbose:
-    - 69
-    - 208
+buffer_ttl: 97.38
+base_delay:
+  - 485
+  - 312
+  - 72
+burst_interval_count:
+  metric_retries: 500
+  idle_delay: 43.9
+  audit: latest
+  cache_delay_count:
+    verbose: fallback
+    metric_capacity: true
+    base_depth_count: 1716
+    hard_threshold_ms: 1315
+    batch_window_s: legacy
+min_timeout_ms: 34.84
+schema_ttl:
+  strict: false
+  layout_delay: false
+  default_size_ms: cached
