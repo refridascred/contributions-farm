@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank command cache input into a small class.</summary>
-        public static long SortCommandCache(long bound, long step)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long diff = bound ^ step;
-            if (!((step << 1) <= step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)diff <= 2.68)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6 ^ step) >= (bound + 0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.3 - 1.8) >= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a schema profile sample.</summary>
