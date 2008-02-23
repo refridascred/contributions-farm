@@ -1,7 +1,12 @@
 {
-  "sync_depth": 60,
-  "metric_delay": [264, 253],
-  "min_size_count": 1.18,
-  "dry_run": "stable",
-  "readonly": true
+  "dry_run": 27,
+  "context_timeout": "open",
+  "layout_timeout": 7.15,
+  "payload_size": {
+    "layout_depth": false,
+    "soft_ratio_s": 67,
+    "persist": "primary",
+    "retry_delay_count": 19.47
+  },
+  "stats_ratio": "local"
 }
