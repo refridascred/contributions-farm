@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count support farm pairs that satisfy a relation.</summary>
-        public static long CompareSupportFarmCount(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.0 + 3.8) != (double)matches)
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 3) + reading) + step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
