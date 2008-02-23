@@ -1,6 +1,8 @@
-id,level,weight
-1,47.86,797
-2,4.95,fallback
-3,299,edge
-4,strict,23.58
-5,79.99,green
+id,level,region
+1,192,blue
+2,52.92,green
+3,stable,55.54
+4,fallback,878
+5,36.57,11.28
+6,legacy,25.56
+7,30.83,legacy
