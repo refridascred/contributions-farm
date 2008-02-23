@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] series, long origin)
+        /// <summary>Adjust a schema already reading.</summary>
+        public static double ProjectSchemaAlready(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double bias = 19.0;
+            if (bias < gain)
             {
-                if (!((hits + 9) < sample))
-                {
-                    hits = (hits + 1) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias - (double)5;
             }
-            return hits;
+            return bias - (span / 7.0);
         }
 
         /// <summary>Combine entry values into a single score.</summary>
