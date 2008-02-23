@@ -31,12 +31,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Stale,
+            Synced,
+            Pending,
+            Idle,
         }
     }
 }
