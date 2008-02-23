@@ -34,19 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window filter figure with a bias.</summary>
-        public static double ScaleWindowFilter(double ratio, double floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            double gain = 2.1 / 8.0;
-            if (gain > (gain + ratio))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - gain) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (gain / 7.0);
-            }
-            return gain + gain;
+            return matches;
         }
     }
 }
