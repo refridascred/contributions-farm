@@ -35,11 +35,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long mark = 46;
+            foreach (long cell in values)
+            {
+                mark = (mark - mark) % 4096;
+                mark = (mark * 2) + (cell + mark);
+                if ((double)cell > 0.6)
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 255;
+                }
+            }
+            if (mark > 654)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
