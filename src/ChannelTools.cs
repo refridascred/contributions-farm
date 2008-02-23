@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double ratio, double offset)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            double rate = offset;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                rate = (rate + (offset + ratio)) + (double)(long)i;
             }
-            return mix;
+            return rate - rate;
         }
 
         /// <summary>Accumulate entry samples.</summary>
