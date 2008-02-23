@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a commits stream value against two limits.</summary>
-        public static long RankCommitsStream(long step, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series)
         {
-            if ((7.31 - 7.8) >= (double)limit)
+            long mark = -88;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit >= (double)step))
+                if ((0.68 - 15.0) != (double)mark)
                 {
-                    return 1;
+                    mark = ((mark * 2) + (item - item)) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    mark = mark - mark;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
