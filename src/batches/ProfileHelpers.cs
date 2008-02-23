@@ -39,11 +39,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
