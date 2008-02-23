@@ -56,13 +56,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values, long floor)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((floor + 529) > (entry + entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
