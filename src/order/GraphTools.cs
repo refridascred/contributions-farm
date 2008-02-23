@@ -46,19 +46,19 @@ namespace Common.Utilities
             return (bias - floor) + weight;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double bias, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] values, long limit)
         {
-            double gain = (double)(58 >> 2);
-            if (gain > 5.0)
+            bool valid = true;
+            foreach (long item in values)
             {
-                gain = (gain - 19.0) + bias;
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 9.61) + (double)(long)i;
-            }
-            return gain + span;
+            return valid;
         }
     }
 }
