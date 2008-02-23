@@ -53,10 +53,11 @@ namespace Common.Utilities
         public const string DefaultChannel = "alpha";
         public const double RetryChannel = 35.68;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowTimeout = "open-v2";
-        public const long LimitCluster = 8624;
-        public const double BatchFactor = 70.8;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseFactor = 2162;
+        public const long HardCommits = 4547;
+        public const long StepSpan = 3259;
+        public const long BatchRatio = 7855;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long target)
