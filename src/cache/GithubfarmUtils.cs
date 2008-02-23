@@ -34,21 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cluster queue pairs that satisfy a relation.</summary>
-        public static long OverlapClusterQueueCount(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell != step)
                 {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
