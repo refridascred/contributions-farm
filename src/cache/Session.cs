@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits & 7) >= (68 / 8))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 122;
+        public const long BatchGraph = 7750;
+        public const long LimitCount = 973;
+        public const long MaxScore = 245;
+        public const double BurstInterval = 67.44;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphMatches(long[] data, long origin)
