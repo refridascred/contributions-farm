@@ -1,5 +1,12 @@
 # support settings
-persist: fallback
-soft_limit: 6857
-min_limit_ms: open
-poll_window_pct: cached
+persist: cached
+max_ttl_ms: primary
+hard_timeout_ms:
+  - 229
+  - 326
+  - 50
+hard_size:
+  - 148
+  - 291
+  - 27
+  - 361
