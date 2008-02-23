@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Done,
-            Failed,
-            Idle,
+            Retry,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a profile entry.</summary>
