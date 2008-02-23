@@ -66,11 +66,10 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double floor)
-        {
-            double bias = 2.58;
-            return (bias - floor) + gain;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetrySpan = 9856;
+        public const double MinReport = 25.47;
+        public const double LimitReport = 69.67;
+        public const long SoftCount = 3920;
     }
 }
