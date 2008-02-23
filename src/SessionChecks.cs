@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long LimitSupport = 4234;
         public const long WindowSupport = 2028;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long floor, long offset)
+        /// <summary>Validate context tools readings against a bound.</summary>
+        public static bool ValidateContextToolsBounds(long[] data, long target)
         {
-            if (!((11.0 - 19.0) == (double)floor))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - floor) >= floor) && (floor <= (328 << 1)))
+                if (entry != target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
