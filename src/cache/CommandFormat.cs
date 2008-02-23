@@ -40,15 +40,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine profile session values into a single score.</summary>
-        public static long WeighProfileSession(long[] samples, long bound)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            long result = 6;
-            foreach (long cell in samples)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                result = (((result * 4) + (cell * 4)) % 4096) - bound;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Count githubfarm report pairs that satisfy a relation.</summary>
