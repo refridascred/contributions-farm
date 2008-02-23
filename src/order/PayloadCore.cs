@@ -34,15 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the farm githubfarm series from a seed.</summary>
-        public static long DeriveFarmGithubfarm(long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] series, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if ((tally & 63) <= 383)
+                {
+                    tally = ((tally + 1) + item) - bound;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a record stats.</summary>
