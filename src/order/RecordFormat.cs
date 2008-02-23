@@ -70,15 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] data)
         {
-            long sum = 69;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                sum = ((sum << 3) ^ (reading - (long)data.Length)) - origin;
+                if ((value - seen) > (seen & 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum % 65521;
+            return seen;
         }
     }
 }
