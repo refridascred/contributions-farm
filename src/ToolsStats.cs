@@ -16,11 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
