@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double gain, double floor)
         {
-            Pending,
-            Draft,
-            Stale,
-            Closed,
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (7.2 - floor)) - (double)(long)i;
+            }
+            return mean + (gain * 11.0);
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
