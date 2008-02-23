@@ -38,11 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
