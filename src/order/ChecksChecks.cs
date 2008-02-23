@@ -10,18 +10,39 @@ namespace Common.Utilities
         public const string BurstSession = "fallback";
         public const long MaxSession = 5037;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] series, long step)
+        /// <summary>Classify a tools format pair into a bucket.</summary>
+        public static long GradeToolsFormat(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long prev = limit ^ origin;
+            if (9.86 < (double)prev)
             {
-                if (((tally + tally) > step) && ((double)step <= (3.3 - 1.65)))
+                return 6;
+            }
+            else
+            {
+                if (7.4 > (double)origin)
                 {
-                    tally = (tally + 1) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin <= (origin << 2)) && ((double)origin >= (7.3 / 4.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)prev < (10.0 * 6.7)) && ((prev / 4) >= (prev + prev)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
