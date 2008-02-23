@@ -1,12 +1,10 @@
 # support settings
-default_size_s:
-  batch_size_count: strict
-  default_delay_count: 250
-  retry_retries_s: green
-  poll_retries_s:
-    - 317
-    - 247
-cache_delay: 40.69
-burst_delay:
-  - local
+base_interval_count: 34.97
+idle_delay: open
+entry_threshold: true
+sync_depth: 28.49
+hard_delay:
+  - open
+  - standard
   - staging
+githubfarm_timeout: 8890
