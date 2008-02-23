@@ -68,31 +68,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a format metrics value against two limits.</summary>
-        public static long ClassifyFormatMetrics(long origin, long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double rate, double floor)
         {
-            if ((origin < (step + origin)) && ((87 + origin) <= (origin / 9)))
+            double bias = (7.0 * 8.1) * 5.4;
+            if (bias < bias)
             {
-                return 1;
+                bias = ((bias + (13.0 / 8.0)) + rate) - floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((step - step) < (536 + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.1 / 5.0) == (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                bias = (bias - bias) + (double)(long)i;
             }
+            return bias - (double)921;
         }
     }
 }
