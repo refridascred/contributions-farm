@@ -40,19 +40,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] levels, long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Done,
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
