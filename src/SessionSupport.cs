@@ -23,19 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            long acc = 413;
-            foreach (long item in readings)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                acc = ((acc * 4) + (floor + 649)) - item;
+                mark = (mark ^ mark) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (acc > 7)
-            {
-                acc = acc ^ (4 ^ 780);
-            }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
