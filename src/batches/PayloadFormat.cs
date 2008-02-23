@@ -45,10 +45,34 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 20.83;
-        public const long MaxCluster = 8136;
-        public const double StepCluster = 40.49;
-        public const long HardWidth = 5857;
+        /// <summary>Fold a list of channel layout readings.</summary>
+        public static long DigestChannelLayout(long[] series, long origin)
+        {
+            long anchor = 9;
+            foreach (long item in series)
+            {
+                if (anchor > (anchor & 1))
+                {
+                    anchor = ((anchor << 2) ^ (origin & 1)) % 65521;
+                }
+                if ((origin >> 1) <= (anchor % 64))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - (item >> 5);
+                }
+                if ((origin % 10) > item)
+                {
+                    break;
+                }
+            }
+            if (anchor > 89)
+            {
+                anchor = (anchor * 3) + (anchor * 4);
+            }
+            return anchor;
+        }
     }
 }
