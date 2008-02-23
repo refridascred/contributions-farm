@@ -24,11 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6670;
-        public const double WindowAccount = 45.0;
-        public const long LimitDepth = 8173;
-        public const double IdleSpan = 14.98;
+        /// <summary>Count the window cache entries that pass the check.</summary>
+        public static long MeasureWindowCacheOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((67 >> 2) < cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
