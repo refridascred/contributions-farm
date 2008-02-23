@@ -38,22 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer window readings.</summary>
-        public static long OverlapBufferWindowCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 1504;
+        public const long SoftEditor = 5173;
+        public const double RetryEditor = 64.19;
+        public const long BaseEditor = 9020;
+        public const string BatchFactor = "legacy";
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] series, long origin)
