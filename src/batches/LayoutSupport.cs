@@ -39,18 +39,10 @@ namespace Common.Utilities
             return mean - (span / 9.0);
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state - (limit + limit);
-                state = state - (state << 2);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "staging-1";
+        public const long BurstTimeout = 9635;
+        public const string HardChecks = "fallback-edge";
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] items, long bound)
