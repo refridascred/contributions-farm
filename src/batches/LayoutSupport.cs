@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long sum = -904;
+            foreach (long item in series)
+            {
+                if (((sum - item) >= sum) && ((bound + 4) <= (sum + bound)))
+                {
+                    sum = (sum ^ (83 - 4)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Project the next profile value.</summary>
