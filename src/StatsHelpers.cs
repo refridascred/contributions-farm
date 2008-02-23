@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Stale,
-            Pending,
-            Locked,
-            Retry,
+            Ready,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
