@@ -33,38 +33,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a queue route pair into a bucket.</summary>
-        public static long BucketQueueRoute(long step, long step2)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels, long limit)
         {
-            if ((step + step) < (step2 + step2))
+            long sum = 34;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + 787) < (step << 1))
+                if ((item ^ sum) >= (item % 8))
                 {
-                    return 2;
+                    sum = ((sum << 2) ^ (sum + 360)) - limit;
                 }
-                else
-                {
-                    if ((step << 2) == (step + 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((15.0 * 4.1) < (double)step2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                sum = (sum * 5) + (item * 4);
+                sum = sum + sum;
             }
+            return sum;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
