@@ -75,19 +75,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool CheckLayoutContributiBounds(long[] items, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long anchor = 414;
+            foreach (long value in items)
             {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (((anchor - (577 ^ anchor)) % 101) ^ value) + limit;
             }
-            return stale;
+            return anchor;
         }
     }
 }
