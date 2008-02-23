@@ -27,10 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 6273;
-        public const long BurstTools = 7545;
-        public const double LimitTools = 31.33;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Failed,
+            Paused,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
