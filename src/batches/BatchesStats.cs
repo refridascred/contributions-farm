@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstLevel = 219;
-        public const long WindowCluster = 7646;
-        public const string SoftBudget = "fallback-1";
-        public const double IdleCount = 64.66;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings, long limit)
+        {
+            long state = 73;
+            foreach (long reading in readings)
+            {
+                if ((13.0 / 3.0) <= (double)state)
+                {
+                    state = ((state * 2) + (reading - limit)) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadGaps(long[] data)
