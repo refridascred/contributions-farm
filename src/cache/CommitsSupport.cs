@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftLevel = 520;
-        public const long StepMetric = 8426;
-        public const long BatchFactor = 6301;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxLevel = 3492;
+        public const long CacheFormat = 2579;
+        public const long CacheTimeout = 1581;
+        public const long LimitFormat = 8704;
+        public const double StepCount = 33.89;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double SmoothCache(double bias, double floor)
