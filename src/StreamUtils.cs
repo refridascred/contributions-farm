@@ -45,11 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] samples, long limit)
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of farm commits entries.</summary>
