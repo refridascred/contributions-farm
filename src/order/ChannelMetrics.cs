@@ -28,18 +28,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 2788;
+        public const long BatchBuffer = 261;
+        public const long WindowBuffer = 2422;
+        public const long DefaultScore = 342;
+        public const string IdleBuffer = "strict-1";
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long SeriesGithubfarm(long seed)
