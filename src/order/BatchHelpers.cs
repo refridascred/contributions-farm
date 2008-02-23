@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] series, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] data)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long acc = 745;
+            foreach (long reading in data)
             {
-                if (value <= origin)
+                if ((1.2 - 1.44) > (double)(long)data.Length)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + acc) ^ reading;
                 }
             }
-            return flag;
+            if (acc > (-6))
+            {
+                acc = acc - (29 >> 1);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a metrics entry.</summary>
