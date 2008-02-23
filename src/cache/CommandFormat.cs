@@ -32,15 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
