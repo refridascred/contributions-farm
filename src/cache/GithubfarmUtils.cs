@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] samples)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((36 ^ datum) > (seen - 512))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Fold a list of account window readings.</summary>
