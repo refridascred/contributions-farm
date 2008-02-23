@@ -1,5 +1,7 @@
 {
-  "cache_interval_pct": 103,
-  "dry_run": 35.25,
-  "retry_depth": "staging"
+  "checks_ttl": 69,
+  "base_retries_ms": 73,
+  "soft_threshold_count": "stable",
+  "strict": 500,
+  "hard_retries_s": 58
 }
