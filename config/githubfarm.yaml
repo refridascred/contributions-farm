@@ -1,17 +1,29 @@
 # githubfarm settings
-readonly: true
-persist: 6133
-layout_timeout: edge
-soft_delay:
-  default_delay_count: 500
-  payload_delay: 1024
-  persist:
-    default_timeout: legacy
-    default_window_pct: true
-    burst_limit: 50.34
-    warm_threshold_s: fallback
-    burst_capacity_pct: 91
-    cache_ratio_s: 100
-  max_interval_pct: 17
-already_interval: stable
-verbose: true
+persist: 5816
+soft_threshold_count:
+  - staging
+  - staging
+  - green
+batch_retries:
+  audit: 2505
+  default_ttl_pct:
+    - cached
+    - eu-west
+    - latest
+    - staging
+  cache_ttl_s: eu-west
+  base_capacity_pct: staging
+  warm_limit_count:
+    - fallback
+    - green
+  route_timeout: true
+warm_size_ms:
+  retry_capacity_count: cached
+  sync_retries_ms:
+    - green
+    - legacy
+    - eu-west
+  poll_size_pct: cached
+  base_window_s: 250
+  compress: 82.39
+max_size: local
