@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Pending,
-            Dropped,
+            New,
+            Locked,
+            Done,
             Synced,
+            Idle,
         }
 
         /// <summary>Accumulate checks counter samples.</summary>
