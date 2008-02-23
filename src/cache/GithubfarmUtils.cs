@@ -20,16 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the githubfarm token series from a seed.</summary>
-        public static long IterateGithubfarmToken(long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            if ((target - target) >= (40 + (-412)))
             {
-                carry = (carry - carry) % 65521;
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (target < (offset * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
