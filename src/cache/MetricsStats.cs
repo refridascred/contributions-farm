@@ -54,39 +54,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a format batches pair into a bucket.</summary>
-        public static long SortFormatBatches(long seed, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] items, long target)
         {
-            long prev = seed - target;
-            if ((8 - seed) > (7 ^ target))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev >= (double)75)
+                if (((entry + target) <= (seen & 3)) || (((double)target > (7.0 * 1.8)) || ((-9) > (seen + 995))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((prev & 15) > (prev - 82)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target % 97) >= (prev & 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a context reading.</summary>
