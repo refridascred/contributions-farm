@@ -53,19 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Adjust a checks tools reading.</summary>
+        public static double ScaleChecksTools(double bias, double span)
         {
-            double ratio = scale;
-            if (ratio < scale)
+            double mean = bias;
+            if (mean >= (bias + mean))
             {
-                ratio = (ratio - (double)(-880)) - offset;
+                mean = mean + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio + (9.7 + ratio);
+                mean = (mean - bias) + (double)(long)i;
             }
-            return ratio + ratio;
+            return mean - span;
         }
     }
 }
