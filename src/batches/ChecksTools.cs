@@ -49,25 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long step, long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long span = step + limit;
-            if ((0 << 3) == (step ^ step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(limit < span))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
