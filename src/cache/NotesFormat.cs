@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long target)
         {
-            long sum = 51;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((datum + sum) <= (datum ^ datum))
+                if (sample > target)
                 {
-                    sum = (sum + (datum << 2)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
