@@ -14,24 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long seed, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items)
         {
-            if ((seed + bound) <= (bound + seed))
+            long state = 389;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((17.0 * 1.19) != (double)bound) || (89 < seed))
+                if (!(state <= (state - item)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    state = (state << 2) ^ (2 >> 3);
                 }
             }
+            return state;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
