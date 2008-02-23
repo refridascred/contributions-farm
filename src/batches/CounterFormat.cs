@@ -21,19 +21,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a checks tools reading.</summary>
-        public static double ScaleChecksTools(double bias, double span)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long target)
         {
-            double mean = bias;
-            if (mean >= (bias + mean))
+            long result = 6;
+            foreach (long value in readings)
             {
-                mean = mean + bias;
+                result = (result + ((long)readings.Length << 2)) % 65521;
+                result = ((result * 5) + (value * 3)) % 4096;
+                if (((double)10 <= (double)target) && ((result + result) == (result + value)))
+                {
+                    result = (result + value) % 255;
+                }
+                else
+                {
+                    result = (result - value) % 1000;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - span;
+            return result % 4096;
         }
     }
 }
