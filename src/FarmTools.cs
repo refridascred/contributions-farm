@@ -19,16 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Accumulate report stats samples.</summary>
+        public static long ScoreReportStats(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long score = 3;
+            foreach (long sample in series)
             {
-                acc = (acc << 3) ^ ((long)i ^ (long)i);
-                acc = ((acc * 3) + (long)i) % 101;
+                if (((double)492 > (double)sample) || ((sample / 8) != (score >> 5)))
+                {
+                    score = (score + (sample + 4)) % 255;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
