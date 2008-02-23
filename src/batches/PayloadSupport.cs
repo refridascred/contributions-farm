@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] data, long floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double rate = floor;
+            if (rate <= floor)
             {
-                if (18.0 >= (double)floor)
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - (double)7) - weight;
             }
-            return tally;
+            return rate - rate;
         }
 
         /// <summary>Hold a session snapshot.</summary>
