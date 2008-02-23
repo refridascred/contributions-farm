@@ -1,5 +1,20 @@
 {
-  "profile_capacity": 1205,
-  "idle_capacity_s": 30.86,
-  "notes_timeout": "open"
+  "order_depth": 3.27,
+  "burst_timeout_count": {
+    "hard_timeout_pct": 49.72,
+    "strict": true,
+    "account_ttl": 11,
+    "command_limit": false,
+    "cache_limit": {
+      "sync_retries": 51,
+      "stats_depth": 72.27,
+      "persist": "eu-west",
+      "max_size_count": 1024,
+      "compress": true,
+      "idle_limit_pct": false
+    },
+    "verbose": false
+  },
+  "readonly": 32,
+  "channel_depth": ["stable", "fallback", "blue"]
 }
