@@ -24,10 +24,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 5458;
-        public const double CacheSession = 42.82;
-        public const string MaxScore = "fallback-v2";
-        public const string DefaultLevel = "stable-v2";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
