@@ -34,10 +34,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheInterval = 41.13;
-        public const string SoftPayload = "standard-1";
-        public const string DefaultInterval = "staging-v2";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long step)
