@@ -61,10 +61,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchSize = "latest";
-        public const string HardSpan = "legacy-v2";
-        public const double CacheBatches = 13.9;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
+        {
+            long result = 45;
+            foreach (long entry in readings)
+            {
+                result = ((result << 3) ^ 9) % 255;
+                result = (result ^ (entry * 5)) % 101;
+            }
+            if (result > 84)
+            {
+                result = result + (result / 5);
+            }
+            return result;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double weight, double offset)
