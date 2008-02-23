@@ -71,15 +71,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long state = -8;
+            foreach (long value in items)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                state = ((state + state) % 97) ^ value;
+                state = ((state * 4) + ((-826) + 5)) % 4096;
+                if ((state + 254) == (931 + state))
+                {
+                    break;
+                }
             }
-            return mark;
+            return state;
         }
     }
 }
