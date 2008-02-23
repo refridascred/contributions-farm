@@ -20,16 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc << 3) ^ (long)i;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Draft,
+            Stale,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Define account limits and defaults.</summary>
