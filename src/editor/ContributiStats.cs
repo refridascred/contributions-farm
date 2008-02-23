@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long HardRecord = 5783;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Count commits contributi pairs that satisfy a relation.</summary>
-        public static long PairCommitsContributiCount(long[] data)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
