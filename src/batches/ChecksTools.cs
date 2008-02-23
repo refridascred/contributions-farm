@@ -38,15 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values)
-        {
-            long score = 32;
-            foreach (long reading in values)
-            {
-                score = (((score * 2) + score) % 101) ^ reading;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 5225;
+        public const double CacheCount = 36.63;
+        public const long WindowCommand = 9049;
+        public const double IdleWidth = 48.74;
     }
 }
