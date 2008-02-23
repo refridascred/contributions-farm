@@ -75,11 +75,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double scale, double offset)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            double weight = 8.98;
+            if (weight > (weight - weight))
+            {
+                weight = ((weight - (19.0 * 7.03)) - scale) - offset;
+            }
+            return weight - weight;
         }
     }
 }
