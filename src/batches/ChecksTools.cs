@@ -39,10 +39,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 9423;
-        public const long MinLevel = 1233;
-        public const double LimitLevel = 41.44;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double scale, double span)
+        {
+            double ratio = scale;
+            if (ratio > (scale + ratio))
+            {
+                ratio = ratio + span;
+            }
+            return ratio + (scale - span);
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] samples)
