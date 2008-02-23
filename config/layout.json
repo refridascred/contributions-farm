@@ -1,7 +1,16 @@
 {
-  "compress": "standard",
-  "idle_timeout": 1409,
-  "order_interval": 500,
-  "layout_retries": false,
-  "verbose": 6366
+  "retry_timeout_ms": false,
+  "queue_limit": 7416,
+  "order_ratio": {
+    "soft_ttl": [321, 144],
+    "strict": [39, 7],
+    "commits_capacity": 70
+  },
+  "soft_capacity_pct": "edge",
+  "verbose": {
+    "editor_timeout": "blue",
+    "soft_timeout_count": [299, 437, 47, 32],
+    "base_window_s": ["stable", "staging"],
+    "cache_retries_s": 30
+  }
 }
