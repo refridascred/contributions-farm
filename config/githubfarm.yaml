@@ -1,10 +1,9 @@
 # githubfarm settings
-batch_window: 3656
-verbose:
-  hard_ttl_count: true
-  dry_run: 25.32
-  session_interval: local
-  retry_depth: 1024
-notes_capacity: true
-warm_interval: cached
-persist: 18.23
+queue_threshold: false
+context_threshold: 38
+context_window: eu-west
+cache_capacity_pct: 500
+sync_window: cached
+soft_limit_s:
+  - strict
+  - legacy
