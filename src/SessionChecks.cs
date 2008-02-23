@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] series, long target)
         {
-            Failed,
-            Draft,
-            Paused,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
