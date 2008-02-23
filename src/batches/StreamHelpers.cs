@@ -26,11 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 2769;
-        public const long BaseInterval = 3430;
-        public const long HardStats = 131;
-        public const long WindowStats = 1061;
+        /// <summary>Compare every pair of buffer window readings.</summary>
+        public static long OverlapBufferWindowCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long target, long origin)
