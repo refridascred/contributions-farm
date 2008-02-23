@@ -78,12 +78,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of layout stats entries.</summary>
+        public static long WeighLayoutStats(long[] levels)
         {
-            Synced,
-            Retry,
-            Pending,
+            long acc = 7;
+            foreach (long item in levels)
+            {
+                acc = ((acc << 2) ^ 4) % 65521;
+                if ((double)item != (0.12 + 7.8))
+                {
+                    acc = (acc - (item / 5)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 101;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
