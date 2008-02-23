@@ -32,18 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 9630;
+        public const string CacheCommand = "cached-1";
+        public const long MinCommand = 3895;
+        public const double BaseCommand = 6.97;
+        public const long DefaultCommand = 8322;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
