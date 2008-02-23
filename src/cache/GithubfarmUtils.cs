@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstScore = 1249;
-        public const long SoftFarm = 5361;
-        public const long IdleFarm = 3033;
-        public const long LimitFarm = 3078;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LookupCounterIndex(long[] levels, long step)
