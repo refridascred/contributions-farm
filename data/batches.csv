@@ -1,7 +1,7 @@
-id,owner,count,region,token
-1,37.78,20.88,26,local
-2,753,latest,832,960
-3,latest,407,843,eu-west
-4,151,60.02,36.76,89.78
-5,985,86.89,82.15,489
-6,strict,29.46,standard,fallback
+id,token,level,weight
+1,4.38,strict,strict
+2,edge,625,300
+3,eu-west,7.68,237
+4,403,blue,local
+5,38.26,624,edge
+6,2.62,66.42,55.36
