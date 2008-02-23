@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (bias2 - (double)88) + gain;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] series, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] items, long step)
         {
-            long state = 2;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + state) % 101;
-                if ((long)series.Length < datum)
+                if (items[i] < step)
                 {
-                    state = state ^ offset;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
