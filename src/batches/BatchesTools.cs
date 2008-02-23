@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] samples, long target)
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
