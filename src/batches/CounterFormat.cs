@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsMatches(long[] values, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (matches > (seed >> 1))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
