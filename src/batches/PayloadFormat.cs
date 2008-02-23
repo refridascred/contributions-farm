@@ -34,16 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                mark = (mark + mark) % 101;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((matches * 5) == (cell / 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
