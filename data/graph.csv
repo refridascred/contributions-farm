@@ -1,6 +1,10 @@
-id,region,weight,label
-1,115,open,82.88
-2,395,908,368
-3,236,70,364
-4,primary,latest,609
-5,standard,129,74.03
+id,weight,ratio,label
+1,8.99,eu-west,local
+2,strict,strict,standard
+3,119,80.78,latest
+4,50.02,standard,standard
+5,stable,120,316
+6,21.03,fallback,22
+7,legacy,fallback,324
+8,374,staging,cached
+9,13.08,18.27,653
