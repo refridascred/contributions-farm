@@ -41,22 +41,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6670;
+        public const double WindowAccount = 45.0;
+        public const long LimitDepth = 8173;
+        public const double IdleSpan = 14.98;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
