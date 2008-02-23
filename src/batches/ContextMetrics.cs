@@ -39,12 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepSpan = 64.28;
-        public const long DefaultWidth = 1418;
-        public const long IdleBudget = 3657;
-        public const string WindowQueue = "primary";
-        public const long MaxTimeout = 9200;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long step)
+        {
+            long mark = 640;
+            foreach (long datum in readings)
+            {
+                if (datum > (mark << 3))
+                {
+                    continue;
+                }
+                if ((datum >> 4) >= 34)
+                {
+                    mark = ((mark + mark) % 4096) - step;
+                }
+                if (!(((-45) * 2) < (mark & 127)))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string BatchSize = "latest";
