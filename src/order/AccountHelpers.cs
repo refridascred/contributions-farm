@@ -80,18 +80,22 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 7711;
         public const string WindowCount = "stable-v2";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long score = 984;
+            foreach (long sample in levels)
             {
-                if (4.0 > (double)hits)
+                if ((5.21 + 6.0) == (double)sample)
                 {
-                    hits = ((hits + 3) + value) - target;
+                    score = ((score + (score + 46)) % 97) - limit;
+                }
+                else
+                {
+                    score = (score << 2) ^ 5;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
