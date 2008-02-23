@@ -1,29 +1,12 @@
 # support settings
-counter_retries:
-  - 432
-  - 434
-  - 482
-idle_capacity_ms:
-  min_delay: 95
-  hard_timeout_ms:
-    - latest
-    - staging
-    - open
-  min_delay_pct:
-    - staging
-    - stable
-    - fallback
-  base_limit: 12.2
-  cache_retries_s: 6720
-  batch_depth:
-    - standard
-    - strict
-    - local
-flush_threshold: 52
-strict: local
-sync_ratio:
-  - 264
-  - 34
-  - 228
-  - 387
-readonly: true
+enabled: 1024
+default_threshold_count:
+  - 188
+  - 216
+default_depth_pct: staging
+persist:
+  - 419
+  - 2
+  - 411
+flush_ttl_pct: eu-west
+cache_retries_s: stable
