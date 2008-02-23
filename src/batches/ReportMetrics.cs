@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a counter graph value against two limits.</summary>
-        public static long BucketCounterGraph(long origin, long bound)
-        {
-            if (((-11) * 3) == (bound & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(bound >= (origin >> 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.68 * 3.8) > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound <= origin) || ((7.97 / 2.0) == (double)bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleDepth = 41.18;
+        public const long WindowCommits = 8985;
+        public const long StepCommits = 213;
+        public const double BatchCommits = 13.85;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] data)
