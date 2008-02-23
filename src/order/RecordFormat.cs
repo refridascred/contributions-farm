@@ -26,15 +26,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Accumulate batch context samples.</summary>
+        public static long CombineBatchContext(long[] levels, long origin)
         {
-            long anchor = -417;
-            foreach (long item in levels)
+            long result = 9;
+            foreach (long cell in levels)
             {
-                anchor = anchor - item;
+                if (((double)result != (double)cell) || ((result - result) > result))
+                {
+                    result = (result + (result & 7)) % 4096;
+                }
             }
-            return anchor % 65521;
+            if (result < 300)
+            {
+                result = (result << 2) ^ (origin - result);
+            }
+            return result;
         }
 
         /// <summary>Describe the already mode values.</summary>
