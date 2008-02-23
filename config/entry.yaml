@@ -1,21 +1,23 @@
 # entry settings
-buffer_ttl: 97.38
-base_delay:
-  - 485
-  - 312
-  - 72
-burst_interval_count:
-  metric_retries: 500
-  idle_delay: 43.9
-  audit: latest
-  cache_delay_count:
-    verbose: fallback
-    metric_capacity: true
-    base_depth_count: 1716
-    hard_threshold_ms: 1315
-    batch_window_s: legacy
-min_timeout_ms: 34.84
-schema_ttl:
-  strict: false
-  layout_delay: false
-  default_size_ms: cached
+max_size_s:
+  githubfarm_limit:
+    filter_ratio: green
+    already_delay: strict
+    stream_timeout: blue
+  profile_window:
+    poll_retries: 1132
+    batch_retries_ms: 2239
+    audit: 60
+    cache_size_count: false
+  default_ratio:
+    idle_depth_pct: 72
+    idle_delay_ms: true
+    hard_threshold_count: 83
+  token_limit: 80
+  readonly: 37
+  idle_window:
+    - 269
+    - 227
+    - 153
+flush_ratio_count: cached
+compress: staging
