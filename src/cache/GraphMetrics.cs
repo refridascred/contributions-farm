@@ -45,12 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Stale,
-            Ready,
-            Idle,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a filter header.</summary>
