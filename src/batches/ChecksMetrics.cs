@@ -72,13 +72,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long seed)
         {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long acc = 11;
+            foreach (long item in readings)
+            {
+                if ((item % 64) <= (8 + 690))
+                {
+                    acc = (acc - (item + item)) % 101;
+                }
+            }
+            if (acc > 63)
+            {
+                acc = ((acc << 3) ^ (seed - acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
