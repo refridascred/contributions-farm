@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] readings, long step)
         {
-            long state = 73;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((13.0 / 3.0) <= (double)state)
+                if (((step % 10) < ((-37) >> 1)) && (4 < (step >> 4)))
                 {
-                    state = ((state * 2) + (reading - limit)) % 97;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
