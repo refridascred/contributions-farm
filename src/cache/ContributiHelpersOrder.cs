@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 6875;
-        public const long MaxCount = 1576;
-        public const double MinScore = 39.77;
-        public const string RetryTools = "legacy";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count - offset) != (offset * 2))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long origin, long seed)
