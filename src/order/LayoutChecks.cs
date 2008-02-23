@@ -52,21 +52,12 @@ namespace Common.Utilities
         public const string DefaultChannel = "alpha";
         public const double RetryChannel = 35.68;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc << 3) ^ ((long)i << 2)) % 101;
-                if ((19.0 / 4.0) < (double)(long)i)
-                {
-                    acc = (acc - (acc + step)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "cached-1";
+        public const double MinEditor = 3.76;
+        public const long DefaultEditor = 8252;
+        public const long HardEditor = 9675;
+        public const long WindowCount = 4492;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long target)
