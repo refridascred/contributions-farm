@@ -29,26 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Accumulate channel schema samples.</summary>
+        public static long CombineChannelSchema(long[] samples)
         {
-            long state = 494;
+            long mix = 813;
             foreach (long sample in samples)
             {
-                if (!(state <= (sample >> 4)))
-                {
-                    state = (state ^ (89 % 12)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (1 >> 5)) % 255;
-                }
+                mix = (((mix * 3) + (3 * 5)) % 97) ^ sample;
             }
-            if (state < 6)
+            if (mix < 27)
             {
-                state = state ^ (state + state);
+                mix = (mix - (mix % 12)) % 255;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
