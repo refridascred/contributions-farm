@@ -54,11 +54,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardTimeout = 2795;
-        public const string BurstFarm = "cached-edge";
-        public const long DefaultScore = 958;
-        public const long HardScore = 3101;
-        public const long WindowDepth = 2690;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor - (54 - seed)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
