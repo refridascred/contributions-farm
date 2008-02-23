@@ -30,10 +30,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstDepth = "alpha-v2";
-        public const long DefaultCache = 812;
-        public const double IdleCache = 16.54;
-        public const long SoftCount = 3231;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
