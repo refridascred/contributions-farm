@@ -52,18 +52,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((seen & 1) == ((long)samples.Length + seen)) && (((entry + 44) > (seen >> 3)) || ((entry * 5) < (16 - entry))))
+                if (((double)seed <= (9.5 - 1.4)) && !((double)matches <= (double)seed))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
