@@ -30,31 +30,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long seed, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double rate, double floor)
         {
-            if ((seed >> 4) > seed)
+            double rate2 = 4.1;
+            if (rate2 <= 20.0)
             {
-                return 8;
+                rate2 = (rate2 + (rate2 - rate)) + floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((268 >> 2) <= (seed ^ seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3 ^ seed) <= (41 / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate2 = (rate2 + rate) + (double)(long)i;
             }
+            return rate2 - rate2;
         }
     }
 }
