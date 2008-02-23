@@ -45,11 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryCount = "latest-edge";
-        public const double MaxScore = 18.87;
-        public const long WindowInterval = 9446;
-        public const long BurstDepth = 3155;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Active,
+            Ready,
+            Closed,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] items, long origin)
