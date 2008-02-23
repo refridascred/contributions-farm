@@ -1,13 +1,38 @@
 # support settings
-flush_delay_pct: strict
-stream_size: 30
-token_ttl: 5938
-flush_limit_count:
-  default_size_pct:
-    - standard
-    - fallback
-    - open
-  soft_interval: 31.55
-  min_retries_count: local
-window_threshold: primary
-poll_delay_s: 250
+session_ratio:
+  - 339
+  - 276
+layout_ratio: 7947
+soft_ttl_ms:
+  max_depth:
+    - edge
+    - eu-west
+  support_capacity:
+    - 24
+    - 329
+  entry_limit: standard
+  commits_delay: edge
+hard_size:
+  batch_window_ms: 8.89
+  min_ratio_pct: 79
+  idle_threshold_ms:
+    soft_threshold: 250
+    warm_timeout: true
+    soft_limit_pct: 57.06
+    flush_interval:
+      - 338
+      - 499
+      - 126
+      - 251
+    retry_interval:
+      - local
+      - stable
+      - eu-west
+      - blue
+    format_timeout: 24.93
+  warm_interval_count:
+    - 318
+    - 474
+    - 400
+    - 128
+base_depth: green
