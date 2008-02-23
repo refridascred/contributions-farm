@@ -22,11 +22,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Grade a cache stats value against two limits.</summary>
+        public static long BucketCacheStats(long origin, long target)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            if ((double)971 != (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (9.8 > (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((4.35 * 9.0) > (double)target) || ((target + 440) >= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
