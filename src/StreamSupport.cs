@@ -41,18 +41,11 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] series, long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample + sample) != (seen & 127)))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
