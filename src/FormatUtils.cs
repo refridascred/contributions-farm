@@ -24,10 +24,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstTimeout = 9.52;
-        public const string MaxCommand = "fallback-edge";
-        public const long BaseCommand = 8306;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Dropped,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Count the payload order entries that pass the check.</summary>
         public static long CountPayloadOrderGaps(long[] levels)
