@@ -37,20 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            long carry = 2;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                carry = (carry - cell) % 97;
-                carry = (carry - cell) % 97;
-                if ((4 * 4) > (carry % 5))
+                if (hits > item)
                 {
-                    carry = carry + (carry % 64);
+                    hits = hits + 2;
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
