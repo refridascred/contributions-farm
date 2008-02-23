@@ -75,15 +75,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long CombineContextAlready(long[] items, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long carry = 32;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 4) + (item / 9)) % 97) + step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return seen;
         }
     }
 }
