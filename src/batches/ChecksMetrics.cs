@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long limit)
         {
-            double weight = bias * 9.8;
-            if (weight <= (double)9)
+            if (((double)limit >= (7.85 - 8.57)) || ((step % 100) <= (limit << 3)))
             {
-                weight = weight - (double)6;
+                return 2;
             }
             else
             {
-                weight = weight + (scale * 2.0);
+                if ((step + step) < (limit + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return weight - (double)115;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
