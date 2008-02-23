@@ -1,10 +1,16 @@
 # Command notes
 
-When a window fails, the graph handler retries a few times before giving up.
-Run the route check before changing any notes limits.
+Each record is validated before it reaches the batch queue.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The report helpers are pure functions, so they are safe to call from any thread.
+
+The stream module keeps schema values in sync with the record cache.
+The commits module keeps counter values in sync with the checks cache.
+Each command is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review buffer limits each release
-- Log every window change
+- Prefer route defaults
+- Review support limits each release
+- Validate entry input early
+- Keep editor values small
