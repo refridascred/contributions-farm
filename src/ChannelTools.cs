@@ -16,19 +16,10 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items, long step)
-        {
-            long acc = 2;
-            foreach (long cell in items)
-            {
-                if ((cell / 7) == (step ^ step))
-                {
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSpan = 3168;
+        public const double WindowTimeout = 58.94;
+        public const long DefaultCount = 6458;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long floor, long target)
