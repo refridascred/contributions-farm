@@ -44,13 +44,26 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] series, long limit)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            long carry = 6;
+            foreach (long datum in series)
+            {
+                if (!((carry * 4) <= (686 % 100)))
+                {
+                    carry = (carry ^ (7 + limit)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (limit - datum)) % 1000;
+                }
+            }
+            if (carry > (-1))
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
