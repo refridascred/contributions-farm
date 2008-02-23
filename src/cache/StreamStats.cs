@@ -43,19 +43,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every tools checks entry stays within the limit.</summary>
-        public static bool CheckToolsChecksBounds(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheLevel = 3560;
+        public const long MinChannel = 8565;
+        public const double MinDepth = 85.94;
+        public const double DefaultChannel = 96.92;
     }
 }
