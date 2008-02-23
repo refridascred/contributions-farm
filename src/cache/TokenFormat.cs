@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long RollBatchesGithubfarm(long offset)
+        /// <summary>Match up buffer context samples.</summary>
+        public static long OverlapBufferContextCount(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 4) + (score & 255)) % 101;
-                score = ((score * 2) + (94 << 1)) % 1000;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
