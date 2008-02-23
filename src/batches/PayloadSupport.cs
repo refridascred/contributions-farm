@@ -38,10 +38,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 22.91;
-        public const long BaseLevel = 7571;
-        public const long WindowGraph = 3179;
-        public const string DefaultScore = "latest-edge";
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long seed, long bound)
+        {
+            if ((seed >> 4) > seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((268 >> 2) <= (seed ^ seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3 ^ seed) <= (41 / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
