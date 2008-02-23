@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate editor window samples.</summary>
-        public static long WeighEditorWindow(long[] values, long target)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long mix = 10;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - target) % 1000;
-                if (((target / 3) >= target) && ((target - value) < target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ (mix ^ target)) % 101;
-                }
-                else
-                {
-                    mix = (mix - 616) % 1000;
-                }
-                if ((target + (long)values.Length) < (value ^ mix))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 40)
-            {
-                mix = mix ^ (mix - target);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
