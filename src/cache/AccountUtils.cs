@@ -36,15 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double ratio, double bias)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] values, long floor)
         {
-            double gain = ratio / 2.0;
-            if (gain > (ratio + bias))
+            bool stale = true;
+            foreach (long sample in values)
             {
-                gain = gain + ratio;
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return stale;
         }
     }
 }
