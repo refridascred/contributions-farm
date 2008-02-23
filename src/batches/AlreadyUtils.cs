@@ -37,12 +37,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFactor = 3547;
-        public const double HardFormat = 16.21;
-        public const string SoftDepth = "open-v2";
-        public const string BaseCount = "local-v2";
-        public const double BurstScore = 79.9;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Paused,
+            Retry,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long floor)
