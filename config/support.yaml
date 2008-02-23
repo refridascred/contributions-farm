@@ -1,9 +1,9 @@
 # support settings
-idle_threshold: blue
-payload_capacity: false
-default_depth_ms: 93.4
-warm_window_ms:
-  - 236
-  - 373
-  - 459
-default_timeout_s: 30
+githubfarm_threshold: open
+verbose: legacy
+audit: 75.78
+retry_retries:
+  - 378
+  - 203
+  - 244
+max_depth_ms: 49.42
