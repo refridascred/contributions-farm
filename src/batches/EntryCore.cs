@@ -42,19 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double bias)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double gain = (rate + rate) + (double)223;
-            if (gain < bias)
-            {
-                gain = gain - bias;
-            }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain - bias;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Project the next already value.</summary>
