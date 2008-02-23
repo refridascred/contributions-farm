@@ -34,14 +34,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Dropped,
             Failed,
-            Idle,
-            New,
+            Synced,
             Locked,
+            Dropped,
         }
 
         /// <summary>Check that every tools checks entry stays within the limit.</summary>
