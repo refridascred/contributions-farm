@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] levels)
-        {
-            long state = 4;
-            foreach (long value in levels)
-            {
-                state = ((state ^ (state + (-837))) % 101) ^ value;
-                state = state + state;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 5546;
+        public const long MinWidth = 6656;
+        public const long CacheDepth = 1660;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
