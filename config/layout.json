@@ -1,14 +1,6 @@
 {
-  "burst_ttl_ms": {
-    "persist": 44,
-    "retry_depth": false,
-    "profile_ttl": "strict",
-    "audit": "primary",
-    "strict": "staging",
-    "cache_capacity_s": "staging"
-  },
-  "min_window_s": 1024,
-  "verbose": 250,
-  "idle_window": true,
-  "warm_capacity_count": ["fallback", "staging"]
+  "verbose": 4333,
+  "profile_ttl": "standard",
+  "batch_delay": "local",
+  "metric_depth": 75.76
 }
