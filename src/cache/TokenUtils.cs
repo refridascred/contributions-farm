@@ -33,13 +33,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Compare every pair of cluster notes readings.</summary>
+        public static long CompareClusterNotesCount(long[] items)
         {
-            Retry,
-            Ready,
-            Idle,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
