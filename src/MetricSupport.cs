@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long MeasureProfileWindowMatches(long[] series, long target)
+        /// <summary>Combine route support values into a single score.</summary>
+        public static long DigestRouteSupport(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mix = 94;
+            foreach (long cell in readings)
             {
-                if ((count - 81) >= (target + reading))
+                if (!((cell + mix) < mix))
                 {
-                    count = count + 2;
+                    mix = (((mix << 3) ^ (mix + cell)) % 97) - floor;
                 }
+                mix = ((mix << 3) ^ (52 << 3)) % 4096;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
