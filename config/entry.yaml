@@ -1,16 +1,13 @@
 # entry settings
-token_capacity:
-  channel_threshold: true
-  min_interval: local
-  hard_capacity_ms:
-    compress: true
-    readonly: 8066
-    poll_interval: false
-    batch_interval: 100
-    sync_timeout:
-      - 8
-      - 91
-      - 71
-    max_window_ms: 40.61
-sync_depth_count: 35
-default_size: staging
+dry_run: 62
+already_threshold: 9722
+hard_depth:
+  - fallback
+  - primary
+  - edge
+  - blue
+base_size_count: 1024
+hard_capacity:
+  verbose: legacy
+  batch_capacity_count: 27.43
+  stats_timeout: 1024
