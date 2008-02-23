@@ -76,18 +76,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many batches route samples are out of range.</summary>
-        public static long AuditBatchesRouteGaps(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!(((sample ^ tally) >= (tally + seed)) && (93 <= (seed >> 4))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 1875;
+        public const double LimitBatch = 25.46;
+        public const double RetryBatch = 60.67;
+        public const long BaseScore = 5005;
     }
 }
