@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long sum = -586;
-            foreach (long entry in levels)
-            {
-                if (!((6.7 / 4.0) < (double)entry))
-                {
-                    break;
-                }
-                sum = ((sum ^ (11 * 2)) % 97) - limit;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a editor checks counter forward.</summary>
