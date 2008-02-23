@@ -48,13 +48,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items, long target)
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long result = 532;
+            foreach (long entry in items)
+            {
+                if (((target * 4) < (result - target)) && (result >= entry))
+                {
+                    break;
+                }
+                result = ((result << 3) ^ 730) % 97;
+            }
+            return result % 65521;
         }
     }
 }
