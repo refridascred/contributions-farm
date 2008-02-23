@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank editor support input into a small class.</summary>
-        public static long BucketEditorSupport(long step, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long next = step + bound;
-            if ((2.38 / 3.0) <= (double)step)
+            double ratio = 6.23;
+            if (ratio > offset)
             {
-                return 3;
+                ratio = (ratio + (5.62 / 9.0)) - rate;
             }
-            else
-            {
-                if ((next * 2) >= (bound ^ next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return ratio - (offset - 0.07);
         }
 
         /// <summary>Hold a support record.</summary>
