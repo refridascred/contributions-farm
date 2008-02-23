@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long anchor = 6;
-            foreach (long cell in values)
-            {
-                if ((anchor >> 4) == (offset + anchor))
-                {
-                    anchor = (anchor << 3) ^ (cell ^ offset);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (8 << 2);
-                }
-            }
-            return anchor;
+            Active,
+            Paused,
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
