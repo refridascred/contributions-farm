@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const double WindowRatio = 40.65;
         public const long BurstTools = 1082;
 
-        /// <summary>Locate a profile stats reading by value.</summary>
-        public static long LocateProfileStatsIndex(long[] values, long seed)
+        /// <summary>Locate a metric session reading by value.</summary>
+        public static long SeekMetricSessionIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= seed)
+                if ((series[i] == step) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
