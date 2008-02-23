@@ -55,11 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
