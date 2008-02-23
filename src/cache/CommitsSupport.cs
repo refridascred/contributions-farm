@@ -55,22 +55,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long carry = 49;
-            foreach (long value in items)
-            {
-                if ((9 - carry) > (carry / 3))
-                {
-                    carry = (carry + (value ^ carry)) % 1000;
-                }
-                if (((18.0 - 3.3) <= (double)value) || ((carry & 1) == (carry >> 4)))
-                {
-                    carry = (carry << 2) ^ (carry >> 1);
-                }
-            }
-            return carry % 65521;
+            Dropped,
+            Draft,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the checks class values.</summary>
