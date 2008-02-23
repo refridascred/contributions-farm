@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] series)
         {
-            Idle,
-            Done,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count - datum) >= datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
