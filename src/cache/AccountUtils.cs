@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)6 + (ratio * 16.0);
+            return (bias + 1.81) + floor;
         }
 
         /// <summary>Count the cluster commits entries that pass the check.</summary>
