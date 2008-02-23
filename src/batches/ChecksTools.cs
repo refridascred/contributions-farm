@@ -44,10 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 5225;
-        public const double CacheCount = 36.63;
-        public const long WindowCommand = 9049;
-        public const double IdleWidth = 48.74;
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
