@@ -33,11 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepLevel = 93.55;
-        public const string StepStats = "fallback";
-        public const double SoftStats = 40.48;
-        public const double DefaultStats = 5.22;
-        public const long CacheStats = 3585;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((1 - hits) <= value)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
