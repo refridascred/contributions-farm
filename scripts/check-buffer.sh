@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=68
+BUFFER_LIMIT=404
 log "limit is ${BUFFER_LIMIT}"
 
-for item in stable green open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
