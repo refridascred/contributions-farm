@@ -1,7 +1,14 @@
 {
-  "commits_timeout": 250,
-  "hard_depth": ["standard", "fallback", "local"],
-  "compress": 500,
-  "schema_threshold": ["cached", "primary"],
-  "buffer_limit": false
+  "burst_ttl_ms": {
+    "persist": 44,
+    "retry_depth": false,
+    "profile_ttl": "strict",
+    "audit": "primary",
+    "strict": "staging",
+    "cache_capacity_s": "staging"
+  },
+  "min_window_s": 1024,
+  "verbose": 250,
+  "idle_window": true,
+  "warm_capacity_count": ["fallback", "staging"]
 }
