@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "staging-edge";
-        public const double StepRatio = 51.62;
-        public const long LimitSupport = 4234;
-        public const long WindowSupport = 2028;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Done,
+            Synced,
+            Active,
+            New,
+            Draft,
+        }
 
         /// <summary>Rank metrics window input into a small class.</summary>
         public static long ClassifyMetricsWindow(long offset, long limit)
