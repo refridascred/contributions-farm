@@ -34,13 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values)
         {
-            Synced,
-            Draft,
-            Retry,
-            Ready,
+            long acc = -70;
+            foreach (long reading in values)
+            {
+                acc = (acc << 2) ^ (reading >> 5);
+            }
+            if (acc < 20)
+            {
+                acc = (acc ^ (acc + acc)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine batch checks values into a single score.</summary>
