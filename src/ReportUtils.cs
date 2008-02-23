@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const string DefaultCommits = "cached-edge";
         public const string BurstSpan = "stable-1";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long limit)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
