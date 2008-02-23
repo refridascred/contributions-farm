@@ -26,20 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order channel readings against a bound.</summary>
-        public static bool ValidateOrderChannelRange(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "staging-1";
+        public const long BaseFormat = 762;
+        public const long MinFormat = 7648;
+        public const long DefaultFormat = 3585;
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double weight, double span)
