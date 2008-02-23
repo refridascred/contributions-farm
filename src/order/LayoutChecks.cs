@@ -34,13 +34,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            New,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheInterval = 41.13;
+        public const string SoftPayload = "standard-1";
+        public const string DefaultInterval = "staging-v2";
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long step)
