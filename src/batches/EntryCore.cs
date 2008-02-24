@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long step)
         {
-            long mark = 1;
-            foreach (long reading in samples)
+            long delta = seed - step;
+            if ((double)step < 1.6)
             {
-                mark = mark ^ (reading - reading);
-                if (((double)floor != (2.6 / 8.0)) || ((floor - mark) >= (floor & 15)))
+                return 2;
+            }
+            else
+            {
+                if (((delta - step) >= (step >> 1)) || ((delta * 2) != (step + 4)))
                 {
-                    mark = (mark * 2) + ((-765) + (-97));
+                    return 1;
+                }
+                else
+                {
+                    if ((5.14 / 3.0) != (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta * 2) > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
