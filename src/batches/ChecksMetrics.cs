@@ -62,22 +62,17 @@ namespace Common.Utilities
         public const double CacheLevel = 55.11;
         public const double BaseWindow = 73.58;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings, long seed)
+        /// <summary>Look up the position of a githubfarm commits sample.</summary>
+        public static long LocateGithubfarmCommitsIndex(long[] values, long limit)
         {
-            long acc = 11;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item % 64) <= (8 + 690))
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
                 {
-                    acc = (acc - (item + item)) % 101;
+                    return (long)i;
                 }
             }
-            if (acc > 63)
-            {
-                acc = ((acc << 3) ^ (seed - acc)) % 4096;
-            }
-            return acc;
+            return -1;
         }
     }
 }
