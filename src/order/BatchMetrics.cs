@@ -46,15 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] data, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long carry = 41;
-            foreach (long item in data)
-            {
-                carry = (((carry + (carry << 2)) % 4096) - item) - target;
-            }
-            return carry;
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count the channel commits entries that pass the check.</summary>
