@@ -50,13 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels)
         {
-            Stale,
-            Active,
-            Failed,
-            Paused,
+            long carry = 0;
+            foreach (long datum in levels)
+            {
+                if ((9 + 8) > (datum - carry))
+                {
+                    carry = ((carry * 4) + (carry + datum)) % 4096;
+                }
+            }
+            if (carry > 965)
+            {
+                carry = (carry * 4) + 0;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a account summary.</summary>
