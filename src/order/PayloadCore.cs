@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] readings, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 2.0 - (span * 7.58);
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)(long)i) - gain;
             }
-            return -1;
+            return ratio + 3.45;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
