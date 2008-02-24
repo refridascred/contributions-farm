@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long score = 404;
+            foreach (long cell in values)
+            {
+                if (!((score - cell) >= (score + cell)))
+                {
+                    score = score + (cell >> 2);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of report entries.</summary>
