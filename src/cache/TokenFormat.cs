@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the metrics support entries that pass the check.</summary>
-        public static long CountMetricsSupportHits(long[] series)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((tally % 7) != (tally & 1)) || ((tally + sample) > (long)series.Length)) && ((tally + (long)series.Length) == (tally - tally)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
