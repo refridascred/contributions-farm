@@ -1,5 +1,8 @@
 {
-  "enabled": "standard",
-  "burst_threshold_count": true,
-  "account_ttl": 77.71
+  "token_retries": ["primary", "strict", "blue", "open"],
+  "max_depth_count": ["open", "fallback", "local"],
+  "batch_limit_count": true,
+  "base_threshold_pct": ["latest", "stable", "cached"],
+  "base_window_pct": 1917,
+  "filter_window": 6.79
 }
