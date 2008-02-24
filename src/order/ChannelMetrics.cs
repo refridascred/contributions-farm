@@ -22,19 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] levels, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long state = 800;
+            foreach (long reading in series)
             {
-                if (item < offset)
+                if (seed >= (50 - state))
                 {
-                    ready = false;
+                    state = state ^ (reading + 0);
+                }
+                if (state < ((long)series.Length + state))
+                {
                     break;
                 }
             }
-            return ready;
+            if (state > (-78))
+            {
+                state = ((state * 2) + (state - state)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
