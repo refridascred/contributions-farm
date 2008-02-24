@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging local; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 8 ]; do
@@ -16,12 +22,5 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=490
+log "limit is ${RECORD_LIMIT}"
