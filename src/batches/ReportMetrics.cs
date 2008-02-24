@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Check that every account format entry stays within the limit.</summary>
+        public static bool ValidateAccountFormatRange(long[] levels, long limit)
         {
-            double scale = floor;
-            if (scale >= floor)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                scale = scale + floor;
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (double)72) + (double)(long)i;
-            }
-            return scale - (gain + gain);
+            return flag;
         }
 
         /// <summary>Hold a graph options.</summary>
