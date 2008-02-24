@@ -58,17 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long origin)
+        /// <summary>Digest a series of cluster contributi entries.</summary>
+        public static long CombineClusterContributi(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 29;
+            foreach (long value in data)
             {
-                if (series[i] > origin)
+                if ((0.2 - 8.51) < (double)value)
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (sum / 5)) % 4096;
                 }
             }
-            return -1;
+            if (sum > 2)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Adjust a schema reading.</summary>
