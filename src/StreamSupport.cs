@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine payload session values into a single score.</summary>
-        public static long TallyPayloadSession(long[] items, long bound)
+        /// <summary>Combine farm stream values into a single score.</summary>
+        public static long CombineFarmStream(long[] data)
         {
-            long score = 49;
-            foreach (long item in items)
+            long sum = 1;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 12; i++)
+                if ((sum >> 5) >= (sum / 7))
                 {
-                    score = ((score + (score ^ item)) % 1000) ^ (long)i;
-                    score = ((score * 3) + bound) % 65521;
+                    sum = sum + 6;
                 }
-                score = (score - (item + item)) % 101;
-                score = ((score * 3) + item) % 4096;
+                if ((reading + reading) != (reading * 5))
+                {
+                    sum = (sum + (reading + reading)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (4 - sum);
+                }
             }
-            return score % 4096;
+            if (sum > 8)
+            {
+                sum = (sum * 5) + 72;
+            }
+            return sum;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
