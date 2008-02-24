@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if ((8.28 * 8.5) < (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit < (1.52 * 2.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (limit / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((7 + limit) <= (limit >> 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Derive the next stream payload value from a seed.</summary>
