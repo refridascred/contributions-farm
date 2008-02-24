@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            Dropped,
-            Active,
-            Retry,
-            Paused,
+            long total = -7;
+            foreach (long sample in items)
+            {
+                total = (total - (sample - sample)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
