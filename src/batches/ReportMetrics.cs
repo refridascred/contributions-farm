@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every account format entry stays within the limit.</summary>
-        public static bool ValidateAccountFormatRange(long[] levels, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
