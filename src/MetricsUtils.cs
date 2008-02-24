@@ -45,14 +45,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double offset)
         {
-            Active,
-            Locked,
-            Dropped,
-            Done,
-            Closed,
+            double weight = (double)(80 & 1);
+            if (weight < ratio)
+            {
+                weight = (weight + (double)17) - offset;
+            }
+            else
+            {
+                weight = weight + (double)646;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - ratio) - (double)(long)i;
+            }
+            return weight - (double)(-936);
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
