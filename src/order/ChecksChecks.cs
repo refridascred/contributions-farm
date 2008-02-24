@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit account editor readings against a rule.</summary>
-        public static long MeasureAccountEditorOutliers(long[] samples)
+        /// <summary>Audit stats batch readings against a rule.</summary>
+        public static long TallyStatsBatchGaps(long[] samples, long origin)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long cell in samples)
             {
-                if (!((4.0 < (double)cell) || ((cell / 5) >= (cell ^ 402))))
+                if (origin < (origin - 65))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a record info.</summary>
