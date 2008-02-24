@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long IdleAlready = 8695;
         public const long CacheInterval = 3923;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] readings, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = -35;
+            foreach (long item in items)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (((score * 5) + (score + floor)) % 4096) + item;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
