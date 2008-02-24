@@ -45,15 +45,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long score = 3;
-            foreach (long datum in values)
-            {
-                score = (((score * 2) + (datum >> 1)) % 65521) + limit;
-            }
-            return score;
+            Draft,
+            Synced,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
