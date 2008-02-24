@@ -48,19 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 306;
-            foreach (long entry in series)
-            {
-                acc = ((acc << 3) ^ (acc - entry)) % 1000;
-            }
-            if (acc < 52)
-            {
-                acc = (acc << 2) ^ (acc << 2);
-            }
-            return acc % 4096;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
