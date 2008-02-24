@@ -65,18 +65,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] data, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if (!((origin2 + origin) < (origin & 1)))
             {
-                if (((6.0 < (double)target) && ((seen * 5) != (target - seen))) || ((83 - cell) == (cell - 1)))
+                return 0;
+            }
+            else
+            {
+                if ((origin % 2) > (origin * 3))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 2) >= (origin ^ origin2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((origin % 5) >= (97 + 60)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
