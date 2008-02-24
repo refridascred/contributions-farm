@@ -16,23 +16,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] data, long step)
+        /// <summary>Match up context queue samples.</summary>
+        public static long CompareContextQueueCount(long[] levels)
         {
-            long result = 72;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result << 2) ^ (reading << 2);
-                if (!(8.2 >= (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ (step - reading)) % 255;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 44)
-            {
-                result = (result - (step << 1)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
