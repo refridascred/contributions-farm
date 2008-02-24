@@ -33,22 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long seed, long origin)
         {
-            long carry = 6;
-            foreach (long value in items)
+            if ((double)origin < (double)452)
             {
-                if ((floor << 3) > (value + 680))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed < (double)origin)
                 {
-                    carry = carry - (value & 255);
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (carry > 787)
-            {
-                carry = carry - carry;
-            }
-            return carry;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
