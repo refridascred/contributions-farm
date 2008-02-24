@@ -37,22 +37,15 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] values)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double ratio = scale;
+            if (ratio <= (double)9)
             {
-                if ((881 >> 4) > (value - value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = (ratio + (ratio + 1.6)) + offset;
             }
-            return tally;
+            return ratio + (16.0 / 5.0);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
