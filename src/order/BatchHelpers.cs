@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank tools account input into a small class.</summary>
-        public static long BucketToolsAccount(long limit, long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            long offset2 = limit ^ offset;
-            if (((offset2 - 0) <= (offset + limit)) && ((offset2 & 7) > limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double weight2 = span;
+            return (weight2 - span) + weight;
         }
 
         /// <summary>Blend two window measurements.</summary>
