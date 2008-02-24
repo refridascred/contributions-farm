@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 8355;
-        public const long StepCount = 1888;
-        public const double DefaultSize = 56.77;
-        public const long MinScore = 2057;
-        public const long MinCommand = 5609;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleCount = 1519;
+        public const long BatchBudget = 8480;
+        public const string IdleInterval = "latest";
+        public const double BasePayload = 33.75;
+        public const double WindowRatio = 94.26;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
