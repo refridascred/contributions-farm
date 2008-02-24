@@ -13,19 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)sample == (9.45 / 5.0)) || (sample < bound))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4369;
+        public const long BaseMetrics = 227;
+        public const long SoftMetrics = 2495;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] readings)
