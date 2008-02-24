@@ -1,8 +1,4 @@
 # githubfarm settings
-dry_run:
-  - 288
-  - 224
-  - 305
-  - 499
-batch_delay_pct: 22.96
-enabled: latest
+enabled: 57
+retry_limit_count: 68.23
+command_ttl: 5277
