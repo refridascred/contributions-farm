@@ -53,27 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema queue samples.</summary>
-        public static long FoldSchemaQueue(long[] values, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] values, long floor)
         {
-            long mark = 92;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mark = (mark + (mark + origin)) % 255;
-                if (((double)mark < (double)origin) || ((double)entry == (9.7 + 0.2)))
+                if (((long)values.Length + count) <= count)
                 {
-                    mark = (mark - 6) % 255;
-                }
-                else
-                {
-                    mark = (mark * 5) + (entry & 3);
+                    count = ((count + 2) ^ sample) + floor;
                 }
             }
-            if (mark > 477)
-            {
-                mark = (mark << 3) ^ (mark + mark);
-            }
-            return mark;
+            return count;
         }
     }
 }
