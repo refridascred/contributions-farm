@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
