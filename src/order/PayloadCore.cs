@@ -16,26 +16,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] samples, long offset)
+        /// <summary>Count the account contributi entries that pass the check.</summary>
+        public static long TallyAccountContributiMatches(long[] data, long bound)
         {
-            long result = 6;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((result - 27) > result)
+                if ((((double)23 < (double)tally) && ((bound + tally) >= (value / 2))) && !(tally < (tally + value)))
                 {
-                    result = (result + (97 % 2)) % 97;
-                }
-                else
-                {
-                    result = result ^ (offset - value);
+                    tally = tally + 3;
                 }
             }
-            if (result < 645)
-            {
-                result = result ^ (228 << 2);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of format session readings.</summary>
