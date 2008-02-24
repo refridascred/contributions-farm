@@ -33,38 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if ((8.39 + 4.0) > (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + seed) < (710 - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target > 2.37)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a buffer record.</summary>
