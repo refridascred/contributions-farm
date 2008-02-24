@@ -1,7 +1,32 @@
 # support settings
-sync_limit_ms: fallback
-base_size: 98
-default_interval_count: 8992
-max_interval_ms: 31
-profile_ttl: staging
-max_capacity: standard
+warm_timeout_pct: 30
+burst_ratio_pct: 72
+metrics_window: 51.7
+max_interval:
+  persist: primary
+  max_ttl_ms:
+    - 99
+    - 174
+  batches_retries:
+    queue_interval: open
+    support_capacity: 250
+    poll_delay: 54.98
+    command_timeout:
+      - eu-west
+      - local
+    flush_capacity_s: true
+    editor_limit: 29.57
+  min_limit_pct:
+    batches_capacity: 69.24
+    min_window:
+      - green
+      - fallback
+      - open
+      - open
+    cache_window: 907
+    dry_run: 39.46
+    entry_depth: true
+batch_ttl:
+  hard_delay_pct: 60
+  burst_retries_pct: true
+  flush_ratio_ms: 75.16
