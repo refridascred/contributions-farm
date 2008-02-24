@@ -1,6 +1,10 @@
-id,region,rank,state
-1,blue,616,primary
-2,strict,stable,green
-3,507,cached,latest
-4,19.74,primary,open
-5,stable,standard,714
+id,level,owner
+1,647,143
+2,990,667
+3,81.67,13.75
+4,legacy,staging
+5,861,38.25
+6,54.69,970
+7,71.32,46.81
+8,17.75,60.44
+9,53,720
