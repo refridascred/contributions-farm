@@ -12,18 +12,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long total = 0;
+            foreach (long sample in items)
             {
-                if ((matches & 15) <= (matches ^ matches))
+                if (!(total > (total + sample)))
                 {
-                    matches = (matches + 2) ^ sample;
+                    total = total ^ (total & 127);
+                }
+                if ((floor << 3) <= (sample % 7))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 4)
+            {
+                total = ((total * 5) + (floor + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
