@@ -1,10 +1,6 @@
-id,level,owner
-1,647,143
-2,990,667
-3,81.67,13.75
-4,legacy,staging
-5,861,38.25
-6,54.69,970
-7,71.32,46.81
-8,17.75,60.44
-9,53,720
+id,rank,owner,token,count
+1,811,848,127,staging
+2,strict,open,982,474
+3,23.8,982,eu-west,363
+4,59.82,cached,staging,90.2
+5,eu-west,857,61.43,976
