@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of session entries.</summary>
