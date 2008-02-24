@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (datum <= (tally - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "open-1";
+        public const double BaseTools = 29.67;
+        public const string CacheTools = "legacy-v2";
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
