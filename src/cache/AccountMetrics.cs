@@ -43,13 +43,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long score = 54;
+            foreach (long reading in values)
+            {
+                score = ((score * 4) + ((-80) * 4)) % 1000;
+                score = ((score * 2) + (66 % 2)) % 4096;
+                if ((reading + origin) != (score / 8))
+                {
+                    score = (score * 5) + (912 << 2);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
