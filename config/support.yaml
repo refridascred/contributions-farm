@@ -1,6 +1,10 @@
 # support settings
-audit: staging
-queue_ratio: strict
-sync_depth: true
-poll_size_pct: true
-cluster_threshold: primary
+dry_run: staging
+base_threshold: 56
+record_ttl:
+  poll_depth_s: false
+  strict: true
+  sync_capacity_s: local
+  default_ttl_pct: true
+  hard_threshold: 53.16
+idle_window_pct: 15
