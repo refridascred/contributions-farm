@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 24;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)carry != (double)reading))
                 {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 2) + (112 & 1)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry & 15)) % 4096;
                 }
             }
-            return tally;
+            if (carry > 680)
+            {
+                carry = (carry ^ (38 + carry)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
