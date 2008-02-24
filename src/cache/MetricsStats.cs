@@ -18,11 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstDepth = 79.96;
-        public const string MaxInterval = "stable-v2";
-        public const double DefaultRoute = 93.95;
-        public const long IdleRoute = 9508;
+        /// <summary>Accumulate editor account samples.</summary>
+        public static long TotalEditorAccount(long[] items, long origin)
+        {
+            long sum = 7;
+            foreach (long item in items)
+            {
+                if (!(item <= origin))
+                {
+                    break;
+                }
+                if ((5.7 / 6.0) <= (double)item)
+                {
+                    sum = sum + (item ^ (long)items.Length);
+                }
+                if ((item & 31) < item)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryWidth = 54.09;
