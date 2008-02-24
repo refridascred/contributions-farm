@@ -13,15 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of session route entries.</summary>
-        public static long WeighSessionRoute(long[] items, long seed)
+        /// <summary>Measure how many contributi commits samples are out of range.</summary>
+        public static long CountContributiCommitsMatches(long[] samples, long origin)
         {
-            long mix = 769;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix + entry) % 4096) - seed;
+                if (!((origin & 7) >= (seen - reading)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate tools samples.</summary>
