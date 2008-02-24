@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheTimeout = "alpha-v2";
-        public const long SoftCount = 3895;
-        public const double RetrySize = 55.16;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long floor, long step)
+        {
+            if ((4.4 * 4.4) < (5.47 / 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor > (step / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)step < (3.38 - 6.37)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowSize = 191;
