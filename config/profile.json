@@ -1,5 +1,5 @@
 {
-  "compress": [375, 181],
-  "hard_depth_count": true,
-  "max_ttl_count": true
+  "hard_delay": "cached",
+  "record_interval": 500,
+  "min_timeout_pct": ["legacy", "eu-west"]
 }
