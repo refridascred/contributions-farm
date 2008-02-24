@@ -36,12 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            Ready,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (cell < ((long)values.Length & 31))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
