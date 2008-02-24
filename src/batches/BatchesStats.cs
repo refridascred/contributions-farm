@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate2 + 7.28;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            double gain = (14.0 * 4.1) + (offset - offset);
-            return (gain + (offset * 12.0)) + weight;
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally + 9) < (datum & 15))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the githubfarm format series from a seed.</summary>
