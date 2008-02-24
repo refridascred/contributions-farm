@@ -1,5 +1,7 @@
 {
-  "dry_run": 24,
-  "hard_retries": ["fallback", "eu-west", "blue"],
-  "warm_size_s": 4.2
+  "compress": "strict",
+  "dry_run": "primary",
+  "context_limit": "green",
+  "sync_ratio": "staging",
+  "entry_size": "strict"
 }
