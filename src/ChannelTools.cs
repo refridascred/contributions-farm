@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long SoftChecks = 8792;
         public const string StepChecks = "legacy";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSpan = 3168;
-        public const double WindowTimeout = 58.94;
-        public const long DefaultCount = 6458;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            New,
+            Locked,
+            Active,
+            Done,
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long ClassifyPayload(long bound, long step)
