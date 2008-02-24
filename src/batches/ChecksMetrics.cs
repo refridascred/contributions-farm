@@ -16,11 +16,15 @@ namespace Common.Utilities
         public const string StepChecks = "standard";
         public const long SoftCount = 9793;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
