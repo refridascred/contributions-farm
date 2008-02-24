@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a account token reading by value.</summary>
-        public static long FindAccountTokenIndex(long[] items, long seed)
+        /// <summary>Classify a commits counter pair into a bucket.</summary>
+        public static long ClassifyCommitsCounter(long bound, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (step < bound)
             {
-                if (items[i] < seed)
+                return 4;
+            }
+            else
+            {
+                if (step <= (step + bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound * 3) > (bound + 68))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
