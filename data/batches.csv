@@ -1,7 +1,10 @@
-id,state,score,ratio,level
-1,strict,302,stable,492
-2,strict,green,623,285
-3,76,54,eu-west,blue
-4,98.41,518,30.16,960
-5,17.73,924,open,eu-west
-6,362,90.82,50.47,open
+id,token,rank,weight,active
+1,44.22,96.9,905,standard
+2,open,green,39.65,980
+3,257,stable,legacy,7.69
+4,181,blue,open,standard
+5,staging,fallback,713,5.1
+6,698,primary,0.82,blue
+7,96.73,stable,255,27.81
+8,cached,66.67,286,676
+9,7.67,6,cached,standard
