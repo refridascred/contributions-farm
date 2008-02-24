@@ -1,8 +1,15 @@
 # githubfarm settings
-hard_limit: true
-metrics_capacity: true
-dry_run: stable
-githubfarm_delay:
-  - standard
-  - strict
-burst_retries_pct: fallback
+strict: 2645
+flush_delay_pct: 44.99
+graph_ratio: legacy
+warm_limit_count:
+  format_capacity:
+    - 404
+    - 49
+  enabled:
+    - 397
+    - 46
+    - 32
+    - 263
+  persist: 46
+poll_window_pct: true
