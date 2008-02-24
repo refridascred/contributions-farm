@@ -15,9 +15,12 @@ namespace Common.Utilities
         public const double WindowTimeout = 58.94;
         public const long DefaultCount = 6458;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 4710;
-        public const double BaseSize = 1.12;
-        public const long MinCount = 6983;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
