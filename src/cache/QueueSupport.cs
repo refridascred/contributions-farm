@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Paused,
-            Idle,
-            Draft,
-            Queued,
+            Done,
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the checks state values.</summary>
