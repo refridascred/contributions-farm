@@ -14,25 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank tools window input into a small class.</summary>
-        public static long BucketToolsWindow(long origin, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values)
         {
-            long bound = origin - target;
-            if (bound <= (bound ^ (-777)))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 * 4.0) > (double)origin)
+                if ((0.4 + 5.9) <= (double)item)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
