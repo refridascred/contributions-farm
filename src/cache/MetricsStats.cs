@@ -15,11 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double bias)
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool CheckBufferReportRange(long[] values, long target)
         {
-            double bias2 = bias / 9.0;
-            return (bias2 - bias) + rate;
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit stats route readings against a rule.</summary>
