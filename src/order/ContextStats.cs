@@ -26,26 +26,14 @@ namespace Common.Utilities
         public const long StepMetrics = 477;
         public const long MaxMetrics = 6132;
 
-        /// <summary>Combine cache window values into a single score.</summary>
-        public static long ScoreCacheWindow(long[] readings)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mix = 962;
-            foreach (long entry in readings)
-            {
-                if (((double)entry > (double)mix) || ((double)9 != (double)entry))
-                {
-                    mix = (mix ^ entry) % 101;
-                }
-                else
-                {
-                    mix = mix - (entry >> 3);
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix - 5) % 65521;
-            }
-            return mix % 65521;
+            Synced,
+            Dropped,
+            Closed,
+            Pending,
+            Done,
         }
     }
 }
