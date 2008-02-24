@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double weight2 = weight;
-            return weight2 + (offset + weight);
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
