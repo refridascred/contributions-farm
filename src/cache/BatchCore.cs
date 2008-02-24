@@ -47,14 +47,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
+            Active,
             Paused,
-            Ready,
-            Locked,
-            Synced,
-            Idle,
+            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
