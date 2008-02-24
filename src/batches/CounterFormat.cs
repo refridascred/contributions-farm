@@ -23,19 +23,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a report tools counter forward.</summary>
-        public static long IterateReportTools(long target)
+        /// <summary>Measure how many report contributi samples are out of range.</summary>
+        public static long CountReportContributiOutliers(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((target + total) < (8 / 5))
+                if ((cell >> 3) < (cell - tally))
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                total = ((total * 4) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
