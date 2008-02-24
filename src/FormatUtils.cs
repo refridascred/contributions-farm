@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftDepth = 8435;
+        public const long HardMetrics = 4759;
+        public const string WindowMetrics = "fallback";
+        public const double HardFactor = 19.96;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferLimits(long[] series, long step)
