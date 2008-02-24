@@ -36,14 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long offset)
         {
-            Synced,
-            Done,
-            Failed,
-            Locked,
-            Stale,
+            if ((step % 10) <= (offset + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step <= (offset + 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step & 15) <= offset) || (step < offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
