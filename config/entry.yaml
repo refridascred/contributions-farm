@@ -1,7 +1,4 @@
 # entry settings
-compress: true
-warm_window_ms: 7949
-audit: 92
-min_delay_s: blue
-warm_depth_count: false
-cluster_interval: true
+counter_window: false
+retry_size_ms: 6.1
+dry_run: latest
