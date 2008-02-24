@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetrySize = "staging";
-        public const string SoftAccount = "alpha";
-        public const long MaxSpan = 263;
-        public const string MaxScore = "local-1";
-        public const long StepAccount = 2937;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinDepth = 3514;
