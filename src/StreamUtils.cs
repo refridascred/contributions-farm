@@ -16,31 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a order format value against two limits.</summary>
-        public static long RankOrderFormat(long limit, long limit2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data)
         {
-            if (((double)limit >= (double)16) || ((limit + limit2) > 132))
+            long anchor = 22;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((52 + limit2) <= limit2)
+                if ((anchor ^ value) < (value % 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + limit) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = (anchor + (9 - 726)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
