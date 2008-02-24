@@ -24,12 +24,18 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardCount = "legacy-1";
-        public const long MinBatch = 3617;
-        public const long RetryBatch = 9602;
-        public const double SoftBudget = 41.39;
-        public const long LimitFactor = 3863;
+        /// <summary>Locate a layout contributi reading by value.</summary>
+        public static long LookupLayoutContributiIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheHits(long[] series)
