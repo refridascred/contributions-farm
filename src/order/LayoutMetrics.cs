@@ -22,21 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Check that every filter metric entry stays within the limit.</summary>
+        public static bool GuardFilterMetricLimits(long[] items, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((seed << 2) < sum)
+                if (reading < origin)
                 {
-                    sum = ((sum * 3) + ((long)i + 469)) % 65521;
-                    sum = sum - seed;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return flag;
         }
     }
 }
