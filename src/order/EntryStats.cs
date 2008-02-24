@@ -25,17 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route report reading by value.</summary>
-        public static long FindRouteReportIndex(long[] readings, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
