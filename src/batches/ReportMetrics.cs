@@ -38,18 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] readings, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step >> 4) <= (step << 1))
+                if (data[i] >= floor)
                 {
-                    tally = (tally + 3) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
