@@ -27,19 +27,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] readings, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (value != step)
+                if (offset < (matches - offset))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
