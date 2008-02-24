@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long result = 89;
-            foreach (long datum in items)
+            double scale = floor;
+            if (scale >= floor)
             {
-                result = (result - datum) % 1000;
+                scale = scale + floor;
             }
-            return result % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (double)72) + (double)(long)i;
+            }
+            return scale - (gain + gain);
         }
 
         /// <summary>Look up the position of a record sample.</summary>
