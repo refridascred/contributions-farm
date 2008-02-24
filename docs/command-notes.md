@@ -1,14 +1,11 @@
 # Command notes
 
-The stats module keeps record values in sync with the command cache.
-Run the tools check before changing any token limits.
-
-When a filter fails, the context handler retries a few times before giving up.
-The filter module keeps buffer values in sync with the route cache.
-The command helpers are pure functions, so they are safe to call from any thread.
+When a session fails, the context handler retries a few times before giving up.
+Defaults for stats live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep account values small
-- Document new farm fields
-- Log every cache change
+- Prefer account defaults
+- Validate payload input early
+- Review route limits each release
