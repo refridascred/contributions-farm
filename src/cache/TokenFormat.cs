@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            long mix = 818;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((0 & 31) >= (mix - datum)) && ((datum % 3) > (datum & 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 4) + (mix + datum)) % 101;
-                }
-                else
-                {
-                    mix = (mix - (mix + 595)) % 101;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 714)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
