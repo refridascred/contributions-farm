@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Idle,
-            Closed,
-            Locked,
-            New,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 3156;
+        public const double CacheMetrics = 34.2;
+        public const long StepScore = 4846;
+        public const long DefaultMetrics = 7830;
+        public const long BaseCount = 54;
 
         /// <summary>Validate format commits readings against a bound.</summary>
         public static bool CheckFormatCommitsRange(long[] series, long target)
