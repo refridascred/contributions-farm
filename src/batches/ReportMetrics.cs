@@ -28,18 +28,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long step, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if (3 >= (seed * 2))
             {
-                if ((((double)(-66) == (double)reading) || ((double)reading == (9.6 - 7.86))) && !((count / 7) > count))
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (double)seed)
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
