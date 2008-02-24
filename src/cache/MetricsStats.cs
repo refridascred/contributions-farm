@@ -38,13 +38,22 @@ namespace Common.Utilities
             return drift + (4.0 + drift);
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples, long seed)
         {
-            Retry,
-            Queued,
-            Synced,
-            Dropped,
+            long acc = 3;
+            foreach (long datum in samples)
+            {
+                if (!((acc << 1) != (datum ^ acc)))
+                {
+                    acc = acc ^ (23 - datum);
+                }
+                else
+                {
+                    acc = (acc - (seed % 16)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
