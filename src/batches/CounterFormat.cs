@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long limit)
-        {
-            if ((bound % 97) < (511 / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound <= (74 ^ bound)) && ((80 + limit) < (bound + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowCount = "fallback";
+        public const long RetryAccount = 1582;
+        public const long WindowAccount = 6198;
+        public const long IdleDepth = 240;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long step, long bound)
