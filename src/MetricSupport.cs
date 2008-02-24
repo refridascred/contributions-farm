@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Check that every cache notes entry stays within the limit.</summary>
+        public static bool ValidateCacheNotesLimits(long[] values, long floor)
         {
-            long mix = 29;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                mix = (mix << 3) ^ value;
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 66)
-            {
-                mix = ((mix << 3) ^ (mix & 1)) % 4096;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
