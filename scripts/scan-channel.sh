@@ -6,9 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=375
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in cached primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
+
+mode="${1:-primary}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
