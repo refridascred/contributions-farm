@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] items, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the layout state values.</summary>
