@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many stream layout samples are out of range.</summary>
-        public static long AuditStreamLayoutMatches(long[] items)
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long FoldChannelCounter(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long state = 894;
+            foreach (long sample in values)
             {
-                if ((datum - 3) < datum)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state ^ (187 - offset)) % 4096) + sample;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
