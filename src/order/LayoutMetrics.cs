@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 16.62;
         public const string MaxGithubfarm = "latest-1";
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            Closed,
-            Dropped,
-            Draft,
-            Synced,
-            Pending,
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state - (53 & 15);
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
