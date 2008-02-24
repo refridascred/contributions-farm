@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long offset, long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long offset)
         {
-            if ((double)bound <= (10.0 - 4.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound + bound) == (offset & 7)))
+                if (levels[i] > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 2) == (offset % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > (offset - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a channel stats.</summary>
