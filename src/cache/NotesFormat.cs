@@ -20,11 +20,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Scale a metrics stream figure with a bias.</summary>
+        public static double AdjustMetricsStream(double ratio, double offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            double ratio2 = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = ((ratio2 + offset) + (double)(long)i) + ratio;
+            }
+            return ratio2 + (ratio2 * 17.0);
         }
     }
 }
