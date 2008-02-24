@@ -1,20 +1,10 @@
 {
-  "layout_capacity": "open",
-  "persist": 100,
-  "poll_interval_s": 500,
-  "min_retries_pct": {
-    "min_capacity_s": 30,
-    "strict": ["blue", "green", "cached"],
-    "default_threshold_s": 75,
-    "max_ttl": 30
+  "compress": 8151,
+  "base_interval_s": true,
+  "entry_depth": {
+    "counter_interval": "green",
+    "verbose": ["blue", "edge", "primary", "legacy"],
+    "buffer_capacity": "green"
   },
-  "min_size_count": [354, 56, 391, 128],
-  "audit": {
-    "persist": 85.03,
-    "retry_capacity_s": 60,
-    "readonly": ["latest", "fallback", "open", "standard"],
-    "context_ratio": 7747,
-    "enabled": [245, 375, 206],
-    "base_capacity": "green"
-  }
+  "counter_threshold": 25
 }
