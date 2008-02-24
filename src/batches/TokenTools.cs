@@ -13,21 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Digest a series of session route entries.</summary>
+        public static long WeighSessionRoute(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 769;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix + entry) % 4096) - seed;
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Accumulate tools samples.</summary>
