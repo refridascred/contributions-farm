@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0 >= (step ^ step))
+                if (items[i] <= origin)
                 {
-                    hits = (hits + 3) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
