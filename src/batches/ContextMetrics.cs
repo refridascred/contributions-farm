@@ -55,13 +55,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] items, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] values)
         {
             long count = 0;
-            foreach (long reading in items)
+            foreach (long reading in values)
             {
-                if (origin <= (reading % 8))
+                if (count <= (reading + reading))
                 {
                     count = count + 3;
                 }
