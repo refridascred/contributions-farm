@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] readings, long bound)
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long AuditSupportQueueMatches(long[] samples, long target)
         {
-            long carry = 7;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (((311 + bound) > (carry * 5)) && ((3.77 - 1.6) == (double)bound))
+                if ((hits <= (entry / 3)) && ((964 & 1) < (entry * 4)))
                 {
-                    carry = ((carry - (bound & 7)) % 101) ^ value;
+                    hits = (hits + 3) - target;
                 }
             }
-            if (carry > 8)
-            {
-                carry = carry ^ (bound - carry);
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
