@@ -33,13 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long step)
         {
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
