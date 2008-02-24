@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next format already value.</summary>
-        public static double BlendFormatAlready(double bias, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long bound, long floor)
         {
-            double mean = (double)(912 - 61);
-            if (mean <= (bias * 6.0))
+            long bound2 = bound - floor;
+            if (!((1 ^ 682) > floor))
             {
-                mean = mean - floor;
+                return 7;
             }
-            return mean - (floor - mean);
+            else
+            {
+                if (floor > (87 + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound2 > 1.0) && ((double)(-9) >= (double)bound2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up context queue samples.</summary>
