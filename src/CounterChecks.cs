@@ -67,12 +67,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Look up the position of a stream route sample.</summary>
+        public static long SeekStreamRouteIndex(long[] readings, long offset)
         {
-            Draft,
-            Synced,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
