@@ -36,11 +36,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long bound, long floor)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            if (floor <= 675)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > 4.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)50 >= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
