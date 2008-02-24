@@ -46,11 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBudget = "primary";
-        public const double StepBuffer = 52.04;
-        public const double DefaultWidth = 90.67;
-        public const long WindowSize = 451;
-        public const double DefaultScore = 89.46;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (cell <= (12 ^ cell))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
+        }
     }
 }
