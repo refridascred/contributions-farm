@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double bias2)
-        {
-            double scale = bias2;
-            if (scale > (bias * 3.8))
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + (double)918;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 8484;
+        public const double SoftBuffer = 2.15;
+        public const double BurstBuffer = 37.46;
+        public const long BatchLevel = 4382;
+        public const string BatchDepth = "alpha-v2";
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long offset)
