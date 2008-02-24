@@ -71,10 +71,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 9089;
-        public const string LimitLevel = "latest-v2";
-        public const double HardCommits = 0.17;
-        public const string CacheCommits = "primary-1";
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long offset, long limit)
+        {
+            long step = offset ^ limit;
+            if (step < (offset - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step > (step >> 3)) || ((4 ^ offset) == (26 + 56)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset <= 0.2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
