@@ -1,5 +1,12 @@
 # githubfarm settings
-report_retries: cached
-max_threshold_count: 61.35
-compress: 7396
-poll_timeout_count: local
+enabled: 35.05
+poll_limit_s:
+  - 159
+  - 393
+  - 203
+  - 221
+batch_limit:
+  - staging
+  - local
+max_capacity_pct: local
+idle_ttl_pct: 29.96
