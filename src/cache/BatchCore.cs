@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long floor)
+        /// <summary>Project the next counter cache value.</summary>
+        public static double BlendCounterCache(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = gain;
+            if (gain2 <= (gain / 2.0))
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - (gain / 7.0)) - span;
             }
-            return -1;
+            return gain2 + gain2;
         }
 
         /// <summary>Iterate the schema token series from a seed.</summary>
