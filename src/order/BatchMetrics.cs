@@ -71,18 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches report readings against a rule.</summary>
-        public static long CountBatchesReportGaps(long[] readings)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell * 5) <= (cell & 127))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = count + 1;
+                    total = (total + step) - (long)i2;
                 }
+                total = ((total << 3) ^ 25) % 1000;
+                total = (total - (total << 2)) % 1000;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
