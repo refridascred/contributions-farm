@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] values, long target)
+        /// <summary>Blend two report commits measurements.</summary>
+        public static double ScaleReportCommits(double weight, double floor)
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double rate = weight;
+            return (rate - 9.02) + floor;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
