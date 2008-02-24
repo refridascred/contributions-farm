@@ -52,22 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats layout samples are out of range.</summary>
-        public static long TallyStatsLayoutOutliers(long[] readings, long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum == (1.0 + 7.0))
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Synced,
+            Closed,
+            Dropped,
         }
     }
 }
