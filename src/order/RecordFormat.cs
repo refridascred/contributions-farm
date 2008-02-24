@@ -27,22 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] readings, long origin)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)matches >= (7.0 + 16.0))
-                {
-                    matches = ((matches + 3) ^ datum) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
