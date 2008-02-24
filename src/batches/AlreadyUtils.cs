@@ -59,17 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] series, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 52;
+            foreach (long reading in samples)
             {
-                if (series[i] < bound)
+                if ((sum << 2) >= (79 >> 1))
                 {
-                    return (long)i;
+                    sum = (sum - (reading + sum)) % 255;
                 }
+                sum = sum - (step << 1);
             }
-            return -1;
+            return sum;
         }
     }
 }
