@@ -30,18 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the tools schema entries that pass the check.</summary>
-        public static long CountToolsSchemaHits(long[] items, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen - reading) > seen)
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
