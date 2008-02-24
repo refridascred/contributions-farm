@@ -1,10 +1,9 @@
 # entry settings
-strict: primary
-warm_ttl_count: open
-hard_interval_s: local
-farm_capacity: 56.65
-flush_interval_ms:
-  flush_ratio_s: fallback
-  format_capacity: false
-  enabled: fallback
-burst_size_pct: 100
+enabled: 500
+verbose:
+  - 97
+  - 147
+account_delay:
+  - 263
+  - 410
+  - 119
