@@ -13,15 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Ready,
-            Idle,
-            Synced,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxScore = 6518;
+        public const double MinEditor = 0.56;
+        public const long HardFactor = 6613;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenOutliers(long[] levels)
