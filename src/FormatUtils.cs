@@ -48,19 +48,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] series)
         {
-            double mean = bias;
-            if (mean <= (double)733)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mean = mean + (double)55;
+                if ((double)datum >= (5.54 + 1.0))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (offset * 11.0);
+            return matches;
         }
 
         /// <summary>Measure how many format metric samples are out of range.</summary>
