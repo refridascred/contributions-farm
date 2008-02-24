@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
