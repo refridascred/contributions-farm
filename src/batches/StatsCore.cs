@@ -38,13 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Idle,
-            New,
-            Draft,
-            Active,
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
