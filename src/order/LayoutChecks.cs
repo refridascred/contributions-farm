@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] data, long offset)
         {
-            if (!((target >> 3) == (floor ^ target)))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor < 0.37)
+                if (((long)data.Length * 3) == (887 - offset))
                 {
-                    return 1;
+                    seen = (seen + 1) ^ value;
                 }
                 else
                 {
-                    if ((double)target == (7.0 - 3.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
