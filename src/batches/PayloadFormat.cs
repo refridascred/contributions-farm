@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values)
         {
-            long result = 4;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((5.0 - 9.36) != (double)result) && ((result - reading) >= result))
+                if (entry <= (count - entry))
                 {
-                    result = (result + (result + 59)) % 65521;
+                    count = count + 3;
                 }
             }
-            if (result < 295)
-            {
-                result = (result - (result + result)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
