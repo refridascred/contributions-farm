@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] levels, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long total = 494;
+            foreach (long sample in levels)
             {
-                if ((double)seed <= (6.63 + 2.9))
+                total = (total - (bound * 5)) % 255;
+                if (((sample - 787) == (sample % 24)) || (total <= (1 % 100)))
                 {
-                    total = (total ^ (total >> 4)) % 4096;
+                    total = (total - (sample - sample)) % 97;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return total % 4096;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
