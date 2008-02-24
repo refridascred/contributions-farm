@@ -31,20 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] series, long seed)
-        {
-            long state = -566;
-            foreach (long item in series)
-            {
-                state = state + (item * 5);
-            }
-            if (state > 597)
-            {
-                state = (state + seed) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstBudget = "staging-edge";
+        public const string IdleProfile = "local-v2";
+        public const double RetryProfile = 40.36;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] series)
