@@ -55,10 +55,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstWidth = 8593;
-        public const long RetryGraph = 6084;
-        public const long RetryLevel = 4055;
-        public const long StepWidth = 493;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardLevel = 8283;
+        public const long SoftMetrics = 925;
+        public const string RetryMetrics = "local-v2";
+        public const string MaxMetrics = "latest-1";
     }
 }
