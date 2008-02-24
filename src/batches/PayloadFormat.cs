@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many context payload samples are out of range.</summary>
+        public static long AuditContextPayloadOutliers(long[] values, long bound)
         {
-            Done,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) >= ((-153) >> 2))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
