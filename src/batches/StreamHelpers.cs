@@ -26,11 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 68.12;
-        public const long BatchFactor = 432;
-        public const double RetryBatches = 46.7;
-        public const long MaxBatches = 4690;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Locked,
+            New,
+            Retry,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MaxFactor = "strict-v2";
