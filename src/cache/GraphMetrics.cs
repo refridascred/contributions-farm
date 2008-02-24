@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of window report readings.</summary>
-        public static long CombineWindowReport(long[] series, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings)
         {
-            long result = 226;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                result = ((result - (321 >> 5)) + entry) - step;
+                if ((value ^ count) > (count / 9))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a farm stats.</summary>
