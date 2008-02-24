@@ -48,24 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long target, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            if ((double)bound > (double)target)
+            long total = 408;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.56 * 6.6) > (double)bound)
+                total = ((total << 2) ^ datum) % 65521;
+                if (((5.0 / 6.0) > (double)datum) || ((6.0 + 2.0) == (double)total))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            return total % 4096;
         }
     }
 }
