@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] series, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.13 * 0.27) == (double)matches)
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    matches = ((matches + 3) ^ reading) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
