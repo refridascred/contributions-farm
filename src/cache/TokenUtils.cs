@@ -17,10 +17,14 @@ namespace Common.Utilities
         public const long DefaultCommits = 6341;
         public const long MinBudget = 6792;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 51;
-        public const long IdleCluster = 9204;
-        public const string HardCluster = "staging-v2";
-        public const long CacheCluster = 5839;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Pending,
+            Retry,
+            Locked,
+            Idle,
+            Dropped,
+        }
     }
 }
