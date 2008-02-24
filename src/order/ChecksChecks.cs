@@ -33,25 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches tools value against two limits.</summary>
-        public static long BucketBatchesTools(long step, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] readings, long offset)
         {
-            long prev = step - target;
-            if (((9.5 - 3.8) != (double)prev) || ((target / 6) == (prev >> 2)))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= target)
+                if (((item >= (offset + item)) && ((double)tally < 6.04)) || ((double)item <= (7.0 + 8.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
