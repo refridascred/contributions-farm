@@ -31,18 +31,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series, long floor)
+        /// <summary>Compare every pair of contributi report readings.</summary>
+        public static long PairContributiReportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((871 + seen) >= (8 - seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 3) + datum) + floor;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the batch status values.</summary>
