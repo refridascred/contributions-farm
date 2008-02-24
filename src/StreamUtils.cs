@@ -71,32 +71,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long step)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long span = seed ^ step;
-            if ((span / 3) == (61 - span))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + seed) > seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 97) < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
