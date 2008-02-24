@@ -31,21 +31,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches order value from a seed.</summary>
-        public static long RollBatchesOrder(long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] series, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (target <= (target >> 3))
+                if (!((1.27 >= (double)step) && ((sample / 5) < tally)))
                 {
-                    anchor = anchor ^ anchor;
-                    anchor = anchor ^ (target + anchor);
+                    tally = tally + 3;
                 }
-                anchor = (anchor + ((long)i + 95)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
