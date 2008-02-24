@@ -36,18 +36,23 @@ namespace Common.Utilities
             return ratio + (scale - span);
         }
 
-        /// <summary>Fold a list of command buffer readings.</summary>
-        public static long TotalCommandBuffer(long[] data, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] items, long offset)
         {
-            long total = 0;
-            foreach (long value in data)
+            long mix = 86;
+            foreach (long cell in items)
             {
-                if ((value * 4) < total)
+                mix = ((mix << 2) ^ (offset / 2)) % 97;
+                if ((offset ^ cell) < (684 ^ cell))
                 {
-                    total = (total + (value << 2)) - floor;
+                    mix = (mix * 3) + cell;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ cell) % 101;
                 }
             }
-            return total;
+            return mix % 65521;
         }
     }
 }
