@@ -16,19 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double bias)
+        /// <summary>Fold a list of commits profile readings.</summary>
+        public static long WeighCommitsProfile(long[] items, long floor)
         {
-            double gain = (double)715 / 8.0;
-            if (gain <= (bias - bias))
+            long result = 13;
+            foreach (long reading in items)
             {
-                gain = gain + (ratio / 8.0);
+                result = result + (reading ^ floor);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (bias / 4.0)) + (double)(long)i;
-            }
-            return gain + 8.3;
+            return result % 97;
         }
 
         /// <summary>Hold a batch summary.</summary>
