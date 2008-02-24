@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Fold a list of window report readings.</summary>
+        public static long CombineWindowReport(long[] series, long step)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long result = 226;
+            foreach (long entry in series)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                result = ((result - (321 >> 5)) + entry) - step;
             }
             return result;
         }
