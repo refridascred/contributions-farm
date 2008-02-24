@@ -30,11 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next contributi counter value.</summary>
-        public static double SmoothContributiCounter(double ratio, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] values, long seed)
         {
-            double weight = (double)(45 >> 5);
-            return (weight + floor) + ratio;
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (70 < (tally - cell))
+                {
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
