@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 5836;
-        public const double IdleBuffer = 96.18;
-        public const long BurstSpan = 7423;
-        public const long RetryBuffer = 4789;
-        public const long WindowSize = 8525;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Idle,
+            Draft,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] levels)
