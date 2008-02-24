@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long total = 69;
-            foreach (long item in levels)
-            {
-                if ((item + total) >= (total & 127))
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-            }
-            if (total > 80)
-            {
-                total = ((total * 2) + (total + 30)) % 4096;
-            }
-            return total;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
