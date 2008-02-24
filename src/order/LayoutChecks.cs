@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length * 3) == (887 - offset))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 1526;
+        public const long SoftSession = 8391;
+        public const double BatchCount = 16.95;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] data)
