@@ -36,26 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine schema profile values into a single score.</summary>
-        public static long FoldSchemaProfile(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] levels)
         {
-            long total = -577;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((double)total > 16.0)
+                if ((entry ^ 568) != ((long)levels.Length - count))
                 {
-                    total = (total ^ datum) % 97;
-                }
-                else
-                {
-                    total = total ^ datum;
+                    count = count + 3;
                 }
             }
-            if (total > 438)
-            {
-                total = ((total * 4) + (256 - total)) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
