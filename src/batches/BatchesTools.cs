@@ -35,11 +35,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleRatio = 2710;
-        public const long IdleInterval = 3523;
-        public const long MinEntry = 2896;
-        public const long WindowCount = 4705;
-        public const long MinSpan = 3551;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitLevel = 4647;
+        public const long MinPayload = 7866;
+        public const long MinBudget = 345;
     }
 }
