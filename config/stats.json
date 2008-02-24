@@ -1,13 +1,5 @@
 {
-  "warm_capacity_s": "blue",
-  "entry_retries": {
-    "commits_threshold": false,
-    "entry_window": false,
-    "warm_depth": "eu-west",
-    "batch_limit_count": 89,
-    "verbose": ["open", "latest", "open", "legacy"],
-    "warm_ratio_ms": "green"
-  },
-  "default_capacity": ["edge", "cached", "open"],
-  "min_delay_count": ["latest", "green", "green", "fallback"]
+  "min_limit_count": 3.9,
+  "readonly": ["edge", "latest", "latest", "eu-west"],
+  "warm_limit": ["open", "cached", "green", "blue"]
 }
