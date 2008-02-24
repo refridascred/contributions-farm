@@ -51,19 +51,18 @@ namespace Common.Utilities
             return ratio - (double)7;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] samples)
         {
-            double scale = rate * 14.0;
-            if (scale >= (rate / 5.0))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                scale = scale - offset;
+                if ((double)entry == (2.3 + 1.0))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - 17.0;
+            return count;
         }
     }
 }
