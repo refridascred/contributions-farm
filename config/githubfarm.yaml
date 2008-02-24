@@ -1,9 +1,9 @@
 # githubfarm settings
-enabled: 87.63
-default_depth_ms:
-  account_window: 15.29
-  idle_limit: 2220
-  flush_delay: 5559
-  tools_ttl: 36.94
-  channel_capacity: stable
-cluster_ratio: open
+poll_threshold_count:
+  - strict
+  - standard
+  - local
+  - eu-west
+checks_size: 1024
+flush_timeout_ms: 23
+persist: 1436
