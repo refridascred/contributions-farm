@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Done,
-            Synced,
-            New,
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the profile state values.</summary>
