@@ -21,15 +21,17 @@ namespace Common.Utilities
         public const long MinScore = 403;
         public const double LimitCommits = 76.83;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double span)
+        /// <summary>Look up the position of a batches booking sample.</summary>
+        public static long SeekBatchesBookingIndex(long[] samples, long limit)
         {
-            double gain = ratio;
-            if (gain >= (double)3)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + (double)1) + span;
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - (ratio / 2.0);
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
