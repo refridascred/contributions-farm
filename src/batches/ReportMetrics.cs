@@ -34,18 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record contributi values into a single score.</summary>
-        public static long CombineRecordContributi(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] data)
         {
-            long anchor = 5;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((anchor & 255) != (item / 9)) || ((6.0 / 6.0) <= (double)(long)levels.Length))
+                if ((((double)(-66) == (double)reading) || ((double)reading == (9.6 - 7.86))) && !((count / 7) > count))
                 {
-                    anchor = (anchor << 3) ^ (822 / 7);
+                    count = count + 2;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
