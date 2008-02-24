@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = 8.8 / 4.0;
+            if (rate2 >= (double)(-4))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = (rate2 - (rate + rate2)) + offset;
             }
-            return seen;
+            return rate2 + (1.02 - 5.71);
         }
 
         /// <summary>Describe the report state values.</summary>
