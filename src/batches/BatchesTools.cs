@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long limit, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if (!((limit - floor) >= (floor << 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit - floor) >= (limit - limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Ready,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Fold a list of queue record readings.</summary>
