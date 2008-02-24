@@ -48,11 +48,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long target, long bound)
         {
-            double rate = (weight * 5.69) - span;
-            return rate + 6.3;
+            if ((double)bound > (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.56 * 6.6) > (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
