@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long total = 69;
+            foreach (long item in levels)
             {
-                if ((value ^ count) > (count / 9))
+                if ((item + total) >= (total & 127))
                 {
-                    count = count + 1;
+                    total = ((total << 2) ^ total) % 101;
                 }
             }
-            return count;
+            if (total > 80)
+            {
+                total = ((total * 2) + (total + 30)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a farm stats.</summary>
