@@ -21,20 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                double weight = (double)total + (double)(-237);
-                if ((weight + weight) <= (double)144)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (bound + bound)) % 4096;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
