@@ -53,18 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] values, long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double bias = (double)(42 - 272);
+            if (bias < (bias + span))
             {
-                if (((long)values.Length + count) <= count)
-                {
-                    count = ((count + 2) ^ sample) + floor;
-                }
+                bias = bias + (7.38 + gain);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 3.0) + (double)(long)i;
+            }
+            return bias - (gain - gain);
         }
     }
 }
