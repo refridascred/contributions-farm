@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate githubfarm report readings against a bound.</summary>
-        public static bool ValidateGithubfarmReportRange(long[] items, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] items)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (datum != bound)
+                if ((4.95 - 8.7) < (double)value)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
