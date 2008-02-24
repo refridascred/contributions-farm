@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MinProfile = 1163;
         public const string WindowProfile = "alpha-v2";
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double rate, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] readings, long target)
         {
-            double weight = rate + (double)(-74);
-            return (weight + weight) + offset;
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the counter class values.</summary>
