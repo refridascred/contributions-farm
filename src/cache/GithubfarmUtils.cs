@@ -45,21 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 98;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((result - reading) > result) && ((reading >> 5) >= 87))
                 {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (result / 3)) % 65521;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
