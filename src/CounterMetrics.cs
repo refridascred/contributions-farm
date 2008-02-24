@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long step, long seed)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long prev = step + seed;
+            if ((double)step > (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)seed >= (3.3 + 5.08)) || ((2 / 5) > (step - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (prev < (step + 27))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
