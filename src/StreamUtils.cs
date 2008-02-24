@@ -95,18 +95,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - tally) >= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Stale,
+            Ready,
+            New,
         }
     }
 }
