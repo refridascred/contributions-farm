@@ -1,12 +1,4 @@
 # entry settings
-warm_timeout:
-  - 140
-  - 76
-  - 204
-  - 449
-persist: true
-cluster_window: 9588
-layout_retries:
-  - edge
-  - legacy
-  - latest
+strict: 72.3
+default_delay_count: cached
+verbose: stable
