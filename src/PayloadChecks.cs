@@ -45,19 +45,11 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long LimitTools = 6912;
 
-        /// <summary>Audit record format readings against a rule.</summary>
-        public static long CountRecordFormatMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)hits > (7.46 + 0.28)))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinDepth = 93.31;
+        public const string RetryTimeout = "strict-v2";
+        public const long StepTimeout = 1922;
+        public const string WindowSchema = "latest";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryEditor = 531;
