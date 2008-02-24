@@ -44,22 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((86 + 347) < (seen + sample))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
