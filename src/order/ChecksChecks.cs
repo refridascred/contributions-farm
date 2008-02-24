@@ -27,18 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] items, long limit)
+        /// <summary>Count the channel payload entries that pass the check.</summary>
+        public static long TallyChannelPayloadMatches(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((339 % 8) <= tally)
+                if ((item % 100) < (step + step))
                 {
-                    tally = ((tally + 2) ^ datum) - limit;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
