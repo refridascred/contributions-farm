@@ -1,14 +1,11 @@
 # Command notes
 
-Run the notes check before changing any schema limits.
-Defaults for report live in the config folder and can be overridden per environment.
-Use command settings to tune how often buffer data is refreshed.
-
-Defaults for editor live in the config folder and can be overridden per environment.
-A window that stays idle for too long is moved to the cache list.
+The record helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every stream by record.
 
 ## Guidelines
 
-- Keep metrics values small
-- Log every profile change
-- Prefer tools defaults
+- Prefer command defaults
+- Keep notes values small
+- Validate context input early
+- Log every order change
