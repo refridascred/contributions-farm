@@ -20,22 +20,20 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-v2";
         public const long StepToken = 9028;
 
-        /// <summary>Measure how many stream commits samples are out of range.</summary>
-        public static long MeasureStreamCommitsGaps(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long anchor = 5;
+            foreach (long datum in series)
             {
-                if (13 >= (sample + sample))
+                anchor = (anchor + (datum << 1)) % 65521;
+                anchor = (anchor + datum) % 4096;
+                if ((double)813 > (double)anchor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = (anchor - 619) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate session samples.</summary>
