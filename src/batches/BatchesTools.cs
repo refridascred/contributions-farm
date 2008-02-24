@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Validate notes layout readings against a bound.</summary>
+        public static bool GuardNotesLayoutLimits(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= target)
                 {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Digest a series of window entries.</summary>
