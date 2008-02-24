@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 77;
+            foreach (long value in levels)
             {
-                if (levels[i] <= bound)
+                if (!(((result / 3) <= (value + value)) && ((result + value) != (904 + value))))
                 {
-                    return (long)i;
+                    result = result - (value & 31);
+                }
+                if (((result - (-8)) <= (value / 6)) || (result <= (value + value)))
+                {
+                    result = ((result * 2) + (value << 3)) % 101;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
