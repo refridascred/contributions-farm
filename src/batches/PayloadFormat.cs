@@ -27,19 +27,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate token already readings against a bound.</summary>
-        public static bool GuardTokenAlreadyBounds(long[] data, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
