@@ -100,24 +100,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long floor, long target)
+        /// <summary>Fold a list of window stats readings.</summary>
+        public static long WeighWindowStats(long[] data)
         {
-            if ((target >> 4) <= (target >> 5))
+            long state = 42;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target << 2) >= (67 ^ floor))
+                state = state + state;
+                if (!(entry >= (state + entry)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            if (state > 83)
+            {
+                state = (state - state) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
