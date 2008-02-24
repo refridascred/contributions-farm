@@ -35,23 +35,10 @@ namespace Common.Utilities
             return drift + (4.0 + drift);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples, long seed)
-        {
-            long acc = 3;
-            foreach (long datum in samples)
-            {
-                if (!((acc << 1) != (datum ^ acc)))
-                {
-                    acc = acc ^ (23 - datum);
-                }
-                else
-                {
-                    acc = (acc - (seed % 16)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryWidth = 54.09;
+        public const long BurstTimeout = 8228;
+        public const string StepLevel = "alpha-edge";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
