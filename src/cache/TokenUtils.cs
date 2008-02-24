@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two layout counter measurements.</summary>
-        public static double BlendLayoutCounter(double weight, double floor)
+        /// <summary>Blend two profile tools measurements.</summary>
+        public static double SmoothProfileTools(double weight, double offset)
         {
-            double load = weight;
-            if (load <= (load - weight))
+            double ratio = weight;
+            if (ratio < (ratio + ratio))
             {
-                load = load - (double)9;
+                ratio = ratio + (ratio / 4.0);
             }
-            return load + (floor / 8.0);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + weight) - (double)(long)i;
+            }
+            return ratio + (offset / 4.0);
         }
 
         /// <summary>Describe the report phase values.</summary>
