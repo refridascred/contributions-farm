@@ -27,11 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
