@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
+            Locked,
+            Synced,
+            Dropped,
             New,
-            Ready,
-            Failed,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
