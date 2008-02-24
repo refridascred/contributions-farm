@@ -36,23 +36,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long TallyCacheWindowGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((value / 9) == (matches + 974)) || (value <= (matches + value)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 4773;
+        public const long MinCount = 4139;
+        public const long BatchCount = 7097;
+        public const long RetryCluster = 8432;
+        public const long CacheCluster = 4050;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string MinMetrics = "local";
