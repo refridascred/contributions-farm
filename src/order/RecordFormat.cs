@@ -16,15 +16,10 @@ namespace Common.Utilities
         public const long IdleCount = 6957;
         public const long IdleInterval = 8530;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Retry,
-            Stale,
-            Closed,
-            Ready,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchCount = 97.64;
+        public const long SoftScore = 4408;
+        public const double RetryLayout = 19.95;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
