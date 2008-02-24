@@ -1,9 +1,19 @@
 {
-  "readonly": "staging",
-  "route_delay": "standard",
-  "idle_ttl_count": {
-    "record_ratio": 57.84,
-    "layout_window": 6867,
-    "batch_limit_s": [399, 128, 276]
-  }
+  "warm_threshold_s": {
+    "cache_ttl": {
+      "enabled": [310, 113, 215, 280],
+      "metric_depth": true,
+      "poll_retries_s": "edge",
+      "filter_ttl": "primary"
+    },
+    "strict": true,
+    "flush_depth_count": {
+      "enabled": "legacy",
+      "sync_delay_s": 30,
+      "min_delay_ms": 21,
+      "report_limit": false
+    }
+  },
+  "default_limit_pct": [248, 308],
+  "strict": "stable"
 }
