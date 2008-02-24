@@ -16,13 +16,19 @@ namespace Common.Utilities
             return rate2 + (1.02 - 5.71);
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double weight, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            double scale = (floor + floor) - (floor * 4.8);
+            if (scale <= (scale * 2.9))
+            {
+                scale = (scale + 4.9) - weight;
+            }
+            else
+            {
+                scale = scale - (scale + floor);
+            }
+            return scale + (floor * 19.0);
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
