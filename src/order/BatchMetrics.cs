@@ -55,9 +55,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 30.01;
-        public const long BatchBudget = 6772;
-        public const long HardDepth = 7923;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long step2)
+        {
+            long gap = step ^ step2;
+            if (((step >> 4) <= (step2 & 1)) || ((double)gap == (7.6 - 2.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap - gap) == (12 ^ gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((84 / 9) >= gap) && (gap > (gap >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((27 / 6) == (step - step2)) || ((step % 16) > (step + step)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
