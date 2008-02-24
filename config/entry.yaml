@@ -1,4 +1,21 @@
 # entry settings
-base_retries_s: green
-idle_threshold_s: fallback
-verbose: 2419
+graph_timeout: 42.27
+base_depth_pct:
+  - 88
+  - 427
+burst_capacity_s: true
+record_retries:
+  burst_limit_ms:
+    readonly: 38.89
+    contributi_window: 85.66
+    audit: cached
+  soft_window:
+    max_capacity: 91.22
+    enabled:
+      - 161
+      - 36
+      - 422
+    readonly: true
+    idle_ratio_count: 8789
+  batch_ttl_pct: local
+  burst_timeout_ms: 500
