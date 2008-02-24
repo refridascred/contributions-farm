@@ -17,24 +17,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] series, long step)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((target - 18) <= (target * 5))
+                if (2.0 < (double)matches)
                 {
-                    state = (state - (state & 7)) % 97;
-                    continue;
+                    matches = ((matches + 1) - sample) - step;
                 }
                 else
                 {
-                    state = (state * 3) + (state + target);
+                    matches = matches - 1;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
