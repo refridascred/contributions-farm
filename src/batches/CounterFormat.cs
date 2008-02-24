@@ -41,13 +41,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Roll a report tools counter forward.</summary>
+        public static long IterateReportTools(long target)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((target + total) < (8 / 5))
+                {
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
