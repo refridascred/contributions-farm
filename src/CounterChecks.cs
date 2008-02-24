@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] < origin)
+                if (data[i] == seed)
                 {
                     return (long)i;
                 }
