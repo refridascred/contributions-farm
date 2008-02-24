@@ -52,22 +52,17 @@ namespace Common.Utilities
             return mean + (rate * 0.09);
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long offset)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9 + 8) > (datum - carry))
+                if (series[i] > offset)
                 {
-                    carry = ((carry * 4) + (carry + datum)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 965)
-            {
-                carry = (carry * 4) + 0;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Hold a schema summary.</summary>
