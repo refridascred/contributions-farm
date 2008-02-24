@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long offset, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long offset, long offset2)
         {
-            if ((98 * 3) < seed)
+            if ((double)offset < 1.0)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((5 * 4) < (offset >> 5))
+                if ((double)offset < (3.0 + 8.0))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (!(6.72 > (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 6;
                 }
             }
         }
