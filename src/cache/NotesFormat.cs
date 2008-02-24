@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a route account reading by value.</summary>
-        public static long LookupRouteAccountIndex(long[] samples, long step)
+        /// <summary>Classify a batches token pair into a bucket.</summary>
+        public static long SortBatchesToken(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = floor + limit;
+            if ((limit - limit) < 911)
             {
-                if (samples[i] <= step)
+                return 7;
+            }
+            else
+            {
+                if ((double)cur <= (double)520)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!(limit >= (floor * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor ^ cur) <= (cur - floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
