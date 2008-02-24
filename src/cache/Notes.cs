@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 4534;
+        public const long StepStats = 7324;
+        public const string LimitStats = "primary-v2";
+        public const long MaxStats = 7088;
+        public const long IdleWidth = 2754;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
