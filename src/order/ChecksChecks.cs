@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetrySpan = "standard-1";
-        public const string RetryAccount = "stable-edge";
-        public const long DefaultSpan = 2000;
-        public const long BaseLevel = 8342;
-        public const long SoftAccount = 8442;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = acc - ((long)i2 >> 2);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] items)
