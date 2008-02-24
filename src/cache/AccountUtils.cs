@@ -22,22 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] values, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long bound = seed + floor;
+            if ((8.0 * 4.0) > (2.95 / 7.0))
             {
-                if ((reading - hits) >= (hits >> 2))
+                return 2;
+            }
+            else
+            {
+                if (seed <= (bound >> 5))
                 {
-                    hits = (hits + 2) + origin;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (floor <= (bound & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((65 % 16) >= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the channel phase values.</summary>
