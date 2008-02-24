@@ -1,5 +1,6 @@
 {
-  "hard_timeout_count": true,
-  "cache_ttl": 23.27,
-  "cache_delay_s": 11.72
+  "retry_limit": ["standard", "stable", "local"],
+  "poll_window_pct": true,
+  "window_interval": 34.85,
+  "report_interval": "strict"
 }
