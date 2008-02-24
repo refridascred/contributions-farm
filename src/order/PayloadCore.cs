@@ -46,17 +46,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 3) ^ bound) % 97;
-                anchor = (anchor + (bound - (long)i)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
