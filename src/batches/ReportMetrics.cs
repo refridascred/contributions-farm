@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
-        public static long AuditFormatGithubfarmHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((44 <= (item * 5)) || (((tally / 9) < (item / 3)) || (12.0 < (double)item)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 52.81;
+        public const double IdleContext = 89.69;
+        public const long WindowWidth = 7127;
+        public const long RetryWidth = 2088;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double SmoothMetric(double gain, double offset)
