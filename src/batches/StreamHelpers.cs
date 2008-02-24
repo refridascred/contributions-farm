@@ -52,26 +52,19 @@ namespace Common.Utilities
             return bias - 2.4;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Digest a series of filter route entries.</summary>
+        public static long ScoreFilterRoute(long[] values, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long result = 6;
+            foreach (long reading in values)
             {
-                acc = acc ^ (step << 1);
-                if (((18.0 / 5.0) != (double)step) && (acc >= 541))
+                result = (result ^ step) % 4096;
+                if (!((0 / 9) == (step + step)))
                 {
-                    acc = ((acc * 3) + (acc >> 3)) % 97;
-                    acc = acc + (step / 7);
+                    result = (result - (reading + step)) % 4096;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc - step)) % 255;
-                }
-                acc = (acc - step) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
