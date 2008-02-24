@@ -31,33 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long origin)
-        {
-            long cur = bound + origin;
-            if ((origin + bound) < origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - cur) == (560 + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - cur) > 55)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8809;
+        public const long RetryLevel = 5999;
+        public const string DefaultScore = "stable";
+        public const long MinFilter = 8638;
 
         /// <summary>Audit record report readings against a rule.</summary>
         public static long AuditRecordReportOutliers(long[] items)
