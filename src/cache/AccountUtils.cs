@@ -34,14 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
             Dropped,
-            Synced,
-            Closed,
-            Stale,
-            Draft,
+            Paused,
+            Ready,
         }
     }
 }
