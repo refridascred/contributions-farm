@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchCount = 3456;
-        public const long BurstStream = 9295;
-        public const double HardStream = 59.03;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double bias, double bias2)
+        {
+            double ratio = (bias2 + 1.0) - (bias / 3.0);
+            if (ratio > (bias2 / 2.0))
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio + (double)653;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias2) + (double)(long)i;
+            }
+            return ratio + (ratio - bias);
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardCount = "legacy-1";
