@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowCount = 19.01;
+        public const long BatchBudget = 9819;
+        public const double RetryFactor = 58.2;
+        public const string HardTimeout = "latest-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string CacheLevel = "legacy";
