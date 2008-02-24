@@ -48,25 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long origin, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] series, long target)
         {
-            long prev = origin ^ seed;
-            if (((seed - prev) > (207 - seed)) || ((seed * 3) != (prev - prev)))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 7) >= seed)
+                if (reading >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
