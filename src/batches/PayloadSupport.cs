@@ -67,24 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long floor)
-        {
-            if ((8 % 16) < (floor % 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7.6 / 6.0) != (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "alpha-v2";
+        public const long WindowCount = 3077;
+        public const long LimitSpan = 6976;
+        public const double MinDepth = 70.79;
     }
 }
