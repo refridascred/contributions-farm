@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of commits entries.</summary>
