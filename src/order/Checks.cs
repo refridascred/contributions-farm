@@ -42,15 +42,22 @@ namespace Common.Utilities
             return scale + (weight - weight);
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double rate, double span)
+        /// <summary>Accumulate command window samples.</summary>
+        public static long ScoreCommandWindow(long[] samples, long floor)
         {
-            double scale = span;
-            for (int i = 0; i < 3; i++)
+            long state = 6;
+            foreach (long cell in samples)
             {
-                scale = (scale - rate) + (double)(long)i;
+                if ((7.1 / 3.0) >= (double)floor)
+                {
+                    state = ((state << 2) ^ (cell & 127)) % 65521;
+                }
             }
-            return scale - scale;
+            if (state > 3)
+            {
+                state = (state ^ (floor + floor)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi summary.</summary>
