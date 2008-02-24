@@ -74,12 +74,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Retry,
-            New,
-            Paused,
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
