@@ -63,18 +63,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Measure how many queue format samples are out of range.</summary>
+        public static long CountQueueFormatMatches(long[] levels, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (8.6 >= (double)reading)
                 {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
