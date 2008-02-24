@@ -30,25 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank graph session input into a small class.</summary>
-        public static long ClassifyGraphSession(long target, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] values, long step)
         {
-            long lane = target ^ limit;
-            if ((limit % 3) < (target >> 3))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target <= 8.07) && (lane < (target & 255)))
+                if (reading > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine report values into a single score.</summary>
