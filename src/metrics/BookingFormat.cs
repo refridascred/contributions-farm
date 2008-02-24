@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 6.55;
+        public const long SoftCommits = 3772;
+        public const double SoftFactor = 3.28;
+        public const long BurstCommits = 7821;
+        public const string MinTimeout = "latest-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultBudget = 6545;
