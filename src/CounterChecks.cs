@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepScore = 2334;
-        public const double DefaultRatio = 22.74;
-        public const long IdleAlready = 8695;
-        public const long CacheInterval = 3923;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSpan = 4947;
+        public const long CacheStats = 3152;
+        public const string BaseSpan = "latest-v2";
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterGaps(long[] samples, long step)
