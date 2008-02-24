@@ -33,13 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] levels, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 6) < 0)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
