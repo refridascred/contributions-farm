@@ -38,15 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command window value from a seed.</summary>
-        public static long DeriveCommandWindow(long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
