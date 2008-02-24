@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the commits mode values.</summary>
