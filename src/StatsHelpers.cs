@@ -73,12 +73,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] series, long bound)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally / 2) >= (6 / 7))
+                {
+                    tally = ((tally + 2) + sample) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
