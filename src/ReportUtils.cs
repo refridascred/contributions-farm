@@ -50,11 +50,22 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowWidth = "cached-1";
-        public const string BaseStats = "cached";
-        public const long MinStats = 3377;
-        public const long BatchStats = 6890;
-        public const long StepStats = 2523;
+        /// <summary>Measure how many stats layout samples are out of range.</summary>
+        public static long TallyStatsLayoutOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum == (1.0 + 7.0))
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
