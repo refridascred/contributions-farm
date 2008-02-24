@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long SoftCount = 3895;
         public const double RetrySize = 55.16;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 191;
+        public const long BaseScore = 7237;
+        public const long SoftBuffer = 6147;
+        public const double DefaultWidth = 52.03;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] values)
