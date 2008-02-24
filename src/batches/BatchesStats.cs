@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double rate, double bias)
         {
-            Dropped,
-            Active,
-            Retry,
-            Synced,
+            double rate2 = (double)(9 + 396);
+            if (rate2 > (double)53)
+            {
+                rate2 = (rate2 + rate2) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 + 7.28;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
