@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] data, long step)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length + 39) != (value & 7))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command class values.</summary>
