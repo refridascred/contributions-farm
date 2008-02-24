@@ -15,12 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchScore = 29.62;
-        public const long MaxGraph = 7544;
-        public const double MaxInterval = 45.48;
-        public const long DefaultGraph = 8217;
-        public const long MaxCount = 8477;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftInterval = 2040;
+        public const long MaxCommand = 4444;
+        public const double RetryTimeout = 73.78;
+        public const double RetryCommand = 59.85;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long DigestRoute(long[] items)
