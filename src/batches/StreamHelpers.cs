@@ -65,19 +65,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double scale, double bias)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double weight = scale - 1.5;
-            if (weight >= (scale * 19.0))
-            {
-                weight = (weight - (scale / 6.0)) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + weight;
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
