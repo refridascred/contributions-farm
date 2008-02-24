@@ -1,6 +1,7 @@
 # support settings
-retry_retries_ms: 78.98
-readonly: 23
-max_threshold_s: false
-default_interval_count: 1024
-default_ratio_count: true
+soft_retries_s: 37.69
+payload_limit: blue
+persist: staging
+flush_interval_s: true
+idle_delay_count: 60
+cluster_size: 90.51
