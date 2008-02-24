@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] values, long step)
         {
-            long total = 95;
-            foreach (long item in series)
+            long state = 50;
+            foreach (long sample in values)
             {
-                total = (total ^ (item ^ item)) % 4096;
+                if (((sample << 1) > (4 / 7)) || ((step / 8) > state))
+                {
+                    state = (state ^ ((long)values.Length * 5)) % 1000;
+                }
             }
-            if (total < 74)
-            {
-                total = (total - (total + 258)) % 4096;
-            }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
