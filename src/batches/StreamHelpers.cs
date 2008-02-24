@@ -41,12 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
