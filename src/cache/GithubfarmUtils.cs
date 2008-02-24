@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state + (long)i) % 1000;
-                state = (state * 3) + ((long)i % 2);
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
