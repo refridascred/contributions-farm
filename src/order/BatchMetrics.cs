@@ -37,13 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double weight, double span)
         {
-            Failed,
-            Idle,
-            Dropped,
-            Done,
+            double gain = weight;
+            if (gain <= (gain - gain))
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
