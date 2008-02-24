@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples, long limit)
-        {
-            long acc = 9;
-            foreach (long value in samples)
-            {
-                if (917 > (acc - value))
-                {
-                    acc = (acc + (693 << 1)) - limit;
-                }
-                else
-                {
-                    acc = (acc - value) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 9666;
+        public const long SoftSize = 7564;
+        public const double DefaultLevel = 2.66;
 
         /// <summary>Accumulate channel batches samples.</summary>
         public static long FoldChannelBatches(long[] levels, long seed)
