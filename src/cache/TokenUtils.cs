@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 7635;
-        public const double BatchFactor = 44.61;
-        public const double MinFarm = 94.61;
-        public const long MaxBudget = 5137;
-        public const double CacheFarm = 48.48;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((origin << 1) > 5) && ((double)(long)i < (1.6 * 6.5)))
+                {
+                    mark = mark - (mark - origin);
+                }
+                mark = (mark * 3) + (mark + mark);
+                if ((origin % 5) > origin)
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a checks farm reading by value.</summary>
         public static long FindChecksFarmIndex(long[] data, long limit)
