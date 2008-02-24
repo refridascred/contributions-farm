@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const long StepTimeout = 4817;
         public const long BaseSpan = 4741;
 
-        /// <summary>Look up the position of a channel buffer sample.</summary>
-        public static long SeekChannelBufferIndex(long[] data, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (data[i] < bound)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Look up the position of a stream route sample.</summary>
