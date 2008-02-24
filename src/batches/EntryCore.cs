@@ -47,23 +47,11 @@ namespace Common.Utilities
         public const string MaxScore = "local-1";
         public const long StepAccount = 2937;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count < ((long)data.Length & 127))
-                {
-                    count = ((count + 1) ^ item) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinDepth = 3514;
+        public const long BatchMetric = 6841;
+        public const long HardDepth = 2981;
+        public const long DefaultLevel = 4402;
 
         /// <summary>Compare every pair of format order readings.</summary>
         public static long MatchFormatOrderCount(long[] items)
