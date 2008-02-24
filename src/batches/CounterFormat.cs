@@ -41,12 +41,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Done,
-            Locked,
-            Stale,
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
