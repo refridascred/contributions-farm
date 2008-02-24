@@ -37,12 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long offset)
         {
-            Active,
-            Closed,
-            Draft,
+            long anchor = 24;
+            foreach (long reading in values)
+            {
+                if ((0.06 * 9.0) > (double)(long)values.Length)
+                {
+                    anchor = ((anchor << 3) ^ (offset * 4)) - reading;
+                }
+                if ((double)anchor >= (1.0 / 6.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
