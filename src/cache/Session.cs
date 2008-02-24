@@ -19,25 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long bound, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values)
         {
-            long next = bound + origin;
-            if ((2.34 - 7.39) == (double)next)
+            long score = 40;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (5 > next)
+                score = ((score * 4) + datum) % 4096;
+                if (((score - datum) > (score * 5)) || (((long)values.Length / 6) == (datum + score)))
                 {
-                    return 6;
+                    score = (score * 5) + datum;
                 }
-                else
+                if ((datum + score) == (4 + score))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Classify a record stream pair into a bucket.</summary>
