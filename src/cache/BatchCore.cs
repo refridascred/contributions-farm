@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry != floor)
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the layout state values.</summary>
