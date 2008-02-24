@@ -72,11 +72,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 5588;
         public const string IdleWindow = "local-v2";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 40.6;
-        public const long MaxRecord = 5027;
-        public const long StepTimeout = 9263;
-        public const long WindowInterval = 1928;
-        public const long LimitRecord = 3498;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
