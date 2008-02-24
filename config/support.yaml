@@ -1,21 +1,8 @@
 # support settings
-session_delay:
-  - 487
-  - 212
-sync_ratio_ms: 8076
-channel_threshold:
-  - eu-west
-  - cached
-hard_retries_ms:
-  base_limit_pct: 66
-  soft_depth_pct:
-    flush_capacity_s:
-      - 398
-      - 1
-    stats_delay: 49
-    default_window_s: 2059
-    retry_ttl_count: 46
-  default_retries_count: strict
-  compress: 32
-  enabled: 90.62
-  warm_window: 41
+base_window: 75
+cluster_window:
+  burst_window: open
+  support_capacity: blue
+  idle_threshold_pct: 56
+  command_delay: 14
+idle_retries_count: 82.0
