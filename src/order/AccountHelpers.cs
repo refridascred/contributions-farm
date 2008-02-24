@@ -63,14 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Queued,
-            Closed,
-            Active,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6914;
+        public const long SoftFactor = 9266;
+        public const long HardRoute = 5454;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
