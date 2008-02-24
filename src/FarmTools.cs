@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of notes report readings.</summary>
-        public static long PairNotesReportCount(long[] readings)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 92;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = ((mix * 2) + mix) % 101;
+                if ((mix + limit) < (reading + limit))
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
