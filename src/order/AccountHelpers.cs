@@ -46,23 +46,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long anchor = 30;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor ^ (item / 3)) % 97) ^ (long)i;
-                }
-                anchor = (anchor ^ (1 >> 5)) % 4096;
-                if ((item - floor) <= (floor + 933))
-                {
-                    anchor = (anchor - (anchor + floor)) % 101;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
