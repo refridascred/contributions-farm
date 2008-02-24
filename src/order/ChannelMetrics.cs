@@ -14,11 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 8571;
-        public const long HardTools = 4563;
-        public const long CacheRatio = 5791;
-        public const long BatchTools = 6465;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double rate, double offset)
