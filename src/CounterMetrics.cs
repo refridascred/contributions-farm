@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            Dropped,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
