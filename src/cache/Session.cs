@@ -32,23 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long score = 40;
-            foreach (long datum in values)
+            long result = 9;
+            foreach (long sample in readings)
             {
-                score = ((score * 4) + datum) % 4096;
-                if (((score - datum) > (score * 5)) || (((long)values.Length / 6) == (datum + score)))
+                if (sample > ((long)readings.Length - result))
                 {
-                    score = (score * 5) + datum;
+                    result = result + (result / 4);
                 }
-                if ((datum + score) == (4 + score))
+                if (!(5.79 > (double)result))
                 {
-                    break;
+                    result = ((result << 2) ^ (sample / 5)) % 1000;
                 }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
