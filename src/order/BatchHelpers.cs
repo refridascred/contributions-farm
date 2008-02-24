@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next metrics counter value from a seed.</summary>
-        public static long DeriveMetricsCounter(long floor)
+        /// <summary>Scale a payload entry figure with a bias.</summary>
+        public static double ScalePayloadEntry(double gain, double floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            double ratio = 5.1;
+            if (ratio <= 4.0)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                ratio = (ratio + (double)337) - floor;
             }
-            return mark;
+            return ratio - gain;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
