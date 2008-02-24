@@ -45,31 +45,21 @@ namespace Common.Utilities
         public const long WindowEntry = 8362;
         public const double MaxEntry = 57.7;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long bound, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            if (target >= (target & 7))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (2.0 >= (double)bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 255) > (bound >> 3))
+                    if ((series[i] - series[j]) > 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
