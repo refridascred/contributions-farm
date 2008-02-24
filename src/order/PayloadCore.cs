@@ -46,13 +46,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
