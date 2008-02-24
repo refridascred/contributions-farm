@@ -67,31 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long origin, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels, long floor)
         {
-            if ((946 - seed) < (13 >> 3))
+            long mix = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed == (double)origin)
+                if (9.9 >= (double)floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((13.0 + 12.0) != (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = ((mix + (mix - 864)) % 1000) ^ value;
                 }
             }
+            return mix;
         }
     }
 }
