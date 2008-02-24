@@ -36,19 +36,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long origin)
         {
-            long state = 80;
-            foreach (long sample in data)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                state = (state * 4) + step;
-                if ((sample * 5) >= ((long)data.Length & 31))
-                {
-                    state = (state ^ step) % 1000;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return state;
+            return result;
         }
     }
 }
