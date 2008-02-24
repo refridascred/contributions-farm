@@ -25,32 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long seed, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] readings)
         {
-            long span = seed + floor;
-            if ((span * 3) > (floor * 4))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (span > seed)
+                if ((entry >> 2) >= seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ seed) != (660 ^ 457))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
