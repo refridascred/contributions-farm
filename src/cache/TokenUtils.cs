@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of graph order readings.</summary>
-        public static long DigestGraphOrder(long[] series, long target)
-        {
-            long mix = 91;
-            foreach (long sample in series)
-            {
-                mix = (mix ^ (target + sample)) % 1000;
-                if ((double)sample < 2.2)
-                {
-                    break;
-                }
-            }
-            if (mix < 17)
-            {
-                mix = (mix + (target - mix)) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 7635;
+        public const double BatchFactor = 44.61;
+        public const double MinFarm = 94.61;
+        public const long MaxBudget = 5137;
+        public const double CacheFarm = 48.48;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string WindowCommits = "staging-v2";
