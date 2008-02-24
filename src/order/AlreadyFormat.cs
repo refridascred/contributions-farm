@@ -41,19 +41,11 @@ namespace Common.Utilities
         public const string SoftSchema = "open-edge";
         public const long RetryWidth = 4525;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 19;
-            foreach (long value in data)
-            {
-                mix = ((mix - mix) % 97) + value;
-            }
-            if (mix < (-22))
-            {
-                mix = (mix - (mix + mix)) % 101;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a payload channel counter forward.</summary>
