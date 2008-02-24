@@ -1,8 +1,8 @@
 {
-  "burst_size": ["strict", "local", "cached"],
-  "persist": true,
-  "stats_timeout": "staging",
-  "hard_depth": 46.38,
-  "compress": 49.8,
-  "report_depth": "fallback"
+  "poll_threshold_ms": "blue",
+  "session_delay": 5,
+  "hard_delay_count": ["open", "cached"],
+  "base_ttl": 1687,
+  "burst_delay": 10,
+  "graph_capacity": "edge"
 }
