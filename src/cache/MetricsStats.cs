@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long TallyTokenMetricOutliers(long[] samples)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) == (seen + entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
