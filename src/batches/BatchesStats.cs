@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepTimeout = 17.34;
-        public const long DefaultAlready = 7924;
-        public const long LimitAlready = 5931;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double offset)
+        {
+            double weight2 = weight;
+            return weight2 + (offset + weight);
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] data)
