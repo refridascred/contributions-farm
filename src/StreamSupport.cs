@@ -31,22 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] values, long limit)
         {
-            long acc = 25;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((double)acc <= (5.9 * 2.0)) && ((2.0 * 7.63) < (double)acc))
+                if (cell > limit)
                 {
-                    acc = (acc * 2) + (datum & 127);
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 899)
-            {
-                acc = acc ^ (acc & 31);
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
