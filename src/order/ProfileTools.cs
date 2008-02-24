@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            double rate = (scale + scale) * 2.7;
+            return (rate - (6.05 / 2.0)) + offset;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
