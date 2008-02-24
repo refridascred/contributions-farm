@@ -36,24 +36,9 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const string BatchAccount = "standard";
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long offset, long seed)
-        {
-            if ((offset - seed) > (offset % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + seed) < (seed * 3)) && ((seed - seed) != (seed << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 9339;
+        public const long WindowLevel = 4627;
+        public const double DefaultProfile = 76.28;
     }
 }
