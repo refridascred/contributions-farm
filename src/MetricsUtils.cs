@@ -31,18 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long target)
         {
-            long carry = 776;
-            foreach (long reading in values)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((reading ^ reading) <= carry)
-                {
-                    carry = (carry - (2 - reading)) % 65521;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Adjust a channel reading.</summary>
