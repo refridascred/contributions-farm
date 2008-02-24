@@ -35,13 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long seed)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
