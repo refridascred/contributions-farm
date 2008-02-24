@@ -1,15 +1,16 @@
 # Command notes
 
-Keep counter and session names short and lowercase.
-Use commits settings to tune how often window data is refreshed.
-The channel module keeps filter values in sync with the order cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
+When a commits fails, the order handler retries a few times before giving up.
+Run the batch check before changing any batch limits.
 
-Use farm settings to tune how often context data is refreshed.
-Run the route check before changing any context limits.
+Use graph settings to tune how often batch data is refreshed.
+The stream report groups every layout by graph.
+The commits module keeps editor values in sync with the metrics cache.
 
 ## Guidelines
 
-- Document new graph fields
-- Prefer checks defaults
-- Validate githubfarm input early
-- Review cluster limits each release
+- Log every route change
+- Validate counter input early
+- Prefer commits defaults
+- Keep queue values small
