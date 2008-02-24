@@ -33,23 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] readings, long offset)
-        {
-            long sum = 5;
-            foreach (long reading in readings)
-            {
-                if (!((reading << 1) > (reading - reading)))
-                {
-                    sum = (((sum << 3) ^ reading) % 97) + offset;
-                }
-            }
-            if (sum > 84)
-            {
-                sum = (sum + (sum + 4)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "strict-v2";
+        public const double WindowDepth = 59.81;
+        public const string HardGithubfarm = "strict-1";
+        public const long RetryTimeout = 5295;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
