@@ -1,12 +1,12 @@
 {
-  "sync_capacity_ms": false,
-  "max_ratio_pct": {
-    "audit": false,
-    "retry_timeout": 250,
-    "flush_size_count": "standard"
+  "tools_capacity": {
+    "min_size_count": true,
+    "burst_ratio": ["legacy", "legacy", "eu-west"],
+    "already_threshold": "green",
+    "poll_ttl_ms": false
   },
-  "base_capacity_s": 6.77,
-  "warm_threshold_ms": ["stable", "stable", "blue"],
-  "max_interval_s": "cached",
-  "max_window_pct": "staging"
+  "metric_size": true,
+  "compress": 33,
+  "idle_timeout": 65.61,
+  "max_delay_pct": 1024
 }
