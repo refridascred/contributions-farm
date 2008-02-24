@@ -1,8 +1,11 @@
 {
-  "filter_interval": 44.19,
-  "stats_limit": 54,
-  "retry_ratio": [56, 363, 335],
-  "min_ttl_ms": ["blue", "blue", "cached", "open"],
-  "persist": 2,
-  "compress": ["cached", "staging", "blue"]
+  "batch_limit": "strict",
+  "retry_size_count": false,
+  "metric_retries": 82.93,
+  "flush_retries_s": 37,
+  "burst_threshold_s": {
+    "audit": [157, 354, 201, 230],
+    "base_limit_ms": 6446,
+    "base_ttl": "edge"
+  }
 }
