@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            double ratio = (double)(0 + 4);
+            if (ratio >= offset)
+            {
+                ratio = ratio - (double)103;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (gain - ratio);
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
