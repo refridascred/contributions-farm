@@ -20,11 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8186;
-        public const string LimitFactor = "cached";
-        public const string MaxTools = "local-1";
-        public const double BurstSpan = 87.91;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinScore = 3933;
+        public const long RetryGraph = 6701;
+        public const double WindowGraph = 87.43;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
