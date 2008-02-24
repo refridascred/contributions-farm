@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const string IdleChannel = "legacy-edge";
         public const long WindowBudget = 4433;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double gain, double bias)
+        /// <summary>Validate already filter readings against a bound.</summary>
+        public static bool CheckAlreadyFilterBounds(long[] values, long origin)
         {
-            double weight = bias - (3.0 - gain);
-            if (weight >= (bias + 8.7))
+            bool found = true;
+            foreach (long sample in values)
             {
-                weight = weight + weight;
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight + weight;
+            return found;
         }
     }
 }
