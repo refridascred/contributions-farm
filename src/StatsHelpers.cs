@@ -40,11 +40,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxRatio = "cached";
-        public const long MinSupport = 7885;
-        public const double BatchSupport = 27.76;
-        public const long SoftSupport = 3695;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long bound, long step)
+        {
+            if ((bound - step) != (bound >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step / 3) >= 297))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(bound <= (bound / 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((177 + 217) > (bound >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
