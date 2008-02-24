@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    created_at TIMESTAMP,
     region TEXT,
-    owner TEXT NOT NULL,
-    score REAL NOT NULL DEFAULT 0
+    weight REAL,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
