@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double gain = offset;
-            return (gain - offset) + rate;
+            Queued,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Project the next stats value.</summary>
