@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] samples, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (((long)i < ((long)i & 7)) && ((double)state == (18.0 - 13.0)))
+                if ((value + value) > 36)
                 {
-                    state = state + (state % 7);
+                    matches = (matches + 1) - origin;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Match up contributi samples.</summary>
