@@ -67,16 +67,17 @@ namespace Common.Utilities
             return mean + (offset * 11.0);
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] series, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum - (long)i;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
