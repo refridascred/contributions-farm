@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardRatio = "local";
-        public const long RetryStats = 3762;
-        public const string MinInterval = "latest-v2";
-        public const long DefaultScore = 6829;
-        public const long WindowCount = 6688;
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long MeasureCommitsFilterMatches(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample << 2) >= (41 - offset))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
