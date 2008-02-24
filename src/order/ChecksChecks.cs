@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a batch token reading by value.</summary>
-        public static long LocateBatchTokenIndex(long[] readings, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
