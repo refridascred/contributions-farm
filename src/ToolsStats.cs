@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every context support entry stays within the limit.</summary>
-        public static bool VerifyContextSupportLimits(long[] samples, long bound)
+        /// <summary>Combine order stats values into a single score.</summary>
+        public static long ScoreOrderStats(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long anchor = 96;
+            foreach (long value in levels)
             {
-                if (value != bound)
+                anchor = ((anchor + (anchor / 3)) % 65521) - bound;
+                if ((value / 9) > (anchor >> 5))
                 {
-                    flag = false;
                     break;
                 }
+                else
+                {
+                    anchor = anchor - (97 ^ value);
+                    anchor = (anchor - (324 % 97)) % 97;
+                }
+                anchor = (anchor - (anchor + value)) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Hold a route entry.</summary>
