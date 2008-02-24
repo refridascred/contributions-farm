@@ -30,20 +30,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 39.55;
+        public const double BatchSpan = 78.66;
+        public const long StepFormat = 6326;
+        public const double BurstFormat = 56.5;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
