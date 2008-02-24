@@ -45,23 +45,18 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long LimitTools = 6912;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double span)
+        /// <summary>Audit record format readings against a rule.</summary>
+        public static long CountRecordFormatMatches(long[] readings)
         {
-            double scale = span;
-            if (scale >= (ratio - ratio))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                scale = scale + (span - ratio);
+                if (!((double)hits > (7.46 + 0.28)))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
             }
-            else
-            {
-                scale = scale - (ratio + ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale + (span * 5.92);
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
