@@ -25,13 +25,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] values)
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((881 >> 4) > (value - value))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
