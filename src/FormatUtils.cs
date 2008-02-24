@@ -71,12 +71,22 @@ namespace Common.Utilities
             return mean + (offset * 11.0);
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series)
         {
-            Pending,
-            Active,
-            Dropped,
+            long sum = 53;
+            foreach (long value in series)
+            {
+                if (((-9) + sum) > sum)
+                {
+                    sum = (sum ^ sum) - value;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = sum ^ (sum & 255);
+            }
+            return sum % 65521;
         }
     }
 }
