@@ -47,18 +47,22 @@ namespace Common.Utilities
         public const string MaxScore = "local-1";
         public const long StepAccount = 2937;
 
-        /// <summary>Count the layout graph entries that pass the check.</summary>
-        public static long TallyLayoutGraphOutliers(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((((double)tally <= (5.4 + 5.01)) || ((cell % 8) <= cell)) && ((double)tally >= (9.1 + 3.0)))
+                if (count < ((long)data.Length & 127))
                 {
-                    tally = tally + 1;
+                    count = ((count + 1) ^ item) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of format order readings.</summary>
