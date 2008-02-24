@@ -59,17 +59,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry counter entry that matches the target.</summary>
-        public static long SeekEntryCounterIndex(long[] readings, long origin)
+        /// <summary>Digest a series of contributi route entries.</summary>
+        public static long TallyContributiRoute(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 66;
+            foreach (long cell in values)
             {
-                if (readings[i] > origin)
+                if (state < cell)
                 {
-                    return (long)i;
+                    state = (state * 3) + (923 + 31);
+                    state = state ^ (state - cell);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state ^ state)) % 65521;
+                }
+                if ((cell + state) > (cell / 4))
+                {
+                    state = (state + (138 >> 5)) % 255;
                 }
             }
-            return -1;
+            if (state < 534)
+            {
+                state = (state << 2) ^ ((long)values.Length + state);
+            }
+            return state;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
