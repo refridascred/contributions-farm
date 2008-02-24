@@ -13,13 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] samples, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)sample == (9.45 / 5.0)) || (sample < bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
