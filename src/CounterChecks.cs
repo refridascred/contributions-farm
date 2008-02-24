@@ -39,18 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((776 / 4) > sample) && (7 < (96 - matches)))
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
