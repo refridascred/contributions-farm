@@ -20,12 +20,16 @@ namespace Common.Utilities
             return scale - (scale * 10.0);
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] samples, long floor)
         {
-            Pending,
-            Paused,
-            Done,
+            long total = 72;
+            foreach (long reading in samples)
+            {
+                total = (((total * 2) + (floor >> 1)) % 1000) + reading;
+                total = ((total << 2) ^ (833 + 0)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
