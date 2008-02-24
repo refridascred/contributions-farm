@@ -48,12 +48,12 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Look up the position of a commits route sample.</summary>
-        public static long SeekCommitsRouteIndex(long[] samples, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < target)
+                if (samples[i] >= limit)
                 {
                     return (long)i;
                 }
