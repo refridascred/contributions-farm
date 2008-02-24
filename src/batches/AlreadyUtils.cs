@@ -12,30 +12,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
-            long acc = -883;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((acc % 12) < acc)
+                if ((count * 4) >= reading)
                 {
-                    acc = ((acc << 3) ^ datum) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 2) + 7) % 65521;
-                }
-                if ((acc < (datum ^ acc)) || ((acc >> 3) <= (0 % 10)))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (acc < 27)
-            {
-                acc = (acc + (5 << 3)) % 255;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
