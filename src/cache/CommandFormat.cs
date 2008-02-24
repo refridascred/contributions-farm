@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double ratio, double bias)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double ratio2 = (double)(76 / 4);
-            if (ratio2 <= (ratio2 / 3.0))
-            {
-                ratio2 = ((ratio2 + (double)999) + ratio) + bias;
-            }
-            return ratio2 - (double)452;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a account sample.</summary>
