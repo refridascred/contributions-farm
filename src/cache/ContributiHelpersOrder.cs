@@ -25,13 +25,18 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] items, long offset)
         {
-            Done,
-            Failed,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value - hits) == (hits % 2))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
