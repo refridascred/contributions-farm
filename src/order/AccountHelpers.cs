@@ -68,11 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (matches <= sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile kind values.</summary>
