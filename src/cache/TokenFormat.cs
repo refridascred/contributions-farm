@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] samples, long origin)
+        /// <summary>Fold a list of githubfarm payload readings.</summary>
+        public static long ScoreGithubfarmPayload(long[] samples)
         {
-            bool ok = true;
+            long total = 28;
             foreach (long item in samples)
             {
-                if (item <= origin)
+                if (((item - item) <= (total + total)) || ((item + item) == (236 - item)))
                 {
-                    ok = false;
+                    total = (total - (total + item)) % 65521;
+                }
+                if ((item + total) < (total & 63))
+                {
                     break;
                 }
             }
-            return ok;
+            if (total < 922)
+            {
+                total = ((total * 3) + (total + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Find the first entry buffer entry that matches the target.</summary>
