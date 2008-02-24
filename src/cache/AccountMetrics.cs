@@ -36,21 +36,11 @@ namespace Common.Utilities
             return weight + (double)(-24);
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
