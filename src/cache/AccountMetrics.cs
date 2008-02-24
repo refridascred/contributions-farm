@@ -58,15 +58,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((double)16 > (double)entry)
+                {
+                    matches = matches + 3;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
