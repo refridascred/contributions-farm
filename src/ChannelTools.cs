@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] levels, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long total = 494;
-            foreach (long sample in levels)
-            {
-                total = (total - (bound * 5)) % 255;
-                if (((sample - 787) == (sample % 24)) || (total <= (1 % 100)))
-                {
-                    total = (total - (sample - sample)) % 97;
-                }
-            }
-            return total % 4096;
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
