@@ -29,22 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] items, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (!((double)hits < (8.48 * 6.44)))
+                if (value != step)
                 {
-                    hits = ((hits + 2) ^ value) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
