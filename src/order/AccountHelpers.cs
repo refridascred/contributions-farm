@@ -79,19 +79,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = 1;
-            foreach (long item in items)
-            {
-                state = (state * 3) + (item >> 4);
-            }
-            if (state < 38)
-            {
-                state = ((state * 5) + (state * 3)) % 65521;
-            }
-            return state;
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
