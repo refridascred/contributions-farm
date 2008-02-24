@@ -57,14 +57,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Retry,
-            Stale,
-            Done,
-            Ready,
+            Idle,
+            Active,
             Synced,
+            Pending,
         }
     }
 }
