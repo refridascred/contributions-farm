@@ -13,10 +13,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardRatio = 1545;
-        public const long MinTimeout = 5109;
-        public const long MaxAlready = 3680;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
