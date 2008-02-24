@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue record readings.</summary>
-        public static long TotalQueueRecord(long[] levels)
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool ValidateNotesSessionRange(long[] samples, long origin)
         {
-            long score = 825;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                score = (((score << 2) ^ 68) % 255) - cell;
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score > 51)
-            {
-                score = (score * 3) + (score % 64);
-            }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
