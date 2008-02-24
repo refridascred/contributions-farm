@@ -16,11 +16,13 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 314;
-        public const long MinEditor = 3540;
-        public const long DefaultCount = 6286;
-        public const string IdleLevel = "staging-v2";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            New,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long SortContributi(long offset, long step)
