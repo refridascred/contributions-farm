@@ -14,23 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((tally + entry) >= (tally + tally)) && ((entry + entry) >= (entry - tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardCount = "legacy-1";
+        public const long MinBatch = 3617;
+        public const long RetryBatch = 9602;
+        public const double SoftBudget = 41.39;
+        public const long LimitFactor = 3863;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
