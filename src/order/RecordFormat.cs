@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Synced,
+            Paused,
             Retry,
-            Stale,
-            Closed,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
