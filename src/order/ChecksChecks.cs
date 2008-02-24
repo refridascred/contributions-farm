@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((0.4 + 5.9) <= (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
