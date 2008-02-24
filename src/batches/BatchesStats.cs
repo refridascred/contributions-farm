@@ -14,18 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of notes support readings.</summary>
-        public static long ScoreNotesSupport(long[] items, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] items, long step)
         {
-            long mix = 76;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading + floor) <= (floor >> 5)) || ((reading * 5) != (reading ^ mix)))
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
                 {
-                    mix = (mix * 2) + floor;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm format series from a seed.</summary>
