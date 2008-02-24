@@ -40,13 +40,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitScore = "legacy-v2";
+        public const double MinDepth = 49.36;
+        public const long DefaultBuffer = 2587;
+        public const long StepBuffer = 1984;
     }
 }
