@@ -41,11 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many metrics record samples are out of range.</summary>
+        public static long MeasureMetricsRecordGaps(long[] readings)
         {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((((long)readings.Length + cell) <= ((-174) * 2)) || (((count + count) <= cell) || ((cell % 8) < count)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
