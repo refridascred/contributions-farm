@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long limit)
         {
-            long mark = 33;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value <= (9 << 1)) && ((58 + value) != (target ^ value)))
+                if (items[i] <= limit)
                 {
-                    mark = (mark << 2) ^ mark;
-                }
-                if (!(value <= (mark + target)))
-                {
-                    mark = (mark - value) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
