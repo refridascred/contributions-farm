@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            Dropped,
+            Queued,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
