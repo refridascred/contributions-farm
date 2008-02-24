@@ -96,10 +96,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowWidth = 3624;
-        public const long MaxDepth = 6264;
-        public const string CacheMetric = "standard";
-        public const long HardMetric = 971;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFactor = 6255;
+        public const double HardFormat = 68.39;
+        public const double HardBudget = 73.03;
     }
 }
