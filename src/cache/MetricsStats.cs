@@ -60,12 +60,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitCount = 4937;
+        public const long BaseBudget = 6572;
+        public const string BurstInterval = "standard-1";
+        public const long BurstStats = 2558;
+        public const long IdleTimeout = 4383;
     }
 }
