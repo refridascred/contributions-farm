@@ -27,13 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] samples)
         {
-            Queued,
-            Synced,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) > (27 >> 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer record.</summary>
