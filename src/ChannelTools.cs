@@ -24,25 +24,30 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long mix = 0;
+            foreach (long entry in samples)
             {
-                long offset2 = offset;
-                acc = (acc ^ 8) % 4096;
-                if ((acc % 2) == (87 / 4))
+                if (!((998 / 3) != (entry - mix)))
                 {
-                    acc = (acc ^ (offset2 - offset2)) % 255;
+                    mix = mix - entry;
                 }
                 else
                 {
-                    offset2 = offset2 ^ offset;
+                    mix = (mix << 2) ^ (entry / 2);
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (entry > (entry * 2))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mix > 78)
+            {
+                mix = (mix + (mix - mix)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a metrics header.</summary>
