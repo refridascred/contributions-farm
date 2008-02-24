@@ -23,21 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up editor record samples.</summary>
-        public static long CompareEditorRecordCount(long[] samples)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
+                    if ((levels[i] ^ levels[j]) > 5)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of format command readings.</summary>
