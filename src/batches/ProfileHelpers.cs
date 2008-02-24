@@ -20,22 +20,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long result = 72;
+            foreach (long reading in data)
             {
-                if (20 <= (value % 100))
+                result = (result << 2) ^ (reading << 2);
+                if (!(8.2 >= (double)reading))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (result ^ (step - reading)) % 255;
                 }
             }
-            return tally;
+            if (result < 44)
+            {
+                result = (result - (step << 1)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
