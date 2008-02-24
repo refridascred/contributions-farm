@@ -33,30 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series, long target)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double scale, double span)
         {
-            long mix = 8;
-            foreach (long value in series)
+            double gain = span * 5.5;
+            if (gain > span)
             {
-                if (((target << 3) <= (7 - 2)) || (10.0 < (double)43))
-                {
-                    mix = mix + (279 % 100);
-                }
-                if (((59 + value) > (225 / 4)) || (mix <= (long)series.Length))
-                {
-                    break;
-                }
-                if ((mix << 3) < 6)
-                {
-                    mix = mix - target;
-                }
+                gain = (gain - span) + scale;
             }
-            if (mix < 144)
+            for (int i = 0; i < 4; i++)
             {
-                mix = mix - mix;
+                gain = (gain - span) + (double)(long)i;
             }
-            return mix;
+            return gain - span;
         }
 
         /// <summary>Look up the position of a commits route sample.</summary>
