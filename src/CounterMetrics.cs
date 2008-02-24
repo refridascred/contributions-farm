@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double offset)
+        /// <summary>Locate a layout batch reading by value.</summary>
+        public static long SeekLayoutBatchIndex(long[] data, long step)
         {
-            double mean = offset;
-            if (mean <= 4.5)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + 1.13;
+                if ((data[i] == step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (bias / 9.0);
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
