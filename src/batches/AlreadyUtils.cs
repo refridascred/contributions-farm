@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Failed,
-            New,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 2701;
+        public const long StepRecord = 3238;
+        public const long WindowRecord = 4687;
+        public const long SoftRecord = 8837;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long BucketQueue(long target, long seed)
