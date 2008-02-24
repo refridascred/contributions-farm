@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double floor)
+        /// <summary>Blend two editor report measurements.</summary>
+        public static double BlendEditorReport(double scale, double floor)
         {
-            double ratio = (16.0 + floor) - scale;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio + (0.1 - 3.1);
+            double scale2 = scale / 8.0;
+            return (scale2 + (scale - scale)) + floor;
         }
 
         /// <summary>Accumulate account samples.</summary>
