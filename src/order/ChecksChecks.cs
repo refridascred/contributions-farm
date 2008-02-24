@@ -22,18 +22,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit record editor readings against a rule.</summary>
-        public static long TallyRecordEditorHits(long[] items, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((seed ^ hits) <= (hits + entry))
+                if ((65 ^ entry) < (entry - matches))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
