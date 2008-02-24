@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long bound, long bound2)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (((bound2 - bound2) == (bound % 2)) && (bound >= 69))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound2 / 8) <= (bound2 - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Validate token already readings against a bound.</summary>
