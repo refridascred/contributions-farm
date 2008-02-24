@@ -47,10 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitBudget = 7377;
-        public const double BatchWidth = 31.18;
-        public const long RetrySchema = 9372;
-        public const long RetryInterval = 8883;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
