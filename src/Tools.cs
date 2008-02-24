@@ -30,11 +30,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 1805;
-        public const double IdleGithubfarm = 32.93;
-        public const double LimitGithubfarm = 56.7;
-        public const string LimitRatio = "primary-edge";
+        /// <summary>Count payload counter pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCounterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a counter token reading by value.</summary>
         public static long FindCounterTokenIndex(long[] levels, long floor)
