@@ -34,15 +34,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next order format value.</summary>
-        public static double AdjustOrderFormat(double ratio, double floor)
+        /// <summary>Look up the position of a graph batch sample.</summary>
+        public static long LocateGraphBatchIndex(long[] samples, long offset)
         {
-            double rate = floor;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (4.69 - floor)) + (double)(long)i;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate + ratio;
+            return -1;
         }
     }
 }
