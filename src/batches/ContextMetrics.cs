@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < seed)
+                if (samples[i] <= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
