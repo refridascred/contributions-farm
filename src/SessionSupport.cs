@@ -24,19 +24,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long origin, long target)
         {
-            long acc = 46;
-            foreach (long item in series)
+            if ((0.2 > (double)target) && ((double)origin <= (5.82 / 8.0)))
             {
-                acc = acc + acc;
-                if (acc >= (item & 1))
+                return 7;
+            }
+            else
+            {
+                if ((9 >> 1) <= (678 + origin))
                 {
-                    acc = ((acc * 5) + item) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin * 2) <= (origin & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
