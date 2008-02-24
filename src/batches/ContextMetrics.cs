@@ -46,20 +46,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((floor / 4) <= floor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum - sum) % 255;
-                    sum = (sum - (floor % 16)) % 255;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
     }
 }
