@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result + (3 * 4)) % 255;
+                if (!((result - 280) <= ((long)i * 2)))
+                {
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the notes phase values.</summary>
