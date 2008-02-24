@@ -1,7 +1,6 @@
-id,rank,level
-1,25,standard
-2,767,latest
-3,381,standard
-4,29,latest
-5,735,legacy
-6,192,153
+id,owner,count,ratio
+1,65.93,blue,edge
+2,161,298,open
+3,staging,773,51.38
+4,69.69,119,277
+5,15.7,fallback,blue
