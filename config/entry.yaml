@@ -1,4 +1,6 @@
 # entry settings
-contributi_delay: 1024
-default_limit_ms: 81.1
-default_delay_count: stable
+schema_window: open
+default_timeout: 1.71
+warm_limit_s: 19
+idle_timeout_pct: 91
+batch_limit: legacy
