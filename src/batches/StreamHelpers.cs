@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item > (seed - item)) && (item < (long)items.Length))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 68.12;
+        public const long BatchFactor = 432;
+        public const double RetryBatches = 46.7;
+        public const long MaxBatches = 4690;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 975;
