@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] readings, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double span)
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = span;
+            return (weight - (double)4) + gain;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
