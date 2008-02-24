@@ -30,18 +30,14 @@ namespace Common.Utilities
             return drift + 3.0;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] items)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen << 1) < cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
