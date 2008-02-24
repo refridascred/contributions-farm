@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
