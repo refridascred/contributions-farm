@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Validate checks batches readings against a bound.</summary>
+        public static bool VerifyChecksBatchesLimits(long[] series, long seed)
         {
-            long mix = 27;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                mix = (((mix << 2) ^ mix) % 65521) - value;
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
