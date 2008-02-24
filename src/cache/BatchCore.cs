@@ -30,14 +30,16 @@ namespace Common.Utilities
             return drift + 3.0;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            Dropped,
-            Synced,
-            Draft,
-            Retry,
-            Done,
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark - (step + mark)) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
