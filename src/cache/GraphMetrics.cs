@@ -27,21 +27,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count layout commits pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCommitsCount(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 1)
+                    if ((samples[i] ^ samples[j]) == 0)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a filter header.</summary>
