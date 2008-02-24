@@ -1,7 +1,5 @@
 {
-  "min_limit": 72,
-  "batches_depth": [35, 474],
-  "route_threshold": ["legacy", "blue", "open"],
-  "account_size": ["strict", "primary", "standard"],
-  "queue_ratio": 500
+  "persist": false,
+  "flush_ttl_count": false,
+  "profile_delay": 62
 }
