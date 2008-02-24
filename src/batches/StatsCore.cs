@@ -47,19 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record route value from a seed.</summary>
-        public static long DeriveRecordRoute(long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!!((double)anchor >= (double)offset))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
