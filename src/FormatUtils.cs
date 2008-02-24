@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double offset)
+        /// <summary>Locate a entry farm reading by value.</summary>
+        public static long LocateEntryFarmIndex(long[] data, long origin)
         {
-            double drift = (9.0 / 9.0) - (bias + 1.0);
-            if (drift >= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - bias) - offset;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
