@@ -73,11 +73,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6720;
-        public const long MinDepth = 4345;
-        public const long WindowCounter = 7640;
-        public const long SoftCounter = 2248;
-        public const double StepCounter = 35.18;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
