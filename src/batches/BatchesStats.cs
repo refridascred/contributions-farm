@@ -28,22 +28,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Iterate the githubfarm format series from a seed.</summary>
+        public static long RollGithubfarmFormat(long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (95 >= (hits - hits))
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total + (seed % 2)) % 4096;
+                total = (total + ((long)i % 97)) % 255;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a stream stats.</summary>
