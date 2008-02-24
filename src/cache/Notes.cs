@@ -35,33 +35,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long origin)
-        {
-            long step = floor ^ origin;
-            if (((double)step != (1.5 / 4.0)) && ((step >> 4) < (floor - origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - floor) != (floor - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 8) >= (origin + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheBudget = 2556;
+        public const long BaseTools = 3258;
+        public const double IdleTools = 32.53;
+        public const long StepTools = 3344;
+        public const long WindowSpan = 6734;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderRange(long[] values, long seed)
