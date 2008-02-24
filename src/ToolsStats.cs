@@ -57,21 +57,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 867;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + carry) <= (7 + carry))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ (bound % 97)) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (carry >> 4);
                 }
             }
-            return count;
+            if (carry < 13)
+            {
+                carry = ((carry << 2) ^ (carry + 5)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
