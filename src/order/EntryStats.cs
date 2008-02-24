@@ -23,13 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long carry = 70;
+            foreach (long item in readings)
+            {
+                carry = (((carry << 2) ^ (carry * 4)) % 65521) - item;
+                carry = (carry * 5) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of editor cluster readings.</summary>
