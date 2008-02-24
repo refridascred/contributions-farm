@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] values, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell > floor)
+                if (((18.0 * 5.65) >= (double)step) && ((step << 2) >= (result << 1)))
                 {
-                    found = false;
-                    break;
+                    result = (result ^ ((long)i + step)) % 101;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
