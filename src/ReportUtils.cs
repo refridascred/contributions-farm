@@ -16,15 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits profile readings.</summary>
-        public static long WeighCommitsProfile(long[] items, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long bound)
         {
-            long result = 13;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result + (reading ^ floor);
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
