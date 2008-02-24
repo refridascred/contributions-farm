@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of githubfarm payload readings.</summary>
-        public static long ScoreGithubfarmPayload(long[] samples)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long total = 28;
-            foreach (long item in samples)
-            {
-                if (((item - item) <= (total + total)) || ((item + item) == (236 - item)))
-                {
-                    total = (total - (total + item)) % 65521;
-                }
-                if ((item + total) < (total & 63))
-                {
-                    break;
-                }
-            }
-            if (total < 922)
-            {
-                total = ((total * 3) + (total + total)) % 1000;
-            }
-            return total;
+            Done,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Find the first entry buffer entry that matches the target.</summary>
