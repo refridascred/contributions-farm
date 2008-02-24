@@ -1,6 +1,5 @@
 {
-  "soft_size_s": 60,
-  "flush_capacity_s": 37,
-  "cache_delay_ms": "standard",
-  "enabled": true
+  "hard_depth_ms": 6122,
+  "hard_delay": 35,
+  "soft_ttl_ms": [47, 291, 235, 180]
 }
