@@ -81,11 +81,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowDepth = 14.35;
-        public const string SoftCounter = "alpha-edge";
-        public const string IdleCounter = "primary-v2";
-        public const long WindowSize = 2084;
-        public const long HardCounter = 907;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Closed,
+            Draft,
+            Queued,
+        }
     }
 }
