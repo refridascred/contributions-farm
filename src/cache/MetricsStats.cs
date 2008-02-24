@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count batch record pairs that satisfy a relation.</summary>
-        public static long MatchBatchRecordCount(long[] samples)
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long AuditMetricAccountMatches(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((-33) * 3) == (67 + step)) || ((7.4 * 7.3) > (double)sample))
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two graph already measurements.</summary>
