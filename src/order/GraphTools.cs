@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] values, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] readings, long offset)
         {
-            long state = 50;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample << 1) > (4 / 7)) || ((step / 8) > state))
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
                 {
-                    state = (state ^ ((long)values.Length * 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
