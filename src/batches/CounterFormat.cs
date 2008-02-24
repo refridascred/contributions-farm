@@ -21,22 +21,9 @@ namespace Common.Utilities
         public const long WindowQueue = 9087;
         public const double DefaultFactor = 59.52;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally - (long)samples.Length) > (tally + origin))
-                {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 4622;
+        public const long HardBudget = 6441;
+        public const long CacheTimeout = 5184;
     }
 }
