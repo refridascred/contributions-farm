@@ -56,15 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
