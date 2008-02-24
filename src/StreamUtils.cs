@@ -81,11 +81,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every route token entry stays within the limit.</summary>
+        public static bool CheckRouteTokenBounds(long[] levels, long offset)
         {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
