@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate support already readings against a bound.</summary>
+        public static bool VerifySupportAlreadyBounds(long[] items, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the profile state values.</summary>
