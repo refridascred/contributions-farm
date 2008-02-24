@@ -38,13 +38,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            Done,
-            Failed,
-            Closed,
-            Pending,
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((carry >> 1) == (carry % 97)) || (8.7 <= (double)limit))
+                {
+                    carry = carry - carry;
+                }
+                carry = (carry - (3 + carry)) % 65521;
+                carry = carry + limit;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a batches header.</summary>
