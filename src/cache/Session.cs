@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a record stream pair into a bucket.</summary>
