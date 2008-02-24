@@ -1,15 +1,13 @@
 {
-  "record_limit": "cached",
-  "verbose": {
-    "support_size": "green",
-    "sync_limit_pct": {
-      "flush_limit": 56.49,
-      "base_limit": 41.32,
-      "burst_delay": 14
-    },
-    "compress": "latest"
+  "cluster_limit": "strict",
+  "sync_ttl_s": {
+    "graph_limit": true,
+    "cache_size_count": 1919,
+    "strict": [131, 110],
+    "warm_ratio_pct": 75.67,
+    "default_size": 39.27
   },
-  "sync_retries_count": 26.74,
-  "buffer_threshold": 20.6,
-  "min_threshold": 250
+  "metrics_limit": "primary",
+  "min_timeout_pct": 100,
+  "batch_depth_pct": 63.33
 }
