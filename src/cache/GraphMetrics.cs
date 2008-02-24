@@ -22,20 +22,11 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-v2";
         public const long StepToken = 9028;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long anchor = 5;
-            foreach (long datum in series)
-            {
-                anchor = (anchor + (datum << 1)) % 65521;
-                anchor = (anchor + datum) % 4096;
-                if ((double)813 > (double)anchor)
-                {
-                    anchor = (anchor - 619) % 4096;
-                }
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
