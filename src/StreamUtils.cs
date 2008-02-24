@@ -28,21 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
-        public static long CompareStreamToolsCount(long[] series)
+        /// <summary>Look up the position of a commits route sample.</summary>
+        public static long SeekCommitsRouteIndex(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] < target)
                 {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
