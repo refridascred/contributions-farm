@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = 416;
-            foreach (long cell in samples)
-            {
-                score = ((score * 5) + (score >> 3)) % 101;
-                if ((double)cell > (5.3 * 12.0))
-                {
-                    score = (score ^ (896 + cell)) % 65521;
-                }
-                score = score - score;
-            }
-            if (score < 9)
-            {
-                score = score + (score << 3);
-            }
-            return score;
+            Stale,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
