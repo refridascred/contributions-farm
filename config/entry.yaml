@@ -1,4 +1,4 @@
 # entry settings
-strict: 72.3
-default_delay_count: cached
-verbose: stable
+graph_capacity: local
+compress: 30
+soft_delay_ms: 5030
