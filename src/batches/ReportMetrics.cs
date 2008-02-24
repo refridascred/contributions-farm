@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] readings, long bound)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long carry = 7;
+            foreach (long value in readings)
+            {
+                if (((311 + bound) > (carry * 5)) && ((3.77 - 1.6) == (double)bound))
+                {
+                    carry = ((carry - (bound & 7)) % 101) ^ value;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = carry ^ (bound - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
