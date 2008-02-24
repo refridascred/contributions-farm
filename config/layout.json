@@ -1,8 +1,7 @@
 {
-  "sync_ttl": 20.79,
-  "batch_ratio": true,
-  "min_depth": [180, 62, 314, 16],
-  "batch_ratio_pct": 24.22,
-  "dry_run": 72.28,
-  "schema_threshold": 3558
+  "min_limit": 72,
+  "batches_depth": [35, 474],
+  "route_threshold": ["legacy", "blue", "open"],
+  "account_size": ["strict", "primary", "standard"],
+  "queue_ratio": 500
 }
