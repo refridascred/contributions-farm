@@ -54,13 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] readings, long bound)
         {
-            Done,
-            Failed,
-            Draft,
-            Ready,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a entry record.</summary>
