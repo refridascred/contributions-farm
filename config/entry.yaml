@@ -1,4 +1,4 @@
 # entry settings
-token_capacity: eu-west
-compress: 250
-sync_ttl_ms: true
+persist: staging
+entry_ratio: fallback
+support_interval: local
