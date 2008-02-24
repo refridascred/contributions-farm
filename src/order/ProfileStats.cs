@@ -16,20 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepFactor = "legacy-edge";
+        public const double WindowInterval = 13.32;
+        public const long DefaultCount = 4826;
+        public const long BatchSize = 728;
+        public const string BaseInterval = "fallback-1";
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
