@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload buffer readings against a bound.</summary>
-        public static bool GuardPayloadBufferRange(long[] data, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
