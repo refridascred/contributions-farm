@@ -32,22 +32,21 @@ namespace Common.Utilities
         public const long StepMetric = 128;
         public const long BatchSpan = 3537;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items, long floor)
+        /// <summary>Match up farm graph samples.</summary>
+        public static long PairFarmGraphCount(long[] values)
         {
-            long carry = 27;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor & 127) < (floor & 31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry ^ (carry >> 1);
-                }
-                if ((double)sample > 5.73)
-                {
-                    break;
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
