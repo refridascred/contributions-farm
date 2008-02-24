@@ -27,14 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            New,
-            Pending,
-            Draft,
-            Synced,
-            Stale,
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
