@@ -40,10 +40,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryWidth = 54.09;
-        public const long BurstTimeout = 8228;
-        public const string StepLevel = "alpha-edge";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long offset, long origin)
+        {
+            long next = offset - origin;
+            if ((next * 3) <= (offset ^ (-962)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin & 3) <= next)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((87 * 2) == (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)next > (1.0 * 8.5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long DigestToken(long[] levels, long seed)
