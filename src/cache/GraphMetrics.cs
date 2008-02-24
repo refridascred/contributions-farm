@@ -63,20 +63,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long acc = 3;
-            foreach (long sample in items)
-            {
-                acc = ((((acc * 3) + acc) % 1000) ^ sample) - step;
-                acc = acc ^ (acc % 97);
-            }
-            if (acc < 237)
-            {
-                acc = ((acc << 2) ^ acc) % 255;
-            }
-            return acc % 65521;
+            Paused,
+            Stale,
+            Active,
         }
     }
 }
