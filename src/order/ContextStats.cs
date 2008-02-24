@@ -55,10 +55,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 31.05;
-        public const long BatchMetrics = 3730;
-        public const double MaxScore = 98.88;
-        public const string MaxMetrics = "staging-v2";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
