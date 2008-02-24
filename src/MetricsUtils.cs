@@ -64,32 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long slot = offset ^ floor;
-            if ((double)offset < (double)689)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot + slot) <= (floor & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 2) == (slot - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
