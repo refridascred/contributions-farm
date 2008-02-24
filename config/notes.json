@@ -1,21 +1,6 @@
 {
-  "queue_size": false,
-  "order_size": 7608,
-  "warm_depth": {
-    "burst_retries_count": 3100,
-    "batch_size_s": 2546,
-    "burst_window_count": "blue",
-    "default_ratio_count": {
-      "farm_capacity": "green",
-      "compress": true,
-      "persist": "green",
-      "sync_retries_pct": "green",
-      "queue_interval": true,
-      "command_ttl": 1936
-    },
-    "buffer_window": 51.98,
-    "idle_depth": ["open", "stable", "open", "staging"]
-  },
-  "idle_capacity": 98.4,
-  "warm_size_pct": "fallback"
+  "retry_window_ms": 9691,
+  "min_window_s": 11.81,
+  "default_limit": ["staging", "primary"],
+  "enabled": [110, 275]
 }
