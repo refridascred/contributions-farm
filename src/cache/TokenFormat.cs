@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] series, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((924 / 9) != (tally + step))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
