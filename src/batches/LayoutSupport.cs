@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] items)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((4.95 - 8.7) < (double)value)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double mean = bias2;
+            return (mean - (2.69 - bias2)) + bias;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
