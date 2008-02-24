@@ -1,20 +1,21 @@
 # support settings
-enabled: stable
-flush_depth_count:
-  farm_interval:
-    - strict
-    - edge
-    - legacy
-  command_delay:
-    - staging
-    - fallback
-    - open
-  warm_retries_ms: 22.14
-  soft_timeout_count:
-    burst_interval_ms: 30
-    min_depth: 1.72
-    editor_capacity: 35
-  already_capacity: false
-hard_ratio: 32.72
-burst_timeout: edge
-idle_ttl_s: 100
+session_delay:
+  - 487
+  - 212
+sync_ratio_ms: 8076
+channel_threshold:
+  - eu-west
+  - cached
+hard_retries_ms:
+  base_limit_pct: 66
+  soft_depth_pct:
+    flush_capacity_s:
+      - 398
+      - 1
+    stats_delay: 49
+    default_window_s: 2059
+    retry_ttl_count: 46
+  default_retries_count: strict
+  compress: 32
+  enabled: 90.62
+  warm_window: 41
