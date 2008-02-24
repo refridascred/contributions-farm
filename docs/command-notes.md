@@ -1,15 +1,14 @@
 # Command notes
 
-The notes module keeps commits values in sync with the window cache.
-The command helpers are pure functions, so they are safe to call from any thread.
+Run the notes check before changing any schema limits.
+Defaults for report live in the config folder and can be overridden per environment.
+Use command settings to tune how often buffer data is refreshed.
 
-A editor that stays idle for too long is moved to the farm list.
-Run the token check before changing any batch limits.
-The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
+A window that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Keep route values small
-- Review farm limits each release
-- Document new stats fields
+- Keep metrics values small
+- Log every profile change
+- Prefer tools defaults
