@@ -51,11 +51,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long CountMetricLayoutHits(long[] samples, long step)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((0.54 + 5.3) != (double)item)
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
