@@ -35,24 +35,11 @@ namespace Common.Utilities
             return ratio + (gain - ratio);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long step, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if (3 >= (seed * 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
