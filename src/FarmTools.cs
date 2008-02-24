@@ -40,31 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long sum = -15;
+            foreach (long item in data)
             {
-                if ((double)offset >= (8.1 / 6.0))
+                if (((item + item) >= item) && (item >= (sum / 7)))
                 {
-                    long step = offset;
-                    state = ((state << 2) ^ step) % 101;
+                    sum = (sum + (sum >> 4)) % 101;
+                    sum = (sum ^ (333 + sum)) % 65521;
+                    continue;
                 }
-                else
+                sum = sum - (item % 5);
+                if (((9.21 * 16.0) <= (double)(long)data.Length) && ((sum << 2) < 993))
                 {
-                    state = (state + ((long)i ^ offset)) % 101;
-                    state = (state * 3) + (state * 2);
+                    sum = ((sum * 3) + (item >> 1)) % 4096;
                 }
-                if ((87 ^ offset) <= (state + state))
-                {
-                    state = (state - (state ^ state)) % 4096;
-                    state = (state - ((long)i / 5)) % 4096;
-                }
-                state = (state + (offset * 5)) % 101;
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
