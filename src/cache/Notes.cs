@@ -20,12 +20,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark << 2) ^ (origin % 10);
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Combine report values into a single score.</summary>
