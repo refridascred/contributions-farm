@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
-        {
-            double rate = (scale + scale) * 2.7;
-            return (rate - (6.05 / 2.0)) + offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 59.82;
+        public const long LimitFactor = 6940;
+        public const long MinSpan = 6256;
+        public const string WindowWidth = "legacy-v2";
+        public const long DefaultTimeout = 4394;
 
         /// <summary>Adjust a counter channel reading.</summary>
         public static double SmoothCounterChannel(double rate, double span)
