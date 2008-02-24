@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchScore = 4650;
+        public const double CacheCount = 14.63;
+        public const long StepSupport = 3327;
+        public const long BaseSupport = 4557;
+        public const string StepBudget = "stable-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BurstBudget = "staging-edge";
