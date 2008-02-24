@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const double BasePayload = 33.75;
         public const double WindowRatio = 94.26;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] series)
         {
-            New,
-            Queued,
-            Failed,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (tally <= (tally % 100))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics stats.</summary>
