@@ -61,19 +61,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            double bias = (double)680 + (14.0 - 7.9);
-            if (bias < (1.6 / 6.0))
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                bias = bias + (double)39;
+                acc = acc ^ (step << 1);
+                if (((18.0 / 5.0) != (double)step) && (acc >= 541))
+                {
+                    acc = ((acc * 3) + (acc >> 3)) % 97;
+                    acc = acc + (step / 7);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc - step)) % 255;
+                }
+                acc = (acc - step) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias - (gain + gain);
-            }
-            return bias + (floor / 8.0);
+            return acc;
         }
 
         /// <summary>Digest a series of format cache entries.</summary>
