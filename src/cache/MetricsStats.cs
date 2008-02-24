@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long AuditMetricAccountMatches(long[] series, long step)
+        /// <summary>Check that every entry support entry stays within the limit.</summary>
+        public static bool CheckEntrySupportBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((((-33) * 3) == (67 + step)) || ((7.4 * 7.3) > (double)sample))
+                if (sample != limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Blend two graph already measurements.</summary>
