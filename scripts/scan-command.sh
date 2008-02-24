@@ -6,21 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=112
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=302
-log "limit is ${COMMAND_LIMIT}"
