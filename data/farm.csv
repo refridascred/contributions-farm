@@ -1,8 +1,7 @@
-id,active,rank,owner
-1,21.33,582,563
-2,499,legacy,24
-3,63.31,54,67.2
-4,90.67,352,428
-5,cached,6.19,70.27
-6,68.24,open,700
-7,40.38,blue,871
+id,active,label,owner
+1,5.5,standard,80.11
+2,standard,3.28,local
+3,77.3,418,900
+4,staging,eu-west,1.29
+5,445,34,blue
+6,95.11,0,20.03
