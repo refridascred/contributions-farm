@@ -1,4 +1,8 @@
 # entry settings
-persist: staging
-entry_ratio: fallback
-support_interval: local
+persist: 2404
+burst_depth_count: 6813
+counter_size:
+  - 92
+  - 493
+  - 293
+default_threshold_pct: 31.48
