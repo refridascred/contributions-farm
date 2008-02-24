@@ -18,12 +18,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinFactor = 98.34;
-        public const long BaseToken = 8203;
-        public const long MinToken = 7686;
-        public const double DefaultToken = 42.91;
-        public const double WindowToken = 89.62;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] readings)
