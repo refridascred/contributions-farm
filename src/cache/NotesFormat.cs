@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels)
+        /// <summary>Locate a route account reading by value.</summary>
+        public static long LookupRouteAccountIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + matches) != (value + value))
+                if (samples[i] <= step)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
