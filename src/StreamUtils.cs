@@ -44,19 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long result = 61;
-            foreach (long reading in readings)
-            {
-                result = result + (result / 9);
-                if ((reading - result) != (result % 10))
-                {
-                    break;
-                }
-            }
-            return result;
+            Synced,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
