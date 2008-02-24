@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
+            Draft,
+            Queued,
+            Failed,
         }
     }
 }
