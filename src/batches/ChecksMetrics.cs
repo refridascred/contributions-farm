@@ -76,17 +76,11 @@ namespace Common.Utilities
         public const double CacheLevel = 55.11;
         public const double BaseWindow = 73.58;
 
-        /// <summary>Look up the position of a githubfarm commits sample.</summary>
-        public static long LocateGithubfarmCommitsIndex(long[] values, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
