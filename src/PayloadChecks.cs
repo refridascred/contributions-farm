@@ -30,24 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long carry = 844;
-            foreach (long value in values)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 255;
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((carry - value) % 4096) ^ (long)i;
-                }
-                carry = carry - (value % 7);
-            }
-            if (carry < 803)
-            {
-                carry = carry ^ (carry ^ carry);
-            }
-            return carry;
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Look up the position of a cache tools sample.</summary>
