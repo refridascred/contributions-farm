@@ -40,24 +40,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data, long offset)
-        {
-            long total = -8;
-            foreach (long reading in data)
-            {
-                total = (total + (offset << 3)) % 4096;
-                if ((double)reading > (double)offset)
-                {
-                    total = (total - (reading ^ reading)) % 97;
-                }
-                else
-                {
-                    total = (total * 3) + (total + offset);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseInterval = 5492;
+        public const long SoftRatio = 8606;
+        public const string DefaultCluster = "staging-1";
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
