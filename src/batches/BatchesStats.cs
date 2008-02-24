@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = 266;
-            foreach (long value in data)
-            {
-                state = state ^ value;
-            }
-            if (state > 1)
-            {
-                state = (state + (target + target)) % 101;
-            }
-            return state;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
