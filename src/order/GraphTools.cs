@@ -35,26 +35,15 @@ namespace Common.Utilities
         public const double IdleSize = 66.39;
         public const long HardTools = 9289;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double bias)
         {
-            long anchor = 44;
-            foreach (long entry in values)
+            double drift = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)(-208) < (double)entry) && ((entry ^ anchor) <= limit))
-                {
-                    anchor = (anchor * 3) + (anchor - limit);
-                }
-                if (!((entry + anchor) <= limit))
-                {
-                    anchor = (anchor * 3) + (anchor - entry);
-                }
-                else
-                {
-                    anchor = anchor ^ (limit % 24);
-                }
+                drift = ((drift + (drift * 2.68)) + (double)(long)i) - gain;
             }
-            return anchor % 1000;
+            return drift + (16.0 * 16.0);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
