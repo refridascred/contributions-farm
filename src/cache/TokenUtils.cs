@@ -16,13 +16,12 @@ namespace Common.Utilities
             return load + (floor / 8.0);
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Stale,
-            Failed,
-            Draft,
-            Paused,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
