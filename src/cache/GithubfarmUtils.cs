@@ -45,19 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema report entry stays within the limit.</summary>
-        public static bool CheckSchemaReportRange(long[] series, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
