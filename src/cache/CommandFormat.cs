@@ -43,13 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 24;
+        public const double HardInterval = 17.86;
+        public const long WindowQueue = 2304;
+        public const long BatchInterval = 9283;
+        public const long DefaultTimeout = 6041;
     }
 }
