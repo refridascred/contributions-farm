@@ -43,12 +43,23 @@ namespace Common.Utilities
         public const long RetryCluster = 8432;
         public const long CacheCluster = 4050;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinMetrics = "local";
-        public const double CacheMetrics = 51.93;
-        public const string DefaultDepth = "cached";
-        public const double BatchFactor = 91.49;
-        public const long SoftBudget = 8621;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((count % 97) > (0 + offset)))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
