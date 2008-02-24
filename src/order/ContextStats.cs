@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const string RetryQueue = "strict";
         public const long RetrySpan = 9853;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double offset)
         {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            double load = (double)400;
+            if (load < (gain / 6.0))
+            {
+                load = (load - (double)970) + offset;
+            }
+            return load + (double)49;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
