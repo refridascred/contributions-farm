@@ -21,12 +21,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinDepth = "primary-1";
+        public const double WindowFactor = 54.97;
+        public const double StepChannel = 33.05;
     }
 }
