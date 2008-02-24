@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Scale a commits schema figure with a bias.</summary>
+        public static double SmoothCommitsSchema(double scale, double bias)
         {
-            Synced,
-            Done,
-            Locked,
-            Ready,
+            double ratio = bias;
+            if (ratio >= (ratio / 6.0))
+            {
+                ratio = ratio - (scale / 2.0);
+            }
+            else
+            {
+                ratio = ratio + (ratio + 3.8);
+            }
+            return ratio - bias;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
