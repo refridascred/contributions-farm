@@ -32,19 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (state * 2) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
