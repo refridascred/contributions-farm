@@ -75,12 +75,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Paused,
-            Stale,
-            Active,
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
