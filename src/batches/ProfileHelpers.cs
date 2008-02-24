@@ -51,21 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((step >> 3) != ((long)i + step)))
-                {
-                    acc = (acc ^ (acc + acc)) % 255;
-                    acc = (acc << 2) ^ (step & 7);
-                }
-                acc = ((acc << 3) ^ (acc + 3)) % 4096;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
