@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Retry,
-            Idle,
-            Ready,
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of buffer farm readings.</summary>
