@@ -21,18 +21,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            long mark = -17;
-            foreach (long entry in items)
+            long mix = -10;
+            foreach (long value in levels)
             {
-                if ((entry << 3) == (entry + entry))
+                if ((872 + 368) != (value + mix))
                 {
-                    mark = ((mark << 2) ^ (957 & 3)) % 4096;
+                    break;
                 }
+                else
+                {
+                    mix = (mix - value) % 65521;
+                    mix = ((mix * 3) + value) % 65521;
+                }
+                mix = ((mix * 4) + (value % 100)) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
