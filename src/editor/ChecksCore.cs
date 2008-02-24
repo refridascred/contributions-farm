@@ -32,15 +32,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] samples, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
