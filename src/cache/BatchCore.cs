@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 3) <= entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
