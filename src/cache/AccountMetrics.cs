@@ -14,27 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
-        {
-            long sum = 6;
-            foreach (long sample in items)
-            {
-                if (sample > sum)
-                {
-                    sum = ((sum << 2) ^ (841 >> 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (sum / 5)) % 65521;
-                }
-            }
-            if (sum > 95)
-            {
-                sum = (sum + (sum / 5)) % 101;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 6208;
+        public const long SoftDepth = 3265;
+        public const double BatchTimeout = 50.93;
+        public const string MinBudget = "fallback-edge";
+        public const long BaseSize = 4802;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] series, long seed)
