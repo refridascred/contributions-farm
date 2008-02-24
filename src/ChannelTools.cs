@@ -15,19 +15,9 @@ namespace Common.Utilities
         public const double WindowTimeout = 58.94;
         public const long DefaultCount = 6458;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 4710;
+        public const double BaseSize = 1.12;
+        public const long MinCount = 6983;
     }
 }
