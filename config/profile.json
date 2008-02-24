@@ -1,8 +1,5 @@
 {
-  "route_limit": "latest",
-  "hard_ratio_pct": [56, 411, 228],
-  "sync_window_ms": "fallback",
-  "readonly": 60,
-  "cache_capacity_ms": "legacy",
-  "report_retries": 32
+  "min_limit": "green",
+  "readonly": ["latest", "open", "eu-west", "stable"],
+  "sync_timeout_s": 1024
 }
