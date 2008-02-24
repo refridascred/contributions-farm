@@ -50,13 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] items, long origin)
         {
-            Ready,
-            Queued,
-            Locked,
-            Synced,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
