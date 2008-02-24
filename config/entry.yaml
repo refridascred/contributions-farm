@@ -1,10 +1,18 @@
 # entry settings
-notes_timeout: fallback
-poll_threshold_s:
-  - 13
-  - 324
-  - 268
-cache_delay: 90.35
-flush_ratio_s: true
-audit: open
-strict: true
+sync_ttl_s: 100
+readonly: 46.75
+dry_run:
+  - 338
+  - 254
+  - 238
+  - 99
+min_window:
+  - 438
+  - 18
+  - 9
+default_size_count:
+  base_capacity:
+    - 123
+    - 29
+  soft_depth_count: 100
+  dry_run: 26.32
