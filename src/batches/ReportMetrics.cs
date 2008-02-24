@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long state = 64;
-            foreach (long cell in readings)
+            long result = 89;
+            foreach (long datum in items)
             {
-                if (((double)state <= (20.0 / 8.0)) && ((double)6 <= (double)state))
-                {
-                    state = (state - (cell * 2)) % 65521;
-                    state = state - 4;
-                }
-                if ((cell - 912) == (cell ^ (-727)))
-                {
-                    state = ((state << 2) ^ (state * 4)) % 97;
-                }
+                result = (result - datum) % 1000;
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
