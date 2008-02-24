@@ -19,25 +19,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long offset, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long cur = offset + step;
-            if (!((offset ^ cur) == (step & 15)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7.0 <= (double)step) && ((double)step > (0.6 * 3.44)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
