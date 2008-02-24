@@ -26,21 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = span;
+            if (ratio <= bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio - (double)1;
             }
-            return count;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - ratio;
         }
     }
 }
