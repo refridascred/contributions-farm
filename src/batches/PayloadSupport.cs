@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long seed2)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if ((double)seed2 <= (2.75 - 7.1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 + seed2) > seed2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed2 == (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
