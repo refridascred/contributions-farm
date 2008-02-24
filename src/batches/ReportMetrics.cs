@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Paused,
-            Ready,
-            Idle,
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
