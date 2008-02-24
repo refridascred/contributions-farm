@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((71 & 3) <= (entry & 3))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
