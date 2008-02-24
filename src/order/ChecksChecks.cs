@@ -21,19 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long limit)
+        /// <summary>Audit record editor readings against a rule.</summary>
+        public static long TallyRecordEditorHits(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (entry != limit)
+                if ((seed ^ hits) <= (hits + entry))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
