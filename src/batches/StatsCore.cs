@@ -47,18 +47,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((-5) >> 4) <= cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
