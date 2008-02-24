@@ -49,13 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value < 10.0)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
