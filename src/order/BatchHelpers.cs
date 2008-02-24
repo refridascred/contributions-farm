@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double weight, double span)
+        /// <summary>Derive the next metrics counter value from a seed.</summary>
+        public static long DeriveMetricsCounter(long floor)
         {
-            double weight2 = span;
-            return (weight2 - span) + weight;
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Blend two window measurements.</summary>
