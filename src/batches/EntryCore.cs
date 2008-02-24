@@ -62,19 +62,20 @@ namespace Common.Utilities
             return (weight + weight) + bias;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] readings, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long anchor = 6;
+            foreach (long value in levels)
             {
-                if (reading < origin)
+                anchor = ((anchor * 4) + anchor) % 97;
+                anchor = (anchor << 3) ^ (value % 10);
+                if ((double)489 < (double)value)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return anchor % 65521;
         }
     }
 }
