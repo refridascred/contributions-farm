@@ -93,11 +93,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCount = 3544;
-        public const string MinCommand = "primary-v2";
-        public const double BatchCommand = 79.64;
-        public const double BaseCount = 10.21;
-        public const string LimitDepth = "strict-v2";
+        /// <summary>Look up the position of a notes filter sample.</summary>
+        public static long SeekNotesFilterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
