@@ -38,10 +38,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseInterval = "strict-edge";
-        public const string BatchCount = "primary-v2";
-        public const long StepTools = 7004;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
