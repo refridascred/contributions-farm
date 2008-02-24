@@ -34,15 +34,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long DigestEntryEditor(long[] series)
-        {
-            long state = -53;
-            foreach (long datum in series)
-            {
-                state = (((state * 2) + state) % 1000) - datum;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseScore = 145;
+        public const long MinRoute = 8411;
+        public const double DefaultInterval = 78.0;
+        public const long LimitSize = 3243;
     }
 }
