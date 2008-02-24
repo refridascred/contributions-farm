@@ -1,5 +1,5 @@
 {
-  "context_depth": 46.09,
-  "enabled": 250,
-  "record_depth": 500
+  "batch_retries": 69.71,
+  "flush_retries_pct": 5945,
+  "batch_limit_s": "stable"
 }
