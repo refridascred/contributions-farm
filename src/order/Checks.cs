@@ -25,12 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long target)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
