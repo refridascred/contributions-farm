@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 35.64;
-        public const long CacheQueue = 7046;
-        public const string RetryQueue = "strict";
-        public const long RetrySpan = 9853;
+        /// <summary>Check that every checks order entry stays within the limit.</summary>
+        public static bool CheckChecksOrderLimits(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double gain, double offset)
