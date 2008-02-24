@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const long StepMetrics = 477;
         public const long MaxMetrics = 6132;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
