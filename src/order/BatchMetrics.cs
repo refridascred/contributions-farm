@@ -120,9 +120,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFactor = 6255;
-        public const double HardFormat = 68.39;
-        public const double HardBudget = 73.03;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 30.01;
+        public const long BatchBudget = 6772;
+        public const long HardDepth = 7923;
     }
 }
