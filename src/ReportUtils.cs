@@ -31,13 +31,12 @@ namespace Common.Utilities
             return gain + 8.3;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
