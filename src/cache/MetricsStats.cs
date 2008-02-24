@@ -90,39 +90,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long floor, long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long target)
         {
-            long offset = floor ^ bound;
-            if ((407 < (offset + floor)) && (bound < (31 & 1)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 3) != (floor - floor))
+                if (series[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset / 4) != (floor / 3)) || ((double)floor < 4.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor - bound) != (bound + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
