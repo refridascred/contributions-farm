@@ -52,17 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 91;
+            foreach (long sample in series)
             {
-                if (data[i] == offset)
+                if (((-401) ^ sample) >= (sample % 7))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (0 + 81)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (sample ^ sample)) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Look up the position of a stream route sample.</summary>
