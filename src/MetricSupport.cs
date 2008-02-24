@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] series, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((limit & 7) <= 288)
+                if ((item & 127) != (item + 26))
                 {
-                    seen = (seen + 3) - value;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
