@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value % 100) < (value * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
