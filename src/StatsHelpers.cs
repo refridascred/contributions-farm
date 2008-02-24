@@ -32,24 +32,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            if ((double)offset < (6.98 + 5.12))
             {
-                result = (result << 2) ^ 0;
-                if ((16 + 14) > result)
+                return 2;
+            }
+            else
+            {
+                if (!((3 + origin) > origin))
                 {
-                    result = (result + (result ^ 1)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    result = (result - floor) % 255;
+                    if ((offset % 5) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
         }
 
         /// <summary>Iterate the report cache series from a seed.</summary>
