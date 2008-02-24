@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
