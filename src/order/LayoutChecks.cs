@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const string DefaultChannel = "alpha";
         public const double RetryChannel = 35.68;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                mix = ((mix * 5) + mix) % 1000;
-                mix = mix ^ ((long)i ^ limit);
-                mix = (mix ^ 40) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
