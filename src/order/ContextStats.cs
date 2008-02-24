@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long step)
+        /// <summary>Classify a route githubfarm pair into a bucket.</summary>
+        public static long GradeRouteGithubfarm(long bound, long seed)
         {
-            if (!((8 + seed) == ((-82) + 8)))
+            long prev = bound ^ seed;
+            if ((2 <= seed) && ((prev + seed) > (bound >> 5)))
             {
                 return 5;
             }
             else
             {
-                if ((4 - step) < step)
+                if ((seed - bound) > bound)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (seed < step)
+                    if ((29 < (prev >> 1)) || ((369 * 4) != (bound + 1)))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
