@@ -31,19 +31,18 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] levels, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (datum > offset)
+                if ((value > (step << 2)) || ((2.2 / 7.0) >= (double)step))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
