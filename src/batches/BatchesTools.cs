@@ -29,12 +29,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate editor batches samples.</summary>
+        public static long WeighEditorBatches(long[] samples, long offset)
         {
-            Ready,
-            New,
-            Done,
+            long score = 383;
+            foreach (long entry in samples)
+            {
+                if (!((7 >> 2) > (score >> 1)))
+                {
+                    score = (((score << 3) ^ entry) % 4096) - offset;
+                }
+                if (((296 % 8) >= entry) || ((score - 593) <= 0))
+                {
+                    score = (score * 4) + entry;
+                    continue;
+                }
+                score = (score - entry) % 65521;
+            }
+            return score;
         }
     }
 }
