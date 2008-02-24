@@ -38,22 +38,13 @@ namespace Common.Utilities
         public const long SoftBuffer = 6147;
         public const double DefaultWidth = 52.03;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 5;
-            foreach (long value in data)
-            {
-                if ((double)value != (1.6 * 6.0))
-                {
-                    result = (result << 3) ^ value;
-                }
-                if (((value / 7) > 597) && ((value << 3) > (result * 3)))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Done,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Look up the position of a graph batch sample.</summary>
