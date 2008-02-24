@@ -62,10 +62,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardLevel = 8283;
-        public const long SoftMetrics = 925;
-        public const string RetryMetrics = "local-v2";
-        public const string MaxMetrics = "latest-1";
+        /// <summary>Find the first session account entry that matches the target.</summary>
+        public static long FindSessionAccountIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
