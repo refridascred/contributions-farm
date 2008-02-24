@@ -27,11 +27,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Paused,
+            Synced,
+            Queued,
+            Active,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
