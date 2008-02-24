@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double weight, double bias)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] items, long offset)
         {
-            double bias2 = bias - (double)980;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 - (bias + weight)) - (double)(long)i;
+                if ((items[i] > offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (double)69;
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
