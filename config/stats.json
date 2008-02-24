@@ -1,19 +1,5 @@
 {
-  "warm_threshold_s": {
-    "cache_ttl": {
-      "enabled": [310, 113, 215, 280],
-      "metric_depth": true,
-      "poll_retries_s": "edge",
-      "filter_ttl": "primary"
-    },
-    "strict": true,
-    "flush_depth_count": {
-      "enabled": "legacy",
-      "sync_delay_s": 30,
-      "min_delay_ms": 21,
-      "report_limit": false
-    }
-  },
-  "default_limit_pct": [248, 308],
-  "strict": "stable"
+  "context_depth": 46.09,
+  "enabled": 250,
+  "record_depth": 500
 }
