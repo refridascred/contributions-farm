@@ -34,11 +34,14 @@ namespace Common.Utilities
         public const long HardDepth = 2981;
         public const long DefaultLevel = 4402;
 
-        /// <summary>Scale a farm command figure with a bias.</summary>
-        public static double SmoothFarmCommand(double rate, double bias)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double weight = rate;
-            return (weight + weight) + bias;
+            Stale,
+            Paused,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Accumulate already samples.</summary>
