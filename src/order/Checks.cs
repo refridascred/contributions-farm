@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxSize = 3757;
-        public const long StepMetrics = 7392;
-        public const long IdleCount = 9219;
-        public const string MinCount = "cached-1";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((double)limit >= (9.32 * 5.0)))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] readings, long origin)
