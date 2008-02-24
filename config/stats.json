@@ -1,13 +1,7 @@
 {
-  "cluster_limit": "strict",
-  "sync_ttl_s": {
-    "graph_limit": true,
-    "cache_size_count": 1919,
-    "strict": [131, 110],
-    "warm_ratio_pct": 75.67,
-    "default_size": 39.27
-  },
-  "metrics_limit": "primary",
-  "min_timeout_pct": 100,
-  "batch_depth_pct": 63.33
+  "cache_interval": 97.73,
+  "sync_ratio": 30,
+  "command_interval": "primary",
+  "schema_ttl": "blue",
+  "route_ttl": 6.64
 }
