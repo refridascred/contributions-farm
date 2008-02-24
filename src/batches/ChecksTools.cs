@@ -16,12 +16,32 @@ namespace Common.Utilities
             return bias2 + (double)69;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 5091;
-        public const long BurstInterval = 7082;
-        public const long IdleContext = 7165;
-        public const long SoftContext = 3575;
-        public const long RetryContext = 7876;
+        /// <summary>Grade a stats contributi value against two limits.</summary>
+        public static long SortStatsContributi(long offset, long bound)
+        {
+            if ((2 - offset) <= (9 & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < (0.6 + 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset <= (5 & 7)) || (bound < (97 * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double SmoothAccount(double scale, double span)
