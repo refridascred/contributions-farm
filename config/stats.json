@@ -1,5 +1,12 @@
 {
-  "batch_retries": 69.71,
-  "flush_retries_pct": 5945,
-  "batch_limit_s": "stable"
+  "warm_delay_ms": "staging",
+  "max_interval_count": {
+    "poll_timeout": "green",
+    "idle_limit": 93.6,
+    "audit": false,
+    "warm_limit_ms": false,
+    "window_ttl": [240, 86, 184, 293],
+    "flush_depth": [182, 433, 394]
+  },
+  "editor_ttl": ["green", "staging"]
 }
