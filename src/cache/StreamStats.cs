@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Retry,
-            Closed,
-            Failed,
-            Draft,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the account mode values.</summary>
