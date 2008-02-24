@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFactor = 6217;
-        public const long WindowWidth = 6286;
-        public const long StepFilter = 7111;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
