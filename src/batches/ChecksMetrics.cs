@@ -37,38 +37,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long target)
+        /// <summary>Iterate the counter buffer series from a seed.</summary>
+        public static long RollCounterBuffer(long seed)
         {
-            if ((375 * 3) < offset)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 3) == ((-90) * 2))
+                anchor = (anchor ^ ((long)i & 3)) % 101;
+                if ((seed / 4) < (seed >> 3))
                 {
-                    return 0;
+                    anchor = (anchor ^ ((long)i + seed)) % 1000;
                 }
-                else
-                {
-                    if (!((offset / 8) > (offset * 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target << 1) == (offset + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
