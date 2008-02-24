@@ -31,13 +31,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Validate already context readings against a bound.</summary>
+        public static bool CheckAlreadyContextRange(long[] readings, long target)
         {
-            Done,
-            Dropped,
-            Closed,
-            Idle,
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
