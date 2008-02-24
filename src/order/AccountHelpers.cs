@@ -72,12 +72,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Failed,
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
