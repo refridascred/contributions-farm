@@ -39,17 +39,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (limit <= (46 >> 2))
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((bound % 97) > bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
