@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepScore = 2334;
+        public const double DefaultRatio = 22.74;
+        public const long IdleAlready = 8695;
+        public const long CacheInterval = 3923;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] readings, long origin)
