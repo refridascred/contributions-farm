@@ -1,5 +1,6 @@
 {
-  "max_capacity_ms": true,
-  "batch_interval_ms": false,
-  "persist": ["green", "stable", "cached", "edge"]
+  "cache_interval_count": 1.38,
+  "flush_ratio_ms": 25.38,
+  "burst_size": "blue",
+  "channel_timeout": 2351
 }
