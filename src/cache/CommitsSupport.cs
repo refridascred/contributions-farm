@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Fold a list of schema batches readings.</summary>
+        public static long TotalSchemaBatches(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 38;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark * 4) + (target + datum);
             }
-            return count;
+            if (mark < (-3))
+            {
+                mark = (mark * 3) + ((long)series.Length - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a commits info.</summary>
