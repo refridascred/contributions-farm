@@ -46,9 +46,22 @@ namespace Common.Utilities
         public const long IdleScore = 2192;
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardFactor = 83.95;
-        public const string BurstCache = "open-1";
-        public const long IdleInterval = 6561;
+        /// <summary>Digest a series of stats already entries.</summary>
+        public static long DigestStatsAlready(long[] data, long bound)
+        {
+            long score = 14;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (((score * 4) + bound) % 97) - (long)i;
+                }
+                if ((item < (bound << 1)) || ((item ^ item) > (item & 3)))
+                {
+                    score = (score - (item << 2)) % 1000;
+                }
+            }
+            return score;
+        }
     }
 }
