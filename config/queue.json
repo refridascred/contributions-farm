@@ -1,6 +1,8 @@
 {
-  "batch_timeout_pct": 5568,
-  "compress": "primary",
-  "poll_timeout_ms": ["cached", "open", "legacy", "strict"],
-  "persist": 8589
+  "metric_threshold": "primary",
+  "base_window": 1024,
+  "sync_delay": 6.08,
+  "notes_ttl": "legacy",
+  "dry_run": false,
+  "payload_interval": [168, 362, 52, 383]
 }
