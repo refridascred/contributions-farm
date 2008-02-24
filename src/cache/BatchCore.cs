@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] values)
         {
-            Queued,
-            Idle,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((hits % 64) < 275))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
