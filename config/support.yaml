@@ -1,4 +1,6 @@
 # support settings
-retry_delay_count: true
-verbose: 7404
-checks_delay: 62.81
+audit: staging
+queue_ratio: strict
+sync_depth: true
+poll_size_pct: true
+cluster_threshold: primary
