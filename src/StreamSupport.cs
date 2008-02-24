@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            long state = 614;
+            foreach (long value in levels)
+            {
+                state = ((state - (26 - state)) % 65521) - value;
+            }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
