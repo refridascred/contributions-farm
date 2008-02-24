@@ -48,31 +48,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a checks farm pair into a bucket.</summary>
-        public static long ClassifyChecksFarm(long bound, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if ((57 / 4) <= bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (9 >= (4 - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9 >> 3) < (bound + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the already phase values.</summary>
