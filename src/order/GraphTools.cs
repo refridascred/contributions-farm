@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const double IdleSize = 66.39;
         public const long HardTools = 9289;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double bias)
+        /// <summary>Check that every context farm entry stays within the limit.</summary>
+        public static bool ValidateContextFarmBounds(long[] values, long target)
         {
-            double drift = bias;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                drift = ((drift + (drift * 2.68)) + (double)(long)i) - gain;
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + (16.0 * 16.0);
+            return ready;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
