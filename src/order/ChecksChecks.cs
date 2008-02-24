@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const long MinTimeout = 5109;
         public const long MaxAlready = 3680;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((65 ^ entry) < (entry - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Draft,
         }
     }
 }
