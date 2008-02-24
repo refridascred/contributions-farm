@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleLevel = 1521;
         public const string DefaultLevel = "staging-1";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] readings, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long mark = -17;
+            foreach (long entry in items)
             {
-                if (value <= target)
+                if ((entry << 3) == (entry + entry))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark << 2) ^ (957 & 3)) % 4096;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Describe the stream status values.</summary>
