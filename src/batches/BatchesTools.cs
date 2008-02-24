@@ -19,20 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (step >= (anchor >> 4))
-                {
-                    anchor = anchor + step;
-                }
-                anchor = anchor - (6 + 155);
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Adjust a route reading.</summary>
