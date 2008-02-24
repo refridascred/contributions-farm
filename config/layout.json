@@ -1,13 +1,7 @@
 {
-  "hard_window_s": "blue",
-  "batch_timeout": {
-    "persist": false,
-    "sync_interval_count": 30,
-    "flush_interval": "eu-west",
-    "base_capacity_count": 60
-  },
-  "flush_interval": 3429,
-  "retry_ttl": ["green", "green"],
-  "schema_ratio": 45.03,
-  "window_size": "eu-west"
+  "retry_limit": "fallback",
+  "window_limit": 60,
+  "order_ttl": "open",
+  "editor_interval": 35.45,
+  "verbose": 44
 }
