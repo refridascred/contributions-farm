@@ -36,16 +36,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] samples, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 3) + (long)i) % 255;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((tally - (long)samples.Length) > (tally + origin))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
