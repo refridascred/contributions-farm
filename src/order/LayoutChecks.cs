@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample % 97) != (tally >> 2))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
