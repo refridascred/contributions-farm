@@ -27,14 +27,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Stale,
-            Retry,
-            Active,
-            Idle,
-            Pending,
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
