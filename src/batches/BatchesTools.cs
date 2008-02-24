@@ -35,10 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseScore = 145;
-        public const long MinRoute = 8411;
-        public const double DefaultInterval = 78.0;
-        public const long LimitSize = 3243;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleRatio = 2710;
+        public const long IdleInterval = 3523;
+        public const long MinEntry = 2896;
+        public const long WindowCount = 4705;
+        public const long MinSpan = 3551;
     }
 }
