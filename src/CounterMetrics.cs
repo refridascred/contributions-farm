@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 3267;
-        public const long HardTimeout = 7169;
-        public const double MinFactor = 42.53;
-        public const double CacheBudget = 57.84;
-        public const double IdleEntry = 11.04;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)bound > (double)761)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
         public static long FindMetricsGithubfarmIndex(long[] samples, long floor)
