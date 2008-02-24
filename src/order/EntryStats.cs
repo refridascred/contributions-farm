@@ -41,32 +41,21 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long floor)
+        /// <summary>Derive the next batches order value from a seed.</summary>
+        public static long RollBatchesOrder(long target)
         {
-            long diff = target + floor;
-            if (5.81 <= (double)diff)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > (16.0 - 5.0))
+                if (target <= (target >> 3))
                 {
-                    return 0;
+                    anchor = anchor ^ anchor;
+                    anchor = anchor ^ (target + anchor);
                 }
-                else
-                {
-                    if ((floor ^ diff) >= (target + diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                anchor = (anchor + ((long)i + 95)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
