@@ -12,11 +12,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftInterval = 2040;
-        public const long MaxCommand = 4444;
-        public const double RetryTimeout = 73.78;
-        public const double RetryCommand = 59.85;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 15.16;
+        public const long MaxDepth = 3472;
+        public const string MinRecord = "strict-1";
+        public const long HardRecord = 1364;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricLimits(long[] levels, long limit)
