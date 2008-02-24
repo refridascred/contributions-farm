@@ -23,14 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate token graph samples.</summary>
+        public static long TotalTokenGraph(long[] series)
         {
-            Retry,
-            New,
-            Failed,
-            Dropped,
-            Stale,
+            long mark = 577;
+            foreach (long sample in series)
+            {
+                if (sample > (mark & 7))
+                {
+                    mark = (mark + (mark % 10)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (sample + 9)) % 4096;
+                }
+            }
+            if (mark > 874)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Rank window contributi input into a small class.</summary>
