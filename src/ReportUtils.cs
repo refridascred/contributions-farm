@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSize = 7183;
-        public const long CacheCounter = 9959;
-        public const long DefaultFactor = 7378;
-        public const string MinInterval = "fallback-v2";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
