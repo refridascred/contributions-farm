@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] samples, long offset)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public long Count { get; set; }
+            long mix = 3;
+            foreach (long value in samples)
+            {
+                if ((offset >> 1) > offset)
+                {
+                    mix = ((mix - (offset + mix)) % 4096) + value;
+                }
+                if (!(((long)samples.Length - offset) == (mix ^ mix)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next order graph value from a seed.</summary>
