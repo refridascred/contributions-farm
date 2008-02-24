@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two profile tools measurements.</summary>
-        public static double SmoothProfileTools(double weight, double offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long origin)
         {
-            double ratio = weight;
-            if (ratio < (ratio + ratio))
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (ratio / 4.0);
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + weight) - (double)(long)i;
-            }
-            return ratio + (offset / 4.0);
+            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
