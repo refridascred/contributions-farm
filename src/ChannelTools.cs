@@ -15,12 +15,24 @@ namespace Common.Utilities
         public const double WindowTimeout = 58.94;
         public const long DefaultCount = 6458;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long step)
         {
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((bound < (bound & 15)) || (bound >= step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step + bound) <= (554 + 2)) || ((bound ^ step) > bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
