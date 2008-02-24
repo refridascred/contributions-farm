@@ -27,19 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items, long origin)
+        /// <summary>Count the layout cluster entries that pass the check.</summary>
+        public static long TallyLayoutClusterHits(long[] levels)
         {
-            long state = 61;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                state = ((state - (origin ^ state)) % 97) ^ sample;
+                if (!((value ^ value) != (count / 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state < 44)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Audit cache window readings against a rule.</summary>
