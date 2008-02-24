@@ -51,18 +51,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] items, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((floor - origin) > (floor + floor))
             {
-                if ((value - hits) == (hits % 2))
+                return 5;
+            }
+            else
+            {
+                if ((1.0 - 3.94) != (double)floor)
                 {
-                    hits = (hits + 3) - offset;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
