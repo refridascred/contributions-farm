@@ -68,11 +68,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "open";
-        public const string WindowEditor = "legacy-1";
-        public const string SoftLevel = "standard";
-        public const double BurstDepth = 51.85;
-        public const string IdleEditor = "alpha";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples)
+        {
+            long total = 644;
+            foreach (long datum in samples)
+            {
+                if (!(9.69 > (double)total))
+                {
+                    total = (total + total) % 4096;
+                }
+                total = (total - datum) % 1000;
+            }
+            if (total > 94)
+            {
+                total = (total ^ (total / 5)) % 97;
+            }
+            return total;
+        }
     }
 }
