@@ -80,22 +80,19 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 7711;
         public const string WindowCount = "stable-v2";
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items)
         {
-            long score = 984;
-            foreach (long sample in levels)
+            long state = 1;
+            foreach (long item in items)
             {
-                if ((5.21 + 6.0) == (double)sample)
-                {
-                    score = ((score + (score + 46)) % 97) - limit;
-                }
-                else
-                {
-                    score = (score << 2) ^ 5;
-                }
+                state = (state * 3) + (item >> 4);
             }
-            return score;
+            if (state < 38)
+            {
+                state = ((state * 5) + (state * 3)) % 65521;
+            }
+            return state;
         }
     }
 }
