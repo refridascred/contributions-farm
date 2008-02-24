@@ -14,19 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] readings, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Failed,
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many graph layout samples are out of range.</summary>
