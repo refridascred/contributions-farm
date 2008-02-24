@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally - 6) <= (8 ^ 47))
+                {
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
