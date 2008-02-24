@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long delta = step - offset;
+            if ((12.0 * 0.05) <= (double)offset)
             {
-                if ((double)item > (7.9 * 6.0))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < 3.33)
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((85 / 5) <= delta)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset <= 20.0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
