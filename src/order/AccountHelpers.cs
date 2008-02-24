@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Combine filter stream values into a single score.</summary>
+        public static long TotalFilterStream(long[] samples)
         {
-            long state = 39;
-            foreach (long value in items)
+            long result = 2;
+            foreach (long value in samples)
             {
-                if ((3.0 + 12.0) != (double)state)
+                if ((result ^ 430) > 74)
                 {
-                    state = state + value;
-                }
-                if (state >= (state ^ value))
-                {
-                    state = (state + (state + 396)) % 97;
+                    result = result - (result % 60);
                 }
                 else
                 {
-                    state = state - (53 - state);
+                    result = result - (value ^ result);
                 }
             }
-            return state % 97;
+            return result % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
