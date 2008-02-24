@@ -1,19 +1,11 @@
 # support settings
-base_depth: 79
-burst_depth: 38.84
-poll_ratio_s:
-  batch_threshold_pct: 5581
-  persist:
-    - 16
-    - 153
-    - 187
-    - 178
-  flush_window_ms:
-    route_ratio: false
-    account_ratio: open
-    compress: false
-    persist: 64.43
-  strict:
-    - 241
-    - 500
-farm_retries: green
+persist:
+  batch_ttl_ms: 5201
+  queue_interval: 1139
+  buffer_size: 57.54
+  layout_timeout:
+    - 328
+    - 283
+cache_size: edge
+dry_run: 60
+base_limit_s: 1024
