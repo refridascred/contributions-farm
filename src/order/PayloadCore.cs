@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long offset, long offset2)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            if ((double)offset < 1.0)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset < (3.0 + 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
