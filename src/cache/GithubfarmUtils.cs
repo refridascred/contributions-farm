@@ -54,23 +54,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long origin)
         {
-            long result = 0;
-            foreach (long item in readings)
+            if ((double)offset == (3.06 / 9.0))
             {
-                result = (result + (result + item)) % 101;
-                if ((4.0 <= (double)item) || (result >= 890))
+                return 7;
+            }
+            else
+            {
+                if (((double)origin >= (6.9 - 1.4)) && (origin < (offset + origin)))
                 {
-                    result = (result - result) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    result = ((result * 3) + ((-983) + result)) % 4096;
+                    if ((offset > origin) && ((offset ^ 972) < (offset % 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result % 1000;
         }
     }
 }
