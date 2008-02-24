@@ -32,39 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long origin, long origin2)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long diff = origin + origin2;
-            if (((1 ^ origin2) >= (origin - origin)) || ((1.34 / 9.0) == (double)diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 << 2) < (5 ^ diff))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (1 >= diff)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((5.65 - 1.0) > (double)origin2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Digest a series of account entries.</summary>
