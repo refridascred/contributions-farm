@@ -1,7 +1,15 @@
 {
-  "readonly": [171, 219],
-  "dry_run": 21.43,
-  "sync_threshold_s": [105, 190, 291, 12],
-  "burst_window_pct": "open",
-  "enabled": "strict"
+  "burst_depth": {
+    "command_capacity": true,
+    "hard_retries": true,
+    "cache_threshold": 81,
+    "soft_delay": 7288,
+    "metrics_depth": true,
+    "already_ttl": true
+  },
+  "audit": 6.04,
+  "layout_timeout": 84.62,
+  "persist": 34.6,
+  "compress": 100,
+  "enabled": "eu-west"
 }
