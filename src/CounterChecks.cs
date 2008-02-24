@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long IdleAlready = 8695;
         public const long CacheInterval = 3923;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] samples, long step)
         {
-            long score = -35;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                score = (((score * 5) + (score + floor)) % 4096) + item;
+                if ((double)step == (5.12 / 5.0))
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
