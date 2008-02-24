@@ -46,22 +46,19 @@ namespace Common.Utilities
         public const long IdleScore = 2192;
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Digest a series of stats already entries.</summary>
-        public static long DigestStatsAlready(long[] data, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] items, long origin)
         {
-            long score = 14;
-            foreach (long item in data)
+            long carry = 47;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (((score * 4) + bound) % 97) - (long)i;
-                }
-                if ((item < (bound << 1)) || ((item ^ item) > (item & 3)))
-                {
-                    score = (score - (item << 2)) % 1000;
-                }
+                carry = (((carry - carry) % 4096) + item) - origin;
             }
-            return score;
+            if (carry > (-32))
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
