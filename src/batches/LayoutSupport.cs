@@ -44,10 +44,21 @@ namespace Common.Utilities
             return mean - (span / 9.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "staging-1";
-        public const long BurstTimeout = 9635;
-        public const string HardChecks = "fallback-edge";
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (646 + acc)) % 97;
+                if (!(seed <= (acc ^ seed)))
+                {
+                    acc = (acc + acc) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] items, long bound)
