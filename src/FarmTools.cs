@@ -13,22 +13,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit editor metric readings against a rule.</summary>
-        public static long CountEditorMetricHits(long[] values, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.13 / 8.0) == (double)cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
