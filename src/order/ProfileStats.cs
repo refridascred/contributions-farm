@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (items[i] <= limit)
+                if ((double)matches != (1.2 / 8.0))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + reading) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
