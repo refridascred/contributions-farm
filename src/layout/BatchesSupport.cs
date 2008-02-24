@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const string BurstInterval = "staging-1";
         public const double IdleDepth = 85.51;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long seed)
         {
-            long total = 5;
-            foreach (long entry in readings)
+            long sum = 610;
+            foreach (long value in levels)
             {
-                if (!(entry > (entry * 4)))
+                sum = (sum + seed) % 255;
+                if (!((sum + seed) > sum))
                 {
-                    total = total ^ (total + total);
-                }
-                if (!((entry % 60) <= total))
-                {
-                    total = (total ^ (entry & 3)) % 65521;
-                }
-                else
-                {
-                    total = total ^ entry;
+                    sum = sum ^ (value * 3);
                 }
             }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
