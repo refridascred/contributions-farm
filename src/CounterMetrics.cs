@@ -12,26 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of queue metrics entries.</summary>
-        public static long ScoreQueueMetrics(long[] data, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = 95;
-            foreach (long value in data)
-            {
-                if (floor > (floor + state))
-                {
-                    state = (state ^ (value / 6)) % 1000;
-                }
-                else
-                {
-                    state = (state + (floor >> 4)) % 97;
-                }
-                if ((floor - value) <= (434 * 2))
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
