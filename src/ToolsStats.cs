@@ -27,22 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the layout cluster entries that pass the check.</summary>
-        public static long TallyLayoutClusterHits(long[] levels)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((value ^ value) != (count / 2)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit cache window readings against a rule.</summary>
