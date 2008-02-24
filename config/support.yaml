@@ -1,8 +1,19 @@
 # support settings
-base_window: 75
-cluster_window:
-  burst_window: open
-  support_capacity: blue
-  idle_threshold_pct: 56
-  command_delay: 14
-idle_retries_count: 82.0
+soft_ratio_ms: standard
+flush_ttl_count:
+  sync_limit_count: 74.56
+  soft_timeout:
+    base_threshold_count: fallback
+    flush_depth_s: false
+    batch_size: 1024
+    persist: local
+    cache_ratio_s:
+      - 58
+      - 97
+      - 166
+      - 326
+  record_capacity: cached
+  batch_ttl: 100
+  payload_capacity: standard
+support_threshold: 60
+cache_size: true
