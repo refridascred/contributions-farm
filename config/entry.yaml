@@ -1,12 +1,7 @@
 # entry settings
-soft_retries: 1024
-base_ratio_s: 3072
-burst_timeout:
-  warm_window:
-    - 44
-    - 293
-  layout_depth: 6278
-  flush_delay: 22.05
-cache_ttl: false
-sync_depth_ms: false
-hard_size_s: 75
+notes_size: 9014
+context_capacity: standard
+readonly: eu-west
+idle_threshold_pct: true
+flush_limit_ms: 58.37
+strict: 77.04
