@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi window samples are out of range.</summary>
-        public static long TallyContributiWindowHits(long[] series, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)tally == (double)item) || ((double)tally < 9.94))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + target;
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
