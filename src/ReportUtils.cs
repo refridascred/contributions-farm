@@ -15,24 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] readings, long limit)
         {
-            if ((limit * 4) <= offset)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 1) <= (offset >> 3))
+                if (item != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a context counter forward.</summary>
