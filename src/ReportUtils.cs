@@ -31,11 +31,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 39.55;
-        public const double BatchSpan = 78.66;
-        public const long StepFormat = 6326;
-        public const double BurstFormat = 56.5;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits == (double)(-318))
+                {
+                    hits = ((hits + 1) + cell) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
