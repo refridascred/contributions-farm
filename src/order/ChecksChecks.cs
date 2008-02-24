@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up support batch samples.</summary>
-        public static long PairSupportBatchCount(long[] series)
+        /// <summary>Locate a batch token reading by value.</summary>
+        public static long LocateBatchTokenIndex(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] > step)
                 {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
