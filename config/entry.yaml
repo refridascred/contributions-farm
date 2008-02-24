@@ -1,8 +1,7 @@
 # entry settings
-persist: 2404
-burst_depth_count: 6813
-counter_size:
-  - 92
-  - 493
-  - 293
-default_threshold_pct: 31.48
+compress: true
+warm_window_ms: 7949
+audit: 92
+min_delay_s: blue
+warm_depth_count: false
+cluster_interval: true
