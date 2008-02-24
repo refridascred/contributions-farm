@@ -19,19 +19,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double scale, double span)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double bias)
         {
-            double gain = span * 5.5;
-            if (gain > span)
+            double scale = (double)9 / 4.0;
+            if (scale >= bias)
             {
-                gain = (gain - span) + scale;
+                scale = (scale - (double)7) + ratio;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                gain = (gain - span) + (double)(long)i;
+                scale = scale + (double)(long)i;
             }
-            return gain - span;
+            return scale + (double)712;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
