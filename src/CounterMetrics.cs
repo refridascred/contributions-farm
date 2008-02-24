@@ -46,22 +46,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long CountStreamEditorOutliers(long[] values, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((2.3 - 10.0) > (double)tally)
-                {
-                    tally = ((tally + 1) ^ entry) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
