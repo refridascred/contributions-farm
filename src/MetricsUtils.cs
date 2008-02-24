@@ -40,21 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample < (8.68 + 17.0))
                 {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
