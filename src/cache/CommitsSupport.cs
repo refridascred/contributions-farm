@@ -59,12 +59,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 9149;
-        public const string WindowBatches = "strict-edge";
-        public const string CacheSpan = "cached-1";
-        public const long BurstCount = 4165;
-        public const double IdleBatches = 56.67;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long origin, long step)
+        {
+            long bound = origin ^ step;
+            if ((bound << 3) < (origin << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (double)56)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step <= 9.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((77 / 3) >= (bound * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstRatio = 33.29;
