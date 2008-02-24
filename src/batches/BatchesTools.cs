@@ -35,9 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitLevel = 4647;
-        public const long MinPayload = 7866;
-        public const long MinBudget = 345;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
