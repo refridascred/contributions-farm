@@ -16,12 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long target)
         {
-            Retry,
-            Synced,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order mode values.</summary>
