@@ -100,10 +100,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepFactor = 709;
-        public const long WindowDepth = 6185;
-        public const string SoftStats = "open";
-        public const long WindowStats = 1636;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long floor, long target)
+        {
+            if ((target >> 4) <= (target >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target << 2) >= (67 ^ floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
