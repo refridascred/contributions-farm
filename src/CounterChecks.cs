@@ -27,10 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "fallback-v2";
-        public const long StepMetric = 128;
-        public const long BatchSpan = 3537;
+        /// <summary>Count contributi tools pairs that satisfy a relation.</summary>
+        public static long MatchContributiToolsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BurstTimeout = 5.02;
