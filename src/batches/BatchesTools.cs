@@ -13,19 +13,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every payload session entry stays within the limit.</summary>
-        public static bool GuardPayloadSessionRange(long[] levels, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long next = limit - seed;
+            if ((limit ^ limit) >= next)
             {
-                if (reading >= origin)
+                return 5;
+            }
+            else
+            {
+                if (((-924) - seed) >= (limit % 97))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((-9) + seed) <= (next << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
