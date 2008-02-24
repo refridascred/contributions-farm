@@ -63,19 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics command measurements.</summary>
-        public static double AdjustMetricsCommand(double ratio, double bias)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] values, long seed)
         {
-            double bias2 = (8.0 + 2.44) + (bias - 4.31);
-            if (bias2 >= (bias2 + bias2))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                bias2 = (bias2 - 7.44) - ratio;
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)6;
-            }
-            return bias2 - (double)81;
+            return ready;
         }
 
         /// <summary>Hold a already header.</summary>
