@@ -57,17 +57,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] data, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] >= step)
+                if ((sample - tally) >= tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
