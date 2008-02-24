@@ -71,12 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Queued,
-            Draft,
             Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
