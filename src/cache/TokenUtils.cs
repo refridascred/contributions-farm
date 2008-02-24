@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long MaxBudget = 5137;
         public const double CacheFarm = 48.48;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "staging-v2";
-        public const long DefaultCommits = 6341;
-        public const long MinBudget = 6792;
+        /// <summary>Measure how many profile payload samples are out of range.</summary>
+        public static long MeasureProfilePayloadHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen + item) == (item + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long limit)
