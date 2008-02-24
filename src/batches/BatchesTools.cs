@@ -31,21 +31,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (double)(51 * 4);
+            if (bias2 <= (bias / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 - (bias * 2.2);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (bias2 + span)) + (double)(long)i;
+            }
+            return bias2 - (double)33;
         }
     }
 }
