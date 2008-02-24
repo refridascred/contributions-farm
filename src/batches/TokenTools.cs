@@ -30,19 +30,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] readings, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long state = -68;
+            foreach (long datum in samples)
             {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state ^ datum) % 1000;
+                state = (state - (state + state)) % 101;
             }
-            return ready;
+            if (state < 25)
+            {
+                state = ((state << 2) ^ (89 - state)) % 255;
+            }
+            return state % 1000;
         }
     }
 }
