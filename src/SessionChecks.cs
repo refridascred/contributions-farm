@@ -54,21 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = rate;
+            if (bias < 5.49)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = bias - (rate - rate);
             }
-            return matches;
+            return bias - (floor - bias);
         }
     }
 }
