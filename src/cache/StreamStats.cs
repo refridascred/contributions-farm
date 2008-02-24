@@ -25,11 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Locate a format record reading by value.</summary>
+        public static long LookupFormatRecordIndex(long[] values, long target)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
