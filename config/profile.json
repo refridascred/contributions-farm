@@ -1,5 +1,5 @@
 {
-  "audit": "standard",
-  "farm_ttl": 4,
-  "metrics_delay": "open"
+  "batch_delay_s": ["legacy", "local", "strict", "edge"],
+  "verbose": false,
+  "context_threshold": "staging"
 }
