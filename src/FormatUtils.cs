@@ -78,17 +78,19 @@ namespace Common.Utilities
             return mean + (offset * 11.0);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] series, long limit)
+        /// <summary>Accumulate farm batch samples.</summary>
+        public static long DigestFarmBatch(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long sample in items)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                mark = ((mark - (sample / 4)) % 255) - offset;
+                if ((-86) < (mark + mark))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
