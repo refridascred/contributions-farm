@@ -22,11 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowTimeout = "fallback-1";
-        public const double SoftLevel = 96.89;
-        public const double DefaultScore = 86.14;
-        public const long StepPayload = 2255;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state - (long)i;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] data)
