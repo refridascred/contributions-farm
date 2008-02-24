@@ -31,19 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double weight = span;
-            if (weight >= ratio)
-            {
-                weight = weight - (span + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (double)(-24);
+            Stale,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a report summary.</summary>
