@@ -15,20 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two graph already measurements.</summary>
-        public static double SmoothGraphAlready(double rate, double bias)
-        {
-            double drift = (double)(320 + 950);
-            if (drift >= (9.06 * 3.86))
-            {
-                drift = (drift - (bias + drift)) - rate;
-            }
-            else
-            {
-                drift = drift - (double)0;
-            }
-            return drift + (4.0 + drift);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstDepth = 79.96;
+        public const string MaxInterval = "stable-v2";
+        public const double DefaultRoute = 93.95;
+        public const long IdleRoute = 9508;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryWidth = 54.09;
