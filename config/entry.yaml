@@ -1,7 +1,15 @@
 # entry settings
-readonly:
-  - staging
-  - open
-  - open
-route_threshold: 12
-idle_ttl: 69.62
+retry_window: true
+base_depth:
+  base_size_pct: 43.7
+  idle_depth_s: cached
+  base_ratio: 42.4
+  commits_limit: 81.42
+  batch_timeout:
+    - green
+    - open
+    - cached
+    - legacy
+  notes_size: 78
+audit: 250
+burst_ttl_pct: 39
