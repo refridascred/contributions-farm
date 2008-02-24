@@ -1,6 +1,8 @@
 {
-  "sync_ratio": 100,
-  "strict": 7170,
-  "notes_depth": false,
-  "batch_capacity_count": 500
+  "enabled": "edge",
+  "hard_depth_ms": 100,
+  "editor_threshold": 47.85,
+  "persist": 71,
+  "max_ttl_ms": "standard",
+  "dry_run": [350, 331]
 }
