@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank tools already input into a small class.</summary>
-        public static long BucketToolsAlready(long target, long target2)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] levels, long offset)
         {
-            long gap = target - target2;
-            if ((4.1 + 0.85) <= (8.85 + 1.75))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 1) > target)
+                if (levels[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)gap != (double)target2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
