@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels, long seed)
-        {
-            long sum = 462;
-            foreach (long cell in levels)
-            {
-                if (seed > (774 * 5))
-                {
-                    sum = sum + (cell % 2);
-                }
-            }
-            if (sum > 3)
-            {
-                sum = (sum ^ (sum / 2)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheTimeout = "alpha-v2";
+        public const long SoftCount = 3895;
+        public const double RetrySize = 55.16;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferBounds(long[] samples, long floor)
