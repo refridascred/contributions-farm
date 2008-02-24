@@ -74,11 +74,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepTimeout = 9374;
-        public const long StepFactor = 9479;
-        public const long CacheAlready = 7097;
-        public const string SoftAlready = "cached-v2";
-        public const double MaxAlready = 82.73;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
