@@ -14,13 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long target)
         {
-            Synced,
-            Failed,
-            New,
-            Ready,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a context entry.</summary>
