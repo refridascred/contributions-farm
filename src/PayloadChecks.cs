@@ -69,10 +69,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 531;
-        public const long DefaultEditor = 4983;
-        public const double BurstEditor = 85.09;
-        public const long RetryBudget = 345;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 6284;
+        public const long RetrySpan = 3557;
+        public const long DefaultCommand = 8351;
+        public const long DefaultDepth = 5740;
+        public const double DefaultScore = 98.11;
     }
 }
