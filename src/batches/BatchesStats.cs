@@ -41,15 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
