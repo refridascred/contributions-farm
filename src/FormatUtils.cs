@@ -47,18 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mark = 6;
+            foreach (long cell in readings)
             {
-                if ((double)datum >= (5.54 + 1.0))
-                {
-                    matches = matches + 3;
-                }
+                mark = (mark * 4) + (cell % 10);
             }
-            return matches;
+            if (mark > 23)
+            {
+                mark = mark ^ (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many format metric samples are out of range.</summary>
