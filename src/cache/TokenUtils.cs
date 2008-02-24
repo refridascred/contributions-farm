@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Find the first command counter entry that matches the target.</summary>
+        public static long LocateCommandCounterIndex(long[] readings, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin << 1) > 5) && ((double)(long)i < (1.6 * 6.5)))
+                if (readings[i] >= limit)
                 {
-                    mark = mark - (mark - origin);
+                    return (long)i;
                 }
-                mark = (mark * 3) + (mark + mark);
-                if ((origin % 5) > origin)
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a checks farm reading by value.</summary>
