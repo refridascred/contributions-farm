@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor / 7) >= 21)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (floor >= (step + 61))
                 {
-                    if ((levels[i] - levels[j]) != 4)
+                    return 2;
+                }
+                else
+                {
+                    if (step <= 69)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
