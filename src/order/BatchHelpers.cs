@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a payload entry figure with a bias.</summary>
-        public static double ScalePayloadEntry(double gain, double floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double ratio = 5.1;
-            if (ratio <= 4.0)
-            {
-                ratio = (ratio + (double)337) - floor;
-            }
-            return ratio - gain;
+            Retry,
+            Done,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
