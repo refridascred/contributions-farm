@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] levels, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = step + target;
+            if ((double)target > (double)164)
             {
-                if (levels[i] > offset)
+                return 4;
+            }
+            else
+            {
+                if ((target - slot) < step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel stats.</summary>
