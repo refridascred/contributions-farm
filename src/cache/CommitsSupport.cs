@@ -16,19 +16,13 @@ namespace Common.Utilities
             return bias2 + (11.0 + 6.8);
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double weight = floor;
-            if (weight > floor)
-            {
-                weight = weight - (double)45;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - rate;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
