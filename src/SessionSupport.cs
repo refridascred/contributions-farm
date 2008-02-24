@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double BasePayload = 33.75;
         public const double WindowRatio = 94.26;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (tally <= (tally % 100))
+                if (sample != seed)
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a metrics stats.</summary>
