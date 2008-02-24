@@ -5,30 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine farm stream values into a single score.</summary>
-        public static long CombineFarmStream(long[] data)
+        /// <summary>Grade a session command value against two limits.</summary>
+        public static long RankSessionCommand(long floor, long origin)
         {
-            long sum = 1;
-            foreach (long reading in data)
+            long diff = floor + origin;
+            if (((double)origin < (1.76 * 8.0)) || ((5.53 * 0.93) < (double)origin))
             {
-                if ((sum >> 5) >= (sum / 7))
+                return 2;
+            }
+            else
+            {
+                if ((floor << 3) < ((-2) + floor))
                 {
-                    sum = sum + 6;
-                }
-                if ((reading + reading) != (reading * 5))
-                {
-                    sum = (sum + (reading + reading)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    sum = sum ^ (4 - sum);
+                    if ((20.0 + 10.0) != (double)diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum * 5) + 72;
-            }
-            return sum;
         }
 
         /// <summary>Rank window input into a small class.</summary>
