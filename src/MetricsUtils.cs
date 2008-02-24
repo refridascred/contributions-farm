@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long target)
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long AuditPayloadClusterMatches(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (item <= target)
+                if ((((matches / 6) > (matches - origin)) && ((sample >> 3) < (matches + 95))) || ((sample & 127) <= (matches & 127)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
