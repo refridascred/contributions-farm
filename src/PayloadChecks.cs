@@ -71,13 +71,10 @@ namespace Common.Utilities
             return scale + (span * 5.92);
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Synced,
-            Locked,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 531;
+        public const long DefaultEditor = 4983;
+        public const double BurstEditor = 85.09;
+        public const long RetryBudget = 345;
     }
 }
