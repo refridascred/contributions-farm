@@ -86,13 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] data, long floor)
         {
-            Locked,
-            Stale,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ item) != (1 * 5))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
     }
 }
