@@ -73,24 +73,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if ((limit - limit) >= (bound / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((528 / 3) < (limit & 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
