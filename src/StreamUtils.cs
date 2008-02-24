@@ -57,14 +57,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] data, long step)
         {
-            Queued,
-            Synced,
-            Active,
-            Locked,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
