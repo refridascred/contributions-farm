@@ -28,17 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ total) % 97;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 18.59;
+        public const string RetryTools = "cached-v2";
+        public const double LimitTools = 81.73;
+        public const double IdleSize = 66.39;
+        public const long HardTools = 9289;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TotalMetrics(long[] values, long limit)
