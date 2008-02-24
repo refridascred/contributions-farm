@@ -38,12 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
+            Failed,
+            Done,
+            Draft,
         }
     }
 }
