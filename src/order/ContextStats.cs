@@ -42,13 +42,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryDepth = 7900;
+        public const long SoftScore = 3195;
+        public const double StepRecord = 85.28;
+        public const string BurstRecord = "fallback-edge";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] items, long seed)
