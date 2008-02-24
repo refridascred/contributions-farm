@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mark = 33;
+            foreach (long value in levels)
             {
-                if ((sample - seen) >= (seen << 3))
+                if ((value <= (9 << 1)) && ((58 + value) != (target ^ value)))
                 {
-                    seen = seen + 3;
+                    mark = (mark << 2) ^ mark;
+                }
+                if (!(value <= (mark + target)))
+                {
+                    mark = (mark - value) % 97;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
