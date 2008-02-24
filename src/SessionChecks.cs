@@ -40,24 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double span)
-        {
-            double gain = rate;
-            if (gain < gain)
-            {
-                gain = gain + (span / 6.0);
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (double)(-29)) + (double)(long)i;
-            }
-            return gain - rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "cached-1";
+        public const string MaxInterval = "legacy-edge";
+        public const long IdleScore = 2192;
+        public const string BatchSpan = "legacy-edge";
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
