@@ -47,13 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitCount = 961;
+        public const long StepLayout = 6755;
+        public const double RetryTimeout = 71.7;
+        public const long WindowLayout = 9414;
+        public const string BaseLayout = "primary-edge";
     }
 }
