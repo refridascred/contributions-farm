@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] values, long origin)
         {
-            long delta = bound ^ origin;
-            if (!((1.03 * 17.0) > (double)bound))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) >= (delta >> 2))
+                if (entry <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.02 * 5.76) == (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a entry info.</summary>
