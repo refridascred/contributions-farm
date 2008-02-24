@@ -57,21 +57,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
