@@ -30,15 +30,18 @@ namespace Common.Utilities
             return drift + 3.0;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items)
         {
-            double ratio = (double)13 * 9.9;
-            if (ratio > (bias + bias))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                ratio = ratio - bias2;
+                if ((seen << 1) < cell)
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio - (double)7;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
