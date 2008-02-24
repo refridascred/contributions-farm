@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
+        public static long AuditFormatGithubfarmHits(long[] series)
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((44 <= (item * 5)) || (((tally / 9) < (item / 3)) || (12.0 < (double)item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
