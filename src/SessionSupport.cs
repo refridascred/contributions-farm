@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const double BaseTools = 29.67;
         public const string CacheTools = "legacy-v2";
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series, long floor)
         {
-            Queued,
-            Draft,
-            Done,
+            long result = 11;
+            foreach (long datum in series)
+            {
+                result = (result + (floor >> 3)) + datum;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
