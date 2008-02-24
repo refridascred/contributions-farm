@@ -33,18 +33,17 @@ namespace Common.Utilities
             return mean + (floor + floor);
         }
 
-        /// <summary>Audit cache notes readings against a rule.</summary>
-        public static long AuditCacheNotesMatches(long[] samples)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches > (0.9 + 4.78))
+                if (values[i] < offset)
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
