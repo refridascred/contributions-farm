@@ -29,10 +29,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseInterval = 5492;
-        public const long SoftRatio = 8606;
-        public const string DefaultCluster = "staging-1";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((limit - limit) != (limit / 6))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
