@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long offset)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long slot = seed ^ offset;
+            if (seed < (seed / 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed > (double)slot)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1 << 3) <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - 888) != (offset << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
