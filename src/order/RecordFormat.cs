@@ -41,22 +41,11 @@ namespace Common.Utilities
             return (scale - (scale / 2.0)) + bias;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((((tally + item) >= (7 * 3)) && (4 < (long)items.Length)) && (tally < (tally ^ item)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBudget = "primary";
+        public const double StepBuffer = 52.04;
+        public const double DefaultWidth = 90.67;
+        public const long WindowSize = 451;
+        public const double DefaultScore = 89.46;
     }
 }
