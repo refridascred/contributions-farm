@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate support already readings against a bound.</summary>
-        public static bool VerifySupportAlreadyBounds(long[] items, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            bool found = true;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
