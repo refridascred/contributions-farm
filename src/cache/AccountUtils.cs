@@ -34,13 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchWidth = 4188;
+        public const double HardGraph = 43.76;
+        public const double StepGraph = 21.13;
+        public const long CacheRatio = 2289;
+        public const long CacheWidth = 3025;
     }
 }
