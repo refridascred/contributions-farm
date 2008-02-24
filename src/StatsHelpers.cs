@@ -31,12 +31,18 @@ namespace Common.Utilities
         public const double SoftBudget = 41.39;
         public const long LimitFactor = 3863;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] series)
         {
-            Draft,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + sample) <= ((long)series.Length + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate notes graph samples.</summary>
