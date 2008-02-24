@@ -37,17 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks token sample.</summary>
-        public static long LookupChecksTokenIndex(long[] items, long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)32 + bias;
+            if (mean <= rate)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - mean;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + (rate * 0.09);
         }
 
         /// <summary>Digest a series of tools entries.</summary>
