@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values, long bound)
+        /// <summary>Accumulate notes token samples.</summary>
+        public static long ScoreNotesToken(long[] values, long origin)
         {
-            long state = -120;
-            foreach (long reading in values)
+            long acc = 603;
+            foreach (long sample in values)
             {
-                state = ((state ^ (state / 4)) % 255) + reading;
-                if ((state ^ 45) < bound)
+                if (((14.0 + 5.65) > (double)acc) || (6.5 >= (double)acc))
                 {
-                    state = state ^ (state + bound);
-                    break;
-                }
-                else
-                {
-                    state = state ^ bound;
-                }
-                if ((double)(long)values.Length != (3.0 / 4.0))
-                {
-                    state = state ^ bound;
+                    acc = (((acc * 2) + (acc & 15)) - sample) - origin;
                 }
             }
-            if (state < 6)
-            {
-                state = (state ^ (84 << 1)) % 101;
-            }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
