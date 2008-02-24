@@ -28,12 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((double)3 > (double)cell) || !((double)hits != (2.0 - 11.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload mode values.</summary>
