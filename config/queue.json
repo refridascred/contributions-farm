@@ -1,23 +1,8 @@
 {
-  "soft_depth": ["strict", "primary", "strict", "blue"],
-  "retry_interval_count": {
-    "strict": false,
-    "hard_depth": true,
-    "cluster_size": ["cached", "latest"],
-    "channel_window": 96,
-    "default_window_s": 3677
-  },
-  "idle_capacity_pct": {
-    "retry_window": {
-      "support_window": ["standard", "blue", "latest", "standard"],
-      "hard_depth": false,
-      "base_delay": [85, 130, 14],
-      "flush_interval_ms": ["blue", "staging"]
-    },
-    "buffer_interval": 30,
-    "audit": 25,
-    "flush_capacity_pct": 22
-  },
-  "batch_ttl": "eu-west",
-  "audit": "fallback"
+  "dry_run": "strict",
+  "batch_delay": 65.19,
+  "min_size_ms": false,
+  "batch_capacity": 1114,
+  "batch_retries": ["fallback", "eu-west"],
+  "audit": true
 }
