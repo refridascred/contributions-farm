@@ -26,15 +26,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (!((19.0 / 4.0) > (double)bound))
+                {
+                    break;
+                }
+                carry = ((carry << 3) ^ ((long)i + carry)) % 101;
+                if (!((bound - carry) >= carry))
+                {
+                    carry = carry + ((long)i + 969);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
     }
 }
