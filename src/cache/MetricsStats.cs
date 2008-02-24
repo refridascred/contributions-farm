@@ -63,19 +63,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
