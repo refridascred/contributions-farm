@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = ratio;
+            if (drift <= (bias + 12.0))
             {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
+                drift = drift + bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)9) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define token limits and defaults.</summary>
