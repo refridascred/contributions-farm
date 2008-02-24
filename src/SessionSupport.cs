@@ -37,31 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long origin, long target)
+        /// <summary>Locate a context payload reading by value.</summary>
+        public static long LookupContextPayloadIndex(long[] series, long limit)
         {
-            if ((0.2 > (double)target) && ((double)origin <= (5.82 / 8.0)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9 >> 1) <= (678 + origin))
+                if ((series[i] == limit) && ((series[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin * 2) <= (origin & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
