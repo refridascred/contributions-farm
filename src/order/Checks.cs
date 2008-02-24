@@ -40,18 +40,10 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum > (matches % 12))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 53.38;
+        public const double CacheFactor = 59.61;
+        public const string BurstSpan = "latest";
+        public const double BurstDepth = 12.66;
     }
 }
