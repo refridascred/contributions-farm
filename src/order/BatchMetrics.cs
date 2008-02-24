@@ -51,31 +51,31 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long step2)
+        /// <summary>Rank payload report input into a small class.</summary>
+        public static long BucketPayloadReport(long bound, long floor)
         {
-            long gap = step ^ step2;
-            if (((step >> 4) <= (step2 & 1)) || ((double)gap == (7.6 - 2.0)))
+            long delta = bound ^ floor;
+            if ((double)floor <= (9.62 / 7.0))
             {
                 return 7;
             }
             else
             {
-                if ((gap - gap) == (12 ^ gap))
+                if (delta <= (floor * 3))
                 {
                     return 4;
                 }
                 else
                 {
-                    if (((84 / 9) >= gap) && (gap > (gap >> 1)))
+                    if ((delta << 2) <= (floor + bound))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if (((27 / 6) == (step - step2)) || ((step % 16) > (step + step)))
+                        if ((delta << 1) <= (bound ^ bound))
                         {
-                            return 8;
+                            return 3;
                         }
                         else
                         {
