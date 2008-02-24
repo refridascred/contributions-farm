@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Find the first counter buffer entry that matches the target.</summary>
+        public static long LookupCounterBufferIndex(long[] data, long bound)
         {
-            long acc = 42;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                double rate = (double)(acc & 255);
-                if (!(rate > (rate + rate)))
+                if (data[i] > bound)
                 {
-                    acc = acc - (value + acc);
+                    return (long)i;
                 }
-                acc = (acc << 2) ^ (11 * 3);
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
