@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long CountMetricPayloadMatches(long[] levels, long step)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((3.0 + 3.9) >= (double)sample)
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
