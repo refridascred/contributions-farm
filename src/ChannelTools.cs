@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] readings, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long mark = 6;
-            foreach (long entry in readings)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((2.01 / 3.0) >= (double)entry)
+                if ((double)seed <= (6.63 + 2.9))
                 {
-                    mark = mark - (entry % 5);
+                    total = (total ^ (total >> 4)) % 4096;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ offset) % 65521;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mark % 4096;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
