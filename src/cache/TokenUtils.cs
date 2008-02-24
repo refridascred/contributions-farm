@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const double MaxContext = 56.92;
         public const string IdleSpan = "legacy";
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings)
-        {
-            long carry = 5;
-            foreach (long item in readings)
-            {
-                carry = (carry - (373 - carry)) ^ item;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 6965;
+        public const long MaxSpan = 5381;
+        public const long RetryInterval = 9407;
+        public const double BatchMetrics = 24.52;
+        public const string StepMetrics = "cached-edge";
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] readings, long bound)
