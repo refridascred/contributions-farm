@@ -24,18 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((200 - tally) < (reading % 3))
-                {
-                    tally = tally + 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
