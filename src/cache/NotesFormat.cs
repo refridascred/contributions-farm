@@ -17,12 +17,21 @@ namespace Common.Utilities
         public const long MaxInterval = 9176;
         public const long BurstOrder = 2906;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Compare every pair of command profile readings.</summary>
+        public static long CompareCommandProfileCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
