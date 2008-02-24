@@ -41,13 +41,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Ready,
-            Done,
-            Stale,
-            Active,
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
