@@ -35,21 +35,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum >> 4) < (-905))
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the schema mode values.</summary>
