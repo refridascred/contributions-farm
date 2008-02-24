@@ -27,15 +27,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double scale, double span)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double ratio = scale;
-            if (ratio > (scale + ratio))
-            {
-                ratio = ratio + span;
-            }
-            return ratio + (scale - span);
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
