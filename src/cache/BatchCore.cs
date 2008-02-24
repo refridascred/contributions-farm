@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepTimeout = 9793;
+        public const string StepFactor = "legacy";
+        public const long WindowCluster = 1561;
+        public const string BatchCluster = "strict-edge";
+        public const string MinCluster = "cached-1";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
