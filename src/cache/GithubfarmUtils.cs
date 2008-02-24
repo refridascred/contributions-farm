@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a notes info.</summary>
