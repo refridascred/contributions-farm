@@ -22,18 +22,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] values)
+        /// <summary>Validate payload buffer readings against a bound.</summary>
+        public static bool GuardPayloadBufferRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((item & 127) != (item + 26))
+                if (datum <= seed)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
