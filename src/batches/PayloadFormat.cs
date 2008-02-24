@@ -65,13 +65,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
