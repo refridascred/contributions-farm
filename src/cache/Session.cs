@@ -32,22 +32,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long result = 9;
-            foreach (long sample in readings)
+            long sum = 130;
+            foreach (long entry in readings)
             {
-                if (sample > ((long)readings.Length - result))
+                if ((2.3 - 4.0) > (double)sum)
                 {
-                    result = result + (result / 4);
+                    sum = sum + 13;
                 }
-                if (!(5.79 > (double)result))
+                if (((double)entry < (double)sum) || (sum >= (54 >> 3)))
                 {
-                    result = ((result << 2) ^ (sample / 5)) % 1000;
+                    sum = (sum ^ sum) % 97;
                 }
+                else
+                {
+                    sum = sum + (entry << 1);
+                    sum = ((sum * 2) + (entry - sum)) % 1000;
+                }
+                sum = sum + entry;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
