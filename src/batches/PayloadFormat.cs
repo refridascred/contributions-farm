@@ -15,12 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            New,
-            Retry,
-            Pending,
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
