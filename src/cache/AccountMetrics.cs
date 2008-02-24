@@ -36,19 +36,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] series, long seed)
         {
-            long score = 478;
-            foreach (long value in samples)
+            long state = -566;
+            foreach (long item in series)
             {
-                score = ((score + score) % 97) ^ value;
+                state = state + (item * 5);
             }
-            if (score > 13)
+            if (state > 597)
             {
-                score = (score - (score + 4)) % 97;
+                state = (state + seed) % 4096;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Combine schema profile values into a single score.</summary>
