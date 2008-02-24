@@ -1,5 +1,7 @@
 {
-  "hard_delay": "cached",
-  "record_interval": 500,
-  "min_timeout_pct": ["legacy", "eu-west"]
+  "min_limit_s": 3.06,
+  "batch_size": [253, 401],
+  "default_size_ms": 49,
+  "soft_interval_count": 3640,
+  "editor_window": "legacy"
 }
