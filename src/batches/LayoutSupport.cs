@@ -39,12 +39,17 @@ namespace Common.Utilities
             return (bias - 20.0) + floor;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            Done,
-            Synced,
-            Active,
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result - (result & 15)) % 101;
+                result = ((result << 2) ^ (result + (long)i)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
