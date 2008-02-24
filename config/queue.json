@@ -1,8 +1,5 @@
 {
-  "warm_limit": "stable",
-  "flush_retries": ["green", "blue"],
-  "sync_interval_count": false,
-  "verbose": "stable",
-  "command_ttl": 7990,
-  "poll_threshold_count": "blue"
+  "retry_ratio_ms": ["latest", "fallback", "green"],
+  "queue_delay": true,
+  "readonly": 250
 }
