@@ -24,22 +24,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long step)
         {
-            long total = 12;
-            foreach (long sample in readings)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((total + total) <= (total << 2))
-                {
-                    total = (total + (sample & 63)) % 101;
-                }
+                state = ((state * 3) + (state - state)) % 65521;
+                state = ((state * 3) + (long)i) % 97;
             }
-            if (total > 643)
-            {
-                total = (total * 4) + total;
-            }
-            return total % 97;
+            return state;
         }
 
         /// <summary>Describe the window kind values.</summary>
