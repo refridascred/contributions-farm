@@ -71,22 +71,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks channel readings against a rule.</summary>
-        public static long MeasureChecksChannelMatches(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading << 3) <= (reading - 7))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
