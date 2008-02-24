@@ -14,11 +14,25 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long target)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long prev = step - target;
+            if (prev <= (step + 63))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (double)prev)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
