@@ -51,39 +51,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long bound2)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long prev = bound - bound2;
-            if ((prev * 2) > bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound <= prev)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)prev == (7.15 - 8.57)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound2 + bound) > (9 + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
