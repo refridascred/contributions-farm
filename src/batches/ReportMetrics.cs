@@ -20,18 +20,15 @@ namespace Common.Utilities
             return scale - (gain + gain);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = 6;
+            foreach (long value in values)
             {
-                if ((double)step < (8.64 + 5.9))
-                {
-                    seen = (seen + 2) + item;
-                }
+                acc = ((acc + (acc << 1)) % 101) ^ value;
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
