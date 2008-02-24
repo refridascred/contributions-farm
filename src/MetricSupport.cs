@@ -19,21 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                double weight = (double)total + (double)(-237);
+                if ((weight + weight) <= (double)144)
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (bound + bound)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
