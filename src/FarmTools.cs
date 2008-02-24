@@ -38,19 +38,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double ratio = (span / 5.0) * 1.8;
-            if (ratio >= span)
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio + 15.0;
+            Ready,
+            Done,
+            Retry,
         }
     }
 }
