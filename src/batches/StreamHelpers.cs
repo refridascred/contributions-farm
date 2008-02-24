@@ -40,23 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] series, long origin)
         {
-            long mark = 338;
-            foreach (long reading in readings)
+            long result = 58;
+            foreach (long entry in series)
             {
-                if (!(floor >= 56))
-                {
-                    mark = (mark * 2) + (reading - reading);
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 101;
-                }
-                mark = (mark << 3) ^ 1;
+                result = (((result * 3) + (result ^ (long)series.Length)) ^ entry) - origin;
             }
-            return mark;
+            if (result < 8)
+            {
+                result = ((result << 3) ^ (result << 2)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
