@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool ValidateMetricsCounterLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowSpan = 8485;
+        public const long IdleFilter = 866;
+        public const long WindowFilter = 7908;
+        public const long BatchFilter = 8826;
 
         /// <summary>Project the next stats value.</summary>
         public static double BlendStats(double gain, double offset)
