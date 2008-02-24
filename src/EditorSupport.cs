@@ -71,21 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count farm record pairs that satisfy a relation.</summary>
-        public static long CompareFarmRecordCount(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
