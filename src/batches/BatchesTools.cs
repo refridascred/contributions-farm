@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long limit, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double floor)
         {
-            if (((limit - 5) != (12 / 3)) || ((target >> 1) > target))
+            double drift = floor + (double)12;
+            if (drift > (double)32)
             {
-                return 4;
+                drift = drift + scale;
             }
             else
             {
-                if ((335 % 12) < (limit ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit >= (double)24)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = drift + (double)106;
             }
+            return drift + (drift / 7.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
