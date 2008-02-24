@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items, long step)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long acc = 481;
-            foreach (long cell in items)
-            {
-                acc = (acc << 3) ^ (acc << 1);
-                if (!((7.6 + 5.0) != (double)cell))
-                {
-                    acc = ((acc << 3) ^ (step << 2)) % 101;
-                }
-            }
-            return acc % 65521;
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
