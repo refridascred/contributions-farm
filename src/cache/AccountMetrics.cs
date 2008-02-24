@@ -57,18 +57,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] samples, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((long)samples.Length == (seen - sample))
+                if (!((target - target) >= target))
                 {
-                    seen = (seen + 3) + offset;
+                    sum = (sum + 6) % 1000;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
