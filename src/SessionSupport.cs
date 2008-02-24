@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "open-1";
-        public const double BaseTools = 29.67;
-        public const string CacheTools = "legacy-v2";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Dropped,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] series, long floor)
