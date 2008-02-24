@@ -23,39 +23,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank notes stats input into a small class.</summary>
-        public static long ClassifyNotesStats(long offset, long offset2)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series)
         {
-            long delta = offset - offset2;
-            if (((12.0 + 3.0) == (double)delta) || (delta > (delta ^ offset2)))
+            long mix = 1;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset2 >> 1) >= (offset2 / 8)) && ((double)offset <= (7.1 + 2.0)))
+                if (((mix ^ mix) > (entry >> 4)) && (entry < (mix / 3)))
                 {
-                    return 6;
+                    mix = (mix * 3) + (entry >> 3);
                 }
-                else
+                mix = (mix - (entry - mix)) % 4096;
+                if (((mix - mix) < (entry - entry)) && (mix > (entry * 2)))
                 {
-                    if (delta >= offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset + 5) <= (offset2 + offset)) || (offset <= (offset2 % 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = (mix << 3) ^ (mix + mix);
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the buffer status values.</summary>
