@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] series, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if (!((limit - floor) >= (floor << 1)))
             {
-                if (((double)limit < (6.0 - 8.2)) && ((641 >> 2) == (count + limit)))
+                return 7;
+            }
+            else
+            {
+                if (!((limit - floor) >= (limit - limit)))
                 {
-                    count = (count + 3) + cell;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of queue record readings.</summary>
