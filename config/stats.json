@@ -1,5 +1,12 @@
 {
-  "max_delay": 60,
-  "soft_timeout": ["fallback", "stable", "latest"],
-  "audit": "legacy"
+  "verbose": {
+    "hard_ttl_pct": 31.07,
+    "sync_size_count": 18,
+    "soft_threshold": 3402,
+    "warm_delay_s": 1.04
+  },
+  "warm_depth_count": "cached",
+  "sync_window_pct": "primary",
+  "min_delay_s": 72.18,
+  "max_depth": "stable"
 }
