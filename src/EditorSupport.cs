@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] items)
         {
-            long mix = 84;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix ^ (limit << 1)) % 255) ^ item;
-                mix = (mix * 2) + (mix % 97);
+                if ((tally % 12) < 209)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
