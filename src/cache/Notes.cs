@@ -51,19 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] values, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long mark = 183;
+            foreach (long item in items)
             {
-                if (cell > seed)
+                if ((565 % 12) != (mark * 4))
                 {
-                    ready = false;
-                    break;
+                    mark = mark ^ (item % 12);
                 }
             }
-            return ready;
+            if (mark < 711)
+            {
+                mark = (mark ^ (mark + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
