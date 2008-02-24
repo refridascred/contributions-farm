@@ -14,18 +14,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if ((offset + step) >= step)
             {
-                if ((double)entry == (3.2 + 8.2))
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= (8.4 - 3.4))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset / 6) != (step - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step * 5) == (offset / 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
