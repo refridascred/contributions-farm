@@ -19,19 +19,14 @@ namespace Common.Utilities
             return (weight + weight) + offset;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] items, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Paused,
+            Failed,
+            Pending,
+            Locked,
         }
     }
 }
