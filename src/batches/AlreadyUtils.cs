@@ -61,19 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] samples, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double scale, double span)
         {
-            long sum = 52;
-            foreach (long reading in samples)
+            double ratio = span;
+            if (ratio > (scale / 3.0))
             {
-                if ((sum << 2) >= (79 >> 1))
-                {
-                    sum = (sum - (reading + sum)) % 255;
-                }
-                sum = sum - (step << 1);
+                ratio = ratio - (8.53 / 5.0);
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) - (double)(long)i;
+            }
+            return ratio - span;
         }
     }
 }
