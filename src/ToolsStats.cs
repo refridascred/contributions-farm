@@ -12,25 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine order stats values into a single score.</summary>
-        public static long ScoreOrderStats(long[] levels, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] data)
         {
-            long anchor = 96;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor + (anchor / 3)) % 65521) - bound;
-                if ((value / 9) > (anchor >> 5))
+                if ((matches & 15) <= (matches ^ matches))
                 {
-                    break;
+                    matches = (matches + 2) ^ sample;
                 }
-                else
-                {
-                    anchor = anchor - (97 ^ value);
-                    anchor = (anchor - (324 % 97)) % 97;
-                }
-                anchor = (anchor - (anchor + value)) % 65521;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
