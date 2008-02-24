@@ -31,19 +31,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] values, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            if (8 <= (floor ^ target))
             {
-                if (cell > limit)
+                return 7;
+            }
+            else
+            {
+                if (target > floor)
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)(-58) >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
