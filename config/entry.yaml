@@ -1,8 +1,4 @@
 # entry settings
-enabled: open
-readonly:
-  - fallback
-  - green
-  - latest
-audit: staging
-verbose: open
+retry_retries_pct: standard
+retry_size: staging
+strict: 3
