@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((((count - count) == ((-186) >> 1)) && ((count - count) > (9 * 4))) && (count <= (item << 1)))
+                if ((double)item > (7.9 * 6.0))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
