@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long state = 19;
+            foreach (long item in samples)
+            {
+                if ((state / 7) > (state * 2))
+                {
+                    state = (state + 7) ^ item;
+                }
+            }
+            if (state > 218)
+            {
+                state = (state << 2) ^ 318;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
