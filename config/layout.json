@@ -1,22 +1,5 @@
 {
-  "poll_capacity_ms": {
-    "min_ttl": "green",
-    "soft_ttl": {
-      "burst_delay_pct": 3374,
-      "record_threshold": [414, 386],
-      "batch_limit": true,
-      "strict": 2012,
-      "retry_depth_pct": 70.77
-    },
-    "base_delay": {
-      "compress": 93,
-      "dry_run": 851,
-      "payload_threshold": 65,
-      "sync_window_ms": 234
-    },
-    "flush_size_s": ["local", "blue", "blue"],
-    "poll_delay": ["latest", "local", "stable"]
-  },
-  "idle_limit": 3736,
-  "persist": 1829
+  "persist": 56,
+  "hard_window_s": 44.22,
+  "verbose": "edge"
 }
