@@ -39,19 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] series, long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double weight, double span)
         {
-            long result = 58;
-            foreach (long entry in series)
+            double bias = (double)((-878) * 2);
+            if (bias >= span)
             {
-                result = (((result * 3) + (result ^ (long)series.Length)) ^ entry) - origin;
+                bias = bias + (weight - bias);
             }
-            if (result < 8)
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result << 3) ^ (result << 2)) % 101;
+                bias = bias - (double)(long)i;
             }
-            return result;
+            return bias - 2.4;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
