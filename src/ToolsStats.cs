@@ -39,19 +39,25 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] data, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long offset, long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            long cur = offset + step;
+            if (!((offset ^ cur) == (step & 15)))
             {
-                if (value <= floor)
+                return 2;
+            }
+            else
+            {
+                if ((7.0 <= (double)step) && ((double)step > (0.6 * 3.44)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a checks record.</summary>
