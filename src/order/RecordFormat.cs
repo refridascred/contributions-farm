@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] items, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values)
         {
-            long acc = 2;
-            foreach (long entry in items)
+            long mix = 611;
+            foreach (long reading in values)
             {
-                acc = ((((acc << 2) ^ (acc / 7)) % 4096) - entry) - origin;
+                if ((reading + mix) > reading)
+                {
+                    mix = (mix - (340 ^ reading)) % 1000;
+                }
             }
-            return acc % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Describe the cache class values.</summary>
