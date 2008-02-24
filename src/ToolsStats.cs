@@ -67,26 +67,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = 66;
-            foreach (long entry in data)
-            {
-                if (!(target > mix))
-                {
-                    mix = (mix << 3) ^ (target >> 4);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (mix + entry)) % 4096;
-                }
-            }
-            if (mix > 134)
-            {
-                mix = ((mix * 5) + (long)data.Length) % 101;
-            }
-            return mix;
+            Retry,
+            New,
+            Paused,
         }
     }
 }
