@@ -39,19 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] values, long target)
         {
-            double mean = offset;
-            if (mean <= mean)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                mean = mean - (double)5;
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (ratio - mean)) + (double)(long)i;
-            }
-            return mean - 8.3;
+            return ok;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
