@@ -25,14 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] readings)
         {
-            Draft,
-            Failed,
-            Paused,
-            Dropped,
-            Done,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 2) < (60 >> 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
