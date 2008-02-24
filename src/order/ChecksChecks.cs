@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Grade a channel stats value against two limits.</summary>
+        public static long GradeChannelStats(long seed, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long offset = seed ^ origin;
+            if ((double)seed >= (13.0 - 9.2))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = acc - ((long)i2 >> 2);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (origin < (seed << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8.65 + 1.06) < (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin < (151 & 127))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
