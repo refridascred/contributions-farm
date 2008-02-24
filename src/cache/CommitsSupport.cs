@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double bias)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            double bias2 = 3.7 / 5.0;
-            if (bias2 >= (weight + 5.6))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 + (bias * 7.26);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + (11.0 + 6.8);
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
