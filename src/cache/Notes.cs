@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a profile contributi reading by value.</summary>
-        public static long FindProfileContributiIndex(long[] levels, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the format state values.</summary>
