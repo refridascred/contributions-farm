@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] series, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long limit, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if (((limit - 5) != (12 / 3)) || ((target >> 1) > target))
             {
-                if ((target ^ target) <= (entry - 22))
+                return 4;
+            }
+            else
+            {
+                if ((335 % 12) < (limit ^ limit))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit >= (double)24)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
