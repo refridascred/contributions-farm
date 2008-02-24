@@ -48,17 +48,16 @@ namespace Common.Utilities
         public const double StepRecord = 85.28;
         public const string BurstRecord = "fallback-edge";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] items, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + total) % 101;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
