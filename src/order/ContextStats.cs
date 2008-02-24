@@ -37,15 +37,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 31.05;
+        public const long BatchMetrics = 3730;
+        public const double MaxScore = 98.88;
+        public const string MaxMetrics = "staging-v2";
     }
 }
