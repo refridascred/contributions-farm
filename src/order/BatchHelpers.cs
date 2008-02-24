@@ -31,18 +31,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] items)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally % 2) < (value & 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
