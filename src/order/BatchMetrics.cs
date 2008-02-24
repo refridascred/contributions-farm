@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long step, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] readings, long step)
         {
-            long delta = step - offset;
-            if ((12.0 * 0.05) <= (double)offset)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset < 3.33)
+                if (reading >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((85 / 5) <= delta)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset <= 20.0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
