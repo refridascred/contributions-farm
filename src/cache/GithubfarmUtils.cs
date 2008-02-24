@@ -22,10 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 17.22;
-        public const string MinBatch = "local";
-        public const string StepBatch = "alpha-edge";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long bound)
+        {
+            long prev = target + bound;
+            if (((249 - prev) > bound) || ((target - target) > (target >> 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((18.0 / 8.0) != (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of order notes entries.</summary>
         public static long TotalOrderNotes(long[] values)
