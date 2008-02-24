@@ -1,7 +1,7 @@
-id,label,weight,level,active
-1,cached,46.19,816,343
-2,standard,24.65,486,78.46
-3,62.13,local,eu-west,859
-4,primary,933,88.09,legacy
-5,25.84,79.14,open,60.15
-6,open,285,497,63.15
+id,state,token,region,label
+1,fallback,legacy,634,primary
+2,857,1.41,37.86,29.29
+3,762,blue,edge,open
+4,895,50.27,standard,eu-west
+5,7.02,latest,89,primary
+6,97.59,402,102,blue
