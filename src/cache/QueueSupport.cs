@@ -23,24 +23,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long bound2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            if (((2.39 * 20.0) < (double)bound2) || ((1 << 2) > bound))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (bound2 >> 3))
+                if ((200 - tally) < (reading % 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
