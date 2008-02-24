@@ -45,11 +45,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count counter report pairs that satisfy a relation.</summary>
+        public static long MatchCounterReportCount(long[] levels)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
