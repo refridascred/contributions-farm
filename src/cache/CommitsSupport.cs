@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            long sum = 447;
-            foreach (long cell in samples)
+            double weight = floor;
+            if (weight > floor)
             {
-                sum = ((sum ^ (sum >> 5)) + cell) + seed;
+                weight = weight - (double)45;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
