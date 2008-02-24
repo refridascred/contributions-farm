@@ -26,19 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (value > offset)
+                if ((871 + seen) >= (8 - seen))
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 3) + datum) + floor;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a route header.</summary>
