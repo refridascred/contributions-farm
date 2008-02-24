@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)step > (double)entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRatio = 7927;
+        public const double BaseRecord = 36.69;
+        public const string HardLevel = "open";
+        public const long SoftSpan = 8963;
+        public const double BurstWidth = 21.53;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftInterval = 4937;
