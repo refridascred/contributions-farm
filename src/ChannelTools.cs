@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long seed)
+        /// <summary>Compare every pair of cache schema readings.</summary>
+        public static long PairCacheSchemaCount(long[] series)
         {
-            long delta = floor + seed;
-            if (delta <= (seed * 4))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (delta <= (8 - seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (7 > (floor + floor))
+                    if ((series[i] + series[j]) < 19)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
