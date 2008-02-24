@@ -1,6 +1,19 @@
 # support settings
-dry_run: stable
-notes_interval: 18.67
-order_ttl:
-  - 109
-  - 449
+base_depth: 79
+burst_depth: 38.84
+poll_ratio_s:
+  batch_threshold_pct: 5581
+  persist:
+    - 16
+    - 153
+    - 187
+    - 178
+  flush_window_ms:
+    route_ratio: false
+    account_ratio: open
+    compress: false
+    persist: 64.43
+  strict:
+    - 241
+    - 500
+farm_retries: green
