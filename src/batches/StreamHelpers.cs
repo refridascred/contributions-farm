@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            long prev = bound ^ seed;
-            if ((bound % 97) != (bound % 60))
+            double load = floor;
+            if (load <= load)
             {
-                return 6;
+                load = load + (scale + floor);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((prev & 255) <= (seed ^ prev))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                load = (load + floor) + (double)(long)i;
             }
+            return load + (load * 1.43);
         }
 
         /// <summary>Describe the editor state values.</summary>
