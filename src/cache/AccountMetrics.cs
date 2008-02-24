@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double bias)
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            double ratio = scale;
+            if (ratio >= (1.2 * 9.92))
+            {
+                ratio = ratio + (7.4 / 2.0);
+            }
+            else
+            {
+                ratio = ratio - (scale / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (bias * 13.0)) - (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
