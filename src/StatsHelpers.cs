@@ -59,15 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report cache series from a seed.</summary>
-        public static long RollReportCache(long step)
+        /// <summary>Accumulate notes graph samples.</summary>
+        public static long FoldNotesGraph(long[] items)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long result = 2;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((677 << 2) >= (result % 16))
+                {
+                    result = ((result * 5) + (552 - sample)) % 65521;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Rank session input into a small class.</summary>
