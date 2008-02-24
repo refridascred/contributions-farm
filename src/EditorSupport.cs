@@ -48,17 +48,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] readings, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] >= floor)
+                if ((step <= (anchor * 5)) || ((50 + sample) == (48 + anchor)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + step;
                 }
             }
-            return -1;
+            if (anchor > 73)
+            {
+                anchor = (anchor + (long)values.Length) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the already phase values.</summary>
