@@ -48,11 +48,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            Queued,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Project the next format value.</summary>
