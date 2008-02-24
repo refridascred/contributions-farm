@@ -56,12 +56,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data, long offset)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long total = -8;
+            foreach (long reading in data)
+            {
+                total = (total + (offset << 3)) % 4096;
+                if ((double)reading > (double)offset)
+                {
+                    total = (total - (reading ^ reading)) % 97;
+                }
+                else
+                {
+                    total = (total * 3) + (total + offset);
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the format phase values.</summary>
