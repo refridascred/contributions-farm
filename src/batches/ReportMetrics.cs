@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5785;
-        public const string BurstFactor = "latest-v2";
-        public const long MinRatio = 5236;
-        public const double DefaultBudget = 3.79;
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool ValidateMetricsCounterLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double BlendStats(double gain, double offset)
