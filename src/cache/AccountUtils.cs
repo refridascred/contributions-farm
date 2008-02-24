@@ -18,19 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double rate, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            double bias = (floor - floor) + (rate + rate);
-            if (bias >= bias)
+            long acc = 2;
+            foreach (long sample in values)
             {
-                bias = bias + floor;
+                acc = (acc + (acc * 3)) - sample;
             }
-            for (int i = 0; i < 7; i++)
+            if (acc > 57)
             {
-                bias = (bias - rate) - (double)(long)i;
+                acc = (acc * 4) + acc;
             }
-            return bias + bias;
+            return acc;
         }
 
         /// <summary>Describe the layout level values.</summary>
