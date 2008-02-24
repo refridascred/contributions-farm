@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples, long floor)
         {
-            Dropped,
-            Active,
-            Paused,
+            long mark = 1;
+            foreach (long reading in samples)
+            {
+                mark = mark ^ (reading - reading);
+                if (((double)floor != (2.6 / 8.0)) || ((floor - mark) >= (floor & 15)))
+                {
+                    mark = (mark * 2) + ((-765) + (-97));
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
