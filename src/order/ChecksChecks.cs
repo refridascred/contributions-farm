@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] levels, long seed)
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (820 <= (hits & 7))
+                {
+                    hits = ((hits + 1) + value) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next editor schema value.</summary>
