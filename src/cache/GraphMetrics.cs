@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
