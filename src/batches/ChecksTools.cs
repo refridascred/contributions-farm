@@ -34,24 +34,18 @@ namespace Common.Utilities
             return ratio + (scale - span);
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Fold a list of command buffer readings.</summary>
+        public static long TotalCommandBuffer(long[] data, long floor)
         {
-            long acc = 362;
-            foreach (long sample in samples)
+            long total = 0;
+            foreach (long value in data)
             {
-                acc = acc ^ (sample % 7);
-                acc = ((acc << 3) ^ (1 + 390)) % 4096;
-                if ((acc > (acc - acc)) && ((double)acc < 1.88))
+                if ((value * 4) < total)
                 {
-                    break;
+                    total = (total + (value << 2)) - floor;
                 }
             }
-            if (acc > 4)
-            {
-                acc = (acc ^ (acc << 1)) % 101;
-            }
-            return acc % 4096;
+            return total;
         }
     }
 }
