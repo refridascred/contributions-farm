@@ -49,18 +49,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long CountMetricLayoutHits(long[] samples, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((0.54 + 5.3) != (double)item)
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Audit checks channel readings against a rule.</summary>
