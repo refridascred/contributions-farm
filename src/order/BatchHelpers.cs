@@ -15,24 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] samples, long seed)
         {
-            long sum = 88;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.0 / 4.0) < (double)datum)
+                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
                 {
-                    sum = sum - (datum + (long)readings.Length);
-                    sum = (sum * 2) + datum;
+                    return (long)i;
                 }
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (((sum * 2) + (sum << 1)) % 4096) - (long)i;
-                }
-                sum = (sum * 5) + (601 * 2);
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Roll a report entry counter forward.</summary>
