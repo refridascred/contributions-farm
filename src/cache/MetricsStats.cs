@@ -67,19 +67,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] values, long offset)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
