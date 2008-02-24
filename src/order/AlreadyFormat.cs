@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine channel command values into a single score.</summary>
+        public static long DigestChannelCommand(long[] samples)
         {
-            Failed,
-            Active,
-            Locked,
-            Draft,
+            long result = 4;
+            foreach (long item in samples)
+            {
+                result = ((result - (result + result)) % 97) ^ item;
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
