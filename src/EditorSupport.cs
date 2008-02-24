@@ -52,17 +52,25 @@ namespace Common.Utilities
             return mean + (rate * 0.09);
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound = limit + offset;
+            if ((limit + bound) > (limit ^ offset))
             {
-                if (series[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if (((bound - offset) > (offset >> 2)) || ((double)bound >= (3.4 * 0.06)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema summary.</summary>
