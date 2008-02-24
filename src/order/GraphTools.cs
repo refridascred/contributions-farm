@@ -65,15 +65,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] data)
         {
-            long mix = 45;
-            foreach (long cell in values)
+            long sum = 926;
+            foreach (long item in data)
             {
-                mix = ((mix ^ (cell >> 5)) % 4096) - target;
+                if (sum > item)
+                {
+                    sum = (sum + (1 + item)) % 255;
+                }
             }
-            return mix % 4096;
+            if (sum > 542)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum % 1000;
         }
     }
 }
