@@ -42,17 +42,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] > limit)
+                if ((reading + tally) >= (tally + tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
