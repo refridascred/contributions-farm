@@ -42,18 +42,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally * 2) != (value ^ value))
+                if (((long)i + 1) >= limit)
                 {
-                    tally = tally + 3;
+                    mark = (mark << 2) ^ mark;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
