@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long step, long step2)
-        {
-            if (((974 * 3) >= (step / 3)) && ((step2 - 219) == (12 - step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 << 1) == (step + step2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step < (18.0 / 4.0)) || (step2 <= (step2 - 444)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step2 + step2) != (step << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 2332;
+        public const string DefaultRatio = "local";
+        public const long StepTimeout = 2631;
+        public const long WindowCount = 4793;
+        public const long IdleAlready = 1412;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
