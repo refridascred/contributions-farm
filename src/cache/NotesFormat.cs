@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] samples, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (seed >= 3)
+                if (seen >= 76)
                 {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
