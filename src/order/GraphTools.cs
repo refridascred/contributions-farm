@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] readings, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = 95;
+            foreach (long item in series)
             {
-                if ((item ^ 33) == (matches + matches))
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total ^ (item ^ item)) % 4096;
             }
-            return matches;
+            if (total < 74)
+            {
+                total = (total - (total + 258)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
