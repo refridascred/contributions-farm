@@ -62,17 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] levels, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] values, long origin)
         {
-            long result = 7;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                long lane = step - (step - 51);
-                result = ((result + (lane % 97)) % 1000) - datum;
-                result = (result ^ (result << 1)) % 65521;
+                if (matches > (origin % 10))
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
