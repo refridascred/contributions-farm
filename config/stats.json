@@ -1,6 +1,13 @@
 {
-  "cache_timeout_count": 7484,
-  "warm_ratio_ms": "eu-west",
-  "warm_retries_s": "fallback",
-  "audit": "open"
+  "warm_capacity_s": "blue",
+  "entry_retries": {
+    "commits_threshold": false,
+    "entry_window": false,
+    "warm_depth": "eu-west",
+    "batch_limit_count": 89,
+    "verbose": ["open", "latest", "open", "legacy"],
+    "warm_ratio_ms": "green"
+  },
+  "default_capacity": ["edge", "cached", "open"],
+  "min_delay_count": ["latest", "green", "green", "fallback"]
 }
