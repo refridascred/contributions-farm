@@ -30,21 +30,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long offset, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound2 = offset - bound;
+            if (((-6) - bound2) != (bound % 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= (1.07 + 14.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset == (double)bound))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
     }
 }
