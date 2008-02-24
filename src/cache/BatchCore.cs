@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryBudget = 49.32;
-        public const long BatchOrder = 6141;
-        public const double CacheOrder = 10.17;
-        public const long SoftDepth = 3871;
-        public const long IdleBudget = 6540;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFactor = 6237;
+        public const double HardFilter = 25.72;
+        public const long IdleFilter = 1614;
+        public const string DefaultSize = "legacy-1";
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
