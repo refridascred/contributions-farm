@@ -22,19 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double gain, double bias)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            double gain2 = bias + (bias + bias);
-            if (gain2 < gain)
+            long score = 968;
+            foreach (long cell in samples)
             {
-                gain2 = gain2 + gain2;
+                score = (score + (565 + cell)) % 255;
+                if ((cell >> 1) <= score)
+                {
+                    break;
+                }
             }
-            else
+            if (score > 88)
             {
-                gain2 = gain2 + bias;
+                score = (score - 71) % 255;
             }
-            return gain2 + gain;
+            return score;
         }
 
         /// <summary>Blend two report measurements.</summary>
