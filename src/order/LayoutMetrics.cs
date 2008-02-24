@@ -22,22 +22,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series, long offset)
+        /// <summary>Look up the position of a filter contributi sample.</summary>
+        public static long FindFilterContributiIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset < (matches - offset))
+                if (series[i] >= origin)
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
