@@ -22,15 +22,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (((hits << 2) != (cell ^ step)) && (((3.9 + 2.7) <= (double)step) && (cell >= (558 << 2))))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up session token samples.</summary>
