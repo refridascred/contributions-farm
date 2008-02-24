@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double bias, double span)
+        /// <summary>Compare every pair of notes report readings.</summary>
+        public static long PairNotesReportCount(long[] readings)
         {
-            double bias2 = 6.23;
-            if (bias2 < (bias - span))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 + (bias / 6.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (span - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (1.72 * 19.0);
+            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
