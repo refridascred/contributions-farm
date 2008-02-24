@@ -20,30 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank filter stats input into a small class.</summary>
-        public static long BucketFilterStats(long offset, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long bound2)
         {
-            long offset2 = offset + limit;
-            if (!((51 + offset2) >= (69 * 2)))
+            if (((bound2 - bound2) == (bound % 2)) && (bound >= 69))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (((double)offset < (double)201) && ((double)limit == (8.7 + 6.9)))
+                if (!((bound2 / 8) <= (bound2 - bound)))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (((offset - 29) <= offset) || ((-31) >= offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 0;
                 }
             }
         }
