@@ -50,12 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultRatio = 19.99;
+        public const long LimitEntry = 3389;
+        public const long BurstEntry = 4398;
+        public const double MinEntry = 98.41;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsRange(long[] samples, long floor)
