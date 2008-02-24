@@ -1,9 +1,5 @@
 # githubfarm settings
-poll_threshold_count:
-  - strict
-  - standard
-  - local
-  - eu-west
-checks_size: 1024
-flush_timeout_ms: 23
-persist: 1436
+cluster_size: 100
+strict: 60
+min_delay: 4.88
+burst_interval_pct: 1024
