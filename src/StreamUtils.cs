@@ -49,12 +49,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long step)
         {
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long span = seed ^ step;
+            if ((span / 3) == (61 - span))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + seed) > seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 97) < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
