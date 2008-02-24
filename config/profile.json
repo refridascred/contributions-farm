@@ -1,15 +1,18 @@
 {
-  "retry_ttl": [37, 327],
-  "editor_retries": {
-    "warm_timeout": true,
-    "soft_timeout_ms": "eu-west",
-    "strict": 59.35,
-    "counter_delay": false,
-    "editor_size": 46,
-    "soft_interval_ms": ["cached", "primary"]
+  "checks_ratio": [340, 431, 338, 35],
+  "audit": ["cached", "standard"],
+  "default_capacity": [375, 192, 269, 193],
+  "base_timeout_count": {
+    "cluster_retries": 13.86,
+    "default_limit_pct": 38.2,
+    "metrics_retries": {
+      "retry_depth": ["blue", "cached"],
+      "cache_timeout_pct": 1024,
+      "audit": false,
+      "sync_delay_pct": "primary",
+      "report_window": false
+    },
+    "poll_ratio_s": [295, 449, 259, 173]
   },
-  "cache_ttl_s": 30,
-  "hard_timeout_ms": "stable",
-  "poll_retries": "latest",
-  "sync_delay": 33
+  "batches_timeout": 7258
 }
