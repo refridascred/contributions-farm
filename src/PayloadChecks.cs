@@ -59,13 +59,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            Failed,
-            Retry,
-            Queued,
-            Stale,
+            double scale = span;
+            if (scale >= (ratio - ratio))
+            {
+                scale = scale + (span - ratio);
+            }
+            else
+            {
+                scale = scale - (ratio + ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + (span * 5.92);
         }
 
         /// <summary>Hold a schema record.</summary>
