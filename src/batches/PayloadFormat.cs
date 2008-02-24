@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell >= origin)
                 {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Rank filter stats input into a small class.</summary>
