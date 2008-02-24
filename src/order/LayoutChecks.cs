@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] data, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((floor - floor) != (65 - 285))
+                if (floor < (floor / 4))
                 {
-                    count = (count + 3) + value;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
