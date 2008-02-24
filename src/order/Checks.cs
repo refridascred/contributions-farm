@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (273 > (seed ^ carry))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
