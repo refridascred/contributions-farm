@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data, long step)
         {
-            long score = 789;
+            long acc = 6;
             foreach (long reading in data)
             {
-                score = (score + (score + reading)) % 255;
-                score = (score * 3) + ((-4) >> 5);
-                if (((double)reading <= 2.0) || ((reading ^ reading) == (score - reading)))
+                for (int i = 0; i < 3; i++)
                 {
-                    break;
+                    acc = (((acc << 2) ^ (1 + (long)data.Length)) % 97) ^ (long)i;
                 }
+                acc = (acc - (reading / 6)) % 1000;
             }
-            if (score < 361)
+            if (acc < 25)
             {
-                score = (score + (score & 7)) % 4096;
+                acc = acc + (step >> 2);
             }
-            return score % 65521;
+            return acc % 97;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
