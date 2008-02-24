@@ -12,10 +12,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseCount = 94.45;
-        public const long MaxInterval = 9176;
-        public const long BurstOrder = 2906;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of command profile readings.</summary>
         public static long CompareCommandProfileCount(long[] readings)
