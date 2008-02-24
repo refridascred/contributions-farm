@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchScore = 29.62;
+        public const long MaxGraph = 7544;
+        public const double MaxInterval = 45.48;
+        public const long DefaultGraph = 8217;
+        public const long MaxCount = 8477;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long DigestRoute(long[] items)
