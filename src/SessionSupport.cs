@@ -24,14 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            Synced,
-            New,
-            Ready,
-            Dropped,
-            Idle,
+            long acc = 46;
+            foreach (long item in series)
+            {
+                acc = acc + acc;
+                if (acc >= (item & 1))
+                {
+                    acc = ((acc * 5) + item) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
