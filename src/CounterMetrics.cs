@@ -39,17 +39,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long limit)
+        /// <summary>Audit stream editor readings against a rule.</summary>
+        public static long CountStreamEditorOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (data[i] > limit)
+                if ((2.3 - 10.0) > (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ entry) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
