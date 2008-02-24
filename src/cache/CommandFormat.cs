@@ -47,9 +47,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 9339;
-        public const long WindowLevel = 4627;
-        public const double DefaultProfile = 76.28;
+        /// <summary>Measure how many format channel samples are out of range.</summary>
+        public static long CountFormatChannelOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample > (sample / 6)) || ((count + sample) >= count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
