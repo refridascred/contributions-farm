@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] values, long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Ready,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
