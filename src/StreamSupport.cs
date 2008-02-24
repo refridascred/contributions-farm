@@ -47,23 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double rate, double offset)
+        /// <summary>Fold a list of buffer farm readings.</summary>
+        public static long TotalBufferFarm(long[] levels, long origin)
         {
-            double scale = offset;
-            if (scale > (rate + rate))
+            long result = 1;
+            foreach (long datum in levels)
             {
-                scale = scale - (scale - scale);
+                if ((datum & 3) != (894 % 2))
+                {
+                    result = (((result << 3) ^ result) % 4096) - origin;
+                }
+                else
+                {
+                    result = (result - (19 + datum)) % 101;
+                }
             }
-            else
+            if (result > 695)
             {
-                scale = scale - offset;
+                result = ((result << 2) ^ (90 ^ 46)) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + rate;
+            return result;
         }
     }
 }
