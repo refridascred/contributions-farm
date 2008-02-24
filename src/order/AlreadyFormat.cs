@@ -47,13 +47,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Roll a payload channel counter forward.</summary>
+        public static long StepPayloadChannel(long step)
         {
-            Synced,
-            Active,
-            Locked,
-            Paused,
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
