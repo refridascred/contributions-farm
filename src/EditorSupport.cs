@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ratio + (double)789;
         }
 
-        /// <summary>Match up route schema samples.</summary>
-        public static long MatchRouteSchemaCount(long[] readings)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Blend two support measurements.</summary>
