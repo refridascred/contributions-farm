@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
