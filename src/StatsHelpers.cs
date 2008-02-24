@@ -37,19 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + sample) <= ((long)series.Length + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "standard-v2";
+        public const long WindowEntry = 8362;
+        public const double MaxEntry = 57.7;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long bound, long target)
