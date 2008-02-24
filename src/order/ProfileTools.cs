@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples, long origin)
+        /// <summary>Iterate the route graph series from a seed.</summary>
+        public static long DeriveRouteGraph(long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + value) > 36)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = (matches + 1) - origin;
+                    mark = ((mark - (3 & 63)) % 1000) - (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up contributi samples.</summary>
