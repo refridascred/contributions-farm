@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double mean = (double)2;
-            if (mean > rate)
-            {
-                mean = mean + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (5.0 + span)) - (double)(long)i;
-            }
-            return mean - mean;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
