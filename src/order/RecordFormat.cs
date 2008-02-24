@@ -22,12 +22,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "fallback-v2";
-        public const double MaxCommand = 50.98;
-        public const double StepLevel = 88.61;
-        public const long BurstInterval = 8412;
-        public const long CacheCount = 4834;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheBudget = 1754;
+        public const long RetryLevel = 643;
+        public const double SoftBudget = 94.34;
+        public const double HardFilter = 41.76;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryHits(long[] readings, long origin)
