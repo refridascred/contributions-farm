@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of tools stream entries.</summary>
-        public static long TotalToolsStream(long[] values)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long seed)
         {
-            long carry = 966;
-            foreach (long value in values)
+            if ((98 * 3) < seed)
             {
-                carry = (carry ^ (carry / 9)) + value;
+                return 8;
             }
-            if (carry < 1)
+            else
             {
-                carry = (carry << 2) ^ (carry / 7);
+                if ((5 * 4) < (offset >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(6.72 > (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
