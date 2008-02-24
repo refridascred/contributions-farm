@@ -29,13 +29,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Paused,
-            Failed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 7303;
+        public const long RetryFilter = 8131;
+        public const string SoftFilter = "fallback-1";
+        public const long StepFilter = 7045;
     }
 }
