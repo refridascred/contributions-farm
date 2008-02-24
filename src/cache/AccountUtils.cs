@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next token window value from a seed.</summary>
-        public static long RollTokenWindow(long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((4.0 / 9.0) == (double)seed)
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                acc = (acc * 3) + (long)i;
+                acc = ((acc * 5) + (seed % 2)) % 255;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
