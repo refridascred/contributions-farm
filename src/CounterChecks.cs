@@ -46,22 +46,17 @@ namespace Common.Utilities
         public const long StepTimeout = 4817;
         public const long BaseSpan = 4741;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] readings)
+        /// <summary>Look up the position of a channel buffer sample.</summary>
+        public static long SeekChannelBufferIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value % 97) <= (value - 22))
+                if (data[i] < bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream route sample.</summary>
