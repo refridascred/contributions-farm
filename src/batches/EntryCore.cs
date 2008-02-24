@@ -47,12 +47,18 @@ namespace Common.Utilities
         public const string MaxScore = "local-1";
         public const long StepAccount = 2937;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the layout graph entries that pass the check.</summary>
+        public static long TallyLayoutGraphOutliers(long[] data)
         {
-            Draft,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((((double)tally <= (5.4 + 5.01)) || ((cell % 8) <= cell)) && ((double)tally >= (9.1 + 3.0)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
