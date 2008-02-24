@@ -40,23 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] samples, long offset)
-        {
-            long mix = 3;
-            foreach (long value in samples)
-            {
-                if ((offset >> 1) > offset)
-                {
-                    mix = ((mix - (offset + mix)) % 4096) + value;
-                }
-                if (!(((long)samples.Length - offset) == (mix ^ mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "strict-edge";
+        public const string CacheChecks = "cached-1";
+        public const string MaxCount = "legacy";
+        public const string DefaultChecks = "cached-v2";
+        public const long LimitFactor = 9869;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long GradeBatch(long step, long floor)
