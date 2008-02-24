@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long StepSize = 3844;
         public const long MinSize = 5118;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 4316;
-        public const string StepChecks = "standard";
-        public const long SoftCount = 9793;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long origin)
