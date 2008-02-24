@@ -37,13 +37,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] items, long limit)
         {
-            Locked,
-            Retry,
-            Dropped,
-            Queued,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next stream value.</summary>
