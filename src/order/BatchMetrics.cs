@@ -54,14 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit batches report readings against a rule.</summary>
+        public static long CountBatchesReportGaps(long[] readings)
         {
-            Queued,
-            New,
-            Retry,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell * 5) <= (cell & 127))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of channel window readings.</summary>
