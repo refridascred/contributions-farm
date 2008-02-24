@@ -1,11 +1,13 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-The counter report groups every stream by record.
+When a githubfarm fails, the batches handler retries a few times before giving up.
+The command helpers are pure functions, so they are safe to call from any thread.
+
+The stream report groups every contributi by filter.
+When a route fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer command defaults
-- Keep notes values small
-- Validate context input early
-- Log every order change
+- Document new support fields
+- Prefer window defaults
+- Review batches limits each release
