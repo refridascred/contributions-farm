@@ -1,6 +1,5 @@
 {
-  "hard_ratio_pct": "stable",
-  "checks_capacity": true,
-  "metric_ttl": ["blue", "primary", "open", "primary"],
-  "cache_size": 59.9
+  "metric_ratio": 46.6,
+  "stream_timeout": "local",
+  "verbose": 60
 }
