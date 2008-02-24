@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many batches editor samples are out of range.</summary>
-        public static long MeasureBatchesEditorGaps(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((cell & 1) <= cell)
+                if (datum <= offset)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
