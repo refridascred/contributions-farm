@@ -16,13 +16,13 @@ namespace Common.Utilities
             return rate2 + (1.02 - 5.71);
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Ready,
-            Retry,
-            Locked,
-            Pending,
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
