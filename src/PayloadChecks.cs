@@ -16,21 +16,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)75;
+            if (rate2 >= (double)8)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = rate2 + offset;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 + (offset * 14.0);
+            }
+            return rate2 + (rate2 + rate);
         }
 
         /// <summary>Hold a already snapshot.</summary>
