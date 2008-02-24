@@ -40,17 +40,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long seed)
         {
-            long acc = 504;
-            foreach (long cell in series)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                acc = ((acc << 2) ^ acc) ^ cell;
-                acc = (acc ^ (254 % 10)) % 255;
-                acc = acc - 342;
+                if ((mark % 8) < ((long)i - (long)i))
+                {
+                    mark = ((mark << 2) ^ (mark & 3)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ (seed - seed);
+                    mark = (mark ^ mark) % 65521;
+                }
+                mark = (mark - (mark % 8)) % 101;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
