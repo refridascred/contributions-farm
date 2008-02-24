@@ -1,12 +1,7 @@
 {
-  "tools_capacity": {
-    "min_size_count": true,
-    "burst_ratio": ["legacy", "legacy", "eu-west"],
-    "already_threshold": "green",
-    "poll_ttl_ms": false
-  },
-  "metric_size": true,
-  "compress": 33,
-  "idle_timeout": 65.61,
-  "max_delay_pct": 1024
+  "enabled": true,
+  "soft_ratio_ms": "green",
+  "githubfarm_depth": "standard",
+  "stats_ratio": 70,
+  "default_timeout_s": 11
 }
