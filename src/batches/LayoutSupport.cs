@@ -23,13 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
