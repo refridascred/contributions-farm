@@ -66,11 +66,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheSize = 8914;
-        public const double MaxTimeout = 15.31;
-        public const long StepSize = 3544;
-        public const double MaxDepth = 2.06;
-        public const long MaxCommits = 2012;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
