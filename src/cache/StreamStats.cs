@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const double RetryTimeout = 73.78;
         public const double RetryCommand = 59.85;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long limit)
         {
-            long acc = 320;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                acc = ((acc - (acc >> 3)) % 255) ^ cell;
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the filter level values.</summary>
