@@ -54,13 +54,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry * 4) + 27;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
