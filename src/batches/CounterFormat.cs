@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long limit)
         {
-            long state = -433;
-            foreach (long cell in items)
+            if ((bound % 97) < (511 / 3))
             {
-                if ((state - cell) != (state + 77))
+                return 1;
+            }
+            else
+            {
+                if ((bound <= (74 ^ bound)) && ((80 + limit) < (bound + limit)))
                 {
-                    state = state - state;
+                    return 6;
                 }
                 else
                 {
-                    state = (state - ((long)items.Length / 8)) % 97;
+                    return 5;
                 }
             }
-            if (state < 3)
-            {
-                state = ((state * 3) + state) % 255;
-            }
-            return state;
         }
 
         /// <summary>Hold a commits record.</summary>
