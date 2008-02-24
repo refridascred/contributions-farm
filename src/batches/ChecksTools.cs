@@ -42,23 +42,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] items, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long mix = 86;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 2) ^ (offset / 2)) % 97;
-                if ((offset ^ cell) < (684 ^ cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix * 3) + cell;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ cell) % 101;
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return matches;
         }
     }
 }
