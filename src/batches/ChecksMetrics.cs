@@ -54,21 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session token samples.</summary>
-        public static long PairSessionTokenCount(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
