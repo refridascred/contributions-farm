@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long MeasureQueueTokenMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) > origin)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5785;
+        public const string BurstFactor = "latest-v2";
+        public const long MinRatio = 5236;
+        public const double DefaultBudget = 3.79;
 
         /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
         public static bool GuardGithubfarmRecordBounds(long[] series, long offset)
