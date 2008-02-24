@@ -19,13 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            New,
-            Synced,
-            Active,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
