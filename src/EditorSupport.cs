@@ -70,13 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count farm record pairs that satisfy a relation.</summary>
+        public static long CompareFarmRecordCount(long[] data)
         {
-            Active,
-            Idle,
-            Dropped,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a githubfarm counter figure with a bias.</summary>
