@@ -40,22 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((seed ^ entry) > (hits >> 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the window status values.</summary>
