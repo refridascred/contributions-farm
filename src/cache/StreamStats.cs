@@ -38,13 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            long acc = 320;
+            foreach (long cell in items)
+            {
+                acc = ((acc - (acc >> 3)) % 255) ^ cell;
+            }
+            return acc;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
