@@ -42,24 +42,15 @@ namespace Common.Utilities
             return scale + (weight - weight);
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long floor, long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double rate, double span)
         {
-            if ((double)limit >= (5.05 - 1.5))
+            double scale = span;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                scale = (scale - rate) + (double)(long)i;
             }
-            else
-            {
-                if ((8.0 / 3.0) >= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return scale - scale;
         }
 
         /// <summary>Hold a contributi summary.</summary>
