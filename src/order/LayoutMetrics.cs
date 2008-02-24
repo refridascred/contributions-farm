@@ -22,17 +22,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a filter contributi sample.</summary>
-        public static long FindFilterContributiIndex(long[] series, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] >= origin)
+                if ((seed << 2) < sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + ((long)i + 469)) % 65521;
+                    sum = sum - seed;
+                    continue;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
