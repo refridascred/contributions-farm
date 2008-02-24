@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count * 4) >= reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
