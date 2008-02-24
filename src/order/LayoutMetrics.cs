@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const string IdleChannel = "legacy-edge";
         public const long WindowBudget = 4433;
 
-        /// <summary>Validate already filter readings against a bound.</summary>
-        public static bool CheckAlreadyFilterBounds(long[] values, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
     }
 }
