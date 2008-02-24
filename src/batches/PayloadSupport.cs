@@ -57,15 +57,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches route reading.</summary>
-        public static double SmoothBatchesRoute(double weight, double offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long origin, long seed)
         {
-            double drift = offset;
-            if (drift >= drift)
+            if ((946 - seed) < (13 >> 3))
             {
-                drift = drift - (weight + 9.1);
+                return 1;
             }
-            return drift + (double)89;
+            else
+            {
+                if ((double)seed == (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((13.0 + 12.0) != (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
