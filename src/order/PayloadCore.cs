@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double gain, double span)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] data)
         {
-            double ratio = 2.0 - (span * 7.58);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                ratio = (ratio - (double)(long)i) - gain;
+                if (((sample & 15) >= (hits + sample)) || ((sample / 4) >= (sample & 7)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + 3.45;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
