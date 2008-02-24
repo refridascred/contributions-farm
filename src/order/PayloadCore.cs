@@ -41,23 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Fold a list of format command readings.</summary>
+        public static long TotalFormatCommand(long[] readings, long origin)
         {
-            long acc = 69;
-            foreach (long cell in readings)
+            long score = 825;
+            foreach (long sample in readings)
             {
-                acc = (acc + (cell ^ acc)) % 4096;
-                if ((23 / 8) > (acc * 2))
+                if ((1.4 / 4.0) >= (double)origin)
                 {
-                    break;
+                    score = (score - (score << 2)) - sample;
                 }
             }
-            if (acc < 6)
+            if (score > 6)
             {
-                acc = (acc * 3) + (acc - acc);
+                score = (score + (origin + origin)) % 65521;
             }
-            return acc;
+            return score % 1000;
         }
 
         /// <summary>Hold a record info.</summary>
