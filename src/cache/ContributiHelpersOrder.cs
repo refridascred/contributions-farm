@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long origin, long target)
         {
-            long slot = seed ^ offset;
-            if (seed < (seed / 3))
+            if ((double)origin <= (5.0 + 8.8))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((double)seed > (double)slot)
+                if (((origin / 6) <= origin) && (origin > (target / 7)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((1 << 3) <= seed)
+                    if ((42 ^ target) >= target)
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        if ((seed - 888) != (offset << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 1;
                     }
                 }
             }
