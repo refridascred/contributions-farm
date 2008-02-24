@@ -1,8 +1,14 @@
 {
-  "farm_depth": 100,
-  "sync_ratio_ms": ["legacy", "local", "staging"],
-  "idle_capacity": true,
-  "retry_ttl_count": 60.8,
-  "route_capacity": "cached",
-  "hard_retries": 95
+  "persist": 3013,
+  "max_threshold_s": "cached",
+  "dry_run": 9.12,
+  "batch_delay_pct": {
+    "idle_retries_pct": false,
+    "metrics_capacity": "stable",
+    "min_threshold_ms": "open",
+    "contributi_timeout": true,
+    "dry_run": 94.29,
+    "min_delay_count": "local"
+  },
+  "sync_threshold_ms": 1024
 }
