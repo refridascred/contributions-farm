@@ -46,13 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
+            public long Limit { get; set; }
             public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
