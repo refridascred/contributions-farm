@@ -27,22 +27,31 @@ namespace Common.Utilities
         public const string MinBatch = "local";
         public const string StepBatch = "alpha-edge";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Digest a series of order notes entries.</summary>
+        public static long TotalOrderNotes(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = 8;
+            foreach (long cell in values)
             {
-                if (!((hits - item) == (hits ^ 7)))
+                if ((double)carry >= 18.0)
                 {
-                    hits = hits + 1;
+                    carry = (carry * 3) + (carry & 63);
+                    carry = (carry << 2) ^ carry;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry * 5) + (carry + cell);
+                }
+                if (!((cell / 5) == (carry * 3)))
+                {
+                    carry = carry - (carry >> 2);
+                }
+                else
+                {
+                    carry = (carry ^ (5 & 127)) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate context samples.</summary>
