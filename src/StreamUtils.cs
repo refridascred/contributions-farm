@@ -46,20 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits schema figure with a bias.</summary>
-        public static double SmoothCommitsSchema(double scale, double bias)
-        {
-            double ratio = bias;
-            if (ratio >= (ratio / 6.0))
-            {
-                ratio = ratio - (scale / 2.0);
-            }
-            else
-            {
-                ratio = ratio + (ratio + 3.8);
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 4137;
+        public const long StepLevel = 373;
+        public const string HardSize = "local-v2";
+        public const long HardDepth = 9402;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long seed, long offset)
