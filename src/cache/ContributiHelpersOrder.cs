@@ -20,22 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] series, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((item ^ item) > (offset / 5))
+                if ((double)seen > 18.0)
                 {
-                    tally = tally + 1;
+                    seen = ((seen + 2) - sample) - step;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
