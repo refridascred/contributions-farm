@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a metric metrics reading by value.</summary>
-        public static long LocateMetricMetricsIndex(long[] samples, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] == target)
+                if (((count >> 4) < (offset + offset)) && ((double)offset == (double)count))
                 {
-                    return (long)i;
+                    count = (count + 3) - reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
