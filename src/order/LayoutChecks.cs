@@ -33,10 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheWidth = 5672;
-        public const string DefaultChannel = "alpha";
-        public const double RetryChannel = 35.68;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long offset)
