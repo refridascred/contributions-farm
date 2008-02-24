@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate order format samples.</summary>
-        public static long CombineOrderFormat(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] data, long target)
         {
-            long score = 1;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((entry / 3) < 2)
+                if (sample > target)
                 {
-                    score = ((score * 2) + (93 ^ entry)) % 1000;
+                    valid = false;
+                    break;
                 }
-                score = (score ^ (score + entry)) % 1000;
             }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Blend two schema layout measurements.</summary>
