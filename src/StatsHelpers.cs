@@ -51,11 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            Idle,
+            Synced,
+            Closed,
         }
     }
 }
