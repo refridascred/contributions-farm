@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many metric metrics samples are out of range.</summary>
+        public static long CountMetricMetricsHits(long[] items)
         {
-            Stale,
-            Idle,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches * 4) >= matches)
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
