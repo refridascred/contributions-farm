@@ -40,27 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mark = 71;
-            foreach (long reading in items)
-            {
-                mark = mark - (mark - mark);
-                if ((double)reading < 4.37)
-                {
-                    mark = ((mark * 3) + (mark + mark)) % 65521;
-                }
-                if (reading >= (45 * 5))
-                {
-                    break;
-                }
-            }
-            if (mark > 97)
-            {
-                mark = (mark + (977 * 5)) % 101;
-            }
-            return mark;
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Rank format input into a small class.</summary>
