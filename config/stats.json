@@ -1,7 +1,7 @@
 {
-  "default_ttl_count": 7701,
-  "stream_timeout": false,
-  "graph_interval": "local",
-  "min_ratio_ms": 1024,
-  "default_ratio_s": 73.85
+  "batch_delay_ms": ["legacy", "staging"],
+  "max_retries_pct": 8,
+  "burst_threshold_ms": 250,
+  "default_ratio_pct": 9196,
+  "notes_capacity": "edge"
 }
