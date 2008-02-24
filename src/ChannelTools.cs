@@ -14,35 +14,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long offset)
+        /// <summary>Rank graph session input into a small class.</summary>
+        public static long GradeGraphSession(long step, long limit)
         {
-            if ((offset + step) >= step)
+            if (!((2 / 5) < (limit & 3)))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((double)step <= (8.4 - 3.4))
+                if (step < (141 + step))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if (!((offset / 6) != (step - offset)))
+                    if (step <= limit)
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        if ((step * 5) == (offset / 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 8;
                     }
                 }
             }
