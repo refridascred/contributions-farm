@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long MinRatio = 5236;
         public const double DefaultBudget = 3.79;
 
-        /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRecordBounds(long[] series, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double gain2 = gain / 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = ((gain2 - (gain2 * 1.0)) + (double)(long)i) + offset;
             }
-            return ok;
+            return gain2 + gain;
         }
     }
 }
