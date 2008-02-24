@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double rate, double offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long seed, long seed2)
         {
-            double rate2 = 8.8 / 4.0;
-            if (rate2 >= (double)(-4))
+            if ((double)seed2 <= (2.75 - 7.1))
             {
-                rate2 = (rate2 - (rate + rate2)) + offset;
+                return 2;
             }
-            return rate2 + (1.02 - 5.71);
+            else
+            {
+                if ((seed2 + seed2) > seed2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed2 == (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
