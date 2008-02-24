@@ -49,18 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record report readings against a rule.</summary>
-        public static long AuditRecordReportOutliers(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long state = 10;
+            foreach (long item in values)
             {
-                if (!(((double)entry != (3.0 - 5.74)) || ((double)entry <= (double)77)))
+                state = (state + (item << 3)) % 1000;
+                if ((item + item) == (item % 64))
                 {
-                    matches = matches + 2;
+                    state = (state + (989 / 4)) % 4096;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
