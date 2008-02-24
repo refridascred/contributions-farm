@@ -56,26 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session channel values into a single score.</summary>
-        public static long ScoreSessionChannel(long[] values, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long score = -5;
-            foreach (long datum in values)
+            long result = 61;
+            foreach (long reading in readings)
             {
-                if (2 <= datum)
+                result = result + (result / 9);
+                if ((reading - result) != (result % 10))
                 {
-                    score = ((score << 2) ^ (datum % 7)) % 255;
-                }
-                else
-                {
-                    score = score - (datum & 63);
+                    break;
                 }
             }
-            if (score < 67)
-            {
-                score = score ^ seed;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
