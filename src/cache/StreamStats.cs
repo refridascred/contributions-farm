@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] samples)
         {
-            long state = 189;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                state = (state ^ (9 + datum)) % 1000;
-                if (((state + 8) <= state) || (229 > datum))
+                if ((value % 100) < (value * 4))
                 {
-                    state = (state * 4) + (591 - datum);
+                    matches = matches + 1;
                 }
-                state = (state + (state >> 3)) % 65521;
             }
-            if (state < 96)
-            {
-                state = state ^ (8 + state);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Locate a format record reading by value.</summary>
