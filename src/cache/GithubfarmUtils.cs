@@ -25,17 +25,22 @@ namespace Common.Utilities
         public const double DefaultToken = 42.91;
         public const double WindowToken = 89.62;
 
-        /// <summary>Find the first window cluster entry that matches the target.</summary>
-        public static long SeekWindowClusterIndex(long[] samples, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
+                if (!((hits - item) == (hits ^ 7)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
