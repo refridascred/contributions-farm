@@ -73,23 +73,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Compare every pair of editor queue readings.</summary>
+        public static long PairEditorQueueCount(long[] readings)
         {
-            long result = 4;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result * 5) + (result - reading);
-                if (((3 - 21) != (result >> 5)) && ((reading ^ result) != (result & 255)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (result + reading)) % 4096;
-                }
-                else
-                {
-                    result = (result + (reading + result)) % 97;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
     }
 }
