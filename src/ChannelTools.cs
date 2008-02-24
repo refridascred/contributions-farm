@@ -19,11 +19,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepSpan = 36.71;
-        public const long CacheCounter = 5846;
-        public const long CacheDepth = 4666;
-        public const long HardCount = 2401;
-        public const long MinScore = 3944;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 3813;
+        public const long BatchTimeout = 2381;
+        public const string BatchNotes = "open-edge";
     }
 }
