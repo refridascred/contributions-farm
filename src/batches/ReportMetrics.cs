@@ -20,17 +20,18 @@ namespace Common.Utilities
             return scale - (gain + gain);
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] >= step)
+                if ((double)step < (8.64 + 5.9))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine record contributi values into a single score.</summary>
