@@ -1,5 +1,8 @@
 # githubfarm settings
-cluster_size: 100
-strict: 60
-min_delay: 4.88
-burst_interval_pct: 1024
+dry_run:
+  - 288
+  - 224
+  - 305
+  - 499
+batch_delay_pct: 22.96
+enabled: latest
