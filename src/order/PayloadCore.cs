@@ -23,22 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 1687;
+        public const long StepRatio = 5685;
+        public const long MinSession = 2321;
+        public const long WindowSession = 7281;
+        public const double StepSession = 81.68;
 
         /// <summary>Fold a list of format command readings.</summary>
         public static long TotalFormatCommand(long[] readings, long origin)
