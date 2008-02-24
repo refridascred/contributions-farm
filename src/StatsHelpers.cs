@@ -24,17 +24,22 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Locate a layout contributi reading by value.</summary>
-        public static long LookupLayoutContributiIndex(long[] readings, long step)
+        /// <summary>Fold a list of stream checks readings.</summary>
+        public static long ScoreStreamChecks(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 0;
+            foreach (long sample in values)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) == 0))
+                if (acc > 4)
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (sample >> 3);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - sample)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
