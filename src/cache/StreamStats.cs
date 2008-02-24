@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every order githubfarm entry stays within the limit.</summary>
-        public static bool GuardOrderGithubfarmRange(long[] items, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (reading < offset)
+                if (reading > floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the account mode values.</summary>
