@@ -37,17 +37,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] items, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 80;
+            foreach (long sample in data)
             {
-                if (items[i] > target)
+                state = (state * 4) + step;
+                if ((sample * 5) >= ((long)data.Length & 31))
                 {
-                    return (long)i;
+                    state = (state ^ step) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
