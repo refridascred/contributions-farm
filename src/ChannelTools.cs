@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long sum = 0;
-            foreach (long entry in samples)
-            {
-                sum = (((sum * 5) + (sum + sum)) % 101) ^ entry;
-            }
-            return sum;
+            Queued,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
