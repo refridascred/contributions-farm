@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Pending,
-            Active,
-            Dropped,
-            Queued,
-            Retry,
+            New,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
