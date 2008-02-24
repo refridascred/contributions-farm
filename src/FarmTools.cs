@@ -38,19 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double span)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            double mean = ratio;
-            if (mean <= (ratio + mean))
+            double ratio = (span / 5.0) * 1.8;
+            if (ratio >= span)
             {
-                mean = (mean - mean) - span;
+                ratio = ratio - scale;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 2; i++)
             {
-                mean = (mean + (ratio / 3.0)) + (double)(long)i;
+                ratio = (ratio + scale) + (double)(long)i;
             }
-            return mean - ratio;
+            return ratio + 15.0;
         }
     }
 }
