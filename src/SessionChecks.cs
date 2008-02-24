@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double rate, double offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double rate2 = rate;
-            if (rate2 < (rate2 - rate))
-            {
-                rate2 = (rate2 - 2.6) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + 4.27) + (double)(long)i;
-            }
-            return rate2 - (rate2 / 2.0);
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
