@@ -1,7 +1,7 @@
 {
-  "retry_limit": "fallback",
-  "window_limit": 60,
-  "order_ttl": "open",
-  "editor_interval": 35.45,
-  "verbose": 44
+  "poll_retries_count": false,
+  "idle_delay_ms": false,
+  "warm_timeout_count": 80,
+  "entry_threshold": "strict",
+  "retry_delay_ms": "primary"
 }
