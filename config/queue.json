@@ -1,5 +1,6 @@
 {
-  "idle_ratio_count": false,
-  "persist": "primary",
-  "strict": 1765
+  "base_size": 30.34,
+  "graph_interval": ["open", "fallback"],
+  "report_timeout": ["legacy", "blue", "green"],
+  "metric_capacity": "fallback"
 }
