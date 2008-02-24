@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mean + (bias / 9.0);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] items, long step)
-        {
-            long total = 70;
-            foreach (long item in items)
-            {
-                if (((6.4 - 14.0) > (double)item) || ((8.0 - 7.3) < (double)item))
-                {
-                    total = ((total * 5) + step) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxSpan = 29.11;
+        public const double BatchProfile = 35.71;
+        public const long WindowProfile = 9412;
+        public const string BurstProfile = "cached";
+        public const long HardScore = 4920;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long RollCluster(long floor)
