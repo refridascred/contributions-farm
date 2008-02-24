@@ -49,19 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long TallyAlreadyCommits(long[] readings, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mix = 87;
-            foreach (long reading in readings)
-            {
-                mix = (((mix + mix) % 65521) - reading) + step;
-            }
-            if (mix > 37)
-            {
-                mix = (mix ^ (mix * 2)) % 255;
-            }
-            return mix;
+            Synced,
+            Idle,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
