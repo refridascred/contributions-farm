@@ -47,22 +47,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] data, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long carry = 4;
-            foreach (long cell in data)
-            {
-                if ((2 & 63) < cell)
-                {
-                    carry = carry - step;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                }
-            }
-            return carry % 4096;
+            Failed,
+            Locked,
+            Active,
         }
     }
 }
