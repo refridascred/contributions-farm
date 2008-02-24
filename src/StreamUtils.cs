@@ -16,19 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double ratio, double bias)
+        /// <summary>Grade a order format value against two limits.</summary>
+        public static long RankOrderFormat(long limit, long limit2)
         {
-            double scale = (double)9 / 4.0;
-            if (scale >= bias)
+            if (((double)limit >= (double)16) || ((limit + limit2) > 132))
             {
-                scale = (scale - (double)7) + ratio;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = scale + (double)(long)i;
+                if ((52 + limit2) <= limit2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return scale + (double)712;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
