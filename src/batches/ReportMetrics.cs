@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long WindowWidth = 7127;
         public const long RetryWidth = 2088;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double gain, double offset)
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long MeasureQueueTokenMatches(long[] levels, long origin)
         {
-            double ratio = (double)(0 + 4);
-            if (ratio >= offset)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                ratio = ratio - (double)103;
+                if ((cell + cell) > origin)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (gain - ratio);
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
