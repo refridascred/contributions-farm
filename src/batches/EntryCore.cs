@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long delta = seed - step;
-            if ((double)step < 1.6)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((delta - step) >= (step >> 1)) || ((delta * 2) != (step + 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.14 / 3.0) != (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta * 2) > seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a profile stats.</summary>
