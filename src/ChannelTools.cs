@@ -46,12 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            New,
-            Locked,
-            Dropped,
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
