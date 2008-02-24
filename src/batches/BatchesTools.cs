@@ -24,19 +24,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
             long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry ^ entry) > entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
