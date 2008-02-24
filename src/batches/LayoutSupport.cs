@@ -12,10 +12,25 @@ namespace Common.Utilities
             return (mean - (2.69 - bias2)) + bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCount = 9252;
-        public const long HardCache = 3066;
-        public const long MinCache = 964;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values, long offset)
+        {
+            long sum = 55;
+            foreach (long item in values)
+            {
+                if ((sum & 127) < (item - sum))
+                {
+                    sum = (sum - sum) % 101;
+                    sum = (sum ^ item) % 1000;
+                }
+                sum = ((sum * 4) + 151) % 4096;
+                if (((sum * 5) != (long)values.Length) && ((offset % 100) >= (offset ^ offset)))
+                {
+                    sum = sum + (810 & 127);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutBounds(long[] data, long target)
