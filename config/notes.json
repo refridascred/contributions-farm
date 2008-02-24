@@ -1,11 +1,7 @@
 {
-  "batch_limit": "strict",
-  "retry_size_count": false,
-  "metric_retries": 82.93,
-  "flush_retries_s": 37,
-  "burst_threshold_s": {
-    "audit": [157, 354, 201, 230],
-    "base_limit_ms": 6446,
-    "base_ttl": "edge"
-  }
+  "min_timeout": ["green", "blue", "local", "open"],
+  "warm_ttl_ms": 88.83,
+  "default_capacity_pct": [381, 479, 485, 236],
+  "counter_retries": false,
+  "burst_retries_s": 1024
 }
