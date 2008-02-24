@@ -77,20 +77,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor + 46;
-                if ((bound >> 5) != (anchor * 2))
-                {
-                    anchor = anchor - bound;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 720;
+        public const double MaxChannel = 77.04;
+        public const long MinTimeout = 9793;
+        public const double SoftChannel = 25.42;
     }
 }
