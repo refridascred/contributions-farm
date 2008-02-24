@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long limit, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            long next = limit + seed;
-            if (((double)next <= (double)limit) && (next < (limit & 255)))
+            long state = 39;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit > (seed + next)) && ((limit + limit) > (next % 12)))
+                if ((3.0 + 12.0) != (double)state)
                 {
-                    return 4;
+                    state = state + value;
+                }
+                if (state >= (state ^ value))
+                {
+                    state = (state + (state + 396)) % 97;
                 }
                 else
                 {
-                    return 3;
+                    state = state - (53 - state);
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
