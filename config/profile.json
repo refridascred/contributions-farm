@@ -1,15 +1,7 @@
 {
-  "githubfarm_threshold": 91.17,
-  "audit": "strict",
-  "warm_ttl": [182, 305, 108],
-  "readonly": "stable",
-  "commits_timeout": "edge",
-  "order_threshold": {
-    "burst_depth_s": 5772,
-    "idle_window_pct": 4339,
-    "max_capacity": 250,
-    "retry_ratio_pct": "green",
-    "window_delay": 30,
-    "audit": 61.42
-  }
+  "batch_ratio_s": 76,
+  "poll_limit_count": 70.65,
+  "batch_depth_count": "strict",
+  "soft_interval_pct": "eu-west",
+  "default_capacity": false
 }
