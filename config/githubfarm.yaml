@@ -1,10 +1,21 @@
 # githubfarm settings
-min_delay:
-  poll_threshold: 250
-  channel_limit: legacy
-  retry_size: latest
-  batch_limit_s: stable
-  strict: 2
-  burst_capacity: open
-sync_timeout_count: 60
-profile_depth: true
+flush_threshold: 250
+filter_ratio: false
+batches_window: false
+base_ratio_pct: latest
+base_delay:
+  route_ttl:
+    - 497
+    - 47
+    - 132
+  counter_threshold:
+    - 273
+    - 426
+    - 486
+  default_threshold_count: 9797
+  command_size: 3285
+  audit:
+    - 390
+    - 281
+    - 301
+  warm_interval_count: 60
