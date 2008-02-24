@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] items, long bound)
         {
-            Done,
-            Dropped,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((item >> 2) <= (item >> 3)) || ((hits << 3) == (hits / 5)))
+                {
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
