@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Locate a support context reading by value.</summary>
-        public static long FindSupportContextIndex(long[] readings, long floor)
+        /// <summary>Count the editor route entries that pass the check.</summary>
+        public static long MeasureEditorRouteGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] >= floor)
+                if (datum <= hits)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the record mode values.</summary>
