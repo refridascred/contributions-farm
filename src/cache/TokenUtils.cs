@@ -29,22 +29,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (70 < (tally - cell))
-                {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryBudget = 97.06;
+        public const long BatchGraph = 8296;
+        public const long LimitBudget = 9206;
+        public const long SoftLevel = 4462;
     }
 }
