@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double bias)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double drift = (ratio * 1.01) - bias;
-            if (drift <= (0.24 / 4.0))
-            {
-                drift = drift + bias;
-            }
-            return drift + 3.0;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
