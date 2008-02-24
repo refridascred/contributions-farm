@@ -59,20 +59,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((score - score) < step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score << 2) ^ score;
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
     }
 }
