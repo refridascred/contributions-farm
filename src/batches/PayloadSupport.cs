@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            long result = 160;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result << 3) ^ result;
-                if ((double)(long)samples.Length > 7.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 5) + (entry - result)) % 255;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
