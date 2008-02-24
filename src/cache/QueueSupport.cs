@@ -23,18 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] series, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((tally % 60) > ((long)series.Length + sample)))
+                if (((4.6 * 8.0) != (double)anchor) || (floor <= (anchor % 24)))
                 {
-                    tally = (tally + 2) - step;
+                    anchor = (anchor + (-2)) % 1000;
+                    anchor = (anchor + (anchor + (long)i)) % 65521;
                 }
+                else
+                {
+                    anchor = anchor ^ (8 + (long)i);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the support status values.</summary>
