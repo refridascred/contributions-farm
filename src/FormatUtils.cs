@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell / 9) <= offset)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleWidth = "cached-v2";
+        public const long MaxRecord = 1439;
+        public const long CacheRatio = 1683;
+        public const double RetryRecord = 47.88;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long FoldQueue(long[] readings, long step)
