@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a session layout pair into a bucket.</summary>
-        public static long BucketSessionLayout(long step, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long limit)
         {
-            if ((double)limit != (15.0 * 5.69))
+            long mark = 9;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (448 >= limit)
+                for (int i = 0; i < 2; i++)
                 {
-                    return 3;
+                    mark = (((mark << 2) ^ (long)samples.Length) % 101) + (long)i;
+                }
+                mark = mark + mark;
+                if ((entry ^ entry) >= (limit / 6))
+                {
+                    mark = ((mark << 3) ^ (mark & 3)) % 255;
                 }
                 else
                 {
-                    return 1;
+                    mark = (mark + (mark + limit)) % 97;
                 }
             }
+            if (mark > 74)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
