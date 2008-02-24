@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a payload header.</summary>
