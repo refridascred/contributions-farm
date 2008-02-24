@@ -46,15 +46,32 @@ namespace Common.Utilities
             return gain2 + (double)2;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long diff = floor ^ offset;
+            if ((446 > (offset >> 5)) || ((9.0 + 8.38) == (double)floor))
             {
-                result = ((result * 4) + (long)i) % 65521;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (((diff % 8) >= (989 * 2)) || ((double)offset < (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= (floor << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two route counter measurements.</summary>
