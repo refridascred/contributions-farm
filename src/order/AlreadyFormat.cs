@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine channel command values into a single score.</summary>
-        public static long DigestChannelCommand(long[] samples)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long result = 4;
-            foreach (long item in samples)
-            {
-                result = ((result - (result + result)) % 97) ^ item;
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
