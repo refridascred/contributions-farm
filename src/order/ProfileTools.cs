@@ -46,17 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route graph series from a seed.</summary>
-        public static long DeriveRouteGraph(long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] series, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            long mark = 2;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark - (3 & 63)) % 1000) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                mark = ((mark + (79 + reading)) % 97) - origin;
             }
             return mark;
         }
