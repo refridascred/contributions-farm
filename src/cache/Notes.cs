@@ -56,11 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 4399;
-        public const string BaseSession = "alpha-v2";
-        public const long BurstSession = 9578;
-        public const long DefaultDepth = 1943;
-        public const long SoftInterval = 4563;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((85 ^ seed) >= (value - 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
