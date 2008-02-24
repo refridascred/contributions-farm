@@ -43,15 +43,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the command record series from a seed.</summary>
-        public static long RollCommandRecord(long step)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
