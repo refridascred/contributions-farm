@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a command window value against two limits.</summary>
-        public static long BucketCommandWindow(long seed, long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long lane = seed + offset;
-            if ((double)lane < (9.0 + 17.0))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.25 - 8.4) != (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed - lane) >= (1 >> 4)))
+                    if ((samples[i] ^ samples[j]) != 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.35 - 17.0) < (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
