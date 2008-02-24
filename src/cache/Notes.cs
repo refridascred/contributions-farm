@@ -30,31 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long seed)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if (((step / 6) > 3) && ((seed + seed) > (step + seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step >= seed) && ((seed + 482) != (step >> 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (seed * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
