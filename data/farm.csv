@@ -1,7 +1,6 @@
-id,state,ratio,token,active
-1,79,68.16,178,52.43
-2,stable,legacy,staging,cached
-3,staging,local,459,55.43
-4,82.45,839,562,997
-5,strict,standard,cached,18.9
-6,52.72,latest,57.17,76.71
+id,region,rank,state
+1,blue,616,primary
+2,strict,stable,green
+3,507,cached,latest
+4,19.74,primary,open
+5,stable,standard,714
