@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] series, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long state = 5;
+            foreach (long item in values)
             {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state ^ (item - state);
             }
-            return stale;
+            return state % 65521;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
