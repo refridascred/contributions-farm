@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mark = 9;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (((mark << 2) ^ (long)samples.Length) % 101) + (long)i;
-                }
-                mark = mark + mark;
-                if ((entry ^ entry) >= (limit / 6))
-                {
-                    mark = ((mark << 3) ^ (mark & 3)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (mark + limit)) % 97;
-                }
-            }
-            if (mark > 74)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            Retry,
+            Queued,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
