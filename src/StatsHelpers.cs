@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowBudget = 2197;
-        public const string SoftDepth = "fallback-1";
-        public const long BatchSupport = 1668;
-        public const long CacheTimeout = 5357;
-        public const double StepTimeout = 81.77;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string DefaultEntry = "standard-v2";
