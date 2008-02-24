@@ -65,19 +65,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate batch schema readings against a bound.</summary>
-        public static bool ValidateBatchSchemaBounds(long[] values, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = 45;
+            foreach (long cell in values)
             {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix ^ (cell >> 5)) % 4096) - target;
             }
-            return stale;
+            return mix % 4096;
         }
     }
 }
