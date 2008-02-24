@@ -48,24 +48,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long floor, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] readings, long floor)
         {
-            if ((limit * 2) < (limit + floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (7.74 * 8.2))
+                if (readings[i] >= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already phase values.</summary>
