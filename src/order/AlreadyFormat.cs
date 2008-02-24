@@ -46,16 +46,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] readings, long offset)
-        {
-            long result = 8;
-            foreach (long sample in readings)
-            {
-                result = ((result - offset) % 65521) ^ sample;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftLevel = 6540;
+        public const long CacheSchema = 1428;
+        public const long HardLevel = 1880;
+        public const string SoftSchema = "open-edge";
+        public const long RetryWidth = 4525;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesRange(long[] data, long seed)
