@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] items, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((count >> 4) < (offset + offset)) && ((double)offset == (double)count))
+                if (((step <= (sample - 0)) && ((sample >> 4) > tally)) && ((7.0 - 8.1) < (double)sample))
                 {
-                    count = (count + 3) - reading;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
