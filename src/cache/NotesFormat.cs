@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] <= limit)
+                if (seed >= 3)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
