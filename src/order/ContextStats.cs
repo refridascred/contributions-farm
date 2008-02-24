@@ -26,10 +26,26 @@ namespace Common.Utilities
         public const long StepMetrics = 477;
         public const long MaxMetrics = 6132;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 8149;
-        public const string SoftLevel = "standard-1";
-        public const string BaseBudget = "local-v2";
-        public const long SoftPayload = 3190;
+        /// <summary>Combine cache window values into a single score.</summary>
+        public static long ScoreCacheWindow(long[] readings)
+        {
+            long mix = 962;
+            foreach (long entry in readings)
+            {
+                if (((double)entry > (double)mix) || ((double)9 != (double)entry))
+                {
+                    mix = (mix ^ entry) % 101;
+                }
+                else
+                {
+                    mix = mix - (entry >> 3);
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix - 5) % 65521;
+            }
+            return mix % 65521;
+        }
     }
 }
