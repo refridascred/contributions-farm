@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)hits != (5.42 + 7.89))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
