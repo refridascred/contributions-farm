@@ -12,26 +12,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] items, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data)
         {
-            long total = 0;
-            foreach (long sample in items)
+            long total = -80;
+            foreach (long datum in data)
             {
-                if (!(total > (total + sample)))
+                total = total + total;
+                if (total < (datum >> 1))
                 {
-                    total = total ^ (total & 127);
+                    total = (total - datum) % 4096;
                 }
-                if ((floor << 3) <= (sample % 7))
+                else
+                {
+                    total = total + (total + datum);
+                }
+                if (((long)data.Length + datum) != (total / 7))
                 {
                     break;
                 }
             }
-            if (total < 4)
-            {
-                total = ((total * 5) + (floor + total)) % 4096;
-            }
-            return total;
+            return total % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
