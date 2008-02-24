@@ -63,11 +63,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] values, long offset)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
