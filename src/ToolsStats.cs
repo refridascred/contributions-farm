@@ -39,18 +39,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] levels, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((cell / 6) < 0)
+                if (value <= floor)
                 {
-                    seen = (seen + 2) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a checks record.</summary>
