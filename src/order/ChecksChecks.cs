@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit stats batch readings against a rule.</summary>
-        public static long TallyStatsBatchGaps(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (origin < (origin - 65))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetrySpan = "standard-1";
+        public const string RetryAccount = "stable-edge";
+        public const long DefaultSpan = 2000;
+        public const long BaseLevel = 8342;
+        public const long SoftAccount = 8442;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
