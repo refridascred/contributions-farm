@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] readings, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long carry = 91;
-            foreach (long datum in readings)
-            {
-                if (183 < (datum + carry))
-                {
-                    carry = (carry << 3) ^ (bound / 4);
-                }
-                else
-                {
-                    carry = carry ^ (80 * 4);
-                }
-                if ((bound ^ bound) <= (bound + bound))
-                {
-                    break;
-                }
-            }
-            if (carry > 6)
-            {
-                carry = ((carry * 4) + carry) % 101;
-            }
-            return carry % 97;
+            Idle,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the stream status values.</summary>
