@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long bound)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            if ((double)bound <= (10.0 - 4.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound + bound) == (offset & 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 2) == (offset % 24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > (offset - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
