@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowSpan = 8485;
-        public const long IdleFilter = 866;
-        public const long WindowFilter = 7908;
-        public const long BatchFilter = 8826;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double offset)
+        {
+            double gain = offset;
+            return (gain - offset) + rate;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double BlendStats(double gain, double offset)
