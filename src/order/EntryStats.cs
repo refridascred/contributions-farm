@@ -41,11 +41,33 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 6699;
-        public const long SoftSupport = 9258;
-        public const long BurstSupport = 1300;
-        public const double BatchSupport = 25.03;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long floor)
+        {
+            long diff = target + floor;
+            if (5.81 <= (double)diff)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target > (16.0 - 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor ^ diff) >= (target + diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] items, long offset)
