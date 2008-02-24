@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long next = offset - origin;
+            if (offset < (offset + offset))
             {
-                if ((double)carry <= (8.86 * 7.8))
-                {
-                    carry = carry ^ (745 + bound);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((next >> 5) >= (706 >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin >> 3) > (offset + 5)) || ((double)offset != (14.0 - 5.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (57 < (origin ^ next))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
