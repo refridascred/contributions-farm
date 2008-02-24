@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "primary-1";
-        public const string WindowFormat = "legacy-v2";
-        public const string BaseFormat = "stable-v2";
-        public const string StepFormat = "standard-v2";
-        public const long RetryFormat = 1419;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryBudget = 49.32;
+        public const long BatchOrder = 6141;
+        public const double CacheOrder = 10.17;
+        public const long SoftDepth = 3871;
+        public const long IdleBudget = 6540;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
