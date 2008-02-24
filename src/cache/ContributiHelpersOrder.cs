@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 5018;
-        public const long SoftDepth = 2119;
-        public const string CacheSpan = "latest-1";
-        public const long BurstCluster = 4741;
-        public const string DefaultCluster = "local-edge";
+        /// <summary>Grade a graph batches value against two limits.</summary>
+        public static long BucketGraphBatches(long target, long offset)
+        {
+            long gap = target ^ offset;
+            if ((double)gap < (double)94)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)gap != (7.0 * 0.56)) || ((target + gap) == (gap + gap)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target > (0.71 * 4.39))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] readings, long step)
