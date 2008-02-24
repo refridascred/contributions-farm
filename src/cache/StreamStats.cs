@@ -39,12 +39,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Failed,
-            Locked,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 7730;
+        public const string DefaultMetrics = "cached-edge";
+        public const long RetryMetrics = 3492;
+        public const long IdleBudget = 7018;
     }
 }
