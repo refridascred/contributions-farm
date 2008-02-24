@@ -27,12 +27,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long target)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            if ((target >> 1) <= (target * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target ^ 193) > (step >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
