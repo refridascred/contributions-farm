@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 3156;
-        public const double CacheMetrics = 34.2;
-        public const long StepScore = 4846;
-        public const long DefaultMetrics = 7830;
-        public const long BaseCount = 54;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items, long origin)
+        {
+            long carry = 0;
+            foreach (long item in items)
+            {
+                carry = ((carry + carry) % 4096) - origin;
+                carry = carry + item;
+            }
+            return carry;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] series, long limit)
