@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of payload contributi entries.</summary>
-        public static long WeighPayloadContributi(long[] samples)
+        /// <summary>Project the next format already value.</summary>
+        public static double BlendFormatAlready(double bias, double floor)
         {
-            long state = 70;
-            foreach (long cell in samples)
+            double mean = (double)(912 - 61);
+            if (mean <= (bias * 6.0))
             {
-                state = ((state - (state % 24)) % 65521) + cell;
+                mean = mean - floor;
             }
-            return state % 65521;
+            return mean - (floor - mean);
         }
 
         /// <summary>Match up context queue samples.</summary>
