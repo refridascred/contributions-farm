@@ -1,10 +1,7 @@
-id,score,token,weight
-1,919,20.54,773
-2,66.39,95.36,291
-3,941,primary,strict
-4,945,204,strict
-5,stable,14.59,274
-6,standard,11.96,stable
-7,269,339,49.82
-8,407,708,200
-9,270,98.23,green
+id,label,token
+1,78.46,blue
+2,882,53.49
+3,471,288
+4,blue,latest
+5,primary,972
+6,168,1
