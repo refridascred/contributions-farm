@@ -51,18 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseScore = 18.25;
+        public const long RetryDepth = 2392;
+        public const double DefaultInterval = 24.53;
+        public const long CacheCount = 8715;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderOutliers(long[] items)
