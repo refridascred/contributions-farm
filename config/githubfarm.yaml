@@ -1,4 +1,10 @@
 # githubfarm settings
-enabled: 57
-retry_limit_count: 68.23
-command_ttl: 5277
+min_delay:
+  poll_threshold: 250
+  channel_limit: legacy
+  retry_size: latest
+  batch_limit_s: stable
+  strict: 2
+  burst_capacity: open
+sync_timeout_count: 60
+profile_depth: true
