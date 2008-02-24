@@ -14,18 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] series, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long sum = 8;
+            foreach (long datum in items)
             {
-                if (item < (item + item))
-                {
-                    hits = (hits + 1) - offset;
-                }
+                sum = ((sum * 5) + (datum * 4)) % 97;
+                sum = (sum - (157 >> 3)) % 1000;
             }
-            return hits;
+            if (sum < 2)
+            {
+                sum = ((sum * 3) + origin) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
