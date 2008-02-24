@@ -40,13 +40,18 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum > (matches % 12))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
