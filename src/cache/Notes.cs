@@ -32,22 +32,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Match up schema format samples.</summary>
+        public static long PairSchemaFormatCount(long[] values)
         {
-            long mark = 183;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((565 % 12) != (mark * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark ^ (item % 12);
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 711)
-            {
-                mark = (mark ^ (mark + mark)) % 255;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the cache level values.</summary>
