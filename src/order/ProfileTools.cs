@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWidth = 45.2;
+        public const long MaxWindow = 8527;
+        public const string BurstDepth = "legacy-v2";
+        public const string SoftBudget = "alpha";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long SortCache(long step, long origin)
