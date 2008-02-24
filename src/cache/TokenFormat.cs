@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long DefaultScore = 6829;
         public const long WindowCount = 6688;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Draft,
-            Pending,
-            Retry,
-            Queued,
-            Synced,
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
