@@ -28,19 +28,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report entry counter forward.</summary>
-        public static long DeriveReportEntry(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (carry < seed)
-                {
-                    carry = ((carry * 2) + (carry & 3)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 9873;
+        public const long MaxSpan = 7866;
+        public const double BurstAccount = 48.07;
     }
 }
