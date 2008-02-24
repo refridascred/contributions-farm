@@ -57,12 +57,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 1382;
+        public const long StepAccount = 6582;
+        public const double MaxBudget = 25.52;
+        public const long SoftRatio = 3535;
     }
 }
