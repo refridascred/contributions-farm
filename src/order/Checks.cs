@@ -32,17 +32,11 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseSpan = "stable-v2";
+        public const long BaseTimeout = 5444;
+        public const long WindowSpan = 2743;
+        public const long BatchChecks = 1920;
+        public const long WindowSize = 8793;
     }
 }
