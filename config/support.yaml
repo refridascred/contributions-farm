@@ -1,32 +1,32 @@
 # support settings
-warm_timeout_pct: 30
-burst_ratio_pct: 72
-metrics_window: 51.7
-max_interval:
-  persist: primary
-  max_ttl_ms:
-    - 99
-    - 174
-  batches_retries:
-    queue_interval: open
-    support_capacity: 250
-    poll_delay: 54.98
-    command_timeout:
-      - eu-west
-      - local
-    flush_capacity_s: true
-    editor_limit: 29.57
-  min_limit_pct:
-    batches_capacity: 69.24
-    min_window:
-      - green
-      - fallback
-      - open
-      - open
-    cache_window: 907
-    dry_run: 39.46
-    entry_depth: true
-batch_ttl:
-  hard_delay_pct: 60
-  burst_retries_pct: true
-  flush_ratio_ms: 75.16
+cache_depth: primary
+hard_limit_pct: stable
+sync_depth: 5816
+burst_depth_ms:
+  poll_threshold_ms: legacy
+  counter_limit: true
+  soft_threshold:
+    flush_depth: 798
+    layout_retries: latest
+    cache_depth_count: standard
+    flush_interval_pct: true
+  support_depth:
+    - 430
+    - 167
+    - 266
+  retry_ttl_ms: fallback
+  burst_depth_ms: 29
+max_size:
+  editor_timeout: false
+  githubfarm_retries:
+    compress: 8
+    payload_capacity: true
+    metric_interval: cached
+    retry_threshold_count: true
+  base_depth_ms: false
+  strict: fallback
+batch_size_pct:
+  - fallback
+  - staging
+  - edge
+  - local
