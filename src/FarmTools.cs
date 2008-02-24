@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 8663;
-        public const double BaseSpan = 39.57;
-        public const long MinCounter = 1641;
-        public const long DefaultBudget = 1863;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit editor metric readings against a rule.</summary>
         public static long CountEditorMetricHits(long[] values, long limit)
