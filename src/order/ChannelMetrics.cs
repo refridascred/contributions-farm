@@ -56,24 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long limit, long origin)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if (!((15 & 3) >= (origin & 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.95 - 8.1) != (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
