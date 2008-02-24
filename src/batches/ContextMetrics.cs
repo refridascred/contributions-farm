@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)2;
+            if (mean > rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + span;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (5.0 + span)) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a already header.</summary>
