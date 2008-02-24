@@ -38,12 +38,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Dropped,
-            Locked,
-            Paused,
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
