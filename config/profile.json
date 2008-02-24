@@ -1,7 +1,10 @@
 {
-  "batch_ratio_s": 76,
-  "poll_limit_count": 70.65,
-  "batch_depth_count": "strict",
-  "soft_interval_pct": "eu-west",
-  "default_capacity": false
+  "profile_threshold": [76, 339, 223],
+  "default_delay": {
+    "min_interval_count": 4793,
+    "cache_capacity_s": 1501,
+    "batch_retries": 87,
+    "payload_depth": 38.03
+  },
+  "readonly": 6.81
 }
