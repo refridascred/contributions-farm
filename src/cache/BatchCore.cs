@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFactor = 6237;
-        public const double HardFilter = 25.72;
-        public const long IdleFilter = 1614;
-        public const string DefaultSize = "legacy-1";
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double bias, double offset)
+        {
+            double weight = offset - offset;
+            if (weight > 2.79)
+            {
+                weight = (weight - (weight * 18.0)) - bias;
+            }
+            return weight + (weight + weight);
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long DigestSession(long[] data)
