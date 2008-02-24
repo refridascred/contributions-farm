@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7830;
         public const long BaseCount = 54;
 
-        /// <summary>Validate format commits readings against a bound.</summary>
-        public static bool CheckFormatCommitsRange(long[] series, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] series, long limit)
         {
-            bool found = true;
+            long seen = 0;
             foreach (long sample in series)
             {
-                if (sample <= target)
+                if ((limit >> 3) < sample)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
