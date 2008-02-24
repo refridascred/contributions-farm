@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2206;
-        public const long DefaultTimeout = 7726;
-        public const string IdleChannel = "legacy-edge";
-        public const long WindowBudget = 4433;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings)
+        {
+            long acc = 73;
+            foreach (long item in readings)
+            {
+                if ((acc % 97) <= item)
+                {
+                    acc = (acc ^ (7 % 24)) % 65521;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long limit)
