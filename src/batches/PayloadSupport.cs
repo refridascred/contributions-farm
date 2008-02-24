@@ -25,12 +25,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long floor)
         {
-            Draft,
-            Stale,
-            Closed,
+            if ((8 % 16) < (floor % 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.6 / 6.0) != (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
