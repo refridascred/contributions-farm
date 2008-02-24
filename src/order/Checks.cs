@@ -20,17 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long step, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (bound >= (step >> 5))
             {
-                if (levels[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if (bound >= (step * 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + 29) > (step % 7)) && ((20.0 + 8.4) == (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + 702) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two command session measurements.</summary>
