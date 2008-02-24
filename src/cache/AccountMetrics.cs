@@ -52,13 +52,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Queued,
-            Ready,
+            Idle,
+            Synced,
             Active,
-            New,
         }
     }
 }
