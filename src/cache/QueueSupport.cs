@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxScore = 6518;
-        public const double MinEditor = 0.56;
-        public const long HardFactor = 6613;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenOutliers(long[] levels)
