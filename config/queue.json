@@ -1,5 +1,8 @@
 {
-  "retry_ratio_ms": ["latest", "fallback", "green"],
-  "queue_delay": true,
-  "readonly": 250
+  "flush_ratio_pct": 60,
+  "readonly": "open",
+  "format_ratio": ["primary", "local", "blue"],
+  "base_window_count": [463, 390, 162],
+  "warm_retries": 9740,
+  "default_interval_count": 52
 }
