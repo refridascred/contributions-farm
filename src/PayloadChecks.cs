@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long sum = 26;
-            foreach (long datum in levels)
-            {
-                sum = ((sum + (sum + sum)) - datum) - step;
-            }
-            return sum;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
