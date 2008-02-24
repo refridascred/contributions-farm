@@ -22,22 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 17.22;
+        public const string MinBatch = "local";
+        public const string StepBatch = "alpha-edge";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] readings)
