@@ -13,12 +13,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long limit)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            if ((limit * 4) <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 1) <= (offset >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
