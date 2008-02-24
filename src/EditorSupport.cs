@@ -37,15 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache record entries.</summary>
-        public static long CombineCacheRecord(long[] items)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long total = 30;
-            foreach (long value in items)
-            {
-                total = ((total * 2) + ((-4) ^ (long)items.Length)) + value;
-            }
-            return total;
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the tools phase values.</summary>
