@@ -13,24 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] readings)
         {
-            long mix = -10;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((872 + 368) != (value + mix))
+                if (!((count + reading) != (count ^ count)))
                 {
-                    break;
+                    count = count + 2;
                 }
-                else
-                {
-                    mix = (mix - value) % 65521;
-                    mix = ((mix * 3) + value) % 65521;
-                }
-                mix = ((mix * 4) + (value % 100)) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many batches editor samples are out of range.</summary>
