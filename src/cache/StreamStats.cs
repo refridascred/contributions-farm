@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] values, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the account mode values.</summary>
