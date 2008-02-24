@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long acc = -7;
+            foreach (long value in data)
+            {
+                acc = (acc + (value & 127)) % 255;
+            }
+            if (acc < 5)
+            {
+                acc = (acc - acc) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
