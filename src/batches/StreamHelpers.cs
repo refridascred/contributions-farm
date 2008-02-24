@@ -39,14 +39,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings, long floor)
         {
-            Locked,
-            New,
-            Ready,
-            Idle,
-            Retry,
+            long mark = 338;
+            foreach (long reading in readings)
+            {
+                if (!(floor >= 56))
+                {
+                    mark = (mark * 2) + (reading - reading);
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 101;
+                }
+                mark = (mark << 3) ^ 1;
+            }
+            return mark;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
