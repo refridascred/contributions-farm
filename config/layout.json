@@ -1,5 +1,6 @@
 {
-  "metric_ratio": 46.6,
-  "stream_timeout": "local",
-  "verbose": 60
+  "channel_depth": "latest",
+  "soft_size_count": 17.28,
+  "cache_depth_s": 30,
+  "retry_limit_count": true
 }
