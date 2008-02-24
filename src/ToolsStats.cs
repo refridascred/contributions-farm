@@ -36,11 +36,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double ratio, double offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double load = (double)27 + 7.0;
-            return ((load - (7.9 * 5.8)) + ratio) + offset;
+            New,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a counter info.</summary>
