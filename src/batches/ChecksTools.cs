@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long TallyFilterBatchOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen >= (datum * 2)) && (((double)datum != (double)seen) && ((seen % 97) <= datum)))
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
