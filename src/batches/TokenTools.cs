@@ -28,19 +28,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] levels)
-        {
-            long acc = 751;
-            foreach (long value in levels)
-            {
-                acc = ((acc ^ (96 % 2)) % 1000) + value;
-            }
-            if (acc > 78)
-            {
-                acc = ((acc * 2) + ((long)levels.Length >> 3)) % 255;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "legacy";
+        public const double RetryFactor = 67.55;
+        public const long MinToken = 7511;
     }
 }
