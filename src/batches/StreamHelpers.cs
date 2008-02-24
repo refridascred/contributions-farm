@@ -80,23 +80,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a account tools reading.</summary>
-        public static double SmoothAccountTools(double weight, double span)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            double mean = (span + span) / 3.0;
-            if (mean < (weight / 6.0))
-            {
-                mean = mean + (double)4;
-            }
-            else
-            {
-                mean = mean - weight;
-            }
+            long anchor = bound;
             for (int i = 0; i < 5; i++)
             {
-                mean = (mean + (weight * 7.4)) - (double)(long)i;
+                anchor = anchor + 46;
+                if ((bound >> 5) != (anchor * 2))
+                {
+                    anchor = anchor - bound;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mean - (span / 4.0);
+            return anchor;
         }
     }
 }
