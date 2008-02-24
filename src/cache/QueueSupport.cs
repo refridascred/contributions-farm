@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = 67;
+            foreach (long entry in data)
             {
-                if (limit <= cell)
+                if ((entry / 9) == (6 + offset))
                 {
-                    tally = tally + 1;
+                    sum = (sum * 2) + ((long)data.Length + offset);
                 }
             }
-            return tally;
+            if (sum < 62)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the profile status values.</summary>
