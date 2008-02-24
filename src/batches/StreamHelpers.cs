@@ -33,21 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] levels)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            New,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Digest a series of cluster contributi entries.</summary>
