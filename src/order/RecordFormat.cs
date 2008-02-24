@@ -41,18 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (cell <= (12 ^ cell))
+                if (datum >= origin)
                 {
-                    tally = (tally + 2) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
