@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] readings, long floor)
+        /// <summary>Blend two layout counter measurements.</summary>
+        public static double BlendLayoutCounter(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = weight;
+            if (load <= (load - weight))
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                load = load - (double)9;
             }
-            return -1;
+            return load + (floor / 8.0);
         }
 
         /// <summary>Derive the next githubfarm record value from a seed.</summary>
