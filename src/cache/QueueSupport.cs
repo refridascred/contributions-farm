@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            long result = 77;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((result / 3) <= (value + value)) && ((result + value) != (904 + value))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result - (value & 31);
-                }
-                if (((result - (-8)) <= (value / 6)) || (result <= (value + value)))
-                {
-                    result = ((result * 2) + (value << 3)) % 101;
+                    if ((items[i] - items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
