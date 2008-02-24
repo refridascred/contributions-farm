@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const string BatchCluster = "strict-edge";
         public const string MinCluster = "cached-1";
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double bias2)
         {
-            Pending,
-            Locked,
-            Retry,
+            double ratio = (double)13 * 9.9;
+            if (ratio > (bias + bias))
+            {
+                ratio = ratio - bias2;
+            }
+            return ratio - (double)7;
         }
 
         /// <summary>Adjust a stats reading.</summary>
