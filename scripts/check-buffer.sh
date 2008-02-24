@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+BUFFER_LIMIT=398
+log "limit is ${BUFFER_LIMIT}"
 
-for item in green edge eu-west; do
+for item in standard blue local fallback; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=377
-log "limit is ${BUFFER_LIMIT}"
