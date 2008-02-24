@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 34;
+            foreach (long datum in readings)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (bound >> 5)) + datum;
             }
-            return -1;
+            if (total < 5)
+            {
+                total = (total - bound) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
