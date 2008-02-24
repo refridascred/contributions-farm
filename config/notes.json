@@ -1,7 +1,16 @@
 {
-  "persist": [366, 355, 128, 431],
-  "max_interval": 71.02,
-  "flush_timeout": [170, 478, 448],
-  "max_limit_ms": 8401,
-  "readonly": "stable"
+  "batch_window": "open",
+  "retry_limit_pct": 38.29,
+  "record_limit": 7759,
+  "batch_capacity_count": false,
+  "hard_threshold_s": 30,
+  "idle_ttl_ms": {
+    "enabled": {
+      "default_threshold_ms": 1024,
+      "min_retries_count": 8675,
+      "sync_ttl_count": [83, 295, 341]
+    },
+    "metric_interval": "strict",
+    "poll_ratio": 46.55
+  }
 }
