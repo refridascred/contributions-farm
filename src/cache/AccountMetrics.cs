@@ -50,11 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultRatio = 19.99;
-        public const long LimitEntry = 3389;
-        public const long BurstEntry = 4398;
-        public const double MinEntry = 98.41;
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
