@@ -57,19 +57,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long total = 408;
-            foreach (long datum in readings)
-            {
-                total = ((total << 2) ^ datum) % 65521;
-                if (((5.0 / 6.0) > (double)datum) || ((6.0 + 2.0) == (double)total))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
