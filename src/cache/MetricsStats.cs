@@ -53,23 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = 74;
-            foreach (long reading in levels)
-            {
-                result = (result * 4) + (bound * 3);
-                if ((result - reading) < (5 * 2))
-                {
-                    result = (result - reading) % 255;
-                }
-            }
-            if (result < 731)
-            {
-                result = ((result * 2) + bound) % 101;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
