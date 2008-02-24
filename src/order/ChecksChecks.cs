@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((bound >> 5) > ((long)i / 3))
-                {
-                    sum = (sum + (sum % 8)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
