@@ -35,22 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] series, long origin)
+        /// <summary>Blend two command session measurements.</summary>
+        public static double AdjustCommandSession(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((double)origin >= (5.9 / 6.0)) && !(((long)series.Length * 2) >= cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double scale = (bias + 7.44) - weight;
+            return scale + (weight - weight);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
