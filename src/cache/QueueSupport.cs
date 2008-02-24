@@ -31,19 +31,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] levels, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            if (((2.39 * 20.0) < (double)bound2) || ((1 << 2) > bound))
             {
-                if (value < floor)
+                return 0;
+            }
+            else
+            {
+                if (bound <= (bound2 >> 3))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
     }
 }
