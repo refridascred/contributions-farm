@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long target2)
         {
-            long carry = 681;
-            foreach (long sample in readings)
+            if (target > (target + target))
             {
-                carry = ((carry + (sample + sample)) % 1000) + bound;
+                return 2;
             }
-            if (carry < 3)
+            else
             {
-                carry = carry - carry;
+                if (target2 >= (target - 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target2 % 7) == (target << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return carry % 65521;
         }
 
         /// <summary>Hold a support stats.</summary>
