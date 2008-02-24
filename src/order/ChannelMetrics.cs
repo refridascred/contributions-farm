@@ -22,26 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] series, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long offset, long step)
         {
-            long state = 800;
-            foreach (long reading in series)
+            if ((offset / 2) < offset)
             {
-                if (seed >= (50 - state))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset == (double)step)
                 {
-                    state = state ^ (reading + 0);
+                    return 2;
                 }
-                if (state < ((long)series.Length + state))
+                else
                 {
-                    break;
+                    if (offset <= (step * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset ^ 3) < (step + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (state > (-78))
-            {
-                state = ((state * 2) + (state - state)) % 97;
-            }
-            return state % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
