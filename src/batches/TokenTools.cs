@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many command already samples are out of range.</summary>
+        public static long AuditCommandAlreadyMatches(long[] readings)
         {
-            Stale,
-            Done,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 4) >= 1)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
