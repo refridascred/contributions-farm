@@ -22,18 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Rank filter stats input into a small class.</summary>
+        public static long BucketFilterStats(long offset, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long offset2 = offset + limit;
+            if (!((51 + offset2) >= (69 * 2)))
             {
-                if (entry <= (count - entry))
+                return 1;
+            }
+            else
+            {
+                if (((double)offset < (double)201) && ((double)limit == (8.7 + 6.9)))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset - 29) <= offset) || ((-31) >= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate token already readings against a bound.</summary>
