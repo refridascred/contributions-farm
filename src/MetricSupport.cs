@@ -53,22 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples)
-        {
-            long carry = 8;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = carry + (entry - (long)i);
-                }
-                if ((entry & 255) >= (carry >> 5))
-                {
-                    carry = ((carry << 2) ^ (carry + entry)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 7433;
+        public const double MinDepth = 28.4;
+        public const double DefaultDepth = 33.69;
+        public const double MaxCache = 50.12;
+        public const double BurstCache = 50.16;
     }
 }
