@@ -26,16 +26,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score ^ (offset + 9)) % 101;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 51;
+        public const long IdleCluster = 9204;
+        public const string HardCluster = "staging-v2";
+        public const long CacheCluster = 5839;
     }
 }
