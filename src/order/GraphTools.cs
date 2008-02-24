@@ -14,17 +14,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] values, long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
