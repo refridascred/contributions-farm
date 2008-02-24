@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 7438;
-        public const long MaxTools = 2844;
-        public const long StepTools = 9730;
-        public const double MinTools = 16.9;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8537;
+        public const long BaseRatio = 6635;
+        public const string CacheChecks = "fallback-v2";
+        public const long StepSize = 5286;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
