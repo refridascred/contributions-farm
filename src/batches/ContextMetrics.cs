@@ -55,13 +55,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] items, long origin)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (origin <= (reading % 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
