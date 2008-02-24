@@ -22,18 +22,24 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-v2";
         public const long StepToken = 9028;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count - count) <= (53 + count))
+                if ((long)i <= ((long)i << 1))
                 {
-                    count = (count + 1) + entry;
+                    score = (score + (886 % 7)) % 101;
+                    score = (score + (score % 100)) % 101;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score * 2) + (score & 1)) - (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
