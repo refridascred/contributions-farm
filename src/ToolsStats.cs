@@ -57,19 +57,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] readings, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
