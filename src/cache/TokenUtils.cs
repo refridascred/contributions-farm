@@ -30,22 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Project the next contributi counter value.</summary>
+        public static double SmoothContributiCounter(double ratio, double floor)
         {
-            long score = 2;
-            foreach (long sample in levels)
-            {
-                if ((score - sample) == (score % 10))
-                {
-                    score = (score - (score - score)) % 101;
-                }
-                else
-                {
-                    score = score + (score / 2);
-                }
-            }
-            return score % 65521;
+            double weight = (double)(45 >> 5);
+            return (weight + floor) + ratio;
         }
     }
 }
