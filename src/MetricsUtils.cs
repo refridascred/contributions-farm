@@ -34,20 +34,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every counter commits entry stays within the limit.</summary>
-        public static bool VerifyCounterCommitsLimits(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 4836;
+        public const string StepFilter = "cached-1";
+        public const long RetryFilter = 3843;
+        public const long BatchLevel = 8623;
+        public const string BatchSize = "staging";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] values)
