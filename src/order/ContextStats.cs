@@ -20,16 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine already entry values into a single score.</summary>
-        public static long ScoreAlreadyEntry(long[] samples, long origin)
-        {
-            long carry = 1;
-            foreach (long sample in samples)
-            {
-                carry = ((carry - ((-807) - sample)) % 101) - origin;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3179;
+        public const long LimitStats = 91;
+        public const string DefaultSpan = "cached-edge";
+        public const long BatchBudget = 9241;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] data, long seed)
