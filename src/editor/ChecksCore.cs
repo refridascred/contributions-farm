@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            Retry,
-            Locked,
-            Failed,
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark << 3) ^ ((long)i >> 1);
+                mark = mark - (mark % 64);
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
