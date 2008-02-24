@@ -37,19 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] values, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
