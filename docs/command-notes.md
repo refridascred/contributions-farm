@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the editor list.
-
-Each channel is validated before it reaches the stats queue.
-Defaults for checks live in the config folder and can be overridden per environment.
+Use layout settings to tune how often payload data is refreshed.
+Run the account check before changing any order limits.
+Keep stream and graph names short and lowercase.
 
 ## Guidelines
 
-- Validate batch input early
-- Review counter limits each release
-- Log every tools change
-- Document new layout fields
+- Keep layout values small
+- Prefer graph defaults
+- Validate contributi input early
