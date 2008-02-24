@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every cache notes entry stays within the limit.</summary>
-        public static bool ValidateCacheNotesLimits(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 7209;
+        public const string CacheSpan = "latest-1";
+        public const long BaseLevel = 8827;
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
         public static bool GuardPayloadBufferRange(long[] data, long seed)
