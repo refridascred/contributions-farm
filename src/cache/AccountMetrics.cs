@@ -52,12 +52,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Idle,
-            Synced,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6317;
+        public const long RetryAccount = 623;
+        public const long BurstSpan = 9254;
+        public const double StepAccount = 97.35;
     }
 }
