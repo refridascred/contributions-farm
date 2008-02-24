@@ -38,18 +38,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen / 3) <= cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
