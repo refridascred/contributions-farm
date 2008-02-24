@@ -34,12 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Dropped,
-            Paused,
-            Ready,
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
