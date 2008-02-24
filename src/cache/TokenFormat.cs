@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheSpan = 0.51;
-        public const double HardNotes = 58.18;
-        public const long SoftNotes = 5594;
-        public const long WindowNotes = 2675;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long step)
+        {
+            if (step >= (step + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step ^ 1) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step ^ step) >= (3 + 756)) && ((double)limit > (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
