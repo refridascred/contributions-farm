@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
