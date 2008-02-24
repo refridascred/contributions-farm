@@ -20,38 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long step, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            if (bound >= (step >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound >= (step * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + 29) > (step % 7)) && ((20.0 + 8.4) == (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + 702) < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a command snapshot.</summary>
