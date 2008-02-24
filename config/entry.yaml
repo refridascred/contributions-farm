@@ -1,9 +1,4 @@
 # entry settings
-burst_capacity: cached
-metrics_size: 15.73
-enabled: eu-west
-poll_delay_s: strict
-compress:
-  - 169
-  - 131
-  - 448
+token_capacity: eu-west
+compress: 250
+sync_ttl_ms: true
