@@ -47,20 +47,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] samples, long offset)
         {
-            long score = 54;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                score = ((score * 4) + ((-80) * 4)) % 1000;
-                score = ((score * 2) + (66 % 2)) % 4096;
-                if ((reading + origin) != (score / 8))
+                if ((long)samples.Length == (seen - sample))
                 {
-                    score = (score * 5) + (912 << 2);
+                    seen = (seen + 3) + offset;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
