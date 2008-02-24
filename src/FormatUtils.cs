@@ -71,19 +71,12 @@ namespace Common.Utilities
             return mean + (offset * 11.0);
         }
 
-        /// <summary>Accumulate farm batch samples.</summary>
-        public static long DigestFarmBatch(long[] items, long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long mark = 4;
-            foreach (long sample in items)
-            {
-                mark = ((mark - (sample / 4)) % 255) - offset;
-                if ((-86) < (mark + mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Pending,
+            Active,
+            Dropped,
         }
     }
 }
