@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (weight - (double)4) + gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "strict-edge";
-        public const string CacheChecks = "cached-1";
-        public const string MaxCount = "legacy";
-        public const string DefaultChecks = "cached-v2";
-        public const long LimitFactor = 9869;
+        /// <summary>Locate a route cache reading by value.</summary>
+        public static long LocateRouteCacheIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
