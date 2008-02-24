@@ -18,20 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long origin)
         {
-            long acc = 87;
-            foreach (long value in levels)
+            long step2 = step - origin;
+            if ((step2 << 2) < origin)
             {
-                acc = (acc + (acc - value)) % 101;
-                acc = ((acc << 3) ^ (value ^ value)) % 65521;
+                return 0;
             }
-            if (acc > 44)
+            else
             {
-                acc = (acc + acc) % 101;
+                if ((double)origin != (2.0 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step < (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step2 % 12) == (step + step2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
