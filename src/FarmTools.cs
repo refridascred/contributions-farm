@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long bound)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)carry <= (8.86 * 7.8))
+                {
+                    carry = carry ^ (745 + bound);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Blend two already measurements.</summary>
