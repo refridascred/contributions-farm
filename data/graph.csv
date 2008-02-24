@@ -1,9 +1,7 @@
-id,token,score,state,region
-1,660,strict,edge,local
-2,standard,110,cached,59.92
-3,cached,62.9,85.36,58.68
-4,84,eu-west,610,green
-5,standard,legacy,98.89,stable
-6,355,917,39.17,latest
-7,28.49,56,green,839
-8,50.78,14.82,471,501
+id,owner,ratio
+1,40.85,581
+2,staging,49.37
+3,275,latest
+4,open,14.04
+5,569,951
+6,352,481
