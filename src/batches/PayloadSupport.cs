@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] readings, long origin)
+        /// <summary>Adjust a batches route reading.</summary>
+        public static double SmoothBatchesRoute(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            double drift = offset;
+            if (drift >= drift)
             {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (weight + 9.1);
             }
-            return ok;
+            return drift + (double)89;
         }
     }
 }
