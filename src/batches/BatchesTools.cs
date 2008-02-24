@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Pending,
-            Draft,
-            Dropped,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 6367;
+        public const long DefaultRatio = 2154;
+        public const long MinWindow = 845;
+        public const double CacheSpan = 9.57;
 
         /// <summary>Accumulate editor batches samples.</summary>
         public static long WeighEditorBatches(long[] samples, long offset)
