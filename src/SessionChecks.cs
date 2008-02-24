@@ -13,24 +13,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            if ((target >> 1) <= (target * 5))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ 193) > (step >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
