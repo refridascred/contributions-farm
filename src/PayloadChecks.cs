@@ -40,11 +40,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 48.0;
-        public const string MinMetric = "latest";
-        public const string DefaultDepth = "fallback";
-        public const string StepMetric = "standard";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseFactor = 3452;
+        public const string BurstInterval = "primary-1";
+        public const long LimitTools = 6912;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ProjectMetric(double ratio, double span)
