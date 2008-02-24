@@ -1,7 +1,8 @@
 {
-  "min_limit_s": 3.06,
-  "batch_size": [253, 401],
-  "default_size_ms": 49,
-  "soft_interval_count": 3640,
-  "editor_window": "legacy"
+  "verbose": 86,
+  "audit": [9, 357, 255, 249],
+  "sync_delay": [27, 497],
+  "min_retries_ms": 67,
+  "hard_size_s": "standard",
+  "flush_interval_s": 60
 }
