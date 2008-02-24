@@ -1,8 +1,14 @@
 {
-  "poll_threshold_ms": "blue",
-  "session_delay": 5,
-  "hard_delay_count": ["open", "cached"],
-  "base_ttl": 1687,
-  "burst_delay": 10,
-  "graph_capacity": "edge"
+  "retry_limit": "cached",
+  "flush_depth_ms": "staging",
+  "soft_threshold_ms": {
+    "sync_depth_count": "blue",
+    "report_ratio": 9,
+    "cache_timeout_s": true,
+    "metrics_limit": "eu-west",
+    "readonly": "local"
+  },
+  "idle_depth_pct": false,
+  "enabled": 3711,
+  "compress": 30.04
 }
