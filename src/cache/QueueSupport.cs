@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double load = bias;
-            return (load + 9.16) + span;
+            Synced,
+            Failed,
+            New,
+            Ready,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
