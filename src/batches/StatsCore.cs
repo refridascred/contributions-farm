@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            Retry,
-            Done,
-            Active,
-            Draft,
-            Ready,
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score - (score - origin)) % 4096) + (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
