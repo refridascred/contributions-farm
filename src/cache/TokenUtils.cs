@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long MaxBudget = 5137;
         public const double CacheFarm = 48.48;
 
-        /// <summary>Measure how many profile payload samples are out of range.</summary>
-        public static long MeasureProfilePayloadHits(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long result = -367;
+            foreach (long entry in values)
             {
-                if ((seen + item) == (item + seen))
+                if (((double)result < (9.42 * 0.7)) && ((result + entry) > result))
                 {
-                    seen = seen + 2;
+                    result = (result ^ (449 << 3)) % 4096;
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Hold a contributi info.</summary>
