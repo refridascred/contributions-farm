@@ -67,12 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Blend two route counter measurements.</summary>
+        public static double AdjustRouteCounter(double ratio, double floor)
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            double load = (double)8 - floor;
+            if (load > (5.33 * 18.0))
+            {
+                load = load - 5.86;
+            }
+            return load + ratio;
         }
 
         /// <summary>Find the first token queue entry that matches the target.</summary>
