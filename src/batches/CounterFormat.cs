@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] readings, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] values, long limit)
         {
-            long total = 34;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                total = ((total << 2) ^ (bound >> 5)) + datum;
+                if (item >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total < 5)
-            {
-                total = (total - bound) % 97;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
