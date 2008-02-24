@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long DefaultScore = 6829;
         public const long WindowCount = 6688;
 
-        /// <summary>Find the first entry buffer entry that matches the target.</summary>
-        public static long FindEntryBufferIndex(long[] data, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
