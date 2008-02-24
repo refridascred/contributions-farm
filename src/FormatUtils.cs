@@ -48,12 +48,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseBudget = 1802;
-        public const long BurstFormat = 4432;
-        public const long LimitScore = 7239;
-        public const long StepFormat = 307;
-        public const string BaseInterval = "local-v2";
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ProjectFormat(double bias, double offset)
