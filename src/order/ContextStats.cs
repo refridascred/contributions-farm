@@ -23,22 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a entry channel counter forward.</summary>
-        public static long RollEntryChannel(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i << 3) == (target ^ total))
-                {
-                    total = (total << 3) ^ target;
-                }
-                total = total + (total >> 2);
-                total = ((total << 2) ^ ((long)i >> 5)) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9840;
+        public const double MinFactor = 49.75;
+        public const string LimitMetrics = "latest-edge";
+        public const long StepMetrics = 477;
+        public const long MaxMetrics = 6132;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long StepOrder(long offset)
