@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine filter stream values into a single score.</summary>
-        public static long TotalFilterStream(long[] samples)
-        {
-            long result = 2;
-            foreach (long value in samples)
-            {
-                if ((result ^ 430) > 74)
-                {
-                    result = result - (result % 60);
-                }
-                else
-                {
-                    result = result - (value ^ result);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultTimeout = 5664;
+        public const long HardScore = 6316;
+        public const long BurstLevel = 9808;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatRange(long[] series, long offset)
