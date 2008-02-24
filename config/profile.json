@@ -1,18 +1,5 @@
 {
-  "poll_retries_count": 5613,
-  "min_timeout_s": 16,
-  "enabled": [310, 396, 53],
-  "order_capacity": 60,
-  "context_window": "cached",
-  "retry_interval_count": {
-    "enabled": "cached",
-    "retry_threshold_count": ["eu-west", "staging", "strict", "strict"],
-    "cache_capacity_pct": {
-      "stats_timeout": "standard",
-      "base_capacity_count": 23.52,
-      "context_capacity": false
-    },
-    "audit": 11,
-    "batch_window_pct": "standard"
-  }
+  "max_capacity_count": 70.59,
+  "audit": false,
+  "idle_delay": 95.26
 }
