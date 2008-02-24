@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-RECORD_LIMIT=354
-log "limit is ${RECORD_LIMIT}"
+for item in latest local; do
+    log "checking ${item}"
+done
