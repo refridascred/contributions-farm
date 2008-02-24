@@ -47,12 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long limit)
         {
-            Active,
-            Synced,
-            Idle,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
