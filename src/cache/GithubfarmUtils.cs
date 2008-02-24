@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a command layout sample.</summary>
-        public static long LookupCommandLayoutIndex(long[] values, long limit)
+        /// <summary>Grade a command window value against two limits.</summary>
+        public static long BucketCommandWindow(long seed, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = seed + offset;
+            if ((double)lane < (9.0 + 17.0))
             {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((1.25 - 8.4) != (double)offset)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed - lane) >= (1 >> 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.35 - 17.0) < (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
