@@ -54,10 +54,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 1382;
-        public const long StepAccount = 6582;
-        public const double MaxBudget = 25.52;
-        public const long SoftRatio = 3535;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitDepth = 7522;
+        public const long BatchLevel = 9975;
+        public const string SoftStream = "fallback-edge";
     }
 }
