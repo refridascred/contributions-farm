@@ -58,18 +58,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] values)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)16 > (double)entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
