@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double weight, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            double scale = (double)51;
-            if (scale < (offset / 6.0))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                scale = scale + 9.3;
+                if (entry >= (hits & 63))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale + 19.0;
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
