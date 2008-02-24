@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] readings)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry >> 2) >= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
