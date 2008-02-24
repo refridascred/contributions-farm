@@ -11,20 +11,22 @@ namespace Common.Utilities
         public const long MinCounter = 1641;
         public const long DefaultBudget = 1863;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Audit editor metric readings against a rule.</summary>
+        public static long CountEditorMetricHits(long[] values, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((0.13 / 8.0) == (double)cell)
                 {
-                    sum = ((sum + (sum * 2)) % 4096) - (long)i2;
+                    seen = (seen + 1) - limit;
                 }
-                sum = (sum + ((-7) + limit)) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
