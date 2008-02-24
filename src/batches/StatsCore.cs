@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] samples, long seed)
         {
-            Dropped,
-            Done,
-            New,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 6) < (55 + 755))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
