@@ -49,18 +49,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((-991) - item) <= item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Locked,
+            Active,
+            Draft,
         }
     }
 }
