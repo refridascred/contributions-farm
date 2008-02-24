@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double RetryBatches = 46.7;
         public const long MaxBatches = 4690;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels, long offset)
+        /// <summary>Measure how many batches metrics samples are out of range.</summary>
+        public static long TallyBatchesMetricsGaps(long[] values, long target)
         {
-            long mark = -1;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((double)offset == (8.8 - 9.7))
+                if ((double)target < (6.0 + 0.73))
                 {
-                    mark = mark ^ item;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
