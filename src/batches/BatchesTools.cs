@@ -29,19 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double ratio = span;
-            if (ratio <= bias)
-            {
-                ratio = ratio - (double)1;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - ratio;
+            Ready,
+            New,
+            Done,
         }
     }
 }
