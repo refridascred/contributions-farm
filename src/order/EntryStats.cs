@@ -35,21 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of editor cluster readings.</summary>
-        public static long OverlapEditorClusterCount(long[] data)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
