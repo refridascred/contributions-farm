@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double gain, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] values, long target)
         {
-            double bias = (double)557 / 4.0;
-            if (bias <= bias)
+            bool ready = true;
+            foreach (long item in values)
             {
-                bias = ((bias + bias) + gain) - floor;
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + (double)34;
+            return ready;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
