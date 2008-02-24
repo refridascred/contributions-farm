@@ -76,11 +76,16 @@ namespace Common.Utilities
         public const double CacheLevel = 55.11;
         public const double BaseWindow = 73.58;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc ^ (acc / 3)) % 4096;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
