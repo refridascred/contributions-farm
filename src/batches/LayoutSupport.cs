@@ -36,31 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long floor2)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long target)
         {
-            if (floor2 <= (floor2 + floor2))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.3 * 9.0) != (double)floor)
+                if (item > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor2 % 100) < (floor >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Project the next checks format value.</summary>
