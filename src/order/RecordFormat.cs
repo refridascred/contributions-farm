@@ -12,13 +12,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Synced,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheLevel = "legacy";
+        public const long IdleCount = 6957;
+        public const long IdleInterval = 8530;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheBudget = 1754;
