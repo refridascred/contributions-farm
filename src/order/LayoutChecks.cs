@@ -19,17 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long step)
+        /// <summary>Count route payload pairs that satisfy a relation.</summary>
+        public static long CompareRoutePayloadCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
