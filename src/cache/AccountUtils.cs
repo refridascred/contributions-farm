@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long floor)
+        /// <summary>Accumulate graph editor samples.</summary>
+        public static long TotalGraphEditor(long[] series)
         {
-            long bound = seed + floor;
-            if ((8.0 * 4.0) > (2.95 / 7.0))
+            long carry = 82;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (bound >> 5))
+                if ((double)carry == (double)reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor <= (bound & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((65 % 16) >= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = (carry ^ ((long)series.Length & 7)) % 101;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the channel phase values.</summary>
