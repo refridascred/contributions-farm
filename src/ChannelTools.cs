@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels)
         {
-            Queued,
-            Ready,
-            Stale,
-            Pending,
+            long state = 909;
+            foreach (long item in levels)
+            {
+                state = ((state << 2) ^ item) % 1000;
+                if ((double)item > 5.0)
+                {
+                    state = state ^ (item << 1);
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
