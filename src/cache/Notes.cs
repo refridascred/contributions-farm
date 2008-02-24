@@ -56,17 +56,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 4399;
+        public const string BaseSession = "alpha-v2";
+        public const long BurstSession = 9578;
+        public const long DefaultDepth = 1943;
+        public const long SoftInterval = 4563;
     }
 }
