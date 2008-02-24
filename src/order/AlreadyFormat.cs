@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] items, long floor)
         {
-            long slot = step + target;
-            if ((double)target > (double)164)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target - slot) < step)
+                if (floor >= (23 << 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
