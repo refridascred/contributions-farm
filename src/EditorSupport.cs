@@ -37,12 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Look up the position of a checks token sample.</summary>
+        public static long LookupChecksTokenIndex(long[] items, long bound)
         {
-            Retry,
-            Closed,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
