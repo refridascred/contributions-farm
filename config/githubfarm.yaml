@@ -1,12 +1,5 @@
 # githubfarm settings
-strict: 1024
-min_interval_ms: false
-cache_delay_count:
-  batch_window: false
-  poll_depth_pct: 73
-  idle_ratio_count: edge
-  hard_limit_ms: 91
-  warm_depth_s:
-    - legacy
-    - latest
-  window_delay: local
+base_ratio: 3034
+context_threshold: 11.18
+max_limit: 30
+default_limit_count: eu-west
