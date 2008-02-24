@@ -56,11 +56,23 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long LimitTools = 6912;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinDepth = 93.31;
-        public const string RetryTimeout = "strict-v2";
-        public const long StepTimeout = 1922;
-        public const string WindowSchema = "latest";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples, long bound)
+        {
+            long score = -57;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 1) >= (181 - score))
+                {
+                    score = (score + (entry + bound)) % 97;
+                }
+                else
+                {
+                    score = (score - (score & 3)) % 255;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryEditor = 531;
