@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long anchor = 87;
-            foreach (long cell in values)
-            {
-                if ((18.0 - 2.0) == (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (cell ^ 190)) % 65521;
-                }
-                anchor = (anchor ^ (anchor % 7)) % 255;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
