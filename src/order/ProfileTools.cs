@@ -31,18 +31,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] samples, long seed)
+        /// <summary>Compare every pair of route contributi readings.</summary>
+        public static long OverlapRouteContributiCount(long[] series)
         {
-            long mix = 11;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((1.0 + 1.25) != (double)seed) && (seed <= (seed >> 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix - (seed / 8)) % 97) ^ cell;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
