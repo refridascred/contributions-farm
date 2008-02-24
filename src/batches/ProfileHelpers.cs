@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowWidth = 4905;
-        public const long BaseGithubfarm = 4472;
-        public const long LimitGithubfarm = 6018;
-        public const long HardGithubfarm = 2019;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] data)
