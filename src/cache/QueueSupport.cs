@@ -14,19 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long target)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
