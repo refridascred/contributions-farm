@@ -26,32 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] readings, long bound)
         {
-            long delta = offset ^ bound;
-            if ((delta & 127) != (delta * 4))
+            long sum = 537;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + 668) == (delta + offset))
+                if ((sum >> 5) >= (reading + bound))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum << 3) ^ (bound >> 1);
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a queue summary.</summary>
