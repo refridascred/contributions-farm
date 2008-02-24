@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = bias * 2.59;
+            if (gain2 < (16.0 / 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = gain2 + gain;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (double)6) + (double)(long)i;
+            }
+            return gain2 + (double)4;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
