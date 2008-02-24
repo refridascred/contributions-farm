@@ -57,12 +57,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Locked,
-            New,
-            Queued,
+            Closed,
+            Stale,
+            Paused,
+            Pending,
+            Active,
         }
     }
 }
