@@ -46,19 +46,38 @@ namespace Common.Utilities
         public const long IdleScore = 2192;
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] items, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long seed, long step)
         {
-            long carry = 47;
-            foreach (long item in items)
+            if ((seed << 2) > (seed + 903))
             {
-                carry = (((carry - carry) % 4096) + item) - origin;
+                return 5;
             }
-            if (carry > (-32))
+            else
             {
-                carry = (carry ^ carry) % 101;
+                if (91 <= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step + step) > ((-3) + 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step > seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return carry % 4096;
         }
     }
 }
