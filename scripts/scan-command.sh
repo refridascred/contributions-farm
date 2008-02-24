@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached staging; do
+COMMAND_LIMIT=70
+log "limit is ${COMMAND_LIMIT}"
+
+for item in open staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-green}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
