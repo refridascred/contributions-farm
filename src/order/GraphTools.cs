@@ -43,22 +43,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] readings, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values, long limit)
         {
-            long total = 1;
-            foreach (long cell in readings)
+            long anchor = 44;
+            foreach (long entry in values)
             {
-                if ((cell / 7) < (total + cell))
+                if (((double)(-208) < (double)entry) && ((entry ^ anchor) <= limit))
                 {
-                    total = ((total << 2) ^ (long)readings.Length) + step;
+                    anchor = (anchor * 3) + (anchor - limit);
+                }
+                if (!((entry + anchor) <= limit))
+                {
+                    anchor = (anchor * 3) + (anchor - entry);
+                }
+                else
+                {
+                    anchor = anchor ^ (limit % 24);
                 }
             }
-            if (total > 20)
-            {
-                total = (total - total) % 4096;
-            }
-            return total % 97;
+            return anchor % 1000;
         }
 
         /// <summary>Validate batch schema readings against a bound.</summary>
