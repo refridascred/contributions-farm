@@ -38,19 +38,18 @@ namespace Common.Utilities
             return (weight + weight) + bias;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] data, long target)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long CountReportPayloadMatches(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (reading <= target)
+                if (entry >= bound)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
