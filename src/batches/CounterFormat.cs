@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value / 2) < (tally + tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + seed;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up layout samples.</summary>
