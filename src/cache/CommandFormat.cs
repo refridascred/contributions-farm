@@ -48,11 +48,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 24;
-        public const double HardInterval = 17.86;
-        public const long WindowQueue = 2304;
-        public const long BatchInterval = 9283;
-        public const long DefaultTimeout = 6041;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long floor)
+        {
+            if (floor < (offset / 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (7.55 / 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.5 < (double)offset) && ((floor % 100) == (offset ^ offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor < (385 + offset)) && ((double)floor >= (6.85 / 5.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
