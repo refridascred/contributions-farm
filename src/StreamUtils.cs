@@ -29,19 +29,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] samples, long limit)
+        /// <summary>Classify a already token pair into a bucket.</summary>
+        public static long RankAlreadyToken(long step, long bound)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long delta = step - bound;
+            if (8 >= (step & 3))
             {
-                if (cell < limit)
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) > delta)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the editor mode values.</summary>
