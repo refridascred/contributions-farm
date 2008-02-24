@@ -56,18 +56,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] series, long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((85 ^ seed) >= (value - 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Closed,
+            Failed,
         }
     }
 }
