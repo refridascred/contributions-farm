@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (273 > (seed ^ carry))
+                if (levels[i] > limit)
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two command session measurements.</summary>
