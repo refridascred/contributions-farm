@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double bias)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            double bias2 = 3.7 / 5.0;
+            if (bias2 >= (weight + 5.6))
+            {
+                bias2 = bias2 + (bias * 7.26);
+            }
+            return bias2 + (11.0 + 6.8);
         }
 
         /// <summary>Project the next account value.</summary>
