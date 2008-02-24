@@ -1,7 +1,5 @@
 {
-  "flush_capacity_s": 37.77,
-  "soft_interval_ms": "staging",
-  "flush_retries_pct": ["blue", "strict", "green", "green"],
-  "max_capacity_s": 1024,
-  "burst_retries": "edge"
+  "retry_delay": 3356,
+  "payload_delay": false,
+  "default_window_count": false
 }
