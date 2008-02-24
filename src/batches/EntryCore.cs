@@ -48,20 +48,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long anchor = 6;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 4) + anchor) % 97;
-                anchor = (anchor << 3) ^ (value % 10);
-                if ((double)489 < (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
     }
 }
