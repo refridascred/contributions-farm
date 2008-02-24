@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many window account samples are out of range.</summary>
-        public static long TallyWindowAccountHits(long[] readings)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long prev = bound ^ seed;
+            if ((bound % 97) != (bound % 60))
             {
-                if ((((matches - matches) > matches) && ((double)item < (9.0 + 8.6))) && ((matches - item) > item))
+                return 6;
+            }
+            else
+            {
+                if ((prev & 255) <= (seed ^ prev))
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
