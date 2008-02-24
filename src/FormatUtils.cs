@@ -75,19 +75,15 @@ namespace Common.Utilities
             return mean + (offset * 11.0);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] series)
+        /// <summary>Measure how many format metric samples are out of range.</summary>
+        public static long TallyFormatMetricOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in series)
+            foreach (long entry in levels)
             {
-                if ((datum % 16) >= (seen / 2))
+                if ((seen - entry) > (seen + entry))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
