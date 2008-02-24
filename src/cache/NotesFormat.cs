@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Fold a list of stats format readings.</summary>
+        public static long ScoreStatsFormat(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 7;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)readings.Length < (carry - 191)) && ((double)carry <= (3.0 * 6.8)))
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if (!((origin * 2) > (70 / 6)))
+                {
+                    carry = ((carry * 3) + (long)readings.Length) % 101;
+                }
+                if (datum > ((-498) / 8))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
