@@ -37,23 +37,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double offset)
-        {
-            double drift = offset;
-            if (drift < offset)
-            {
-                drift = (drift + (drift * 2.86)) - rate;
-            }
-            else
-            {
-                drift = drift + (8.9 / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (drift - 8.1)) + (double)(long)i;
-            }
-            return drift + (drift - 4.7);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstCount = 1960;
+        public const long DefaultLayout = 8957;
+        public const string MaxDepth = "local-edge";
     }
 }
