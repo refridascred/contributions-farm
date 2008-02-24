@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double drift = (bias2 / 7.0) - bias2;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (double)(long)i) - bias;
             }
-            return ok;
+            return drift + bias2;
         }
 
         /// <summary>Hold a window header.</summary>
