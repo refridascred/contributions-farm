@@ -44,14 +44,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Draft,
-            Synced,
-            Stale,
-            Dropped,
-            Pending,
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
