@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < offset)
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Adjust a report reading.</summary>
