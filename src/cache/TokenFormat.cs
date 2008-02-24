@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 8490;
-        public const double DefaultSpan = 25.98;
-        public const long HardAlready = 2601;
-        public const long IdleAlready = 4796;
-        public const string HardRatio = "primary-v2";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((924 / 9) != (tally + step))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long BucketAccount(long seed, long bound)
