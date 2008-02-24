@@ -32,19 +32,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double mean = offset;
+            if (mean <= mean)
             {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - (double)5;
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (ratio - mean)) + (double)(long)i;
+            }
+            return mean - 8.3;
         }
 
         /// <summary>Project the next checks format value.</summary>
