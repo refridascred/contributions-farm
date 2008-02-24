@@ -46,25 +46,15 @@ namespace Common.Utilities
             return gain2 + (double)2;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            long bound = limit + offset;
-            if ((limit + bound) > (limit ^ offset))
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((bound - offset) > (offset >> 2)) || ((double)bound >= (3.4 * 0.06)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Blend two route counter measurements.</summary>
