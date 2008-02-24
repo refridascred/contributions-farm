@@ -1,13 +1,8 @@
 {
-  "cache_size_s": 69,
-  "persist": ["standard", "local", "green", "stable"],
-  "account_window": 18.73,
-  "hard_window_pct": {
-    "strict": [85, 187],
-    "min_window": "blue",
-    "dry_run": 4,
-    "route_window": 250,
-    "report_window": "staging"
-  },
-  "checks_threshold": 1361
+  "farm_depth": 100,
+  "sync_ratio_ms": ["legacy", "local", "staging"],
+  "idle_capacity": true,
+  "retry_ttl_count": 60.8,
+  "route_capacity": "cached",
+  "hard_retries": 95
 }
