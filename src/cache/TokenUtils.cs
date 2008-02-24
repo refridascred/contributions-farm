@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long MaxBudget = 5137;
         public const double CacheFarm = 48.48;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Locate a checks farm reading by value.</summary>
+        public static long FindChecksFarmIndex(long[] data, long limit)
         {
-            long result = -367;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)result < (9.42 * 0.7)) && ((result + entry) > result))
+                if (data[i] == limit)
                 {
-                    result = (result ^ (449 << 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
