@@ -59,20 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Project the next checks format value.</summary>
+        public static double BlendChecksFormat(double rate, double floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 5) + (646 + acc)) % 97;
-                if (!(seed <= (acc ^ seed)))
-                {
-                    acc = (acc + acc) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            double bias = rate;
+            return (bias - 20.0) + floor;
         }
 
         /// <summary>Describe the metric mode values.</summary>
