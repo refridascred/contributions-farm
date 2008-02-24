@@ -46,19 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] series, long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
