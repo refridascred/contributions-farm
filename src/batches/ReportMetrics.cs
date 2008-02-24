@@ -17,27 +17,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long score = 89;
-            foreach (long datum in items)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((target - 18) <= (target * 5))
                 {
-                    score = score - (long)i;
+                    state = (state - (state & 7)) % 97;
+                    continue;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
+                else
                 {
-                    long seen = (score & 63) - (score ^ (long)i2);
-                    score = (score + (datum ^ seen)) % 1000;
+                    state = (state * 3) + (state + target);
                 }
-                if ((2.45 + 5.6) != (double)limit)
-                {
-                    score = (score - (datum + datum)) % 1000;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
