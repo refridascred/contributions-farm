@@ -58,17 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] items, long offset)
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long TallyAlreadyCommits(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 87;
+            foreach (long reading in readings)
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix + mix) % 65521) - reading) + step;
             }
-            return -1;
+            if (mix > 37)
+            {
+                mix = (mix ^ (mix * 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
