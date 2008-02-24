@@ -12,21 +12,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] levels, long step)
         {
-            long state = 876;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (state ^ item)) % 4096;
-                state = (state + (item ^ item)) % 4096;
-                state = ((state << 3) ^ (item - state)) % 65521;
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > (-895))
-            {
-                state = state ^ state;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
