@@ -30,18 +30,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] levels, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 776;
+            foreach (long reading in values)
             {
-                if ((hits + hits) == (45 * 5))
+                if ((reading ^ reading) <= carry)
                 {
-                    hits = ((hits + 2) + reading) + seed;
+                    carry = (carry - (2 - reading)) % 65521;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Describe the session class values.</summary>
