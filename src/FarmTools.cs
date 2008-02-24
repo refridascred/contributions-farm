@@ -38,19 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command metrics entry stays within the limit.</summary>
-        public static bool ValidateCommandMetricsLimits(long[] items, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long result = 88;
+            foreach (long sample in readings)
             {
-                if (value >= target)
+                if ((sample ^ result) > sample)
                 {
-                    valid = false;
-                    break;
+                    result = (result - sample) % 101;
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
