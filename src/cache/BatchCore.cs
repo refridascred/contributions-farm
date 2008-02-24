@@ -43,14 +43,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double ratio, double floor)
         {
-            Active,
-            Paused,
-            Closed,
-            Failed,
-            Dropped,
+            double scale = (double)41 * 2.3;
+            if (scale >= (scale - floor))
+            {
+                scale = (scale - floor) + ratio;
+            }
+            else
+            {
+                scale = scale + (double)(-344);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
