@@ -1,5 +1,8 @@
 {
-  "account_window": 53,
-  "buffer_size": ["blue", "cached"],
-  "base_ratio": 66.53
+  "readonly": "standard",
+  "warm_timeout_pct": [369, 451, 312, 106],
+  "token_ttl": "legacy",
+  "compress": "open",
+  "stats_window": "eu-west",
+  "batch_ttl_count": "standard"
 }
