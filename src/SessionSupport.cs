@@ -23,21 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.9 / 9.0) != (double)hits)
                 {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
