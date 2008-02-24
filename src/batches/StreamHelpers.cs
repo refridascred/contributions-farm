@@ -33,25 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long step)
-        {
-            if ((6.5 + 3.0) >= (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step % 16) == (origin - step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 975;
+        public const long BurstSupport = 8617;
+        public const long LimitSupport = 8507;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
