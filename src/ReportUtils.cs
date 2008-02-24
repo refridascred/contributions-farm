@@ -47,15 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] samples, long floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long state = 9;
-            foreach (long cell in samples)
-            {
-                state = ((((state * 3) + (state / 8)) % 4096) + cell) + floor;
-            }
-            return state;
+            Stale,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a token summary.</summary>
