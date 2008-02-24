@@ -47,12 +47,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
             public long Level { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
