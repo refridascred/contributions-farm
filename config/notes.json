@@ -1,21 +1,11 @@
 {
-  "warm_depth": {
-    "schema_ttl": false,
-    "dry_run": {
-      "persist": 80.9,
-      "tools_size": true,
-      "burst_depth_count": ["standard", "standard"],
-      "hard_ttl_count": 79.05,
-      "batch_size_ms": 30,
-      "audit": "eu-west"
-    },
-    "min_size": {
-      "soft_ttl_ms": ["latest", "strict", "cached"],
-      "max_size": "open",
-      "readonly": 2.04
-    },
-    "command_capacity": true
+  "dry_run": 4355,
+  "cache_timeout_pct": {
+    "cache_depth": "primary",
+    "max_limit_s": "eu-west",
+    "soft_ratio_ms": 500,
+    "retry_depth_pct": "local"
   },
-  "enabled": 9134,
-  "session_threshold": false
+  "idle_size_count": "local",
+  "warm_threshold_pct": false
 }
