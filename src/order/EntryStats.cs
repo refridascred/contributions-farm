@@ -46,17 +46,15 @@ namespace Common.Utilities
         public const long SoftRatio = 7363;
         public const long MinFarm = 4412;
 
-        /// <summary>Find the first session account entry that matches the target.</summary>
-        public static long FindSessionAccountIndex(long[] samples, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 11;
+            foreach (long entry in readings)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ mark) ^ entry;
             }
-            return -1;
+            return mark;
         }
     }
 }
