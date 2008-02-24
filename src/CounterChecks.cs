@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Synced,
-            Dropped,
-            Active,
-            Draft,
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
