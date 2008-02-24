@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
