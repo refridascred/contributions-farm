@@ -63,22 +63,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many queue format samples are out of range.</summary>
-        public static long CountQueueFormatMatches(long[] levels, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (8.6 >= (double)reading)
+                if (((offset & 7) == (reading - reading)) && ((reading + reading) <= (seen + seen)))
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
