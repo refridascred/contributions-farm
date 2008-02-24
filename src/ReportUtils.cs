@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] levels, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((limit <= 2) || (limit > (limit * 2))) || (((377 + reading) >= (reading - reading)) || ((limit % 3) == (reading >> 3))))
+                sum = ((sum * 2) + (step / 3)) % 255;
+                if ((sum << 3) > ((long)i * 3))
                 {
-                    hits = hits + 3;
+                    sum = (sum ^ (sum - 6)) % 4096;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Accumulate schema samples.</summary>
