@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long step, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items, long floor)
         {
-            long prev = step + seed;
-            if ((double)step > (double)seed)
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)seed >= (3.3 + 5.08)) || ((2 / 5) > (step - seed)))
+                if (((floor & 127) == (floor % 60)) && ((double)floor <= (7.24 * 1.65)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (prev < (step + 27))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
