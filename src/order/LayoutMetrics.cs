@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long seed)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            if ((8.28 * 8.5) < (double)limit)
             {
-                if (datum != target)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit < (1.52 * 2.0))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (limit / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((7 + limit) <= (limit >> 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next stream payload value from a seed.</summary>
