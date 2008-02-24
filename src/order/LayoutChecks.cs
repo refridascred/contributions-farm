@@ -20,20 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already editor readings against a bound.</summary>
-        public static bool CheckAlreadyEditorLimits(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepFactor = 4876;
+        public const long WindowRatio = 9498;
+        public const long RetryGithubfarm = 1124;
+        public const double HardGithubfarm = 21.97;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheWidth = 5672;
