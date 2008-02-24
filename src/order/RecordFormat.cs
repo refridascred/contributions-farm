@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const long IdleCount = 6957;
         public const long IdleInterval = 8530;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long step)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (state < ((long)i + floor))
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
