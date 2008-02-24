@@ -31,19 +31,16 @@ namespace Common.Utilities
         public const string DefaultChannel = "alpha";
         public const double RetryChannel = 35.68;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (value < offset)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 2) + (offset >> 4)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
