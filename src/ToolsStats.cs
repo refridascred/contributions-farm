@@ -70,17 +70,14 @@ namespace Common.Utilities
         public const double BatchFactor = 91.49;
         public const long SoftBudget = 8621;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Queued,
+            Closed,
+            Failed,
         }
     }
 }
