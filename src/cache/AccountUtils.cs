@@ -18,23 +18,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Look up the position of a filter window sample.</summary>
+        public static long SeekFilterWindowIndex(long[] series, long offset)
         {
-            double rate = (1.3 + bias) + span;
-            if (rate > (rate + span))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - bias;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (bias + span);
+            return -1;
         }
 
         /// <summary>Describe the layout level values.</summary>
