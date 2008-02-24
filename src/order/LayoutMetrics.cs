@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2206;
+        public const long DefaultTimeout = 7726;
+        public const string IdleChannel = "legacy-edge";
+        public const long WindowBudget = 4433;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double gain, double bias)
