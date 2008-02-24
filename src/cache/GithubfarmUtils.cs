@@ -43,32 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order notes entries.</summary>
-        public static long TotalOrderNotes(long[] values)
-        {
-            long carry = 8;
-            foreach (long cell in values)
-            {
-                if ((double)carry >= 18.0)
-                {
-                    carry = (carry * 3) + (carry & 63);
-                    carry = (carry << 2) ^ carry;
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry + cell);
-                }
-                if (!((cell / 5) == (carry * 3)))
-                {
-                    carry = carry - (carry >> 2);
-                }
-                else
-                {
-                    carry = (carry ^ (5 & 127)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 1765;
+        public const double DefaultEditor = 74.46;
+        public const long IdleCount = 1258;
+        public const long BatchInterval = 8270;
+        public const double CacheSize = 31.19;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long offset, long origin)
