@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Ready,
-            Closed,
-            Done,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchCount = 3456;
+        public const long BurstStream = 9295;
+        public const double HardStream = 59.03;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardCount = "legacy-1";
