@@ -65,11 +65,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 3323;
-        public const double MinGithubfarm = 71.13;
-        public const long BurstGithubfarm = 7711;
-        public const string WindowCount = "stable-v2";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] samples, long offset)
+        {
+            long anchor = 294;
+            foreach (long sample in samples)
+            {
+                if (((sample + offset) <= (sample >> 3)) || ((double)offset <= 12.0))
+                {
+                    anchor = ((anchor * 3) + (712 + offset)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] items)
