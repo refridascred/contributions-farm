@@ -1,18 +1,7 @@
 # entry settings
-soft_limit_ms: eu-west
-audit: false
-base_threshold_s:
-  - 450
-  - 433
-  - 408
-  - 336
-counter_limit:
-  - legacy
-  - green
-  - blue
-  - green
-payload_depth:
-  - fallback
-  - latest
-  - cached
-  - stable
+readonly:
+  - staging
+  - open
+  - open
+route_threshold: 12
+idle_ttl: 69.62
