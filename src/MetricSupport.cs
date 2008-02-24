@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool CheckWindowEditorRange(long[] values, long bound)
+        /// <summary>Audit batch layout readings against a rule.</summary>
+        public static long MeasureBatchLayoutMatches(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (sample <= bound)
+                if ((count << 2) <= 3)
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 2) + value) + origin;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
