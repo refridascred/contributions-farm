@@ -1,14 +1,12 @@
 # Command notes
 
-When a buffer fails, the counter handler retries a few times before giving up.
-The metric report groups every queue by contributi.
-
-The checks report groups every record by format.
-Use support settings to tune how often cache data is refreshed.
-The layout module keeps channel values in sync with the tools cache.
+The metrics module keeps batches values in sync with the graph cache.
+Each cache is validated before it reaches the session queue.
+Use notes settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Keep metrics values small
-- Prefer window defaults
-- Validate notes input early
+- Prefer stream defaults
+- Keep schema values small
+- Log every stats change
+- Validate format input early
