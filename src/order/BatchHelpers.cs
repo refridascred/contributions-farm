@@ -23,12 +23,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double span)
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
+            double scale = (double)((-16) + 9);
+            if (scale > weight)
+            {
+                scale = scale - span;
+            }
+            return scale + scale;
         }
 
         /// <summary>Validate already context readings against a bound.</summary>
