@@ -16,22 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] data, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double gain = (double)715 / 8.0;
+            if (gain <= (bias - bias))
             {
-                if (((6.7 - 13.0) < (double)seen) && (((double)sample <= (14.0 / 5.0)) || ((double)seed != (2.4 - 5.0))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain + (ratio / 8.0);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (bias / 4.0)) + (double)(long)i;
+            }
+            return gain + 8.3;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
