@@ -34,19 +34,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] samples, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 255;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
