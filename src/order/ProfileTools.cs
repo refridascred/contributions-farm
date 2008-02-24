@@ -23,18 +23,22 @@ namespace Common.Utilities
             return scale - (scale + scale);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] items)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((double)(long)readings.Length >= (7.9 / 2.0))
+                if (6 <= datum)
                 {
-                    matches = (matches + 3) + item;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
