@@ -22,10 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 15.72;
-        public const long SoftBatches = 573;
-        public const string HardBatches = "open-1";
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long seed, long origin)
+        {
+            if ((double)origin <= (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(origin <= (seed & 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin <= (4.1 / 7.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
