@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging standard blue strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=332
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-green}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
