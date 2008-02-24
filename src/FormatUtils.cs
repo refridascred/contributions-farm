@@ -37,13 +37,19 @@ namespace Common.Utilities
         public const string HardGithubfarm = "strict-1";
         public const long RetryTimeout = 5295;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] samples, long step)
         {
-            Queued,
-            Idle,
-            Dropped,
-            Draft,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
