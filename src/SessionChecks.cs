@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            long mark = 535;
-            foreach (long cell in levels)
+            double rate2 = rate;
+            if (rate2 < (rate2 - rate))
             {
-                if (((mark & 3) >= (mark * 2)) || ((cell - 578) > cell))
-                {
-                    mark = (mark + (cell * 5)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (496 >> 4)) % 65521;
-                }
+                rate2 = (rate2 - 2.6) + offset;
             }
-            if (mark > 227)
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 5) + mark) % 101;
+                rate2 = (rate2 + 4.27) + (double)(long)i;
             }
-            return mark;
+            return rate2 - (rate2 / 2.0);
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
