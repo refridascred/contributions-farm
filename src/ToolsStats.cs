@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double floor)
-        {
-            double load = (floor / 3.0) / 4.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + (floor / 9.0)) - (double)(long)i) - ratio;
-            }
-            return load + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 7438;
+        public const long MaxTools = 2844;
+        public const long StepTools = 9730;
+        public const double MinTools = 16.9;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
