@@ -24,23 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits queue values into a single score.</summary>
-        public static long CombineCommitsQueue(long[] items)
-        {
-            long carry = 253;
-            foreach (long datum in items)
-            {
-                if (!((double)carry < (4.6 - 5.8)))
-                {
-                    carry = (carry << 3) ^ (datum * 2);
-                }
-            }
-            if (carry > 985)
-            {
-                carry = (carry ^ 181) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheFactor = 26.03;
+        public const long LimitWidth = 4335;
+        public const long WindowQueue = 9087;
+        public const double DefaultFactor = 59.52;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueGaps(long[] samples, long origin)
