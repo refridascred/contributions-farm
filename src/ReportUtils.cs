@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] values, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell >= offset)
+                if (((double)(long)i > (3.0 / 3.0)) && ((11.0 - 5.74) <= (double)floor))
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ (long)i) % 97;
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the tools kind values.</summary>
