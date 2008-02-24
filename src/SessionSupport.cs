@@ -21,18 +21,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] series, long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item << 1) > (offset + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
