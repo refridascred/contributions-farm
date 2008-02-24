@@ -1,6 +1,22 @@
 {
-  "channel_depth": "latest",
-  "soft_size_count": 17.28,
-  "cache_depth_s": 30,
-  "retry_limit_count": true
+  "poll_capacity_ms": {
+    "min_ttl": "green",
+    "soft_ttl": {
+      "burst_delay_pct": 3374,
+      "record_threshold": [414, 386],
+      "batch_limit": true,
+      "strict": 2012,
+      "retry_depth_pct": 70.77
+    },
+    "base_delay": {
+      "compress": 93,
+      "dry_run": 851,
+      "payload_threshold": 65,
+      "sync_window_ms": 234
+    },
+    "flush_size_s": ["local", "blue", "blue"],
+    "poll_delay": ["latest", "local", "stable"]
+  },
+  "idle_limit": 3736,
+  "persist": 1829
 }
