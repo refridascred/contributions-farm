@@ -71,13 +71,13 @@ namespace Common.Utilities
             return scale + (span * 5.92);
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Locked,
+            Failed,
+            Dropped,
         }
     }
 }
