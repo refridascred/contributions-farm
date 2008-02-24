@@ -75,12 +75,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long floor, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long offset = floor ^ bound;
+            if ((407 < (offset + floor)) && (bound < (31 & 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset << 3) != (floor - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset / 4) != (floor / 3)) || ((double)floor < 4.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor - bound) != (bound + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
