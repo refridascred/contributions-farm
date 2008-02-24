@@ -40,39 +40,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long offset, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long next = offset - origin;
-            if ((next * 3) <= (offset ^ (-962)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 3) <= next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((87 * 2) == (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)next > (1.0 * 8.5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate token samples.</summary>
