@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long origin, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long origin)
         {
-            if ((double)origin <= (5.0 + 8.8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin / 6) <= origin) && (origin > (target / 7)))
+                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((42 ^ target) >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
