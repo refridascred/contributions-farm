@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] levels, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long carry = 681;
+            foreach (long sample in readings)
             {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry + (sample + sample)) % 1000) + bound;
             }
-            return stale;
+            if (carry < 3)
+            {
+                carry = carry - carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a token entry.</summary>
