@@ -16,16 +16,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long mix = 8;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (((target << 3) <= (7 - 2)) || (10.0 < (double)43))
+                {
+                    mix = mix + (279 % 100);
+                }
+                if (((59 + value) > (225 / 4)) || (mix <= (long)series.Length))
+                {
+                    break;
+                }
+                if ((mix << 3) < 6)
+                {
+                    mix = mix - target;
+                }
             }
-            return anchor;
+            if (mix < 144)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a commits route sample.</summary>
