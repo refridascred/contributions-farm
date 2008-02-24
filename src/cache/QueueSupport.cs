@@ -38,22 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long seed)
+        /// <summary>Iterate the command record series from a seed.</summary>
+        public static long RollCommandRecord(long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)hits > (double)773) && !((43 & 127) <= (hits + seed)))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
     }
 }
