@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Active,
-            Paused,
-            Done,
-            Idle,
+            Draft,
+            Closed,
             Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate buffer report readings against a bound.</summary>
