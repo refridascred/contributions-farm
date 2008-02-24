@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            double drift = (3.0 / 3.0) / 7.0;
+            if (drift > (gain * 20.0))
+            {
+                drift = (drift + (gain / 6.0)) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)0) + (double)(long)i;
+            }
+            return drift - (double)(-387);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
