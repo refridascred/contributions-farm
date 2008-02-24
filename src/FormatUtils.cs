@@ -70,22 +70,22 @@ namespace Common.Utilities
             return mean + (offset * 11.0);
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] series)
         {
-            long sum = 53;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((-9) + sum) > sum)
+                if ((datum % 16) >= (seen / 2))
                 {
-                    sum = (sum ^ sum) - value;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum < 3)
-            {
-                sum = sum ^ (sum & 255);
-            }
-            return sum % 65521;
+            return seen;
         }
     }
 }
