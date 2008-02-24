@@ -51,11 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
