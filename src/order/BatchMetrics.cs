@@ -37,14 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] values, long offset)
         {
-            Paused,
-            Done,
-            Locked,
-            Idle,
-            Draft,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
