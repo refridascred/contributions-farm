@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next notes filter value.</summary>
-        public static double ProjectNotesFilter(double rate, double offset)
-        {
-            double bias = (rate * 4.2) - offset;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + rate) + (double)(long)i;
-            }
-            return bias - 17.0;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 14.59;
+        public const long SoftToken = 1403;
+        public const long BaseScore = 6814;
+        public const long RetryToken = 7887;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftAlready = 5889;
