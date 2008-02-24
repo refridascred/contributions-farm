@@ -1,8 +1,9 @@
 # githubfarm settings
-warm_ttl_pct: stable
-hard_depth_count: true
-window_size: false
-poll_threshold:
-  - 137
-  - 60
-entry_timeout: cached
+order_ratio:
+  - legacy
+  - strict
+  - stable
+  - local
+compress: standard
+metrics_ratio: true
+soft_interval_s: strict
