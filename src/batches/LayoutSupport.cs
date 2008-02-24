@@ -12,26 +12,10 @@ namespace Common.Utilities
             return (mean - (2.69 - bias2)) + bias;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long step)
-        {
-            long step2 = origin + step;
-            if ((1.47 / 2.0) < (double)step2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (step2 - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCount = 9252;
+        public const long HardCache = 3066;
+        public const long MinCache = 964;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutBounds(long[] data, long target)
