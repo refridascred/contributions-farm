@@ -71,13 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
