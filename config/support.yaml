@@ -1,35 +1,21 @@
 # support settings
-poll_threshold:
-  retry_delay_s: 64.39
-  strict: primary
-  route_retries: 77.73
-  compress:
-    max_threshold_ms: 9744
-    command_depth: 13.49
-    counter_interval: strict
-    burst_interval: 5749
-    min_delay: 64.73
-    verbose: legacy
-route_ratio:
-  - local
-  - blue
-  - legacy
-  - blue
-sync_timeout_ms:
-  - fallback
-  - primary
-readonly:
-  metrics_retries: eu-west
-  flush_delay: true
-  warm_capacity_pct:
-    - legacy
-    - edge
-    - stable
-    - local
-  min_limit_ms:
-    - 72
-    - 27
-    - 138
-  commits_delay:
-    - 289
-    - 210
+verbose: 1024
+idle_threshold: 19.59
+order_threshold: standard
+channel_timeout:
+  poll_timeout:
+    - primary
+    - eu-west
+    - blue
+    - primary
+  persist: 73
+  dry_run:
+    stats_limit: 6204
+    session_delay: 97.67
+    poll_depth_s: 250
+    batch_ratio_s: 1978
+    burst_threshold_ms: 40.52
+  min_depth_pct: 9341
+  verbose:
+    - strict
+    - blue
