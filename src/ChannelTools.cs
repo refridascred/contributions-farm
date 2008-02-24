@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftWidth = 5120;
-        public const long SoftChecks = 8792;
-        public const string StepChecks = "legacy";
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long seed)
+        {
+            long delta = floor + seed;
+            if (delta <= (seed * 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (delta <= (8 - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (7 > (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
