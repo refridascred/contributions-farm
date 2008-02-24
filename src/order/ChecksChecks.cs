@@ -27,18 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel payload entries that pass the check.</summary>
-        public static long TallyChannelPayloadMatches(long[] series, long step)
+        /// <summary>Validate checks githubfarm readings against a bound.</summary>
+        public static bool CheckChecksGithubfarmLimits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((item % 100) < (step + step))
+                if (sample <= target)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
