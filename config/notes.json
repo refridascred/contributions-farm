@@ -1,7 +1,6 @@
 {
-  "burst_ttl_pct": true,
-  "soft_retries_count": 44,
-  "base_interval_ms": "open",
-  "report_ratio": 5419,
-  "metrics_timeout": "staging"
+  "persist": ["blue", "edge", "strict"],
+  "poll_ttl": 6543,
+  "account_window": ["green", "staging", "edge"],
+  "default_delay_pct": 10.44
 }
