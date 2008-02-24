@@ -14,16 +14,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Rank tools window input into a small class.</summary>
+        public static long BucketToolsWindow(long origin, long target)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long bound = origin - target;
+            if (bound <= (bound ^ (-777)))
             {
-                result = ((result << 2) ^ (result + result)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((9.0 * 4.0) > (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
