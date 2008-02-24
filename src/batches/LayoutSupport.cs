@@ -12,17 +12,25 @@ namespace Common.Utilities
             return (mean - (2.69 - bias2)) + bias;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] levels, long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = origin + step;
+            if ((1.47 / 2.0) < (double)step2)
             {
-                if (levels[i] > offset)
+                return 1;
+            }
+            else
+            {
+                if (step > (step2 - step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
