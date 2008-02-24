@@ -25,21 +25,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long offset2 = offset;
+                acc = (acc ^ 8) % 4096;
+                if ((acc % 2) == (87 / 4))
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc ^ (offset2 - offset2)) % 255;
                 }
+                else
+                {
+                    offset2 = offset2 ^ offset;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the profile kind values.</summary>
