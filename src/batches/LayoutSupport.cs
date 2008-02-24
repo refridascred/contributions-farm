@@ -75,23 +75,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a batch account figure with a bias.</summary>
-        public static double AdjustBatchAccount(double rate, double bias)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double weight = (double)(85 + 473);
-            if (weight > (rate - rate))
-            {
-                weight = (weight + (double)183) - bias;
-            }
-            else
-            {
-                weight = weight - 3.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + rate) - (double)(long)i;
-            }
-            return weight - rate;
+            Done,
+            Synced,
+            Active,
         }
     }
 }
