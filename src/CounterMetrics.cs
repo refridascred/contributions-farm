@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long floor, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            if ((4.4 * 4.4) < (5.47 / 7.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor > (step / 6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)step < (3.38 - 6.37)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of queue metrics entries.</summary>
