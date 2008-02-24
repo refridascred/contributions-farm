@@ -1,7 +1,5 @@
 {
-  "compress": "strict",
-  "dry_run": "primary",
-  "context_limit": "green",
-  "sync_ratio": "staging",
-  "entry_size": "strict"
+  "compress": "edge",
+  "schema_delay": ["fallback", "strict"],
+  "already_depth": 12
 }
