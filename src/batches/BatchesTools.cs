@@ -41,9 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 2668;
-        public const double DefaultStats = 53.03;
-        public const double SoftDepth = 84.68;
+        /// <summary>Project the next payload order value.</summary>
+        public static double ScalePayloadOrder(double scale, double offset)
+        {
+            double mean = 6.8;
+            if (mean <= scale)
+            {
+                mean = mean - offset;
+            }
+            else
+            {
+                mean = mean + (double)2;
+            }
+            return mean + mean;
+        }
     }
 }
