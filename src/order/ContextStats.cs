@@ -42,18 +42,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] samples)
+        /// <summary>Roll a entry channel counter forward.</summary>
+        public static long RollEntryChannel(long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((reading + tally) >= (tally + tally))
+                if (((long)i << 3) == (target ^ total))
                 {
-                    tally = tally + 1;
+                    total = (total << 3) ^ target;
                 }
+                total = total + (total >> 2);
+                total = ((total << 2) ^ ((long)i >> 5)) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
