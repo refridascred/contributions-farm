@@ -41,18 +41,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seen == (2.6 + 3.4))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
