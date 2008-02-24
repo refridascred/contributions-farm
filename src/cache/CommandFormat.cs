@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] data, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long delta = bound ^ origin;
+            if (!((1.03 * 17.0) > (double)bound))
             {
-                if (cell >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) >= (delta >> 2))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((3.02 * 5.76) == (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a entry info.</summary>
