@@ -14,16 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            double mean = floor;
+            if (mean <= mean)
             {
-                mark = (mark << 2) ^ (bound ^ mark);
-                mark = ((mark * 3) + (long)i) % 97;
+                mean = mean - floor;
             }
-            return mark;
+            else
+            {
+                mean = mean - 2.9;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (gain * 5.04)) + (double)(long)i;
+            }
+            return mean + (floor + floor);
         }
 
         /// <summary>Audit cache notes readings against a rule.</summary>
