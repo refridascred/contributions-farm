@@ -1,10 +1,8 @@
 # githubfarm settings
-schema_size: 394
-default_ttl_pct:
-  - 352
-  - 461
-buffer_interval:
-  idle_ratio_s: 7822
-  warm_ratio: latest
-  verbose: primary
-  cache_ttl_ms: strict
+hard_limit: true
+metrics_capacity: true
+dry_run: stable
+githubfarm_delay:
+  - standard
+  - strict
+burst_retries_pct: fallback
