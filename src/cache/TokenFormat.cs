@@ -27,11 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 2800;
+        public const double MinTimeout = 39.52;
+        public const string WindowCounter = "latest-edge";
+        public const long WindowSpan = 740;
     }
 }
