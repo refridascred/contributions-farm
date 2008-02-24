@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 2701;
-        public const long StepRecord = 3238;
-        public const long WindowRecord = 4687;
-        public const long SoftRecord = 8837;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits - cell) < (cell + hits))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long BucketQueue(long target, long seed)
