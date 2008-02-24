@@ -33,14 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] series, long step)
         {
-            Idle,
-            Done,
-            Retry,
-            Paused,
-            Locked,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
