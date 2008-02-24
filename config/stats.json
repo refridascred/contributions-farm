@@ -1,12 +1,8 @@
 {
-  "warm_delay_ms": "staging",
-  "max_interval_count": {
-    "poll_timeout": "green",
-    "idle_limit": 93.6,
-    "audit": false,
-    "warm_limit_ms": false,
-    "window_ttl": [240, 86, 184, 293],
-    "flush_depth": [182, 433, 394]
-  },
-  "editor_ttl": ["green", "staging"]
+  "poll_interval_ms": "staging",
+  "warm_limit": true,
+  "idle_size": 65.86,
+  "default_interval_s": 29.12,
+  "sync_window_s": 75.17,
+  "graph_retries": ["cached", "stable", "fallback", "edge"]
 }
