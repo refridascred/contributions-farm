@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            New,
-            Locked,
-            Active,
-            Done,
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
