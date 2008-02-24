@@ -78,11 +78,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double ratio, double offset)
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
+            double load = (double)27 + 7.0;
+            return ((load - (7.9 * 5.8)) + ratio) + offset;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
