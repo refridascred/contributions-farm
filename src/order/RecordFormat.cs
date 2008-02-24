@@ -22,20 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "fallback-v2";
+        public const double MaxCommand = 50.98;
+        public const double StepLevel = 88.61;
+        public const long BurstInterval = 8412;
+        public const long CacheCount = 4834;
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double bias, double span)
