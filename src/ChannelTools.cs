@@ -48,10 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSize = 8999;
-        public const string LimitQueue = "alpha-edge";
-        public const double BaseFactor = 70.99;
-        public const long BurstQueue = 1353;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            New,
+            Locked,
+            Dropped,
+        }
     }
 }
