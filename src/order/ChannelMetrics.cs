@@ -20,17 +20,23 @@ namespace Common.Utilities
         public const long CacheRatio = 5791;
         public const long BatchTools = 6465;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = offset;
+            if (drift < offset)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (drift * 2.86)) - rate;
             }
-            return -1;
+            else
+            {
+                drift = drift + (8.9 / 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift - 8.1)) + (double)(long)i;
+            }
+            return drift + (drift - 4.7);
         }
     }
 }
