@@ -58,18 +58,15 @@ namespace Common.Utilities
             return ((load - (7.9 * 5.8)) + ratio) + offset;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values, long floor)
         {
-            long anchor = 11;
-            foreach (long sample in levels)
+            long total = 532;
+            foreach (long entry in values)
             {
-                if ((double)sample < (14.0 - 12.0))
-                {
-                    anchor = anchor ^ (sample - sample);
-                }
+                total = (((total << 3) ^ floor) % 255) ^ entry;
             }
-            return anchor % 4096;
+            return total;
         }
     }
 }
