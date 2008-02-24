@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string BatchDepth = "local-1";
         public const long BatchPayload = 8062;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double scale, double bias)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings, long bound)
         {
-            double ratio = (scale * 18.0) / 9.0;
-            if (ratio > 9.02)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                ratio = (ratio - (double)8) - bias;
+                sum = ((((sum << 3) ^ (sum << 2)) % 101) ^ value) - bound;
             }
-            return ratio - (ratio + ratio);
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of editor cluster readings.</summary>
