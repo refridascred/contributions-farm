@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels, long step)
+        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
+        public static long FindMetricsGithubfarmIndex(long[] samples, long floor)
         {
-            long score = 544;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score - (score / 9)) % 4096) + step;
-                if ((double)score < (1.55 * 9.0))
+                if (samples[i] <= floor)
                 {
-                    score = (score ^ (score - entry)) % 101;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
