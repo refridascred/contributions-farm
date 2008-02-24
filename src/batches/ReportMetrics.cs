@@ -31,11 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            Ready,
+            Dropped,
+            Active,
+            Stale,
         }
     }
 }
