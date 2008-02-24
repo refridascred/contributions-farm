@@ -69,14 +69,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Find the first checks stream entry that matches the target.</summary>
+        public static long SeekChecksStreamIndex(long[] values, long bound)
         {
-            Paused,
-            New,
-            Closed,
-            Ready,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
