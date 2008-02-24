@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinLevel = "local";
-        public const long BaseTimeout = 9278;
-        public const long StepEntry = 30;
-        public const long MinTimeout = 9671;
-        public const string SoftFactor = "open-edge";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items)
+        {
+            long mark = 77;
+            foreach (long sample in items)
+            {
+                mark = ((mark + (mark * 5)) % 101) ^ sample;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long seed)
