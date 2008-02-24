@@ -74,12 +74,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Locked,
-            Synced,
-            Failed,
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
