@@ -20,14 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
+            Ready,
+            Retry,
+            Locked,
             Pending,
-            Done,
-            Paused,
-            Queued,
-            Dropped,
         }
 
         /// <summary>Describe the metric mode values.</summary>
