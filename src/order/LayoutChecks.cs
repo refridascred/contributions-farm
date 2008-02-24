@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a stream route reading by value.</summary>
-        public static long LocateStreamRouteIndex(long[] samples, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Validate already editor readings against a bound.</summary>
