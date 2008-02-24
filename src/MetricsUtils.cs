@@ -44,24 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long origin, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if ((bound * 2) < (17 ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((7 % 5) < (bound + origin)) || (7 <= (bound << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Locked,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a notes header.</summary>
