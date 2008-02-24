@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            Idle,
-            Queued,
-            Done,
+            long acc = 752;
+            foreach (long reading in items)
+            {
+                acc = (acc - (acc / 2)) + reading;
+            }
+            return acc;
         }
 
         /// <summary>Hold a profile stats.</summary>
