@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "fallback";
+        public const long BatchInterval = 2439;
+        public const long SoftBuffer = 9943;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferHits(long[] series, long floor)
