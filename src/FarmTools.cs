@@ -35,32 +35,25 @@ namespace Common.Utilities
             return bias - (offset / 5.0);
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long offset, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
         {
-            long bound2 = offset - bound;
-            if (((-6) - bound2) != (bound % 5))
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound <= (1.07 + 14.0))
+                if ((((long)i >> 2) == (step * 4)) || ((step ^ mix) >= mix))
                 {
-                    return 6;
+                    mix = mix + (step % 2);
+                    break;
                 }
-                else
+                if (((812 & 7) < (675 + mix)) && ((mix >> 5) < mix))
                 {
-                    if (!((double)offset == (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix << 3) ^ ((long)i % 24);
+                    mix = mix ^ (mix - 6);
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
