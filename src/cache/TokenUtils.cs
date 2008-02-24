@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate batch already samples.</summary>
-        public static long TallyBatchAlready(long[] levels, long floor)
-        {
-            long result = 37;
-            foreach (long datum in levels)
-            {
-                if ((datum - 492) < datum)
-                {
-                    break;
-                }
-                if ((result ^ result) >= (result * 3))
-                {
-                    result = (result + (result & 255)) + floor;
-                }
-                if ((3.4 / 4.0) >= (double)datum)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 5000;
+        public const double MaxContext = 56.92;
+        public const string IdleSpan = "legacy";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] readings)
