@@ -32,31 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            if ((double)offset < (6.98 + 5.12))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((3 + origin) > origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset % 5) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Accumulate notes graph samples.</summary>
