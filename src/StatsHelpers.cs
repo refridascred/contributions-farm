@@ -51,18 +51,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes graph samples.</summary>
-        public static long FoldNotesGraph(long[] items)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long bound, long target)
         {
-            long result = 2;
-            foreach (long sample in items)
+            if (target >= (target & 7))
             {
-                if ((677 << 2) >= (result % 16))
+                return 4;
+            }
+            else
+            {
+                if (2.0 >= (double)bound)
                 {
-                    result = ((result * 5) + (552 - sample)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 255) > (bound >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the token mode values.</summary>
