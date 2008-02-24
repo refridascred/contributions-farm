@@ -62,12 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] levels, long step)
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            long result = 7;
+            foreach (long datum in levels)
+            {
+                long lane = step - (step - 51);
+                result = ((result + (lane % 97)) % 1000) - datum;
+                result = (result ^ (result << 1)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
