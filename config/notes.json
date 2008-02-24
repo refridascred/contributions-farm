@@ -1,6 +1,6 @@
 {
-  "retry_window_ms": 9691,
-  "min_window_s": 11.81,
-  "default_limit": ["staging", "primary"],
-  "enabled": [110, 275]
+  "hard_window": "green",
+  "soft_threshold_ms": "staging",
+  "readonly": 250,
+  "soft_retries_pct": 60
 }
