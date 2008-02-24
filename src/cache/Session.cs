@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a commits counter pair into a bucket.</summary>
-        public static long ClassifyCommitsCounter(long bound, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if (step < bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (step + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound * 3) > (bound + 68))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
