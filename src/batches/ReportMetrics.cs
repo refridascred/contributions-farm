@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 52.81;
-        public const double IdleContext = 89.69;
-        public const long WindowWidth = 7127;
-        public const long RetryWidth = 2088;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Paused,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
         public static long MeasureQueueTokenMatches(long[] levels, long origin)
