@@ -23,15 +23,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next payload buffer value.</summary>
-        public static double SmoothPayloadBuffer(double weight, double span)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 >= (span - span))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 + (weight / 8.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight2 - weight;
+            return count;
         }
     }
 }
