@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached open; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=50
-log "limit is ${RECORD_LIMIT}"
