@@ -23,20 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheBudget = 5008;
+        public const string MaxWidth = "open";
+        public const string MinRatio = "alpha-v2";
+        public const long StepToken = 9028;
 
         /// <summary>Measure how many stream commits samples are out of range.</summary>
         public static long MeasureStreamCommitsGaps(long[] data)
