@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] levels)
         {
-            Idle,
-            Synced,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum * 5) != (datum * 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
