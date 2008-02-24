@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mean + (bias / 9.0);
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double scale, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] readings)
         {
-            double ratio = (scale + bias) / 3.0;
-            if (ratio <= (2.93 * 6.71))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                ratio = ratio - scale;
+                if ((reading - hits) < (reading - 516))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (double)78;
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
