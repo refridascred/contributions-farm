@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long target)
         {
-            long acc = 752;
-            foreach (long reading in items)
+            long delta = offset + target;
+            if ((double)offset > 9.0)
             {
-                acc = (acc - (acc / 2)) + reading;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (target > (target ^ (-986)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((99 >> 1) <= (77 + delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-50) ^ 388) <= (target % 12))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile stats.</summary>
