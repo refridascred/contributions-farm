@@ -32,28 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Measure how many contributi window samples are out of range.</summary>
+        public static long TallyContributiWindowHits(long[] series, long target)
         {
-            long sum = 130;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((2.3 - 4.0) > (double)sum)
+                if (!((double)tally == (double)item) || ((double)tally < 9.94))
                 {
-                    sum = sum + 13;
+                    tally = (tally + 3) + target;
                 }
-                if (((double)entry < (double)sum) || (sum >= (54 >> 3)))
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-                else
-                {
-                    sum = sum + (entry << 1);
-                    sum = ((sum * 2) + (entry - sum)) % 1000;
-                }
-                sum = sum + entry;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
