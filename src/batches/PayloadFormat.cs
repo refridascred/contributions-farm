@@ -55,11 +55,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinFactor = "latest";
-        public const long BaseInterval = 5890;
-        public const string SoftProfile = "open-1";
-        public const string StepProfile = "primary";
-        public const long BaseProfile = 580;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepDepth = 77.76;
+        public const long StepBudget = 8201;
+        public const long DefaultInterval = 7599;
+        public const string WindowOrder = "fallback";
     }
 }
