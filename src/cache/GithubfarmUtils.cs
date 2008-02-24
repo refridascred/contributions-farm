@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items, long offset)
+        /// <summary>Look up the position of a command layout sample.</summary>
+        public static long LookupCommandLayoutIndex(long[] values, long limit)
         {
-            long carry = 203;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading << 1) >= offset)
+                if ((values[i] <= limit) && ((values[i] % 3) != 0))
                 {
-                    carry = ((carry * 5) + (offset >> 3)) % 255;
+                    return (long)i;
                 }
             }
-            if (carry > 692)
-            {
-                carry = (carry - offset) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
