@@ -39,10 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowSpan = 7943;
-        public const double BurstDepth = 94.17;
-        public const long IdleRoute = 2904;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Ready,
+            Queued,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] items)
