@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowWidth = 4905;
+        public const long BaseGithubfarm = 4472;
+        public const long LimitGithubfarm = 6018;
+        public const long HardGithubfarm = 2019;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] data)
