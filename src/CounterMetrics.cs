@@ -32,11 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSize = 191;
-        public const long BaseScore = 7237;
-        public const long SoftBuffer = 6147;
-        public const double DefaultWidth = 52.03;
+        /// <summary>Digest a series of queue metrics entries.</summary>
+        public static long ScoreQueueMetrics(long[] data, long floor)
+        {
+            long state = 95;
+            foreach (long value in data)
+            {
+                if (floor > (floor + state))
+                {
+                    state = (state ^ (value / 6)) % 1000;
+                }
+                else
+                {
+                    state = (state + (floor >> 4)) % 97;
+                }
+                if ((floor - value) <= (434 * 2))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
