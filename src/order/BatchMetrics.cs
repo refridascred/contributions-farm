@@ -71,23 +71,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Audit counter payload readings against a rule.</summary>
+        public static long TallyCounterPayloadGaps(long[] samples)
         {
-            long total = 644;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (!(9.69 > (double)total))
+                if (((cell > (cell % 24)) || (cell < tally)) && ((tally + cell) > tally))
                 {
-                    total = (total + total) % 4096;
+                    tally = tally + 3;
                 }
-                total = (total - datum) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total > 94)
-            {
-                total = (total ^ (total / 5)) % 97;
-            }
-            return total;
+            return tally;
         }
     }
 }
