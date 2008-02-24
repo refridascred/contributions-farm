@@ -51,22 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long CombineBatchContext(long[] levels, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = 9;
-            foreach (long cell in levels)
-            {
-                if (((double)result != (double)cell) || ((result - result) > result))
-                {
-                    result = (result + (result & 7)) % 4096;
-                }
-            }
-            if (result < 300)
-            {
-                result = (result << 2) ^ (origin - result);
-            }
-            return result;
+            Locked,
+            Retry,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
