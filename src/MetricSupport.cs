@@ -30,15 +30,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] samples)
-        {
-            long anchor = 718;
-            foreach (long cell in samples)
-            {
-                anchor = (anchor - (cell - cell)) % 1000;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstFactor = "stable-edge";
+        public const long SoftBudget = 5331;
+        public const long MaxProfile = 4020;
     }
 }
