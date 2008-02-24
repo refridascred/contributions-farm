@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Rank payload schema input into a small class.</summary>
+        public static long GradePayloadSchema(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if ((double)floor > 4.2)
             {
-                if (!((6.91 / 5.0) <= (double)entry))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > 7.9)
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
