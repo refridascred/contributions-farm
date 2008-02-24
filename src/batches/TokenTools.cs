@@ -27,14 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Active,
-            Paused,
+            Stale,
+            Done,
             Failed,
-            Pending,
-            Locked,
+            Closed,
         }
     }
 }
