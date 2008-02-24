@@ -56,24 +56,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Combine session channel values into a single score.</summary>
+        public static long ScoreSessionChannel(long[] values, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long score = -5;
+            foreach (long datum in values)
             {
-                if (!((double)total < (double)seed))
+                if (2 <= datum)
                 {
-                    total = ((total * 3) + total) % 65521;
+                    score = ((score << 2) ^ (datum % 7)) % 255;
                 }
-                if ((seed >> 1) <= (seed >> 5))
+                else
                 {
-                    total = (total << 3) ^ ((long)i - total);
+                    score = score - (datum & 63);
                 }
-                total = (total + ((long)i + 57)) % 97;
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            if (score < 67)
+            {
+                score = score ^ seed;
+            }
+            return score;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
