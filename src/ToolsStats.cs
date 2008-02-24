@@ -75,12 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Measure how many window contributi samples are out of range.</summary>
+        public static long TallyWindowContributiOutliers(long[] values, long bound)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)5 >= (6.8 + 8.0))
+                {
+                    tally = ((tally + 3) + entry) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
