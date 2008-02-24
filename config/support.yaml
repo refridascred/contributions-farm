@@ -1,8 +1,14 @@
 # support settings
-retry_interval: primary
-retry_ttl_count: local
-min_window_ms: latest
-contributi_window:
-  - 146
-  - 219
-soft_ttl_pct: true
+retry_retries: latest
+enabled: staging
+githubfarm_window: true
+default_size_ms:
+  - primary
+  - latest
+  - blue
+audit:
+  - open
+  - latest
+  - staging
+  - fallback
+dry_run: 5
