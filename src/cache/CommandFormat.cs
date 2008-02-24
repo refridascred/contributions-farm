@@ -47,22 +47,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many format channel samples are out of range.</summary>
-        public static long CountFormatChannelOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample > (sample / 6)) || ((count + sample) >= count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 6207;
+        public const double StepSize = 75.85;
+        public const long DefaultCount = 9845;
     }
 }
