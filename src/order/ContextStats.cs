@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Idle,
-            Ready,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 35.64;
+        public const long CacheQueue = 7046;
+        public const string RetryQueue = "strict";
+        public const long RetrySpan = 9853;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
