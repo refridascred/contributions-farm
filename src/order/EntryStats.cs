@@ -52,15 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Synced,
-            Idle,
-            Retry,
-            Queued,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 43.97;
+        public const long SoftRatio = 7363;
+        public const long MinFarm = 4412;
 
         /// <summary>Find the first session account entry that matches the target.</summary>
         public static long FindSessionAccountIndex(long[] samples, long origin)
