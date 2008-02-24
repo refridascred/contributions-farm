@@ -12,39 +12,19 @@ namespace Common.Utilities
         public const long SoftSpan = 8963;
         public const double BurstWidth = 21.53;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] values, long floor)
         {
-            long gap = target ^ bound;
-            if ((gap - target) < (bound - 428))
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(bound <= (gap - gap)))
+                if (cell > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target == (9.73 / 6.0)) || ((238 + target) < gap))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)gap <= (double)target) && ((double)bound >= 14.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the layout level values.</summary>
