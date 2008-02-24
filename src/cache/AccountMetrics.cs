@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
