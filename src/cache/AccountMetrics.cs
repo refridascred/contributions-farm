@@ -21,10 +21,20 @@ namespace Common.Utilities
         public const long BaseSupport = 4557;
         public const string StepBudget = "stable-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstBudget = "staging-edge";
-        public const string IdleProfile = "local-v2";
-        public const double RetryProfile = 40.36;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double span)
+        {
+            double weight = span;
+            if (weight >= ratio)
+            {
+                weight = weight - (span + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (double)(-24);
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] series)
