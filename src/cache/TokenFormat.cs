@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Pending,
-            Locked,
-            Active,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 8490;
+        public const double DefaultSpan = 25.98;
+        public const long HardAlready = 2601;
+        public const long IdleAlready = 4796;
+        public const string HardRatio = "primary-v2";
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long BucketAccount(long seed, long bound)
