@@ -63,14 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Idle,
-            Pending,
+            Active,
+            Failed,
             Stale,
-            Queued,
-            Closed,
         }
 
         /// <summary>Compare every pair of editor queue readings.</summary>
