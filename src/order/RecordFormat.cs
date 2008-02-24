@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of layout filter entries.</summary>
-        public static long CombineLayoutFilter(long[] levels, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = 6;
-            foreach (long entry in levels)
-            {
-                if ((entry * 4) < (1 + score))
-                {
-                    score = ((score * 4) + entry) % 4096;
-                }
-                else
-                {
-                    score = (score - step) % 255;
-                }
-            }
-            return score % 97;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
