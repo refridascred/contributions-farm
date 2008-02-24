@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a entry already sample.</summary>
-        public static long LookupEntryAlreadyIndex(long[] samples, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                if (items[i] == floor)
                 {
                     return (long)i;
                 }
