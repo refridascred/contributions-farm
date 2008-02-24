@@ -20,15 +20,12 @@ namespace Common.Utilities
             return scale - (gain + gain);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long acc = 6;
-            foreach (long value in values)
-            {
-                acc = ((acc + (acc << 1)) % 101) ^ value;
-            }
-            return acc % 65521;
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
