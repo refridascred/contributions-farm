@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] series)
         {
-            long carry = 24;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((double)carry != (double)reading))
+                if ((value / 6) <= hits)
                 {
-                    carry = ((carry * 2) + (112 & 1)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry & 15)) % 4096;
+                    hits = hits + 2;
                 }
             }
-            if (carry > 680)
-            {
-                carry = (carry ^ (38 + carry)) % 255;
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
