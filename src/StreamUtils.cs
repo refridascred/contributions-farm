@@ -60,18 +60,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of farm commits entries.</summary>
-        public static long DigestFarmCommits(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long sum = 50;
-            foreach (long reading in series)
-            {
-                if (((double)sum <= (11.0 + 17.0)) || (1 >= (9 - reading)))
-                {
-                    sum = ((sum * 3) + sum) % 97;
-                }
-            }
-            return sum % 97;
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
