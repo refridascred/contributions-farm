@@ -1,7 +1,7 @@
 {
-  "enabled": "blue",
-  "cache_depth": [29, 220, 4],
-  "batch_delay_count": 827,
-  "hard_delay_s": false,
-  "buffer_ttl": "staging"
+  "persist": [366, 355, 128, 431],
+  "max_interval": 71.02,
+  "flush_timeout": [170, 478, 448],
+  "max_limit_ms": 8401,
+  "readonly": "stable"
 }
