@@ -1,7 +1,8 @@
 # support settings
-batch_depth_pct: 500
-compress: 75
-strict:
-  - local
-  - primary
-githubfarm_interval: false
+retry_interval: primary
+retry_ttl_count: local
+min_window_ms: latest
+contributi_window:
+  - 146
+  - 219
+soft_ttl_pct: true
