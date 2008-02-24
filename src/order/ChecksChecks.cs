@@ -19,18 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] levels, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if (((limit + origin) > origin) && ((limit / 4) < origin))
             {
-                if (820 <= (hits & 7))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= (5.8 * 14.0))
                 {
-                    hits = ((hits + 1) + value) - seed;
+                    return 1;
+                }
+                else
+                {
+                    if (((origin + limit) > (limit / 6)) && ((10.0 * 4.0) > (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit <= (8 >> 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next editor schema value.</summary>
