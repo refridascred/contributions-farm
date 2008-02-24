@@ -36,18 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long span = bound - bound2;
+            if (!(1.0 > (double)bound))
             {
-                if ((cell - hits) >= (hits / 4))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound2 == (3.2 * 8.0)) || (bound2 < (bound & 31)))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((span - bound) >= (span - 746))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span % 97) >= (bound / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
