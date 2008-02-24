@@ -37,19 +37,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double weight, double span)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            double gain = weight;
-            if (gain <= (gain - gain))
+            if ((67 - step) < (floor ^ step))
             {
-                gain = gain + weight;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain - span) + (double)(long)i;
+                if ((double)step == (6.0 / 4.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-597) & 31) >= (floor >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor + step) <= step) || ((step ^ floor) < (808 ^ step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return gain - gain;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
