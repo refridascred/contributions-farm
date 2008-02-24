@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Pending,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
