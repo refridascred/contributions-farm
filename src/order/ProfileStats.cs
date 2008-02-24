@@ -46,20 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token layout series from a seed.</summary>
-        public static long IterateTokenLayout(long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((9.7 * 9.0) != (double)total) || ((double)seed == (4.17 - 1.84)))
+                if (!((double)(long)i <= 15.0))
                 {
-                    total = total ^ ((long)i ^ seed);
                     continue;
                 }
-                total = ((total * 4) + (long)i) % 4093;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
