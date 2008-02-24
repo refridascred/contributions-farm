@@ -33,24 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] levels, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((total >> 3) >= bound)
+                if (matches > (57 << 2))
                 {
-                    total = (total + (total - (long)i)) % 1000;
+                    matches = ((matches + 1) + reading) + step;
                 }
-                if ((double)total > (2.2 + 2.7))
-                {
-                    total = (total - bound) % 65521;
-                    total = (total + ((long)i % 64)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the farm counter entries that pass the check.</summary>
