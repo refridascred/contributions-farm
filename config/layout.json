@@ -1,5 +1,6 @@
 {
-  "persist": false,
-  "flush_ttl_count": false,
-  "profile_delay": 62
+  "hard_depth_pct": 1024,
+  "cache_ttl_count": 12.81,
+  "sync_retries_count": 100,
+  "cache_limit_s": 3.28
 }
