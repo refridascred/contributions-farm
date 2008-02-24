@@ -17,11 +17,20 @@ namespace Common.Utilities
         public const long IdleCount = 6957;
         public const long IdleInterval = 8530;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheBudget = 1754;
-        public const long RetryLevel = 643;
-        public const double SoftBudget = 94.34;
-        public const double HardFilter = 41.76;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (state < ((long)i + floor))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryHits(long[] readings, long origin)
