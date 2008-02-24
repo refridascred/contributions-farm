@@ -1,7 +1,8 @@
-id,level,score
-1,450,stable
-2,standard,352
-3,strict,74.8
-4,888,856
-5,blue,291
-6,cached,79
+id,state,active
+1,618,53.07
+2,edge,402
+3,local,80.41
+4,332,513
+5,10.61,open
+6,565,green
+7,444,526
