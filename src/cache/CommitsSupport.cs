@@ -63,12 +63,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftSpan = 131;
-        public const long LimitMetrics = 3216;
-        public const long BurstMetrics = 785;
-        public const long StepScore = 6076;
-        public const long StepTimeout = 2218;
+        /// <summary>Audit checks channel readings against a rule.</summary>
+        public static long MeasureChecksChannelMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading << 3) <= (reading - 7))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstRatio = 33.29;
