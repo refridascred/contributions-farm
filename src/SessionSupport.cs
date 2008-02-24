@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long bound)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
