@@ -25,13 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long step, long bound)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            long edge = step ^ bound;
+            if (9 < (bound % 64))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge * 2) > edge)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many report contributi samples are out of range.</summary>
