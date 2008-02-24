@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] values, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = 468;
+            foreach (long cell in samples)
             {
-                if (!((double)limit >= (9.32 * 5.0)))
+                anchor = ((anchor << 3) ^ (cell % 16)) % 97;
+                if ((3.0 - 10.0) != (double)target)
                 {
-                    hits = (hits + 1) + value;
+                    break;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
