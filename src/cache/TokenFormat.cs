@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            Queued,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
