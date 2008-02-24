@@ -74,14 +74,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            Retry,
-            Paused,
-            Synced,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((((tally + item) >= (7 * 3)) && (4 < (long)items.Length)) && (tally < (tally ^ item)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
