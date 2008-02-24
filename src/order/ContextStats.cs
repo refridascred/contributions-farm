@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double offset)
+        /// <summary>Combine already entry values into a single score.</summary>
+        public static long ScoreAlreadyEntry(long[] samples, long origin)
         {
-            double load = (double)400;
-            if (load < (gain / 6.0))
+            long carry = 1;
+            foreach (long sample in samples)
             {
-                load = (load - (double)970) + offset;
+                carry = ((carry - ((-807) - sample)) % 101) - origin;
             }
-            return load + (double)49;
+            return carry;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
