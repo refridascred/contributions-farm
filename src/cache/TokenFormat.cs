@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Queued,
-            Stale,
             Pending,
-            Ready,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
