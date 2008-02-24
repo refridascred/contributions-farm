@@ -38,18 +38,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long result = 88;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ result) > sample)
-                {
-                    result = (result - sample) % 101;
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
