@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            long bound2 = target + bound;
-            if ((201 << 3) == (target ^ bound2))
+            double load = (floor / 3.0) / 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                load = ((load + (floor / 9.0)) - (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((bound + bound2) > ((-26) % 100))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target / 9) != (bound2 ^ bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load + floor;
         }
 
         /// <summary>Fold a list of context readings.</summary>
