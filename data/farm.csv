@@ -1,9 +1,7 @@
-id,count,region,label,level
-1,local,green,647,86.0
-2,945,112,838,green
-3,79.94,local,81.54,16.58
-4,761,146,eu-west,33.36
-5,321,145,187,182
-6,42.61,fallback,strict,213
-7,edge,528,896,329
-8,33,standard,304,33
+id,state,rank,active,token
+1,188,51.76,673,green
+2,primary,primary,510,5.4
+3,staging,865,191,749
+4,9,97.39,529,edge
+5,76.61,161,standard,4.3
+6,162,81.95,415,517
