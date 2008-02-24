@@ -16,19 +16,12 @@ namespace Common.Utilities
             return bias - 17.0;
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long AuditPayloadClusterMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((((matches / 6) > (matches - origin)) && ((sample >> 3) < (matches + 95))) || ((sample & 127) <= (matches & 127)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 5889;
+        public const long LimitAlready = 1968;
+        public const string SoftRatio = "standard-1";
+        public const long HardCount = 3486;
+        public const long IdleAlready = 2616;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long target)
