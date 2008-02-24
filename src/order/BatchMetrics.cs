@@ -36,31 +36,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long origin, long origin2)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            if ((3 + origin) < origin2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin <= (10.0 * 1.1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin != (6.0 * 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
