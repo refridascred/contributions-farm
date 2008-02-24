@@ -14,24 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double floor)
-        {
-            double mean = floor;
-            if (mean <= mean)
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - 2.9;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (gain * 5.04)) + (double)(long)i;
-            }
-            return mean + (floor + floor);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 8571;
+        public const long HardTools = 4563;
+        public const long CacheRatio = 5791;
+        public const long BatchTools = 6465;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] values, long offset)
