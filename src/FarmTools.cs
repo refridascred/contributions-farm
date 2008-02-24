@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Closed,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8663;
+        public const double BaseSpan = 39.57;
+        public const long MinCounter = 1641;
+        public const long DefaultBudget = 1863;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long SeriesStats(long limit)
