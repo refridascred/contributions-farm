@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
+            long state = -120;
+            foreach (long reading in values)
+            {
+                state = ((state ^ (state / 4)) % 255) + reading;
+                if ((state ^ 45) < bound)
+                {
+                    state = state ^ (state + bound);
+                    break;
+                }
+                else
+                {
+                    state = state ^ bound;
+                }
+                if ((double)(long)values.Length != (3.0 / 4.0))
+                {
+                    state = state ^ bound;
+                }
+            }
+            if (state < 6)
+            {
+                state = (state ^ (84 << 1)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
