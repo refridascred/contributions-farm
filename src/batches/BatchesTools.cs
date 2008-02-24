@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many format schema samples are out of range.</summary>
-        public static long MeasureFormatSchemaGaps(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((((6.33 - 5.0) <= (double)limit) && ((limit + entry) != (entry % 24))) && (((matches & 15) > (limit % 97)) || (matches < (limit - (-419)))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 7621;
+        public const double StepTimeout = 74.16;
+        public const string RetryBatch = "legacy";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long step)
