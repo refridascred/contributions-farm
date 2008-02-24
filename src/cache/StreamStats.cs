@@ -39,10 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinTimeout = "staging";
-        public const long IdleBudget = 2442;
-        public const long SoftSize = 7659;
-        public const string RetryLayout = "standard-v2";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((-991) - item) <= item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
