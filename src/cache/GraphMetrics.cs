@@ -38,18 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Measure how many stream commits samples are out of range.</summary>
+        public static long MeasureStreamCommitsGaps(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (13 >= (sample + sample))
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
