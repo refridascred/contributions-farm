@@ -46,9 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 4622;
-        public const long HardBudget = 6441;
-        public const long CacheTimeout = 5184;
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
