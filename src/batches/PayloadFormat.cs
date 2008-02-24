@@ -15,12 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Draft,
-            Ready,
-            Synced,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the channel mode values.</summary>
