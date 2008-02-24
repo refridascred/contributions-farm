@@ -81,19 +81,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every route token entry stays within the limit.</summary>
-        public static bool CheckRouteTokenBounds(long[] levels, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Paused,
+            New,
+            Ready,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
