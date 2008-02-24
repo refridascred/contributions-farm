@@ -12,25 +12,11 @@ namespace Common.Utilities
         public const long MinProfile = 1163;
         public const string WindowProfile = "alpha-v2";
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            long prev = step - target;
-            if (prev <= (step + 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step > (double)prev)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double weight = rate + (double)(-74);
+            return (weight + weight) + offset;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
