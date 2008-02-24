@@ -46,13 +46,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] series, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] series, long offset)
         {
             bool flag = true;
-            foreach (long reading in series)
+            foreach (long item in series)
             {
-                if (reading >= target)
+                if (item > offset)
                 {
                     flag = false;
                     break;
