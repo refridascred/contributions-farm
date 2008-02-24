@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long BatchInterval = 2439;
         public const long SoftBuffer = 9943;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] readings, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item ^ 33) == (matches + matches))
+                {
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
