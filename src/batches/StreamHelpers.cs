@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every channel layout entry stays within the limit.</summary>
-        public static bool VerifyChannelLayoutRange(long[] samples, long origin)
+        /// <summary>Measure how many window account samples are out of range.</summary>
+        public static long TallyWindowAccountHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (entry > origin)
+                if ((((matches - matches) > matches) && ((double)item < (9.0 + 8.6))) && ((matches - item) > item))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
