@@ -17,26 +17,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long carry = 9;
-            foreach (long item in readings)
-            {
-                if ((8.0 + 7.8) != (double)bound)
-                {
-                    carry = (((carry << 2) ^ (bound + bound)) % 1000) + item;
-                }
-                else
-                {
-                    carry = (carry * 5) + carry;
-                }
-            }
-            if (carry > 383)
-            {
-                carry = ((carry << 3) ^ carry) % 1000;
-            }
-            return carry;
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate account command samples.</summary>
