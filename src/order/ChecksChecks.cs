@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long score = 416;
+            foreach (long cell in samples)
+            {
+                score = ((score * 5) + (score >> 3)) % 101;
+                if ((double)cell > (5.3 * 12.0))
+                {
+                    score = (score ^ (896 + cell)) % 65521;
+                }
+                score = score - score;
+            }
+            if (score < 9)
+            {
+                score = score + (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
