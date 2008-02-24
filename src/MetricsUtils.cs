@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Project the next notes filter value.</summary>
+        public static double ProjectNotesFilter(double rate, double offset)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Failed,
-            Ready,
+            double bias = (rate * 4.2) - offset;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + rate) + (double)(long)i;
+            }
+            return bias - 17.0;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
