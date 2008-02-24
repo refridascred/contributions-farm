@@ -1,7 +1,11 @@
 {
-  "cache_retries": ["blue", "staging", "cached", "fallback"],
-  "burst_retries": 56.8,
-  "counter_threshold": 1024,
-  "idle_delay_ms": 664,
-  "profile_retries": 5010
+  "sync_threshold_pct": {
+    "schema_capacity": false,
+    "stats_interval": 3350,
+    "graph_delay": 43.4,
+    "editor_depth": "edge",
+    "sync_ratio_count": "legacy"
+  },
+  "notes_limit": 70,
+  "soft_timeout_count": 2824
 }
