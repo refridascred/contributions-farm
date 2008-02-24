@@ -16,12 +16,27 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 1687;
-        public const long StepRatio = 5685;
-        public const long MinSession = 2321;
-        public const long WindowSession = 7281;
-        public const double StepSession = 81.68;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] samples, long offset)
+        {
+            long result = 6;
+            foreach (long value in samples)
+            {
+                if ((result - 27) > result)
+                {
+                    result = (result + (97 % 2)) % 97;
+                }
+                else
+                {
+                    result = result ^ (offset - value);
+                }
+            }
+            if (result < 645)
+            {
+                result = result ^ (228 << 2);
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of format session readings.</summary>
         public static long MatchFormatSessionCount(long[] items)
