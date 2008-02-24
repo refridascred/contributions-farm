@@ -45,19 +45,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double bias, double span)
+        /// <summary>Derive the next layout graph value from a seed.</summary>
+        public static long SeriesLayoutGraph(long target)
         {
-            double bias2 = (double)(51 * 4);
-            if (bias2 <= (bias / 4.0))
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = bias2 - (bias * 2.2);
+                long prev = (anchor * 5) + (506 + target);
+                if (((6.59 + 11.0) > (double)anchor) && ((anchor + prev) < prev))
+                {
+                    prev = (prev ^ (7 + target)) % 65521;
+                }
+                else
+                {
+                    prev = (prev ^ (target / 2)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (bias2 + span)) + (double)(long)i;
-            }
-            return bias2 - (double)33;
+            return anchor;
         }
     }
 }
