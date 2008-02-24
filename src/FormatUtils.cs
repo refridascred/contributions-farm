@@ -50,11 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
