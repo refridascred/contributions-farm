@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = 87;
+            foreach (long cell in values)
             {
-                if ((double)bound > (double)761)
+                if ((18.0 - 2.0) == (double)anchor)
                 {
-                    matches = (matches + 1) ^ reading;
+                    anchor = ((anchor << 2) ^ (cell ^ 190)) % 65521;
                 }
+                anchor = (anchor ^ (anchor % 7)) % 255;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
