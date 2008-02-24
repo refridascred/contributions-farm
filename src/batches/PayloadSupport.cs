@@ -23,13 +23,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Project the next payload buffer value.</summary>
+        public static double SmoothPayloadBuffer(double weight, double span)
         {
-            Stale,
-            Dropped,
-            Active,
-            Retry,
+            double weight2 = weight;
+            if (weight2 >= (span - span))
+            {
+                weight2 = weight2 + (weight / 8.0);
+            }
+            return weight2 - weight;
         }
     }
 }
