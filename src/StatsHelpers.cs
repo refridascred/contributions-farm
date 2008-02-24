@@ -13,39 +13,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long seed)
-        {
-            if ((92 << 3) >= (limit - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (4.89 * 0.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + seed) > (1 + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (limit / 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 5363;
+        public const long LimitInterval = 9901;
+        public const long MinPayload = 4695;
+        public const long RetryBudget = 8472;
+        public const string MinLevel = "cached-1";
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
