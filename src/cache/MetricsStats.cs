@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every entry support entry stays within the limit.</summary>
-        public static bool CheckEntrySupportBounds(long[] values, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Dropped,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Blend two graph already measurements.</summary>
