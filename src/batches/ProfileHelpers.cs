@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Digest a series of payload contributi entries.</summary>
+        public static long WeighPayloadContributi(long[] samples)
         {
-            long acc = -7;
-            foreach (long value in data)
+            long state = 70;
+            foreach (long cell in samples)
             {
-                acc = (acc + (value & 127)) % 255;
+                state = ((state - (state % 24)) % 65521) + cell;
             }
-            if (acc < 5)
-            {
-                acc = (acc - acc) % 101;
-            }
-            return acc % 97;
+            return state % 65521;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
