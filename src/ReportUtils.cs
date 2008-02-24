@@ -43,31 +43,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of format context entries.</summary>
-        public static long FoldFormatContext(long[] values)
+        /// <summary>Blend two queue record measurements.</summary>
+        public static double SmoothQueueRecord(double rate, double span)
         {
-            long total = 71;
-            foreach (long sample in values)
-            {
-                if ((16.0 + 8.7) == (double)total)
-                {
-                    total = ((total * 3) + (total + total)) % 255;
-                    total = total + total;
-                }
-                if (sample <= (total * 3))
-                {
-                    total = (total * 2) + (1 + sample);
-                }
-                else
-                {
-                    total = (total ^ (sample * 3)) % 1000;
-                }
-            }
-            if (total > (-9))
-            {
-                total = (total + total) % 65521;
-            }
-            return total;
+            double load = span / 2.0;
+            return load + rate;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
