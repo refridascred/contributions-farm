@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double bias2)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            double scale = bias2;
+            if (scale > (bias * 3.8))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + (double)918;
+            }
+            return scale + bias;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
