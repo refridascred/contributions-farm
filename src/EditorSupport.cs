@@ -82,19 +82,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
-        public static double SmoothGithubfarmCounter(double rate, double bias)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] data, long target)
         {
-            double scale = rate / 5.0;
-            if (scale < 20.0)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                scale = scale - (bias - scale);
+                if (((6.0 < (double)target) && ((seen * 5) != (target - seen))) || ((83 - cell) == (cell - 1)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (bias + bias);
+            return seen;
         }
     }
 }
