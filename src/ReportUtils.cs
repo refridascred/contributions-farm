@@ -39,18 +39,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long state = 9;
+            foreach (long cell in samples)
             {
-                if ((double)(long)levels.Length <= (6.8 * 1.0))
-                {
-                    tally = (tally + 1) - cell;
-                }
+                state = ((((state * 3) + (state / 8)) % 4096) + cell) + floor;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
