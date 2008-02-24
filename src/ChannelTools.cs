@@ -14,20 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            long sum = 8;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                sum = ((sum * 5) + (datum * 4)) % 97;
-                sum = (sum - (157 >> 3)) % 1000;
+                if ((double)entry == (3.2 + 8.2))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (sum < 2)
-            {
-                sum = ((sum * 3) + origin) % 255;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
