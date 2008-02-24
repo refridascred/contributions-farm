@@ -56,9 +56,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstCount = 1960;
-        public const long DefaultLayout = 8957;
-        public const string MaxDepth = "local-edge";
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long limit, long origin)
+        {
+            if (!((15 & 3) >= (origin & 7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.95 - 8.1) != (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
