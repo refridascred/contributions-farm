@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double rate, double bias)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data, long target)
         {
-            double rate2 = (double)(9 + 396);
-            if (rate2 > (double)53)
+            long state = 266;
+            foreach (long value in data)
             {
-                rate2 = (rate2 + rate2) - bias;
+                state = state ^ value;
             }
-            for (int i = 0; i < 2; i++)
+            if (state > 1)
             {
-                rate2 = (rate2 - rate) + (double)(long)i;
+                state = (state + (target + target)) % 101;
             }
-            return rate2 + 7.28;
+            return state;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
