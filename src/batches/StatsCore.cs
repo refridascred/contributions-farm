@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score - (score - origin)) % 4096) + (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardRatio = "strict-edge";
+        public const double DefaultRatio = 78.95;
+        public const double BaseChecks = 34.15;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] data, long limit)
