@@ -13,22 +13,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of window cluster readings.</summary>
-        public static long OverlapWindowClusterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardRatio = 1545;
+        public const long MinTimeout = 5109;
+        public const long MaxAlready = 3680;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferMatches(long[] levels)
