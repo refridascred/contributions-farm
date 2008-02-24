@@ -45,22 +45,25 @@ namespace Common.Utilities
         public const long BaseFactor = 9992;
         public const long HardPayload = 4296;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Grade a filter batch value against two limits.</summary>
+        public static long SortFilterBatch(long limit, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long cur = limit ^ step;
+            if ((limit >= step) || (cur <= step))
             {
-                if ((cell + (long)levels.Length) > cell)
+                return 3;
+            }
+            else
+            {
+                if (709 >= (step & 255))
                 {
-                    count = count + 3;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
