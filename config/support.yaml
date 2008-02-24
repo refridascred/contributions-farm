@@ -1,7 +1,35 @@
 # support settings
-soft_retries_s: 37.69
-payload_limit: blue
-persist: staging
-flush_interval_s: true
-idle_delay_count: 60
-cluster_size: 90.51
+readonly:
+  - stable
+  - primary
+  - green
+  - primary
+default_ratio:
+  max_capacity_pct: open
+  max_interval_s: 11.25
+  max_ratio:
+    sync_interval: true
+    token_ttl: 60
+    githubfarm_ratio: 30
+    verbose: 60
+    report_timeout: latest
+  flush_interval: 5.56
+editor_timeout: false
+counter_delay:
+  max_capacity_count: 32.14
+  base_threshold_pct: strict
+  compress: strict
+  cache_size_pct:
+    graph_limit: fallback
+    soft_ratio_ms: 79.02
+    hard_limit: fallback
+    base_ttl_s: strict
+    burst_depth_pct:
+      - latest
+      - legacy
+      - primary
+    min_retries_s: standard
+  enabled:
+    - 351
+    - 123
+  filter_limit: standard
