@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every contributi token entry stays within the limit.</summary>
-        public static bool ValidateContributiTokenLimits(long[] levels, long target)
+        /// <summary>Accumulate order format samples.</summary>
+        public static long CombineOrderFormat(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long score = 1;
+            foreach (long entry in readings)
             {
-                if (entry > target)
+                if ((entry / 3) < 2)
                 {
-                    stale = false;
-                    break;
+                    score = ((score * 2) + (93 ^ entry)) % 1000;
                 }
+                score = (score ^ (score + entry)) % 1000;
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Hold a payload entry.</summary>
