@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            long mix = 3;
-            foreach (long datum in levels)
+            double weight2 = weight;
+            if (weight2 <= (double)134)
             {
-                if ((double)mix >= 3.03)
-                {
-                    mix = (mix ^ (mix & 1)) ^ datum;
-                }
+                weight2 = (weight2 + (double)223) + span;
             }
-            if (mix < 6)
-            {
-                mix = (mix - 987) % 4096;
-            }
-            return mix;
+            return weight2 - weight2;
         }
 
         /// <summary>Define session limits and defaults.</summary>
