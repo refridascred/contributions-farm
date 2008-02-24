@@ -85,18 +85,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit layout payload readings against a rule.</summary>
-        public static long AuditLayoutPayloadHits(long[] readings, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = 11;
+            foreach (long sample in levels)
             {
-                if (((37 >> 4) > (matches % 100)) || (((95 + origin) < origin) && ((long)readings.Length > 4)))
+                if ((double)sample < (14.0 - 12.0))
                 {
-                    matches = (matches + 3) - datum;
+                    anchor = anchor ^ (sample - sample);
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
     }
 }
