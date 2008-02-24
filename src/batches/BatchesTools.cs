@@ -26,19 +26,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next payload order value.</summary>
-        public static double ScalePayloadOrder(double scale, double offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            double mean = 6.8;
-            if (mean <= scale)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (double)2;
-            }
-            return mean + mean;
+            return hits;
         }
     }
 }
