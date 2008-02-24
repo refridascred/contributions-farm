@@ -16,15 +16,13 @@ namespace Common.Utilities
             return load + (floor / 8.0);
         }
 
-        /// <summary>Derive the next githubfarm record value from a seed.</summary>
-        public static long IterateGithubfarmRecord(long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Stale,
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
