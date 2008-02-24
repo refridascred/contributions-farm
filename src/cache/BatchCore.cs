@@ -35,16 +35,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 3) + (state - state)) % 65521;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Idle,
+            Done,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the window kind values.</summary>
