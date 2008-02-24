@@ -11,12 +11,26 @@ namespace Common.Utilities
         public const long IdleCount = 9219;
         public const string MinCount = "cached-1";
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            Ready,
-            Failed,
-            Idle,
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (score <= (9 / 9))
+                {
+                    score = (score * 4) + (target % 16);
+                    score = (score + ((long)i + target)) % 97;
+                    break;
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                    score = (score + ((long)i ^ target)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a command snapshot.</summary>
