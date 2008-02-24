@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double gain, double bias)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double drift = bias * 5.0;
-            if (drift >= (double)710)
-            {
-                drift = drift - (gain / 5.0);
-            }
-            else
-            {
-                drift = drift + (bias * 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + (double)417;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
