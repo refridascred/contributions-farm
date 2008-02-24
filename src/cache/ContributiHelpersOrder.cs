@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a graph batches value against two limits.</summary>
-        public static long BucketGraphBatches(long target, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long bound)
         {
-            long gap = target ^ offset;
-            if ((double)gap < (double)94)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)gap != (7.0 * 0.56)) || ((target + gap) == (gap + gap)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 2;
+                    result = ((result << 3) ^ ((-245) * 2)) ^ (long)i2;
                 }
-                else
+                if (!((bound % 3) < (long)i))
                 {
-                    if ((double)target > (0.71 * 4.39))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = (result * 3) + (bound * 4);
+                    result = result - result;
                 }
+                if ((double)bound >= (double)result)
+                {
+                    long matches = (4 / 2) & 255;
+                    result = ((result << 3) ^ (matches + (long)i)) % 101;
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
