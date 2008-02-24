@@ -78,26 +78,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings, long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long carry = 867;
-            foreach (long value in readings)
-            {
-                if ((value + carry) <= (7 + carry))
-                {
-                    carry = (carry ^ (bound % 97)) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ (carry >> 4);
-                }
-            }
-            if (carry < 13)
-            {
-                carry = ((carry << 2) ^ (carry + 5)) % 255;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit layout payload readings against a rule.</summary>
