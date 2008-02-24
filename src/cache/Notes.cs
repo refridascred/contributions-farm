@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series, long target)
+        /// <summary>Locate a profile contributi reading by value.</summary>
+        public static long FindProfileContributiIndex(long[] levels, long seed)
         {
-            long mark = 2;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((3.71 + 5.15) >= (double)target) && ((2.0 * 4.75) < (double)entry))
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
                 {
-                    mark = ((mark * 4) + entry) % 97;
-                }
-                else
-                {
-                    mark = mark - 534;
+                    return (long)i;
                 }
             }
-            if (mark > 114)
-            {
-                mark = mark + (mark + target);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
