@@ -45,19 +45,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels, long seed)
+        /// <summary>Derive the next contributi already value from a seed.</summary>
+        public static long StepContributiAlready(long floor)
         {
-            long mark = 580;
-            foreach (long item in levels)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark << 2) ^ (seed << 3)) % 4096;
-                if (item < (mark * 5))
+                if (!((17.0 / 8.0) >= (double)floor))
                 {
-                    break;
+                    long edge = (long)i;
+                    sum = sum - (edge / 6);
                 }
+                sum = ((sum << 3) ^ floor) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mark % 97;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
