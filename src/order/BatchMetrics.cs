@@ -53,18 +53,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the channel commits entries that pass the check.</summary>
-        public static long CountChannelCommitsMatches(long[] samples)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((((hits << 2) > hits) && ((3 % 60) <= (value - (long)samples.Length))) || ((hits + 37) != (hits >> 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
