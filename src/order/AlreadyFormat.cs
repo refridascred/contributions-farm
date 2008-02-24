@@ -43,13 +43,12 @@ namespace Common.Utilities
         public const string BatchCount = "primary-v2";
         public const long StepTools = 7004;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Stale,
-            Dropped,
-            New,
+            Synced,
             Active,
+            Locked,
             Paused,
         }
     }
