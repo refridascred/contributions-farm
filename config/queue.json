@@ -1,11 +1,8 @@
 {
-  "metrics_depth": "blue",
-  "burst_limit_pct": {
-    "dry_run": false,
-    "flush_size_count": false,
-    "burst_interval_ms": "fallback",
-    "warm_depth_s": 65,
-    "schema_depth": 93
-  },
-  "max_delay_s": false
+  "warm_timeout_s": 15,
+  "soft_size_count": "primary",
+  "sync_timeout": 31.75,
+  "flush_ttl_pct": 8840,
+  "burst_ratio": "blue",
+  "poll_depth_count": 1
 }
