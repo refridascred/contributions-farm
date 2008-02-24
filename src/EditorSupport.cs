@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ratio + (double)789;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Match up route schema samples.</summary>
+        public static long MatchRouteSchemaCount(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 3)
+                    if ((readings[i] + readings[j]) < 9)
                     {
                         matches = matches + 1;
                     }
