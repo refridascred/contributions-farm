@@ -1,8 +1,5 @@
 {
-  "burst_ratio_s": true,
-  "idle_window_pct": "staging",
-  "retry_retries_ms": 500,
-  "checks_window": 2849,
-  "max_depth": 60,
-  "compress": "standard"
+  "audit": "standard",
+  "farm_ttl": 4,
+  "metrics_delay": "open"
 }
