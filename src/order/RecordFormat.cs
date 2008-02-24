@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two editor report measurements.</summary>
-        public static double BlendEditorReport(double scale, double floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double scale2 = scale / 8.0;
-            return (scale2 + (scale - scale)) + floor;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
