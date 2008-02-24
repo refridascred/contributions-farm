@@ -29,19 +29,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (entry <= step)
+                if (datum > offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
