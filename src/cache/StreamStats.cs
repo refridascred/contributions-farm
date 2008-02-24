@@ -20,21 +20,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Match up entry support samples.</summary>
-        public static long MatchEntrySupportCount(long[] readings)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 16)
+                    if ((series[i] + series[j]) != 16)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
