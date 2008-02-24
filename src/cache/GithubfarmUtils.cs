@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchInterval = 15.58;
-        public const long LimitCounter = 8520;
-        public const long MaxCounter = 3456;
-        public const double IdleInterval = 81.01;
-        public const string BatchCount = "latest-v2";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] readings)
