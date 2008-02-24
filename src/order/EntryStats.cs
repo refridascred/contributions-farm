@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] samples, long floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double mean = (double)(511 * 4);
+            if (mean <= (double)13)
             {
-                if ((double)floor < (double)4)
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean - (ratio + 16.0);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (offset * 3.69)) - (double)(long)i;
+            }
+            return mean - (offset * 5.75);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
