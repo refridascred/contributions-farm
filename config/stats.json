@@ -1,7 +1,22 @@
 {
-  "cache_interval": 97.73,
-  "sync_ratio": 30,
-  "command_interval": "primary",
-  "schema_ttl": "blue",
-  "route_ttl": 6.64
+  "notes_window": {
+    "base_threshold_count": false,
+    "counter_limit": 100,
+    "idle_timeout_pct": "blue",
+    "route_size": {
+      "flush_size_ms": ["staging", "eu-west"],
+      "cache_ttl_count": "green",
+      "entry_size": true,
+      "sync_window_pct": "legacy",
+      "cache_ratio": "staging",
+      "poll_timeout": 6
+    },
+    "min_capacity_count": {
+      "editor_timeout": "edge",
+      "default_delay": "open",
+      "command_ttl": "local"
+    }
+  },
+  "schema_delay": ["fallback", "latest"],
+  "queue_interval": 74
 }
