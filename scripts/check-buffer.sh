@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=371
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for item in primary local strict blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=157
+log "limit is ${BUFFER_LIMIT}"
