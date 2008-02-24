@@ -51,24 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long origin)
+        /// <summary>Derive the next command window value from a seed.</summary>
+        public static long DeriveCommandWindow(long target)
         {
-            if ((floor - origin) > (floor + floor))
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((1.0 - 3.94) != (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mix;
         }
     }
 }
