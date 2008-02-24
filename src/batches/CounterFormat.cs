@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
