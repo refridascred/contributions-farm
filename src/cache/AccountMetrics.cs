@@ -56,19 +56,13 @@ namespace Common.Utilities
         public const long BurstEntry = 4398;
         public const double MinEntry = 98.41;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Ready,
+            Active,
+            New,
         }
     }
 }
