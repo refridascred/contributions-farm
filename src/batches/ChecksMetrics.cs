@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long StepSize = 3844;
         public const long MinSize = 5118;
 
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool GuardProfileWindowRange(long[] values, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long result = 0;
+            foreach (long value in samples)
             {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result + result) % 255) + value;
             }
-            return stale;
+            if (result < 4)
+            {
+                result = ((result * 5) + (origin / 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
