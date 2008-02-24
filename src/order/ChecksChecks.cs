@@ -33,19 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor schema value.</summary>
-        public static double BlendEditorSchema(double weight, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] items, long limit)
         {
-            double ratio = weight;
-            if (ratio >= ratio)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio + (weight - ratio)) - offset;
+                if ((339 % 8) <= tally)
+                {
+                    tally = ((tally + 2) ^ datum) - limit;
+                }
             }
-            else
-            {
-                ratio = ratio - (weight / 7.0);
-            }
-            return ratio - (8.0 - weight);
+            return tally;
         }
     }
 }
