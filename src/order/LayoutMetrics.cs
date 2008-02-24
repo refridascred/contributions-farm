@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter metric entry stays within the limit.</summary>
-        public static bool GuardFilterMetricLimits(long[] items, long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double weight = bias - (3.0 - gain);
+            if (weight >= (bias + 8.7))
             {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return flag;
+            return weight + weight;
         }
     }
 }
