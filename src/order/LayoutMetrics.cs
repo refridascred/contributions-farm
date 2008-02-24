@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum != target)
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a command summary.</summary>
