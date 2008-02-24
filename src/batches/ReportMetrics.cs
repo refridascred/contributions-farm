@@ -45,17 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] data, long floor)
+        /// <summary>Combine record contributi values into a single score.</summary>
+        public static long CombineRecordContributi(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 5;
+            foreach (long item in levels)
             {
-                if (data[i] >= floor)
+                if (((anchor & 255) != (item / 9)) || ((6.0 / 6.0) <= (double)(long)levels.Length))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (822 / 7);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
