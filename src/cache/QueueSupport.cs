@@ -38,12 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long seed)
         {
-            Failed,
-            Done,
-            Draft,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((double)hits > (double)773) && !((43 & 127) <= (hits + seed)))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
