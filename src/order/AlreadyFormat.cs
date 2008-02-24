@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Ready,
             Done,
-            Draft,
-            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
