@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double RetryBatches = 46.7;
         public const long MaxBatches = 4690;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] series, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = -1;
+            foreach (long item in levels)
             {
-                if ((seen + (-4)) == (bound - bound))
+                if ((double)offset == (8.8 - 9.7))
                 {
-                    seen = (seen + 1) + value;
+                    mark = mark ^ item;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the stream class values.</summary>
