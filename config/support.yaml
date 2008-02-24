@@ -1,14 +1,35 @@
 # support settings
-retry_retries: latest
-enabled: staging
-githubfarm_window: true
-default_size_ms:
-  - primary
-  - latest
+poll_threshold:
+  retry_delay_s: 64.39
+  strict: primary
+  route_retries: 77.73
+  compress:
+    max_threshold_ms: 9744
+    command_depth: 13.49
+    counter_interval: strict
+    burst_interval: 5749
+    min_delay: 64.73
+    verbose: legacy
+route_ratio:
+  - local
   - blue
-audit:
-  - open
-  - latest
-  - staging
+  - legacy
+  - blue
+sync_timeout_ms:
   - fallback
-dry_run: 5
+  - primary
+readonly:
+  metrics_retries: eu-west
+  flush_delay: true
+  warm_capacity_pct:
+    - legacy
+    - edge
+    - stable
+    - local
+  min_limit_ms:
+    - 72
+    - 27
+    - 138
+  commits_delay:
+    - 289
+    - 210
