@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the account contributi entries that pass the check.</summary>
-        public static long TallyAccountContributiMatches(long[] data, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((((double)23 < (double)tally) && ((bound + tally) >= (value / 2))) && !(tally < (tally + value)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a window snapshot.</summary>
