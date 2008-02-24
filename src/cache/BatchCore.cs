@@ -24,16 +24,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
+            long total = 12;
+            foreach (long sample in readings)
             {
-                mark = (mark - (step + mark)) % 1000;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((total + total) <= (total << 2))
+                {
+                    total = (total + (sample & 63)) % 101;
+                }
             }
-            return mark;
+            if (total > 643)
+            {
+                total = (total * 4) + total;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the window kind values.</summary>
