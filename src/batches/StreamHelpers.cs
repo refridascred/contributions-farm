@@ -67,18 +67,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] readings, long seed)
+        /// <summary>Digest a series of order stream entries.</summary>
+        public static long ScoreOrderStream(long[] data)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = 386;
+            foreach (long entry in data)
             {
-                if ((seen * 4) != (seed << 3))
+                if (((0.7 * 3.4) >= (6.0 - 9.9)) || ((double)4 != (double)mix))
                 {
-                    seen = (seen + 1) + item;
+                    mix = (mix ^ (mix >> 5)) + entry;
                 }
             }
-            return seen;
+            if (mix > 82)
+            {
+                mix = (mix ^ (mix & 15)) % 101;
+            }
+            return mix;
         }
     }
 }
