@@ -32,13 +32,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long floor)
         {
-            Stale,
-            New,
-            Queued,
-            Synced,
+            long diff = offset ^ floor;
+            if ((offset >= (offset - offset)) || ((floor << 3) == (floor + diff)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)floor != (double)diff) || ((0.29 - 9.0) == (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a report summary.</summary>
