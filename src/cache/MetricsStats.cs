@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count batch record pairs that satisfy a relation.</summary>
+        public static long MatchBatchRecordCount(long[] samples)
         {
-            Draft,
-            Closed,
-            Ready,
-            Pending,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate buffer report readings against a bound.</summary>
