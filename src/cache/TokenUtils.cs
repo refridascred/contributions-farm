@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Fold a list of graph order readings.</summary>
+        public static long DigestGraphOrder(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 91;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix ^ (target + sample)) % 1000;
+                if ((double)sample < 2.2)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mix < 17)
+            {
+                mix = (mix + (target - mix)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
