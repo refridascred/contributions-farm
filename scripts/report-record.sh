@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-RECORD_LIMIT=199
+RECORD_LIMIT=72
 log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-strict}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
