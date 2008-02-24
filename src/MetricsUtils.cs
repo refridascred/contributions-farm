@@ -34,12 +34,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 4836;
-        public const string StepFilter = "cached-1";
-        public const long RetryFilter = 3843;
-        public const long BatchLevel = 8623;
-        public const string BatchSize = "staging";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples, long origin)
+        {
+            long carry = 7;
+            foreach (long entry in samples)
+            {
+                carry = (((carry * 5) + (carry + entry)) % 1000) - origin;
+            }
+            return carry;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] values)
