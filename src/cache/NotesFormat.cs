@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long MinTimeout = 9671;
         public const string SoftFactor = "open-edge";
 
-        /// <summary>Scale a metrics stream figure with a bias.</summary>
-        public static double AdjustMetricsStream(double ratio, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] data, long step)
         {
-            double ratio2 = offset;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                ratio2 = ((ratio2 + offset) + (double)(long)i) + ratio;
+                if (((step % 7) > step) || (((item + item) >= step) && ((double)69 <= (double)item)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio2 + (ratio2 * 17.0);
+            return hits;
         }
     }
 }
