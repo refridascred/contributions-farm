@@ -42,11 +42,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryDepth = 7900;
-        public const long SoftScore = 3195;
-        public const double StepRecord = 85.28;
-        public const string BurstRecord = "fallback-edge";
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long StepOrder(long offset)
