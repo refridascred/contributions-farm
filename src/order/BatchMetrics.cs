@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Done,
-            Idle,
-            Locked,
-            Synced,
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next order graph value from a seed.</summary>
