@@ -23,15 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items, long floor)
         {
-            long mark = 77;
-            foreach (long sample in items)
+            long carry = 6;
+            foreach (long value in items)
             {
-                mark = ((mark + (mark * 5)) % 101) ^ sample;
+                if ((floor << 3) > (value + 680))
+                {
+                    carry = carry - (value & 255);
+                }
             }
-            return mark % 1000;
+            if (carry > 787)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
