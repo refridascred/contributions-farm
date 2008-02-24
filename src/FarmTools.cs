@@ -20,19 +20,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            double bias = (double)7 / 8.0;
-            if (bias >= (double)9)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                bias = (bias - (double)5) - scale;
+                if ((double)offset >= (8.1 / 6.0))
+                {
+                    long step = offset;
+                    state = ((state << 2) ^ step) % 101;
+                }
+                else
+                {
+                    state = (state + ((long)i ^ offset)) % 101;
+                    state = (state * 3) + (state * 2);
+                }
+                if ((87 ^ offset) <= (state + state))
+                {
+                    state = (state - (state ^ state)) % 4096;
+                    state = (state - ((long)i / 5)) % 4096;
+                }
+                state = (state + (offset * 5)) % 101;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (offset / 5.0);
+            return state;
         }
 
         /// <summary>Roll a report counter forward.</summary>
