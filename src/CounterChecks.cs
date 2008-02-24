@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long CacheStats = 3152;
         public const string BaseSpan = "latest-v2";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] samples, long step)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double scale = (double)(682 - 640);
+            if (scale < (scale / 9.0))
             {
-                if ((double)step == (5.12 / 5.0))
-                {
-                    tally = (tally + 3) + datum;
-                }
+                scale = scale + (double)17;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (floor / 9.0)) + (double)(long)i;
+            }
+            return scale - (floor + rate);
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
