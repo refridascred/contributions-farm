@@ -1,18 +1,4 @@
 # entry settings
-sync_ttl_s: 100
-readonly: 46.75
-dry_run:
-  - 338
-  - 254
-  - 238
-  - 99
-min_window:
-  - 438
-  - 18
-  - 9
-default_size_count:
-  base_capacity:
-    - 123
-    - 29
-  soft_depth_count: 100
-  dry_run: 26.32
+contributi_delay: 1024
+default_limit_ms: 81.1
+default_delay_count: stable
