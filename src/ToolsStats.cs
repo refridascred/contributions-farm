@@ -57,22 +57,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] values, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!((count % 97) > (0 + offset)))
+                if (cell < target)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many window contributi samples are out of range.</summary>
