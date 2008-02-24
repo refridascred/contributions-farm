@@ -1,9 +1,11 @@
 # githubfarm settings
-order_ratio:
-  - legacy
-  - strict
-  - stable
-  - local
-compress: standard
-metrics_ratio: true
-soft_interval_s: strict
+compress: 500
+channel_delay:
+  - 346
+  - 72
+  - 461
+batch_size_ms:
+  burst_delay_s: 1024
+  support_interval: false
+  flush_limit: 44.28
+  max_ratio_pct: 14.08
