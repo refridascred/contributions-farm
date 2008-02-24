@@ -33,22 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long bound, long limit)
+        /// <summary>Grade a batches tools value against two limits.</summary>
+        public static long BucketBatchesTools(long step, long target)
         {
-            if (limit <= (46 >> 2))
+            long prev = step - target;
+            if (((9.5 - 3.8) != (double)prev) || ((target / 6) == (prev >> 2)))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((bound % 97) > bound)
+                if (step >= target)
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    return 4;
                 }
             }
         }
