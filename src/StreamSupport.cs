@@ -22,23 +22,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next window command value.</summary>
-        public static double ProjectWindowCommand(double ratio, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long origin)
         {
-            double bias = (double)233 + (double)607;
-            if (bias < 5.0)
+            long cur = bound + origin;
+            if ((origin + bound) < origin)
             {
-                bias = bias - (ratio / 8.0);
+                return 0;
             }
             else
             {
-                bias = bias + (ratio / 2.0);
+                if ((bound - cur) == (560 + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - cur) > 55)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias - (double)6;
         }
 
         /// <summary>Audit record report readings against a rule.</summary>
