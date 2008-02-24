@@ -41,19 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double weight, double bias)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items, long seed)
         {
-            double ratio = 0.1;
-            if (ratio < (double)75)
+            long seen = 0;
+            foreach (long value in items)
             {
-                ratio = ratio + bias;
+                if ((6.3 / 6.0) <= (double)seen)
+                {
+                    seen = ((seen + 1) + value) - seed;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (double)7) + (double)(long)i;
-            }
-            return ratio - weight;
+            return seen;
         }
     }
 }
