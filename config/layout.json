@@ -1,6 +1,25 @@
 {
-  "hard_depth_pct": 1024,
-  "cache_ttl_count": 12.81,
-  "sync_retries_count": 100,
-  "cache_limit_s": 3.28
+  "warm_limit_pct": {
+    "base_interval": 100,
+    "payload_retries": 761,
+    "cache_interval_count": {
+      "cache_ttl": "open",
+      "idle_timeout": 70,
+      "support_capacity": "open",
+      "max_size_ms": 65.97,
+      "stats_size": 85,
+      "metrics_depth": ["cached", "open", "cached"]
+    },
+    "sync_depth_ms": "standard",
+    "entry_limit": {
+      "readonly": ["eu-west", "blue", "edge", "fallback"],
+      "strict": 1929,
+      "warm_delay_pct": 4674,
+      "min_threshold": "primary",
+      "compress": ["standard", "strict", "legacy", "primary"]
+    },
+    "soft_size_count": "cached"
+  },
+  "sync_size_s": 39,
+  "min_ttl": false
 }
