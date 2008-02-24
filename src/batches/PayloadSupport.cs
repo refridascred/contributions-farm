@@ -30,21 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -15;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((result ^ cell) == (result >> 2))
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (offset & 1)) % 4096;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
