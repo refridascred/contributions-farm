@@ -12,12 +12,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Digest a series of session route entries.</summary>
+        public static long CombineSessionRoute(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            long carry = 839;
+            foreach (long datum in items)
+            {
+                carry = (carry << 3) ^ (origin * 4);
+                if ((datum << 2) <= (long)items.Length)
+                {
+                    carry = (carry ^ ((long)items.Length % 2)) % 255;
+                }
+                if ((6.0 / 5.0) > (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
