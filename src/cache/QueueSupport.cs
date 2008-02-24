@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] values, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((limit + 852) >= (entry - matches))
+                if (limit <= cell)
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the profile status values.</summary>
