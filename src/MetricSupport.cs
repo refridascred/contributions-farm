@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long mix = 29;
+            foreach (long value in series)
             {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-                long step = floor - (floor ^ (long)i);
-                if (((double)step < (3.4 + 6.0)) && ((double)floor >= (4.8 - 3.37)))
-                {
-                    step = (step - floor) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mix = (mix << 3) ^ value;
             }
-            return anchor;
+            if (mix > 66)
+            {
+                mix = ((mix << 3) ^ (mix & 1)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
