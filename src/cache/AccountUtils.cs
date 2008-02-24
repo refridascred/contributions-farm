@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] samples, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 366;
+            foreach (long reading in levels)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
+                if ((carry ^ reading) >= (reading & 127))
                 {
-                    return (long)i;
+                    carry = carry - carry;
                 }
             }
-            return -1;
+            if (carry > 86)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the payload route entries that pass the check.</summary>
