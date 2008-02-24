@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long acc = 42;
+            foreach (long value in levels)
             {
-                if ((double)720 >= (double)seed)
+                double rate = (double)(acc & 255);
+                if (!(rate > (rate + rate)))
                 {
-                    count = (count + 3) - cell;
+                    acc = acc - (value + acc);
                 }
+                acc = (acc << 2) ^ (11 * 3);
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
