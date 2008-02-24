@@ -1,5 +1,7 @@
 {
-  "poll_window": "staging",
-  "batch_timeout_pct": "staging",
-  "metrics_size": 51.33
+  "enabled": "blue",
+  "cache_depth": [29, 220, 4],
+  "batch_delay_count": 827,
+  "hard_delay_s": false,
+  "buffer_ttl": "staging"
 }
