@@ -50,10 +50,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseFactor = 3452;
-        public const string BurstInterval = "primary-1";
-        public const long LimitTools = 6912;
+        /// <summary>Look up the position of a cache tools sample.</summary>
+        public static long FindCacheToolsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] data, long target)
