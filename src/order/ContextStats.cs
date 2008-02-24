@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string RetryQueue = "strict";
         public const long RetrySpan = 9853;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Pending,
-            Active,
-            Queued,
-            New,
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
