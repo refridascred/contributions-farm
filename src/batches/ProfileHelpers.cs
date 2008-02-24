@@ -82,24 +82,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if ((2.59 + 4.5) < (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit != (2.7 * 6.65)) && ((double)bound < (9.49 * 2.59)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
