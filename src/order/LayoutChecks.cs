@@ -70,20 +70,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((double)seed > (double)(long)i))
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                anchor = ((anchor * 3) + (anchor - 206)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCount = 3544;
+        public const string MinCommand = "primary-v2";
+        public const double BatchCommand = 79.64;
+        public const double BaseCount = 10.21;
+        public const string LimitDepth = "strict-v2";
     }
 }
