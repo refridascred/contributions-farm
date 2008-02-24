@@ -14,21 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                long delta = (total - 30) ^ (total >> 3);
-                if (((long)i - total) >= (delta / 4))
-                {
-                    delta = ((delta << 2) ^ target) % 101;
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            double gain = (14.0 * 4.1) + (offset - offset);
+            return (gain + (offset * 12.0)) + weight;
         }
 
         /// <summary>Iterate the githubfarm format series from a seed.</summary>
