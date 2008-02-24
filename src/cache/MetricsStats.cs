@@ -37,22 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit stats route readings against a rule.</summary>
-        public static long MeasureStatsRouteOutliers(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (((count - cell) < (cell + cell)) && (((count % 12) > (cell * 5)) || ((2 - 207) <= cell)))
+                if (datum >= step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
