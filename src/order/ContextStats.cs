@@ -19,12 +19,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9840;
-        public const double MinFactor = 49.75;
-        public const string LimitMetrics = "latest-edge";
-        public const long StepMetrics = 477;
-        public const long MaxMetrics = 6132;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data, long seed)
+        {
+            long sum = 904;
+            foreach (long datum in data)
+            {
+                if (!((datum & 1) < sum))
+                {
+                    sum = (((sum * 3) + (sum / 2)) % 1000) - seed;
+                }
+            }
+            if (sum < 423)
+            {
+                sum = ((sum << 2) ^ (sum >> 2)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long seed)
