@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest staging; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in green staging edge local; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=179
+BUFFER_LIMIT=445
 log "limit is ${BUFFER_LIMIT}"
