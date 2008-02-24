@@ -38,10 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitScore = "legacy-v2";
-        public const double MinDepth = 49.36;
-        public const long DefaultBuffer = 2587;
-        public const long StepBuffer = 1984;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double span)
+        {
+            double mean = ratio;
+            if (mean <= (ratio + mean))
+            {
+                mean = (mean - mean) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (ratio / 3.0)) + (double)(long)i;
+            }
+            return mean - ratio;
+        }
     }
 }
