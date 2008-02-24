@@ -33,13 +33,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long origin, long target)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            if ((origin ^ origin) >= ((-839) % 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((17.0 / 7.0) < (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target << 3) == (74 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((97 & 1) <= (target >> 3)) || ((double)origin <= (7.0 * 3.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
