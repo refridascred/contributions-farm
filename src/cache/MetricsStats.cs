@@ -45,13 +45,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 8228;
         public const string StepLevel = "alpha-edge";
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels, long seed)
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = 580;
+            foreach (long item in levels)
+            {
+                mark = ((mark << 2) ^ (seed << 3)) % 4096;
+                if (item < (mark * 5))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
