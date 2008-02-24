@@ -23,15 +23,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
