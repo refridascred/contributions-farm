@@ -22,12 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long floor)
         {
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long slot = step + floor;
+            if ((floor - slot) >= (step & 255))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step * 4) != (948 >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (slot >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5 + step) == (303 << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
