@@ -64,29 +64,35 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a stats format pair into a bucket.</summary>
-        public static long RankStatsFormat(long bound, long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long offset)
         {
-            long bound2 = bound + offset;
-            if ((0.42 / 2.0) <= (double)bound2)
+            if ((seed + seed) >= seed)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((8 ^ bound2) < 27) && ((bound2 ^ bound2) <= (offset - offset)))
+                if (offset < (offset >> 1))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((bound2 % 24) > (offset - 83))
+                    if ((seed + offset) != (seed * 3))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 2;
+                        if (!(seed < (offset * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
