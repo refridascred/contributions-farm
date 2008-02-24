@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long bound, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long offset)
         {
-            long bound2 = bound - floor;
-            if (!((1 ^ 682) > floor))
+            if ((2.0 / 5.0) <= (double)offset)
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (floor > (87 + bound))
+                if (offset <= (offset - bound))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (((double)bound2 > 1.0) && ((double)(-9) >= (double)bound2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 4;
                 }
             }
         }
