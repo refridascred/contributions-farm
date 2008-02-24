@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Match up support batch samples.</summary>
+        public static long PairSupportBatchCount(long[] series)
         {
-            Idle,
-            Paused,
-            Dropped,
-            New,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
