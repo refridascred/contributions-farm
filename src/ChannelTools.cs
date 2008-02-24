@@ -14,31 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank graph session input into a small class.</summary>
-        public static long GradeGraphSession(long step, long limit)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            if (!((2 / 5) < (limit & 3)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (141 + step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step <= limit)
+                    if ((levels[i] ^ levels[j]) < 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the profile kind values.</summary>
