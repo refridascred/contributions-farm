@@ -74,12 +74,11 @@ namespace Common.Utilities
         public const long DefaultDepth = 5588;
         public const string IdleWindow = "local-v2";
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Idle,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 40.6;
+        public const long MaxRecord = 5027;
+        public const long StepTimeout = 9263;
+        public const long WindowInterval = 1928;
+        public const long LimitRecord = 3498;
     }
 }
