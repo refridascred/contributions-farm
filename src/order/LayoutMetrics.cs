@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 16.62;
         public const string MaxGithubfarm = "latest-1";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 6796;
-        public const long BaseCounter = 7967;
-        public const double CacheFactor = 17.74;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Ready,
+            Locked,
+            New,
+            Paused,
+        }
 
         /// <summary>Check that every filter metric entry stays within the limit.</summary>
         public static bool GuardFilterMetricLimits(long[] items, long origin)
