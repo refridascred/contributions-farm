@@ -1,7 +1,10 @@
-id,owner,ratio
-1,40.85,581
-2,staging,49.37
-3,275,latest
-4,open,14.04
-5,569,951
-6,352,481
+id,score,label,state
+1,fallback,green,eu-west
+2,58.65,250,open
+3,317,25.53,edge
+4,94,23,blue
+5,273,229,cached
+6,594,63.26,blue
+7,17.4,strict,902
+8,690,49.38,24.03
+9,66.48,53.47,cached
