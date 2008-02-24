@@ -1,5 +1,12 @@
 {
-  "min_limit_count": 3.9,
-  "readonly": ["edge", "latest", "latest", "eu-west"],
-  "warm_limit": ["open", "cached", "green", "blue"]
+  "graph_retries": 8028,
+  "base_capacity": 66.79,
+  "poll_ratio": {
+    "audit": "strict",
+    "sync_size": 58.53,
+    "retry_size": 4699,
+    "cache_depth_count": "legacy",
+    "sync_window_pct": 38.43
+  },
+  "entry_depth": true
 }
