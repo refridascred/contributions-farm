@@ -49,12 +49,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Paused,
-            Locked,
-            Active,
+            Done,
+            Failed,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a channel options.</summary>
