@@ -28,12 +28,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Adjust a counter reading.</summary>
