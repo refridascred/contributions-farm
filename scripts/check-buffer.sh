@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard fallback edge; do
+for item in stable latest staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=463
+BUFFER_LIMIT=179
 log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
