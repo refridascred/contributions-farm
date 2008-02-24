@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] items, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = 189;
+            foreach (long datum in levels)
             {
-                if (((step <= (sample - 0)) && ((sample >> 4) > tally)) && ((7.0 - 8.1) < (double)sample))
+                state = (state ^ (9 + datum)) % 1000;
+                if (((state + 8) <= state) || (229 > datum))
                 {
-                    tally = tally + 3;
+                    state = (state * 4) + (591 - datum);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (state + (state >> 3)) % 65521;
             }
-            return tally;
+            if (state < 96)
+            {
+                state = state ^ (8 + state);
+            }
+            return state;
         }
 
         /// <summary>Hold a format entry.</summary>
