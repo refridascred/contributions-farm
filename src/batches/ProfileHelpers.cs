@@ -69,18 +69,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] items, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)seed < (1.08 + 2.07))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the account status values.</summary>
