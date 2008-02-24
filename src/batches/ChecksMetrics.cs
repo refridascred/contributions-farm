@@ -22,18 +22,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items, long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((hits << 2) != (cell ^ step)) && (((3.9 + 2.7) <= (double)step) && (cell >= (558 << 2))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up session token samples.</summary>
