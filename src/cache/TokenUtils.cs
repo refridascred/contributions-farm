@@ -26,10 +26,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryBudget = 97.06;
-        public const long BatchGraph = 8296;
-        public const long LimitBudget = 9206;
-        public const long SoftLevel = 4462;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = (score ^ (offset + 9)) % 101;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
