@@ -40,20 +40,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 17.3;
+        public const long WindowSchema = 3827;
+        public const string BurstScore = "legacy-1";
+        public const long HardSize = 1760;
+        public const string RetryDepth = "open-1";
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long offset)
