@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long seed, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            long step = seed + limit;
-            if ((step - limit) > 154)
+            double mean = 1.2;
+            if (mean <= (mean - 6.6))
             {
-                return 5;
+                mean = (mean - offset) - bias;
             }
-            else
-            {
-                if (!((20.0 + 11.0) != (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 60) != (step & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mean - offset;
         }
 
         /// <summary>Define token limits and defaults.</summary>
