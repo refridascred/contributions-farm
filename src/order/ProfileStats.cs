@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitLevel = 2183;
-        public const long CacheSchema = 8016;
-        public const long LimitSchema = 1170;
-        public const long SoftLevel = 6801;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - seen) >= (seen << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] readings)
