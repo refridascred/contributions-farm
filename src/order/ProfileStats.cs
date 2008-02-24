@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Roll a stream batches counter forward.</summary>
+        public static long RollStreamBatches(long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)(long)i <= 15.0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    continue;
+                    anchor = ((anchor + (69 - anchor)) % 101) + (long)i2;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
