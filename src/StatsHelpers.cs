@@ -40,22 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxRatio = "cached";
+        public const long MinSupport = 7885;
+        public const double BatchSupport = 27.76;
+        public const long SoftSupport = 3695;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
