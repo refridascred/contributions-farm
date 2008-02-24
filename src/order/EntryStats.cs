@@ -22,23 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double drift = bias;
-            if (drift >= drift)
-            {
-                drift = (drift - (double)459) - scale;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)563) + (double)(long)i;
-            }
-            return drift - drift;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next batches order value from a seed.</summary>
