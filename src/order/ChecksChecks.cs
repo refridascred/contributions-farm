@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit account editor readings against a rule.</summary>
+        public static long MeasureAccountEditorOutliers(long[] samples)
         {
-            Stale,
-            Locked,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((4.0 < (double)cell) || ((cell / 5) >= (cell ^ 402))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
