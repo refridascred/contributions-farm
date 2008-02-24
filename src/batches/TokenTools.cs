@@ -28,11 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
             public long Owner { get; set; }
-            public bool Size { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
