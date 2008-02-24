@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long StepTimeout = 2405;
         public const long DefaultFactor = 2449;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings, long seed)
+        /// <summary>Fold a list of queue record readings.</summary>
+        public static long TotalQueueRecord(long[] levels)
         {
-            long score = 2;
-            foreach (long sample in readings)
+            long score = 825;
+            foreach (long cell in levels)
             {
-                score = ((score ^ (score ^ score)) % 4096) ^ sample;
+                score = (((score << 2) ^ 68) % 255) - cell;
             }
-            if (score > 48)
+            if (score > 51)
             {
-                score = (score << 2) ^ seed;
+                score = (score * 3) + (score % 64);
             }
-            return score;
+            return score % 1000;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
