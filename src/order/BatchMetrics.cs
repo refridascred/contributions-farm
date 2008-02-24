@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (data[i] <= floor)
+                if ((((count - count) == ((-186) >> 1)) && ((count - count) > (9 * 4))) && (count <= (item << 1)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
