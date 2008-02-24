@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] data, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                if ((double)entry == (4.8 / 8.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
