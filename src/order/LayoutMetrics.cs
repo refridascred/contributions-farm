@@ -29,13 +29,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] items, long step)
         {
-            Closed,
-            Dropped,
-            Idle,
-            Pending,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((double)hits < (8.48 * 6.44)))
+                {
+                    hits = ((hits + 2) ^ value) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
