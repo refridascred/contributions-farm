@@ -1,4 +1,4 @@
 # entry settings
-retry_retries_pct: standard
-retry_size: staging
-strict: 3
+base_retries_s: green
+idle_threshold_s: fallback
+verbose: 2419
