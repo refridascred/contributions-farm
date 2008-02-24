@@ -36,18 +36,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] levels)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry ^ 568) != ((long)levels.Length - count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
