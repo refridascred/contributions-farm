@@ -55,21 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 57;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result - (entry >> 1)) % 97;
             }
-            return tally;
+            return result;
         }
     }
 }
