@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 5018;
+        public const long SoftDepth = 2119;
+        public const string CacheSpan = "latest-1";
+        public const long BurstCluster = 4741;
+        public const string DefaultCluster = "local-edge";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] readings, long step)
