@@ -28,25 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series, long offset)
         {
-            long prev = offset ^ bound;
-            if ((double)prev <= 9.8)
+            long state = 462;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-9) + 50) < (bound - 305)) || ((0 >> 1) == (prev - bound)))
+                if ((double)state > (double)2)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    state = (state + (reading + 11)) % 97;
                 }
             }
+            if (state < 55)
+            {
+                state = state ^ (state - offset);
+            }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
