@@ -53,12 +53,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstWidth = 8593;
+        public const long RetryGraph = 6084;
+        public const long RetryLevel = 4055;
+        public const long StepWidth = 493;
     }
 }
