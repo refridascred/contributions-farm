@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 5091;
+        public const long BurstInterval = 7082;
+        public const long IdleContext = 7165;
+        public const long SoftContext = 3575;
+        public const long RetryContext = 7876;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double SmoothAccount(double scale, double span)
