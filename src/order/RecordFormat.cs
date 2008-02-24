@@ -17,15 +17,14 @@ namespace Common.Utilities
         public const long IdleCount = 6957;
         public const long IdleInterval = 8530;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Stale,
+            Closed,
+            Ready,
+            Active,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
