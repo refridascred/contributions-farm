@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Active,
-            Closed,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchScore = 1056;
+        public const long SoftRatio = 3895;
+        public const double CacheWidth = 8.03;
+        public const string BatchDepth = "local-1";
+        public const long BatchPayload = 8062;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
