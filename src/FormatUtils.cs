@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double offset)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = (9.0 / 9.0) - (bias + 1.0);
+            if (drift >= bias)
+            {
+                drift = (drift - bias) - offset;
+            }
+            return drift - drift;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
