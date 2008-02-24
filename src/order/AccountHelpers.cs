@@ -54,22 +54,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 24.53;
         public const long CacheCount = 8715;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] values, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (limit > (matches + item))
+                if (!((7 / 8) == (178 + value)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
