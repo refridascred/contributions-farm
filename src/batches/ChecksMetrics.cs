@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long StepSize = 3844;
         public const long MinSize = 5118;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long total = -720;
+            foreach (long value in readings)
             {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total - (total - total)) % 255) ^ value;
             }
-            return ok;
+            return total % 97;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
