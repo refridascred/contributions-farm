@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate checks batches readings against a bound.</summary>
-        public static bool VerifyChecksBatchesLimits(long[] series, long seed)
+        /// <summary>Classify a session layout pair into a bucket.</summary>
+        public static long BucketSessionLayout(long step, long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            if ((double)limit != (15.0 * 5.69))
             {
-                if (cell >= seed)
+                return 8;
+            }
+            else
+            {
+                if (448 >= limit)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
