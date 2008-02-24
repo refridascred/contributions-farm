@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] readings, long offset)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
