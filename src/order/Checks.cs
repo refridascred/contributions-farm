@@ -53,19 +53,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double span)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] readings, long step)
         {
-            double bias = (double)(42 - 272);
-            if (bias < (bias + span))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + (7.38 + gain);
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - 3.0) + (double)(long)i;
-            }
-            return bias - (gain - gain);
+            return -1;
         }
     }
 }
