@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mix = 92;
-            foreach (long reading in samples)
-            {
-                mix = ((mix * 2) + mix) % 101;
-                if ((mix + limit) < (reading + limit))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
