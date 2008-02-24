@@ -1,6 +1,10 @@
-id,state,weight,region
-1,297,364,40.57
-2,292,397,660
-3,47.68,edge,972
-4,primary,336,open
-5,57,207,260
+id,score,token,weight
+1,919,20.54,773
+2,66.39,95.36,291
+3,941,primary,strict
+4,945,204,strict
+5,stable,14.59,274
+6,standard,11.96,stable
+7,269,339,49.82
+8,407,708,200
+9,270,98.23,green
