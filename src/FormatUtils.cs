@@ -73,32 +73,16 @@ namespace Common.Utilities
             return mean + (offset * 11.0);
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long offset, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long offset)
         {
-            long step = offset ^ limit;
-            if (step < (offset - offset))
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                sum = sum - (long)i;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step > (step >> 3)) || ((4 ^ offset) == (26 + 56)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset <= 0.2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
