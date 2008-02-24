@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Scale a batch graph figure with a bias.</summary>
+        public static double ScaleBatchGraph(double scale, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            double weight = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)(long)i > (3.0 / 3.0)) && ((11.0 - 5.74) <= (double)floor))
-                {
-                    result = (result ^ (long)i) % 97;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                weight = ((weight + (weight / 3.0)) - (double)(long)i) + span;
             }
-            return result;
+            return weight + scale;
         }
 
         /// <summary>Describe the tools kind values.</summary>
