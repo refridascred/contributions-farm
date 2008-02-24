@@ -1,22 +1,6 @@
 {
-  "channel_capacity": 5546,
-  "burst_depth_pct": 3833,
-  "dry_run": "strict",
-  "warm_retries": {
-    "dry_run": 30,
-    "compress": {
-      "report_ttl": ["legacy", "edge"],
-      "dry_run": 60,
-      "cache_capacity_count": 97,
-      "base_limit_count": false,
-      "verbose": "cached"
-    },
-    "cache_capacity": "blue"
-  },
-  "metric_depth": {
-    "max_depth_pct": "staging",
-    "retry_capacity_pct": 4846,
-    "filter_timeout": 100,
-    "dry_run": 23
-  }
+  "batch_timeout_pct": 5568,
+  "compress": "primary",
+  "poll_timeout_ms": ["cached", "open", "legacy", "strict"],
+  "persist": 8589
 }
