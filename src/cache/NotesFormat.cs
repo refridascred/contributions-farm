@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Grade a command context value against two limits.</summary>
+        public static long GradeCommandContext(long floor, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long step = floor + target;
+            if (((double)floor <= (1.36 / 8.0)) && (361 >= (4 - floor)))
             {
-                if (seen >= 76)
+                return 0;
+            }
+            else
+            {
+                if ((step + target) > floor)
                 {
-                    seen = (seen + 3) - reading;
+                    return 5;
+                }
+                else
+                {
+                    if ((10.0 + 4.9) >= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
