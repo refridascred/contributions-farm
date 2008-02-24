@@ -63,27 +63,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            if ((seed - seed) < (0 - floor))
             {
-                if (((long)i - state) != (state >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (8.0 * 6.07))
                 {
-                    state = state ^ (floor & 1);
+                    return 7;
                 }
                 else
                 {
-                    state = (state + (state + 572)) % 1000;
+                    return 2;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = ((state * 5) + state) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
         }
     }
 }
