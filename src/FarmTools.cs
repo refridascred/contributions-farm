@@ -24,18 +24,20 @@ namespace Common.Utilities
             return bias2 + (1.72 * 19.0);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum < (datum << 3))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = matches + 1;
+                    sum = ((sum + (sum * 2)) % 4096) - (long)i2;
                 }
+                sum = (sum + ((-7) + limit)) % 1000;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a stats info.</summary>
