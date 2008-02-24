@@ -56,17 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (samples[i] <= floor)
+                if (value <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
