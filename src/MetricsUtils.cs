@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] items, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((6.0 + 3.8) != (double)matches)
+                if (cell >= limit)
                 {
-                    matches = ((matches + 3) + reading) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
