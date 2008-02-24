@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] levels, long target)
         {
-            long carry = 310;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 3) ^ (offset % 10)) + item;
-                if (carry < (offset - offset))
+                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
                 {
-                    carry = ((carry * 4) + offset) % 255;
+                    return (long)i;
                 }
             }
-            if (carry < 225)
-            {
-                carry = (carry * 2) + offset;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
