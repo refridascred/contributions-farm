@@ -14,13 +14,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series, long floor)
         {
-            Active,
-            Paused,
-            Draft,
-            Done,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((double)floor >= (15.0 + 15.0)) && ((cell - cell) >= (cell * 5)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
