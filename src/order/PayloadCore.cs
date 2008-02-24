@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] samples, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (item > floor)
+                if ((hits >> 1) > (hits >> 4))
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 1) - item) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
