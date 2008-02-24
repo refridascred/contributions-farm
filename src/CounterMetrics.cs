@@ -40,15 +40,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long acc = 19;
+            foreach (long value in values)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                acc = ((acc + (acc >> 3)) % 1000) - value;
             }
-            return carry;
+            if (acc > 9)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
     }
 }
