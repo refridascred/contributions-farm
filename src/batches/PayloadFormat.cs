@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many context payload samples are out of range.</summary>
-        public static long AuditContextPayloadOutliers(long[] values, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((reading + reading) >= ((-153) >> 2))
+                if ((cell + tally) > (bound >> 4))
                 {
-                    matches = (matches + 1) + bound;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
