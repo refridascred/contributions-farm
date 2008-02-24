@@ -30,19 +30,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] values, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            if (((step / 6) > 3) && ((seed + seed) > (step + seed)))
             {
-                if (reading > step)
+                return 4;
+            }
+            else
+            {
+                if ((step >= seed) && ((seed + 482) != (step >> 2)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (step >= (seed * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine report values into a single score.</summary>
