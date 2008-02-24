@@ -33,17 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
-        public static long FindMetricsGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (samples[i] <= floor)
+                if (reading != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a checks options.</summary>
