@@ -70,21 +70,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of editor queue readings.</summary>
-        public static long PairEditorQueueCount(long[] readings)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
