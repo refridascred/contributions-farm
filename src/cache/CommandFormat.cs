@@ -32,20 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultInterval = 6011;
+        public const double MaxScore = 26.97;
+        public const long LimitSpan = 3958;
+        public const long BaseFactor = 9992;
+        public const long HardPayload = 4296;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] levels)
