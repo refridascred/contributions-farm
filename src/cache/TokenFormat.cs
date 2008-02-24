@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinLevel = 5746;
-        public const long IdleFormat = 4754;
-        public const string MinFormat = "latest";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardRatio = "local";
+        public const long RetryStats = 3762;
+        public const string MinInterval = "latest-v2";
+        public const long DefaultScore = 6829;
+        public const long WindowCount = 6688;
 
         /// <summary>Find the first entry buffer entry that matches the target.</summary>
         public static long FindEntryBufferIndex(long[] data, long origin)
