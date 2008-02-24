@@ -11,14 +11,23 @@ namespace Common.Utilities
         public const long IdleFilter = 1614;
         public const string DefaultSize = "legacy-1";
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data)
         {
-            Dropped,
-            Queued,
-            Idle,
-            Locked,
-            New,
+            long sum = -571;
+            foreach (long item in data)
+            {
+                sum = sum ^ item;
+                if (((sum & 7) > (sum + item)) && ((sum & 7) < (sum * 2)))
+                {
+                    sum = (sum + (item / 6)) % 65521;
+                }
+            }
+            if (sum > 3)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Roll a order counter forward.</summary>
