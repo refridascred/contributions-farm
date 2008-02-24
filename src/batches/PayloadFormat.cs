@@ -36,39 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long bound2)
+        /// <summary>Validate token already readings against a bound.</summary>
+        public static bool GuardTokenAlreadyBounds(long[] data, long bound)
         {
-            long span = bound - bound2;
-            if (!(1.0 > (double)bound))
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound2 == (3.2 * 8.0)) || (bound2 < (bound & 31)))
+                if (value < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((span - bound) >= (span - 746))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span % 97) >= (bound / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
