@@ -1,22 +1,8 @@
 {
-  "warm_delay": {
-    "verbose": 41.28,
-    "format_delay": {
-      "default_ratio_pct": ["strict", "staging", "latest"],
-      "burst_window_ms": "standard",
-      "idle_ratio_s": 74
-    },
-    "default_interval": {
-      "batch_ratio": "latest",
-      "schema_ttl": true,
-      "verbose": false,
-      "poll_retries_pct": "strict"
-    },
-    "soft_delay": 96.42,
-    "idle_depth_s": "eu-west"
-  },
-  "warm_interval": true,
-  "burst_interval_ms": ["strict", "open"],
-  "strict": false,
-  "batch_limit": true
+  "warm_limit": "stable",
+  "flush_retries": ["green", "blue"],
+  "sync_interval_count": false,
+  "verbose": "stable",
+  "command_ttl": 7990,
+  "poll_threshold_count": "blue"
 }
