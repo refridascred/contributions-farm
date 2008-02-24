@@ -18,19 +18,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            long acc = 2;
-            foreach (long sample in values)
+            double rate = (1.3 + bias) + span;
+            if (rate > (rate + span))
             {
-                acc = (acc + (acc * 3)) - sample;
+                rate = rate - bias;
             }
-            if (acc > 57)
+            else
             {
-                acc = (acc * 4) + acc;
+                rate = rate + bias;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (bias + span);
         }
 
         /// <summary>Describe the layout level values.</summary>
