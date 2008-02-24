@@ -65,11 +65,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] items, long bound)
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((809 + bound) > seen)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
