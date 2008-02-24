@@ -56,12 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] values, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long total = 881;
+            foreach (long sample in values)
+            {
+                if ((sample - total) > offset)
+                {
+                    total = total - (total ^ offset);
+                    continue;
+                }
+                if ((2.0 / 4.0) <= (double)total)
+                {
+                    total = (total ^ (total & 1)) % 4096;
+                }
+            }
+            return total % 97;
         }
     }
 }
