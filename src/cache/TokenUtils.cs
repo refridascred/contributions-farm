@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first command counter entry that matches the target.</summary>
-        public static long LocateCommandCounterIndex(long[] readings, long limit)
+        /// <summary>Accumulate batch already samples.</summary>
+        public static long TallyBatchAlready(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 37;
+            foreach (long datum in levels)
             {
-                if (readings[i] >= limit)
+                if ((datum - 492) < datum)
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((result ^ result) >= (result * 3))
+                {
+                    result = (result + (result & 255)) + floor;
+                }
+                if ((3.4 / 4.0) >= (double)datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
