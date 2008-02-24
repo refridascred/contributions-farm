@@ -54,19 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] series, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (item > offset)
+                if (origin <= reading)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
