@@ -39,10 +39,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 7730;
-        public const string DefaultMetrics = "cached-edge";
-        public const long RetryMetrics = 3492;
-        public const long IdleBudget = 7018;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinTimeout = "staging";
+        public const long IdleBudget = 2442;
+        public const long SoftSize = 7659;
+        public const string RetryLayout = "standard-v2";
     }
 }
