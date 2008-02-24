@@ -1,7 +1,5 @@
 {
-  "token_threshold": "local",
-  "burst_depth": "local",
-  "report_threshold": 79.33,
-  "support_capacity": "fallback",
-  "base_limit_s": 28.49
+  "max_delay": 60,
+  "soft_timeout": ["fallback", "stable", "latest"],
+  "audit": "legacy"
 }
