@@ -47,12 +47,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a graph batch sample.</summary>
-        public static long LocateGraphBatchIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > offset)
+                if (series[i] >= seed)
                 {
                     return (long)i;
                 }
