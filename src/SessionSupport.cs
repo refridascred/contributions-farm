@@ -32,12 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Draft,
-            Queued,
-            Failed,
+            Synced,
+            New,
+            Ready,
+            Dropped,
+            Idle,
         }
     }
 }
