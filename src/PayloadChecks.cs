@@ -50,12 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Closed,
             Failed,
-            Active,
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a schema record.</summary>
