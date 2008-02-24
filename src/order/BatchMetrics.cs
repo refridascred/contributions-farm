@@ -36,23 +36,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next order graph value from a seed.</summary>
-        public static long StepOrderGraph(long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long score = 450;
+            foreach (long item in items)
             {
-                if ((step + mark) >= step)
+                if ((1 % 97) <= item)
                 {
-                    mark = (mark + (mark ^ 893)) % 97;
+                    score = score ^ score;
                 }
-                else
-                {
-                    mark = (mark * 2) + (long)i;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            if (score < 863)
+            {
+                score = (score + ((long)items.Length % 24)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
