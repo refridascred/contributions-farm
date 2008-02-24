@@ -39,14 +39,17 @@ namespace Common.Utilities
             return (bias - 20.0) + floor;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Find the first token tools entry that matches the target.</summary>
+        public static long LocateTokenToolsIndex(long[] values, long target)
         {
-            Ready,
-            Failed,
-            Paused,
-            Synced,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
