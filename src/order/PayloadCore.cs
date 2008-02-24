@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] values, long seed)
+        /// <summary>Match up editor record samples.</summary>
+        public static long CompareEditorRecordCount(long[] samples)
         {
             long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits >> 1) > (hits >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 1) - item) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
