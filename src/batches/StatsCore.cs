@@ -33,12 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
