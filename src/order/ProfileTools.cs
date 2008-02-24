@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWidth = 45.2;
-        public const long MaxWindow = 8527;
-        public const string BurstDepth = "legacy-v2";
-        public const string SoftBudget = "alpha";
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Stale,
+            Done,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] data, long limit)
