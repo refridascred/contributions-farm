@@ -30,18 +30,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long result = -15;
-            foreach (long cell in values)
-            {
-                if ((result ^ cell) == (result >> 2))
-                {
-                    result = (result - (offset & 1)) % 4096;
-                }
-            }
-            return result;
+            Draft,
+            Stale,
+            Closed,
         }
     }
 }
