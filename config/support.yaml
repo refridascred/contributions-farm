@@ -1,15 +1,4 @@
 # support settings
-flush_window_s:
-  format_ratio:
-    - 447
-    - 382
-  soft_delay_count:
-    - 27
-    - 155
-  profile_ttl: 30
-  command_depth: true
-  batch_timeout: 40.05
-  burst_interval_s: 65.92
-warm_ttl: 60
-batch_timeout_s: 100
-record_retries: staging
+base_threshold_s: eu-west
+retry_capacity_pct: green
+cache_capacity_ms: local
