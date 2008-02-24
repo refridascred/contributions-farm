@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchScore = 1056;
-        public const long SoftRatio = 3895;
-        public const double CacheWidth = 8.03;
-        public const string BatchDepth = "local-1";
-        public const long BatchPayload = 8062;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)floor < (double)4)
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
