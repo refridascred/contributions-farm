@@ -45,18 +45,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((offset & 7) == (reading - reading)) && ((reading + reading) <= (seen + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultFactor = 9666;
+        public const long IdleBudget = 1509;
+        public const long BurstTimeout = 9524;
+        public const string LimitInterval = "staging-v2";
     }
 }
