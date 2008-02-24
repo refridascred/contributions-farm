@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long IdleCount = 9219;
         public const string MinCount = "cached-1";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 22.09;
-        public const string MaxOrder = "latest";
-        public const string SoftWidth = "fallback-edge";
-        public const long RetryInterval = 9416;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value ^ origin) > (tally / 8))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
