@@ -14,14 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] levels, long step)
         {
-            Closed,
-            Locked,
-            Dropped,
-            Ready,
-            Done,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a context entry.</summary>
