@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 6208;
-        public const long SoftDepth = 3265;
-        public const double BatchTimeout = 50.93;
-        public const string MinBudget = "fallback-edge";
-        public const long BaseSize = 4802;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Paused,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] series, long seed)
