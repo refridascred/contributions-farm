@@ -52,13 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] readings, long offset)
         {
-            Failed,
-            Paused,
-            Draft,
-            Closed,
+            long result = 8;
+            foreach (long sample in readings)
+            {
+                result = ((result - offset) % 65521) ^ sample;
+            }
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
