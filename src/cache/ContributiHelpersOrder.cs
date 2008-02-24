@@ -33,21 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 5;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark ^ (-6)) % 65521) + value;
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
