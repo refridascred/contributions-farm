@@ -28,17 +28,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm format series from a seed.</summary>
-        public static long RollGithubfarmFormat(long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long prev = offset ^ bound;
+            if ((double)prev <= 9.8)
             {
-                total = (total + (seed % 2)) % 4096;
-                total = (total + ((long)i % 97)) % 255;
-                total = ((total * 2) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((((-9) + 50) < (bound - 305)) || ((0 >> 1) == (prev - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
