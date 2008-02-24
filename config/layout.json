@@ -1,5 +1,6 @@
 {
-  "persist": 56,
-  "hard_window_s": 44.22,
-  "verbose": "edge"
+  "sync_timeout_ms": 500,
+  "order_delay": 85.28,
+  "warm_ttl_s": [167, 32, 480],
+  "support_timeout": "strict"
 }
