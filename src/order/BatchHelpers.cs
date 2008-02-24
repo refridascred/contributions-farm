@@ -34,19 +34,10 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate already context readings against a bound.</summary>
-        public static bool CheckAlreadyContextRange(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleWidth = 64.83;
+        public const long BaseFarm = 7509;
+        public const string MaxBudget = "staging-v2";
+        public const long WindowInterval = 921;
     }
 }
