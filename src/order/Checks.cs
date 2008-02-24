@@ -36,20 +36,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate command window samples.</summary>
-        public static long ScoreCommandWindow(long[] samples, long floor)
+        /// <summary>Derive the next metrics stream value from a seed.</summary>
+        public static long IterateMetricsStream(long origin)
         {
-            long state = 6;
-            foreach (long cell in samples)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((7.1 / 3.0) >= (double)floor)
-                {
-                    state = ((state << 2) ^ (cell & 127)) % 65521;
-                }
-            }
-            if (state > 3)
-            {
-                state = (state ^ (floor + floor)) % 1000;
+                state = state - ((long)i & 1);
+                state = ((state * 5) + (long)i) % 1000;
             }
             return state;
         }
