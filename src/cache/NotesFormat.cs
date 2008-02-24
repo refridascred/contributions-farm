@@ -27,21 +27,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 876;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 3) + (state ^ item)) % 4096;
+                state = (state + (item ^ item)) % 4096;
+                state = ((state << 3) ^ (item - state)) % 65521;
             }
-            return seen;
+            if (state > (-895))
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
