@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] items, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry < 18.0)
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
