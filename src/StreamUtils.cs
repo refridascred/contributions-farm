@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleFactor = 51.77;
+        public const long IdleRatio = 7538;
+        public const long BurstPayload = 553;
 
         /// <summary>Classify a already token pair into a bucket.</summary>
         public static long RankAlreadyToken(long step, long bound)
