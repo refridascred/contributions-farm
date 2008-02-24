@@ -15,18 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = 22;
-            foreach (long value in data)
-            {
-                if ((anchor ^ value) < (value % 3))
-                {
-                    anchor = (anchor + (9 - 726)) % 65521;
-                }
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a already token pair into a bucket.</summary>
