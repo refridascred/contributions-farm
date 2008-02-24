@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double ratio, double offset)
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            double scale = offset;
+            if (scale < (double)(-4))
+            {
+                scale = scale - (double)27;
+            }
+            else
+            {
+                scale = scale - ratio;
+            }
+            return scale - (scale + scale);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
