@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series)
         {
-            if (step >= (step + step))
+            long mix = 818;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ 1) < limit)
+                if (((0 & 31) >= (mix - datum)) && ((datum % 3) > (datum & 1)))
                 {
-                    return 7;
+                    mix = ((mix * 4) + (mix + datum)) % 101;
                 }
                 else
                 {
-                    if (((step ^ step) >= (3 + 756)) && ((double)limit > (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix - (mix + 595)) % 101;
                 }
             }
+            if (mix < 714)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
