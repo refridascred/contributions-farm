@@ -36,25 +36,13 @@ namespace Common.Utilities
         public const long BaseFactor = 9992;
         public const long HardPayload = 4296;
 
-        /// <summary>Grade a filter batch value against two limits.</summary>
-        public static long SortFilterBatch(long limit, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long cur = limit ^ step;
-            if ((limit >= step) || (cur <= step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (709 >= (step & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
