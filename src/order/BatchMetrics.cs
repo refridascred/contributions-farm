@@ -37,19 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] values, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (entry > offset)
+                if ((4.3 + 1.6) < (double)entry)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
