@@ -40,13 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long seed)
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((seed ^ entry) > (hits >> 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window status values.</summary>
