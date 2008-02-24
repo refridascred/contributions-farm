@@ -1,6 +1,5 @@
 {
-  "sync_timeout_ms": 500,
-  "order_delay": 85.28,
-  "warm_ttl_s": [167, 32, 480],
-  "support_timeout": "strict"
+  "dry_run": 24,
+  "hard_retries": ["fallback", "eu-west", "blue"],
+  "warm_size_s": 4.2
 }
