@@ -1,21 +1,10 @@
 # entry settings
-graph_timeout: 42.27
-base_depth_pct:
-  - 88
-  - 427
-burst_capacity_s: true
-record_retries:
-  burst_limit_ms:
-    readonly: 38.89
-    contributi_window: 85.66
-    audit: cached
-  soft_window:
-    max_capacity: 91.22
-    enabled:
-      - 161
-      - 36
-      - 422
-    readonly: true
-    idle_ratio_count: 8789
-  batch_ttl_pct: local
-  burst_timeout_ms: 500
+strict: primary
+warm_ttl_count: open
+hard_interval_s: local
+farm_capacity: 56.65
+flush_interval_ms:
+  flush_ratio_s: fallback
+  format_capacity: false
+  enabled: fallback
+burst_size_pct: 100
