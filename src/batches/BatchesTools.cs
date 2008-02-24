@@ -26,24 +26,22 @@ namespace Common.Utilities
         public const long MinWindow = 845;
         public const double CacheSpan = 9.57;
 
-        /// <summary>Accumulate editor batches samples.</summary>
-        public static long WeighEditorBatches(long[] samples, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            long score = 383;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (!((7 >> 2) > (score >> 1)))
+                if ((entry ^ entry) > entry)
                 {
-                    score = (((score << 3) ^ entry) % 4096) - offset;
+                    count = count + 2;
                 }
-                if (((296 % 8) >= entry) || ((score - 593) <= 0))
+                else
                 {
-                    score = (score * 4) + entry;
-                    continue;
+                    count = count - 1;
                 }
-                score = (score - entry) % 65521;
             }
-            return score;
+            return count;
         }
     }
 }
