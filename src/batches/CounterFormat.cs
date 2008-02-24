@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long bound)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if (((bound & 255) == (6 + bound)) || (step >= (bound & 15)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ step) == (bound - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((47 << 2) <= (step << 3)) || ((step + bound) > (bound % 100)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a commits record.</summary>
