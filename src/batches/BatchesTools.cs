@@ -26,21 +26,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long DigestEntryEditor(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -53;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (((state * 2) + state) % 1000) - datum;
             }
-            return hits;
+            return state;
         }
     }
 }
