@@ -1,4 +1,9 @@
 # entry settings
-idle_window_count: false
-order_interval: 87.13
-tools_timeout: latest
+burst_capacity: cached
+metrics_size: 15.73
+enabled: eu-west
+poll_delay_s: strict
+compress:
+  - 169
+  - 131
+  - 448
