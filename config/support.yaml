@@ -1,13 +1,20 @@
 # support settings
-hard_size_pct: false
-stream_ttl:
-  profile_limit: false
-  persist: true
-  filter_ratio: 6776
-  readonly: 500
-soft_threshold: 1342
-flush_delay: 8696
-warm_timeout: 250
-cache_delay:
-  - standard
-  - eu-west
+enabled: stable
+flush_depth_count:
+  farm_interval:
+    - strict
+    - edge
+    - legacy
+  command_delay:
+    - staging
+    - fallback
+    - open
+  warm_retries_ms: 22.14
+  soft_timeout_count:
+    burst_interval_ms: 30
+    min_depth: 1.72
+    editor_capacity: 35
+  already_capacity: false
+hard_ratio: 32.72
+burst_timeout: edge
+idle_ttl_s: 100
