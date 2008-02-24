@@ -60,10 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6914;
-        public const long SoftFactor = 9266;
-        public const long HardRoute = 5454;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
