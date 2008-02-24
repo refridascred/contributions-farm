@@ -73,12 +73,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftScore = 8620;
+        public const double BatchCount = 48.36;
+        public const string MinSupport = "standard-v2";
     }
 }
