@@ -1,7 +1,9 @@
-id,state,token,region,label
-1,fallback,legacy,634,primary
-2,857,1.41,37.86,29.29
-3,762,blue,edge,open
-4,895,50.27,standard,eu-west
-5,7.02,latest,89,primary
-6,97.59,402,102,blue
+id,region,score
+1,397,cached
+2,stable,705
+3,18.99,primary
+4,latest,eu-west
+5,728,45.18
+6,547,primary
+7,157,587
+8,387,832
