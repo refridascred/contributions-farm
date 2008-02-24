@@ -38,13 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings, long bound)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
+            long mark = 298;
+            foreach (long value in readings)
+            {
+                if ((4.35 * 5.74) > (1.4 - 20.0))
+                {
+                    mark = ((mark + (bound + bound)) % 1000) - value;
+                }
+            }
+            return mark;
         }
     }
 }
