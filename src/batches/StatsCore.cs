@@ -59,17 +59,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheSize = 8914;
+        public const double MaxTimeout = 15.31;
+        public const long StepSize = 3544;
+        public const double MaxDepth = 2.06;
+        public const long MaxCommits = 2012;
     }
 }
