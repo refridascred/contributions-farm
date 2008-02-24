@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long BatchInterval = 2439;
         public const long SoftBuffer = 9943;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((double)floor >= (15.0 + 15.0)) && ((cell - cell) >= (cell * 5)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
