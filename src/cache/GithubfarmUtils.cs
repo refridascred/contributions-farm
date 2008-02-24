@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            New,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
