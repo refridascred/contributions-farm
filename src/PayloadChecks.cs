@@ -31,13 +31,24 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate);
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            long carry = 844;
+            foreach (long value in values)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 255;
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = ((carry - value) % 4096) ^ (long)i;
+                }
+                carry = carry - (value % 7);
+            }
+            if (carry < 803)
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
