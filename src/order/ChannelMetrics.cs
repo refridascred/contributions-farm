@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Adjust a filter layout reading.</summary>
+        public static double AdjustFilterLayout(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (gain - floor) - gain;
+            if (load > load)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - load;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (load * 6.44)) - (double)(long)i;
+            }
+            return load + 1.24;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
