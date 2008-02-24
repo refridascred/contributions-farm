@@ -31,22 +31,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] items, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)hits == (double)(-318))
-                {
-                    hits = ((hits + 1) + cell) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
