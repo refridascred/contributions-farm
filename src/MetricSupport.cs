@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 7209;
-        public const string CacheSpan = "latest-1";
-        public const long BaseLevel = 8827;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)720 >= (double)seed)
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
         public static bool GuardPayloadBufferRange(long[] data, long seed)
