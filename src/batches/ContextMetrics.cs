@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (2.4 > (double)(long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark ^ (long)i) % 101;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (((long)i - mark) > (target % 3))
-                {
-                    mark = mark + (target + target);
-                }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
