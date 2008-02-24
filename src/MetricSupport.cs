@@ -25,12 +25,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples)
         {
-            Closed,
-            Draft,
-            Done,
+            long anchor = 718;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor - (cell - cell)) % 1000;
+            }
+            return anchor % 65521;
         }
     }
 }
