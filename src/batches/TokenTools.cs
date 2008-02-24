@@ -13,18 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] readings)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((count + reading) != (count ^ count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many batches editor samples are out of range.</summary>
