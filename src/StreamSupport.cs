@@ -27,26 +27,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of buffer farm readings.</summary>
-        public static long TotalBufferFarm(long[] levels, long origin)
-        {
-            long result = 1;
-            foreach (long datum in levels)
-            {
-                if ((datum & 3) != (894 % 2))
-                {
-                    result = (((result << 3) ^ result) % 4096) - origin;
-                }
-                else
-                {
-                    result = (result - (19 + datum)) % 101;
-                }
-            }
-            if (result > 695)
-            {
-                result = ((result << 2) ^ (90 ^ 46)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultSize = "local-v2";
+        public const double CacheWidth = 97.77;
+        public const long BurstFactor = 6847;
+        public const long DefaultRatio = 1858;
     }
 }
