@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long state = 909;
-            foreach (long item in levels)
-            {
-                state = ((state << 2) ^ item) % 1000;
-                if ((double)item > 5.0)
-                {
-                    state = state ^ (item << 1);
-                }
-            }
-            return state % 1000;
+            Stale,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
