@@ -20,31 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if (8 <= (floor ^ target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target > floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)(-58) >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of buffer farm readings.</summary>
