@@ -1,7 +1,7 @@
-id,ratio,score
-1,350,293
-2,775,legacy
-3,54.17,fallback
-4,778,849
-5,580,892
-6,strict,198
+id,owner,weight
+1,stable,311
+2,22.8,blue
+3,578,394
+4,410,legacy
+5,191,standard
+6,689,staging
