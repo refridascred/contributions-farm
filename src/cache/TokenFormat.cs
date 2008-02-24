@@ -27,10 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 2800;
-        public const double MinTimeout = 39.52;
-        public const string WindowCounter = "latest-edge";
-        public const long WindowSpan = 740;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Active,
+            Failed,
+            Retry,
+            Synced,
+        }
     }
 }
