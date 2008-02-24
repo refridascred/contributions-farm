@@ -41,16 +41,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Derive the next metrics stream value from a seed.</summary>
-        public static long IterateMetricsStream(long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                state = state - ((long)i & 1);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            double gain2 = gain - floor;
+            return gain2 - floor;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
