@@ -1,5 +1,5 @@
 {
-  "flush_timeout_ms": "eu-west",
-  "order_window": [16, 303, 221],
-  "default_window_pct": [63, 281]
+  "sync_ttl_count": 1024,
+  "strict": true,
+  "max_size_s": 50.1
 }
