@@ -57,18 +57,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((datum >> 4) < (-905))
+                if (datum > seed)
                 {
-                    matches = (matches + 3) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the schema mode values.</summary>
