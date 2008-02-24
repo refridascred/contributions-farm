@@ -1,12 +1,21 @@
 # githubfarm settings
-enabled: 35.05
-poll_limit_s:
-  - 159
-  - 393
-  - 203
-  - 221
-batch_limit:
-  - staging
+buffer_size:
+  - edge
+  - standard
+  - stable
+account_capacity: false
+compress:
+  - standard
+  - edge
   - local
-max_capacity_pct: local
-idle_ttl_pct: 29.96
+  - legacy
+persist:
+  idle_ttl: 49
+  queue_window: stable
+  readonly:
+    - 310
+    - 40
+    - 278
+  sync_threshold_ms: fallback
+  audit: true
+readonly: eu-west
