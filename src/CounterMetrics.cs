@@ -16,20 +16,22 @@ namespace Common.Utilities
         public const long SoftBuffer = 6147;
         public const double DefaultWidth = 52.03;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] data)
         {
-            long mark = 2;
-            foreach (long cell in values)
+            long result = 5;
+            foreach (long value in data)
             {
-                mark = (mark ^ (cell - 56)) % 97;
-                mark = mark - (2 + mark);
+                if ((double)value != (1.6 * 6.0))
+                {
+                    result = (result << 3) ^ value;
+                }
+                if (((value / 7) > 597) && ((value << 3) > (result * 3)))
+                {
+                    break;
+                }
             }
-            if (mark < 66)
-            {
-                mark = (mark * 5) + (mark << 1);
-            }
-            return mark;
+            return result % 65521;
         }
 
         /// <summary>Project the next order format value.</summary>
