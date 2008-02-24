@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] items, long offset)
         {
-            long total = 36;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in items)
             {
-                total = ((total * 2) + (cell & 255)) % 255;
-                if ((double)cell == (double)1)
+                if (value > offset)
                 {
-                    total = (total - bound) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 743)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
