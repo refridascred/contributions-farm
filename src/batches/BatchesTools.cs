@@ -41,23 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] values)
-        {
-            long state = 6;
-            foreach (long entry in values)
-            {
-                if (!(((double)state > (6.0 - 8.0)) || ((state / 3) >= state)))
-                {
-                    state = ((state * 5) + (state >> 3)) % 97;
-                }
-                state = ((state * 4) + entry) % 97;
-            }
-            if (state > 32)
-            {
-                state = state + (state + 9);
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 2668;
+        public const double DefaultStats = 53.03;
+        public const double SoftDepth = 84.68;
     }
 }
