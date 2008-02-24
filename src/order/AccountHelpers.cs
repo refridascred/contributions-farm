@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double gain, double bias)
         {
-            long acc = 837;
-            foreach (long cell in series)
+            double gain2 = bias + (bias + bias);
+            if (gain2 < gain)
             {
-                acc = (acc + 85) ^ cell;
+                gain2 = gain2 + gain2;
             }
-            return acc % 1000;
+            else
+            {
+                gain2 = gain2 + bias;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
