@@ -34,18 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches - item) > item)
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
