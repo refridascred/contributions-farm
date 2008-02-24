@@ -1,11 +1,6 @@
-id,score,count,rank
-1,399,latest,standard
-2,298,285,blue
-3,50.95,583,175
-4,55.62,83.96,6.91
-5,6.45,green,164
-6,997,124,434
-7,legacy,47,94
-8,legacy,821,open
-9,106,42,4.54
-10,98.2,141,edge
+id,rank,token,state
+1,edge,386,663
+2,63.11,694,strict
+3,edge,blue,fallback
+4,20.35,350,193
+5,600,709,edge
