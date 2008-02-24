@@ -12,24 +12,18 @@ namespace Common.Utilities
             return (mean - (2.69 - bias2)) + bias;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long sum = 55;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((sum & 127) < (item - sum))
+                if ((seen < (6 % 8)) || ((seen >> 3) <= (seen ^ seen)))
                 {
-                    sum = (sum - sum) % 101;
-                    sum = (sum ^ item) % 1000;
-                }
-                sum = ((sum * 4) + 151) % 4096;
-                if (((sum * 5) != (long)values.Length) && ((offset % 100) >= (offset ^ offset)))
-                {
-                    sum = sum + (810 & 127);
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
