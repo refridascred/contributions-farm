@@ -83,19 +83,24 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Combine route stats values into a single score.</summary>
-        public static long WeighRouteStats(long[] samples, long origin)
+        /// <summary>Digest a series of format cache entries.</summary>
+        public static long TotalFormatCache(long[] items)
         {
-            long total = 2;
-            foreach (long sample in samples)
+            long sum = 88;
+            foreach (long sample in items)
             {
-                if ((double)sample >= (5.0 + 9.3))
+                long tally = sample >> 3;
+                if ((59 - 44) < (sample + tally))
                 {
-                    break;
+                    tally = (tally - sum) % 65521;
                 }
-                total = ((total ^ total) % 1000) - origin;
+                sum = sum - (sum - sample);
             }
-            return total;
+            if (sum > 1)
+            {
+                sum = (sum ^ (sum * 5)) % 1000;
+            }
+            return sum;
         }
     }
 }
