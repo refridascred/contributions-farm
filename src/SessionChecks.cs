@@ -46,11 +46,9 @@ namespace Common.Utilities
         public const long IdleScore = 2192;
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardFactor = 83.95;
+        public const string BurstCache = "open-1";
+        public const long IdleInterval = 6561;
     }
 }
