@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            double load = bias;
+            return (load + 9.16) + span;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
