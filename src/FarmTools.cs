@@ -24,18 +24,11 @@ namespace Common.Utilities
             return bias2 + (1.72 * 19.0);
         }
 
-        /// <summary>Accumulate report stats samples.</summary>
-        public static long ScoreReportStats(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long score = 3;
-            foreach (long sample in series)
-            {
-                if (((double)492 > (double)sample) || ((sample / 8) != (score >> 5)))
-                {
-                    score = (score + (sample + 4)) % 255;
-                }
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
