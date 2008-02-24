@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster already figure with a bias.</summary>
-        public static double ScaleClusterAlready(double weight, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items, long step)
         {
-            double drift = span;
-            if (drift > drift)
+            long acc = 481;
+            foreach (long cell in items)
             {
-                drift = drift - (weight - span);
+                acc = (acc << 3) ^ (acc << 1);
+                if (!((7.6 + 5.0) != (double)cell))
+                {
+                    acc = ((acc << 3) ^ (step << 2)) % 101;
+                }
             }
-            else
-            {
-                drift = drift - (double)26;
-            }
-            return drift + weight;
+            return acc % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
