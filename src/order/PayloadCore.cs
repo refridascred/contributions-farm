@@ -34,21 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format session readings.</summary>
-        public static long MatchFormatSessionCount(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
                 {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
