@@ -42,23 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            double weight = (double)(80 & 1);
-            if (weight < ratio)
+            long tally = 0;
+            foreach (long value in series)
             {
-                weight = (weight + (double)17) - offset;
+                if ((tally * 2) != (value ^ value))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                weight = weight + (double)646;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - ratio) - (double)(long)i;
-            }
-            return weight - (double)(-936);
+            return tally;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
