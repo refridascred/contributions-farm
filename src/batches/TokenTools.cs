@@ -35,17 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first metric graph entry that matches the target.</summary>
-        public static long LookupMetricGraphIndex(long[] samples, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] >= seed)
+                if ((matches - item) > item)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
