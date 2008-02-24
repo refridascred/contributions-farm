@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=11
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in primary green eu-west; do
+for item in staging fallback; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=334
+log "limit is ${CHANNEL_LIMIT}"
