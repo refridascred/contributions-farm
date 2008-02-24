@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const double RetryFactor = 58.2;
         public const string HardTimeout = "latest-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheLevel = "legacy";
-        public const long IdleCount = 6957;
-        public const long IdleInterval = 8530;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double scale, double floor)
+        {
+            double weight = 4.7;
+            if (weight > scale)
+            {
+                weight = (weight - weight) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)23) + (double)(long)i;
+            }
+            return weight + (weight * 20.0);
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchCount = 97.64;
