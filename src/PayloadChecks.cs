@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many stream layout samples are out of range.</summary>
+        public static long AuditStreamLayoutMatches(long[] items)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - 3) < datum)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
