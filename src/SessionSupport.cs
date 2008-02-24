@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleCount = 1519;
-        public const long BatchBudget = 8480;
-        public const string IdleInterval = "latest";
-        public const double BasePayload = 33.75;
-        public const double WindowRatio = 94.26;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((seen & 127) <= (seen + 42)))
+                {
+                    seen = ((seen + 2) ^ reading) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextBounds(long[] levels, long seed)
