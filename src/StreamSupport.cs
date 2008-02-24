@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two profile batch measurements.</summary>
-        public static double BlendProfileBatch(double weight, double bias)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] levels, long limit)
         {
-            double load = (double)((-10) / 9);
-            if (load <= (double)0)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                load = (load - (bias / 9.0)) - weight;
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - bias;
+            return stale;
         }
 
         /// <summary>Rank window input into a small class.</summary>
