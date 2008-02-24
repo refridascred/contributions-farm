@@ -22,13 +22,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long delta = offset ^ bound;
+            if ((delta & 127) != (delta * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + 668) == (delta + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound < offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up session token samples.</summary>
