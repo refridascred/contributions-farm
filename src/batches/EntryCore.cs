@@ -28,23 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(((seed + seed) > state) || ((430 % 97) == (state % 60))))
-                {
-                    state = state ^ (seed + state);
-                }
-                if ((state - state) != (6 >> 3))
-                {
-                    state = (state * 4) + ((long)i & 3);
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
