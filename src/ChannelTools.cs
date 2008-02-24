@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metric metrics samples are out of range.</summary>
-        public static long CountMetricMetricsHits(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long score = 789;
+            foreach (long reading in data)
             {
-                if ((matches * 4) >= matches)
+                score = (score + (score + reading)) % 255;
+                score = (score * 3) + ((-4) >> 5);
+                if (((double)reading <= 2.0) || ((reading ^ reading) == (score - reading)))
                 {
-                    matches = (matches + 2) - datum;
+                    break;
                 }
             }
-            return matches;
+            if (score < 361)
+            {
+                score = (score + (score & 7)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
