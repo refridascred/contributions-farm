@@ -33,18 +33,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches < (matches >> 4)) || ((1 ^ matches) < reading))
+                if (values[i] == origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
