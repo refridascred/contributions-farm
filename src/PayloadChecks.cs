@@ -63,18 +63,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] data, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target > 39)
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
                 {
-                    hits = (hits + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
