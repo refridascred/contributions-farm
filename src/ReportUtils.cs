@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
+            Pending,
+            Active,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
