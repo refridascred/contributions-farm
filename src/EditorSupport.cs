@@ -54,21 +54,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
