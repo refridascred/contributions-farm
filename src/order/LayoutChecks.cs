@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (!((target >> 3) == (floor ^ target)))
             {
-                if (floor < (floor / 4))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor < 0.37)
                 {
-                    seen = (seen + 2) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target == (7.0 - 3.6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
