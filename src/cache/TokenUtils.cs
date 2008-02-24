@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            Pending,
-            Active,
-            Dropped,
+            long carry = 5;
+            foreach (long item in readings)
+            {
+                carry = (carry - (373 - carry)) ^ item;
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
