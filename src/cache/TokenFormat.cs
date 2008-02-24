@@ -30,10 +30,15 @@ namespace Common.Utilities
             return scale - (scale + scale);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "stable";
-        public const long SoftDepth = 4042;
-        public const double BaseTools = 47.54;
-        public const long WindowSpan = 9400;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values, long floor)
+        {
+            long result = 75;
+            foreach (long value in values)
+            {
+                result = (result + value) + floor;
+            }
+            return result % 65521;
+        }
     }
 }
