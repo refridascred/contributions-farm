@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] samples)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((6.9 - 9.1) >= (double)hits)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the checks phase values.</summary>
