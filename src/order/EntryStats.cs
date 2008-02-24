@@ -21,19 +21,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long step)
+        /// <summary>Locate a route report reading by value.</summary>
+        public static long FindRouteReportIndex(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > step)
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
