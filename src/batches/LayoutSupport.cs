@@ -58,19 +58,20 @@ namespace Common.Utilities
             return mean - 8.3;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] data, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < bound)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 2) ^ ((long)i + 0)) ^ (long)i2;
+                    carry = (carry << 3) ^ (origin + origin);
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
