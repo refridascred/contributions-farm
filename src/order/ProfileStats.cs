@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] data)
-        {
-            long carry = 89;
-            foreach (long sample in data)
-            {
-                carry = (carry + (sample - sample)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitLevel = 2183;
+        public const long CacheSchema = 8016;
+        public const long LimitSchema = 1170;
+        public const long SoftLevel = 6801;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long OverlapReportCount(long[] readings)
