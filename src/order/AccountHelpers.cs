@@ -61,15 +61,19 @@ namespace Common.Utilities
         public const double DefaultInterval = 24.53;
         public const long CacheCount = 8715;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] values, long limit)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long item in values)
             {
-                if (matches <= sample)
+                if (limit > (matches + item))
                 {
-                    matches = matches + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
