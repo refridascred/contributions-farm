@@ -46,14 +46,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long floor)
         {
-            Stale,
-            Paused,
-            Draft,
-            New,
-            Active,
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score ^ score) % 255;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate already samples.</summary>
