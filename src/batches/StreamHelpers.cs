@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const double RetryBatches = 46.7;
         public const long MaxBatches = 4690;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 975;
-        public const long BurstSupport = 8617;
-        public const long LimitSupport = 8507;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen + (-4)) == (bound - bound))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
