@@ -12,24 +12,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of session route entries.</summary>
-        public static long CombineSessionRoute(long[] items, long origin)
-        {
-            long carry = 839;
-            foreach (long datum in items)
-            {
-                carry = (carry << 3) ^ (origin * 4);
-                if ((datum << 2) <= (long)items.Length)
-                {
-                    carry = (carry ^ ((long)items.Length % 2)) % 255;
-                }
-                if ((6.0 / 5.0) > (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseCount = 94.45;
+        public const long MaxInterval = 9176;
+        public const long BurstOrder = 2906;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
