@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] readings, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry == (4.8 / 8.0))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
