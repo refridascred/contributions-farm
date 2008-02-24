@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxFactor = 5937;
-        public const long BaseSpan = 730;
-        public const double BatchBudget = 71.19;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.6 + 6.3) > (double)(long)samples.Length)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
