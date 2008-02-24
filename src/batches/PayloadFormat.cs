@@ -37,22 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            long anchor = 24;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((0.06 * 9.0) > (double)(long)values.Length)
+                if ((cell - hits) >= (hits / 4))
                 {
-                    anchor = ((anchor << 3) ^ (offset * 4)) - reading;
-                }
-                if ((double)anchor >= (1.0 / 6.0))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
