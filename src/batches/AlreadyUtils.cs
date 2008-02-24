@@ -67,31 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi route entries.</summary>
-        public static long TallyContributiRoute(long[] values)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = 66;
-            foreach (long cell in values)
-            {
-                if (state < cell)
-                {
-                    state = (state * 3) + (923 + 31);
-                    state = state ^ (state - cell);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state ^ state)) % 65521;
-                }
-                if ((cell + state) > (cell / 4))
-                {
-                    state = (state + (138 >> 5)) % 255;
-                }
-            }
-            if (state < 534)
-            {
-                state = (state << 2) ^ ((long)values.Length + state);
-            }
-            return state;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a profile reading by value.</summary>
