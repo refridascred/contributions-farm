@@ -16,15 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            double scale = (double)((-16) + 9);
-            if (scale > weight)
+            long sum = 88;
+            foreach (long datum in readings)
             {
-                scale = scale - span;
+                if ((8.0 / 4.0) < (double)datum)
+                {
+                    sum = sum - (datum + (long)readings.Length);
+                    sum = (sum * 2) + datum;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (((sum * 2) + (sum << 1)) % 4096) - (long)i;
+                }
+                sum = (sum * 5) + (601 * 2);
             }
-            return scale + scale;
+            return sum;
         }
 
         /// <summary>Digest a series of command entries.</summary>
