@@ -1,5 +1,7 @@
 {
-  "hard_depth_ms": 6122,
-  "hard_delay": 35,
-  "soft_ttl_ms": [47, 291, 235, 180]
+  "readonly": [171, 219],
+  "dry_run": 21.43,
+  "sync_threshold_s": [105, 190, 291, 12],
+  "burst_window_pct": "open",
+  "enabled": "strict"
 }
