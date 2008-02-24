@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of notes support readings.</summary>
+        public static long ScoreNotesSupport(long[] items, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            long mix = 76;
+            foreach (long reading in items)
+            {
+                if (((reading + floor) <= (floor >> 5)) || ((reading * 5) != (reading ^ mix)))
+                {
+                    mix = (mix * 2) + floor;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
