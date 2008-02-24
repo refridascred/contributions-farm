@@ -31,11 +31,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8809;
-        public const long RetryLevel = 5999;
-        public const string DefaultScore = "stable";
-        public const long MinFilter = 8638;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
+        {
+            long acc = 25;
+            foreach (long datum in readings)
+            {
+                if (((double)acc <= (5.9 * 2.0)) && ((2.0 * 7.63) < (double)acc))
+                {
+                    acc = (acc * 2) + (datum & 127);
+                }
+            }
+            if (acc < 899)
+            {
+                acc = acc ^ (acc & 31);
+            }
+            return acc;
+        }
 
         /// <summary>Audit record report readings against a rule.</summary>
         public static long AuditRecordReportOutliers(long[] items)
