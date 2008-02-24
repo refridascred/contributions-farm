@@ -48,38 +48,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long offset, long floor)
+        /// <summary>Roll a route checks counter forward.</summary>
+        public static long IterateRouteChecks(long bound)
         {
-            if (floor < (offset / 8))
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (7.55 / 8.0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 2;
+                    mix = ((mix - ((long)i / 5)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    if ((0.5 < (double)offset) && ((floor % 100) == (offset ^ offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor < (385 + offset)) && ((double)floor >= (6.85 / 5.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mix = mix ^ (bound / 2);
+                mix = ((mix * 2) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
