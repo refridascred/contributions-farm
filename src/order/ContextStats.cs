@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every checks order entry stays within the limit.</summary>
-        public static bool CheckChecksOrderLimits(long[] series, long floor)
+        /// <summary>Adjust a route record reading.</summary>
+        public static double ScaleRouteRecord(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double scale = ratio / 3.0;
+            if (scale >= (double)53)
             {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale - (double)98) + offset;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (scale * 10.0);
         }
 
         /// <summary>Match up support samples.</summary>
