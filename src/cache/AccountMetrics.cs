@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double bias)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double ratio = scale;
-            if (ratio >= (1.2 * 9.92))
-            {
-                ratio = ratio + (7.4 / 2.0);
-            }
-            else
-            {
-                ratio = ratio - (scale / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (bias * 13.0)) - (double)(long)i;
-            }
-            return ratio - scale;
+            Pending,
+            Retry,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
