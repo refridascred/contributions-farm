@@ -33,17 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric commits entry that matches the target.</summary>
-        public static long FindMetricCommitsIndex(long[] readings, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (readings[i] == origin)
+                if ((item ^ item) > (offset / 5))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
