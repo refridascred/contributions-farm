@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema layout samples are out of range.</summary>
-        public static long MeasureSchemaLayoutHits(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((target % 16) > (item % 16)) || (19.0 >= (double)target))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowTimeout = "fallback-1";
+        public const double SoftLevel = 96.89;
+        public const double DefaultScore = 86.14;
+        public const long StepPayload = 2255;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] data)
