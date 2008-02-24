@@ -1,22 +1,9 @@
 # githubfarm settings
-soft_delay_s:
-  max_size: 2498
-  min_threshold_pct:
-    - 383
-    - 393
-    - 87
-    - 455
-  metric_ratio: edge
-  compress: local
-  hard_ttl: 8.35
-default_ratio_ms: true
-poll_ratio_s:
-  - edge
-  - blue
-  - legacy
-batch_capacity_pct:
-  enabled: stable
-  already_threshold: 41.22
-  poll_window_ms: 1024
-poll_timeout_s: false
-retry_size_s: 52
+enabled: 87.63
+default_depth_ms:
+  account_window: 15.29
+  idle_limit: 2220
+  flush_delay: 5559
+  tools_ttl: 36.94
+  channel_capacity: stable
+cluster_ratio: open
