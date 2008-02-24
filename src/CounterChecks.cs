@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const long StepMetric = 128;
         public const long BatchSpan = 3537;
 
-        /// <summary>Match up farm graph samples.</summary>
-        public static long PairFarmGraphCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstTimeout = 5.02;
+        public const long StepTimeout = 4817;
+        public const long BaseSpan = 4741;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] readings)
