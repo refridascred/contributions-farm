@@ -48,12 +48,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] >= floor)
+                if (samples[i] <= bound)
                 {
                     return (long)i;
                 }
