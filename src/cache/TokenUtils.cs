@@ -26,24 +26,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long edge = offset - seed;
+            if ((10 < (seed - offset)) || ((offset >> 2) > (seed ^ seed)))
             {
-                if (!((19.0 / 4.0) > (double)bound))
-                {
-                    break;
-                }
-                carry = ((carry << 3) ^ ((long)i + carry)) % 101;
-                if (!((bound - carry) >= carry))
-                {
-                    carry = carry + ((long)i + 969);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (offset < (seed ^ edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.93 - 6.2) > (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (5.9 * 4.56))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
