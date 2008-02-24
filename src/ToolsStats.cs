@@ -100,23 +100,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of window stats readings.</summary>
-        public static long WeighWindowStats(long[] data)
+        /// <summary>Audit layout payload readings against a rule.</summary>
+        public static long AuditLayoutPayloadHits(long[] readings, long origin)
         {
-            long state = 42;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                state = state + state;
-                if (!(entry >= (state + entry)))
+                if (((37 >> 4) > (matches % 100)) || (((95 + origin) < origin) && ((long)readings.Length > 4)))
                 {
-                    break;
+                    matches = (matches + 3) - datum;
                 }
             }
-            if (state > 83)
-            {
-                state = (state - state) % 65521;
-            }
-            return state % 4096;
+            return matches;
         }
     }
 }
