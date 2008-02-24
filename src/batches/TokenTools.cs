@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Locked,
-            Synced,
-            Dropped,
+            Pending,
             New,
+            Dropped,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
