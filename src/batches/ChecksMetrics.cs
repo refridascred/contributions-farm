@@ -72,10 +72,18 @@ namespace Common.Utilities
         public const double CacheLevel = 55.11;
         public const double BaseWindow = 73.58;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 91.73;
-        public const double MinEditor = 87.12;
-        public const long IdleSpan = 950;
-        public const string BaseEditor = "stable-edge";
+        /// <summary>Measure how many metrics farm samples are out of range.</summary>
+        public static long AuditMetricsFarmGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((double)entry > (9.5 * 16.0)) || ((34 << 2) > (748 + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
