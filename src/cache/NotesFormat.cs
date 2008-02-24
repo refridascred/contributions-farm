@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a batches token pair into a bucket.</summary>
-        public static long SortBatchesToken(long floor, long limit)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long limit)
         {
-            long cur = floor + limit;
-            if ((limit - limit) < 911)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur <= (double)520)
+                if (data[i] <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(limit >= (floor * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor ^ cur) <= (cur - floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
