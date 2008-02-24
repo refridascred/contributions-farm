@@ -1,14 +1,8 @@
 {
-  "retry_limit": "cached",
-  "flush_depth_ms": "staging",
-  "soft_threshold_ms": {
-    "sync_depth_count": "blue",
-    "report_ratio": 9,
-    "cache_timeout_s": true,
-    "metrics_limit": "eu-west",
-    "readonly": "local"
-  },
-  "idle_depth_pct": false,
-  "enabled": 3711,
-  "compress": 30.04
+  "verbose": 25.61,
+  "compress": false,
+  "persist": "stable",
+  "min_ttl_count": "strict",
+  "command_retries": "open",
+  "enabled": 76
 }
