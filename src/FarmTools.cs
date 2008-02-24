@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] readings)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double bias2 = 6.23;
+            if (bias2 < (bias - span))
             {
-                if (!((reading + tally) < (392 + tally)) && ((tally * 4) <= (5 << 3)))
-                {
-                    tally = tally + 2;
-                }
+                bias2 = bias2 + (bias / 6.0);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (span - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (1.72 * 19.0);
         }
 
         /// <summary>Accumulate report stats samples.</summary>
