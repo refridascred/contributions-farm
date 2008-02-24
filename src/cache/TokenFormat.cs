@@ -26,13 +26,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long bound)
         {
-            Active,
-            Failed,
-            Retry,
-            Synced,
+            if (!((double)bound == (9.2 + 3.3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + 13) <= (-3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
