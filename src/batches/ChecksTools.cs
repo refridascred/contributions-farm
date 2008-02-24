@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 2332;
-        public const string DefaultRatio = "local";
-        public const long StepTimeout = 2631;
-        public const long WindowCount = 4793;
-        public const long IdleAlready = 1412;
+        /// <summary>Check that every contributi token entry stays within the limit.</summary>
+        public static bool ValidateContributiTokenLimits(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
