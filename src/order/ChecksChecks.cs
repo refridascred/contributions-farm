@@ -19,38 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            if (((limit + origin) > origin) && ((limit / 4) < origin))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin <= (5.8 * 14.0))
+                if ((matches % 2) >= entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin + limit) > (limit / 6)) && ((10.0 * 4.0) > (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit <= (8 >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next editor schema value.</summary>
