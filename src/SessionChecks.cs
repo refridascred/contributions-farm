@@ -23,26 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token graph samples.</summary>
-        public static long TotalTokenGraph(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mark = 577;
-            foreach (long sample in series)
-            {
-                if (sample > (mark & 7))
-                {
-                    mark = (mark + (mark % 10)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (sample + 9)) % 4096;
-                }
-            }
-            if (mark > 874)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 65521;
+            Stale,
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Rank window contributi input into a small class.</summary>
