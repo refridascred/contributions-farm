@@ -51,12 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            Draft,
-            Closed,
-            Dropped,
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((double)total < (double)seed))
+                {
+                    total = ((total * 3) + total) % 65521;
+                }
+                if ((seed >> 1) <= (seed >> 5))
+                {
+                    total = (total << 3) ^ ((long)i - total);
+                }
+                total = (total + ((long)i + 57)) % 97;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
