@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Rank tools account input into a small class.</summary>
+        public static long BucketToolsAccount(long limit, long offset)
         {
-            long acc = 745;
-            foreach (long reading in data)
+            long offset2 = limit ^ offset;
+            if (((offset2 - 0) <= (offset + limit)) && ((offset2 & 7) > limit))
             {
-                if ((1.2 - 1.44) > (double)(long)data.Length)
+                return 5;
+            }
+            else
+            {
+                if (limit >= offset2)
                 {
-                    acc = (acc + acc) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (acc > (-6))
-            {
-                acc = acc - (29 >> 1);
-            }
-            return acc % 4096;
         }
 
         /// <summary>Blend two window measurements.</summary>
