@@ -27,18 +27,27 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] readings, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (((item >= (offset + item)) && ((double)tally < 6.04)) || ((double)item <= (7.0 + 8.0)))
+                if (((long)i - state) != (state >> 5))
                 {
-                    tally = tally + 2;
+                    state = state ^ (floor & 1);
                 }
+                else
+                {
+                    state = (state + (state + 572)) % 1000;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state * 5) + state) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
     }
 }
