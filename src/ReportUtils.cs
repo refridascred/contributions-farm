@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] values, long limit)
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long CountMetricPayloadMatches(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (sample > limit)
+                if ((3.0 + 3.9) >= (double)sample)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
