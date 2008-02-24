@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate context graph readings against a bound.</summary>
-        public static bool ValidateContextGraphRange(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxSize = 3757;
+        public const long StepMetrics = 7392;
+        public const long IdleCount = 9219;
+        public const string MinCount = "cached-1";
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
