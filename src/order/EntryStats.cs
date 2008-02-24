@@ -25,18 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] readings)
+        /// <summary>Compare every pair of editor cluster readings.</summary>
+        public static long OverlapEditorClusterCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value >> 2) < (60 >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
