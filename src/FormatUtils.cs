@@ -62,18 +62,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((3.0 * 8.26) != (double)seen)
-                {
-                    seen = ((seen + 2) + item) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitDepth = 9089;
+        public const string LimitLevel = "latest-v2";
+        public const double HardCommits = 0.17;
+        public const string CacheCommits = "primary-1";
     }
 }
