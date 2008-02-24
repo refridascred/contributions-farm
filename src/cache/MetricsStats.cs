@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool CheckBufferReportRange(long[] values, long target)
+        /// <summary>Blend two graph already measurements.</summary>
+        public static double SmoothGraphAlready(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double drift = (double)(320 + 950);
+            if (drift >= (9.06 * 3.86))
             {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - (bias + drift)) - rate;
             }
-            return stale;
+            else
+            {
+                drift = drift - (double)0;
+            }
+            return drift + (4.0 + drift);
         }
 
         /// <summary>Combine format values into a single score.</summary>
