@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] levels)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((double)item >= (6.8 + 0.08)) || (((count * 2) > count) || ((item - item) != (item - 641))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
