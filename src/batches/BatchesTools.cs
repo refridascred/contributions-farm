@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long IdleMetric = 7079;
         public const double BaseFactor = 9.93;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 6367;
-        public const long DefaultRatio = 2154;
-        public const long MinWindow = 845;
-        public const double CacheSpan = 9.57;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyOutliers(long[] levels)
