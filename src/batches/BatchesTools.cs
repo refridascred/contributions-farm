@@ -13,32 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings, long seed)
         {
-            long next = limit - seed;
-            if ((limit ^ limit) >= next)
+            long score = 2;
+            foreach (long sample in readings)
             {
-                return 5;
+                score = ((score ^ (score ^ score)) % 4096) ^ sample;
             }
-            else
+            if (score > 48)
             {
-                if (((-924) - seed) >= (limit % 97))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-9) + seed) <= (next << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = (score << 2) ^ seed;
             }
+            return score;
         }
 
         /// <summary>Project the next payload order value.</summary>
