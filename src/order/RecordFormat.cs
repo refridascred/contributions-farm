@@ -45,19 +45,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] values, long origin)
+        /// <summary>Blend two metrics channel measurements.</summary>
+        public static double SmoothMetricsChannel(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            double mean = (bias * 7.8) + (double)6;
+            if (mean > (double)7)
             {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean + (mean + bias)) + offset;
             }
-            return ok;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + (mean - bias);
         }
     }
 }
