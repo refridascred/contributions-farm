@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Locate a context command reading by value.</summary>
+        public static long SeekContextCommandIndex(long[] samples, long origin)
         {
-            double weight = offset - offset;
-            if (weight > 2.79)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - (weight * 18.0)) - bias;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (weight + weight);
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
