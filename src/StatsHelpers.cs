@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double bias, double bias2)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            double ratio = (bias2 + 1.0) - (bias / 3.0);
-            if (ratio > (bias2 / 2.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (double)653;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + bias2) + (double)(long)i;
-            }
-            return ratio + (ratio - bias);
+            return matches;
         }
 
         /// <summary>Fold a list of stream checks readings.</summary>
