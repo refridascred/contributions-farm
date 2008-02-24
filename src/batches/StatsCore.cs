@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double DefaultRatio = 78.95;
         public const double BaseChecks = 34.15;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long step)
         {
-            long score = 93;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                score = ((score ^ (limit ^ limit)) % 97) ^ entry;
+                if (0 >= (step ^ step))
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
