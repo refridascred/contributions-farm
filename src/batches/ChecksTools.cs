@@ -20,13 +20,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Blend two schema layout measurements.</summary>
+        public static double ScaleSchemaLayout(double ratio, double bias)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            double rate = bias;
+            if (rate < (bias * 5.0))
+            {
+                rate = rate + (double)9;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
