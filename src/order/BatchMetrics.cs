@@ -53,12 +53,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of channel window readings.</summary>
+        public static long DigestChannelWindow(long[] values, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long result = 5;
+            foreach (long item in values)
+            {
+                if ((35 % 24) < (result % 97))
+                {
+                    result = ((result * 5) + ((long)values.Length / 7)) - item;
+                }
+                if (((origin + origin) < (97 ^ origin)) || (result >= ((-7) + origin)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
