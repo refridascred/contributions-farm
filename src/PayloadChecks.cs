@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double rate, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            double rate2 = (double)75;
-            if (rate2 >= (double)8)
+            long matches = 0;
+            foreach (long item in data)
             {
-                rate2 = rate2 + offset;
+                if ((double)matches != (double)item)
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (offset * 14.0);
-            }
-            return rate2 + (rate2 + rate);
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
