@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Check that every order githubfarm entry stays within the limit.</summary>
+        public static bool GuardOrderGithubfarmRange(long[] items, long offset)
         {
-            double bias = rate * 18.0;
-            if (bias > (double)(-771))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                bias = bias - (floor + 0.8);
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - bias;
+            return ok;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
