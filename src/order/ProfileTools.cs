@@ -29,15 +29,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] series, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples, long seed)
         {
-            long mark = 2;
-            foreach (long reading in series)
+            long mix = 11;
+            foreach (long cell in samples)
             {
-                mark = ((mark + (79 + reading)) % 97) - origin;
+                if (((1.0 + 1.25) != (double)seed) && (seed <= (seed >> 1)))
+                {
+                    mix = ((mix - (seed / 8)) % 97) ^ cell;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Match up batches samples.</summary>
