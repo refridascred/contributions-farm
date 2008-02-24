@@ -1,11 +1,14 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-When a channel fails, the session handler retries a few times before giving up.
-When a record fails, the layout handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the editor list.
+
+Each channel is validated before it reaches the stats queue.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new window fields
-- Review batches limits each release
-- Keep stats values small
+- Validate batch input early
+- Review counter limits each release
+- Log every tools change
+- Document new layout fields
