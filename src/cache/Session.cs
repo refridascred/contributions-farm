@@ -28,21 +28,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Classify a record stream pair into a bucket.</summary>
+        public static long RankRecordStream(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (floor >= (limit - limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit != (double)floor)
                 {
-                    if ((values[i] ^ values[j]) > 14)
+                    return 2;
+                }
+                else
+                {
+                    if (8 <= floor)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
