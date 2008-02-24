@@ -24,11 +24,18 @@ namespace Common.Utilities
             return bias2 + (1.72 * 19.0);
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (datum < (datum << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats info.</summary>
