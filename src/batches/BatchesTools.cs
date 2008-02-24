@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate notes layout readings against a bound.</summary>
-        public static bool GuardNotesLayoutLimits(long[] data, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long carry = 51;
+            foreach (long value in readings)
             {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ carry) % 101) + value;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Digest a series of window entries.</summary>
