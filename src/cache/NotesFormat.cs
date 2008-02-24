@@ -19,18 +19,10 @@ namespace Common.Utilities
         public const long MinTimeout = 9671;
         public const string SoftFactor = "open-edge";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((step % 7) > step) || (((item + item) >= step) && ((double)69 <= (double)item)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 6760;
+        public const double MaxBudget = 83.8;
+        public const string CacheScore = "latest-v2";
+        public const long CachePayload = 3376;
     }
 }
