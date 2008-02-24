@@ -18,19 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double rate, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            double bias = (floor - floor) + (rate + rate);
+            if (bias >= bias)
             {
-                if (((18.0 * 5.65) >= (double)step) && ((step << 2) >= (result << 1)))
-                {
-                    result = (result ^ ((long)i + step)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                bias = bias + floor;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - rate) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the layout level values.</summary>
