@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 544;
+            foreach (long entry in levels)
             {
-                if ((reading - hits) < (reading - 516))
+                score = ((score - (score / 9)) % 4096) + step;
+                if ((double)score < (1.55 * 9.0))
                 {
-                    hits = hits + 2;
+                    score = (score ^ (score - entry)) % 101;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Describe the report phase values.</summary>
