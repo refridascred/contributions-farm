@@ -43,22 +43,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster contributi entries.</summary>
-        public static long CombineClusterContributi(long[] data)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long sum = 29;
-            foreach (long value in data)
-            {
-                if ((0.2 - 8.51) < (double)value)
-                {
-                    sum = ((sum << 3) ^ (sum / 5)) % 4096;
-                }
-            }
-            if (sum > 2)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum;
+            Locked,
+            New,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
