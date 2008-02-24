@@ -36,31 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if ((step % 10) <= (offset + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step <= (offset + 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step & 15) <= offset) || (step < offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Draft,
+            Synced,
+            Stale,
         }
     }
 }
