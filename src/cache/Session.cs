@@ -30,21 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long step, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((1 * 4) >= (436 - limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (0.71 > (double)step)
                 {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
