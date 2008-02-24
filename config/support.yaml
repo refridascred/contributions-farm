@@ -1,24 +1,12 @@
 # support settings
-base_capacity:
-  - 273
-  - 376
-  - 351
-  - 17
-persist:
-  hard_threshold:
-    min_timeout_ms: 100
-    persist: true
-    default_retries_count: 53.28
-    profile_interval: 5986
-  idle_limit_ms: true
-  dry_run: 250
-  hard_capacity_pct:
-    - 483
-    - 389
-    - 105
-  min_delay_count:
-    base_interval_s: 88.66
-    flush_timeout_pct: 95.42
-    strict: 7929
-  persist: 51.1
-farm_interval: primary
+report_depth:
+  base_limit_s: 28
+  soft_depth_pct: false
+  default_capacity: eu-west
+  sync_timeout_pct: 389
+flush_timeout:
+  - primary
+  - stable
+  - edge
+  - blue
+idle_limit: latest
