@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] series)
+        /// <summary>Check that every channel layout entry stays within the limit.</summary>
+        public static bool VerifyChannelLayoutRange(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((value / 6) <= hits)
+                if (entry > origin)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
