@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long MeasureCommitsFilterMatches(long[] values, long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if ((3.8 / 2.0) >= (double)seed)
             {
-                if ((sample << 2) >= (41 - offset))
+                return 0;
+            }
+            else
+            {
+                if ((seed2 >> 2) < (seed << 1))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
