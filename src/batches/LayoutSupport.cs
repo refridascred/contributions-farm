@@ -32,19 +32,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long floor2)
         {
-            double mean = 7.9 / 9.0;
-            if (mean < (double)73)
+            if (floor2 <= (floor2 + floor2))
             {
-                mean = (mean - span) + scale;
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean - mean) - (double)(long)i;
+                if ((8.3 * 9.0) != (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor2 % 100) < (floor >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean - (span / 9.0);
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
