@@ -46,18 +46,12 @@ namespace Common.Utilities
             return drift + (16.0 * 16.0);
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches >> 2) < (reading * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
