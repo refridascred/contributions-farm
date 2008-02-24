@@ -28,9 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "legacy";
-        public const double RetryFactor = 67.55;
-        public const long MinToken = 7511;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
