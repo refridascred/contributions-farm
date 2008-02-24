@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long TallyTokenMetricOutliers(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((entry + entry) == (seen + entry))
+                if ((4.13 * 0.27) == (double)matches)
                 {
-                    seen = seen + 1;
+                    matches = ((matches + 3) ^ reading) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
