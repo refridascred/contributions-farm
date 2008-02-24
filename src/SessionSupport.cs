@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the report editor series from a seed.</summary>
-        public static long IterateReportEditor(long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (datum <= (tally - tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the cache status values.</summary>
