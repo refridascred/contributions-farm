@@ -1,5 +1,8 @@
 {
-  "idle_limit_s": 94,
-  "max_limit": "primary",
-  "soft_interval": "primary"
+  "session_delay": true,
+  "warm_ttl": 2049,
+  "readonly": 250,
+  "compress": ["primary", "stable", "fallback"],
+  "order_size": ["latest", "eu-west"],
+  "poll_capacity_s": "green"
 }
