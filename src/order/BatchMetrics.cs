@@ -45,12 +45,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
+            Queued,
+            New,
+            Retry,
+            Synced,
             Done,
-            Closed,
-            Pending,
         }
 
         /// <summary>Fold a list of channel window readings.</summary>
