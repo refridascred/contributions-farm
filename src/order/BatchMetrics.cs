@@ -47,38 +47,13 @@ namespace Common.Utilities
         public const string DefaultChecks = "cached-v2";
         public const long LimitFactor = 9869;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if ((67 - step) < (floor ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step == (6.0 / 4.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-597) & 31) >= (floor >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor + step) <= step) || ((step ^ floor) < (808 ^ step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
