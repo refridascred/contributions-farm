@@ -41,21 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 0.1;
+            if (ratio < (double)75)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (double)7) + (double)(long)i;
+            }
+            return ratio - weight;
         }
     }
 }
