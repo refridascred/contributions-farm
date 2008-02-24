@@ -13,21 +13,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            New,
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Rank notes stats input into a small class.</summary>
