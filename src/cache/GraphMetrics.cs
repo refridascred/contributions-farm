@@ -42,21 +42,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of stats context readings.</summary>
-        public static long MatchStatsContextCount(long[] levels)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = offset + step;
+            if ((offset & 3) > (offset + gap))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step - gap) < (offset - offset))
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
+                    return 1;
+                }
+                else
+                {
+                    if (gap >= 415)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)gap >= (1.03 + 7.69))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
