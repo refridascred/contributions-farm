@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the channel tools series from a seed.</summary>
-        public static long DeriveChannelTools(long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] values, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
