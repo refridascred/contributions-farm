@@ -62,13 +62,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long step)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
