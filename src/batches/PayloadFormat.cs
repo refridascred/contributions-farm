@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            double scale = gain;
+            if (scale <= (floor - floor))
             {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + 0.3;
             }
-            return stale;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - scale;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
