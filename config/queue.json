@@ -1,7 +1,7 @@
 {
-  "default_limit_s": [228, 172, 227],
-  "hard_size_s": 6220,
-  "dry_run": 9147,
-  "poll_window_ms": 52.6,
-  "context_capacity": ["latest", "latest"]
+  "readonly": ["fallback", "edge"],
+  "default_delay_count": 1875,
+  "poll_size_s": "stable",
+  "checks_ratio": 9438,
+  "cache_limit_pct": "stable"
 }
