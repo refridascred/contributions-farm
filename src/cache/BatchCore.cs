@@ -44,18 +44,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry == (2.3 + 1.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Ready,
+            Locked,
+            Synced,
+            Idle,
         }
     }
 }
