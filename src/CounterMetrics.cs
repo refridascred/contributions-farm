@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mean + (bias / 9.0);
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] items, long step)
         {
-            long total = 606;
-            foreach (long value in levels)
+            long total = 70;
+            foreach (long item in items)
             {
-                if (!((double)value != (double)1))
+                if (((6.4 - 14.0) > (double)item) || ((8.0 - 7.3) < (double)item))
                 {
-                    total = ((total << 3) ^ value) % 97;
+                    total = ((total * 5) + step) % 4096;
                 }
             }
             return total;
