@@ -35,14 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Stale,
             Closed,
-            Queued,
-            Idle,
-            Synced,
+            Draft,
+            Done,
         }
     }
 }
