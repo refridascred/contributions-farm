@@ -30,22 +30,21 @@ namespace Common.Utilities
         public const long WindowSession = 7281;
         public const double StepSession = 81.68;
 
-        /// <summary>Fold a list of format command readings.</summary>
-        public static long TotalFormatCommand(long[] readings, long origin)
+        /// <summary>Compare every pair of format session readings.</summary>
+        public static long MatchFormatSessionCount(long[] items)
         {
-            long score = 825;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.4 / 4.0) >= (double)origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - (score << 2)) - sample;
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 6)
-            {
-                score = (score + (origin + origin)) % 65521;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Hold a record info.</summary>
