@@ -83,18 +83,19 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] items, long bound)
+        /// <summary>Combine route stats values into a single score.</summary>
+        public static long WeighRouteStats(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = 2;
+            foreach (long sample in samples)
             {
-                if ((809 + bound) > seen)
+                if ((double)sample >= (5.0 + 9.3))
                 {
-                    seen = (seen + 3) + entry;
+                    break;
                 }
+                total = ((total ^ total) % 1000) - origin;
             }
-            return seen;
+            return total;
         }
     }
 }
