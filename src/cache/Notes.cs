@@ -35,12 +35,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheBudget = 2556;
-        public const long BaseTools = 3258;
-        public const double IdleTools = 32.53;
-        public const long StepTools = 3344;
-        public const long WindowSpan = 6734;
+        /// <summary>Rank graph session input into a small class.</summary>
+        public static long ClassifyGraphSession(long target, long limit)
+        {
+            long lane = target ^ limit;
+            if ((limit % 3) < (target >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)target <= 8.07) && (lane < (target & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderRange(long[] values, long seed)
