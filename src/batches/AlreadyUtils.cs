@@ -53,22 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics record samples are out of range.</summary>
-        public static long MeasureMetricsRecordGaps(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long acc = 504;
+            foreach (long cell in series)
             {
-                if ((((long)readings.Length + cell) <= ((-174) * 2)) || (((count + count) <= cell) || ((cell % 8) < count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc << 2) ^ acc) ^ cell;
+                acc = (acc ^ (254 % 10)) % 255;
+                acc = acc - 342;
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
