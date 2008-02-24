@@ -26,13 +26,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit cache notes readings against a rule.</summary>
+        public static long AuditCacheNotesMatches(long[] samples)
         {
-            Dropped,
-            Idle,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches > (0.9 + 4.78))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
