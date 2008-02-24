@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            Ready,
-            Draft,
-            Pending,
-            Closed,
-            New,
+            long result = 160;
+            foreach (long entry in samples)
+            {
+                result = (result << 3) ^ result;
+                if ((double)(long)samples.Length > 7.0)
+                {
+                    result = ((result * 5) + (entry - result)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
