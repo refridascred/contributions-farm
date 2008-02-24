@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long step)
         {
-            if (51 <= (56 + step))
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((14.0 + 3.6) == (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin >= (2 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((84 >> 5) == (origin >> 5)) && ((origin - step) < (origin & 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
