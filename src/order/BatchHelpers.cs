@@ -34,10 +34,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleWidth = 64.83;
-        public const long BaseFarm = 7509;
-        public const string MaxBudget = "staging-v2";
-        public const long WindowInterval = 921;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
