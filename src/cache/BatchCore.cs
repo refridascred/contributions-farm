@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFactor = 6217;
+        public const long WindowWidth = 6286;
+        public const long StepFilter = 7111;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
