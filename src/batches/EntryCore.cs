@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] levels, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetrySize = "staging";
+        public const string SoftAccount = "alpha";
+        public const long MaxSpan = 263;
+        public const string MaxScore = "local-1";
+        public const long StepAccount = 2937;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
