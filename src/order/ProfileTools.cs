@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (rate - (6.05 / 2.0)) + offset;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data, long limit)
+        /// <summary>Adjust a counter channel reading.</summary>
+        public static double SmoothCounterChannel(double rate, double span)
         {
-            long acc = -22;
-            foreach (long datum in data)
+            double scale = (6.0 * 1.7) / 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                acc = acc + (acc << 1);
-                if (limit > (datum % 64))
-                {
-                    break;
-                }
+                scale = ((scale + (rate + scale)) - (double)(long)i) + span;
             }
-            return acc % 65521;
+            return scale - (scale + scale);
         }
 
         /// <summary>Compare every pair of route contributi readings.</summary>
