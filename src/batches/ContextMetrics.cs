@@ -15,12 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 8484;
-        public const double SoftBuffer = 2.15;
-        public const double BurstBuffer = 37.46;
-        public const long BatchLevel = 4382;
-        public const string BatchDepth = "alpha-v2";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long bound, long seed)
+        {
+            if (((-7) + (-82)) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 > (double)seed) && (seed > (seed + 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long offset)
