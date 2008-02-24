@@ -33,24 +33,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] data)
         {
-            if ((122 / 6) == (origin >> 4))
+            long acc = 81;
+            foreach (long item in data)
             {
-                return 2;
+                acc = (acc << 3) ^ (item ^ item);
+                acc = acc + (item >> 3);
+                if ((acc + item) > (item + acc))
+                {
+                    acc = acc + 257;
+                }
+                if (item <= 17)
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 2)
             {
-                if ((1.5 / 6.0) != (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                acc = (acc << 3) ^ (acc >> 3);
             }
+            return acc % 97;
         }
 
         /// <summary>Describe the tools kind values.</summary>
