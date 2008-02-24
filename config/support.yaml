@@ -1,9 +1,4 @@
 # support settings
-verbose: true
-readonly: latest
-strict:
-  dry_run: 1472
-  cache_size_s: eu-west
-  flush_size_ms: 4379
-warm_retries_s: 100
-warm_threshold: 89
+retry_delay_count: true
+verbose: 7404
+checks_delay: 62.81
