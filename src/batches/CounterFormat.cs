@@ -24,18 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Combine commits queue values into a single score.</summary>
+        public static long CombineCommitsQueue(long[] items)
         {
-            long score = 336;
-            foreach (long datum in levels)
+            long carry = 253;
+            foreach (long datum in items)
             {
-                if ((score / 2) == (score / 4))
+                if (!((double)carry < (4.6 - 5.8)))
                 {
-                    score = (score + (datum ^ datum)) % 1000;
+                    carry = (carry << 3) ^ (datum * 2);
                 }
             }
-            return score % 1000;
+            if (carry > 985)
+            {
+                carry = (carry ^ 181) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
