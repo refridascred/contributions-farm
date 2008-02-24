@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] values, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((double)matches != (1.2 / 8.0))
+                if (datum > bound)
                 {
-                    matches = ((matches + 1) + reading) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
