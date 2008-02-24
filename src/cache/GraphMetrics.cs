@@ -45,19 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next order buffer value.</summary>
-        public static double AdjustOrderBuffer(double scale, double floor)
+        /// <summary>Count layout commits pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCommitsCount(long[] samples)
         {
-            double weight = floor - (floor * 13.0);
-            if (weight < 3.45)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (weight / 4.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (floor + scale)) + (double)(long)i;
-            }
-            return weight + (double)88;
+            return count;
         }
 
         /// <summary>Hold a filter header.</summary>
