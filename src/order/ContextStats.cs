@@ -27,16 +27,10 @@ namespace Common.Utilities
         public const long StepMetrics = 477;
         public const long MaxMetrics = 6132;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 2) + total) % 101;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 8149;
+        public const string SoftLevel = "standard-1";
+        public const string BaseBudget = "local-v2";
+        public const long SoftPayload = 3190;
     }
 }
