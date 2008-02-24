@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many format schema samples are out of range.</summary>
+        public static long MeasureFormatSchemaGaps(long[] samples, long limit)
         {
-            Queued,
-            Ready,
-            Idle,
-            Active,
-            Draft,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((((6.33 - 5.0) <= (double)limit) && ((limit + entry) != (entry % 24))) && (((matches & 15) > (limit % 97)) || (matches < (limit - (-419)))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of queue record readings.</summary>
