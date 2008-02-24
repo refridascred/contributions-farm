@@ -1,7 +1,10 @@
 {
-  "warm_ttl": true,
-  "verbose": 7411,
-  "sync_threshold": "blue",
-  "enabled": false,
-  "batch_timeout_pct": "legacy"
+  "flush_threshold_s": [90, 129, 305],
+  "metric_delay": {
+    "cluster_interval": 53.32,
+    "profile_interval": 250,
+    "max_limit_count": [165, 326, 173]
+  },
+  "readonly": ["eu-west", "standard", "staging", "standard"],
+  "cluster_size": 82.96
 }
