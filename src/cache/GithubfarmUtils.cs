@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items, long offset)
         {
-            Retry,
-            Pending,
-            Dropped,
+            long carry = 203;
+            foreach (long reading in items)
+            {
+                if ((reading << 1) >= offset)
+                {
+                    carry = ((carry * 5) + (offset >> 3)) % 255;
+                }
+            }
+            if (carry > 692)
+            {
+                carry = (carry - offset) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
