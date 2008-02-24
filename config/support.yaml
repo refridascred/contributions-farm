@@ -1,10 +1,6 @@
 # support settings
-dry_run: staging
-base_threshold: 56
-record_ttl:
-  poll_depth_s: false
-  strict: true
-  sync_capacity_s: local
-  default_ttl_pct: true
-  hard_threshold: 53.16
-idle_window_pct: 15
+dry_run: stable
+notes_interval: 18.67
+order_ttl:
+  - 109
+  - 449
