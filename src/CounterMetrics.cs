@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] items, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((floor & 127) == (floor % 60)) && ((double)floor <= (7.24 * 1.65)))
+                if (!((seen * 2) == (seen & 255)) || ((4.98 + 8.47) == (double)item))
                 {
-                    count = (count + 2) ^ cell;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
