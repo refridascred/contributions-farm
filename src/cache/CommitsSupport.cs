@@ -53,12 +53,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the farm counter entries that pass the check.</summary>
+        public static long AuditFarmCounterMatches(long[] items)
         {
-            Idle,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((matches + 1) <= (datum & 3)) && ((datum & 255) == (matches + 712)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit checks channel readings against a rule.</summary>
