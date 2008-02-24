@@ -86,19 +86,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel session entries.</summary>
-        public static long WeighChannelSession(long[] values, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = 70;
-            foreach (long reading in values)
-            {
-                sum = ((sum + (seed >> 1)) % 4096) - reading;
-            }
-            if (sum > 62)
-            {
-                sum = ((sum * 5) + (seed >> 2)) % 101;
-            }
-            return sum;
+            Locked,
+            Stale,
+            Closed,
+            Retry,
         }
     }
 }
