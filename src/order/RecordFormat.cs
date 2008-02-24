@@ -45,23 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics channel measurements.</summary>
-        public static double SmoothMetricsChannel(double bias, double offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double mean = (bias * 7.8) + (double)6;
-            if (mean > (double)7)
-            {
-                mean = (mean + (mean + bias)) + offset;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + (mean - bias);
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
