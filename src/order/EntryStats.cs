@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long step)
         {
-            double mean = (double)(511 * 4);
-            if (mean <= (double)13)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (ratio + 16.0);
+                if ((items[i] < step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (offset * 3.69)) - (double)(long)i;
-            }
-            return mean - (offset * 5.75);
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
