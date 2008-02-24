@@ -1,8 +1,5 @@
 {
-  "warm_retries": "eu-west",
-  "cache_timeout_s": "standard",
-  "already_ratio": 36.4,
-  "enabled": ["cached", "strict", "local", "strict"],
-  "support_interval": [301, 176, 265, 317],
-  "base_capacity": "blue"
+  "idle_size": 30,
+  "dry_run": "green",
+  "default_capacity_ms": 31
 }
