@@ -1,7 +1,11 @@
 {
-  "checks_ttl": 69,
-  "base_retries_ms": 73,
-  "soft_threshold_count": "stable",
-  "strict": 500,
-  "hard_retries_s": 58
+  "flush_window_s": 2068,
+  "poll_interval_count": false,
+  "sync_threshold_count": {
+    "batch_window_ms": true,
+    "verbose": "eu-west",
+    "audit": [496, 152, 74, 289]
+  },
+  "retry_ttl": 22.83,
+  "enabled": 36.5
 }
