@@ -28,11 +28,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinDepth = 3514;
-        public const long BatchMetric = 6841;
-        public const long HardDepth = 2981;
-        public const long DefaultLevel = 4402;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] data)
+        {
+            long score = 618;
+            foreach (long item in data)
+            {
+                if (item >= (score >> 4))
+                {
+                    score = (score ^ (item + 351)) % 65521;
+                }
+            }
+            if (score > 7)
+            {
+                score = ((score << 2) ^ score) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
