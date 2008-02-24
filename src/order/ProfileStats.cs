@@ -16,12 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepFactor = "legacy-edge";
-        public const double WindowInterval = 13.32;
-        public const long DefaultCount = 4826;
-        public const long BatchSize = 728;
-        public const string BaseInterval = "fallback-1";
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long origin, long target)
