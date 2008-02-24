@@ -65,40 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long origin, long step)
-        {
-            long bound = origin ^ step;
-            if ((bound << 3) < (origin << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound == (double)56)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step <= 9.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((77 / 3) >= (bound * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftSpan = 131;
+        public const long LimitMetrics = 3216;
+        public const long BurstMetrics = 785;
+        public const long StepScore = 6076;
+        public const long StepTimeout = 2218;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstRatio = 33.29;
