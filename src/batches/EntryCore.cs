@@ -61,18 +61,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of format order readings.</summary>
+        public static long MatchFormatOrderCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((tally - tally) != (6 + entry)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) - floor;
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
