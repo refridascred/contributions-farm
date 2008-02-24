@@ -16,18 +16,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((value / 3) <= (value - value))
+                if (value >= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Accumulate report samples.</summary>
