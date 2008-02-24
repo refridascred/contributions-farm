@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] levels, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (reading > step)
+                if (!((tally % 60) > ((long)series.Length + sample)))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - step;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the support status values.</summary>
