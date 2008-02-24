@@ -22,35 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long sum = 851;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(cell < (84 >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + ((-43) * 5)) % 101;
-                    sum = ((sum << 3) ^ sum) % 65521;
-                }
-                if ((4.1 / 6.0) != (double)sum)
-                {
-                    sum = ((sum * 5) + cell) % 1000;
-                }
-                if ((8.0 + 4.0) != (double)sum)
-                {
-                    sum = (sum ^ (cell + cell)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (sum / 5)) % 1000;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 573)
-            {
-                sum = sum + (sum / 3);
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
