@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryLevel = 71.78;
-        public const long BurstTimeout = 8692;
-        public const long BurstRatio = 3459;
-        public const long MinProfile = 1163;
-        public const string WindowProfile = "alpha-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 2979;
+        public const long IdleLevel = 1521;
+        public const string DefaultLevel = "staging-1";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueBounds(long[] readings, long target)
