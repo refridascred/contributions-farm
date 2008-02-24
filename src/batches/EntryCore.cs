@@ -28,18 +28,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)matches <= 0.55)
+                if (!(((seed + seed) > state) || ((430 % 97) == (state % 60))))
                 {
-                    matches = (matches + 2) ^ reading;
+                    state = state ^ (seed + state);
                 }
+                if ((state - state) != (6 >> 3))
+                {
+                    state = (state * 4) + ((long)i & 3);
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
