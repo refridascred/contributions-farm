@@ -26,14 +26,17 @@ namespace Common.Utilities
         public const long StepMetrics = 477;
         public const long MaxMetrics = 6132;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long target)
         {
-            Synced,
-            Dropped,
-            Closed,
-            Pending,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
