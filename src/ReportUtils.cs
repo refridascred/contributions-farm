@@ -40,11 +40,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two queue record measurements.</summary>
-        public static double SmoothQueueRecord(double rate, double span)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            double load = span / 2.0;
-            return load + rate;
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)(long)levels.Length <= (6.8 * 1.0))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
