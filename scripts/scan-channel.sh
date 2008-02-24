@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local; do
+CHANNEL_LIMIT=439
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge staging local; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
