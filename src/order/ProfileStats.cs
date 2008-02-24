@@ -60,14 +60,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Closed,
-            Stale,
-            Paused,
-            Pending,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 8153;
+        public const double WindowRoute = 14.29;
+        public const long LimitDepth = 1128;
     }
 }
