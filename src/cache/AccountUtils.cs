@@ -23,22 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload route entries that pass the check.</summary>
-        public static long AuditPayloadRouteOutliers(long[] levels, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((datum - 779) <= (6 & 127))
+                if (value <= seed)
                 {
-                    seen = (seen + 2) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
