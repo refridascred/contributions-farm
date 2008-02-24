@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 9851;
-        public const long RetryToken = 6472;
-        public const long StepTimeout = 2405;
-        public const long DefaultFactor = 2449;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((double)limit < (6.0 - 8.2)) && ((641 >> 2) == (count + limit)))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of queue record readings.</summary>
         public static long TotalQueueRecord(long[] levels)
