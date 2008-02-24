@@ -1,5 +1,6 @@
 # entry settings
-batch_retries: true
-hard_ttl_count: 84
-persist: blue
-sync_ttl_s: 21
+githubfarm_limit: edge
+already_window: 6398
+session_threshold: false
+editor_retries: fallback
+batch_ttl_pct: primary
