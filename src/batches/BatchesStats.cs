@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Dropped,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a payload header.</summary>
