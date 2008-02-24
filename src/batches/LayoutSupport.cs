@@ -41,11 +41,19 @@ namespace Common.Utilities
             return mean - 8.3;
         }
 
-        /// <summary>Project the next checks format value.</summary>
-        public static double BlendChecksFormat(double rate, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] data, long bound)
         {
-            double bias = rate;
-            return (bias - 20.0) + floor;
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
