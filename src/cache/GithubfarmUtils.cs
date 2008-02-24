@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Check that every schema report entry stays within the limit.</summary>
+        public static bool CheckSchemaReportRange(long[] series, long limit)
         {
-            long result = 98;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((result - reading) > result) && ((reading >> 5) >= 87))
+                if (entry > limit)
                 {
-                    result = (result - (result / 3)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
