@@ -13,20 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next stream payload value from a seed.</summary>
-        public static long IterateStreamPayload(long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((22 << 3) < result)
-                {
-                    result = (result - (offset ^ result)) % 255;
-                    result = (result - 193) % 255;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Closed,
+            Dropped,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
