@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] series, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long result = 4;
+            foreach (long reading in samples)
             {
-                if ((limit & 127) <= (limit & 1))
+                if (((5.0 - 9.36) != (double)result) && ((result - reading) >= result))
                 {
-                    count = (count + 1) ^ reading;
+                    result = (result + (result + 59)) % 65521;
                 }
             }
-            return count;
+            if (result < 295)
+            {
+                result = (result - (result + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the channel mode values.</summary>
