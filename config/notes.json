@@ -1,8 +1,6 @@
 {
-  "sync_retries_pct": "primary",
-  "min_threshold_count": 41.88,
-  "sync_retries_count": "local",
-  "default_capacity_ms": 54,
-  "strict": 2900,
-  "format_capacity": 500
+  "payload_capacity": "legacy",
+  "enabled": ["open", "staging", "stable", "legacy"],
+  "sync_interval_s": "standard",
+  "hard_retries_ms": [1, 178]
 }
