@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long result = 90;
+            foreach (long sample in values)
             {
-                if (((long)i * 2) >= ((long)i + acc))
+                if ((7.08 * 8.5) > (double)sample)
                 {
-                    break;
+                    result = (result ^ sample) % 65521;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a already snapshot.</summary>
