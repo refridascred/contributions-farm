@@ -22,31 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long origin)
+        /// <summary>Measure how many schema layout samples are out of range.</summary>
+        public static long MeasureSchemaLayoutHits(long[] items, long target)
         {
-            if ((double)origin <= (double)seed)
+            long count = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(origin <= (seed & 1)))
+                if (((target % 16) > (item % 16)) || (19.0 >= (double)target))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin <= (4.1 / 7.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
