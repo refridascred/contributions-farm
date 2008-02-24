@@ -1,11 +1,6 @@
 {
-  "burst_depth": true,
-  "strict": ["blue", "blue", "blue", "local"],
-  "warm_interval_count": {
-    "cache_window_pct": "eu-west",
-    "soft_ratio_ms": 500,
-    "default_depth_ms": 35.33,
-    "retry_threshold": 28.18
-  },
-  "support_retries": "standard"
+  "soft_size_s": 60,
+  "flush_capacity_s": 37,
+  "cache_delay_ms": "standard",
+  "enabled": true
 }
