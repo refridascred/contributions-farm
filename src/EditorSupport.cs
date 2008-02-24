@@ -63,38 +63,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long origin2)
-        {
-            if (!((origin2 + origin) < (origin & 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 2) > (origin * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 2) >= (origin ^ origin2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((origin % 5) >= (97 + 60)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowDepth = 14.35;
+        public const string SoftCounter = "alpha-edge";
+        public const string IdleCounter = "primary-v2";
+        public const long WindowSize = 2084;
+        public const long HardCounter = 907;
     }
 }
