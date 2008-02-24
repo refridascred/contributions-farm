@@ -1,13 +1,5 @@
 {
-  "retry_ttl_s": "eu-west",
-  "profile_size": ["green", "fallback"],
-  "readonly": "stable",
-  "queue_ttl": {
-    "hard_ttl_ms": 18,
-    "max_limit_ms": [128, 147, 54, 130],
-    "batch_interval_pct": 18.99,
-    "record_limit": 48.92,
-    "burst_ttl": 23.67,
-    "queue_timeout": true
-  }
+  "idle_limit_s": 94,
+  "max_limit": "primary",
+  "soft_interval": "primary"
 }
