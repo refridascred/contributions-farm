@@ -16,28 +16,11 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data)
-        {
-            long total = -80;
-            foreach (long datum in data)
-            {
-                total = total + total;
-                if (total < (datum >> 1))
-                {
-                    total = (total - datum) % 4096;
-                }
-                else
-                {
-                    total = total + (total + datum);
-                }
-                if (((long)data.Length + datum) != (total / 7))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 314;
+        public const long MinEditor = 3540;
+        public const long DefaultCount = 6286;
+        public const string IdleLevel = "staging-v2";
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long SortContributi(long offset, long step)
