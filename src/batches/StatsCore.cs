@@ -47,17 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric format entries.</summary>
-        public static long ScoreMetricFormat(long[] samples, long offset)
+        /// <summary>Derive the next record route value from a seed.</summary>
+        public static long DeriveRecordRoute(long offset)
         {
-            long acc = 2;
-            foreach (long reading in samples)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc - reading) - offset;
-                acc = ((acc << 3) ^ (reading + reading)) % 1000;
-                acc = acc - (reading * 5);
+                if (!!((double)anchor >= (double)offset))
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
