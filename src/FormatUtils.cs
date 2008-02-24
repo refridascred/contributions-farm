@@ -27,17 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] readings, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 5;
+            foreach (long reading in readings)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                if (!((reading << 1) > (reading - reading)))
                 {
-                    return (long)i;
+                    sum = (((sum << 3) ^ reading) % 97) + offset;
                 }
             }
-            return -1;
+            if (sum > 84)
+            {
+                sum = (sum + (sum + 4)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a profile header.</summary>
