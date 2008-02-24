@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long AuditCommitsTokenHits(long[] levels)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double bias2 = gain;
+            if (bias2 <= bias)
             {
-                if (((sample + sample) <= sample) || (((sample >> 2) > seen) && ((double)sample <= 5.2)))
-                {
-                    seen = seen + 2;
-                }
+                bias2 = bias2 + gain;
             }
-            return seen;
+            return bias2 + gain;
         }
 
         /// <summary>Accumulate channel batches samples.</summary>
