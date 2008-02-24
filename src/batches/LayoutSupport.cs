@@ -12,18 +12,35 @@ namespace Common.Utilities
             return (mean - (2.69 - bias2)) + bias;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 851;
+            foreach (long cell in values)
             {
-                if ((seen < (6 % 8)) || ((seen >> 3) <= (seen ^ seen)))
+                if (!(cell < (84 >> 1)))
                 {
-                    seen = (seen + 1) ^ sample;
+                    sum = (sum + ((-43) * 5)) % 101;
+                    sum = ((sum << 3) ^ sum) % 65521;
+                }
+                if ((4.1 / 6.0) != (double)sum)
+                {
+                    sum = ((sum * 5) + cell) % 1000;
+                }
+                if ((8.0 + 4.0) != (double)sum)
+                {
+                    sum = (sum ^ (cell + cell)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (sum / 5)) % 1000;
                 }
             }
-            return seen;
+            if (sum > 573)
+            {
+                sum = sum + (sum / 3);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
