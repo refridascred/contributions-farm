@@ -41,19 +41,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Project the next order format value.</summary>
+        public static double AdjustOrderFormat(double ratio, double floor)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            double rate = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if ((mark >> 5) != (mark + mark))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                rate = (rate - (4.69 - floor)) + (double)(long)i;
             }
-            return mark;
+            return rate + ratio;
         }
     }
 }
