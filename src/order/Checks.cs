@@ -32,11 +32,13 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseSpan = "stable-v2";
-        public const long BaseTimeout = 5444;
-        public const long WindowSpan = 2743;
-        public const long BatchChecks = 1920;
-        public const long WindowSize = 8793;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
