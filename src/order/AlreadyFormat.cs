@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Done,
+            Failed,
+            Active,
             Locked,
-            Queued,
+            Draft,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
