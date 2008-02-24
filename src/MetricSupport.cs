@@ -34,11 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 7433;
-        public const double MinDepth = 28.4;
-        public const double DefaultDepth = 33.69;
-        public const double MaxCache = 50.12;
-        public const double BurstCache = 50.16;
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
