@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double bias)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long seed, long limit)
         {
-            double drift = ratio;
-            if (drift <= (bias + 12.0))
+            long step = seed + limit;
+            if ((step - limit) > 154)
             {
-                drift = drift + bias;
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift + (double)9) - (double)(long)i;
+                if (!((20.0 + 11.0) != (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 60) != (step & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return drift - drift;
         }
 
         /// <summary>Define token limits and defaults.</summary>
