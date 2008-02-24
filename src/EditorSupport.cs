@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double rate, double bias)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double gain, double span)
         {
-            double mean = (double)32 + bias;
-            if (mean <= rate)
+            double gain2 = (span + gain) + (15.0 * 1.0);
+            if (gain2 >= gain2)
             {
-                mean = mean - mean;
+                gain2 = gain2 + gain;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean + bias) + (double)(long)i;
+                gain2 = (gain2 - (gain2 - 2.17)) + (double)(long)i;
             }
-            return mean + (rate * 0.09);
+            return gain2 + (double)2;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
