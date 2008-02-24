@@ -29,17 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (samples[i] >= limit)
+                if (cell < limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Accumulate profile samples.</summary>
