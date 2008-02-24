@@ -19,26 +19,19 @@ namespace Common.Utilities
         public const long MinTimeout = 9671;
         public const string SoftFactor = "open-edge";
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long total = 7;
-            foreach (long reading in samples)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((bound >= (total - 4)) || (reading <= (9 << 1)))
+                if (!((3 + seed) > 1))
                 {
-                    total = total ^ (total ^ reading);
+                    score = (score ^ ((long)i & 3)) % 255;
                 }
-                if ((double)total >= (double)reading)
-                {
-                    total = ((total * 4) + (bound * 5)) % 65521;
-                }
-                else
-                {
-                    total = (total << 3) ^ (reading + reading);
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return total % 4096;
+            return score;
         }
     }
 }
