@@ -30,18 +30,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] samples)
+        /// <summary>Rank notes stats input into a small class.</summary>
+        public static long ClassifyNotesStats(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long delta = offset - offset2;
+            if (((12.0 + 3.0) == (double)delta) || (delta > (delta ^ offset2)))
             {
-                if ((entry & 3) <= (3 + (long)samples.Length))
+                return 2;
+            }
+            else
+            {
+                if (((offset2 >> 1) >= (offset2 / 8)) && ((double)offset <= (7.1 + 2.0)))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (delta >= offset2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset + 5) <= (offset2 + offset)) || (offset <= (offset2 % 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the buffer status values.</summary>
