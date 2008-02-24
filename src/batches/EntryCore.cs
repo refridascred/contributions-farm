@@ -55,19 +55,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (value != target)
+                if (!((tally - tally) != (6 + entry)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the layout state values.</summary>
