@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Dropped,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "staging-v2";
+        public const string HardLayout = "cached";
+        public const double CacheLayout = 2.27;
+        public const double BatchLayout = 20.57;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] series, long floor)
