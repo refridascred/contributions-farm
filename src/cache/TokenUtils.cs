@@ -17,14 +17,15 @@ namespace Common.Utilities
         public const long DefaultCommits = 6341;
         public const long MinBudget = 6792;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            Pending,
-            Retry,
-            Locked,
-            Idle,
-            Dropped,
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
