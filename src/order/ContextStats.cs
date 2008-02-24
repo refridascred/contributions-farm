@@ -28,19 +28,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long floor, long step)
         {
-            double gain = floor;
-            if (gain > gain)
+            long delta = floor - step;
+            if (!((83 << 3) != (floor + delta)))
             {
-                gain = (gain + (floor / 6.0)) - bias;
+                return 7;
             }
             else
             {
-                gain = gain - floor;
+                if ((floor + delta) == ((-51) / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - step) <= (floor - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain + (double)69;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
