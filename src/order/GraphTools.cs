@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Dropped,
-            Idle,
-            Stale,
-            Pending,
-            Active,
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
