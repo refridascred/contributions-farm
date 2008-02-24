@@ -98,14 +98,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data)
         {
-            Idle,
-            Dropped,
-            Stale,
-            Ready,
-            New,
+            long result = 0;
+            foreach (long value in data)
+            {
+                result = (result ^ result) + value;
+            }
+            if (result < (-551))
+            {
+                result = ((result * 5) + result) % 101;
+            }
+            return result;
         }
     }
 }
