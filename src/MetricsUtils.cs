@@ -25,20 +25,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Check that every counter commits entry stays within the limit.</summary>
+        public static bool VerifyCounterCommitsLimits(long[] samples, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((long)i + 1) >= limit)
+                if (cell != target)
                 {
-                    mark = (mark << 2) ^ mark;
+                    valid = false;
                     break;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
