@@ -47,19 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
         {
-            long acc = 19;
-            foreach (long value in values)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc + (acc >> 3)) % 1000) - value;
+                if ((mark >> 5) != (mark + mark))
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (acc > 9)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return mark;
         }
     }
 }
