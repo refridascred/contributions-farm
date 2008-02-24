@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleCount = 17.74;
-        public const long IdleMetric = 7079;
-        public const double BaseFactor = 9.93;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Dropped,
+            Stale,
+            Failed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
