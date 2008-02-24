@@ -35,24 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((target >> 2) != (seed + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target << 3) > (seed + seed)) && ((seed ^ target) != (target + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Locked,
+            New,
         }
     }
 }
