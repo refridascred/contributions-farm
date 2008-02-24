@@ -58,17 +58,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] items, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = bias;
+            if (mean <= (double)733)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)55;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (offset * 11.0);
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
