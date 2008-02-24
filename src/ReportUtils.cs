@@ -24,22 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long MeasureGraphLayoutGaps(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (matches <= datum)
+                if (datum <= target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the tools mode values.</summary>
