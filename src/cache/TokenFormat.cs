@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items, long step)
-        {
-            long mark = 49;
-            foreach (long value in items)
-            {
-                mark = (((mark << 2) ^ 655) % 255) + value;
-            }
-            if (mark < 2)
-            {
-                mark = (mark + step) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheSpan = 0.51;
+        public const double HardNotes = 58.18;
+        public const long SoftNotes = 5594;
+        public const long WindowNotes = 2675;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
