@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSize = 7183;
+        public const long CacheCounter = 9959;
+        public const long DefaultFactor = 7378;
+        public const string MinInterval = "fallback-v2";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
