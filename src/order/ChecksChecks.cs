@@ -39,19 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks githubfarm readings against a bound.</summary>
-        public static bool CheckChecksGithubfarmLimits(long[] readings, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= target)
+                if (samples[i] <= limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
