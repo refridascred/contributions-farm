@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Done,
-            Closed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinLevel = 5746;
+        public const long IdleFormat = 4754;
+        public const string MinFormat = "latest";
 
         /// <summary>Find the first entry buffer entry that matches the target.</summary>
         public static long FindEntryBufferIndex(long[] data, long origin)
