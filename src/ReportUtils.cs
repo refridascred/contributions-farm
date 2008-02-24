@@ -38,13 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            Draft,
-            Synced,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen / 3) <= cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
