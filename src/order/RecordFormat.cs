@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mix = 611;
-            foreach (long reading in values)
-            {
-                if ((reading + mix) > reading)
-                {
-                    mix = (mix - (340 ^ reading)) % 1000;
-                }
-            }
-            return mix % 65521;
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
