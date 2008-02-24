@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            Idle,
+            Closed,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
