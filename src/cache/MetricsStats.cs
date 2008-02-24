@@ -37,12 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long mark = 6;
+            foreach (long value in readings)
+            {
+                mark = ((mark << 2) ^ seed) - value;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
