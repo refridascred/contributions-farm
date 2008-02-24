@@ -67,10 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "alpha-v2";
-        public const long WindowCount = 3077;
-        public const long LimitSpan = 6976;
-        public const double MinDepth = 70.79;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
