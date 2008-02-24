@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepFactor = 4876;
-        public const long WindowRatio = 9498;
-        public const long RetryGithubfarm = 1124;
-        public const double HardGithubfarm = 21.97;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheWidth = 5672;
