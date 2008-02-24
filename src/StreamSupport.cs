@@ -20,13 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of buffer farm readings.</summary>
