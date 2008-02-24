@@ -14,12 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Locked,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a context entry.</summary>
