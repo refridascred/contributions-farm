@@ -46,21 +46,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmRouteCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
+                    if ((values[i] ^ values[j]) > 3)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
