@@ -1,8 +1,13 @@
 {
-  "poll_timeout_count": false,
-  "cluster_ttl": 66,
-  "warm_threshold_ms": 61.52,
-  "idle_size_pct": ["latest", "cached", "cached"],
-  "contributi_interval": 60,
-  "default_interval_count": ["fallback", "green", "edge", "local"]
+  "hard_ratio_s": true,
+  "batch_ttl_count": "cached",
+  "githubfarm_timeout": false,
+  "default_interval_s": "legacy",
+  "layout_retries": false,
+  "hard_window_s": {
+    "notes_threshold": "open",
+    "default_limit": 1024,
+    "audit": true,
+    "warm_window_pct": 61.03
+  }
 }
