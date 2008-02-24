@@ -62,17 +62,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                state = state ^ ((long)i + (long)i);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
