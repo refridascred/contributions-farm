@@ -51,31 +51,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a record stream pair into a bucket.</summary>
-        public static long RankRecordStream(long limit, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            if (floor >= (limit - limit))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit != (double)floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (8 <= floor)
+                    if ((series[i] ^ series[j]) > 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
