@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph editor samples.</summary>
-        public static long TotalGraphEditor(long[] series)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            long carry = 82;
-            foreach (long reading in series)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)carry == (double)reading)
-                {
-                    carry = (carry ^ ((long)series.Length & 7)) % 101;
-                }
+                result = (result + (floor + (long)i)) % 255;
+                result = (result * 4) + (result - (long)i);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the channel phase values.</summary>
