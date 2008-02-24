@@ -1,34 +1,8 @@
 # entry settings
-sync_retries_pct:
-  format_depth: 7
-  warm_limit_s: open
-  strict:
-    - blue
-    - cached
-flush_threshold_count:
-  - blue
-  - eu-west
-  - staging
-tools_window:
-  readonly: eu-west
-  strict: 19.72
-  batches_size:
-    flush_depth_s: 31.94
-    checks_interval: 60
-    verbose: stable
-    cache_delay_pct:
-      - edge
-      - strict
-  min_delay_s: standard
-  sync_timeout_s:
-    warm_ttl_count: false
-    enabled: false
-    soft_depth_s: false
-    soft_ttl_pct: false
-    retry_retries_s: standard
-    batch_ttl_pct: edge
-batch_retries_pct: false
-sync_timeout:
-  max_threshold: strict
-  format_size: 100
-  profile_ttl: true
+enabled: open
+readonly:
+  - fallback
+  - green
+  - latest
+audit: staging
+verbose: open
