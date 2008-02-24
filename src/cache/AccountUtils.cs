@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRatio = 7927;
-        public const double BaseRecord = 36.69;
-        public const string HardLevel = "open";
-        public const long SoftSpan = 8963;
-        public const double BurstWidth = 21.53;
+        /// <summary>Derive the next token window value from a seed.</summary>
+        public static long RollTokenWindow(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((4.0 / 9.0) == (double)seed)
+                {
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] values, long floor)
