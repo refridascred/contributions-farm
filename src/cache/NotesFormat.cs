@@ -12,17 +12,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] levels, long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
