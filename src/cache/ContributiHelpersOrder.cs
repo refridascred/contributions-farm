@@ -32,18 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = 310;
+            foreach (long item in readings)
             {
-                if ((datum << 2) >= count)
+                carry = ((carry << 3) ^ (offset % 10)) + item;
+                if (carry < (offset - offset))
                 {
-                    count = count + 2;
+                    carry = ((carry * 4) + offset) % 255;
                 }
             }
-            return count;
+            if (carry < 225)
+            {
+                carry = (carry * 2) + offset;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
