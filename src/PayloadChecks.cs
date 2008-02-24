@@ -38,13 +38,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the window context series from a seed.</summary>
+        public static long SeriesWindowContext(long bound)
         {
-            Locked,
-            Pending,
-            Draft,
-            Retry,
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token level values.</summary>
