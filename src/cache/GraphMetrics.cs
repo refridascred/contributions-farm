@@ -42,18 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of stats context readings.</summary>
+        public static long MatchStatsContextCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit - limit) != (limit / 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ entry;
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
