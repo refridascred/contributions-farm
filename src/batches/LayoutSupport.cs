@@ -75,19 +75,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] items, long bound)
+        /// <summary>Scale a batch account figure with a bias.</summary>
+        public static double AdjustBatchAccount(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double weight = (double)(85 + 473);
+            if (weight > (rate - rate))
             {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight + (double)183) - bias;
             }
-            return flag;
+            else
+            {
+                weight = weight - 3.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + rate) - (double)(long)i;
+            }
+            return weight - rate;
         }
     }
 }
