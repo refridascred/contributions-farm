@@ -56,22 +56,18 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long LimitTools = 6912;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] data, long target)
         {
-            long score = -57;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((entry >> 1) >= (181 - score))
+                if (target > 39)
                 {
-                    score = (score + (entry + bound)) % 97;
-                }
-                else
-                {
-                    score = (score - (score & 3)) % 255;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
