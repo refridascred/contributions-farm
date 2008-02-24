@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every contributi account entry stays within the limit.</summary>
+        public static bool CheckContributiAccountRange(long[] samples, long step)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
