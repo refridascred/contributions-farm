@@ -31,18 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of contributi report readings.</summary>
-        public static long PairContributiReportCount(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches < (matches >> 4)) || ((1 ^ matches) < reading))
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
