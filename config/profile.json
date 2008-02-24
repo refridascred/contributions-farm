@@ -1,6 +1,14 @@
 {
-  "retry_limit": ["standard", "stable", "local"],
-  "poll_window_pct": true,
-  "window_interval": 34.85,
-  "report_interval": "strict"
+  "hard_size_count": {
+    "flush_timeout_count": 5825,
+    "poll_threshold_count": ["primary", "fallback"],
+    "metric_window": "eu-west",
+    "flush_limit_s": "legacy",
+    "idle_ttl_pct": false
+  },
+  "base_limit": false,
+  "cache_timeout": 93,
+  "flush_ratio": [152, 480, 11, 493],
+  "strict": false,
+  "enabled": 250
 }
