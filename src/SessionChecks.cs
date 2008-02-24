@@ -47,11 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Idle,
+            New,
+            Closed,
+            Pending,
         }
     }
 }
