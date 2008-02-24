@@ -1,8 +1,8 @@
 {
-  "verbose": 25.61,
-  "compress": false,
-  "persist": "stable",
-  "min_ttl_count": "strict",
-  "command_retries": "open",
-  "enabled": 76
+  "readonly": 30,
+  "idle_window": [245, 360],
+  "hard_limit": 100,
+  "context_ttl": "stable",
+  "idle_interval": 23.38,
+  "strict": 4.72
 }
