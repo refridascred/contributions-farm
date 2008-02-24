@@ -23,14 +23,24 @@ namespace Common.Utilities
         public const long BatchSize = 728;
         public const string BaseInterval = "fallback-1";
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long target)
         {
-            Idle,
-            Draft,
-            Ready,
-            Active,
-            Paused,
+            if ((122 / 6) == (origin >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.5 / 6.0) != (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the tools kind values.</summary>
