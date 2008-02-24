@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 14.59;
-        public const long SoftToken = 1403;
-        public const long BaseScore = 6814;
-        public const long RetryToken = 7887;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] samples)
+        {
+            long mix = 27;
+            foreach (long value in samples)
+            {
+                mix = (((mix << 2) ^ mix) % 65521) - value;
+            }
+            return mix;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftAlready = 5889;
