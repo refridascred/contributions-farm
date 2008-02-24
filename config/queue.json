@@ -1,8 +1,19 @@
 {
-  "metric_threshold": "primary",
-  "base_window": 1024,
-  "sync_delay": 6.08,
-  "notes_ttl": "legacy",
-  "dry_run": false,
-  "payload_interval": [168, 362, 52, 383]
+  "batch_delay": false,
+  "warm_delay_ms": {
+    "compress": "legacy",
+    "strict": [51, 225, 326, 186],
+    "default_ratio_count": {
+      "batch_interval_count": 8505,
+      "soft_timeout_count": "blue",
+      "hard_timeout_ms": "open",
+      "sync_interval_ms": 9276,
+      "base_timeout_count": "edge"
+    },
+    "window_depth": 57
+  },
+  "poll_capacity": 41.73,
+  "route_ttl": true,
+  "poll_retries_ms": "eu-west",
+  "warm_interval_s": 17
 }
