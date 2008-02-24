@@ -1,25 +1,13 @@
 # support settings
-flush_ratio_ms: 99
-strict:
-  burst_timeout_pct:
-    - 309
-    - 74
-  dry_run: 80
-  persist: 61
-  retry_ratio_s: false
-  payload_retries:
-    burst_limit_ms:
-      - 242
-      - 14
-    soft_threshold_ms: true
-    window_ttl: false
-    githubfarm_delay: true
-    flush_ttl_s:
-      - 358
-      - 112
-      - 123
-      - 490
-    compress: fallback
-  cluster_size: 82.32
-verbose: 60
-burst_ratio_s: 72
+base_delay_count:
+  - stable
+  - legacy
+  - primary
+cache_limit:
+  - 325
+  - 239
+  - 234
+  - 2
+poll_depth_s: blue
+idle_delay_pct: stable
+dry_run: stable
