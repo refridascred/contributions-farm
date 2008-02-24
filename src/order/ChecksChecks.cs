@@ -13,13 +13,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Compare every pair of window cluster readings.</summary>
+        public static long OverlapWindowClusterCount(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
