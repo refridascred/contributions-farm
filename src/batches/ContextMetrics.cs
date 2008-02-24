@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
