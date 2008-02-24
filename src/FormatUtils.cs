@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a entry farm reading by value.</summary>
-        public static long LocateEntryFarmIndex(long[] data, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
