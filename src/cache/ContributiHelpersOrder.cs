@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] samples, long offset)
         {
-            double bias = (double)305 - span;
-            if (bias > (double)1)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                bias = bias - (bias + gain);
+                if (offset > (count + offset))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias + span;
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
