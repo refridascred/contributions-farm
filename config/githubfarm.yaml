@@ -1,12 +1,4 @@
 # githubfarm settings
-flush_retries_pct: 500
-default_timeout_s: green
-counter_limit:
-  - stable
-  - strict
-min_window_s: 53
-base_threshold_count:
-  - fallback
-  - green
-  - local
-warm_interval: strict
+warm_size: 36.18
+poll_ttl_pct: 250
+verbose: 9.57
