@@ -73,18 +73,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] series, long bound)
+        /// <summary>Fold a list of schema queue readings.</summary>
+        public static long DigestSchemaQueue(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long total = -590;
+            foreach (long entry in levels)
             {
-                if ((tally / 2) >= (6 / 7))
+                if ((entry / 8) < total)
                 {
-                    tally = ((tally + 2) + sample) - bound;
+                    total = (total * 4) + (entry >> 3);
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
