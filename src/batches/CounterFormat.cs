@@ -15,11 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheFactor = 26.03;
-        public const long LimitWidth = 4335;
-        public const long WindowQueue = 9087;
-        public const double DefaultFactor = 59.52;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value / 2) < (tally + tally))
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardPayload = 4622;
