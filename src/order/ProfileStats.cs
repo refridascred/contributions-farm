@@ -58,9 +58,19 @@ namespace Common.Utilities
         public const double HardLayout = 86.24;
         public const string IdleFactor = "alpha-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 8153;
-        public const double WindowRoute = 14.29;
-        public const long LimitDepth = 1128;
+        /// <summary>Validate notes token readings against a bound.</summary>
+        public static bool CheckNotesTokenLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
