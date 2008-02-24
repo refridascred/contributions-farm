@@ -71,18 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] values, long origin)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double bias = (double)680 + (14.0 - 7.9);
+            if (bias < (1.6 / 6.0))
             {
-                if (matches > (origin % 10))
-                {
-                    matches = (matches + 2) + sample;
-                }
+                bias = bias + (double)39;
             }
-            return matches;
+            else
+            {
+                bias = bias - (gain + gain);
+            }
+            return bias + (floor / 8.0);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
