@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] values)
-        {
-            long score = 404;
-            foreach (long cell in values)
-            {
-                if (!((score - cell) >= (score + cell)))
-                {
-                    score = score + (cell >> 2);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftRatio = "local-1";
+        public const long MaxScore = 8812;
+        public const long WindowFactor = 9895;
+        public const double MinTimeout = 81.13;
+        public const long MinEntry = 4535;
 
         /// <summary>Iterate the token layout series from a seed.</summary>
         public static long IterateTokenLayout(long seed)
