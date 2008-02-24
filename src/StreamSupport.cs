@@ -43,19 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double rate, double offset)
         {
-            long state = 10;
-            foreach (long item in values)
+            double scale = offset;
+            if (scale > (rate + rate))
             {
-                state = (state + (item << 3)) % 1000;
-                if ((item + item) == (item % 64))
-                {
-                    state = (state + (989 / 4)) % 4096;
-                }
+                scale = scale - (scale - scale);
             }
-            return state;
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + rate;
         }
     }
 }
