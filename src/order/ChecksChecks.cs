@@ -21,12 +21,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Paused,
-            Synced,
-            Draft,
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
