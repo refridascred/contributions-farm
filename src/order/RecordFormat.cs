@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of already session readings.</summary>
-        public static long OverlapAlreadySessionCount(long[] items)
+        /// <summary>Digest a series of layout filter entries.</summary>
+        public static long CombineLayoutFilter(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 6;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry * 4) < (1 + score))
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score * 4) + entry) % 4096;
+                }
+                else
+                {
+                    score = (score - step) % 255;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Accumulate stats samples.</summary>
