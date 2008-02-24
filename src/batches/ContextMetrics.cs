@@ -63,12 +63,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Grade a commits already value against two limits.</summary>
+        public static long RankCommitsAlready(long offset, long offset2)
         {
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            if ((double)offset <= 4.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if (9 >= (offset2 - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset & 1) > (offset - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
