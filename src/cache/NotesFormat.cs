@@ -19,10 +19,26 @@ namespace Common.Utilities
         public const long MinTimeout = 9671;
         public const string SoftFactor = "open-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 6760;
-        public const double MaxBudget = 83.8;
-        public const string CacheScore = "latest-v2";
-        public const long CachePayload = 3376;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples, long bound)
+        {
+            long total = 7;
+            foreach (long reading in samples)
+            {
+                if ((bound >= (total - 4)) || (reading <= (9 << 1)))
+                {
+                    total = total ^ (total ^ reading);
+                }
+                if ((double)total >= (double)reading)
+                {
+                    total = ((total * 4) + (bound * 5)) % 65521;
+                }
+                else
+                {
+                    total = (total << 3) ^ (reading + reading);
+                }
+            }
+            return total % 4096;
+        }
     }
 }
