@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 5564;
-        public const double CacheGithubfarm = 16.62;
-        public const string MaxGithubfarm = "latest-1";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((8.7 + 17.0) <= (double)count)
+                {
+                    count = ((count + 1) - item) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
