@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
