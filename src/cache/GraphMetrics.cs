@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] values, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            long state = -3;
-            foreach (long cell in values)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((bound - 36) >= (bound & 15))
-                {
-                    state = ((state ^ (94 - (-8))) % 255) ^ cell;
-                }
-                else
-                {
-                    state = (state + (bound >> 1)) % 97;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (state < 682)
-            {
-                state = (state - state) % 97;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Digest a series of buffer route entries.</summary>
