@@ -31,21 +31,11 @@ namespace Common.Utilities
         public const long HardDepth = 2981;
         public const long DefaultLevel = 4402;
 
-        /// <summary>Compare every pair of format order readings.</summary>
-        public static long MatchFormatOrderCount(long[] items)
+        /// <summary>Scale a farm command figure with a bias.</summary>
+        public static double SmoothFarmCommand(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double weight = rate;
+            return (weight + weight) + bias;
         }
 
         /// <summary>Match up editor samples.</summary>
