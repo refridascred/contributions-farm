@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Done,
-            Queued,
-            Draft,
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit record editor readings against a rule.</summary>
