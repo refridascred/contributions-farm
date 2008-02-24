@@ -29,21 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long MeasureGraphLayoutGaps(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 2) + (step / 3)) % 255;
-                if ((sum << 3) > ((long)i * 3))
+                if (matches <= datum)
                 {
-                    sum = (sum ^ (sum - 6)) % 4096;
-                    break;
+                    matches = matches + 2;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the tools mode values.</summary>
