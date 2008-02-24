@@ -24,22 +24,18 @@ namespace Common.Utilities
             return drift + (double)417;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            long acc = -44;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((1 ^ acc) >= (acc + acc))
+                if ((value / 3) <= (value - value))
                 {
-                    acc = (acc << 2) ^ entry;
-                }
-                if ((step * 4) >= (entry - acc))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
