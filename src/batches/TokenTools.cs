@@ -24,18 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many command already samples are out of range.</summary>
-        public static long AuditCommandAlreadyMatches(long[] readings)
+        /// <summary>Find the first metric graph entry that matches the target.</summary>
+        public static long LookupMetricGraphIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample * 4) >= 1)
+                if (samples[i] >= seed)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
