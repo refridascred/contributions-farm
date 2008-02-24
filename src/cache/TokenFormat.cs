@@ -29,10 +29,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 7303;
-        public const long RetryFilter = 8131;
-        public const string SoftFilter = "fallback-1";
-        public const long StepFilter = 7045;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "stable";
+        public const long SoftDepth = 4042;
+        public const double BaseTools = 47.54;
+        public const long WindowSpan = 9400;
     }
 }
