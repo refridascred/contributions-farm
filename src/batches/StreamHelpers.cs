@@ -32,19 +32,10 @@ namespace Common.Utilities
         public const double RetryBatches = 46.7;
         public const long MaxBatches = 4690;
 
-        /// <summary>Measure how many batches metrics samples are out of range.</summary>
-        public static long TallyBatchesMetricsGaps(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)target < (6.0 + 0.73))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxFactor = "strict-v2";
+        public const double StepBudget = 22.96;
+        public const long DefaultReport = 1203;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ProjectNotes(double weight, double span)
