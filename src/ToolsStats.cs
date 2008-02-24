@@ -55,15 +55,11 @@ namespace Common.Utilities
             return ((load - (7.9 * 5.8)) + ratio) + offset;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = 532;
-            foreach (long entry in values)
-            {
-                total = (((total << 3) ^ floor) % 255) ^ entry;
-            }
-            return total;
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
