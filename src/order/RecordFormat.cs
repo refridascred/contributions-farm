@@ -29,11 +29,22 @@ namespace Common.Utilities
         public const long BurstInterval = 8412;
         public const long CacheCount = 4834;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] readings, long origin)
         {
-            double scale = span;
-            return (scale - (scale / 2.0)) + bias;
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)matches >= (7.0 + 16.0))
+                {
+                    matches = ((matches + 3) ^ datum) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
