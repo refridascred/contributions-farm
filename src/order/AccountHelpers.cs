@@ -63,18 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] samples, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long anchor = 294;
-            foreach (long sample in samples)
-            {
-                if (((sample + offset) <= (sample >> 3)) || ((double)offset <= 12.0))
-                {
-                    anchor = ((anchor * 3) + (712 + offset)) % 101;
-                }
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a profile stats.</summary>
