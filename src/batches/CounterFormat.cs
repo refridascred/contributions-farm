@@ -40,21 +40,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Stale,
         }
     }
 }
