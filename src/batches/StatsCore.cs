@@ -15,21 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of buffer entry readings.</summary>
-        public static long OverlapBufferEntryCount(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 93;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score ^ (limit ^ limit)) % 97) ^ entry;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
