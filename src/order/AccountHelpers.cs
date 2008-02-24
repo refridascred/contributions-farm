@@ -51,21 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmRouteCount(long[] values)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
