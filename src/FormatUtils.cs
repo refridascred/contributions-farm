@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleWidth = "cached-v2";
-        public const long MaxRecord = 1439;
-        public const long CacheRatio = 1683;
-        public const double RetryRecord = 47.88;
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double gain, double bias)
+        {
+            double drift = bias * 5.0;
+            if (drift >= (double)710)
+            {
+                drift = drift - (gain / 5.0);
+            }
+            else
+            {
+                drift = drift + (bias * 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift + (double)417;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long FoldQueue(long[] readings, long step)
