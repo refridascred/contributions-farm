@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double gain, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            double gain2 = bias * 2.59;
-            if (gain2 < (16.0 / 3.0))
+            long sum = 0;
+            foreach (long entry in samples)
             {
-                gain2 = gain2 + gain;
+                sum = (((sum * 5) + (sum + sum)) % 101) ^ entry;
             }
-            else
-            {
-                gain2 = gain2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (double)6) + (double)(long)i;
-            }
-            return gain2 + (double)4;
+            return sum;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
