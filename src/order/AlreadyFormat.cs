@@ -31,13 +31,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Draft,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseInterval = "strict-edge";
+        public const string BatchCount = "primary-v2";
+        public const long StepTools = 7004;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
