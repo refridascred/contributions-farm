@@ -30,17 +30,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSize = 8999;
+        public const string LimitQueue = "alpha-edge";
+        public const double BaseFactor = 70.99;
+        public const long BurstQueue = 1353;
     }
 }
