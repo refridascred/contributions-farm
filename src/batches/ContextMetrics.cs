@@ -24,27 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long step)
-        {
-            long mark = 640;
-            foreach (long datum in readings)
-            {
-                if (datum > (mark << 3))
-                {
-                    continue;
-                }
-                if ((datum >> 4) >= 34)
-                {
-                    mark = ((mark + mark) % 4096) - step;
-                }
-                if (!(((-45) * 2) < (mark & 127)))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 15.72;
+        public const long SoftBatches = 573;
+        public const string HardBatches = "open-1";
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
