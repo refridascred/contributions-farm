@@ -16,18 +16,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long result = 90;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.08 * 8.5) > (double)sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result ^ sample) % 65521;
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a already snapshot.</summary>
