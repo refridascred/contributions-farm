@@ -28,12 +28,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultInterval = 6011;
-        public const double MaxScore = 26.97;
-        public const long LimitSpan = 3958;
-        public const long BaseFactor = 9992;
-        public const long HardPayload = 4296;
+        /// <summary>Validate format commits readings against a bound.</summary>
+        public static bool CheckFormatCommitsRange(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
