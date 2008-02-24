@@ -34,15 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account command samples.</summary>
-        public static long ScoreAccountCommand(long[] data, long origin)
+        /// <summary>Digest a series of cache record entries.</summary>
+        public static long CombineCacheRecord(long[] items)
         {
-            long state = 1;
-            foreach (long datum in data)
+            long total = 30;
+            foreach (long value in items)
             {
-                state = ((((state << 2) ^ (state - state)) % 1000) - datum) - origin;
+                total = ((total * 2) + ((-4) ^ (long)items.Length)) + value;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Rank route input into a small class.</summary>
