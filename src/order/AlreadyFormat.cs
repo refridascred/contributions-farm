@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const string SoftSchema = "open-edge";
         public const long RetryWidth = 4525;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] data, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mix = 19;
+            foreach (long value in data)
             {
-                if (datum > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix - mix) % 97) + value;
             }
-            return stale;
+            if (mix < (-22))
+            {
+                mix = (mix - (mix + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a payload channel counter forward.</summary>
