@@ -15,19 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] data, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the channel mode values.</summary>
