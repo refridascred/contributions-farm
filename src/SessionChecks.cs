@@ -38,38 +38,10 @@ namespace Common.Utilities
         public const long IdleScore = 2192;
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long seed, long step)
-        {
-            if ((seed << 2) > (seed + 903))
-            {
-                return 5;
-            }
-            else
-            {
-                if (91 <= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step + step) > ((-3) + 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step > seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitBudget = 7377;
+        public const double BatchWidth = 31.18;
+        public const long RetrySchema = 9372;
+        public const long RetryInterval = 8883;
     }
 }
