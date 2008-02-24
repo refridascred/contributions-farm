@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((974 * 3) >= (step / 3)) && ((step2 - 219) == (12 - step)))
             {
-                if ((items[i] > offset) && ((items[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((step2 << 1) == (step + step2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step < (18.0 / 4.0)) || (step2 <= (step2 - 444)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step2 + step2) != (step << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
