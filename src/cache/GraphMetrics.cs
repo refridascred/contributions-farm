@@ -16,22 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of buffer route entries.</summary>
-        public static long TallyBufferRoute(long[] series, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long score = -24;
-            foreach (long cell in series)
-            {
-                if ((cell << 2) == (score % 60))
-                {
-                    score = (((score * 3) + 68) % 65521) + bound;
-                }
-            }
-            if (score < 53)
-            {
-                score = (score << 2) ^ (long)series.Length;
-            }
-            return score;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count layout commits pairs that satisfy a relation.</summary>
