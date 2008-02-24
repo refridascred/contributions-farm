@@ -67,12 +67,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] readings, long target)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account status values.</summary>
