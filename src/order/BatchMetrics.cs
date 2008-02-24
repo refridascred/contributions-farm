@@ -57,18 +57,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Count the channel commits entries that pass the check.</summary>
+        public static long CountChannelCommitsMatches(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((hits << 2) > hits) && ((3 % 60) <= (value - (long)samples.Length))) || ((hits + 37) != (hits >> 1)))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
