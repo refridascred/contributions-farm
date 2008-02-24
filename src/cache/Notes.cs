@@ -63,12 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Active,
-            Failed,
-            Stale,
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of editor queue readings.</summary>
