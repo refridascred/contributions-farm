@@ -1,6 +1,7 @@
 {
-  "cache_interval_count": 1.38,
-  "flush_ratio_ms": 25.38,
-  "burst_size": "blue",
-  "channel_timeout": 2351
+  "cache_retries": ["blue", "staging", "cached", "fallback"],
+  "burst_retries": 56.8,
+  "counter_threshold": 1024,
+  "idle_delay_ms": 664,
+  "profile_retries": 5010
 }
