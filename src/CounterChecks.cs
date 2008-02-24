@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long step)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            if (51 <= (56 + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((14.0 + 3.6) == (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin >= (2 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((84 >> 5) == (origin >> 5)) && ((origin - step) < (origin & 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
