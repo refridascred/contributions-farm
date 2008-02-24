@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] items)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double ratio = floor * 4.0;
+            if (ratio >= floor)
             {
-                if ((tally % 12) < 209)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio - scale;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (scale / 7.0);
+            }
+            return ratio + (double)789;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
