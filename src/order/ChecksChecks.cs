@@ -25,18 +25,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((matches % 2) >= entry)
-                {
-                    matches = matches + 3;
-                }
+                result = ((result << 2) ^ (result + result)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
