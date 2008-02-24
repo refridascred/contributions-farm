@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream checks readings.</summary>
-        public static long ScoreStreamChecks(long[] values)
-        {
-            long acc = 0;
-            foreach (long sample in values)
-            {
-                if (acc > 4)
-                {
-                    acc = (acc << 3) ^ (sample >> 3);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - sample)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowBudget = 2197;
+        public const string SoftDepth = "fallback-1";
+        public const long BatchSupport = 1668;
+        public const long CacheTimeout = 5357;
+        public const double StepTimeout = 81.77;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string DefaultEntry = "standard-v2";
