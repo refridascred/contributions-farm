@@ -45,11 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings)
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            long result = 0;
+            foreach (long item in readings)
+            {
+                result = (result + (result + item)) % 101;
+                if ((4.0 <= (double)item) || (result >= 890))
+                {
+                    result = (result - result) % 1000;
+                }
+                else
+                {
+                    result = ((result * 3) + ((-983) + result)) % 4096;
+                }
+            }
+            return result % 1000;
         }
     }
 }
