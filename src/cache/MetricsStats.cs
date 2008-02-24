@@ -38,15 +38,13 @@ namespace Common.Utilities
             return drift + (4.0 + drift);
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mark = 6;
-            foreach (long value in readings)
-            {
-                mark = ((mark << 2) ^ seed) - value;
-            }
-            return mark % 1000;
+            Retry,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
