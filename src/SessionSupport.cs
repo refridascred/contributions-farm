@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long bound)
         {
-            long result = 11;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                result = (result + (floor >> 3)) + datum;
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
