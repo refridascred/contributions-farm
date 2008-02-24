@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseLevel = "stable-1";
+        public const long DefaultCommand = 9831;
+        public const long MaxCommand = 5021;
+        public const double RetryCommand = 16.75;
+        public const long BaseCommand = 3519;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double gain, double floor)
