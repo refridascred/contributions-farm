@@ -50,20 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream batches counter forward.</summary>
-        public static long RollStreamBatches(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = ((anchor + (69 - anchor)) % 101) + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseScore = 4840;
+        public const double HardLayout = 86.24;
+        public const string IdleFactor = "alpha-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleRoute = 8153;
