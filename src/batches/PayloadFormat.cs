@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Active,
-            Paused,
-            Idle,
-            Ready,
-            Synced,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a already info.</summary>
