@@ -60,15 +60,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            double bias2 = (double)(67 - 67);
-            if (bias2 < 8.67)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = ((bias2 - (double)915) - rate) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + (double)651;
+            return count;
         }
     }
 }
