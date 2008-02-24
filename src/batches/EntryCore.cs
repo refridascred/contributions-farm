@@ -62,18 +62,19 @@ namespace Common.Utilities
             return (weight + weight) + bias;
         }
 
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long CountReportPayloadMatches(long[] samples, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (entry >= bound)
+                if (reading < origin)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
