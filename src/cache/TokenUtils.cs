@@ -26,39 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long seed)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long edge = offset - seed;
-            if ((10 < (seed - offset)) || ((offset >> 2) > (seed ^ seed)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset < (seed ^ edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.93 - 6.2) > (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (5.9 * 4.56))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
