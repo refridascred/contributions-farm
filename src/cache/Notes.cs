@@ -63,11 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two metrics command measurements.</summary>
+        public static double AdjustMetricsCommand(double ratio, double bias)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            double bias2 = (8.0 + 2.44) + (bias - 4.31);
+            if (bias2 >= (bias2 + bias2))
+            {
+                bias2 = (bias2 - 7.44) - ratio;
+            }
+            else
+            {
+                bias2 = bias2 - (double)6;
+            }
+            return bias2 - (double)81;
         }
 
         /// <summary>Hold a already header.</summary>
