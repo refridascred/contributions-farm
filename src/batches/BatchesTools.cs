@@ -22,13 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            long total = 45;
+            foreach (long datum in samples)
+            {
+                total = (total + bound) % 1000;
+                if ((datum & 31) == (datum * 2))
+                {
+                    total = total ^ bound;
+                }
+                if (((657 - datum) < (5 / 6)) || ((16.0 * 3.72) != (double)total))
+                {
+                    total = (total + (total + 6)) % 4096;
+                }
+            }
+            if (total < (-658))
+            {
+                total = (total + (bound & 255)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next cache value.</summary>
