@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Stale,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
