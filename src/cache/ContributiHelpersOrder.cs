@@ -33,15 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Find the first metric commits entry that matches the target.</summary>
+        public static long FindMetricCommitsIndex(long[] readings, long origin)
         {
-            long mark = 5;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark ^ (-6)) % 65521) + value;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
