@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((hits % 64) < 275))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "primary-1";
+        public const string WindowFormat = "legacy-v2";
+        public const string BaseFormat = "stable-v2";
+        public const string StepFormat = "standard-v2";
+        public const long RetryFormat = 1419;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
