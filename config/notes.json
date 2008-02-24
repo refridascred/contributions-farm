@@ -1,7 +1,5 @@
 {
-  "enabled": true,
-  "soft_ratio_ms": "green",
-  "githubfarm_depth": "standard",
-  "stats_ratio": 70,
-  "default_timeout_s": 11
+  "poll_window": "staging",
+  "batch_timeout_pct": "staging",
+  "metrics_size": 51.33
 }
