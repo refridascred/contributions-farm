@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] series, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] series)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long acc = 837;
+            foreach (long cell in series)
             {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc + 85) ^ cell;
             }
-            return found;
+            return acc % 1000;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
