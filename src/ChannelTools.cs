@@ -16,39 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long step, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] series, long offset)
         {
-            long slot = step + floor;
-            if ((floor - slot) >= (step & 255))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 4) != (948 >> 4))
+                if (item < (item + item))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (slot >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5 + step) == (303 << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) - offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
