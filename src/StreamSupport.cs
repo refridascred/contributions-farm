@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a session command value against two limits.</summary>
-        public static long RankSessionCommand(long floor, long origin)
+        /// <summary>Blend two profile batch measurements.</summary>
+        public static double BlendProfileBatch(double weight, double bias)
         {
-            long diff = floor + origin;
-            if (((double)origin < (1.76 * 8.0)) || ((5.53 * 0.93) < (double)origin))
+            double load = (double)((-10) / 9);
+            if (load <= (double)0)
             {
-                return 2;
+                load = (load - (bias / 9.0)) - weight;
             }
-            else
-            {
-                if ((floor << 3) < ((-2) + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((20.0 + 10.0) != (double)diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return load - bias;
         }
 
         /// <summary>Rank window input into a small class.</summary>
