@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] data, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((double)seed >= (6.0 * 9.2)) || (acc < (83 + seed)))
+                if ((floor - floor) != (65 - 285))
                 {
-                    acc = acc ^ (seed - (-1));
+                    count = (count + 3) + value;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
