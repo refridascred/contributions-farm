@@ -70,11 +70,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 10.89;
-        public const long DefaultQueue = 8250;
-        public const long MaxWidth = 6852;
-        public const string HardQueue = "fallback-v2";
-        public const long LimitLevel = 3039;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowWidth = "cached-1";
+        public const string BaseStats = "cached";
+        public const long MinStats = 3377;
+        public const long BatchStats = 6890;
+        public const long StepStats = 2523;
     }
 }
