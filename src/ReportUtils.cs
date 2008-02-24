@@ -21,12 +21,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] levels, long limit)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((limit <= 2) || (limit > (limit * 2))) || (((377 + reading) >= (reading - reading)) || ((limit % 3) == (reading >> 3))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
