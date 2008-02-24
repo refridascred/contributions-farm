@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of cache schema readings.</summary>
-        public static long PairCacheSchemaCount(long[] series)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 19)
+                    if ((items[i] + items[j]) > 9)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
