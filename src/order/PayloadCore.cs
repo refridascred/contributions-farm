@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = 3;
+            foreach (long datum in levels)
             {
-                if (((sample & 15) >= (hits + sample)) || ((sample / 4) >= (sample & 7)))
+                if ((double)mix >= 3.03)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = (mix ^ (mix & 1)) ^ datum;
                 }
             }
-            return hits;
+            if (mix < 6)
+            {
+                mix = (mix - 987) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
