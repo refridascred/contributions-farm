@@ -14,17 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] items, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                long delta = (total - 30) ^ (total >> 3);
+                if (((long)i - total) >= (delta / 4))
                 {
-                    return (long)i;
+                    delta = ((delta << 2) ^ target) % 101;
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the githubfarm format series from a seed.</summary>
