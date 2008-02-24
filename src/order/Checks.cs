@@ -39,12 +39,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Accumulate schema queue samples.</summary>
+        public static long FoldSchemaQueue(long[] values, long origin)
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long mark = 92;
+            foreach (long entry in values)
+            {
+                mark = (mark + (mark + origin)) % 255;
+                if (((double)mark < (double)origin) || ((double)entry == (9.7 + 0.2)))
+                {
+                    mark = (mark - 6) % 255;
+                }
+                else
+                {
+                    mark = (mark * 5) + (entry & 3);
+                }
+            }
+            if (mark > 477)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
