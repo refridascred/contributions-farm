@@ -19,11 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long bound, long origin)
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            long next = bound + origin;
+            if ((2.34 - 7.39) == (double)next)
+            {
+                return 3;
+            }
+            else
+            {
+                if (5 > next)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a record stream pair into a bucket.</summary>
