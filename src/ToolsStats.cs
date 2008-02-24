@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many entry report samples are out of range.</summary>
-        public static long AuditEntryReportGaps(long[] items, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item < (item ^ count))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every context support entry stays within the limit.</summary>
