@@ -1,6 +1,17 @@
 # entry settings
-githubfarm_limit: edge
-already_window: 6398
-session_threshold: false
-editor_retries: fallback
-batch_ttl_pct: primary
+max_threshold_count: edge
+metric_depth: 8.5
+warm_threshold:
+  warm_window_pct:
+    strict: primary
+    hard_ttl_ms: true
+    retry_threshold_pct: latest
+    stats_capacity: open
+    batch_threshold: 23.6
+  burst_retries_s: 16.62
+  sync_ttl_count:
+    flush_capacity_s: open
+    soft_size_pct: 2.5
+    persist: 53
+    checks_capacity: 2891
+  githubfarm_interval: 8
