@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardRatio = "strict-edge";
-        public const double DefaultRatio = 78.95;
-        public const double BaseChecks = 34.15;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Dropped,
+            Done,
+            New,
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadOutliers(long[] readings, long step)
