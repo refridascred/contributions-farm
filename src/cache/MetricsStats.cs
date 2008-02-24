@@ -90,17 +90,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
