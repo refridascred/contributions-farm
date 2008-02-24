@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] values, long limit)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((limit + 852) >= (entry - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two format measurements.</summary>
