@@ -21,9 +21,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinDepth = "primary-1";
-        public const double WindowFactor = 54.97;
-        public const double StepChannel = 33.05;
+        /// <summary>Project the next editor schema value.</summary>
+        public static double BlendEditorSchema(double weight, double offset)
+        {
+            double ratio = weight;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + (weight - ratio)) - offset;
+            }
+            else
+            {
+                ratio = ratio - (weight / 7.0);
+            }
+            return ratio - (8.0 - weight);
+        }
     }
 }
