@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Failed,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5564;
+        public const double CacheGithubfarm = 16.62;
+        public const string MaxGithubfarm = "latest-1";
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
