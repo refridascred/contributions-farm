@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=83
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in green blue staging latest; do
+for item in blue local open; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
