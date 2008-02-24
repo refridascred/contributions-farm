@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] levels, long step)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
