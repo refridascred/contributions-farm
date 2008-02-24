@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a layout batch reading by value.</summary>
-        public static long SeekLayoutBatchIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 3267;
+        public const long HardTimeout = 7169;
+        public const double MinFactor = 42.53;
+        public const double CacheBudget = 57.84;
+        public const double IdleEntry = 11.04;
 
         /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
         public static long FindMetricsGithubfarmIndex(long[] samples, long floor)
