@@ -33,15 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Measure how many batches editor samples are out of range.</summary>
+        public static long MeasureBatchesEditorGaps(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((cell & 1) <= cell)
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
