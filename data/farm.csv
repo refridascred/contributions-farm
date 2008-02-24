@@ -1,9 +1,7 @@
-id,label,region,rank
-1,331,35.77,239
-2,cached,green,41
-3,open,70.16,24.18
-4,476,36.95,2.38
-5,78.22,fallback,538
-6,9.99,open,32.44
-7,9.16,51.63,14.36
-8,221,open,60.49
+id,rank,region,score
+1,36.55,625,staging
+2,standard,primary,fallback
+3,547,green,strict
+4,24.72,88.86,852
+5,stable,325,strict
+6,65,583,58.66
