@@ -65,18 +65,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of schema queue readings.</summary>
-        public static long DigestSchemaQueue(long[] levels)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long total = -590;
-            foreach (long entry in levels)
-            {
-                if ((entry / 8) < total)
-                {
-                    total = (total * 4) + (entry >> 3);
-                }
-            }
-            return total;
+            Idle,
+            Retry,
+            Dropped,
         }
     }
 }
