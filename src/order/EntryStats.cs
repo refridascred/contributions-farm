@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const string BatchDepth = "local-1";
         public const long BatchPayload = 8062;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (scale * 18.0) / 9.0;
+            if (ratio > 9.02)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)8) - bias;
             }
-            return -1;
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Compare every pair of editor cluster readings.</summary>
