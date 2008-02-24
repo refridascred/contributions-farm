@@ -1,12 +1,7 @@
 # support settings
-report_depth:
-  base_limit_s: 28
-  soft_depth_pct: false
-  default_capacity: eu-west
-  sync_timeout_pct: 389
-flush_timeout:
-  - primary
-  - stable
-  - edge
-  - blue
-idle_limit: latest
+sync_limit_ms: fallback
+base_size: 98
+default_interval_count: 8992
+max_interval_ms: 31
+profile_ttl: staging
+max_capacity: standard
