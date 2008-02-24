@@ -1,8 +1,12 @@
 {
-  "readonly": 30,
-  "idle_window": [245, 360],
-  "hard_limit": 100,
-  "context_ttl": "stable",
-  "idle_interval": 23.38,
-  "strict": 4.72
+  "sync_capacity_ms": false,
+  "max_ratio_pct": {
+    "audit": false,
+    "retry_timeout": 250,
+    "flush_size_count": "standard"
+  },
+  "base_capacity_s": 6.77,
+  "warm_threshold_ms": ["stable", "stable", "blue"],
+  "max_interval_s": "cached",
+  "max_window_pct": "staging"
 }
