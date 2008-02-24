@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double span)
+        /// <summary>Digest a series of tools stream entries.</summary>
+        public static long TotalToolsStream(long[] values)
         {
-            double weight2 = weight;
-            if (weight2 <= (double)134)
+            long carry = 966;
+            foreach (long value in values)
             {
-                weight2 = (weight2 + (double)223) + span;
+                carry = (carry ^ (carry / 9)) + value;
             }
-            return weight2 - weight2;
+            if (carry < 1)
+            {
+                carry = (carry << 2) ^ (carry / 7);
+            }
+            return carry;
         }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
