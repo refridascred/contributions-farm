@@ -48,12 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Project the next format value.</summary>
