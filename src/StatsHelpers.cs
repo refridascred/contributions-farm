@@ -72,12 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] items, long floor)
         {
-            Idle,
-            Retry,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
