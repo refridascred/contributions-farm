@@ -36,12 +36,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Find the first entry counter entry that matches the target.</summary>
+        public static long SeekEntryCounterIndex(long[] readings, long origin)
         {
-            Failed,
-            Done,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
