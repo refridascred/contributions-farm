@@ -40,17 +40,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the window context series from a seed.</summary>
-        public static long SeriesWindowContext(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 48.0;
+        public const string MinMetric = "latest";
+        public const string DefaultDepth = "fallback";
+        public const string StepMetric = "standard";
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ProjectMetric(double ratio, double span)
