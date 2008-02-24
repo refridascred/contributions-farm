@@ -14,17 +14,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(4 ^ 0);
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + bias) + (double)(long)i) - weight;
             }
-            return -1;
+            return rate - (7.7 * 6.94);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
