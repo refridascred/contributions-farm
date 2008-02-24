@@ -28,12 +28,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long seed)
         {
-            Paused,
-            Pending,
-            Done,
+            if ((8.39 + 4.0) > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + seed) < (710 - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target > 2.37)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first entry counter entry that matches the target.</summary>
