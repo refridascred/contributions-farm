@@ -54,11 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command session measurements.</summary>
-        public static double AdjustCommandSession(double weight, double bias)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double scale = (bias + 7.44) - weight;
-            return scale + (weight - weight);
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate command window samples.</summary>
