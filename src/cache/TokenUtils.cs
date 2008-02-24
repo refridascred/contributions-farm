@@ -17,31 +17,21 @@ namespace Common.Utilities
         public const double BatchMetrics = 24.52;
         public const string StepMetrics = "cached-edge";
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long step, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            if ((step >= (step >> 2)) || ((limit * 2) <= 0))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 2) < (limit / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((10.0 <= (double)step) && ((0.1 * 3.6) >= (double)step))
+                    if ((readings[i] + readings[j]) == 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
