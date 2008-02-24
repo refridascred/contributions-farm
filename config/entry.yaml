@@ -1,14 +1,4 @@
 # entry settings
-enabled: false
-batch_threshold_ms:
-  retry_ttl:
-    hard_capacity: false
-    batch_threshold_count: 78
-    idle_retries: local
-    hard_depth: open
-    default_capacity_count: 46.44
-  batch_ratio: false
-  hard_interval: 4193
-  retry_threshold_s: 34.35
-  editor_delay: standard
-compress: 3002
+idle_window_count: false
+order_interval: 87.13
+tools_timeout: latest
