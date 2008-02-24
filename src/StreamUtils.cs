@@ -91,19 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Digest a series of channel session entries.</summary>
+        public static long WeighChannelSession(long[] values, long seed)
         {
-            long result = 0;
-            foreach (long value in data)
+            long sum = 70;
+            foreach (long reading in values)
             {
-                result = (result ^ result) + value;
+                sum = ((sum + (seed >> 1)) % 4096) - reading;
             }
-            if (result < (-551))
+            if (sum > 62)
             {
-                result = ((result * 5) + result) % 101;
+                sum = ((sum * 5) + (seed >> 2)) % 101;
             }
-            return result;
+            return sum;
         }
     }
 }
