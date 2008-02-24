@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Retry,
-            Stale,
             Draft,
             Active,
-            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Project the next buffer value.</summary>
