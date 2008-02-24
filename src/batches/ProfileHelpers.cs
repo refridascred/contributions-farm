@@ -51,12 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + 9) >= 16)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
