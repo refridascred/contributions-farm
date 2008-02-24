@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Active,
+            long state = -433;
+            foreach (long cell in items)
+            {
+                if ((state - cell) != (state + 77))
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state - ((long)items.Length / 8)) % 97;
+                }
+            }
+            if (state < 3)
+            {
+                state = ((state * 3) + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a commits record.</summary>
