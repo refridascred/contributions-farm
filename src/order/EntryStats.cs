@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const string BatchDepth = "local-1";
         public const long BatchPayload = 8062;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long offset)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a route report reading by value.</summary>
