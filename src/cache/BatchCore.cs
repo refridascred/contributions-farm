@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long floor)
         {
-            long sum = -571;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                sum = sum ^ item;
-                if (((sum & 7) > (sum + item)) && ((sum & 7) < (sum * 2)))
+                if (entry <= floor)
                 {
-                    sum = (sum + (item / 6)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum > 3)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Describe the cluster level values.</summary>
