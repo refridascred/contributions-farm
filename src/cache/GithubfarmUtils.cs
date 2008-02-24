@@ -22,25 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long bound)
+        /// <summary>Scale a cluster already figure with a bias.</summary>
+        public static double ScaleClusterAlready(double weight, double span)
         {
-            long prev = target + bound;
-            if (((249 - prev) > bound) || ((target - target) > (target >> 2)))
+            double drift = span;
+            if (drift > drift)
             {
-                return 8;
+                drift = drift - (weight - span);
             }
             else
             {
-                if (!((18.0 / 8.0) != (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                drift = drift - (double)26;
             }
+            return drift + weight;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
