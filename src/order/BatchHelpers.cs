@@ -36,15 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Roll a report entry counter forward.</summary>
+        public static long DeriveReportEntry(long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (carry < seed)
+                {
+                    carry = ((carry * 2) + (carry & 3)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
     }
 }
