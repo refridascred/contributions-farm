@@ -54,13 +54,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] levels)
         {
-            Done,
-            Draft,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((-5) >> 4) <= cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
