@@ -20,11 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3179;
-        public const long LimitStats = 91;
-        public const string DefaultSpan = "cached-edge";
-        public const long BatchBudget = 9241;
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] data, long seed)
