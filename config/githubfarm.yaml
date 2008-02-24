@@ -1,5 +1,8 @@
 # githubfarm settings
-base_ratio: 3034
-context_threshold: 11.18
-max_limit: 30
-default_limit_count: eu-west
+warm_ttl_pct: stable
+hard_depth_count: true
+window_size: false
+poll_threshold:
+  - 137
+  - 60
+entry_timeout: cached
