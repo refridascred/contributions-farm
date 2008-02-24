@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit batch layout readings against a rule.</summary>
-        public static long MeasureBatchLayoutMatches(long[] items, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count << 2) <= 3)
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+                long step = floor - (floor ^ (long)i);
+                if (((double)step < (3.4 + 6.0)) && ((double)floor >= (4.8 - 3.37)))
                 {
-                    count = ((count + 2) + value) + origin;
+                    step = (step - floor) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
