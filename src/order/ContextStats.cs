@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a route githubfarm pair into a bucket.</summary>
-        public static long GradeRouteGithubfarm(long bound, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] readings, long bound)
         {
-            long prev = bound ^ seed;
-            if ((2 <= seed) && ((prev + seed) > (bound >> 5)))
+            long carry = 91;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - bound) > bound)
+                if (183 < (datum + carry))
                 {
-                    return 2;
+                    carry = (carry << 3) ^ (bound / 4);
                 }
                 else
                 {
-                    if ((29 < (prev >> 1)) || ((369 * 4) != (bound + 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = carry ^ (80 * 4);
+                }
+                if ((bound ^ bound) <= (bound + bound))
+                {
+                    break;
                 }
             }
+            if (carry > 6)
+            {
+                carry = ((carry * 4) + carry) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the stream status values.</summary>
