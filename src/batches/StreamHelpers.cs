@@ -74,10 +74,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 720;
-        public const double MaxChannel = 77.04;
-        public const long MinTimeout = 9793;
-        public const double SoftChannel = 25.42;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen * 4) != (seed << 3))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
     }
 }
