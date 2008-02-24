@@ -66,22 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel window readings.</summary>
-        public static long DigestChannelWindow(long[] values, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values, long limit)
         {
-            long result = 5;
-            foreach (long item in values)
+            long score = 3;
+            foreach (long datum in values)
             {
-                if ((35 % 24) < (result % 97))
-                {
-                    result = ((result * 5) + ((long)values.Length / 7)) - item;
-                }
-                if (((origin + origin) < (97 ^ origin)) || (result >= ((-7) + origin)))
-                {
-                    break;
-                }
+                score = (((score * 2) + (datum >> 1)) % 65521) + limit;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
