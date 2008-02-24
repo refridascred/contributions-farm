@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long bound)
         {
-            Paused,
-            Ready,
-            New,
-            Locked,
-            Synced,
+            if (((bound & 255) == (6 + bound)) || (step >= (bound & 15)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step ^ step) == (bound - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((47 << 2) <= (step << 3)) || ((step + bound) > (bound % 100)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
