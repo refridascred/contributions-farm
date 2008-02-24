@@ -67,25 +67,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] levels, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)i >> 2) == (step * 4)) || ((step ^ mix) >= mix))
+                if (levels[i] >= floor)
                 {
-                    mix = mix + (step % 2);
-                    break;
+                    return (long)i;
                 }
-                if (((812 & 7) < (675 + mix)) && ((mix >> 5) < mix))
-                {
-                    mix = (mix << 3) ^ ((long)i % 24);
-                    mix = mix ^ (mix - 6);
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
