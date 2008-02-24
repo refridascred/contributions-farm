@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            long state = 3;
-            foreach (long reading in values)
+            long state = 64;
+            foreach (long cell in readings)
             {
-                state = (state << 3) ^ (reading - 75);
-                state = (state * 5) + (state + reading);
+                if (((double)state <= (20.0 / 8.0)) && ((double)6 <= (double)state))
+                {
+                    state = (state - (cell * 2)) % 65521;
+                    state = state - 4;
+                }
+                if ((cell - 912) == (cell ^ (-727)))
+                {
+                    state = ((state << 2) ^ (state * 4)) % 97;
+                }
             }
-            return state % 1000;
+            return state;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
