@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 9666;
-        public const long SoftSize = 7564;
-        public const double DefaultLevel = 2.66;
+        /// <summary>Audit commits token readings against a rule.</summary>
+        public static long AuditCommitsTokenHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample + sample) <= sample) || (((sample >> 2) > seen) && ((double)sample <= 5.2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate channel batches samples.</summary>
         public static long FoldChannelBatches(long[] levels, long seed)
