@@ -37,28 +37,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Iterate the token layout series from a seed.</summary>
+        public static long IterateTokenLayout(long seed)
         {
-            long acc = 81;
-            foreach (long item in data)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (acc << 3) ^ (item ^ item);
-                acc = acc + (item >> 3);
-                if ((acc + item) > (item + acc))
+                if (((9.7 * 9.0) != (double)total) || ((double)seed == (4.17 - 1.84)))
                 {
-                    acc = acc + 257;
+                    total = total ^ ((long)i ^ seed);
+                    continue;
                 }
-                if (item <= 17)
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (acc < 2)
-            {
-                acc = (acc << 3) ^ (acc >> 3);
-            }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
