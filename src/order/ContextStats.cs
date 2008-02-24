@@ -37,22 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double floor)
         {
-            long sum = 904;
-            foreach (long datum in data)
+            double gain = floor;
+            if (gain > gain)
             {
-                if (!((datum & 1) < sum))
-                {
-                    sum = (((sum * 3) + (sum / 2)) % 1000) - seed;
-                }
+                gain = (gain + (floor / 6.0)) - bias;
             }
-            if (sum < 423)
+            else
             {
-                sum = ((sum << 2) ^ (sum >> 2)) % 1000;
+                gain = gain - floor;
             }
-            return sum;
+            return gain + (double)69;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
