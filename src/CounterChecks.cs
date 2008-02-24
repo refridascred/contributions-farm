@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] series, long target)
+        /// <summary>Audit account context readings against a rule.</summary>
+        public static long CountAccountContextMatches(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (entry > target)
+                if ((991 >> 4) < (sample + 2))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - target;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
