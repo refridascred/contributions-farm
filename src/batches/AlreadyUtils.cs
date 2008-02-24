@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
+            Failed,
+            New,
             Closed,
             Paused,
-            Stale,
-            Failed,
-            Done,
         }
 
         /// <summary>Describe the route class values.</summary>
