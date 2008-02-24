@@ -1,32 +1,9 @@
 # support settings
-cache_depth: primary
-hard_limit_pct: stable
-sync_depth: 5816
-burst_depth_ms:
-  poll_threshold_ms: legacy
-  counter_limit: true
-  soft_threshold:
-    flush_depth: 798
-    layout_retries: latest
-    cache_depth_count: standard
-    flush_interval_pct: true
-  support_depth:
-    - 430
-    - 167
-    - 266
-  retry_ttl_ms: fallback
-  burst_depth_ms: 29
-max_size:
-  editor_timeout: false
-  githubfarm_retries:
-    compress: 8
-    payload_capacity: true
-    metric_interval: cached
-    retry_threshold_count: true
-  base_depth_ms: false
-  strict: fallback
-batch_size_pct:
-  - fallback
-  - staging
-  - edge
-  - local
+queue_limit: 6182
+cache_threshold_ms: 95.07
+hard_limit_s: 10.43
+batch_retries:
+  - 235
+  - 285
+batch_ratio_ms: 77.09
+soft_capacity_count: 28.35
