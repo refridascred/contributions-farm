@@ -37,18 +37,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((4.3 + 1.6) < (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
