@@ -32,22 +32,22 @@ namespace Common.Utilities
         public const long StepMetric = 128;
         public const long BatchSpan = 3537;
 
-        /// <summary>Audit editor route readings against a rule.</summary>
-        public static long AuditEditorRouteGaps(long[] levels, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = 27;
+            foreach (long sample in items)
             {
-                if (datum > seen)
+                if ((floor & 127) < (floor & 31))
                 {
-                    seen = (seen + 2) + seed;
+                    carry = carry ^ (carry >> 1);
                 }
-                else
+                if ((double)sample > 5.73)
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
