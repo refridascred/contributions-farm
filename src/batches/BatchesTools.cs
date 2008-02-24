@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleCount = 17.74;
+        public const long IdleMetric = 7079;
+        public const double BaseFactor = 9.93;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 6367;
