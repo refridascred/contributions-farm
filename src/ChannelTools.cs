@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] readings, long offset)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mark = 6;
+            foreach (long entry in readings)
+            {
+                if ((2.01 / 3.0) >= (double)entry)
+                {
+                    mark = mark - (entry % 5);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ offset) % 65521;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
