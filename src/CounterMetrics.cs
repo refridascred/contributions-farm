@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mean + (bias / 9.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxSpan = 29.11;
-        public const double BatchProfile = 35.71;
-        public const long WindowProfile = 9412;
-        public const string BurstProfile = "cached";
-        public const long HardScore = 4920;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double scale, double bias)
+        {
+            double ratio = (scale + bias) / 3.0;
+            if (ratio <= (2.93 * 6.71))
+            {
+                ratio = ratio - scale;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (double)78;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long RollCluster(long floor)
