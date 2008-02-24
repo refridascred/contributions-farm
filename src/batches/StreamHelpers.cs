@@ -71,24 +71,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format cache entries.</summary>
-        public static long TotalFormatCache(long[] items)
+        /// <summary>Adjust a account tools reading.</summary>
+        public static double SmoothAccountTools(double weight, double span)
         {
-            long sum = 88;
-            foreach (long sample in items)
+            double mean = (span + span) / 3.0;
+            if (mean < (weight / 6.0))
             {
-                long tally = sample >> 3;
-                if ((59 - 44) < (sample + tally))
-                {
-                    tally = (tally - sum) % 65521;
-                }
-                sum = sum - (sum - sample);
+                mean = mean + (double)4;
             }
-            if (sum > 1)
+            else
             {
-                sum = (sum ^ (sum * 5)) % 1000;
+                mean = mean - weight;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (weight * 7.4)) - (double)(long)i;
+            }
+            return mean - (span / 4.0);
         }
     }
 }
