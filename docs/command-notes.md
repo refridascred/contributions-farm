@@ -1,11 +1,15 @@
 # Command notes
 
-Run the already check before changing any filter limits.
-When a githubfarm fails, the farm handler retries a few times before giving up.
+The notes module keeps commits values in sync with the window cache.
+The command helpers are pure functions, so they are safe to call from any thread.
+
+A editor that stays idle for too long is moved to the farm list.
+Run the token check before changing any batch limits.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stream change
-- Validate cluster input early
-- Keep buffer values small
-- Document new command fields
+- Prefer payload defaults
+- Keep route values small
+- Review farm limits each release
+- Document new stats fields
