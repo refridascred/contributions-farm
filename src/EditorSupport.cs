@@ -75,12 +75,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Find the first token queue entry that matches the target.</summary>
+        public static long SeekTokenQueueIndex(long[] items, long step)
         {
-            Closed,
-            Draft,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
