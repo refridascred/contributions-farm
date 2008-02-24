@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "staging-v2";
-        public const string HardLayout = "cached";
-        public const double CacheLayout = 2.27;
-        public const double BatchLayout = 20.57;
+        /// <summary>Measure how many notes record samples are out of range.</summary>
+        public static long CountNotesRecordGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((8.6 * 2.6) == (double)matches)
+                {
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] series, long floor)
