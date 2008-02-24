@@ -34,12 +34,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            long mark = 2;
+            foreach (long cell in values)
+            {
+                mark = (mark ^ (cell - 56)) % 97;
+                mark = mark - (2 + mark);
+            }
+            if (mark < 66)
+            {
+                mark = (mark * 5) + (mark << 1);
+            }
+            return mark;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
