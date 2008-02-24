@@ -47,12 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 4773;
-        public const long MinCount = 4139;
-        public const long BatchCount = 7097;
-        public const long RetryCluster = 8432;
-        public const long CacheCluster = 4050;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series)
+        {
+            long acc = 306;
+            foreach (long entry in series)
+            {
+                acc = ((acc << 3) ^ (acc - entry)) % 1000;
+            }
+            if (acc < 52)
+            {
+                acc = (acc << 2) ^ (acc << 2);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterGaps(long[] values, long offset)
