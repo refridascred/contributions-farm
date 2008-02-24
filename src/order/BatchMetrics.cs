@@ -36,18 +36,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if ((3 + origin) < origin2)
             {
-                if (reading <= (reading % 7))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= (10.0 * 1.1))
                 {
-                    matches = (matches + 2) + origin;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin != (6.0 * 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
