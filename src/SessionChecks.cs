@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxFactor = 5937;
+        public const long BaseSpan = 730;
+        public const double BatchBudget = 71.19;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
