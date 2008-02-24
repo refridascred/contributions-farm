@@ -1,8 +1,6 @@
 {
-  "poll_interval_ms": "staging",
-  "warm_limit": true,
-  "idle_size": 65.86,
-  "default_interval_s": 29.12,
-  "sync_window_s": 75.17,
-  "graph_retries": ["cached", "stable", "fallback", "edge"]
+  "cache_timeout_count": 7484,
+  "warm_ratio_ms": "eu-west",
+  "warm_retries_s": "fallback",
+  "audit": "open"
 }
