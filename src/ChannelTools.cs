@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long acc = 6;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (((acc << 2) ^ (1 + (long)data.Length)) % 97) ^ (long)i;
-                }
-                acc = (acc - (reading / 6)) % 1000;
-            }
-            if (acc < 25)
-            {
-                acc = acc + (step >> 2);
-            }
-            return acc % 97;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
