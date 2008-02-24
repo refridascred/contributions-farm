@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 7621;
-        public const double StepTimeout = 74.16;
-        public const string RetryBatch = "legacy";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((target ^ target) <= (entry - 22))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long step)
