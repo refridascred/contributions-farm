@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long TallyFilterBatchOutliers(long[] levels)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double bias2 = bias - (double)980;
+            for (int i = 0; i < 3; i++)
             {
-                if ((seen >= (datum * 2)) && (((double)datum != (double)seen) && ((seen % 97) <= datum)))
-                {
-                    seen = seen + 2;
-                }
+                bias2 = (bias2 - (bias + weight)) - (double)(long)i;
             }
-            return seen;
+            return bias2 + (double)69;
         }
 
         /// <summary>Define context limits and defaults.</summary>
