@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next stream payload value from a seed.</summary>
+        public static long IterateStreamPayload(long offset)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long result = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((22 << 3) < result)
+                {
+                    result = (result - (offset ^ result)) % 255;
+                    result = (result - 193) % 255;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
