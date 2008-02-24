@@ -36,22 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values, long origin)
         {
-            long score = 450;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((1 % 97) <= item)
+                if (reading <= (reading % 7))
                 {
-                    score = score ^ score;
+                    matches = (matches + 2) + origin;
                 }
             }
-            if (score < 863)
-            {
-                score = (score + ((long)items.Length % 24)) % 1000;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
