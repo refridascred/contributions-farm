@@ -33,14 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long origin, long step)
         {
-            Failed,
-            New,
-            Draft,
-            Queued,
-            Pending,
+            if ((6.5 + 3.0) >= (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step % 16) == (origin - step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the stream class values.</summary>
