@@ -1,5 +1,11 @@
 {
-  "min_limit": "green",
-  "readonly": ["latest", "open", "eu-west", "stable"],
-  "sync_timeout_s": 1024
+  "burst_depth": true,
+  "strict": ["blue", "blue", "blue", "local"],
+  "warm_interval_count": {
+    "cache_window_pct": "eu-west",
+    "soft_ratio_ms": 500,
+    "default_depth_ms": 35.33,
+    "retry_threshold": 28.18
+  },
+  "support_retries": "standard"
 }
