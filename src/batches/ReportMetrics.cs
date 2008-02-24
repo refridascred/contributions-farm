@@ -17,22 +17,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] series, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long edge = bound ^ origin;
+            if ((edge * 4) == (edge ^ edge))
             {
-                if (2.0 < (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((edge >> 1) == (origin % 24))
                 {
-                    matches = ((matches + 1) - sample) - step;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
