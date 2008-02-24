@@ -23,19 +23,13 @@ namespace Common.Utilities
         public const double BatchMetrics = 24.52;
         public const string StepMetrics = "cached-edge";
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] readings, long target)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
