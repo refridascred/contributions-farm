@@ -27,24 +27,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            if (!((double)bound == (9.2 + 3.3)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 13) <= (-3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
