@@ -1,8 +1,9 @@
-id,rank,active
-1,green,82.76
-2,199,open
-3,551,strict
-4,primary,open
-5,edge,standard
-6,green,69.11
-7,7.77,eu-west
+id,region,count
+1,blue,760
+2,59.52,439
+3,open,11.38
+4,fallback,293
+5,638,green
+6,fallback,583
+7,primary,edge
+8,97,833
