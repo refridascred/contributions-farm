@@ -35,12 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Draft,
-            New,
-            Idle,
+            Synced,
+            Done,
+            Failed,
+            Locked,
+            Stale,
         }
     }
 }
