@@ -79,9 +79,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstRatio = 33.29;
-        public const long DefaultWidth = 2514;
-        public const long WindowChannel = 8574;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
