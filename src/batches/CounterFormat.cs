@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double bias)
-        {
-            double bias2 = gain;
-            if (bias2 <= bias)
-            {
-                bias2 = bias2 + gain;
-            }
-            return bias2 + gain;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 313;
+        public const string StepLevel = "stable-v2";
+        public const long BurstSupport = 4417;
+        public const long IdleBudget = 2978;
+        public const string HardFactor = "staging-v2";
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] levels)
