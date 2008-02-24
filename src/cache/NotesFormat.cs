@@ -12,13 +12,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinLevel = "local";
+        public const long BaseTimeout = 9278;
+        public const long StepEntry = 30;
+        public const long MinTimeout = 9671;
+        public const string SoftFactor = "open-edge";
 
         /// <summary>Scale a metrics stream figure with a bias.</summary>
         public static double AdjustMetricsStream(double ratio, double offset)
