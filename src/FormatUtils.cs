@@ -48,19 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] levels, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
