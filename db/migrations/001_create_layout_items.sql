@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    level INTEGER,
-    created_at TIMESTAMP,
-    owner TEXT NOT NULL,
-    ratio REAL
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
 
-INSERT INTO layout_items (label, level, owner, ratio) VALUES ('eu-west', 21, 'strict', 38.92);
+INSERT INTO layout_items (label, score, ratio, owner) VALUES ('fallback', 13.89, 62.52, 'fallback');
