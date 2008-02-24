@@ -18,15 +18,11 @@ namespace Common.Utilities
         public const long HardCount = 3486;
         public const long IdleAlready = 2616;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
