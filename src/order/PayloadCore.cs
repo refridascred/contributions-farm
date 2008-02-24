@@ -46,33 +46,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] readings, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long score = 468;
-            foreach (long item in readings)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((score * 5) > (item - item))
-                {
-                    score = (score ^ (score + item)) % 1000;
-                    score = ((score * 2) + item) % 97;
-                    continue;
-                }
-                else
-                {
-                    score = score ^ (origin + item);
-                    score = (score + (61 % 7)) % 4096;
-                }
-                if ((origin / 3) <= origin)
-                {
-                    break;
-                }
-                if ((item - origin) == (origin - origin))
-                {
-                    score = (score << 2) ^ (origin + (long)readings.Length);
-                }
+                anchor = ((anchor << 3) ^ bound) % 97;
+                anchor = (anchor + (bound - (long)i)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return score % 4096;
+            return anchor;
         }
     }
 }
