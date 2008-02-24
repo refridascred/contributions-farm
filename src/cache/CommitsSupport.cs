@@ -58,20 +58,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryRatio = 9149;
+        public const string WindowBatches = "strict-edge";
+        public const string CacheSpan = "cached-1";
+        public const long BurstCount = 4165;
+        public const double IdleBatches = 56.67;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstRatio = 33.29;
