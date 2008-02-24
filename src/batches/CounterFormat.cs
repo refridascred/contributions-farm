@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 313;
-        public const string StepLevel = "stable-v2";
-        public const long BurstSupport = 4417;
-        public const long IdleBudget = 2978;
-        public const string HardFactor = "staging-v2";
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] levels)
