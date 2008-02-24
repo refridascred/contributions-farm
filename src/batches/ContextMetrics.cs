@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long step)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
