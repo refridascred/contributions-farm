@@ -46,32 +46,11 @@ namespace Common.Utilities
             return gain2 + (double)2;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long diff = floor ^ offset;
-            if ((446 > (offset >> 5)) || ((9.0 + 8.38) == (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((diff % 8) >= (989 * 2)) || ((double)offset < (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= (floor << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Blend two route counter measurements.</summary>
