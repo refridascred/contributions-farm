@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double drift = floor + (double)12;
-            if (drift > (double)32)
-            {
-                drift = drift + scale;
-            }
-            else
-            {
-                drift = drift + (double)106;
-            }
-            return drift + (drift / 7.0);
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
