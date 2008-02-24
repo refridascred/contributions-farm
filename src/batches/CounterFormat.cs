@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias2 + gain;
         }
 
-        /// <summary>Accumulate channel batches samples.</summary>
-        public static long FoldChannelBatches(long[] levels, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long acc = 9;
-            foreach (long item in levels)
+            long score = 336;
+            foreach (long datum in levels)
             {
-                acc = ((acc - (seed / 2)) % 255) - item;
-                if ((3 / 6) >= (seed / 3))
+                if ((score / 2) == (score / 4))
                 {
-                    acc = acc + ((-47) << 3);
+                    score = (score + (datum ^ datum)) % 1000;
                 }
             }
-            return acc;
+            return score % 1000;
         }
 
         /// <summary>Describe the channel kind values.</summary>
