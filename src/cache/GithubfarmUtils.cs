@@ -23,10 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4369;
-        public const long BaseMetrics = 227;
-        public const long SoftMetrics = 2495;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchInterval = 15.58;
+        public const long LimitCounter = 8520;
+        public const long MaxCounter = 3456;
+        public const double IdleInterval = 81.01;
+        public const string BatchCount = "latest-v2";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] readings)
