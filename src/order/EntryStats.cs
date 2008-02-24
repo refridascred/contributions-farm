@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string BatchDepth = "local-1";
         public const long BatchPayload = 8062;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long sum = 6;
-            foreach (long value in readings)
-            {
-                sum = ((((sum << 3) ^ (sum << 2)) % 101) ^ value) - bound;
-            }
-            return sum % 1000;
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of editor cluster readings.</summary>
