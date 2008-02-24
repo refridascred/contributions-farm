@@ -34,21 +34,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (total + step) - (long)i2;
-                }
-                total = ((total << 3) ^ 25) % 1000;
-                total = (total - (total << 2)) % 1000;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Idle,
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the buffer level values.</summary>
