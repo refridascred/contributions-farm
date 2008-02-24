@@ -47,13 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Digest a series of metric format entries.</summary>
+        public static long ScoreMetricFormat(long[] samples, long offset)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long acc = 2;
+            foreach (long reading in samples)
+            {
+                acc = (acc - reading) - offset;
+                acc = ((acc << 3) ^ (reading + reading)) % 1000;
+                acc = acc - (reading * 5);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
