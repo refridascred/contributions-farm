@@ -72,18 +72,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many window contributi samples are out of range.</summary>
-        public static long TallyWindowContributiOutliers(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)5 >= (6.8 + 8.0))
-                {
-                    tally = ((tally + 3) + entry) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepFactor = 709;
+        public const long WindowDepth = 6185;
+        public const string SoftStats = "open";
+        public const long WindowStats = 1636;
     }
 }
