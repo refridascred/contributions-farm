@@ -19,13 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long seed)
         {
-            Ready,
-            Locked,
-            New,
-            Paused,
+            if ((double)floor != (0.1 * 7.3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed & 127) > (525 - 993))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((3.0 / 8.0) > (double)floor) && ((seed % 97) <= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 1) >= (seed / 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter metric entry stays within the limit.</summary>
