@@ -33,21 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((target >> 2) != (seed + target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((target << 3) > (seed + seed)) && ((seed ^ target) != (target + target)))
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
