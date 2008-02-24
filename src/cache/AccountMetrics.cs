@@ -48,20 +48,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((target - target) >= target))
-                {
-                    sum = (sum + 6) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 7464;
+        public const long IdleChannel = 3975;
+        public const long BurstRatio = 2111;
+        public const string WindowRatio = "stable-1";
+        public const double StepFactor = 13.38;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TallyLayout(long[] values)
