@@ -40,39 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long bound, long step)
-        {
-            if ((bound - step) != (bound >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((step / 3) >= 297))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(bound <= (bound / 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((177 + 217) > (bound >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 3739;
+        public const long MaxWindow = 6792;
+        public const long HardWindow = 5986;
+        public const long DefaultDepth = 5588;
+        public const string IdleWindow = "local-v2";
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
