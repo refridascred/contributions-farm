@@ -84,11 +84,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheRatio = 3138;
-        public const long HardContext = 4996;
-        public const long StepContext = 9918;
-        public const string DefaultContext = "strict-1";
-        public const string MinContext = "staging";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowWidth = 3624;
+        public const long MaxDepth = 6264;
+        public const string CacheMetric = "standard";
+        public const long HardMetric = 971;
     }
 }
