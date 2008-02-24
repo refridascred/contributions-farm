@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-A checks that stays idle for too long is moved to the command list.
-Defaults for notes live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the session list.
+Keep batch and context names short and lowercase.
+The cluster report groups every token by buffer.
 
-The notes report groups every editor by buffer.
-Use cache settings to tune how often metric data is refreshed.
+Run the farm check before changing any window limits.
+Keep farm and stats names short and lowercase.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Validate stream input early
-- Keep session values small
+- Log every queue change
+- Keep farm values small
+- Document new cache fields
+- Prefer record defaults
