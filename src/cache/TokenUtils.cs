@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const double BatchMetrics = 24.52;
         public const string StepMetrics = "cached-edge";
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long mark = 298;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.35 * 5.74) > (1.4 - 20.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark + (bound + bound)) % 1000) - value;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
