@@ -1,13 +1,25 @@
 # support settings
-base_delay_count:
-  - stable
-  - legacy
-  - primary
-cache_limit:
-  - 325
-  - 239
-  - 234
-  - 2
-poll_depth_s: blue
-idle_delay_pct: stable
-dry_run: stable
+hard_ratio: 22
+channel_timeout:
+  - 461
+  - 105
+  - 235
+  - 231
+poll_threshold_count: 60
+persist:
+  - strict
+  - open
+  - green
+stats_timeout:
+  - 185
+  - 236
+enabled:
+  batches_threshold:
+    max_size_ms: 60
+    order_ttl: 70
+    min_threshold_count: latest
+  order_limit: 60
+  batches_timeout: strict
+  dry_run:
+    - 242
+    - 148
