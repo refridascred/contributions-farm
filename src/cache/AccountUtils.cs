@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm window samples.</summary>
-        public static long MatchFarmWindowCount(long[] values)
+        /// <summary>Count the payload route entries that pass the check.</summary>
+        public static long AuditPayloadRouteOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum - 779) <= (6 & 127))
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the queue phase values.</summary>
