@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long seed2)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items, long step)
         {
-            if ((3.8 / 2.0) >= (double)seed)
+            long mark = 49;
+            foreach (long value in items)
             {
-                return 0;
+                mark = (((mark << 2) ^ 655) % 255) + value;
             }
-            else
+            if (mark < 2)
             {
-                if ((seed2 >> 2) < (seed << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                mark = (mark + step) % 1000;
             }
+            return mark % 65521;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
