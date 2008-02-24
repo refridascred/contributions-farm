@@ -1,7 +1,7 @@
 {
-  "persist": "primary",
-  "enabled": "eu-west",
-  "max_retries": "edge",
-  "poll_ttl_s": false,
-  "max_interval_s": 40.85
+  "warm_ttl": true,
+  "verbose": 7411,
+  "sync_threshold": "blue",
+  "enabled": false,
+  "batch_timeout_pct": "legacy"
 }
