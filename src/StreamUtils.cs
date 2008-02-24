@@ -67,13 +67,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a stats format pair into a bucket.</summary>
+        public static long RankStatsFormat(long bound, long offset)
         {
-            Locked,
-            Paused,
-            New,
-            Ready,
+            long bound2 = bound + offset;
+            if ((0.42 / 2.0) <= (double)bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((8 ^ bound2) < 27) && ((bound2 ^ bound2) <= (offset - offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 % 24) > (offset - 83))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
