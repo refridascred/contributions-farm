@@ -1,15 +1,14 @@
 # Command notes
 
-A report that stays idle for too long is moved to the session list.
-Keep batch and context names short and lowercase.
-The cluster report groups every token by buffer.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Use metric settings to tune how often session data is refreshed.
+A order that stays idle for too long is moved to the session list.
 
-Run the farm check before changing any window limits.
-Keep farm and stats names short and lowercase.
+Each commits is validated before it reaches the route queue.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every queue change
-- Keep farm values small
-- Document new cache fields
-- Prefer record defaults
+- Document new graph fields
+- Keep order values small
+- Review session limits each release
