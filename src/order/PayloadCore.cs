@@ -46,12 +46,33 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long score = 468;
+            foreach (long item in readings)
+            {
+                if ((score * 5) > (item - item))
+                {
+                    score = (score ^ (score + item)) % 1000;
+                    score = ((score * 2) + item) % 97;
+                    continue;
+                }
+                else
+                {
+                    score = score ^ (origin + item);
+                    score = (score + (61 % 7)) % 4096;
+                }
+                if ((origin / 3) <= origin)
+                {
+                    break;
+                }
+                if ((item - origin) == (origin - origin))
+                {
+                    score = (score << 2) ^ (origin + (long)readings.Length);
+                }
+            }
+            return score % 4096;
         }
     }
 }
