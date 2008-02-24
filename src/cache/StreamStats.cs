@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Failed,
-            Paused,
-            Done,
-            Dropped,
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
