@@ -1,6 +1,20 @@
 {
-  "warm_depth_count": 44.05,
-  "sync_capacity": 60,
-  "default_ratio_s": 250,
-  "strict": "green"
+  "strict": 30,
+  "burst_ttl": true,
+  "burst_threshold": 40.24,
+  "cluster_depth": "standard",
+  "checks_capacity": {
+    "min_interval_count": 20,
+    "commits_capacity": false,
+    "batch_ttl_ms": "fallback",
+    "compress": {
+      "warm_ratio": 8776,
+      "commits_depth": true,
+      "entry_limit": 2824,
+      "idle_ttl_pct": ["standard", "primary", "stable"]
+    },
+    "max_interval_ms": 1024,
+    "retry_window": "primary"
+  },
+  "editor_window": "staging"
 }
