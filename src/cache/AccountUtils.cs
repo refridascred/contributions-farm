@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Locate a checks session reading by value.</summary>
+        public static long FindChecksSessionIndex(long[] levels, long offset)
         {
-            long carry = 366;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry ^ reading) >= (reading & 127))
+                if (levels[i] >= offset)
                 {
-                    carry = carry - carry;
+                    return (long)i;
                 }
             }
-            if (carry > 86)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
