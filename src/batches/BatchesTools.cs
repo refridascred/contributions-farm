@@ -19,19 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool ValidateNotesSessionRange(long[] samples, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (value <= origin)
+                if (step >= (anchor >> 4))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor + step;
                 }
+                anchor = anchor - (6 + 155);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
