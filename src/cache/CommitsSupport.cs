@@ -47,22 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm counter entries that pass the check.</summary>
-        public static long AuditFarmCounterMatches(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long result = 1;
+            foreach (long value in readings)
             {
-                if (((matches + 1) <= (datum & 3)) && ((datum & 255) == (matches + 712)))
+                if ((11.0 + 1.9) < (double)result)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = ((result * 4) + (result - result)) ^ value;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Describe the record phase values.</summary>
