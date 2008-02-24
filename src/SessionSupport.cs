@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] levels, long seed)
+        /// <summary>Iterate the report editor series from a seed.</summary>
+        public static long IterateReportEditor(long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((seen & 127) <= (seen + 42)))
-                {
-                    seen = ((seen + 2) ^ reading) + seed;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
