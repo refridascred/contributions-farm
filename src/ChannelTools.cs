@@ -19,24 +19,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long step)
-        {
-            if ((bound < (bound & 15)) || (bound >= step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step + bound) <= (554 + 2)) || ((bound ^ step) > bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepSpan = 36.71;
+        public const long CacheCounter = 5846;
+        public const long CacheDepth = 4666;
+        public const long HardCount = 2401;
+        public const long MinScore = 3944;
     }
 }
