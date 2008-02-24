@@ -48,24 +48,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items)
         {
-            if ((seed - seed) < (0 - floor))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (8.0 * 6.07))
+                if (70 < (datum & 3))
                 {
-                    return 7;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
