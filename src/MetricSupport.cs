@@ -35,12 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double weight, double offset)
         {
-            Queued,
-            Locked,
-            New,
+            double rate = (double)(32 * 5);
+            if (rate >= 1.0)
+            {
+                rate = (rate - rate) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + (double)8;
         }
     }
 }
