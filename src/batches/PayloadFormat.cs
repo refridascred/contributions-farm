@@ -13,13 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] series, long limit)
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((limit & 127) <= (limit & 1))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel mode values.</summary>
