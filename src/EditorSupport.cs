@@ -68,13 +68,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
