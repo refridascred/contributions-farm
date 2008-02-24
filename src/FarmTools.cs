@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] levels, long step)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double bias = (double)7 / 8.0;
+            if (bias >= (double)9)
             {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - (double)5) - scale;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - (offset / 5.0);
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
