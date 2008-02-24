@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] items, long seed)
+        /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRecordBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((6.3 / 6.0) <= (double)seen)
+                if (entry > offset)
                 {
-                    seen = ((seen + 1) + value) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
