@@ -29,10 +29,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "standard-v2";
-        public const long WindowEntry = 8362;
-        public const double MaxEntry = 57.7;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] series)
