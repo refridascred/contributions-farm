@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items, long bound)
         {
-            Idle,
-            Draft,
-            Failed,
-            Paused,
+            long total = 36;
+            foreach (long cell in items)
+            {
+                total = ((total * 2) + (cell & 255)) % 255;
+                if ((double)cell == (double)1)
+                {
+                    total = (total - bound) % 4096;
+                }
+            }
+            if (total > 743)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Accumulate route samples.</summary>
