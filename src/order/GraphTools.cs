@@ -66,22 +66,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] samples)
         {
-            long sum = 926;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (sum > item)
+                if ((matches >> 2) < (reading * 4))
                 {
-                    sum = (sum + (1 + item)) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (sum > 542)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum % 1000;
+            return matches;
         }
     }
 }
