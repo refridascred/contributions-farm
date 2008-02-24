@@ -16,19 +16,39 @@ namespace Common.Utilities
             return rate2 + (1.02 - 5.71);
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long origin, long origin2)
         {
-            double scale = (floor + floor) - (floor * 4.8);
-            if (scale <= (scale * 2.9))
+            long diff = origin + origin2;
+            if (((1 ^ origin2) >= (origin - origin)) || ((1.34 / 9.0) == (double)diff))
             {
-                scale = (scale + 4.9) - weight;
+                return 2;
             }
             else
             {
-                scale = scale - (scale + floor);
+                if ((origin2 << 2) < (5 ^ diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1 >= diff)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((5.65 - 1.0) > (double)origin2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return scale + (floor * 19.0);
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
