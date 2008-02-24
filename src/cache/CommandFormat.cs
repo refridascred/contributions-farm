@@ -32,12 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 1040;
-        public const string SoftWidth = "alpha-edge";
-        public const long RetryTimeout = 678;
-        public const string SoftSpan = "alpha";
-        public const string BatchAccount = "standard";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryRatio = 9339;
