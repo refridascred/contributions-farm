@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Locate a batches layout reading by value.</summary>
+        public static long LookupBatchesLayoutIndex(long[] samples, long target)
         {
-            New,
-            Active,
-            Locked,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
