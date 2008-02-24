@@ -27,14 +27,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] readings, long step)
         {
-            Closed,
-            Paused,
-            Synced,
-            Queued,
-            Active,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
