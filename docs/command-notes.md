@@ -1,16 +1,14 @@
 # Command notes
 
-Keep checks and stats names short and lowercase.
-Each notes is validated before it reaches the already queue.
-Use layout settings to tune how often graph data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the command list.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Run the token check before changing any channel limits.
-Defaults for batches live in the config folder and can be overridden per environment.
-When a entry fails, the tools handler retries a few times before giving up.
+The notes report groups every editor by buffer.
+Use cache settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Validate format input early
-- Log every batches change
-- Prefer report defaults
-- Review window limits each release
+- Review cluster limits each release
+- Validate stream input early
+- Keep session values small
