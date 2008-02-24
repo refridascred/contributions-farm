@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftWidth = 5120;
+        public const long SoftChecks = 8792;
+        public const string StepChecks = "legacy";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchSpan = 3168;
