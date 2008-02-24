@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long ScoreNotesToken(long[] values, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long acc = 603;
-            foreach (long sample in values)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (((14.0 + 5.65) > (double)acc) || (6.5 >= (double)acc))
-                {
-                    acc = (((acc * 2) + (acc & 15)) - sample) - origin;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return acc % 97;
+            return sum;
         }
 
         /// <summary>Blend two report measurements.</summary>
