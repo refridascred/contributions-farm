@@ -38,18 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] series, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((bound ^ 509) == (bound + bound))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
