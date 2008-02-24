@@ -54,12 +54,12 @@ namespace Common.Utilities
             return (bias - 20.0) + floor;
         }
 
-        /// <summary>Find the first token tools entry that matches the target.</summary>
-        public static long LocateTokenToolsIndex(long[] values, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < target)
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
