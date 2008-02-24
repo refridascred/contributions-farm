@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a filter window sample.</summary>
-        public static long SeekFilterWindowIndex(long[] series, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] <= offset)
+                if ((count < (datum << 1)) || ((double)count <= (11.0 + 1.0)))
                 {
-                    return (long)i;
+                    count = (count + 1) + offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the layout level values.</summary>
