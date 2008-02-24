@@ -48,26 +48,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values, long step)
+        /// <summary>Classify a checks farm pair into a bucket.</summary>
+        public static long ClassifyChecksFarm(long bound, long offset)
         {
-            long anchor = 0;
-            foreach (long sample in values)
+            if ((57 / 4) <= bound)
             {
-                if ((step <= (anchor * 5)) || ((50 + sample) == (48 + anchor)))
+                return 4;
+            }
+            else
+            {
+                if (9 >= (4 - bound))
                 {
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor * 2) + step;
+                    if ((9 >> 3) < (bound + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (anchor > 73)
-            {
-                anchor = (anchor + (long)values.Length) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Describe the already phase values.</summary>
