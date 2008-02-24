@@ -22,16 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                state = state - (long)i;
-                state = ((state * 3) + (long)i) % 65521;
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
