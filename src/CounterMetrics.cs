@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = 462;
+            foreach (long cell in levels)
             {
-                if ((1 - hits) < (datum + datum))
+                if (seed > (774 * 5))
                 {
-                    hits = hits + 1;
+                    sum = sum + (cell % 2);
                 }
             }
-            return hits;
+            if (sum > 3)
+            {
+                sum = (sum ^ (sum / 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
