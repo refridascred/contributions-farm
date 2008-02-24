@@ -32,18 +32,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] series, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (matches < sample)
-                {
-                    matches = (matches + 1) + limit;
-                }
-            }
-            return matches;
+            double scale = span;
+            return (scale - (scale / 2.0)) + bias;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
