@@ -23,21 +23,18 @@ namespace Common.Utilities
             return scale - (scale + scale);
         }
 
-        /// <summary>Compare every pair of route contributi readings.</summary>
-        public static long OverlapRouteContributiCount(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)readings.Length >= (7.9 / 2.0))
                 {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
