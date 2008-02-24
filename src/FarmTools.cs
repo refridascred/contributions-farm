@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples)
         {
-            long next = offset - origin;
-            if (offset < (offset + offset))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((next >> 5) >= (706 >> 5))
+                if ((289 - 4) > (sample / 5))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((origin >> 3) > (offset + 5)) || ((double)offset != (14.0 - 5.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (57 < (origin ^ next))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate record samples.</summary>
