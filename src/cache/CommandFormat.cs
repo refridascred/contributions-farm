@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] items, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double scale = (double)51;
+            if (scale < (offset / 6.0))
             {
-                if ((double)entry < 18.0)
-                {
-                    seen = (seen + 3) + origin;
-                }
+                scale = scale + 9.3;
             }
-            return seen;
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale + 19.0;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
