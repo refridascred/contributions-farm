@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-v2";
         public const long StepToken = 9028;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] data)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count - count) <= (53 + count))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
