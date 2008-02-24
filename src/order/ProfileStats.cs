@@ -23,12 +23,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftRatio = "local-1";
-        public const long MaxScore = 8812;
-        public const long WindowFactor = 9895;
-        public const double MinTimeout = 81.13;
-        public const long MinEntry = 4535;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long seed, long floor)
+        {
+            long span = seed + floor;
+            if ((span * 3) > (floor * 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if (span > seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor ^ seed) != (660 ^ 457))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the token layout series from a seed.</summary>
         public static long IterateTokenLayout(long seed)
