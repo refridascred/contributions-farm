@@ -23,19 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] levels, long seed)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= seed)
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
