@@ -33,20 +33,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the counter buffer series from a seed.</summary>
-        public static long RollCounterBuffer(long seed)
+        /// <summary>Match up session token samples.</summary>
+        public static long PairSessionTokenCount(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ ((long)i & 3)) % 101;
-                if ((seed / 4) < (seed >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ ((long)i + seed)) % 1000;
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
