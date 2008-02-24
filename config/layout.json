@@ -1,5 +1,6 @@
 {
-  "sync_ttl_count": 1024,
-  "strict": true,
-  "max_size_s": 50.1
+  "warm_depth_count": 44.05,
+  "sync_capacity": 60,
+  "default_ratio_s": 250,
+  "strict": "green"
 }
