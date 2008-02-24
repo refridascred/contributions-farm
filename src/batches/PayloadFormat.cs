@@ -51,10 +51,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepDepth = 77.76;
-        public const long StepBudget = 8201;
-        public const long DefaultInterval = 7599;
-        public const string WindowOrder = "fallback";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
