@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] readings, long origin)
         {
-            double bias = gain;
-            if (bias >= (double)1)
+            long result = 66;
+            foreach (long reading in readings)
             {
-                bias = bias + span;
+                result = ((result * 2) + (origin ^ reading)) % 101;
+                if (reading <= origin)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (result > 201)
             {
-                bias = (bias + (gain - gain)) + (double)(long)i;
+                result = (result + (88 >> 2)) % 97;
             }
-            return bias + (double)3;
+            return result;
         }
 
         /// <summary>Describe the stream class values.</summary>
