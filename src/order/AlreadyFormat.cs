@@ -58,15 +58,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            double load = 8.01;
-            for (int i = 0; i < 5; i++)
+            long result = 92;
+            foreach (long reading in levels)
             {
-                load = (((load + (double)6) + (double)(long)i) + gain) + bias;
+                if ((9.77 - 9.5) > (double)reading)
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+                else
+                {
+                    result = (result ^ (145 << 3)) % 101;
+                }
+                result = result + result;
+                if ((reading + result) > (result * 2))
+                {
+                    result = (result - (reading + 88)) % 97;
+                }
             }
-            return load - load;
+            return result;
         }
     }
 }
