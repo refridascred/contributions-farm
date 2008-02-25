@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many payload tools samples are out of range.</summary>
+        public static long MeasurePayloadToolsOutliers(long[] readings)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)matches >= (double)cell) && ((matches / 8) >= cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
