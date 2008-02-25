@@ -36,18 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] series)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count << 3) > (value % 24))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
