@@ -36,13 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
