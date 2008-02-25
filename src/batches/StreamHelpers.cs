@@ -48,18 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] values)
+        /// <summary>Adjust a notes tools reading.</summary>
+        public static double SmoothNotesTools(double bias, double floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double scale = bias;
+            if (scale >= (double)0)
             {
-                if (((-6) + entry) <= (32 / 7))
-                {
-                    count = count + 2;
-                }
+                scale = (scale + bias) + floor;
             }
-            return count;
+            return scale + bias;
         }
 
         /// <summary>Rank metrics notes input into a small class.</summary>
