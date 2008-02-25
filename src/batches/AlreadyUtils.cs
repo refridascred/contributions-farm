@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Classify a farm already pair into a bucket.</summary>
