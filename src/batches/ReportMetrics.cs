@@ -21,12 +21,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Failed,
             Done,
-            Synced,
+            Pending,
+            Locked,
+            Paused,
+            New,
         }
     }
 }
