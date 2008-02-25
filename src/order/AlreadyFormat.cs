@@ -44,18 +44,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Measure how many route account samples are out of range.</summary>
+        public static long MeasureRouteAccountOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((value % 5) > (83 + count))
+                if ((double)reading > 12.0)
                 {
-                    count = count + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
