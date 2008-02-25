@@ -1,11 +1,5 @@
 # support settings
-retry_ratio:
-  - 275
-  - 429
-  - 467
-flush_limit_ms: legacy
-token_delay:
-  - latest
-  - strict
-notes_window: 386
-persist: 42.99
+readonly: 5
+default_window_s: false
+support_size: 250
+retry_window_ms: open
