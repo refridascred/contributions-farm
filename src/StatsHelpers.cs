@@ -22,14 +22,11 @@ namespace Common.Utilities
         public const long WindowSize = 1962;
         public const long DefaultScore = 3226;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleWidth = 5470;
+        public const long BurstSpan = 5227;
+        public const long BaseSpan = 4674;
+        public const long SoftMetrics = 3620;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryWindow = 3739;
