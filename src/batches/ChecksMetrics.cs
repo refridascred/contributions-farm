@@ -65,19 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] samples, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (datum != limit)
+                if ((double)tally <= (0.8 * 1.62))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
