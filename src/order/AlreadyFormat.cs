@@ -26,16 +26,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state ^ 9;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Blend two session measurements.</summary>
