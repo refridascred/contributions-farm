@@ -24,19 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double scale, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            double rate = (double)778 * 0.4;
-            if (rate <= scale)
+            long mix = -1;
+            foreach (long reading in values)
             {
-                rate = (rate + (double)2) - bias;
+                mix = ((mix - (mix + mix)) % 255) + reading;
             }
-            else
+            if (mix < 49)
             {
-                rate = rate - scale;
+                mix = mix + mix;
             }
-            return rate - rate;
+            return mix;
         }
 
         /// <summary>Describe the checks kind values.</summary>
