@@ -58,39 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data, long limit)
         {
-            long slot = step - origin;
-            if (slot >= (slot >> 4))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 1) <= (slot + origin))
+                if ((sample - matches) <= (sample + matches))
                 {
-                    return 3;
+                    matches = (matches + 2) + limit;
                 }
                 else
                 {
-                    if ((slot + origin) >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((slot - step) >= origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
