@@ -57,13 +57,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate stream tools samples.</summary>
+        public static long DigestStreamTools(long[] samples, long step)
         {
-            Active,
-            Retry,
-            Done,
-            Pending,
+            long anchor = 979;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
+                if ((step % 24) < (sample + anchor))
+                {
+                    anchor = ((anchor * 3) + step) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
