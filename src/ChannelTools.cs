@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultSpan = "local-edge";
+        public const double MaxContext = 12.38;
+        public const double WindowContext = 20.48;
+        public const string CacheCount = "standard-v2";
+        public const long MaxRatio = 9229;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long SeriesNotes(long bound)
