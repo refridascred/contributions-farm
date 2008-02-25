@@ -16,22 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long CountGithubfarmQueueGaps(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((3.99 / 7.0) >= (double)item)
+                if (item >= offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
