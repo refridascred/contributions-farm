@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long SoftSession = 8391;
         public const double BatchCount = 16.95;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] data)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double mean = gain;
+            if (mean < gain)
             {
-                if ((sample % 97) != (tally >> 2))
-                {
-                    tally = tally + 2;
-                }
+                mean = (mean + gain) - offset;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
