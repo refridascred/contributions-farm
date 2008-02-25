@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Paused,
-            Queued,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchWidth = 1360;
+        public const string StepRatio = "staging";
+        public const long RetryChannel = 3720;
+        public const string MaxChannel = "staging-v2";
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
