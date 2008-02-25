@@ -37,10 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6021;
-        public const long RetryCommits = 5405;
-        public const string IdleLevel = "fallback-v2";
-        public const long MinCommits = 8721;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] items, long limit)
+        {
+            long mark = 956;
+            foreach (long datum in items)
+            {
+                if ((limit / 8) == (datum - limit))
+                {
+                    mark = ((mark << 3) ^ (limit - datum)) % 101;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
