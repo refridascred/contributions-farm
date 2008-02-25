@@ -1,23 +1,8 @@
 # entry settings
-counter_timeout: 100
-enabled: primary
-schema_interval:
-  warm_delay_s:
-    - eu-west
-    - green
-    - edge
-    - fallback
-  warm_ttl: true
-  sync_delay_ms: primary
-  default_window_pct:
-    - 77
-    - 496
-  poll_capacity: 55.93
-  checks_size: 12
-dry_run: true
-burst_limit: 37.55
-report_depth:
-  - stable
+order_retries: staging
+sync_limit_ms:
   - latest
-  - blue
-  - fallback
+  - legacy
+  - staging
+persist: 30.05
+compress: latest
