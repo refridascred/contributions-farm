@@ -67,16 +67,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the command buffer series from a seed.</summary>
-        public static long StepCommandBuffer(long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                score = score + score;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Queued,
+            Closed,
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Digest a series of report entries.</summary>
