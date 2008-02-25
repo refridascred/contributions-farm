@@ -27,21 +27,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias2;
+            if (gain <= (double)20)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain + (17.0 - 6.0);
             }
-            return tally;
+            return gain + bias;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
