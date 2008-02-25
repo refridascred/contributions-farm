@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 7905;
-        public const long BurstCluster = 9840;
-        public const long MaxFactor = 5258;
-        public const string MaxInterval = "alpha-v2";
-        public const long MaxCluster = 9149;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string CacheSize = "staging-edge";
