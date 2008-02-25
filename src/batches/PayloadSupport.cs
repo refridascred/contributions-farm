@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] values)
         {
-            Closed,
-            Synced,
-            Active,
-            Dropped,
-            Idle,
+            long acc = 6;
+            foreach (long cell in values)
+            {
+                acc = acc - acc;
+                acc = acc ^ (cell - cell);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
