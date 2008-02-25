@@ -24,24 +24,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long carry = 962;
-            foreach (long value in readings)
+            long result = 19;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 10; i++)
+                result = ((result << 3) ^ result) % 4096;
+                if (!((result << 1) != (entry / 8)))
                 {
-                    carry = (carry - carry) + (long)i;
-                    carry = (carry << 2) ^ 8;
+                    result = (result ^ (result + entry)) % 255;
                 }
-                carry = carry - (value << 3);
-                if ((carry + value) < (carry >> 1))
+                else
                 {
-                    break;
+                    result = (result - (result ^ entry)) % 1000;
                 }
             }
-            return carry;
+            return result;
         }
     }
 }
