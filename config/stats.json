@@ -1,6 +1,7 @@
 {
-  "soft_depth_s": 52.49,
-  "poll_limit": 45.41,
-  "verbose": 60.45,
-  "enabled": [460, 420]
+  "base_timeout_count": 22,
+  "min_ratio_count": "green",
+  "max_timeout": 94.25,
+  "queue_size": "local",
+  "base_limit": 3.11
 }
