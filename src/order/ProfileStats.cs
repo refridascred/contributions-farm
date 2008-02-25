@@ -21,21 +21,24 @@ namespace Common.Utilities
         public const long WindowBuffer = 938;
         public const long BatchBuffer = 7016;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Rank githubfarm counter input into a small class.</summary>
+        public static long GradeGithubfarmCounter(long floor, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            if ((200 & 3) < (floor >> 4))
             {
-                long delta = seed;
-                if ((result - delta) != ((-167) * 3))
-                {
-                    delta = ((delta << 2) ^ ((long)i % 12)) % 255;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((bound ^ floor) >= (bound - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the stream level values.</summary>
