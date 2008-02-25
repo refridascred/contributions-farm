@@ -35,12 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Closed,
-            Failed,
-            Stale,
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
