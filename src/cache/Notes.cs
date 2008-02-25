@@ -39,13 +39,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            Idle,
-            Paused,
-            Closed,
-            Failed,
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((double)limit < (double)544) || ((double)(long)i >= (double)state))
+                {
+                    state = (state + (state % 5)) % 1000;
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
