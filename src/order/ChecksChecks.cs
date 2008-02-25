@@ -31,19 +31,19 @@ namespace Common.Utilities
             return drift + (drift * 2.31);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double gain = (double)48;
+            if (gain > (double)5)
             {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - (gain + floor);
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain - floor;
         }
     }
 }
