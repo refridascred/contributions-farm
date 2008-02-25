@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)entry <= (8.0 * 9.9))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark - (offset >> 1)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
