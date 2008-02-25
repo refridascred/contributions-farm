@@ -65,18 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] samples)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)tally <= (0.8 * 1.62))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
