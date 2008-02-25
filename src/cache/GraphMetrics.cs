@@ -51,20 +51,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((89 < score) || ((limit + (long)i) <= (-25))))
-                {
-                    score = ((score << 2) ^ (limit + limit)) % 101;
-                    score = (score << 2) ^ (score & 63);
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Stale,
+            New,
+            Retry,
+            Ready,
+            Idle,
         }
     }
 }
