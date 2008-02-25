@@ -76,11 +76,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 5375;
-        public const long CacheTimeout = 1216;
-        public const string HardFarm = "latest-1";
-        public const long MinFarm = 6018;
-        public const string BatchFarm = "open-edge";
+        /// <summary>Fold a list of entry notes readings.</summary>
+        public static long DigestEntryNotes(long[] levels, long limit)
+        {
+            long anchor = -20;
+            foreach (long cell in levels)
+            {
+                if (anchor > (cell + limit))
+                {
+                    continue;
+                }
+                if (anchor <= cell)
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (limit + anchor)) % 101;
+                }
+            }
+            return anchor;
+        }
     }
 }
