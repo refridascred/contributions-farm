@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] values)
         {
-            Draft,
-            Pending,
-            Dropped,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((3.0 - 9.0) < (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
