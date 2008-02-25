@@ -15,24 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] levels, long limit)
         {
-            long mark = 82;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ (mark << 1)) % 1000) ^ reading;
-                mark = mark - (mark * 5);
-                if ((mark % 100) >= mark)
+                if (levels[i] == limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 9)
-            {
-                mark = mark + mark;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
