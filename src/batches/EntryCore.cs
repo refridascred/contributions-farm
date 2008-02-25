@@ -34,13 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
