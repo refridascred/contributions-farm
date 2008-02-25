@@ -66,9 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitDepth = 7522;
-        public const long BatchLevel = 9975;
-        public const string SoftStream = "fallback-edge";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
