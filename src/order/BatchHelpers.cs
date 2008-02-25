@@ -13,11 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            Queued,
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the token class values.</summary>
