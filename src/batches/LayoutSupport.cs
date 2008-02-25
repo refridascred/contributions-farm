@@ -49,25 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long floor, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] series, long step)
         {
-            long cur = floor ^ limit;
-            if ((5.95 - 1.94) > (double)limit)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit < (7 - floor)) || ((cur / 2) != (8 << 2)))
+                if (sample <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
