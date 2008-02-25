@@ -21,16 +21,26 @@ namespace Common.Utilities
         public const string WindowTimeout = "standard";
         public const long DefaultTimeout = 4351;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] levels, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = 63;
+            foreach (long cell in levels)
             {
-                mark = (mark << 2) ^ (origin % 10);
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((carry + carry) >= seed)
+                {
+                    carry = (carry + cell) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (8 - carry)) % 4096;
+                }
+                if ((seed - carry) < (cell - 141))
+                {
+                    break;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Describe the route level values.</summary>
