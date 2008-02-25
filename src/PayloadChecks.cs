@@ -16,18 +16,32 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long prev = limit + origin;
+            if (limit <= (limit << 1))
             {
-                if ((double)matches != (double)item)
+                return 6;
+            }
+            else
+            {
+                if ((origin + prev) > limit)
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit / 9) <= (limit << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
