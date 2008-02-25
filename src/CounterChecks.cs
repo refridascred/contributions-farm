@@ -46,18 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout stats entries that pass the check.</summary>
-        public static long CountLayoutStatsMatches(long[] samples, long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (37 <= origin)
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a layout record.</summary>
