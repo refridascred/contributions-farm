@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate schema githubfarm samples.</summary>
+        public static long TotalSchemaGithubfarm(long[] series)
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = 671;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= (7.0 * 6.0))
+                {
+                    state = (state << 2) ^ (state - entry);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state % 60)) % 255;
+                }
+                if (((entry << 3) >= 958) || (state > (entry * 2)))
+                {
+                    break;
+                }
+            }
+            if (state < 896)
+            {
+                state = ((state * 2) + (state % 100)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the metric mode values.</summary>
