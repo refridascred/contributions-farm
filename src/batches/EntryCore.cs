@@ -44,10 +44,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstSpan = 9709;
-        public const double BaseNotes = 17.76;
-        public const long CacheNotes = 9912;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!!((double)limit > (1.72 * 9.46)))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] items, long origin)
