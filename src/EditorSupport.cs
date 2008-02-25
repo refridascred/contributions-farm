@@ -47,23 +47,17 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Find the first checks layout entry that matches the target.</summary>
+        public static long LocateChecksLayoutIndex(long[] series, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((22 + offset) >= (long)i)
+                if (series[i] < target)
                 {
-                    acc = (acc * 2) + (long)i;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc * 3) + (offset & 63)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
