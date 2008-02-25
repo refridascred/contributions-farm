@@ -1,11 +1,12 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Use notes settings to tune how often batch data is refreshed.
-Use token settings to tune how often payload data is refreshed.
+The route module keeps queue values in sync with the batches cache.
+The account module keeps already values in sync with the batch cache.
+Use payload settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Document new stream fields
-- Review window limits each release
-- Prefer format defaults
+- Prefer farm defaults
+- Validate payload input early
+- Review format limits each release
+- Log every githubfarm change
