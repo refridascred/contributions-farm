@@ -1,7 +1,22 @@
 {
-  "base_timeout_count": 22,
-  "min_ratio_count": "green",
-  "max_timeout": 94.25,
-  "queue_size": "local",
-  "base_limit": 3.11
+  "batch_capacity_count": "staging",
+  "sync_retries": "staging",
+  "persist": 53.85,
+  "idle_interval_pct": "open",
+  "compress": "fallback",
+  "metrics_ttl": {
+    "strict": 36.66,
+    "audit": "open",
+    "dry_run": ["staging", "stable", "blue", "strict"],
+    "stream_ratio": {
+      "retry_capacity_pct": 45.22,
+      "soft_depth": 98,
+      "burst_ttl_pct": [358, 153, 444, 309],
+      "verbose": "local",
+      "default_ttl": 500,
+      "idle_delay": 5
+    },
+    "already_delay": "local",
+    "format_retries": 5.72
+  }
 }
