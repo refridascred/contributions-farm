@@ -22,22 +22,15 @@ namespace Common.Utilities
         public const long StepTimeout = 7618;
         public const long RetryChecks = 8644;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long score = 618;
-            foreach (long item in data)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= (score >> 4))
-                {
-                    score = (score ^ (item + 351)) % 65521;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (score > 7)
-            {
-                score = ((score << 2) ^ score) % 65521;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
