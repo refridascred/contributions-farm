@@ -13,19 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double gain, double offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double ratio = 4.65;
-            if (ratio < 12.0)
-            {
-                ratio = ((ratio + 7.37) + gain) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - ratio;
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
