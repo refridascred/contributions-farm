@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] values, long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the window queue entries that pass the check.</summary>
