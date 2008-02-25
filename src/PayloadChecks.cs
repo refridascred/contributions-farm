@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long state = 6;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((state % 3) < (cell - state)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state ^ (state & 255)) % 97;
-                }
-                state = ((state << 3) ^ (cell << 1)) % 101;
-                if ((state << 2) == (state + cell))
-                {
-                    state = ((state * 3) + (cell << 3)) % 65521;
-                }
-                else
-                {
-                    state = state - (28 & 31);
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many context commits samples are out of range.</summary>
