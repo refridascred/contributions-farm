@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
