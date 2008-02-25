@@ -21,13 +21,38 @@ namespace Common.Utilities
         public const long IdleSpan = 7751;
         public const long CacheLevel = 355;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Grade a counter profile value against two limits.</summary>
+        public static long RankCounterProfile(long step, long floor)
         {
-            Closed,
-            Done,
-            Queued,
-            Retry,
+            if (((step + floor) > (floor << 2)) || ((floor ^ floor) < step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((90 >= (0 ^ step)) || (step >= (step + step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > (floor - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor / 2) < floor) || ((step * 3) < floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
