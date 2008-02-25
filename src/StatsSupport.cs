@@ -16,15 +16,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long origin)
         {
-            double ratio = (gain - 6.0) * 15.0;
-            if (ratio > gain)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                ratio = (ratio - (ratio + gain)) - span;
+                if ((double)origin <= (8.6 + 6.73))
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return ratio + (gain * 10.0);
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
