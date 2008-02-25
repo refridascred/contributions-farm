@@ -30,12 +30,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long offset, long seed)
         {
-            Stale,
-            New,
-            Locked,
+            if (offset <= (offset + seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) != (seed / 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
