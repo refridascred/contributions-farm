@@ -59,12 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            New,
-            Paused,
-            Pending,
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
