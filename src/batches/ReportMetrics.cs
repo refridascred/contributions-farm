@@ -19,22 +19,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items, long floor)
+        /// <summary>Count the context checks entries that pass the check.</summary>
+        public static long AuditContextChecksHits(long[] items, long origin)
         {
-            long result = 1;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((datum - datum) < floor)
+                if (((count / 3) < (count - count)) || ((4.5 / 4.0) <= (double)origin))
                 {
-                    result = (result ^ (datum + datum)) % 101;
-                }
-                else
-                {
-                    result = (result ^ result) % 101;
+                    count = (count + 2) - item;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
