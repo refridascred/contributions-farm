@@ -68,12 +68,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many buffer context samples are out of range.</summary>
+        public static long MeasureBufferContextMatches(long[] samples)
         {
-            Done,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches * 4) <= reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
