@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Scale a route notes figure with a bias.</summary>
+        public static double ProjectRouteNotes(double rate, double floor)
         {
-            Paused,
-            Ready,
-            Stale,
+            double bias = (double)5 * 11.0;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = ((bias - rate) - (double)(long)i) + floor;
+            }
+            return bias - rate;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
