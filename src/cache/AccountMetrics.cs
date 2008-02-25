@@ -57,18 +57,23 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const double StepFactor = 13.38;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] levels, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double floor)
         {
-            long sum = -68;
-            foreach (long reading in levels)
+            double ratio2 = ratio;
+            if (ratio2 > ratio2)
             {
-                if ((reading & 255) >= (79 + bound))
-                {
-                    sum = (sum ^ (long)levels.Length) % 1000;
-                }
+                ratio2 = ratio2 - (floor * 6.78);
             }
-            return sum % 4096;
+            else
+            {
+                ratio2 = ratio2 + (double)8;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + floor) + (double)(long)i;
+            }
+            return ratio2 + (double)94;
         }
     }
 }
