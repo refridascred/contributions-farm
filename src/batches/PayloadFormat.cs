@@ -17,19 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)target >= (13.0 + 2.9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark ^ (mark * 5);
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the batch level values.</summary>
