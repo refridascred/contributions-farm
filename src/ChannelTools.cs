@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultSpan = "local-edge";
-        public const double MaxContext = 12.38;
-        public const double WindowContext = 20.48;
-        public const string CacheCount = "standard-v2";
-        public const long MaxRatio = 9229;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 3.27;
+        public const long StepBudget = 2433;
+        public const double HardLevel = 72.89;
+        public const long BurstSize = 9581;
+        public const double BurstInterval = 20.64;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long SeriesNotes(long bound)
