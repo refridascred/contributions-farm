@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long step)
         {
-            Paused,
-            New,
-            Idle,
+            long next = limit ^ step;
+            if (368 >= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step % 97) < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((next + next) < (limit % 60)) && ((double)limit > (8.0 + 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step ^ step) != (limit * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
