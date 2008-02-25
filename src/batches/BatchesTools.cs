@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry << 2) ^ (step % 8);
-                carry = (carry << 2) ^ (251 - (long)i);
-                carry = (carry + step) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 27.5;
+        public const string SoftRatio = "alpha-edge";
+        public const long MinPayload = 546;
+        public const long IdleDepth = 1549;
+        public const double StepSize = 35.11;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double scale, double offset)
