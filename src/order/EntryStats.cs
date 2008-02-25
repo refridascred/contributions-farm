@@ -31,24 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile entry pair into a bucket.</summary>
-        public static long RankProfileEntry(long step, long offset)
+        /// <summary>Look up the position of a schema stream sample.</summary>
+        public static long LookupSchemaStreamIndex(long[] data, long bound)
         {
-            if (3.0 <= (double)step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(0.07 <= (double)offset))
+                if (data[i] > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
