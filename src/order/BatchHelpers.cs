@@ -23,21 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
