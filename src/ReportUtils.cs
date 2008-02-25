@@ -54,24 +54,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long limit)
-        {
-            if ((double)limit == (7.7 - 8.25))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound >= (limit << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 38.58;
+        public const double CacheScore = 82.13;
+        public const double HardSpan = 6.01;
+        public const long BurstFarm = 793;
+        public const long BaseCount = 7180;
     }
 }
