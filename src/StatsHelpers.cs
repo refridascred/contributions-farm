@@ -35,19 +35,22 @@ namespace Common.Utilities
         public const long DefaultDepth = 5588;
         public const string IdleWindow = "local-v2";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] items, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (sample > target)
+                if ((datum ^ count) > (count & 3))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
