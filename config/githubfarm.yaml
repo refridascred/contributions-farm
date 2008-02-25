@@ -1,8 +1,4 @@
 # githubfarm settings
-persist:
-  - edge
-  - staging
-  - standard
-  - strict
-commits_size: staging
-soft_capacity: true
+cache_size_pct: staging
+soft_ratio_pct: 250
+max_depth_pct: 100
