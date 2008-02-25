@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Derive the next tools token value from a seed.</summary>
+        public static long SeriesToolsToken(long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((tally >> 5) < reading)
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
