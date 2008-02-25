@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] samples, long floor)
+        /// <summary>Adjust a context metric reading.</summary>
+        public static double ProjectContextMetric(double weight, double floor)
         {
-            long score = 54;
-            foreach (long cell in samples)
-            {
-                if ((floor >> 5) > (floor << 3))
-                {
-                    score = ((score + floor) % 97) ^ cell;
-                }
-            }
-            if (score < 6)
-            {
-                score = (score ^ (score >> 5)) % 101;
-            }
-            return score % 65521;
+            double ratio = (double)(-17) - 1.0;
+            return ((ratio - 3.56) + weight) + floor;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
