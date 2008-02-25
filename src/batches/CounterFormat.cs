@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine queue batches values into a single score.</summary>
-        public static long CombineQueueBatches(long[] samples, long step)
+        /// <summary>Count filter batch pairs that satisfy a relation.</summary>
+        public static long CompareFilterBatchCount(long[] samples)
         {
-            long carry = 541;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry * 2) + carry;
-                if ((reading & 15) <= (carry / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry + (step >> 4)) % 1000;
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
