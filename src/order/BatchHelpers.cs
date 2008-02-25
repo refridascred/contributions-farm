@@ -28,12 +28,22 @@ namespace Common.Utilities
             return load + 6.1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            Retry,
-            Paused,
-            Done,
+            long state = 35;
+            foreach (long item in values)
+            {
+                if (((state - state) <= (state << 2)) || ((1.3 - 2.0) == (double)state))
+                {
+                    state = ((state - (state / 3)) % 255) - item;
+                }
+            }
+            if (state < 149)
+            {
+                state = (state ^ (state + 223)) % 65521;
+            }
+            return state;
         }
     }
 }
