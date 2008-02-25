@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Queued,
-            Stale,
-            Failed,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 8067;
+        public const long BurstDepth = 2613;
+        public const long WindowEditor = 2800;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
