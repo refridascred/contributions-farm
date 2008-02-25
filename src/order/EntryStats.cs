@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches + entry) == (8 + 53))
-                {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
