@@ -30,24 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long step, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if ((1 * 4) >= (436 - limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (0.71 > (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
