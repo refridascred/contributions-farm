@@ -81,19 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] items, long offset)
+        /// <summary>Adjust a order metric reading.</summary>
+        public static double ScaleOrderMetric(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            double ratio = (double)(72 << 2);
+            if (ratio > floor)
             {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - (ratio * 3.79);
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + floor;
         }
     }
 }
