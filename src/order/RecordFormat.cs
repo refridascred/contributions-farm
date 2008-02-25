@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every editor batches entry stays within the limit.</summary>
-        public static bool VerifyEditorBatchesRange(long[] samples, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long result = 735;
+            foreach (long value in samples)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result + (result >> 3)) % 65521;
+                result = (result + (value + result)) % 1000;
             }
-            return flag;
+            if (result > 78)
+            {
+                result = (result << 3) ^ (result * 4);
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate batch samples.</summary>
