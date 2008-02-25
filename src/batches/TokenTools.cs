@@ -31,17 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 2554;
+        public const long BatchTimeout = 9913;
+        public const long WindowGithubfarm = 925;
+        public const double LimitTimeout = 45.73;
     }
 }
