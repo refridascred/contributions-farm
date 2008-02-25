@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first notes tools entry that matches the target.</summary>
-        public static long FindNotesToolsIndex(long[] items, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the schema status values.</summary>
