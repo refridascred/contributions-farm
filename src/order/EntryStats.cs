@@ -23,17 +23,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a schema stream sample.</summary>
-        public static long LookupSchemaStreamIndex(long[] data, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (limit + mark)) % 65521;
+                mark = mark - (mark + limit);
+                mark = (mark ^ ((long)i / 5)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
