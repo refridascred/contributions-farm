@@ -26,18 +26,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Count the account graph entries that pass the check.</summary>
+        public static long CountAccountGraphHits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((2.8 + 3.78) != (double)datum) || ((tally << 3) > (datum >> 3)))
+                if ((hits << 1) > 853)
                 {
-                    tally = tally + 3;
+                    hits = ((hits + 3) ^ sample) - floor;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
