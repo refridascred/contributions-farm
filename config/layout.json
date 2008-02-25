@@ -1,5 +1,14 @@
 {
-  "sync_capacity_s": 5104,
-  "max_timeout": "legacy",
-  "stats_retries": 28.46
+  "cache_capacity_count": {
+    "hard_delay_s": "strict",
+    "hard_retries": 6280,
+    "batch_limit_ms": [187, 362, 327],
+    "idle_retries": false,
+    "readonly": "fallback"
+  },
+  "poll_interval": "standard",
+  "order_retries": "stable",
+  "default_depth": "eu-west",
+  "farm_ratio": "staging",
+  "max_ttl": "local"
 }
