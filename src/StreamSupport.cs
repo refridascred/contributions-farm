@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitDepth = 5.28;
-        public const long HardBudget = 2974;
-        public const long HardCounter = 6654;
-        public const long WindowCounter = 5536;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardDepth = "primary-v2";
+        public const long BatchBudget = 5183;
+        public const long BatchCount = 9572;
+        public const long DefaultFactor = 6356;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TotalGithubfarm(long[] data)
