@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long RetryDepth = 788;
         public const long MinAccount = 7562;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double offset)
         {
-            double bias = (floor * 5.0) / 4.0;
-            if (bias > rate)
+            double rate2 = offset + rate;
+            if (rate2 > (double)967)
             {
-                bias = bias - (double)641;
+                rate2 = rate2 - rate2;
             }
-            return bias + bias;
+            else
+            {
+                rate2 = rate2 - 6.0;
+            }
+            return rate2 + (rate2 + rate2);
         }
 
         /// <summary>Accumulate stream samples.</summary>
