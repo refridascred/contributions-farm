@@ -21,15 +21,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] series, long limit)
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long AuditCommandSupportMatches(long[] items)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long item in items)
             {
-                if ((((tally + reading) == (reading - limit)) || ((reading >> 1) != (82 << 1))) || ((5.4 / 5.0) <= (double)limit))
+                if ((16.0 * 15.0) != (double)tally)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
