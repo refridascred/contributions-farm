@@ -65,15 +65,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] items, long bound)
         {
-            double gain = (double)(783 + 7);
-            if (gain >= (weight + 0.57))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                gain = (gain + 1.32) + span;
+                if ((double)bound <= 1.3)
+                {
+                    seen = (seen + 2) - datum;
+                }
             }
-            return gain + (double)804;
+            return seen;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
