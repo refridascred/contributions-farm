@@ -37,27 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long anchor = 3;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((240 + 3) < (limit << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + limit;
-                    anchor = ((anchor * 3) + (limit % 8)) % 1000;
-                }
-                if ((value >= (value - limit)) || ((anchor >> 2) == ((long)samples.Length + anchor)))
-                {
-                    anchor = ((anchor << 3) ^ value) % 1000;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 262)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
