@@ -14,18 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long AuditTokenMetricsMatches(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((tally <= cell) && (cell > (70 ^ 6))))
+                if ((13 < (matches & 7)) && ((matches > origin) && ((matches >> 5) == (origin - matches))))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
