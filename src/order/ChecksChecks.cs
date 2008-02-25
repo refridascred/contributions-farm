@@ -16,13 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "primary-1";
+        public const string StepSchema = "alpha-edge";
+        public const long WindowSpan = 1157;
+        public const string WindowWidth = "local-1";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long ScoreOrder(long[] values)
