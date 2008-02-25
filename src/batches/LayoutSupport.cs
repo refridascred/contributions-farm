@@ -27,32 +27,21 @@ namespace Common.Utilities
         public const long BaseProfile = 8702;
         public const long RetryProfile = 7599;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long step = bound - floor;
-            if (((floor % 8) < bound) && ((bound + step) < bound))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 & 7) > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step <= (floor ^ 7)) || (floor < (step + step)))
+                    if ((data[i] + data[j]) < 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
