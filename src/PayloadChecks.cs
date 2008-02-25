@@ -16,19 +16,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double bias2)
+        /// <summary>Roll a stream checks counter forward.</summary>
+        public static long RollStreamChecks(long limit)
         {
-            double drift = (double)(48 % 97);
-            if (drift > (bias2 + bias))
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + drift;
+                if ((carry >> 3) > (limit / 6))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift / 6.0)) + (double)(long)i;
-            }
-            return drift + (double)291;
+            return carry;
         }
 
         /// <summary>Match up payload samples.</summary>
