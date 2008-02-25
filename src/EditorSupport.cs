@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long step)
         {
-            long edge = origin + step;
-            if ((origin > (step + step)) || (11.0 > (double)origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.43 - 2.27) > (double)edge)
+                if ((levels[i] < step) && ((levels[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate schema cluster samples.</summary>
