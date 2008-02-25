@@ -43,20 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLayout = 86.25;
+        public const double MinBudget = 31.2;
+        public const double MaxLayout = 47.36;
+        public const string IdleLayout = "primary-1";
+        public const long CacheLayout = 5608;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long limit)
