@@ -67,12 +67,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitLevel = 63.94;
-        public const string DefaultChecks = "latest-1";
-        public const long MinChecks = 6684;
-        public const double BatchCount = 30.95;
-        public const long IdleChecks = 291;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels)
+        {
+            long anchor = 134;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor + (reading - anchor)) % 1000;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Project the next command support value.</summary>
         public static double ProjectCommandSupport(double bias, double span)
