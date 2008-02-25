@@ -1,12 +1,13 @@
 {
-  "report_ratio": true,
-  "order_window": 88.91,
-  "dry_run": {
-    "layout_timeout": "fallback",
-    "flush_ttl_pct": "standard",
-    "max_ratio_pct": [50, 384, 126, 226]
-  },
-  "sync_retries_count": 2,
-  "buffer_limit": false,
-  "min_size": ["legacy", "stable"]
+  "dry_run": 9158,
+  "sync_interval_pct": 84.86,
+  "hard_threshold_pct": false,
+  "sync_ttl_pct": 7,
+  "batch_depth_pct": false,
+  "soft_timeout_s": {
+    "min_retries_s": false,
+    "enabled": "local",
+    "poll_ratio_s": true,
+    "burst_retries_s": 8.04
+  }
 }
