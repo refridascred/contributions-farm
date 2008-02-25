@@ -1,18 +1,6 @@
 {
-  "queue_size": 86,
-  "hard_size_count": true,
-  "sync_ratio_count": {
-    "max_capacity_pct": {
-      "strict": 26,
-      "warm_interval_count": 6537,
-      "default_ttl_pct": 833,
-      "retry_size_ms": "stable",
-      "route_ratio": "legacy"
-    },
-    "max_ratio_s": true,
-    "readonly": false,
-    "min_ratio": 6.84,
-    "flush_size_s": [491, 181, 281, 400],
-    "compress": 76.41
-  }
+  "dry_run": "standard",
+  "batch_retries_count": 30,
+  "verbose": 86.54,
+  "batch_ttl": [190, 178, 499]
 }
