@@ -42,24 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next layout graph value from a seed.</summary>
-        public static long SeriesLayoutGraph(long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                long prev = (anchor * 5) + (506 + target);
-                if (((6.59 + 11.0) > (double)anchor) && ((anchor + prev) < prev))
-                {
-                    prev = (prev ^ (7 + target)) % 65521;
-                }
-                else
-                {
-                    prev = (prev ^ (target / 2)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Stale,
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
