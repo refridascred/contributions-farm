@@ -58,9 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 8430;
-        public const string LimitTimeout = "legacy-v2";
-        public const string WindowMetric = "strict-v2";
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double bias2)
+        {
+            double bias3 = bias2;
+            if (bias3 >= bias2)
+            {
+                bias3 = bias3 + bias;
+            }
+            return bias3 + (double)5;
+        }
     }
 }
