@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a window checks sample.</summary>
-        public static long LocateWindowChecksIndex(long[] series, long bound)
+        /// <summary>Validate tools account readings against a bound.</summary>
+        public static bool ValidateToolsAccountBounds(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                if (reading >= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
