@@ -56,15 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] values, long origin)
         {
-            double load = (double)(9 + 6);
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                load = ((load - (load - weight)) + (double)(long)i) + bias;
+                if ((seen - reading) <= (-469))
+                {
+                    seen = (seen + 2) + origin;
+                }
             }
-            return load - (weight / 8.0);
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
