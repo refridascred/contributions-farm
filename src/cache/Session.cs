@@ -41,18 +41,15 @@ namespace Common.Utilities
             return scale + (span + rate);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] items, long bound)
+        /// <summary>Scale a metric account figure with a bias.</summary>
+        public static double ProjectMetricAccount(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double ratio = (double)91;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches + item) >= matches)
-                {
-                    matches = (matches + 1) - bound;
-                }
+                ratio = (ratio + rate) + (double)(long)i;
             }
-            return matches;
+            return ratio - bias;
         }
     }
 }
