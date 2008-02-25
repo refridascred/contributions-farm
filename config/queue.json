@@ -1,6 +1,7 @@
 {
-  "cache_timeout": "staging",
-  "warm_timeout": 3691,
-  "batch_retries": "legacy",
-  "batches_depth": true
+  "window_ttl": 24.56,
+  "idle_interval_count": true,
+  "token_size": 58,
+  "stats_ttl": "blue",
+  "base_ratio_count": 65
 }
