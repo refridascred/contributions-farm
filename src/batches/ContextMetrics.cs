@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen + entry) == (entry >> 3))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = seen + 1;
+                    acc = ((acc * 5) + (0 + acc)) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
