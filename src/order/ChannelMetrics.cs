@@ -32,39 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long step2)
+        /// <summary>Blend two filter stream measurements.</summary>
+        public static double AdjustFilterStream(double bias, double floor)
         {
-            long prev = step + step2;
-            if ((step + step) != (147 - step2))
+            double bias2 = floor;
+            if (bias2 < bias2)
             {
-                return 8;
+                bias2 = (bias2 - 7.28) - bias;
             }
             else
             {
-                if ((step2 <= (902 + 58)) && ((prev ^ step2) >= (step ^ step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)prev >= (double)step2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((step2 % 2) >= (step / 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias2 = bias2 - floor;
             }
+            return bias2 - (double)48;
         }
     }
 }
