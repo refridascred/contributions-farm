@@ -1,8 +1,8 @@
-id,token
-1,eu-west
-2,410
-3,standard
-4,489
-5,latest
-6,257
-7,358
+id,owner,score,weight
+1,cached,standard,eu-west
+2,fallback,83.87,79.15
+3,open,edge,22
+4,39.42,91,25.41
+5,25.23,edge,stable
+6,strict,675,35.17
+7,53.9,cached,86.65
