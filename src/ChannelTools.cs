@@ -18,19 +18,10 @@ namespace Common.Utilities
         public const long IdleWindow = 6485;
         public const long MaxWindow = 2802;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] values, long origin)
-        {
-            long result = 31;
-            foreach (long reading in values)
-            {
-                result = (result + (827 << 3)) % 65521;
-                if ((result <= (result >> 3)) || ((reading - 28) <= (origin + result)))
-                {
-                    result = (result ^ (result << 3)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchWidth = 4083;
+        public const string WindowCount = "strict-v2";
+        public const double BurstFactor = 6.9;
+        public const double BaseFactor = 52.12;
     }
 }
