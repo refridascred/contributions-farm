@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema layout measurements.</summary>
-        public static double ScaleSchemaLayout(double ratio, double bias)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double rate = bias;
-            if (rate < (bias * 5.0))
-            {
-                rate = rate + (double)9;
-            }
-            return rate - ratio;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the queue state values.</summary>
