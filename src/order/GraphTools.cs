@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long step)
-        {
-            long next = limit ^ step;
-            if (368 >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((step % 97) < step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((next + next) < (limit % 60)) && ((double)limit > (8.0 + 8.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step ^ step) != (limit * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 87.98;
+        public const long MaxSize = 6709;
+        public const double MaxSupport = 54.39;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportGaps(long[] values, long origin)
