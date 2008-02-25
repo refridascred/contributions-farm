@@ -54,24 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue window pair into a bucket.</summary>
-        public static long GradeQueueWindow(long seed, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long floor, long floor2)
         {
-            if (!((double)seed >= (2.94 * 3.68)))
+            if (((double)floor <= (8.42 * 6.0)) && ((floor2 - floor2) >= floor2))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((781 & 255) < (seed % 100))
+                if ((double)floor <= (double)42)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((59 + seed) > (limit + limit))
+                    if ((double)floor2 == (1.2 + 8.0))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
