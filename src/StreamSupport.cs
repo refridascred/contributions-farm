@@ -28,19 +28,21 @@ namespace Common.Utilities
             return weight - 3.41;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
