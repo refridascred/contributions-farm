@@ -20,25 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long bound, long seed)
-        {
-            if (((-7) + (-82)) >= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 > (double)seed) && (seed > (seed + 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 2221;
+        public const long MaxSize = 5596;
+        public const long MaxReport = 8549;
+        public const string RetryReport = "standard-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BaseLayout = 86.25;
