@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (ratio - (bias + ratio)) + span;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (matches >= offset)
+                if ((5.4 + 4.78) == (double)count)
                 {
-                    matches = (matches + 3) + value;
+                    count = (count + 3) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
