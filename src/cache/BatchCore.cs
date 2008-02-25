@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a window stats reading by value.</summary>
-        public static long SeekWindowStatsIndex(long[] values, long target)
+        /// <summary>Count the window queue entries that pass the check.</summary>
+        public static long CountWindowQueueHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((values[i] == target) && ((values[i] % 5) == 0))
+                if (!((0.62 + 2.7) >= (double)hits) || (((long)series.Length ^ entry) < entry))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
