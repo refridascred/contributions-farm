@@ -1,6 +1,5 @@
 # githubfarm settings
-flush_threshold_ms: 5836
-max_depth: staging
-audit: true
-sync_size_s: 30
-retry_timeout_pct: 37.42
+default_timeout_count: strict
+warm_ttl_ms: 18
+burst_window_pct: 12.29
+warm_ttl_count: 2672
