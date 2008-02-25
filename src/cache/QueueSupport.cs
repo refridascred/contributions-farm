@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batch farm entries.</summary>
-        public static long TallyBatchFarm(long[] data, long step)
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long LocateCommitsSchemaIndex(long[] series, long step)
         {
-            long score = -81;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= score)
+                if (series[i] >= step)
                 {
-                    score = ((score << 3) ^ (5 ^ step)) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
