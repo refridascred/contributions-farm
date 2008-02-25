@@ -1,6 +1,12 @@
 {
-  "cache_timeout": "green",
-  "strict": 30,
-  "default_threshold": 500,
-  "checks_depth": 10
+  "report_ratio": true,
+  "order_window": 88.91,
+  "dry_run": {
+    "layout_timeout": "fallback",
+    "flush_ttl_pct": "standard",
+    "max_ratio_pct": [50, 384, 126, 226]
+  },
+  "sync_retries_count": 2,
+  "buffer_limit": false,
+  "min_size": ["legacy", "stable"]
 }
