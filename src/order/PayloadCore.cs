@@ -46,18 +46,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] items)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item - 329) >= (seen & 31))
+                long delta = ((long)i / 4) % 64;
+                if ((bound - delta) < ((long)i + (long)i))
                 {
-                    seen = seen + 2;
+                    delta = (delta << 2) ^ (bound / 4);
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
     }
 }
