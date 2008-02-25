@@ -23,13 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] readings, long floor)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
