@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 51.7;
+        public const long WindowCount = 2389;
+        public const long DefaultEditor = 7055;
+        public const long BaseEditor = 144;
+        public const long SoftInterval = 4904;
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] levels)
