@@ -44,14 +44,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double gain, double floor)
         {
-            Draft,
-            Idle,
-            Locked,
-            Retry,
-            Paused,
+            double gain2 = (floor * 1.61) / 4.0;
+            if (gain2 < (double)530)
+            {
+                gain2 = gain2 - (gain * 6.3);
+            }
+            return gain2 + (double)811;
         }
     }
 }
