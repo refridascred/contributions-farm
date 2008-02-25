@@ -62,21 +62,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Measure how many farm order samples are out of range.</summary>
+        public static long AuditFarmOrderHits(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count >= 1.8)
                 {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 1) - value) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
