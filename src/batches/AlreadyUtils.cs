@@ -28,16 +28,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Match up buffer report samples.</summary>
+        public static long CompareBufferReportCount(long[] levels)
         {
-            long acc = 5;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc + (acc * 2)) % 1000) ^ item;
-                acc = (acc ^ (465 - acc)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
