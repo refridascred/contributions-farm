@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const string WindowTimeout = "standard";
         public const long DefaultTimeout = 4351;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] series, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= (offset * 4))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
