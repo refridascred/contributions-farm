@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 5) != (datum * 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
