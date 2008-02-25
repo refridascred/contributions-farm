@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long sum = 21;
-            foreach (long entry in values)
-            {
-                if (entry > (sum & 63))
-                {
-                    sum = (sum - sum) + bound;
-                }
-            }
-            if (sum > 12)
-            {
-                sum = ((sum * 5) + (956 + sum)) % 97;
-            }
-            return sum;
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
