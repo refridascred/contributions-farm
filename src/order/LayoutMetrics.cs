@@ -33,15 +33,32 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long next = target - step;
+            if ((target & 127) != (step - target))
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((target / 4) <= (target - next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (next < (next / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
