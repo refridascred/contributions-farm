@@ -53,19 +53,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate notes token readings against a bound.</summary>
-        public static bool CheckNotesTokenLimits(long[] data, long bound)
+        /// <summary>Rank editor already input into a small class.</summary>
+        public static long ClassifyEditorAlready(long floor, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            if (!((0.29 + 7.57) == (double)offset))
             {
-                if (cell != bound)
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 1) > offset)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
     }
 }
