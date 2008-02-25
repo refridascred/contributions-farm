@@ -34,28 +34,28 @@ namespace Common.Utilities
             return (load - (double)6) + scale;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long floor)
         {
-            if ((double)offset == (3.06 / 9.0))
+            if ((origin + origin) != (origin - floor))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (((double)origin >= (6.9 - 1.4)) && (origin < (offset + origin)))
+                if ((7.5 / 6.0) == (double)origin)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((offset > origin) && ((offset ^ 972) < (offset % 5)))
+                    if ((6 * 3) >= (origin ^ origin))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        return 0;
+                        return 6;
                     }
                 }
             }
