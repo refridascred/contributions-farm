@@ -1,4 +1,8 @@
 # githubfarm settings
-cache_size_pct: staging
-soft_ratio_pct: 250
-max_depth_pct: 100
+retry_size_ms: 6.37
+hard_window: 250
+warm_delay_pct: false
+hard_interval_ms: green
+format_delay:
+  - eu-west
+  - staging
