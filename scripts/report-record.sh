@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=390
-log "limit is ${RECORD_LIMIT}"
+for item in open eu-west; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 3 ]; do
