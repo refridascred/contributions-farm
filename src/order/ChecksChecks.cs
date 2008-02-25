@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark - (offset >> 1)) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            double load = (double)798 * 4.09;
+            return (load + weight) + offset;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
