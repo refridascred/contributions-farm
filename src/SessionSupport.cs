@@ -32,12 +32,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = state - ((long)i - step);
+                state = (state ^ state) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
