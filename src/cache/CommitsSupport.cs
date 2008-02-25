@@ -36,12 +36,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 53.8;
-        public const long SoftRecord = 6087;
-        public const long HardSpan = 5500;
-        public const string MaxCount = "cached-1";
-        public const string IdleRecord = "cached";
+        /// <summary>Digest a series of context batches entries.</summary>
+        public static long CombineContextBatches(long[] values)
+        {
+            long mix = 978;
+            foreach (long value in values)
+            {
+                if (((double)mix == (6.21 * 3.4)) || ((7.7 / 6.0) == (double)mix))
+                {
+                    mix = (mix ^ (value / 3)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (value ^ value)) % 97;
+                }
+            }
+            if (mix > 64)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long SortToken(long seed, long limit)
