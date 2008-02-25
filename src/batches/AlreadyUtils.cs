@@ -25,18 +25,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((value + value) > (27 >> 2))
+                if (9 <= (count - limit))
                 {
-                    tally = tally + 3;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
