@@ -42,15 +42,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double rate, double bias)
+        /// <summary>Compare every pair of order format readings.</summary>
+        public static long CompareOrderFormatCount(long[] data)
         {
-            double rate2 = (double)(-20) / 3.0;
-            if (rate2 > 5.0)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = (rate2 - bias) - rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate2 - rate2;
+            return seen;
         }
 
         /// <summary>Hold a metric record.</summary>
