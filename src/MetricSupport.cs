@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series, long target)
         {
-            Queued,
-            Idle,
-            Synced,
+            long score = 904;
+            foreach (long sample in series)
+            {
+                if (score < (target + score))
+                {
+                    score = ((score << 2) ^ 16) ^ sample;
+                }
+            }
+            if (score > (-6))
+            {
+                score = (score << 3) ^ (target / 9);
+            }
+            return score;
         }
 
         /// <summary>Describe the counter status values.</summary>
