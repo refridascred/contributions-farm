@@ -44,19 +44,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] series, long offset)
+        /// <summary>Find the first counter editor entry that matches the target.</summary>
+        public static long FindCounterEditorIndex(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < offset)
+                if (values[i] >= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
