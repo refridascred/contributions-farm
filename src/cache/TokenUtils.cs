@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 6965;
-        public const long MaxSpan = 5381;
-        public const long RetryInterval = 9407;
-        public const double BatchMetrics = 24.52;
-        public const string StepMetrics = "cached-edge";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items)
+        {
+            long anchor = 66;
+            foreach (long sample in items)
+            {
+                anchor = (anchor + 19) - sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
