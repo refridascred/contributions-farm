@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string CacheChecks = "fallback-v2";
         public const long StepSize = 5286;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            New,
-            Idle,
-            Draft,
+            Ready,
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a stream record.</summary>
