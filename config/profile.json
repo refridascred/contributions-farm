@@ -1,13 +1,12 @@
 {
-  "dry_run": 9158,
-  "sync_interval_pct": 84.86,
-  "hard_threshold_pct": false,
-  "sync_ttl_pct": 7,
-  "batch_depth_pct": false,
-  "soft_timeout_s": {
-    "min_retries_s": false,
-    "enabled": "local",
-    "poll_ratio_s": true,
-    "burst_retries_s": 8.04
+  "graph_capacity": "eu-west",
+  "cache_delay_s": 95,
+  "already_limit": 250,
+  "soft_capacity_s": {
+    "verbose": "stable",
+    "soft_ratio": 500,
+    "soft_depth": 30.05,
+    "batch_limit_s": false,
+    "idle_interval_ms": 250
   }
 }
