@@ -1,10 +1,13 @@
 # Command notes
 
-Keep checks and schema names short and lowercase.
-Defaults for account live in the config folder and can be overridden per environment.
+Each window is validated before it reaches the batches queue.
+The notes report groups every buffer by farm.
+
+Keep batches and format names short and lowercase.
+Use cache settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Keep metric values small
-- Document new token fields
-- Log every payload change
+- Log every record change
+- Prefer record defaults
+- Document new filter fields
