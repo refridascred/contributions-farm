@@ -1,16 +1,13 @@
 # entry settings
-compress:
-  strict:
-    - 52
-    - 1
-  audit: primary
-  cache_timeout_s:
-    - open
-    - open
-    - fallback
-    - legacy
-  order_ttl: 7736
-audit: cached
-sync_delay: 6850
-githubfarm_interval: false
-flush_depth_count: true
+hard_depth_pct: true
+idle_depth_s: 35.34
+stream_ttl: 250
+report_interval: strict
+enabled:
+  cache_ratio_count: latest
+  verbose: 53
+  tools_retries:
+    - 497
+    - 78
+  readonly: standard
+  audit: false
