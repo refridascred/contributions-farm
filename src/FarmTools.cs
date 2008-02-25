@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitRatio = 6;
-        public const double IdleCount = 88.03;
-        public const long HardCluster = 5492;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftWidth = 3277;
+        public const long DefaultRoute = 7632;
+        public const string SoftBudget = "latest";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long ScoreContributi(long[] samples, long offset)
