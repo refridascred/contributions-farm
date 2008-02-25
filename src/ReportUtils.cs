@@ -52,19 +52,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 13.49;
+        public const long DefaultQueue = 3447;
+        public const long DefaultFactor = 38;
+        public const string MinWidth = "staging-1";
     }
 }
