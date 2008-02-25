@@ -16,22 +16,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of counter farm readings.</summary>
-        public static long ScoreCounterFarm(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] readings)
         {
-            long mix = -2;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((mix & 63) <= (mix - mix))
+                if ((3.0 * 6.2) != (double)item)
                 {
-                    mix = ((mix << 3) ^ ((long)data.Length - value)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            if (mix > 9)
-            {
-                mix = (mix + (mix & 1)) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the filter class values.</summary>
