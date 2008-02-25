@@ -1,11 +1,6 @@
 # githubfarm settings
-compress: 500
-channel_delay:
-  - 346
-  - 72
-  - 461
-batch_size_ms:
-  burst_delay_s: 1024
-  support_interval: false
-  flush_limit: 44.28
-  max_ratio_pct: 14.08
+flush_threshold_ms: 5836
+max_depth: staging
+audit: true
+sync_size_s: 30
+retry_timeout_pct: 37.42
