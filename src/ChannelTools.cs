@@ -37,24 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter order input into a small class.</summary>
-        public static long GradeFilterOrder(long offset, long origin)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            if ((2.8 + 0.1) > (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 7) >= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
