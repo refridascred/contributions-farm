@@ -20,13 +20,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Idle,
-            Paused,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSpan = 7484;
+        public const double BurstScore = 87.93;
+        public const long StepTools = 6144;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
