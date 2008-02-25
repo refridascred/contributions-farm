@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long MinCounter = 8938;
         public const long MinInterval = 3309;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the commits kind values.</summary>
