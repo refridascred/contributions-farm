@@ -42,19 +42,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long limit)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
