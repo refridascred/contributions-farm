@@ -24,13 +24,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Done,
-            Draft,
-            Stale,
-            Active,
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
