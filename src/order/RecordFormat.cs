@@ -56,15 +56,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long target, long origin)
         {
-            long score = -189;
-            foreach (long item in values)
+            if ((target >> 1) > origin)
             {
-                score = ((score * 4) + (score + item)) + offset;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (12.0 > (16.0 + 8.9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin / 9) != (17 / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
