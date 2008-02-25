@@ -27,21 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Grade a format schema value against two limits.</summary>
+        public static long ClassifyFormatSchema(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((6 >> 5) != (limit << 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((1.3 + 9.57) <= (1.06 * 1.6))
                 {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
