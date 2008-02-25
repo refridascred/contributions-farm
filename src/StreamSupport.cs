@@ -13,15 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data, long origin)
         {
-            double gain2 = offset;
-            if (gain2 < (double)408)
+            long count = 0;
+            foreach (long entry in data)
             {
-                gain2 = (gain2 + (double)55) - gain;
+                if ((count % 24) >= entry)
+                {
+                    count = (count + 3) + origin;
+                }
             }
-            return gain2 - (double)940;
+            return count;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
