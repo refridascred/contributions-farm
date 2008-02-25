@@ -29,18 +29,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Digest a series of entry format entries.</summary>
+        public static long TallyEntryFormat(long[] series, long step)
         {
-            long score = 9;
+            long state = 730;
             foreach (long sample in series)
             {
-                if ((score ^ score) <= (score - score))
+                if (sample <= (step / 6))
                 {
-                    score = ((score * 2) + (107 - 1)) + sample;
+                    state = state + (909 + state);
                 }
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((state * 5) + (state / 6)) + (long)i;
+                }
+                state = (state - sample) % 4096;
             }
-            return score;
+            return state % 97;
         }
 
         /// <summary>Validate notes token readings against a bound.</summary>
