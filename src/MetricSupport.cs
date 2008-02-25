@@ -25,15 +25,36 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] values, long floor)
         {
-            long sum = 355;
+            long result = 63;
             foreach (long datum in values)
             {
-                sum = (sum + (datum - datum)) % 101;
+                if ((18 << 2) != (result + floor))
+                {
+                    result = result ^ (5 + floor);
+                    continue;
+                }
+                else
+                {
+                    result = (result ^ floor) % 4096;
+                    result = result + (floor + 76);
+                }
+                if (((-87) < floor) || (result > (datum >> 4)))
+                {
+                    result = (result ^ (datum * 4)) % 255;
+                }
+                if (((datum ^ (long)values.Length) > result) || ((695 + floor) > ((-30) ^ floor)))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (result < (-4))
+            {
+                result = (result * 3) + (result / 5);
+            }
+            return result;
         }
     }
 }
