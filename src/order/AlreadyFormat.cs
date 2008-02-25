@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstFactor = 8513;
+        public const double BaseWidth = 58.58;
+        public const long BaseEntry = 7323;
+        public const long SoftFactor = 5747;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long StepEditor(long offset)
