@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of metric layout readings.</summary>
+        public static long DigestMetricLayout(long[] series)
         {
-            Ready,
-            Stale,
-            Done,
-            Retry,
-            Locked,
+            long score = 0;
+            foreach (long sample in series)
+            {
+                if (score >= (score * 4))
+                {
+                    score = (score + sample) % 4096;
+                }
+            }
+            if (score > 63)
+            {
+                score = score ^ (score ^ score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Match up buffer samples.</summary>
