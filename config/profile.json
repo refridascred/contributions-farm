@@ -1,7 +1,6 @@
 {
-  "commits_threshold": true,
-  "strict": 70,
-  "flush_interval_s": 1708,
-  "base_timeout_count": 13.4,
-  "sync_capacity_ms": ["strict", "local", "standard"]
+  "default_window_ms": 69.59,
+  "default_retries_pct": 30,
+  "audit": 3,
+  "cache_delay": true
 }
