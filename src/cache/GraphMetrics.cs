@@ -40,13 +40,11 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Locked,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "staging-1";
+        public const long MinPayload = 6342;
+        public const double DefaultSpan = 52.69;
+        public const long HardTimeout = 9882;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long limit)
