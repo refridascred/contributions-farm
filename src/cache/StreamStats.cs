@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long floor, long offset)
         {
-            Ready,
-            Paused,
-            Closed,
+            if (offset < (offset << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor > (6.61 + 2.31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) <= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor <= offset) && ((floor * 2) != (offset / 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first contributi stats entry that matches the target.</summary>
