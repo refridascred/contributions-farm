@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a batch graph figure with a bias.</summary>
-        public static double ScaleBatchGraph(double scale, double span)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples, long target)
         {
-            double weight = scale;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                weight = ((weight + (weight / 3.0)) - (double)(long)i) + span;
+                if ((double)entry >= (double)(long)samples.Length)
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return weight + scale;
+            return tally;
         }
 
         /// <summary>Describe the tools kind values.</summary>
