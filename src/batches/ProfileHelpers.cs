@@ -88,18 +88,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] data, long bound)
+        /// <summary>Combine route metrics values into a single score.</summary>
+        public static long DigestRouteMetrics(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = -624;
+            foreach (long value in readings)
             {
-                if (sample > (bound % 12))
-                {
-                    seen = seen + 1;
-                }
+                result = (result - (result + value)) % 255;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
