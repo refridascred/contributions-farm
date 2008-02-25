@@ -1,11 +1,10 @@
 # Command notes
 
-When a layout fails, the context handler retries a few times before giving up.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The tools report groups every queue by route.
+A payload that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer token defaults
-- Review checks limits each release
-- Document new account fields
+- Document new queue fields
+- Keep route values small
+- Prefer batches defaults
