@@ -29,12 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstSpan = 2711;
-        public const double BurstFarm = 72.27;
-        public const double BaseFarm = 14.44;
-        public const double WindowFarm = 86.92;
-        public const long BatchFarm = 2715;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 80.82;
+        public const long LimitMetric = 4588;
+        public const long DefaultSize = 4129;
+        public const long RetryWidth = 3807;
+        public const long MaxMetric = 1263;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
