@@ -1,8 +1,20 @@
 {
-  "max_timeout_count": 53,
-  "burst_ratio_count": "legacy",
-  "base_limit": true,
-  "burst_timeout_count": false,
-  "audit": 21.79,
-  "persist": 31.6
+  "batch_capacity_count": "blue",
+  "compress": {
+    "audit": "green",
+    "schema_depth": 9024,
+    "command_interval": 67.42
+  },
+  "idle_size_pct": {
+    "persist": 8877,
+    "strict": "primary",
+    "audit": {
+      "counter_window": ["staging", "fallback", "local"],
+      "cache_capacity": false,
+      "batch_threshold_count": ["eu-west", "strict", "local", "green"],
+      "payload_limit": "legacy",
+      "burst_limit_s": "fallback",
+      "compress": 30
+    }
+  }
 }
