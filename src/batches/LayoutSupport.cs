@@ -43,18 +43,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] readings, long limit)
         {
-            long mark = 38;
-            foreach (long reading in data)
+            long carry = 169;
+            foreach (long entry in readings)
             {
-                if (4 > (reading + mark))
-                {
-                    mark = (mark - (mark + mark)) % 101;
-                }
+                carry = ((carry + (970 << 1)) % 4096) + entry;
             }
-            return mark;
+            if (carry > (-1))
+            {
+                carry = (carry << 3) ^ (limit + carry);
+            }
+            return carry;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
