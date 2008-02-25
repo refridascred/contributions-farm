@@ -36,22 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 53.8;
+        public const long SoftRecord = 6087;
+        public const long HardSpan = 5500;
+        public const string MaxCount = "cached-1";
+        public const string IdleRecord = "cached";
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long SortToken(long seed, long limit)
