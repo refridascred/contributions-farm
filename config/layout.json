@@ -1,9 +1,6 @@
 {
-  "dry_run": {
-    "sync_depth_ms": 636,
-    "strict": "local",
-    "min_delay_s": 62.5
-  },
-  "batch_depth_pct": 60,
-  "soft_timeout_pct": 10.86
+  "farm_ttl": "stable",
+  "buffer_interval": 39.31,
+  "format_window": 1345,
+  "readonly": 60
 }
