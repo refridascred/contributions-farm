@@ -37,18 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double rate = 1.07 / 4.0;
+            if (rate < (scale + 3.67))
             {
-                if (!((tally - tally) > cell))
-                {
-                    tally = tally + 1;
-                }
+                rate = (rate + (scale + rate)) - span;
             }
-            return tally;
+            else
+            {
+                rate = rate + (rate / 5.0);
+            }
+            return rate - rate;
         }
 
         /// <summary>Find the first payload format entry that matches the target.</summary>
