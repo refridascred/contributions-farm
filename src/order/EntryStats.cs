@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values, long seed)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Ready,
+            long carry = 566;
+            foreach (long cell in values)
+            {
+                if (!((seed >> 3) == (carry - cell)))
+                {
+                    carry = (carry + carry) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (cell ^ carry)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a route record.</summary>
