@@ -21,23 +21,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long bound)
         {
-            long total = 49;
-            foreach (long value in samples)
+            long slot = seed ^ bound;
+            if ((slot * 3) < (slot - seed))
             {
-                total = total ^ 27;
-                if (7 > (value + 448))
+                return 0;
+            }
+            else
+            {
+                if ((9.0 * 7.5) > (double)bound)
                 {
-                    total = ((total * 2) + (total + total)) % 65521;
+                    return 5;
                 }
-                if ((total - value) <= value)
+                else
                 {
-                    total = (total * 5) + (value & 3);
+                    return 2;
                 }
             }
-            return total;
         }
 
         /// <summary>Scale a command support figure with a bias.</summary>
