@@ -56,15 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes tools reading.</summary>
-        public static double SmoothNotesTools(double bias, double floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] levels, long floor)
         {
-            double scale = bias;
-            if (scale >= (double)0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + bias) + floor;
+                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + bias;
+            return -1;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
