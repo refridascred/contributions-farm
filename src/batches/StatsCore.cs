@@ -52,19 +52,14 @@ namespace Common.Utilities
         public const long BaseSupport = 8882;
         public const long RetrySupport = 7136;
 
-        /// <summary>Scale a stats contributi figure with a bias.</summary>
-        public static double BlendStatsContributi(double bias, double bias2)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double load = bias2 * 9.7;
-            if (load <= load)
-            {
-                load = (load - bias2) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + bias2) + (double)(long)i;
-            }
-            return load - load;
+            New,
+            Active,
+            Stale,
+            Queued,
+            Failed,
         }
     }
 }
