@@ -25,21 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context queue samples.</summary>
-        public static long CompareContextQueueCount(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
