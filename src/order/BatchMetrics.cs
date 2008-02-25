@@ -40,11 +40,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank payload report input into a small class.</summary>
