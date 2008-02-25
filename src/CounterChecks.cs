@@ -69,19 +69,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] values, long origin)
+        /// <summary>Combine layout route values into a single score.</summary>
+        public static long ScoreLayoutRoute(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long score = 70;
+            foreach (long reading in series)
             {
-                if (item != origin)
+                if (score <= ((-9) * 3))
                 {
-                    flag = false;
-                    break;
+                    score = ((((score * 4) + (score + 894)) % 101) + reading) - limit;
                 }
             }
-            return flag;
+            return score;
         }
     }
 }
