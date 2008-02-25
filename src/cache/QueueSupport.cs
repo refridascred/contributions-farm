@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double floor)
         {
-            Synced,
-            New,
-            Stale,
+            double load = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + (load - floor)) + (double)(long)i) - weight;
+            }
+            return load - (floor - 6.9);
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
