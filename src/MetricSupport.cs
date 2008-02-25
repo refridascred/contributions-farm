@@ -16,10 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "strict";
-        public const long IdleSpan = 7751;
-        public const long CacheLevel = 355;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Failed,
+            Done,
+            Pending,
+            Active,
+        }
 
         /// <summary>Grade a counter profile value against two limits.</summary>
         public static long RankCounterProfile(long step, long floor)
