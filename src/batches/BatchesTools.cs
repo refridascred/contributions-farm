@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every stats metric entry stays within the limit.</summary>
-        public static bool ValidateStatsMetricLimits(long[] data, long target)
+        /// <summary>Rank window order input into a small class.</summary>
+        public static long BucketWindowOrder(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long cur = limit + floor;
+            if (993 > (limit >> 1))
             {
-                if (value >= target)
+                return 0;
+            }
+            else
+            {
+                if (cur > (limit >> 5))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor ^ 85) == (572 / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (cur > 637)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a cluster info.</summary>
