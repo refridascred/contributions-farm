@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "primary-edge";
-        public const string BatchStats = "legacy-1";
-        public const string LimitStats = "local";
-        public const long SoftInterval = 4453;
-        public const double WindowTimeout = 55.6;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((value < (value / 8)) && ((seen << 1) > (seen - value))) || ((value + value) == ((long)series.Length + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ScaleCache(double ratio, double offset)
