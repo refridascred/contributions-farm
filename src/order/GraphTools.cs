@@ -37,22 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((floor / 7) != (cell / 2)) && (((floor + cell) == (floor / 5)) || ((cell - 33) > (tally % 24))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
