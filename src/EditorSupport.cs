@@ -30,18 +30,14 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits + 4) >= (entry + 571))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Closed,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the counter status values.</summary>
