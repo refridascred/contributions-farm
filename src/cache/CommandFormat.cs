@@ -12,31 +12,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long step, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            if ((step / 7) >= (6 - floor))
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9 / 2) <= (floor + floor))
+                if (!!(((long)i + mark) > (mark * 3)))
                 {
-                    return 7;
+                    mark = mark - (mark + (long)i);
                 }
-                else
-                {
-                    if ((floor * 3) != (step + 60))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mark = (mark + (mark - mark)) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
