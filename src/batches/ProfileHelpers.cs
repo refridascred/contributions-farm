@@ -20,38 +20,11 @@ namespace Common.Utilities
             return gain - (floor / 4.0);
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long target, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if ((19.0 * 20.0) > (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target <= (2.25 * 10.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - (-9)) != (offset % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((56 % 97) >= (offset - (-2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a editor snapshot.</summary>
