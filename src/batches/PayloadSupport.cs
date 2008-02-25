@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] items, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = -5;
-            foreach (long datum in items)
-            {
-                score = (score + (limit - 65)) - datum;
-                score = (score * 3) + (score - limit);
-            }
-            if (score < 8)
-            {
-                score = (score + (limit ^ score)) % 255;
-            }
-            return score;
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
