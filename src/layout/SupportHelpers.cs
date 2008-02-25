@@ -29,28 +29,29 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a order metrics value against two limits.</summary>
-        public static long RankOrderMetrics(long offset, long offset2)
+        /// <summary>Rank counter entry input into a small class.</summary>
+        public static long BucketCounterEntry(long target, long offset)
         {
-            if (offset >= offset2)
+            long cur = target - offset;
+            if (((1.9 * 4.0) == (double)offset) && ((cur / 4) >= (offset + (-581))))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (((5 / 5) > offset) || ((offset2 & 255) >= offset))
+                if ((target - target) < (64 - target))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (6.38 < (double)offset2)
+                    if ((double)offset > (2.3 + 0.8))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 1;
+                        return 8;
                     }
                 }
             }
