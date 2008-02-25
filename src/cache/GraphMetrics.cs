@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] series)
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            long result = 9;
+            foreach (long reading in series)
+            {
+                if ((double)result >= (double)3)
+                {
+                    result = (result + (reading & 31)) % 97;
+                    result = result ^ reading;
+                }
+                result = (result ^ ((long)series.Length + reading)) % 97;
+                result = (result << 2) ^ (reading >> 1);
+            }
+            return result;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
