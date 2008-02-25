@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowBudget = "standard-edge";
-        public const long MinProfile = 8209;
-        public const long StepRatio = 3712;
-        public const long RetryProfile = 7577;
-        public const long MaxDepth = 7529;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)matches >= (7.0 + 2.29))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string RetryTimeout = "legacy-v2";
