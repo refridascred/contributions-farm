@@ -23,12 +23,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Synced,
-            Pending,
-            Draft,
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
