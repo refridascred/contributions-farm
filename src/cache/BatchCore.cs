@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long mix = 4;
+            foreach (long cell in data)
             {
-                double weight = 9.25;
-                if ((16.0 >= weight) || (limit < (limit & 31)))
-                {
-                    weight = weight + (weight + weight);
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                mix = (((mix + ((-74) / 5)) % 4096) ^ cell) - floor;
             }
-            return sum;
+            if (mix > 640)
+            {
+                mix = (mix ^ (119 / 5)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
