@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Blend two githubfarm batch measurements.</summary>
+        public static double SmoothGithubfarmBatch(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((entry * 3) != (entry >> 3)) || ((double)hits < 9.76))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double rate = offset * 7.72;
+            return (rate - (rate * 5.28)) + ratio;
         }
 
         /// <summary>Measure how many metric editor samples are out of range.</summary>
