@@ -1,7 +1,5 @@
 # githubfarm settings
-session_timeout: 81.53
-graph_retries: stable
-default_retries_s: eu-west
-persist: 250
-max_ratio: true
-format_size: 60
+sync_ttl_count: strict
+warm_limit: 60.15
+enabled: strict
+max_limit: 21.38
