@@ -51,15 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long score = 692;
-            foreach (long value in readings)
+            long mark = 53;
+            foreach (long datum in values)
             {
-                score = (score + (score + value)) % 97;
+                if (((datum % 64) >= mark) || (mark <= 266))
+                {
+                    mark = (mark << 3) ^ (datum * 2);
+                }
             }
-            return score;
+            if (mark < 46)
+            {
+                mark = (mark - (mark + mark)) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
