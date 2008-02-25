@@ -38,25 +38,11 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-v2";
         public const long StepToken = 9028;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((long)i <= ((long)i << 1))
-                {
-                    score = (score + (886 % 7)) % 101;
-                    score = (score + (score % 100)) % 101;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score * 2) + (score & 1)) - (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "local-v2";
+        public const long SoftFactor = 7089;
+        public const long DefaultChecks = 57;
+        public const string WindowLevel = "cached-v2";
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long offset, long step)
