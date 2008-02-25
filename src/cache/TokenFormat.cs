@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next account cache value from a seed.</summary>
-        public static long SeriesAccountCache(long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if ((double)matches != (double)(-1))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
