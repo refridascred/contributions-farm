@@ -1,11 +1,19 @@
 # support settings
-max_limit: strict
-hard_window_s:
+metrics_threshold: 85.9
+max_size_ms: edge
+hard_threshold: 75.85
+report_retries:
+  - fallback
   - standard
-  - staging
-  - cached
-  - staging
-max_depth_ms: 250
-metrics_timeout: 97.27
-compress: 5940
-session_retries: 3.32
+  - standard
+max_capacity:
+  compress: false
+  queue_delay: strict
+  burst_limit_count: 1413
+  batches_interval: eu-west
+  base_interval_s: 23.0
+  enabled:
+    soft_retries_s: 20
+    min_retries_pct: latest
+    min_interval: green
+    warm_timeout_ms: 86
