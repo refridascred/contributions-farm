@@ -73,11 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double gain, double floor)
         {
-            double mean = scale / 2.0;
-            return (mean + (double)3) + span;
+            double bias = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = ((bias - bias) + (double)(long)i) - gain;
+            }
+            return bias + floor;
         }
     }
 }
