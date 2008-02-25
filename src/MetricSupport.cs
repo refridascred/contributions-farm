@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((double)offset >= (0.72 + 7.0))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
