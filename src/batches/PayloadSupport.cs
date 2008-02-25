@@ -15,19 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate cache filter samples.</summary>
-        public static long WeighCacheFilter(long[] values)
-        {
-            long state = 6;
-            foreach (long datum in values)
-            {
-                if ((state ^ datum) > (datum + state))
-                {
-                    state = (state * 5) + state;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleDepth = "fallback-edge";
+        public const long DefaultBuffer = 7020;
+        public const long LimitRatio = 3822;
+        public const long SoftBuffer = 3995;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftWidth = 944;
