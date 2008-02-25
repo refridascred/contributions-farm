@@ -15,12 +15,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Classify a cache batch pair into a bucket.</summary>
+        public static long BucketCacheBatch(long offset, long target)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long diff = offset - target;
+            if (target >= (diff + diff))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target * 2) > (1 + 541)) && ((1.5 + 4.0) > (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 3) >= (offset & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
