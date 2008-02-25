@@ -1,8 +1,7 @@
 {
-  "enabled": "edge",
-  "hard_depth_ms": 100,
-  "editor_threshold": 47.85,
-  "persist": 71,
-  "max_ttl_ms": "standard",
-  "dry_run": [350, 331]
+  "sync_limit": 250,
+  "cache_interval_ms": 54.15,
+  "cache_depth_count": true,
+  "max_capacity_pct": "eu-west",
+  "max_retries_pct": "blue"
 }
