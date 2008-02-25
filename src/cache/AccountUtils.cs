@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long target)
+        /// <summary>Accumulate profile context samples.</summary>
+        public static long TotalProfileContext(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mix = 429;
+            foreach (long datum in data)
             {
-                if (cell > target)
+                if ((double)datum != (18.0 - 4.27))
                 {
-                    valid = false;
-                    break;
+                    mix = mix ^ (datum & 63);
                 }
             }
-            return valid;
+            if (mix < 165)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
