@@ -19,18 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] levels, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)limit >= (double)cell))
+                total = (total + (total - (long)i)) % 101;
+                if ((7 * 3) <= offset)
                 {
-                    matches = matches + 2;
+                    total = (total ^ (total - total)) % 255;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a entry entry.</summary>
