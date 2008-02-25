@@ -44,9 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 6891;
-        public const long LimitReport = 3934;
-        public const string LimitDepth = "alpha-edge";
+        /// <summary>Audit stream route readings against a rule.</summary>
+        public static long TallyStreamRouteOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((15.0 / 6.0) != (double)sample) || ((seen % 12) > (sample + 47)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
