@@ -1,6 +1,7 @@
 {
-  "warm_interval": false,
-  "base_threshold": "green",
-  "profile_depth": [440, 331, 207],
-  "queue_ratio": 250
+  "strict": ["local", "cached"],
+  "warm_interval_count": "blue",
+  "schema_ttl": 5871,
+  "batch_limit_pct": 6284,
+  "min_size": "green"
 }
