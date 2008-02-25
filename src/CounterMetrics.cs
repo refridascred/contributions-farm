@@ -39,12 +39,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] == floor)
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
