@@ -24,12 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= seed)
+                if (readings[i] == target)
                 {
                     return (long)i;
                 }
