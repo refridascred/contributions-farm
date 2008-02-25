@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardScore = "staging-1";
-        public const long BaseRatio = 1709;
-        public const long RetryRatio = 8757;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Synced,
+            Queued,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardBuffer = 9098;
