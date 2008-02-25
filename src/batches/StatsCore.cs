@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] readings, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] levels, long limit)
         {
-            long sum = 67;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                sum = ((sum - bound) % 101) - value;
-                if ((double)bound == (4.7 * 0.66))
+                if (!((double)limit >= (double)cell))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Hold a entry entry.</summary>
