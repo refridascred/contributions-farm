@@ -40,11 +40,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double span)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            double mean = span;
-            return (mean + (mean / 7.0)) + ratio;
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
