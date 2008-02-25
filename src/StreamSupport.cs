@@ -26,21 +26,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((2.8 + 3.78) != (double)datum) || ((tally << 3) > (datum >> 3)))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
