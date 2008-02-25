@@ -44,31 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a record githubfarm value against two limits.</summary>
-        public static long BucketRecordGithubfarm(long step, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            if ((double)step == (3.5 + 0.9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step < (limit + step)) && (step < (step + 19)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step + limit) < (limit + step)) && ((step - 556) > (step % 24)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Synced,
+            Retry,
         }
     }
 }
