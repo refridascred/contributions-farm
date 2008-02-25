@@ -1,5 +1,4 @@
 # githubfarm settings
-readonly: 67
-default_ttl_pct: 45.07
-min_threshold_count: blue
-poll_ttl: true
+verbose: 3977
+dry_run: 30
+poll_ratio: staging
