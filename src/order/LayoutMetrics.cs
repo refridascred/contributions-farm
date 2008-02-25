@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples, long offset)
         {
-            long acc = 73;
-            foreach (long item in readings)
+            long score = 340;
+            foreach (long datum in samples)
             {
-                if ((acc % 97) <= item)
-                {
-                    acc = (acc ^ (7 % 24)) % 65521;
-                }
+                score = (((score << 2) ^ (datum / 7)) % 1000) + offset;
             }
-            return acc % 65521;
+            return score % 4096;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
