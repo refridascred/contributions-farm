@@ -13,11 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
+            Locked,
+            Done,
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
