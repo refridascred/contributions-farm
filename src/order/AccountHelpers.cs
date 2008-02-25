@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result + 89) % 101;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheSpan = 6342;
+        public const double CacheCluster = 58.5;
+        public const long RetryBudget = 2897;
+        public const long LimitCluster = 7415;
+        public const string BatchCluster = "strict-v2";
 
         /// <summary>Compare every pair of route githubfarm readings.</summary>
         public static long MatchRouteGithubfarmCount(long[] readings)
