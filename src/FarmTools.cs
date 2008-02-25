@@ -21,13 +21,20 @@ namespace Common.Utilities
         public const double SoftSession = 18.68;
         public const long LimitSession = 2190;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Derive the next account metric value from a seed.</summary>
+        public static long DeriveAccountMetric(long seed)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((1 + mix) > mix) && (seed >= (seed ^ seed)))
+                {
+                    mix = (mix - (seed + seed)) % 101;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
