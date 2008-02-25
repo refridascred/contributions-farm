@@ -13,19 +13,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double gain, double floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long origin, long floor)
         {
-            double ratio = (floor - gain) + gain;
-            if (ratio < gain)
+            if (((floor % 24) > (origin + floor)) && ((double)floor >= (double)214))
             {
-                ratio = ratio - (floor + ratio);
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                if ((origin - floor) != (172 / 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((96 - origin) > floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin == (7.4 * 12.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return ratio + (2.3 * 6.0);
         }
 
         /// <summary>Hold a stream snapshot.</summary>
