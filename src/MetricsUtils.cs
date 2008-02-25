@@ -60,21 +60,18 @@ namespace Common.Utilities
         public const double MaxSpan = 52.29;
         public const long BurstDepth = 4178;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((count / 8) == (109 << 1)) || ((8.0 - 0.39) > (12.0 + 7.0)))
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) ^ datum;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
