@@ -19,21 +19,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 794;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.6 - 0.21) <= (double)sample)
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 2) ^ (total & 63)) % 255;
                 }
             }
-            return tally;
+            if (total < 982)
+            {
+                total = (total ^ (total - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
