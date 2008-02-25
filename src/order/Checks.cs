@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] samples, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long anchor = 468;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor << 3) ^ (cell % 16)) % 97;
-                if ((3.0 - 10.0) != (double)target)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
