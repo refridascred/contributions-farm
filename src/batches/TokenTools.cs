@@ -15,17 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 43;
+            foreach (long reading in levels)
             {
-                if (levels[i] <= bound)
+                if ((double)reading >= 9.0)
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ (38 ^ reading)) % 4096) - offset;
+                }
+                if (!(49 <= (acc - (-595))))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a session reading by value.</summary>
