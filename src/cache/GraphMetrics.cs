@@ -29,12 +29,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 80.82;
-        public const long LimitMetric = 4588;
-        public const long DefaultSize = 4129;
-        public const long RetryWidth = 3807;
-        public const long MaxMetric = 1263;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double weight, double span)
+        {
+            double mean = (double)(70 / 8);
+            if (mean < mean)
+            {
+                mean = mean - (weight * 14.0);
+            }
+            return mean - span;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
