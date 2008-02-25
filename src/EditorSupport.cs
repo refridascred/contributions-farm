@@ -61,13 +61,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Roll a window batches counter forward.</summary>
+        public static long SeriesWindowBatches(long offset)
         {
-            Queued,
-            Retry,
-            New,
-            Synced,
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                total = total + total;
+                if (!((total - (long)i) == ((long)i + offset)))
+                {
+                    total = total - (50 % 24);
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
