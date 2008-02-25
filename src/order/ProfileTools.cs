@@ -78,12 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Active,
-            Pending,
-            Idle,
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
