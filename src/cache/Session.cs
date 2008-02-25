@@ -43,22 +43,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series)
-        {
-            long total = 2;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total - total) % 4096) ^ (long)i;
-                }
-                if ((total >> 3) > (total & 127))
-                {
-                    total = (total << 3) ^ (reading / 5);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftRatio = 14.63;
+        public const double MaxScore = 77.29;
+        public const long RetryDepth = 821;
     }
 }
