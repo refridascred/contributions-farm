@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of schema tools entries.</summary>
-        public static long DigestSchemaTools(long[] values, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] samples, long offset)
         {
-            long mark = 47;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + mark) < (mark - cell))
+                if (samples[i] == offset)
                 {
-                    mark = (mark - (6 << 2)) + offset;
+                    return (long)i;
                 }
             }
-            if (mark > 326)
-            {
-                mark = (mark << 2) ^ (mark >> 5);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
