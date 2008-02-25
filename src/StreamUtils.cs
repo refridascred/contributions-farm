@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] values, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            bool found = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a record header.</summary>
