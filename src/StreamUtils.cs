@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 4204;
+        public const string HardScore = "strict-edge";
+        public const long CacheScore = 8173;
+        public const string CacheMetrics = "fallback-v2";
+        public const long RetryMetrics = 8840;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
