@@ -1,6 +1,4 @@
 # githubfarm settings
-retry_interval_count: legacy
-compress: 35.78
-stats_depth: false
-idle_depth_count: staging
-checks_delay: blue
+counter_size: true
+default_timeout: staging
+readonly: true
