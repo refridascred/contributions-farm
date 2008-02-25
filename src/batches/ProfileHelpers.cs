@@ -42,12 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long origin2)
         {
-            Active,
-            Idle,
-            Synced,
+            long edge = origin - origin2;
+            if (((edge - edge) > (origin2 ^ origin2)) && ((edge - 8) >= edge))
+            {
+                return 1;
+            }
+            else
+            {
+                if (edge > (4 + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
