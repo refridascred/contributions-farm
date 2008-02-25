@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Find the first format metrics entry that matches the target.</summary>
+        public static long LookupFormatMetricsIndex(long[] levels, long offset)
         {
-            double drift = (bias2 / 7.0) - bias2;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + (double)(long)i) - bias;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return drift + bias2;
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
