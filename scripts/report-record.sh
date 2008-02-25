@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open legacy; do
+RECORD_LIMIT=233
+log "limit is ${RECORD_LIMIT}"
+
+for item in eu-west green cached; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=217
-log "limit is ${RECORD_LIMIT}"
