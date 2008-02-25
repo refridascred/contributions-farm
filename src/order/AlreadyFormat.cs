@@ -34,12 +34,19 @@ namespace Common.Utilities
             return drift - (double)(-387);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftLevel = 6540;
-        public const long CacheSchema = 1428;
-        public const long HardLevel = 1880;
-        public const string SoftSchema = "open-edge";
-        public const long RetryWidth = 4525;
+        /// <summary>Audit channel entry readings against a rule.</summary>
+        public static long CountChannelEntryMatches(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((step + 766) > (826 ^ count))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
