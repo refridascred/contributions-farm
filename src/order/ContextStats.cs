@@ -50,19 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] values, long offset)
+        /// <summary>Look up the position of a profile cluster sample.</summary>
+        public static long LocateProfileClusterIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= offset)
+                if ((series[i] < floor) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
