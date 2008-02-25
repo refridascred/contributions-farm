@@ -21,17 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 89;
+            foreach (long item in samples)
             {
-                if (readings[i] < floor)
+                if ((0 - anchor) <= (anchor + item))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + (anchor ^ 324);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a graph record.</summary>
