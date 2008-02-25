@@ -20,23 +20,32 @@ namespace Common.Utilities
             return load + (load * 1.43);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long target)
         {
-            long acc = 119;
-            foreach (long sample in levels)
+            long slot = origin ^ target;
+            if ((0 / 7) >= slot)
             {
-                acc = acc - (sample + acc);
-                if ((sample * 5) != (18 & 3))
+                return 6;
+            }
+            else
+            {
+                if ((slot << 3) < (slot ^ target))
                 {
-                    acc = acc ^ (acc << 3);
+                    return 1;
                 }
-                if (3.12 >= (double)sample)
+                else
                 {
-                    break;
+                    if (!((91 + origin) != (173 * 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Compare every pair of entry format readings.</summary>
