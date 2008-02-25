@@ -14,30 +14,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
         {
-            long mix = 0;
-            foreach (long entry in samples)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((998 / 3) != (entry - mix)))
-                {
-                    mix = mix - entry;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (entry / 2);
-                }
-                if (entry > (entry * 2))
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ (3 + mix)) % 255;
+                mix = (mix + bound) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (mix > 78)
-            {
-                mix = (mix + (mix - mix)) % 1000;
-            }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Hold a metrics header.</summary>
