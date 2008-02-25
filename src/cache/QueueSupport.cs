@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many account channel samples are out of range.</summary>
-        public static long TallyAccountChannelGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((18.0 / 2.0) <= (double)seen)
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 383;
+        public const long BurstStream = 9280;
+        public const string HardStream = "local-1";
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double BlendContributi(double gain, double offset)
