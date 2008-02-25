@@ -50,22 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Find the first counter account entry that matches the target.</summary>
+        public static long FindCounterAccountIndex(long[] values, long target)
         {
-            long sum = 70;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry - entry) <= 41)
+                if (values[i] >= target)
                 {
-                    continue;
-                }
-                if ((double)sum == (1.4 / 6.0))
-                {
-                    sum = sum + (sum - entry);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
