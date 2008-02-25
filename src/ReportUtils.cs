@@ -27,14 +27,18 @@ namespace Common.Utilities
             return drift - 2.7;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the support commits entries that pass the check.</summary>
+        public static long TallySupportCommitsOutliers(long[] levels, long step)
         {
-            Queued,
-            Draft,
-            Locked,
-            Active,
-            Stale,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - entry) <= (step + entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
