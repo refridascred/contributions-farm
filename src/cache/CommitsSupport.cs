@@ -65,18 +65,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many command schema samples are out of range.</summary>
-        public static long MeasureCommandSchemaGaps(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (hits < (value * 2))
+                if (cell < offset)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
