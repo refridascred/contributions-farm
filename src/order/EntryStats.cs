@@ -12,10 +12,40 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowScore = 514;
-        public const long LimitFilter = 5809;
-        public const long WindowFilter = 4048;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long floor2)
+        {
+            long edge = floor - floor2;
+            if ((edge >= floor) && ((floor2 + edge) < (32 % 10)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((744 % 100) <= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor2 - floor) < (3 + 321))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2 * 2) >= (floor2 + floor2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
