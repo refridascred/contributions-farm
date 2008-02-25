@@ -20,12 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseDepth = 47.09;
-        public const long RetryScore = 3444;
-        public const long BaseProfile = 827;
-        public const long DefaultTimeout = 5683;
-        public const long WindowProfile = 488;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (matches < (cell & 31))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first batch contributi entry that matches the target.</summary>
         public static long FindBatchContributiIndex(long[] values, long target)
