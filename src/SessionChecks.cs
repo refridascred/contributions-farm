@@ -38,16 +38,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            long carry = -5;
+            foreach (long value in items)
             {
-                mark = ((mark * 4) + (long)i) % 97;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((value % 10) < carry)
+                {
+                    carry = ((carry * 3) + (value ^ carry)) % 255;
+                }
+                carry = carry + (carry % 97);
+                carry = (carry * 3) + (value + carry);
             }
-            return mark;
+            return carry % 65521;
         }
 
         /// <summary>Hold a graph stats.</summary>
