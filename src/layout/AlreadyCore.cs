@@ -49,22 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] samples, long seed)
         {
-            long acc = 2;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry % 64) > entry)
+                if (samples[i] > seed)
                 {
-                    acc = (acc ^ acc) % 255;
+                    return (long)i;
                 }
             }
-            if (acc < 628)
-            {
-                acc = (acc - (acc - 560)) % 65521;
-            }
-            return acc;
+            return -1;
         }
     }
 }
