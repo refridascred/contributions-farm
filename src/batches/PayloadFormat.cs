@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Combine checks support values into a single score.</summary>
+        public static long TotalChecksSupport(long[] samples)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            long result = 49;
+            foreach (long item in samples)
             {
-                mark = (mark ^ (reading + mark)) % 4096;
-                mark = (mark + (mark ^ mark)) % 101;
+                result = (result ^ 1) + item;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
