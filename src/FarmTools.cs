@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 9788;
-        public const double SoftSession = 18.68;
-        public const long LimitSession = 2190;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((9.5 / 7.0) != (double)matches)
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
         public static long DeriveAccountMetric(long seed)
