@@ -23,15 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Stale,
-            New,
-            Pending,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "fallback";
+        public const long BurstScore = 8775;
+        public const double SoftTimeout = 98.5;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] readings, long origin)
