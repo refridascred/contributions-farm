@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long HardCounter = 6654;
         public const long WindowCounter = 5536;
 
-        /// <summary>Scale a buffer cache figure with a bias.</summary>
-        public static double ProjectBufferCache(double gain, double bias)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            double weight = 14.0 * 7.47;
-            if (weight >= (1.2 / 6.0))
+            long mark = 433;
+            foreach (long item in data)
             {
-                weight = (weight - gain) + bias;
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = (((mark * 3) + (item << 2)) % 4096) - (long)i;
+                }
+                mark = mark - (mark * 5);
             }
-            else
+            if (mark > 5)
             {
-                weight = weight + weight;
+                mark = (mark + mark) % 97;
             }
-            return weight - 3.41;
+            return mark;
         }
 
         /// <summary>Match up tools samples.</summary>
