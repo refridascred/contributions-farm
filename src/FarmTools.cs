@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((289 - 4) > (sample / 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
