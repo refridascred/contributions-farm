@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a already cache figure with a bias.</summary>
+        public static double BlendAlreadyCache(double weight, double floor)
         {
-            Paused,
-            Queued,
-            Active,
-            Synced,
+            double scale = (double)(25 - 544);
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - floor) - (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Describe the context class values.</summary>
