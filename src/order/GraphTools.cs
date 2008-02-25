@@ -73,19 +73,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] data, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long origin, long floor)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long offset = origin - floor;
+            if (!((origin + floor) < origin))
             {
-                if (value >= origin)
+                return 2;
+            }
+            else
+            {
+                if (offset <= (offset << 3))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
     }
 }
