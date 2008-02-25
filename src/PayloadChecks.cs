@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long state = 6;
+            foreach (long cell in series)
             {
-                if (7.0 < (double)datum)
+                if (!((state % 3) < (cell - state)))
                 {
-                    matches = matches + 3;
+                    state = (state ^ (state & 255)) % 97;
+                }
+                state = ((state << 3) ^ (cell << 1)) % 101;
+                if ((state << 2) == (state + cell))
+                {
+                    state = ((state * 3) + (cell << 3)) % 65521;
+                }
+                else
+                {
+                    state = state - (28 & 31);
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Check that every window editor entry stays within the limit.</summary>
