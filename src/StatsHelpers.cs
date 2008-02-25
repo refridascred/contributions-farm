@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BurstLevel = 9120;
         public const long SoftBudget = 1553;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] levels, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (entry != floor)
+                if ((seen + 19) > 78)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + value;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
