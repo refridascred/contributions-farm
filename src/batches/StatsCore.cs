@@ -23,26 +23,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of format stream entries.</summary>
-        public static long DigestFormatStream(long[] levels, long offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = 1;
-            foreach (long cell in levels)
-            {
-                if ((cell + 8) >= (offset * 4))
-                {
-                    acc = (acc - (0 + acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-            }
-            if (acc > 36)
-            {
-                acc = ((acc * 2) + (acc << 3)) % 97;
-            }
-            return acc % 4096;
+            Closed,
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
