@@ -50,11 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            double drift = offset;
+            if (drift >= offset)
+            {
+                drift = (drift - (double)4) + rate;
+            }
+            return drift + (double)99;
         }
 
         /// <summary>Hold a batch stats.</summary>
