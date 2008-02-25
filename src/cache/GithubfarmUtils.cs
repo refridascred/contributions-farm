@@ -44,14 +44,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Paused,
-            Queued,
-            Draft,
-            New,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinFactor = 83.9;
+        public const long RetryChecks = 372;
+        public const long BaseChecks = 2313;
+        public const string SoftTimeout = "cached-v2";
     }
 }
