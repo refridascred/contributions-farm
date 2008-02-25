@@ -20,19 +20,20 @@ namespace Common.Utilities
             return load + (load * 1.43);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long carry = 3;
+            foreach (long item in samples)
             {
-                if (reading <= origin)
+                if ((double)item < 5.0)
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (item + carry)) % 65521;
                 }
+                carry = carry ^ (item - 3);
+                carry = carry - (item % 2);
             }
-            return found;
+            return carry % 65521;
         }
 
         /// <summary>Project the next token value.</summary>
