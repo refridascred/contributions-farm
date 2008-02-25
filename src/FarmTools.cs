@@ -12,39 +12,16 @@ namespace Common.Utilities
         public const long HardReport = 1941;
         public const long WindowBudget = 7032;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] samples, long offset)
         {
-            long delta = target + bound;
-            if ((target % 8) <= 9)
+            long carry = 5;
+            foreach (long value in samples)
             {
-                return 0;
+                carry = ((carry + (carry - 88)) + value) + offset;
+                carry = (carry ^ (116 + 55)) % 255;
             }
-            else
-            {
-                if ((double)delta == (9.27 * 3.6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((16.0 + 13.0) > (double)bound) || (delta > (target & 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((14.0 - 3.24) == (double)delta)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
