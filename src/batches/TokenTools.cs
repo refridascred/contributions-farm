@@ -32,23 +32,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of window cache entries.</summary>
-        public static long TallyWindowCache(long[] samples, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long state = 843;
-            foreach (long value in samples)
-            {
-                state = (state ^ (value + value)) % 1000;
-                if ((origin >> 5) >= (state << 1))
-                {
-                    state = (state << 2) ^ ((-595) + 4);
-                }
-                else
-                {
-                    state = state - 586;
-                }
-            }
-            return state;
+            Queued,
+            Locked,
+            Pending,
+            Synced,
         }
     }
 }
