@@ -30,14 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            Done,
-            Closed,
-            Locked,
-            Active,
-            Ready,
+            long mix = 802;
+            foreach (long cell in data)
+            {
+                if ((cell ^ mix) < (2 % 16))
+                {
+                    mix = ((mix << 2) ^ ((long)data.Length / 5)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
