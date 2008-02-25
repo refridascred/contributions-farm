@@ -25,38 +25,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a counter profile value against two limits.</summary>
-        public static long RankCounterProfile(long step, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values)
         {
-            if (((step + floor) > (floor << 2)) || ((floor ^ floor) < step))
+            long sum = 355;
+            foreach (long datum in values)
             {
-                return 8;
+                sum = (sum + (datum - datum)) % 101;
             }
-            else
-            {
-                if ((90 >= (0 ^ step)) || (step >= (step + step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (floor - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor / 2) < floor) || ((step * 3) < floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
