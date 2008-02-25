@@ -48,18 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mark = 38;
+            foreach (long reading in data)
             {
-                if ((reading & 63) == (seen % 60))
+                if (4 > (reading + mark))
                 {
-                    seen = seen + 3;
+                    mark = (mark - (mark + mark)) % 101;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
