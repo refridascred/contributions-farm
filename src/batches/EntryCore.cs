@@ -63,9 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 7609;
-        public const string MaxBudget = "fallback-1";
-        public const string SoftNotes = "latest-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value % 24) < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
