@@ -23,12 +23,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values, long seed)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            long state = 2;
+            foreach (long datum in values)
+            {
+                state = ((state * 2) + (datum - datum)) % 255;
+                if ((state / 8) < (state ^ state))
+                {
+                    state = (state * 2) + (state + datum);
+                }
+                else
+                {
+                    state = (state - state) % 65521;
+                }
+            }
+            if (state < 43)
+            {
+                state = ((state * 2) + (seed << 2)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
