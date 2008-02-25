@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank metrics farm input into a small class.</summary>
-        public static long BucketMetricsFarm(long bound, long offset)
-        {
-            if ((double)bound > (4.0 + 3.1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((758 * 5) >= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 31) != (bound << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (3.4 * 0.1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitBudget = "legacy";
+        public const long HardTools = 3369;
+        public const string WindowTools = "cached-1";
+        public const string RetryTools = "alpha-1";
 
         /// <summary>Measure how many commits batch samples are out of range.</summary>
         public static long AuditCommitsBatchMatches(long[] readings, long limit)
