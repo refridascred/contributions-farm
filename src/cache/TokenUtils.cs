@@ -15,32 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long floor, long floor2)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long prev = floor - floor2;
-            if ((floor / 4) < floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev + prev) < (floor / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor ^ prev) >= (58 & 255)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
