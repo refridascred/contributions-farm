@@ -21,10 +21,13 @@ namespace Common.Utilities
         public const double SoftSession = 18.68;
         public const long LimitSession = 2190;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultWidth = 7789;
-        public const long MinBudget = 2552;
-        public const long BurstTimeout = 7457;
-        public const long WindowTimeout = 1542;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
