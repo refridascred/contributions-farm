@@ -49,13 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Locked,
-            Paused,
-            Closed,
-            Failed,
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
