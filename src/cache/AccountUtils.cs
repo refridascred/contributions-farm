@@ -23,23 +23,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double gain, double offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long seed, long step)
         {
-            double bias = gain;
-            if (bias > (double)(-34))
+            long slot = seed - step;
+            if ((double)slot <= (double)seed)
             {
-                bias = bias - 3.0;
+                return 2;
             }
             else
             {
-                bias = bias - (double)577;
+                if (!(6 > step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + gain) + (double)(long)i;
-            }
-            return bias - (offset * 7.1);
         }
 
         /// <summary>Define report limits and defaults.</summary>
