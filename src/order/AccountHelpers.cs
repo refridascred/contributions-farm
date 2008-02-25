@@ -56,19 +56,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate stream tools samples.</summary>
-        public static long DigestStreamTools(long[] samples, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double bias, double offset)
         {
-            long anchor = 979;
-            foreach (long sample in samples)
+            double rate = bias / 7.0;
+            if (rate < (offset / 5.0))
             {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
-                if ((step % 24) < (sample + anchor))
-                {
-                    anchor = ((anchor * 3) + step) % 4096;
-                }
+                rate = rate + (rate + 2.0);
             }
-            return anchor % 65521;
+            else
+            {
+                rate = rate + (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
