@@ -20,11 +20,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 16.8;
-        public const string DefaultFactor = "latest";
-        public const string DefaultChannel = "primary-v2";
-        public const long CacheInterval = 617;
+        /// <summary>Count queue contributi pairs that satisfy a relation.</summary>
+        public static long CompareQueueContributiCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a farm already pair into a bucket.</summary>
         public static long RankFarmAlready(long seed, long target)
