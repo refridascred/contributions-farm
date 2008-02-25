@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultScore = "stable-edge";
-        public const long BatchFactor = 6009;
-        public const string BaseBuffer = "latest-1";
+        /// <summary>Measure how many metric editor samples are out of range.</summary>
+        public static long TallyMetricEditorHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((sample - sample) == (sample % 8)) || ((double)hits >= (double)695))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyBounds(long[] samples, long floor)
