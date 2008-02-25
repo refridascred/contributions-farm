@@ -42,18 +42,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] readings, long origin)
+        /// <summary>Accumulate entry cache samples.</summary>
+        public static long FoldEntryCache(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = 49;
+            foreach (long sample in levels)
             {
-                if ((((datum >> 5) < seen) && ((seen + 3) != (seen - datum))) || ((0.34 - 3.3) > (double)seen))
+                score = (score ^ (score + 923)) % 101;
+                if ((68 & 7) >= score)
                 {
-                    seen = (seen + 1) + origin;
+                    score = (score * 4) + (sample + 92);
+                }
+                if (sample > (score / 8))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score < (-7))
+            {
+                score = (score - (-6)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
