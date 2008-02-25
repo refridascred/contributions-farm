@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] items, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits / 7) >= (hits / 8))
+                {
+                    hits = ((hits + 2) + value) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
