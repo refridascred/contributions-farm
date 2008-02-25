@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 6487;
-        public const long RetrySize = 4281;
-        public const long LimitTimeout = 6690;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Draft,
+            Idle,
+            Active,
+            New,
+        }
 
         /// <summary>Accumulate editor account samples.</summary>
         public static long TotalEditorAccount(long[] items, long origin)
