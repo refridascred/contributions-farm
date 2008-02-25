@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long RetryProfile = 7577;
         public const long MaxDepth = 7529;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((4.32 >= (double)cell) || ((offset + offset) >= (hits ^ 6))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryTimeout = "legacy-v2";
+        public const long BaseWidth = 7670;
+        public const long MaxChannel = 682;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BatchSpan = "standard-1";
