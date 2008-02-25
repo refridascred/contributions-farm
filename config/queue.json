@@ -1,9 +1,7 @@
 {
-  "default_timeout_count": {
-    "readonly": "green",
-    "account_ttl": 54,
-    "layout_window": 60
-  },
-  "persist": 1.27,
-  "warm_size": 12.79
+  "stats_delay": 42.9,
+  "dry_run": "open",
+  "flush_limit": "primary",
+  "enabled": 58,
+  "commits_capacity": "legacy"
 }
