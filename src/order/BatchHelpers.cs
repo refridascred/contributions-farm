@@ -32,13 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Retry,
+            Closed,
             New,
-            Locked,
-            Failed,
+            Draft,
         }
     }
 }
