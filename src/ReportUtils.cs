@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double offset)
         {
-            Active,
-            Failed,
-            Dropped,
-            Synced,
-            Stale,
+            double scale = rate;
+            if (scale > (13.0 / 6.0))
+            {
+                scale = (scale + (5.0 * 6.12)) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (7.53 + 7.4)) - (double)(long)i;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Combine support values into a single score.</summary>
