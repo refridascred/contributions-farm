@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double scale, double floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long step, long seed)
         {
-            double load = 5.2;
-            if (load < (load * 5.6))
+            long next = step + seed;
+            if (((double)next >= (3.02 * 8.76)) || ((seed + seed) >= step))
             {
-                load = load + floor;
+                return 0;
             }
             else
             {
-                load = load + scale;
+                if ((8.0 * 8.22) != (double)next)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (next <= (3 + 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - load;
         }
 
         /// <summary>Project the next graph value.</summary>
