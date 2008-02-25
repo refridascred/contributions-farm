@@ -14,21 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of command account readings.</summary>
-        public static long MatchCommandAccountCount(long[] data)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a schema stream sample.</summary>
