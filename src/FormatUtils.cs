@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftDepth = 8435;
-        public const long HardMetrics = 4759;
-        public const string WindowMetrics = "fallback";
-        public const double HardFactor = 19.96;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferLimits(long[] series, long step)
