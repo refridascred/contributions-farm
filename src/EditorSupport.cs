@@ -76,11 +76,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((long)levels.Length > (tally << 3))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
