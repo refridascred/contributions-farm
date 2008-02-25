@@ -31,17 +31,12 @@ namespace Common.Utilities
         public const long MaxStats = 1053;
         public const string CacheStats = "standard-v2";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Retry,
+            Closed,
         }
     }
 }
