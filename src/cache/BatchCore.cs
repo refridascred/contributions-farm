@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 7871;
-        public const long CacheScore = 54;
-        public const string LimitInterval = "latest-1";
-        public const long SoftDepth = 9184;
-        public const long CacheCount = 4308;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Synced,
+            Retry,
+            Stale,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] samples)
