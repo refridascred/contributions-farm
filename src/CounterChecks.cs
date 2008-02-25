@@ -42,15 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order support readings.</summary>
-        public static long ScoreOrderSupport(long[] levels)
+        /// <summary>Count the layout stats entries that pass the check.</summary>
+        public static long CountLayoutStatsMatches(long[] samples, long origin)
         {
-            long total = 6;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                total = ((total + total) % 1000) + datum;
+                if (37 <= origin)
+                {
+                    count = (count + 3) - item;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the filter mode values.</summary>
