@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string LimitLevel = "staging-edge";
         public const long BatchChannel = 2220;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] values, long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count > (7.53 - 7.5))
+                if (samples[i] < bound)
                 {
-                    count = ((count + 1) + sample) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
