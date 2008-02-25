@@ -28,21 +28,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 5) + ((long)i - bound)) % 97;
+                mix = mix ^ mix;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
