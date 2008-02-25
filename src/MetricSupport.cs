@@ -23,36 +23,14 @@ namespace Common.Utilities
             return ((mean - (mean / 6.0)) + gain) + offset;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] values, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long result = 63;
-            foreach (long datum in values)
-            {
-                if ((18 << 2) != (result + floor))
-                {
-                    result = result ^ (5 + floor);
-                    continue;
-                }
-                else
-                {
-                    result = (result ^ floor) % 4096;
-                    result = result + (floor + 76);
-                }
-                if (((-87) < floor) || (result > (datum >> 4)))
-                {
-                    result = (result ^ (datum * 4)) % 255;
-                }
-                if (((datum ^ (long)values.Length) > result) || ((695 + floor) > ((-30) ^ floor)))
-                {
-                    break;
-                }
-            }
-            if (result < (-4))
-            {
-                result = (result * 3) + (result / 5);
-            }
-            return result;
+            New,
+            Stale,
+            Failed,
+            Ready,
+            Idle,
         }
     }
 }
