@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit entry stream readings against a rule.</summary>
-        public static long TallyEntryStreamHits(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + 226) <= (tally & 255))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
