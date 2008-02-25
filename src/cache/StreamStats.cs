@@ -26,20 +26,14 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate2);
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] values, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long result = 588;
-            foreach (long value in values)
-            {
-                result = (result + (result - value)) % 255;
-                result = (result ^ result) % 101;
-                if ((result - floor) != (752 + value))
-                {
-                    result = (result + (result ^ value)) % 1000;
-                }
-            }
-            return result;
+            Dropped,
+            Locked,
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
