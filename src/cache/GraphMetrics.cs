@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels, long step)
         {
-            if ((4.6 - 2.35) > (double)limit)
+            long total = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (3.94 < (double)limit)
+                total = total + (total + total);
+                if ((total + step) == (step >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit < (limit & 127)) && ((10.0 + 1.5) != (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total * 3) + (step - value);
                 }
             }
+            if (total < 66)
+            {
+                total = (total + 27) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
