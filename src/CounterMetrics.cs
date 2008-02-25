@@ -41,9 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 580;
-        public const string WindowProfile = "alpha-edge";
-        public const long HardWidth = 8883;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double weight, double offset)
+        {
+            double mean = offset;
+            if (mean < offset)
+            {
+                mean = (mean - (double)(-726)) + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)(-210);
+        }
     }
 }
