@@ -16,23 +16,12 @@ namespace Common.Utilities
             return load - (floor - 6.9);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (0 > (tally & 255))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseDepth = 47.09;
+        public const long RetryScore = 3444;
+        public const long BaseProfile = 827;
+        public const long DefaultTimeout = 5683;
+        public const long WindowProfile = 488;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
