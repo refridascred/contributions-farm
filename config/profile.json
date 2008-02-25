@@ -1,5 +1,6 @@
 {
-  "batch_capacity_ms": ["local", "stable", "primary", "eu-west"],
-  "context_window": 100,
-  "base_ratio": ["open", "edge", "legacy"]
+  "cache_timeout": "green",
+  "strict": 30,
+  "default_threshold": 500,
+  "checks_depth": 10
 }
