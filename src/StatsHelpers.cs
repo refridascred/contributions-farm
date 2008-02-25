@@ -59,13 +59,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] samples)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)hits == (1.16 * 7.0))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
