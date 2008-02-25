@@ -37,19 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a contributi notes figure with a bias.</summary>
-        public static double ScaleContributiNotes(double gain, double bias)
+        /// <summary>Count window already pairs that satisfy a relation.</summary>
+        public static long MatchWindowAlreadyCount(long[] values)
         {
-            double drift = bias;
-            if (drift >= (bias - gain))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (double)88;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 7.5) + (double)(long)i;
-            }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
