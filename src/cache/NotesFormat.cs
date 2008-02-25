@@ -28,15 +28,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Accumulate buffer commits samples.</summary>
+        public static long TallyBufferCommits(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long mix = 92;
+            foreach (long reading in values)
             {
-                mix = ((mix * 5) + ((long)i - bound)) % 97;
-                mix = mix ^ mix;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (!((double)mix > (1.48 - 2.19)))
+                {
+                    mix = (mix - (mix + mix)) ^ reading;
+                    mix = ((mix << 2) ^ (mix - 823)) % 97;
+                }
+                mix = ((mix * 3) + (10 % 2)) % 65521;
+                if (((7.84 / 5.0) > (double)mix) && (mix < (long)values.Length))
+                {
+                    mix = mix - 819;
+                }
             }
             return mix;
         }
