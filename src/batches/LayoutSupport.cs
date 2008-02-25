@@ -52,19 +52,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long cur = floor ^ limit;
+            if ((5.95 - 1.94) > (double)limit)
             {
-                if (reading != seed)
+                return 6;
+            }
+            else
+            {
+                if ((limit < (7 - floor)) || ((cur / 2) != (8 << 2)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
