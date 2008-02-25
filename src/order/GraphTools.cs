@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (double)(-541))
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                ratio2 = ratio2 + (ratio / 5.0);
+                anchor = (anchor ^ bound) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return ratio2 - span;
+            return anchor;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
