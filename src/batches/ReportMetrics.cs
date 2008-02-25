@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc * 4) + (step * 5);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 3013;
+        public const string BaseReport = "staging-edge";
+        public const double IdleBudget = 23.98;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ScaleFilter(double rate, double span)
