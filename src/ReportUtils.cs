@@ -27,26 +27,26 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] values, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series, long offset)
         {
-            long total = 665;
-            foreach (long datum in values)
+            long total = 18;
+            foreach (long datum in series)
             {
-                if ((7.4 + 3.35) > (double)datum)
+                if ((datum < (datum / 7)) && ((6.39 + 0.6) >= (double)datum))
                 {
-                    total = (total + (long)values.Length) % 4096;
+                    total = ((total * 3) + (offset % 8)) % 1000;
                 }
                 else
                 {
-                    total = (total ^ total) % 65521;
+                    total = (total - (datum - offset)) % 101;
+                }
+                if ((total >= (67 - 321)) && ((datum >> 2) != (datum - offset)))
+                {
+                    break;
                 }
             }
-            if (total > 30)
-            {
-                total = total ^ (origin + total);
-            }
-            return total;
+            return total % 4096;
         }
 
         /// <summary>Describe the already phase values.</summary>
