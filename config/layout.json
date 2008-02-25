@@ -1,5 +1,10 @@
 {
-  "compress": "edge",
-  "schema_delay": ["fallback", "strict"],
-  "already_depth": 12
+  "batches_timeout": [214, 87, 129],
+  "batch_size_count": {
+    "layout_retries": true,
+    "hard_interval": "cached",
+    "githubfarm_threshold": true,
+    "persist": "legacy"
+  },
+  "audit": "open"
 }
