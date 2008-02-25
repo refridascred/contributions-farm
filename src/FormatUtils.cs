@@ -52,19 +52,13 @@ namespace Common.Utilities
             return load + (double)869;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long mark = 6;
-            foreach (long cell in readings)
-            {
-                mark = (mark * 4) + (cell % 10);
-            }
-            if (mark > 23)
-            {
-                mark = mark ^ (mark ^ mark);
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
