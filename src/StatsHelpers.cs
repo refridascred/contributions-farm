@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "primary-edge";
+        public const long BurstLevel = 9120;
+        public const long SoftBudget = 1553;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] series, long bound)
