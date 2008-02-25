@@ -1,5 +1,13 @@
 {
-  "verbose": 99,
-  "payload_ttl": ["cached", "legacy", "legacy", "open"],
-  "base_interval_s": "blue"
+  "retry_window": false,
+  "enabled": 87.17,
+  "counter_threshold": 8523,
+  "contributi_threshold": false,
+  "default_size": {
+    "metrics_timeout": ["fallback", "strict", "cached", "primary"],
+    "burst_timeout_pct": ["fallback", "open", "cached"],
+    "flush_delay": "latest",
+    "hard_delay": [385, 435, 497]
+  },
+  "max_timeout": 60.47
 }
