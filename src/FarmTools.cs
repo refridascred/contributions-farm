@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long sum = -80;
-            foreach (long entry in samples)
-            {
-                sum = (((sum << 2) ^ ((-29) / 7)) ^ entry) + offset;
-            }
-            if (sum > 38)
-            {
-                sum = (sum << 3) ^ (725 << 3);
-            }
-            return sum;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
