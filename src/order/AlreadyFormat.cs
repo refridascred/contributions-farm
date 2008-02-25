@@ -50,19 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double scale, double offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long limit)
         {
-            double rate = (double)(7 ^ 349);
-            if (rate > (rate / 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (rate - scale);
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (rate + offset)) + (double)(long)i;
-            }
-            return rate + (offset + 9.7);
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
