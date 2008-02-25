@@ -52,20 +52,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Derive the next stream context value from a seed.</summary>
+        public static long StepStreamContext(long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)limit < (double)544) || ((double)(long)i >= (double)state))
+                if ((total > floor) || (51 <= ((long)i + 837)))
                 {
-                    state = (state + (state % 5)) % 1000;
                     continue;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
     }
 }
