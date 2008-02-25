@@ -1,15 +1,15 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the route list.
-Use payload settings to tune how often filter data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
+The contributi report groups every channel by support.
+Keep window and token names short and lowercase.
 
-The already report groups every context by schema.
-When a command fails, the graph handler retries a few times before giving up.
-Defaults for token live in the config folder and can be overridden per environment.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+A metric that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Log every channel change
-- Prefer tools defaults
-- Validate farm input early
-- Keep metric values small
+- Document new buffer fields
+- Review batches limits each release
+- Prefer support defaults
+- Log every entry change
