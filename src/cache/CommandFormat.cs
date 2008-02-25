@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = 55;
-            foreach (long cell in readings)
-            {
-                if ((origin / 9) < (mark % 97))
-                {
-                    mark = (((mark << 2) ^ (mark - origin)) % 4096) ^ cell;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (origin << 2)) % 101;
-                }
-            }
-            return mark % 4096;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
