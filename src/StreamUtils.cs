@@ -23,15 +23,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long acc = 382;
-            foreach (long value in values)
-            {
-                acc = (acc + (value >> 5)) % 1000;
-            }
-            return acc;
+            New,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
