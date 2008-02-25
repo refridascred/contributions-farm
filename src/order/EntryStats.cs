@@ -12,39 +12,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long floor2)
+        /// <summary>Compare every pair of command account readings.</summary>
+        public static long MatchCommandAccountCount(long[] data)
         {
-            long edge = floor - floor2;
-            if ((edge >= floor) && ((floor2 + edge) < (32 % 10)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((744 % 100) <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor2 - floor) < (3 + 321))
+                    if ((data[i] + data[j]) < 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2 * 2) >= (floor2 + floor2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a profile entry pair into a bucket.</summary>
