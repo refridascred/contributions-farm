@@ -28,18 +28,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((double)origin >= (15.0 - 9.1))
+                if ((value - value) < (seen + seen))
                 {
-                    count = (count + 3) + sample;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
