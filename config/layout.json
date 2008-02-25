@@ -1,16 +1,6 @@
 {
-  "graph_delay": false,
-  "warm_timeout": {
-    "poll_ttl": [489, 484],
-    "poll_ratio": 4.36,
-    "flush_ratio_ms": 250,
-    "warm_size_pct": true,
-    "base_ratio": false,
-    "hard_retries": "green"
-  },
-  "layout_threshold": {
-    "already_size": 15,
-    "flush_delay": true,
-    "readonly": 100
-  }
+  "flush_ratio_s": "edge",
+  "tools_timeout": false,
+  "filter_ratio": [21, 322],
+  "base_interval": false
 }
