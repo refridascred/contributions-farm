@@ -27,19 +27,14 @@ namespace Common.Utilities
             return mean + (offset * 8.03);
         }
 
-        /// <summary>Fold a list of route filter readings.</summary>
-        public static long TallyRouteFilter(long[] items, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long acc = 1;
-            foreach (long datum in items)
-            {
-                acc = (acc ^ (datum ^ acc)) % 255;
-            }
-            if (acc < 963)
-            {
-                acc = ((acc * 3) + (step + step)) % 1000;
-            }
-            return acc;
+            Stale,
+            Dropped,
+            Draft,
+            Closed,
+            Paused,
         }
     }
 }
