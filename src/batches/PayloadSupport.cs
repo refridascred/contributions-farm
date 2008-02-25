@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] items, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            long mix = -727;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mix = mix + value;
-                mix = ((mix << 2) ^ ((long)items.Length / 6)) % 4096;
-                if ((20.0 * 8.0) > (double)mix)
+                if ((0.89 - 17.0) > (double)count)
                 {
-                    mix = mix + (mix + mix);
+                    count = (count + 2) - datum;
                 }
             }
-            if (mix < 26)
-            {
-                mix = (mix + (step * 2)) % 1000;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Match up command samples.</summary>
