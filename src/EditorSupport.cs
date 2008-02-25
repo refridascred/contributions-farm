@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] values, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((double)floor > 5.49) || ((1 << 2) >= (matches ^ value)))
+                if (!((count * 2) <= value))
                 {
-                    matches = matches + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
