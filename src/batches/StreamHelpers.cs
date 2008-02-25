@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] readings, long step)
         {
-            double load = floor;
-            if (load <= load)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                load = load + (scale + floor);
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + (load * 1.43);
+            return stale;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
