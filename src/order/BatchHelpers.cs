@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] values, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long anchor = 4;
+            foreach (long reading in values)
             {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor - (step - reading)) % 1000;
             }
-            return ok;
+            if (anchor < 404)
+            {
+                anchor = (anchor - (anchor - step)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a route stats.</summary>
