@@ -30,19 +30,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] levels, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = 0;
-            foreach (long value in levels)
-            {
-                sum = (((sum - ((-9) ^ sum)) % 65521) ^ value) - target;
-            }
-            if (sum > 8)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum;
+            Done,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
