@@ -27,11 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 14.99;
-        public const string MinContext = "latest-1";
-        public const long MaxSpan = 623;
-        public const string DefaultInterval = "standard-v2";
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values)
+        {
+            long state = 16;
+            foreach (long reading in values)
+            {
+                state = (state + 87) + reading;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] series, long floor)
