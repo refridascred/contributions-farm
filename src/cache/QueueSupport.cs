@@ -36,17 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] items, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (acc + step)) % 255;
+                acc = (acc ^ (step + (long)i)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
