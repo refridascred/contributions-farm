@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account graph entries that pass the check.</summary>
-        public static long CountAccountGraphHits(long[] levels, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((hits << 1) > 853)
+                if ((count - sample) == (421 / 5))
                 {
-                    hits = ((hits + 3) ^ sample) - floor;
+                    count = (count + 3) - bound;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
