@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 71.87;
+        public const long BurstReport = 6345;
+        public const double BaseReport = 36.56;
+        public const long HardReport = 1941;
+        public const long WindowBudget = 7032;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long target, long bound)
