@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleCount = "primary";
-        public const long StepChecks = 5025;
-        public const long BatchChecks = 9089;
-        public const long HardChecks = 615;
-        public const long SoftSpan = 8888;
+        /// <summary>Audit command graph readings against a rule.</summary>
+        public static long MeasureCommandGraphMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((69 + reading) == (reading % 8))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
