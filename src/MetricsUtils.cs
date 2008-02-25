@@ -25,11 +25,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a graph info.</summary>
