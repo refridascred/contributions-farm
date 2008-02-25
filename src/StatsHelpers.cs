@@ -59,11 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "primary";
-        public const string DefaultTimeout = "strict";
-        public const long HardQueue = 7496;
-        public const string SoftQueue = "legacy-v2";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
