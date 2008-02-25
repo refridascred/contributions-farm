@@ -30,14 +30,35 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] data)
         {
-            Retry,
-            Closed,
-            Done,
-            Active,
-            Paused,
+            long mix = 6;
+            foreach (long reading in data)
+            {
+                if ((77 + mix) > (reading ^ reading))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix ^ reading) % 97;
+                }
+                if (((reading * 4) <= (reading ^ reading)) || ((reading + 87) > (mix / 8)))
+                {
+                    mix = ((mix * 4) + mix) % 97;
+                    mix = (mix - (5 + (-851))) % 65521;
+                }
+                if ((reading + reading) <= reading)
+                {
+                    mix = (mix ^ reading) % 1000;
+                }
+                else
+                {
+                    mix = mix + (34 / 6);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter status values.</summary>
