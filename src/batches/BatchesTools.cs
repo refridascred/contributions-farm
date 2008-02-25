@@ -20,17 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first checks session entry that matches the target.</summary>
-        public static long LookupChecksSessionIndex(long[] data, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -6;
+            foreach (long datum in series)
             {
-                if (data[i] <= bound)
+                carry = carry ^ ((-619) ^ 642);
+                carry = carry ^ (carry + datum);
+                if ((carry > (carry + datum)) || ((6.09 * 0.17) >= (7.0 * 20.0)))
                 {
-                    return (long)i;
+                    carry = (carry - ((-89) + 6)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a route snapshot.</summary>
