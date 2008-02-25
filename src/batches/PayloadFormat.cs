@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            long mark = 6;
+            foreach (long reading in data)
+            {
+                mark = (mark ^ (reading + mark)) % 4096;
+                mark = (mark + (mark ^ mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Roll a command counter forward.</summary>
