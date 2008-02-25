@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + count) >= count)
-                {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the checks phase values.</summary>
