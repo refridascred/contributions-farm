@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Paused,
-            Dropped,
-            Ready,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 6487;
+        public const long RetrySize = 4281;
+        public const long LimitTimeout = 6690;
 
         /// <summary>Accumulate editor account samples.</summary>
         public static long TotalEditorAccount(long[] items, long origin)
