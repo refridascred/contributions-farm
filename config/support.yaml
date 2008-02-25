@@ -1,16 +1,10 @@
 # support settings
-idle_depth: 49.43
-warm_delay_ms: true
-stream_depth:
-  cache_depth: false
-  sync_ratio: 62.94
-  already_ratio: 81
-  hard_depth_ms:
-    editor_window:
-      - eu-west
-      - legacy
-      - stable
-    default_capacity:
-      - primary
-      - local
-    dry_run: local
+strict:
+  persist: primary
+  hard_retries_s: false
+  hard_window: primary
+  min_limit_s: 396
+batch_retries_count: open
+compress: 60
+notes_retries: 500
+soft_timeout: true
