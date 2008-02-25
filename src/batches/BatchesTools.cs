@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 27.5;
-        public const string SoftRatio = "alpha-edge";
-        public const long MinPayload = 546;
-        public const long IdleDepth = 1549;
-        public const double StepSize = 35.11;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double scale, double offset)
