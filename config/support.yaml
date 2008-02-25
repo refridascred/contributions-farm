@@ -1,13 +1,6 @@
 # support settings
-max_ratio_ms: true
-cache_delay: fallback
-strict: 76
-audit: 6786
-burst_ttl:
-  readonly: edge
-  poll_window_count: strict
-  batch_interval:
-    - 193
-    - 80
-    - 271
-    - 301
+hard_interval_count: open
+verbose: strict
+batch_limit_pct:
+  - latest
+  - stable
