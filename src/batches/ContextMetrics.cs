@@ -63,31 +63,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a commits already value against two limits.</summary>
-        public static long RankCommitsAlready(long offset, long offset2)
+        /// <summary>Iterate the graph command series from a seed.</summary>
+        public static long SeriesGraphCommand(long target)
         {
-            if ((double)offset <= 4.0)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (9 >= (offset2 - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset & 1) > (offset - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
