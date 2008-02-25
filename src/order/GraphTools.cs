@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Retry,
-            Ready,
-            Dropped,
-            Done,
+            Paused,
             New,
+            Idle,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
