@@ -44,12 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Match up graph window samples.</summary>
+        public static long CompareGraphWindowCount(long[] levels)
         {
-            Paused,
-            New,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
