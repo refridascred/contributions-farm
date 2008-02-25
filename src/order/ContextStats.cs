@@ -13,15 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Ready,
-            Active,
-            Dropped,
-            Draft,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "cached-edge";
+        public const long IdleInterval = 5198;
+        public const double BaseMetric = 31.86;
+        public const long MinTimeout = 928;
+        public const double MinMetric = 89.32;
 
         /// <summary>Accumulate editor window samples.</summary>
         public static long WeighEditorWindow(long[] series, long target)
