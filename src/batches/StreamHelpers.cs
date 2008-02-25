@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load + (load * 1.43);
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long origin)
         {
-            Locked,
-            New,
-            Retry,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next token value.</summary>
