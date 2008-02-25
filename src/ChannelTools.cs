@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 3.27;
-        public const long StepBudget = 2433;
-        public const double HardLevel = 72.89;
-        public const long BurstSize = 9581;
-        public const double BurstInterval = 20.64;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Ready,
+            Stale,
+            Done,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long SeriesNotes(long bound)
