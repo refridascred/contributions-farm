@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long MaxFarm = 6134;
         public const long RetryFarm = 4349;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double bias)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double scale = bias;
-            if (scale > (double)(-98))
-            {
-                scale = (scale + (scale * 1.0)) + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + 6.0) + (double)(long)i;
-            }
-            return scale - bias;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first batch contributi entry that matches the target.</summary>
