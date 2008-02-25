@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = carry ^ (bound / 3);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
