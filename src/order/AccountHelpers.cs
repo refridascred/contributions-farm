@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] samples, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
+                if (cell != origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Classify a profile counter pair into a bucket.</summary>
