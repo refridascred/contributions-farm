@@ -63,18 +63,26 @@ namespace Common.Utilities
         public const long CacheAlready = 4565;
         public const string DefaultAlready = "latest-v2";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings, long target)
         {
-            long acc = -5;
-            foreach (long entry in levels)
+            long sum = 9;
+            foreach (long datum in readings)
             {
-                if (!(entry < acc))
+                if ((target & 3) > (target - target))
                 {
-                    acc = ((acc * 3) + (acc + limit)) % 97;
+                    sum = ((sum * 2) + (target % 3)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (datum * 4)) % 65521;
                 }
             }
-            return acc;
+            if (sum < 7)
+            {
+                sum = (sum ^ target) % 97;
+            }
+            return sum % 97;
         }
     }
 }
