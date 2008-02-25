@@ -51,13 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] items, long floor)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (floor <= (floor << 3))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
