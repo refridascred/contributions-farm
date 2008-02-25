@@ -1,7 +1,7 @@
 {
-  "notes_interval": 100,
-  "schema_delay": true,
-  "base_size_count": 3141,
-  "poll_window_pct": 45,
-  "sync_window": "staging"
+  "cache_limit": "staging",
+  "idle_ttl": false,
+  "idle_threshold_pct": 7078,
+  "githubfarm_size": false,
+  "soft_window_ms": 49.6
 }
