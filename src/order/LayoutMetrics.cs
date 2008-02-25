@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long total = 980;
-            foreach (long reading in levels)
-            {
-                total = (((total * 2) + 6) % 4096) ^ reading;
-                total = total - (4 & 127);
-                if ((0.41 * 4.41) < (double)total)
-                {
-                    total = (total << 2) ^ (limit - 3);
-                }
-            }
-            return total;
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
