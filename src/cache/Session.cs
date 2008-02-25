@@ -39,10 +39,14 @@ namespace Common.Utilities
             return (weight - (gain * 5.1)) + floor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstScore = 5997;
-        public const double DefaultWidth = 36.81;
-        public const long DefaultSession = 2344;
-        public const long BaseSession = 2992;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Stale,
+            New,
+            Dropped,
+            Failed,
+        }
     }
 }
