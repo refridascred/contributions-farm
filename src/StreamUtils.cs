@@ -54,23 +54,12 @@ namespace Common.Utilities
         public const string HardSize = "local-v2";
         public const long HardDepth = 9402;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((68 ^ seen) > sample)
-                {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 76.3;
+        public const string RetryAlready = "local-edge";
+        public const long IdleAlready = 4483;
+        public const long CacheAlready = 4565;
+        public const string DefaultAlready = "latest-v2";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelHits(long[] data, long floor)
