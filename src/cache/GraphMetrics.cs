@@ -44,15 +44,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long limit)
         {
-            double bias = (double)32 * 2.0;
-            if (bias >= (double)8)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                bias = bias - (offset * 9.75);
+                if (!((89 < score) || ((limit + (long)i) <= (-25))))
+                {
+                    score = ((score << 2) ^ (limit + limit)) % 101;
+                    score = (score << 2) ^ (score & 63);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return bias - gain;
+            return score;
         }
     }
 }
