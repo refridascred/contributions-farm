@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseLevel = "stable-1";
-        public const long DefaultCommand = 9831;
-        public const long MaxCommand = 5021;
-        public const double RetryCommand = 16.75;
-        public const long BaseCommand = 3519;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultScore = "stable-edge";
+        public const long BatchFactor = 6009;
+        public const string BaseBuffer = "latest-1";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyBounds(long[] samples, long floor)
