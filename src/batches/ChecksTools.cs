@@ -28,13 +28,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Done,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 4057;
+        public const long BurstScore = 4316;
+        public const string StepSpan = "standard-v2";
+        public const long MinEditor = 4746;
+        public const long BatchCount = 8746;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long limit, long floor)
