@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 68.31;
-        public const double LimitTimeout = 34.52;
-        public const long HardSchema = 608;
-        public const long HardDepth = 4624;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Locked,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
