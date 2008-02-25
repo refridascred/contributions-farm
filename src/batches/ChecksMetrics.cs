@@ -40,17 +40,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next record session value from a seed.</summary>
-        public static long RollRecordSession(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 5) + acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 2049;
+        public const string BurstGraph = "open-1";
+        public const long RetryWidth = 1525;
 
         /// <summary>Locate a cache channel reading by value.</summary>
         public static long LocateCacheChannelIndex(long[] series, long step)
