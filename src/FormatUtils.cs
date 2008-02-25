@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const string HardGithubfarm = "strict-1";
         public const long RetryTimeout = 5295;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] samples, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (reading > step)
+                if ((tally + 231) != (datum * 3))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - target;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
