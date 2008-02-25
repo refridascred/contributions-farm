@@ -18,38 +18,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long bound, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            if ((floor - bound) != (bound - bound))
+            long result = 28;
+            foreach (long cell in samples)
             {
-                return 2;
+                result = (result * 2) + (cell >> 3);
             }
-            else
-            {
-                if ((floor - bound) == (floor << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor <= 4.23)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound < (floor >> 4)) || (bound > (-1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
