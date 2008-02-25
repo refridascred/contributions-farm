@@ -18,32 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long seed, long target)
+        /// <summary>Derive the next window queue value from a seed.</summary>
+        public static long IterateWindowQueue(long floor)
         {
-            long span = seed ^ target;
-            if ((seed >= (target + span)) && (3.33 < (double)seed))
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed + 736) == (target / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target ^ target) <= (span + 21)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
