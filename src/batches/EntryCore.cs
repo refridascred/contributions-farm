@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up farm layout samples.</summary>
-        public static long OverlapFarmLayoutCount(long[] series)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
