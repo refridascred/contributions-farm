@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitBudget = "open-1";
-        public const string BatchCount = "open";
-        public const double BurstReport = 32.35;
-        public const double MaxReport = 64.28;
+        /// <summary>Look up the position of a batch command sample.</summary>
+        public static long SeekBatchCommandIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
