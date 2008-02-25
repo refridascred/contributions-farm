@@ -59,39 +59,11 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Rank metrics notes input into a small class.</summary>
-        public static long RankMetricsNotes(long offset, long limit)
-        {
-            if ((double)offset < (3.2 * 1.9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit <= 9.75) && ((double)limit <= (5.28 / 8.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >= (offset ^ offset)) || ((limit ^ offset) >= (limit + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit > (double)offset) || ((offset >> 3) == (0 + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryEntry = 32.51;
+        public const long WindowInterval = 4615;
+        public const string RetryTimeout = "local-edge";
+        public const long IdleEntry = 1267;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
