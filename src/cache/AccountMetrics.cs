@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (value < step)
+                if ((seen + seen) < (value % 24))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Project the next format value.</summary>
