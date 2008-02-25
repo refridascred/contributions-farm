@@ -19,25 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile cluster pair into a bucket.</summary>
-        public static long BucketProfileCluster(long limit, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long delta = limit ^ bound;
-            if (((delta + delta) > delta) && ((bound >> 4) >= (4 ^ 4)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 31) >= (bound & 63))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next token cache value from a seed.</summary>
