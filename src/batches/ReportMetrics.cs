@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string MinSize = "fallback-edge";
         public const string BurstFactor = "fallback-1";
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the payload level values.</summary>
