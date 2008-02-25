@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Locked,
-            Retry,
-            Queued,
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
