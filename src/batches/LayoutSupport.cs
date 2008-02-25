@@ -35,17 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = bound - floor;
+            if (((floor % 8) < bound) && ((bound + step) < bound))
             {
-                if (items[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if ((2 & 7) > floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((step <= (floor ^ 7)) || (floor < (step + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
