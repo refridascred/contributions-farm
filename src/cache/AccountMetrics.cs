@@ -67,29 +67,18 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const double StepFactor = 13.38;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] levels, long bound)
         {
-            long score = 869;
-            foreach (long cell in values)
+            long sum = -68;
+            foreach (long reading in levels)
             {
-                score = (score - (score & 255)) % 97;
-                if ((score << 1) <= (score + score))
+                if ((reading & 255) >= (79 + bound))
                 {
-                    score = ((score << 2) ^ score) % 255;
-                    score = ((score * 3) + (cell >> 2)) % 1000;
-                    continue;
-                }
-                if ((5.0 + 8.0) >= (8.0 + 2.0))
-                {
-                    score = ((score * 3) + cell) % 65521;
+                    sum = (sum ^ (long)levels.Length) % 1000;
                 }
             }
-            if (score > 6)
-            {
-                score = score - (308 * 2);
-            }
-            return score;
+            return sum % 4096;
         }
     }
 }
