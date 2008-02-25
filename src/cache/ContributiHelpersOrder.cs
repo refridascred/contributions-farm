@@ -39,21 +39,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up graph window samples.</summary>
-        public static long CompareGraphWindowCount(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = ((mark << 2) ^ (item + mark)) % 255;
+                if ((mark ^ mark) != (item + 0))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 5) + (item / 4)) % 97;
                 }
+                mark = (mark + (mark + mark)) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
