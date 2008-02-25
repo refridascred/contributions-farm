@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double load = (17.0 + span) / 8.0;
-            if (load > load)
-            {
-                load = (load - (span / 5.0)) - scale;
-            }
-            return load + (span + load);
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
