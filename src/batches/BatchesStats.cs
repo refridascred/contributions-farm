@@ -37,12 +37,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] items, long floor)
         {
-            Active,
-            Retry,
-            Closed,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((920 % 2) > (item << 2))
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
