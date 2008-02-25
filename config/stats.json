@@ -1,6 +1,5 @@
 {
-  "persist": 500,
-  "cluster_ratio": [45, 72, 78, 216],
-  "hard_size_s": true,
-  "hard_timeout": "stable"
+  "cache_interval": "stable",
+  "verbose": "legacy",
+  "min_delay_count": 6536
 }
