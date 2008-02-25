@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long step)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
