@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 2879;
-        public const string MinSize = "fallback-edge";
-        public const string BurstFactor = "fallback-1";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state ^ (1 * 2);
+                state = (state << 2) ^ step;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
