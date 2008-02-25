@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Queued,
-            Idle,
-            Synced,
+            Closed,
+            Failed,
+            Stale,
         }
     }
 }
