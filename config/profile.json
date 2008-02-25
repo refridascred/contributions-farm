@@ -1,6 +1,16 @@
 {
-  "entry_ttl": false,
-  "checks_delay": 95.83,
-  "sync_limit_ms": "cached",
-  "payload_ratio": true
+  "burst_retries_count": 4,
+  "default_delay_s": 15,
+  "hard_capacity_pct": "blue",
+  "cache_timeout_pct": {
+    "commits_size": {
+      "verbose": 57.54,
+      "batch_limit_s": [17, 165],
+      "schema_delay": 24.77,
+      "queue_ratio": 33.99
+    },
+    "flush_depth": 250,
+    "warm_retries_ms": 500,
+    "readonly": 53.5
+  }
 }
