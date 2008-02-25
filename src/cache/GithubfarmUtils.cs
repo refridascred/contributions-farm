@@ -34,19 +34,18 @@ namespace Common.Utilities
             return (load - (double)6) + scale;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] readings, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (datum <= limit)
+                if (datum >= (datum & 3))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
