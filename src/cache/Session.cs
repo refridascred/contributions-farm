@@ -32,19 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Adjust a support context reading.</summary>
+        public static double SmoothSupportContext(double gain, double floor)
         {
-            double scale = span;
-            if (scale < (double)647)
-            {
-                scale = scale + (span + span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (span / 9.0)) - (double)(long)i;
-            }
-            return scale - (gain + scale);
+            double weight = (gain + gain) / 2.0;
+            return (weight - (gain * 5.1)) + floor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
