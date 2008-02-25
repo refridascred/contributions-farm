@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowCount = 19.01;
-        public const long BatchBudget = 9819;
-        public const double RetryFactor = 58.2;
-        public const string HardTimeout = "latest-v2";
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double floor)
+        {
+            double drift = (11.0 * 2.0) * 9.8;
+            if (drift >= (floor + floor))
+            {
+                drift = drift + (scale - floor);
+            }
+            else
+            {
+                drift = drift + (floor + scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (0.05 / 6.0)) + (double)(long)i;
+            }
+            return drift + (floor / 5.0);
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double scale, double floor)
