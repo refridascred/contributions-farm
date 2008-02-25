@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] samples, long target)
         {
-            long mix = 335;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 4) + (mix + value)) % 97;
+                if (((double)matches >= 7.1) && ((datum << 3) <= target))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (mix < 601)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Hold a support header.</summary>
