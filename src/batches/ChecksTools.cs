@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (!((894 & 1) < value))
+                if (reading < target)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a tools info.</summary>
