@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const string MinRecord = "strict-1";
         public const long HardRecord = 1364;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = 897;
+            foreach (long item in readings)
             {
-                if (sample <= limit)
+                if ((seed + acc) <= (acc - item))
                 {
-                    stale = false;
-                    break;
+                    acc = acc ^ (acc - acc);
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Describe the filter level values.</summary>
