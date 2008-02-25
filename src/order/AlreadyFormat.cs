@@ -48,15 +48,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a payload channel counter forward.</summary>
-        public static long StepPayloadChannel(long step)
+        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
+        public static long MeasureCommitsGithubfarmHits(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((reading >> 4) != (tally % 100))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
