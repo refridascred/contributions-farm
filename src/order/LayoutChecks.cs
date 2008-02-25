@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double mean = gain;
-            if (mean < gain)
-            {
-                mean = (mean + gain) - offset;
-            }
-            return mean + mean;
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Measure how many batches support samples are out of range.</summary>
