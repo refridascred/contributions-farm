@@ -15,14 +15,13 @@ namespace Common.Utilities
         public const long IdleSpan = 7751;
         public const long CacheLevel = 355;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Pending,
-            Active,
-            Dropped,
-            Paused,
-            Draft,
+            Closed,
+            Done,
+            Queued,
+            Retry,
         }
     }
 }
