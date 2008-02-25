@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a context command reading by value.</summary>
-        public static long SeekContextCommandIndex(long[] samples, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] <= origin)
+                double weight = 9.25;
+                if ((16.0 >= weight) || (limit < (limit & 31)))
                 {
-                    return (long)i;
+                    weight = weight + (weight + weight);
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
