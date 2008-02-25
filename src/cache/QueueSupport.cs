@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long score = 50;
+            foreach (long item in readings)
             {
-                if ((tally << 2) > 0)
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (((score * 2) + score) % 1000) - item;
             }
-            return tally;
+            if (score < 70)
+            {
+                score = ((score << 3) ^ (2 - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
