@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Ready,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinFactor = 96.54;
+        public const long MaxSpan = 9833;
+        public const long MaxAccount = 8439;
+        public const long IdleAccount = 1150;
 
         /// <summary>Accumulate schema cluster samples.</summary>
         public static long FoldSchemaCluster(long[] levels, long bound)
