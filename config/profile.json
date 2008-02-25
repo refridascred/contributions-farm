@@ -1,6 +1,6 @@
 {
-  "compress": "cached",
-  "idle_timeout": "green",
-  "sync_ratio": false,
-  "context_delay": 18.77
+  "session_depth": "stable",
+  "persist": "local",
+  "context_retries": 72.34,
+  "metrics_retries": 14.12
 }
