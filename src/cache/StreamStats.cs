@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSpan = 1295;
-        public const long SoftCache = 9686;
-        public const long BaseCache = 8359;
-        public const long WindowSpan = 5331;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] readings)
