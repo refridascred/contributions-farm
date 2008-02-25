@@ -75,11 +75,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "latest-v2";
+        public const long LimitChecks = 8401;
+        public const long HardChecks = 3902;
+        public const long DefaultScore = 3102;
+        public const long SoftChecks = 8233;
     }
 }
