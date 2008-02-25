@@ -44,19 +44,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many route account samples are out of range.</summary>
-        public static long MeasureRouteAccountOutliers(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] series)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long cell in series)
             {
-                if ((double)reading > 12.0)
+                if (!((tally - tally) > cell))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
