@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double bias = rate;
-            if (bias <= (bias + span))
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias - (double)(-11);
-            }
-            return bias + (rate - bias);
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
