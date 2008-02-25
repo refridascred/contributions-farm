@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] levels)
         {
-            Paused,
-            Stale,
-            New,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (9.1 / 4.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
