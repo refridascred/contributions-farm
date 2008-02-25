@@ -1,5 +1,6 @@
 {
-  "session_timeout": 7620,
-  "burst_depth_count": "local",
-  "sync_window_ms": ["eu-west", "strict", "eu-west"]
+  "dry_run": 1.11,
+  "soft_timeout_count": 46.15,
+  "compress": 71,
+  "soft_limit_pct": 3751
 }
