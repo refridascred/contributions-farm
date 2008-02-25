@@ -26,11 +26,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitGithubfarm = "latest-v2";
-        public const long MinScore = 4948;
-        public const string RetryBudget = "local-1";
-        public const long BaseGithubfarm = 9638;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values, long target)
+        {
+            long carry = 89;
+            foreach (long value in values)
+            {
+                if ((double)target < (double)carry)
+                {
+                    carry = ((carry << 3) ^ (carry % 3)) - value;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterRange(long[] values, long step)
