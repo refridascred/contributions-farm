@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry entry stays within the limit.</summary>
-        public static bool GuardContributiEntryLimits(long[] series, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
