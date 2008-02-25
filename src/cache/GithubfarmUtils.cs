@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long offset, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long origin)
         {
-            long cur = offset ^ seed;
-            if (!(seed > (offset / 9)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.78 <= (double)seed) && ((cur - seed) >= cur))
+                if (levels[i] == origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset ^ 42) < (seed % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of counter farm readings.</summary>
