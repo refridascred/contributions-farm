@@ -44,10 +44,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "standard-edge";
-        public const double IdleContributi = 79.98;
-        public const long CacheContributi = 5071;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 9839;
+        public const double DefaultFormat = 41.32;
+        public const double BurstSize = 93.3;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
