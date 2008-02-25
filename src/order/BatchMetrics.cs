@@ -12,17 +12,13 @@ namespace Common.Utilities
             return (weight - (double)4) + gain;
         }
 
-        /// <summary>Locate a route cache reading by value.</summary>
-        public static long LocateRouteCacheIndex(long[] items, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
