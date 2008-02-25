@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((72 <= (reading / 5)) && ((17.0 - 13.0) == (double)step))
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
