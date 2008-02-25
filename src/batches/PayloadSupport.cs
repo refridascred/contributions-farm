@@ -26,17 +26,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema tools sample.</summary>
-        public static long LocateSchemaToolsIndex(long[] values, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long offset, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset + origin) > origin)
             {
-                if (values[i] >= seed)
+                return 0;
+            }
+            else
+            {
+                if (!(origin < (origin - offset)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset) >= (424 % 16))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
