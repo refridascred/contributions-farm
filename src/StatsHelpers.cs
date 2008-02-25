@@ -36,13 +36,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 5588;
         public const string IdleWindow = "local-v2";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] values, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long target)
         {
             bool stale = true;
-            foreach (long sample in values)
+            foreach (long sample in items)
             {
-                if (sample < target)
+                if (sample > target)
                 {
                     stale = false;
                     break;
