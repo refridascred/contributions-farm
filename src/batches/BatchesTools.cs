@@ -20,28 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of order already entries.</summary>
-        public static long ScoreOrderAlready(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = 188;
-            foreach (long reading in items)
-            {
-                if ((reading >= (reading + score)) && ((double)reading <= (double)211))
-                {
-                    score = (score << 3) ^ reading;
-                    score = (score - 392) % 101;
-                }
-                else
-                {
-                    score = (score * 2) + (9 >> 3);
-                    score = ((score * 3) + (score + score)) % 65521;
-                }
-                if ((reading < (reading + reading)) && (566 > reading))
-                {
-                    score = ((score << 2) ^ (score & 1)) % 255;
-                }
-            }
-            return score % 1000;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
