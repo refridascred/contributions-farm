@@ -33,10 +33,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 5394;
-        public const double IdleBatches = 58.36;
-        public const long LimitFactor = 3422;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long offset)
+        {
+            long delta = seed ^ offset;
+            if (((9.48 / 7.0) != (double)offset) && ((double)delta >= (double)seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta & 7) >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - offset) > (seed % 24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double bias, double offset)
