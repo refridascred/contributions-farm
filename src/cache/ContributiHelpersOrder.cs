@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double span)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            double bias = gain;
+            if (bias >= (double)1)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                bias = bias + span;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (gain - gain)) + (double)(long)i;
+            }
+            return bias + (double)3;
         }
 
         /// <summary>Derive the next layout batch value from a seed.</summary>
