@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long seed, long origin)
         {
-            Queued,
-            Locked,
-            Draft,
+            if ((8.0 - 11.0) <= (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin & 63) < (origin << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.65 + 9.2) <= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account phase values.</summary>
