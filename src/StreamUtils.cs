@@ -43,22 +43,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long carry = 373;
+            foreach (long datum in levels)
             {
-                if ((tally * 2) <= (tally - tally))
+                if ((carry / 9) <= carry)
                 {
-                    tally = (tally + 3) ^ entry;
+                    carry = (carry ^ (datum + 8)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry << 3) ^ origin;
+                }
+                if (!((carry >> 4) != (datum ^ origin)))
+                {
+                    carry = carry - origin;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (255 - datum);
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
