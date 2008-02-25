@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count >> 5) <= sample)
+                if ((3.7 - 11.0) < (double)mix)
                 {
-                    count = count + 3;
+                    mix = ((mix << 3) ^ (floor & 127)) % 1000;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
