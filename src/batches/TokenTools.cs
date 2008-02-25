@@ -23,11 +23,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 4033;
-        public const string BaseTimeout = "strict-edge";
-        public const long BasePayload = 162;
-        public const string WindowPayload = "standard-edge";
-        public const string MaxCount = "alpha";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (origin - matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
