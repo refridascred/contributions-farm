@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long edge = origin ^ floor;
-            if ((origin <= (origin + floor)) || (14.0 < (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (2.1 * 6.58))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 1) >= edge)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
