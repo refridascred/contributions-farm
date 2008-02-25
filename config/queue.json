@@ -1,14 +1,5 @@
 {
-  "batch_window_count": 30,
-  "readonly": 98.88,
-  "batch_ttl": "local",
-  "strict": {
-    "soft_window": 8092,
-    "route_ttl": "standard",
-    "poll_size_ms": 66,
-    "default_interval_s": "cached",
-    "batch_threshold_ms": "latest",
-    "profile_delay": 83.61
-  },
-  "flush_capacity": 61.89
+  "compress": 67,
+  "persist": [159, 409, 477],
+  "hard_threshold_pct": ["blue", "stable"]
 }
