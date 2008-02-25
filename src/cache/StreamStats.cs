@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Digest a series of account entries.</summary>
