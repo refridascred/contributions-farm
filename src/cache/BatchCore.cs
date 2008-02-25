@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many cache channel samples are out of range.</summary>
-        public static long MeasureCacheChannelHits(long[] samples, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] levels, long origin)
         {
             long hits = 0;
-            foreach (long item in samples)
+            foreach (long sample in levels)
             {
-                if (!((item + hits) != (step & 1)))
+                if (sample < hits)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + origin;
                 }
             }
             return hits;
