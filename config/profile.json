@@ -1,6 +1,7 @@
 {
-  "readonly": 51.32,
-  "burst_capacity": 71.95,
-  "batches_threshold": ["primary", "stable"],
-  "order_limit": 250
+  "min_window_s": 15,
+  "cache_retries_count": "open",
+  "base_depth": 8754,
+  "hard_interval_pct": "staging",
+  "cache_interval_count": 4665
 }
