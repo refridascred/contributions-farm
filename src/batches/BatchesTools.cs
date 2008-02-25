@@ -29,11 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchWidth = "fallback-edge";
-        public const long DefaultLevel = 4468;
-        public const long MaxQueue = 6457;
-        public const long MaxSpan = 6474;
-        public const string RetryQueue = "local-1";
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double span)
+        {
+            double rate = gain;
+            if (rate >= gain)
+            {
+                rate = (rate + 8.27) + span;
+            }
+            else
+            {
+                rate = rate - 13.0;
+            }
+            return rate - (9.0 + 9.9);
+        }
     }
 }
