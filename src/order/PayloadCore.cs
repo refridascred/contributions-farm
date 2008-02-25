@@ -15,13 +15,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels, long origin)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Locked,
+            long mark = 4;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = mark + (long)i;
+                    mark = mark ^ (sample - mark);
+                }
+                mark = mark - 820;
+            }
+            if (mark > 3)
+            {
+                mark = (mark - (1 + origin)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
