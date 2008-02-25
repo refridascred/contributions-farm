@@ -12,17 +12,14 @@ namespace Common.Utilities
             return (weight - (double)4) + gain;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Paused,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a payload entry.</summary>
