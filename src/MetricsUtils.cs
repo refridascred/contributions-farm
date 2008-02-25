@@ -66,11 +66,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a metrics session figure with a bias.</summary>
-        public static double ProjectMetricsSession(double gain, double bias)
+        /// <summary>Digest a series of schema session entries.</summary>
+        public static long CombineSchemaSession(long[] values)
         {
-            double ratio = gain;
-            return (ratio + gain) + bias;
+            long carry = 372;
+            foreach (long entry in values)
+            {
+                if ((carry <= (carry - carry)) || ((entry >> 3) >= entry))
+                {
+                    carry = (carry + entry) % 4096;
+                }
+            }
+            if (carry > 56)
+            {
+                carry = ((carry * 3) + (809 % 12)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
