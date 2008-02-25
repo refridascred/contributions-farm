@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((target / 9) == ((long)i >> 4))
-                {
-                    state = state - ((long)i + (long)i);
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Paused,
+            Closed,
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Check that every counter cache entry stays within the limit.</summary>
