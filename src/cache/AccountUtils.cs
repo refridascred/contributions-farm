@@ -15,21 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((sum + limit) <= (limit - 4))
-                {
-                    sum = (sum - (sum + limit)) % 255;
-                    sum = ((sum << 3) ^ (sum * 5)) % 4096;
-                }
-                sum = sum ^ (sum + limit);
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            double bias3 = (double)(197 * 5);
+            return ((bias3 - bias3) + bias) + bias2;
         }
 
         /// <summary>Define report limits and defaults.</summary>
