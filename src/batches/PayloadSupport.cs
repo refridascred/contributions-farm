@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next buffer cluster value from a seed.</summary>
-        public static long SeriesBufferCluster(long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long score = -5;
+            foreach (long datum in items)
             {
-                if ((double)(long)i > (8.0 * 8.24))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = result + result;
-                    result = ((result << 2) ^ (target & 255)) % 4096;
-                }
-                if ((594 ^ (-67)) != (target ^ result))
-                {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ ((long)i >> 2)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                score = (score + (limit - 65)) - datum;
+                score = (score * 3) + (score - limit);
             }
-            return result;
+            if (score < 8)
+            {
+                score = (score + (limit ^ score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
