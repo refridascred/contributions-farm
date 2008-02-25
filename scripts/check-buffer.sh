@@ -7,21 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in latest legacy primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-legacy}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached legacy edge; do
+    log "checking ${item}"
+done
