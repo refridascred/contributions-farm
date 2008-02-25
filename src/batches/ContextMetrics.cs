@@ -71,11 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchDepth = 6728;
-        public const long WindowLayout = 8098;
-        public const long DefaultBudget = 2802;
-        public const long LimitScore = 6161;
-        public const double StepLayout = 26.18;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value > count) && (((offset * 3) <= offset) || (value >= (count >> 4))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
