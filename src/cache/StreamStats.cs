@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9952;
-        public const string BaseSize = "stable-v2";
-        public const string MaxMetrics = "legacy-v2";
-        public const long RetryDepth = 6961;
+        /// <summary>Scale a report editor figure with a bias.</summary>
+        public static double ScaleReportEditor(double bias, double bias2)
+        {
+            double gain = bias2;
+            if (gain < bias)
+            {
+                gain = gain - bias;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - 5.1) - (double)(long)i;
+            }
+            return gain - 14.0;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double rate, double floor)
