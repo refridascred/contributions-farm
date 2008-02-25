@@ -1,8 +1,9 @@
 # githubfarm settings
-retry_size_ms: 6.37
-hard_window: 250
-warm_delay_pct: false
-hard_interval_ms: green
-format_delay:
-  - eu-west
-  - staging
+command_size: 100
+persist:
+  - latest
+  - fallback
+  - standard
+audit: 60
+verbose: legacy
+idle_capacity: fallback
