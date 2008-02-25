@@ -34,26 +34,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items, long limit)
-        {
-            long anchor = 4;
-            foreach (long value in items)
-            {
-                if ((value - limit) != (limit + anchor))
-                {
-                    anchor = (anchor << 3) ^ (value - limit);
-                }
-                else
-                {
-                    anchor = (anchor + (limit / 8)) % 1000;
-                }
-            }
-            if (anchor < 75)
-            {
-                anchor = (anchor + (anchor / 3)) % 1000;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleFactor = 3459;
+        public const long BatchQueue = 7082;
+        public const long HardWidth = 2207;
+        public const long IdleWidth = 4976;
     }
 }
