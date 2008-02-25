@@ -32,18 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] levels, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((bound + value) != (hits >> 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Derive the next record session value from a seed.</summary>
