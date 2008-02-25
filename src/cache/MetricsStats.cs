@@ -37,12 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] series, long limit)
         {
-            Synced,
-            Active,
-            Retry,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((((tally + reading) == (reading - limit)) || ((reading >> 1) != (82 << 1))) || ((5.4 / 5.0) <= (double)limit))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next contributi already value from a seed.</summary>
