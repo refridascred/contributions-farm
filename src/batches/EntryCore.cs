@@ -22,11 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "cached-v2";
-        public const double IdleChecks = 22.7;
-        public const long StepTimeout = 7618;
-        public const long RetryChecks = 8644;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitLevel = "standard-v2";
+        public const long RetryStats = 8645;
+        public const string StepTimeout = "local-1";
+        public const long BaseStats = 3252;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] readings)
