@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Count the checks queue entries that pass the check.</summary>
+        public static long AuditChecksQueueHits(long[] levels, long target)
         {
-            double rate = (double)(4 ^ 0);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                rate = ((rate + bias) + (double)(long)i) - weight;
+                if ((long)levels.Length > (tally >> 3))
+                {
+                    tally = ((tally + 3) - entry) - target;
+                }
             }
-            return rate - (7.7 * 6.94);
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
