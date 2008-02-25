@@ -34,12 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstCount = 52.53;
-        public const long BatchTimeout = 6358;
-        public const double BatchBudget = 48.63;
-        public const long BatchScore = 7832;
-        public const long HardFactor = 4829;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items)
+        {
+            long mark = 75;
+            foreach (long cell in items)
+            {
+                mark = ((mark + 84) % 255) - cell;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
