@@ -53,17 +53,40 @@ namespace Common.Utilities
             return (load + bias) + bias2;
         }
 
-        /// <summary>Find the first token queue entry that matches the target.</summary>
-        public static long SeekTokenQueueIndex(long[] items, long step)
+        /// <summary>Fold a list of tools order readings.</summary>
+        public static long WeighToolsOrder(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 642;
+            foreach (long item in readings)
             {
-                if (items[i] > step)
+                if (((result * 3) > 415) || (((-669) + item) != (result >> 3)))
                 {
-                    return (long)i;
+                    result = result + (seed - item);
+                }
+                else
+                {
+                    result = (result - (item & 1)) % 65521;
+                }
+                if (((result ^ seed) != (result % 3)) || ((seed - seed) <= (seed / 8)))
+                {
+                    result = (result ^ seed) % 97;
+                    result = result + (result * 2);
+                    break;
+                }
+                else
+                {
+                    result = result ^ (item * 4);
+                }
+                if (!((item - item) > (seed + seed)))
+                {
+                    result = ((result * 2) + (item + seed)) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ item) % 4096;
                 }
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
