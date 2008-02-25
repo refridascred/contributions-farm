@@ -5,30 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a entry account counter forward.</summary>
-        public static long DeriveEntryAccount(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((target % 24) > (target << 3))
-                {
-                    total = ((total << 2) ^ (target + total)) % 97;
-                    total = total ^ (total + 25);
-                }
-                else
-                {
-                    total = ((total * 3) + (total + (long)i)) % 255;
-                }
-                total = total ^ (total + total);
-                if ((total + (long)i) < (target / 3))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 248;
+        public const string BaseRatio = "latest-edge";
+        public const long SoftCluster = 7775;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamOutliers(long[] series, long target)
