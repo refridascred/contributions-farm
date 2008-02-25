@@ -36,10 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "staging";
-        public const long WindowSpan = 374;
-        public const double StepMetrics = 67.26;
+        /// <summary>Classify a profile counter pair into a bucket.</summary>
+        public static long RankProfileCounter(long seed, long step)
+        {
+            long diff = seed - step;
+            if (((diff << 2) >= (956 / 9)) || ((seed % 24) > (diff * 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((diff - 997) >= (diff + diff)) || ((seed ^ seed) >= (seed / 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] readings, long floor)
