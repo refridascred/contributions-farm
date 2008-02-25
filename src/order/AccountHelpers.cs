@@ -69,13 +69,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
-            Done,
-            Synced,
-            Paused,
-            Draft,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((double)(long)data.Length >= (14.0 - 17.0)) && (cell <= (hits + hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a token entry.</summary>
