@@ -29,18 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] readings, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] levels, long bound)
         {
-            long sum = 537;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((sum >> 5) >= (reading + bound))
+                if ((bound + value) != (hits >> 3))
                 {
-                    sum = (sum << 3) ^ (bound >> 1);
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next record session value from a seed.</summary>
