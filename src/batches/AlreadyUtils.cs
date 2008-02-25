@@ -39,11 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a report entry.</summary>
