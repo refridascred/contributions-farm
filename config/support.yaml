@@ -1,12 +1,15 @@
 # support settings
-metrics_retries:
-  - standard
-  - fallback
-session_threshold:
-  strict: eu-west
-  flush_size: 59.29
-  enabled: latest
-poll_retries_count: 57.12
-soft_limit_pct: 1024
-idle_size_s: 8193
-checks_interval: 43.24
+sync_interval: 95
+base_window: 86.4
+readonly:
+  metric_retries: legacy
+  strict: green
+  route_delay: standard
+  stream_interval:
+    - fallback
+    - strict
+  cluster_threshold: 33.67
+poll_capacity_s: primary
+idle_timeout_s:
+  - 465
+  - 319
