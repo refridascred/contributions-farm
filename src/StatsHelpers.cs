@@ -50,12 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Done,
-            Active,
-            Retry,
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
