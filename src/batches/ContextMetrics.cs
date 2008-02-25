@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data)
-        {
-            long acc = 47;
-            foreach (long sample in data)
-            {
-                acc = ((acc * 4) + (acc >> 2)) % 1000;
-                acc = ((acc * 4) + (sample >> 4)) % 65521;
-            }
-            if (acc > (-3))
-            {
-                acc = (acc - (9 + acc)) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 2661;
+        public const long MinSpan = 501;
+        public const string DefaultWidth = "strict";
+        public const long RetryRecord = 3583;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long seed, long bound)
