@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a context metric reading.</summary>
-        public static double ProjectContextMetric(double weight, double floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            double ratio = (double)(-17) - 1.0;
-            return ((ratio - 3.56) + weight) + floor;
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (carry <= (origin >> 1))
+                {
+                    long delta = origin;
+                    carry = (carry - (delta << 1)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
