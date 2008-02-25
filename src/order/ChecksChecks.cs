@@ -20,15 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double drift = (double)(7 - 3);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + (6.84 - scale)) + (double)(long)i) - floor;
-            }
-            return drift + (drift * 2.31);
+            Draft,
+            New,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
