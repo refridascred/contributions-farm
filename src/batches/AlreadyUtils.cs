@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)matches >= 7.1) && ((datum << 3) <= target))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstScore = 519;
+        public const string DefaultQueue = "standard-1";
+        public const long BatchQueue = 2821;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
