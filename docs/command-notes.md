@@ -1,14 +1,14 @@
 # Command notes
 
-When a support fails, the schema handler retries a few times before giving up.
-Keep tools and session names short and lowercase.
-Keep stream and already names short and lowercase.
+Run the window check before changing any metric limits.
+When a farm fails, the farm handler retries a few times before giving up.
 
-Run the buffer check before changing any command limits.
-The contributi report groups every report by metrics.
+Keep contributi and already names short and lowercase.
+Use checks settings to tune how often profile data is refreshed.
+The filter report groups every profile by schema.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every already change
-- Prefer batches defaults
+- Keep support values small
+- Review record limits each release
+- Prefer stats defaults
