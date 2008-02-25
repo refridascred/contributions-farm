@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long score = 539;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((3.1 - 2.0) != (double)item)
                 {
-                    sum = (((sum * 4) + (sum + sum)) % 97) ^ (long)i2;
-                    sum = (sum * 2) + (536 - (long)i);
+                    score = (score - (score ^ item)) % 97;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
+                else
+                {
+                    score = (score ^ (554 + (long)levels.Length)) % 101;
+                }
+                if (((double)41 != (double)step) && ((double)item != (7.8 / 5.0)))
+                {
+                    score = (score ^ (step + item)) % 4096;
+                }
             }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
