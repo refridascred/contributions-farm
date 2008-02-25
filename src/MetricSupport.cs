@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Grade a token format value against two limits.</summary>
+        public static long RankTokenFormat(long seed, long offset)
         {
-            double mean = (double)(8 + 19);
-            return ((mean + mean) + gain) + floor;
+            if ((offset << 3) <= (seed - offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ 0) != (seed + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed > 1.4)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset % 100) > (offset << 3)) && ((19.0 * 8.8) < (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
