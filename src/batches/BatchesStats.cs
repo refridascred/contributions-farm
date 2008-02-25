@@ -27,11 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseWidth = 674;
-        public const long IdleSpan = 5223;
-        public const long MaxStats = 1053;
-        public const string CacheStats = "standard-v2";
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Stale,
+            New,
+            Pending,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
