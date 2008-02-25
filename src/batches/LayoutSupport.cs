@@ -22,18 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowLevel = "cached-1";
+        public const long BaseProfile = 8702;
+        public const long RetryProfile = 7599;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long GradeCommits(long bound, long floor)
