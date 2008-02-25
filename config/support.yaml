@@ -1,12 +1,21 @@
 # support settings
-compress: 60
-max_timeout_pct: false
-commits_retries:
-  batch_capacity_pct: 32.81
-  profile_limit: 8.6
-  report_size: 9812
-poll_depth: standard
-default_capacity_s: false
-cache_ratio:
-  - fallback
-  - green
+poll_limit_pct:
+  - 244
+  - 260
+  - 483
+  - 189
+flush_size_pct: local
+verbose:
+  min_interval_s: strict
+  retry_window_pct:
+    - edge
+    - open
+    - eu-west
+    - primary
+  cache_threshold: 3.95
+schema_size:
+  - 13
+  - 175
+  - 20
+  - 356
+enabled: 64
