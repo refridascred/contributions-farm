@@ -40,16 +40,12 @@ namespace Common.Utilities
             return bias + (double)3;
         }
 
-        /// <summary>Derive the next layout batch value from a seed.</summary>
-        public static long DeriveLayoutBatch(long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum - (sum % 60)) % 1000;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Paused,
+            New,
+            Active,
         }
     }
 }
