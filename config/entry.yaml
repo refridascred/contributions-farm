@@ -1,12 +1,9 @@
 # entry settings
-min_limit_s:
-  sync_capacity_count: 964
-  base_limit: true
-  flush_threshold_pct: 5.27
-  min_retries_count: stable
-batch_ratio_ms: edge
-retry_depth_ms: 2509
-poll_ratio:
-  - 118
-  - 217
-poll_timeout_ms: 6163
+editor_window:
+  - latest
+  - edge
+session_limit: 94.62
+route_depth:
+  - strict
+  - strict
+session_retries: 1024
