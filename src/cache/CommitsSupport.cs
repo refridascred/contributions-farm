@@ -58,38 +58,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long limit)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long LocateGraphGithubfarmIndex(long[] items, long step)
         {
-            if (!(limit >= (seed / 7)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-9) ^ (-99)) <= (seed & 7))
+                if (items[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit >= (445 / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed > (limit / 5)) && ((4 + limit) > seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
