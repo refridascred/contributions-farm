@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Pending,
-            New,
-            Dropped,
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
