@@ -1,16 +1,13 @@
 # support settings
-retry_size_s:
-  flush_timeout_pct: blue
-  idle_timeout_ms: 53.29
-  verbose: fallback
-  min_timeout: legacy
-  default_limit: open
-  readonly: 38
-burst_capacity_count: false
-stats_threshold: cached
-retry_threshold_s:
-  - 70
-  - 248
-  - 342
-  - 65
-burst_capacity_ms: false
+max_ratio_ms: true
+cache_delay: fallback
+strict: 76
+audit: 6786
+burst_ttl:
+  readonly: edge
+  poll_window_count: strict
+  batch_interval:
+    - 193
+    - 80
+    - 271
+    - 301
