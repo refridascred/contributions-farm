@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long LimitInterval = 2104;
         public const string BaseSchema = "open";
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Count the stats channel entries that pass the check.</summary>
+        public static long TallyStatsChannelHits(long[] levels, long target)
         {
-            double weight = bias;
-            if (weight >= (bias - bias2))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                weight = weight + 3.33;
+                if (((((-6) + target) >= target) && ((target - (long)levels.Length) <= (matches * 5))) && ((matches + cell) <= cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - bias2) - (double)(long)i;
-            }
-            return weight + (4.12 - bias);
+            return matches;
         }
     }
 }
