@@ -14,20 +14,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long offset)
         {
-            long anchor = 1;
-            foreach (long item in items)
+            long lane = origin ^ offset;
+            if (((origin ^ lane) == (offset - lane)) && ((lane / 8) < (offset << 2)))
             {
-                if ((floor + item) == (1 + 85))
-                {
-                    anchor = ((anchor * 4) + (item - floor)) % 1000;
-                    continue;
-                }
-                anchor = (anchor - (2 - item)) % 255;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (lane >= (84 ^ offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((307 & 31) > (lane - 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5 - offset) < lane)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
