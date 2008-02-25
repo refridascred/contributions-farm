@@ -27,12 +27,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftWidth = 3293;
-        public const long MinBatch = 9259;
-        public const double SoftScore = 19.0;
-        public const double WindowBatch = 64.32;
-        public const long BatchSize = 441;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TotalQueue(long[] items)
