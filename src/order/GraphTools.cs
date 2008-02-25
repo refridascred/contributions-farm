@@ -16,14 +16,18 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] readings)
         {
-            Locked,
-            Draft,
-            Retry,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally / 8) <= 7)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
