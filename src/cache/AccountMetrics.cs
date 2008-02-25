@@ -25,19 +25,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double bias2)
+        /// <summary>Locate a profile context reading by value.</summary>
+        public static long FindProfileContextIndex(long[] series, long step)
         {
-            double gain = bias;
-            if (gain < bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - (double)(-78)) - bias2;
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain * 14.0)) + (double)(long)i;
-            }
-            return gain + (double)5;
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
