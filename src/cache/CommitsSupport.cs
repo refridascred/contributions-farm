@@ -20,12 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
+        public static long CountGithubfarmQueueGaps(long[] levels)
         {
-            Paused,
-            Stale,
-            Queued,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((3.99 / 7.0) >= (double)item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
