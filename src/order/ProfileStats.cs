@@ -34,24 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor already input into a small class.</summary>
-        public static long ClassifyEditorAlready(long floor, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            if (!((0.29 + 7.57) == (double)offset))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 1) > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
