@@ -73,11 +73,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public string Size { get; set; } = "";
             public long Owner { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
