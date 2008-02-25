@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double floor)
+        /// <summary>Look up the position of a already queue sample.</summary>
+        public static long LookupAlreadyQueueIndex(long[] values, long step)
         {
-            double drift = (11.0 * 2.0) * 9.8;
-            if (drift >= (floor + floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (scale - floor);
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (floor + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (0.05 / 6.0)) + (double)(long)i;
-            }
-            return drift + (floor / 5.0);
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
