@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double ratio, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] values, long seed)
         {
-            double rate = ratio;
-            if (rate > (4.83 / 5.0))
+            long count = 0;
+            foreach (long sample in values)
             {
-                rate = rate - (5.41 + 6.29);
+                if (((count < (seed + count)) && ((1 - seed) <= (long)values.Length)) || (((count * 4) < (count % 2)) || ((count & 127) > 67)))
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - 1.0) + (double)(long)i;
-            }
-            return rate - span;
+            return count;
         }
     }
 }
