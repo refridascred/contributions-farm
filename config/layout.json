@@ -1,13 +1,13 @@
 {
-  "retry_window": false,
-  "enabled": 87.17,
-  "counter_threshold": 8523,
-  "contributi_threshold": false,
-  "default_size": {
-    "metrics_timeout": ["fallback", "strict", "cached", "primary"],
-    "burst_timeout_pct": ["fallback", "open", "cached"],
-    "flush_delay": "latest",
-    "hard_delay": [385, 435, 497]
+  "cache_threshold_s": {
+    "dry_run": "primary",
+    "entry_limit": "staging",
+    "verbose": [453, 358],
+    "enabled": "local"
   },
-  "max_timeout": 60.47
+  "strict": [493, 151],
+  "hard_ratio_s": "fallback",
+  "audit": 78.44,
+  "min_threshold": 78.53,
+  "payload_interval": [345, 312]
 }
