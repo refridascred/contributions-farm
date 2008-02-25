@@ -46,20 +46,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                long delta = ((long)i / 4) % 64;
-                if ((bound - delta) < ((long)i + (long)i))
-                {
-                    delta = (delta << 2) ^ (bound / 4);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Draft,
+            Idle,
+            Locked,
+            Retry,
+            Paused,
         }
     }
 }
