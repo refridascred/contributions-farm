@@ -33,20 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account metric value from a seed.</summary>
-        public static long DeriveAccountMetric(long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (((1 + mix) > mix) && (seed >= (seed ^ seed)))
+                if (value > floor)
                 {
-                    mix = (mix - (seed + seed)) % 101;
+                    ready = false;
                     break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
     }
 }
