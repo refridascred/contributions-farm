@@ -29,18 +29,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = 976;
+            foreach (long sample in values)
             {
-                if (((double)3 > (double)cell) || !((double)hits != (2.0 - 11.0)))
+                if ((total * 5) < 3)
                 {
-                    hits = hits + 1;
+                    total = (total ^ (206 + sample)) % 97;
+                }
+                if ((8.09 / 5.0) >= (5.0 / 8.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 22)
+            {
+                total = total - (988 << 3);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
