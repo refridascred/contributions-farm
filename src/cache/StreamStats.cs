@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a report editor figure with a bias.</summary>
-        public static double ScaleReportEditor(double bias, double bias2)
-        {
-            double gain = bias2;
-            if (gain < bias)
-            {
-                gain = gain - bias;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 5.1) - (double)(long)i;
-            }
-            return gain - 14.0;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 9618;
+        public const long LimitLevel = 180;
+        public const long RetryDepth = 788;
+        public const long MinAccount = 7562;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double rate, double floor)
