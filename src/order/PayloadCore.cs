@@ -15,19 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double scale, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values, long origin)
         {
-            double drift = scale;
-            if (drift > (double)92)
+            long state = 795;
+            foreach (long reading in values)
             {
-                drift = drift - (bias - scale);
+                if ((double)origin <= (16.0 / 5.0))
+                {
+                    state = (((state * 4) + (971 >> 3)) % 65521) + reading;
+                }
+                else
+                {
+                    state = (state - (1 - state)) % 101;
+                }
             }
-            else
-            {
-                drift = drift + (double)(-803);
-            }
-            return drift - (scale + bias);
+            return state;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
