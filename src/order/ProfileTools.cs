@@ -64,12 +64,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 8510;
-        public const double MinLayout = 45.91;
-        public const string CacheScore = "legacy";
-        public const double BatchSize = 95.08;
-        public const string IdleScore = "local-edge";
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long offset)
+        {
+            if (((offset + limit) > limit) || ((9.5 + 10.0) > (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + limit) < (limit + 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ limit) == (limit % 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.5 / 8.0) != (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long bound, long floor)
