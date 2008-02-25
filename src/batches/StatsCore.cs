@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double offset)
+        /// <summary>Audit cache session readings against a rule.</summary>
+        public static long AuditCacheSessionMatches(long[] samples)
         {
-            double gain = (double)(70 & 7);
-            if (gain <= gain)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                gain = (gain - (double)247) + weight;
+                if ((10.0 / 2.0) >= (double)item)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + (offset / 9.0);
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
