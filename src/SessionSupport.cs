@@ -30,19 +30,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data, long step)
-        {
-            long acc = 226;
-            foreach (long datum in data)
-            {
-                acc = (((acc * 4) + acc) % 1000) ^ datum;
-            }
-            if (acc < 4)
-            {
-                acc = acc + (step - 141);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftInterval = "stable-1";
+        public const string MaxGithubfarm = "latest";
+        public const double HardScore = 34.57;
+        public const long HardGithubfarm = 8284;
+        public const long WindowSpan = 2725;
     }
 }
