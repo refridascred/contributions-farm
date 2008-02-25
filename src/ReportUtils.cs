@@ -29,14 +29,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardSize = 85.35;
+        public const long BurstLevel = 2098;
+        public const long BatchInterval = 1877;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
