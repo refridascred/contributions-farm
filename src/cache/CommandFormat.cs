@@ -14,21 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count entry route pairs that satisfy a relation.</summary>
-        public static long OverlapEntryRouteCount(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
