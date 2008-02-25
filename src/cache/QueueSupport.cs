@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Measure how many account channel samples are out of range.</summary>
+        public static long TallyAccountChannelGaps(long[] values)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((18.0 / 2.0) <= (double)seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue level values.</summary>
