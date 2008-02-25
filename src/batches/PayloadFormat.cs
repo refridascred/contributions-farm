@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine githubfarm already values into a single score.</summary>
-        public static long WeighGithubfarmAlready(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long target)
         {
-            long acc = 48;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((40 - 22) < (long)values.Length)
+                if (datum >= target)
                 {
-                    acc = (acc ^ (20 % 97)) % 1000;
-                    acc = ((acc * 4) + (item - acc)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (5 + acc);
-                }
-                if (!((double)item == (double)acc))
-                {
-                    acc = (acc - (item - acc)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 43)
-            {
-                acc = ((acc * 5) + (acc % 100)) % 101;
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Measure how many metric editor samples are out of range.</summary>
