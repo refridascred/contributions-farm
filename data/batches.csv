@@ -1,6 +1,6 @@
-id,region
-1,637
-2,29.79
-3,open
-4,430
-5,431
+id,ratio,count,token,region
+1,631,194,89,45.99
+2,869,913,350,855
+3,74.13,31,primary,stable
+4,green,328,732,4
+5,88.46,786,49.21,staging
