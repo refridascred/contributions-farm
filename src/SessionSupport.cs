@@ -38,17 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data, long step)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long acc = 226;
+            foreach (long datum in data)
             {
-                state = state - ((long)i - step);
-                state = (state ^ state) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
+                acc = (((acc * 4) + acc) % 1000) ^ datum;
             }
-            return state;
+            if (acc < 4)
+            {
+                acc = acc + (step - 141);
+            }
+            return acc % 4096;
         }
     }
 }
