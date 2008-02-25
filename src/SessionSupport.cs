@@ -37,17 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a context payload reading by value.</summary>
-        public static long LookupContextPayloadIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6021;
+        public const long RetryCommits = 5405;
+        public const string IdleLevel = "fallback-v2";
+        public const long MinCommits = 8721;
     }
 }
