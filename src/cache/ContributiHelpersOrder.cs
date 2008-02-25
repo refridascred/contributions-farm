@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (value < floor)
                 {
-                    result = ((result << 3) ^ ((-245) * 2)) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                if (!((bound % 3) < (long)i))
-                {
-                    result = (result * 3) + (bound * 4);
-                    result = result - result;
-                }
-                if ((double)bound >= (double)result)
-                {
-                    long matches = (4 / 2) & 255;
-                    result = ((result << 3) ^ (matches + (long)i)) % 101;
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
