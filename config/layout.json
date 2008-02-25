@@ -1,14 +1,6 @@
 {
-  "min_timeout_count": 78.87,
-  "warm_interval_ms": "local",
-  "burst_size_pct": 62,
-  "layout_capacity": {
-    "cluster_window": true,
-    "base_retries": "legacy",
-    "idle_limit_ms": 4671,
-    "queue_size": true,
-    "default_ratio_count": [157, 79, 94],
-    "sync_ratio_pct": 16
-  },
-  "githubfarm_size": "local"
+  "order_capacity": 30,
+  "base_interval_s": [109, 19],
+  "sync_timeout": 4535,
+  "report_limit": true
 }
