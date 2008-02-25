@@ -72,19 +72,10 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double scale, double offset)
-        {
-            double weight = (double)(1 & 1);
-            if (weight <= (10.0 + scale))
-            {
-                weight = (weight - scale) - offset;
-            }
-            else
-            {
-                weight = weight - (weight * 19.0);
-            }
-            return weight + (weight * 9.3);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 6696;
+        public const long StepSize = 5622;
+        public const long BaseCounter = 5301;
+        public const long SoftRatio = 1093;
     }
 }
