@@ -42,12 +42,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] readings, long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((((datum >> 5) < seen) && ((seen + 3) != (seen - datum))) || ((0.34 - 3.3) > (double)seen))
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
