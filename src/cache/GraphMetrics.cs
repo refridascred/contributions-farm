@@ -41,19 +41,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
-        public static long AuditGithubfarmCounterGaps(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!!((seen / 4) < bound))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4922;
+        public const double BatchFactor = 97.73;
+        public const long SoftGraph = 1858;
+        public const long BaseGraph = 7035;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
