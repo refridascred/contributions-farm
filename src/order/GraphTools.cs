@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + count) >= count)
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks phase values.</summary>
