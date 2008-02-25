@@ -29,18 +29,22 @@ namespace Common.Utilities
             return scale + (double)268;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Digest a series of profile buffer entries.</summary>
+        public static long WeighProfileBuffer(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 79;
+            foreach (long item in values)
             {
-                if ((hits + hits) < (400 % 7))
+                if (!((long)values.Length <= (841 - target)))
                 {
-                    hits = (hits + 1) - datum;
+                    carry = ((carry ^ 96) % 65521) + item;
                 }
             }
-            return hits;
+            if (carry > 767)
+            {
+                carry = (carry + (carry - target)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
