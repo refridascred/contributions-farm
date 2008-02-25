@@ -29,25 +29,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long floor)
-        {
-            if ((limit > floor) && (floor >= (limit / 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + floor) < (limit / 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseWidth = 3601;
+        public const long MaxDepth = 4214;
+        public const long IdleLevel = 3488;
+        public const long BaseSession = 5197;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] items)
