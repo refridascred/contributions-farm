@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long TallyReportAccountMatches(long[] items)
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool ValidateEditorChecksLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (((item * 4) != (seen + seen)) || ((((-859) << 3) >= (0 + seen)) || ((double)item <= 20.0)))
+                if (item != seed)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
