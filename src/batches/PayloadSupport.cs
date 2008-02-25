@@ -40,31 +40,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long offset, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double span)
         {
-            if ((offset + origin) > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(origin < (origin - offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset) >= (424 % 16))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double mean = span;
+            return (mean + (mean / 7.0)) + ratio;
         }
     }
 }
