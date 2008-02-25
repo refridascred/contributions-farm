@@ -68,12 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
