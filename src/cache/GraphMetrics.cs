@@ -54,13 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)(long)samples.Length == (double)value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
