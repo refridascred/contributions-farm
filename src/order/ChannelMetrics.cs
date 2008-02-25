@@ -32,11 +32,39 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long step2)
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            long prev = step + step2;
+            if ((step + step) != (147 - step2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step2 <= (902 + 58)) && ((prev ^ step2) >= (step ^ step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)prev >= (double)step2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((step2 % 2) >= (step / 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
