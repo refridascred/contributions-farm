@@ -39,18 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] levels, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((target ^ hits) < (cell - hits)) && !((double)cell > (14.0 / 9.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Find the first counter editor entry that matches the target.</summary>
