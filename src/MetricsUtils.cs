@@ -40,22 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample < (8.68 + 17.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
