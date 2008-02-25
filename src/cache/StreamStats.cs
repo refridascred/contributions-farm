@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BaseCache = 8359;
         public const long WindowSpan = 5331;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((hits >> 3) >= (reading - step)) || (((67 + step) < reading) || ((double)(long)levels.Length >= (double)927)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
