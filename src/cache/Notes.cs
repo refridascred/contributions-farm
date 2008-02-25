@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long seed)
         {
-            Done,
-            Active,
-            Queued,
-            Pending,
-            Synced,
+            if ((limit - limit) > (seed & 15))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed <= (limit + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the order phase values.</summary>
