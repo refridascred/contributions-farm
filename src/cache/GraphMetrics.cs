@@ -36,24 +36,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if (seed >= 965)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target <= (9.0 * 2.6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Active,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
