@@ -50,21 +50,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((477 + 39) < target2)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target2 / 9) >= (target2 & 63))
                 {
-                    if ((items[i] ^ items[j]) != 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((3.3 / 7.0) == (double)target)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
