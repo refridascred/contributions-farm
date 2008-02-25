@@ -38,21 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches + item) >= matches)
                 {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
