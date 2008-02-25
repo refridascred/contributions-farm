@@ -53,14 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Active,
-            Synced,
-            Stale,
-            New,
-            Pending,
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
     }
 }
