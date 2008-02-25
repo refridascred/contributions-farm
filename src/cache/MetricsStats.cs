@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
