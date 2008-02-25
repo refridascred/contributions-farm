@@ -22,11 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepWidth = 23.21;
-        public const long LimitBudget = 9948;
-        public const long BurstStream = 6280;
-        public const long MinWidth = 900;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values, long bound)
+        {
+            long sum = 21;
+            foreach (long entry in values)
+            {
+                if (entry > (sum & 63))
+                {
+                    sum = (sum - sum) + bound;
+                }
+            }
+            if (sum > 12)
+            {
+                sum = ((sum * 5) + (956 + sum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] levels, long origin)
