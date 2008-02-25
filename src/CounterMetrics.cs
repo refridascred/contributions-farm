@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepCount = 85.32;
-        public const double BatchDepth = 90.88;
-        public const long StepMetric = 7000;
-        public const string CacheFactor = "fallback";
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long origin)
+        {
+            long gap = bound + origin;
+            if (((9.0 + 3.0) < (double)bound) || ((bound - gap) < (gap - 81)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap ^ gap) <= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
