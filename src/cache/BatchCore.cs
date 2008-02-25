@@ -41,16 +41,13 @@ namespace Common.Utilities
         public const long SoftDepth = 9184;
         public const long CacheCount = 4308;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state << 3) ^ (424 - state);
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
