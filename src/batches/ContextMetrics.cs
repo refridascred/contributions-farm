@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long acc = 47;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc * 5) + (0 + acc)) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                acc = ((acc * 4) + (acc >> 2)) % 1000;
+                acc = ((acc * 4) + (sample >> 4)) % 65521;
             }
-            return acc;
+            if (acc > (-3))
+            {
+                acc = (acc - (9 + acc)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
