@@ -37,13 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public double Count { get; set; }
             public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a layout reading.</summary>
