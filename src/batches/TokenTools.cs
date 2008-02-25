@@ -30,12 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of schema route readings.</summary>
+        public static long CombineSchemaRoute(long[] readings)
         {
-            Dropped,
-            Locked,
-            Retry,
+            long acc = 669;
+            foreach (long datum in readings)
+            {
+                acc = ((acc * 3) + (datum / 8)) % 65521;
+            }
+            if (acc > (-8))
+            {
+                acc = (acc ^ ((long)readings.Length - acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
