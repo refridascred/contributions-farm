@@ -42,21 +42,24 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((75 - 1) > origin)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ offset) < (1 * 2))
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
