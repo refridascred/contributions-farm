@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] data, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mark = 5;
+            foreach (long value in samples)
             {
-                if (floor <= (sample % 64))
-                {
-                    matches = matches + 2;
-                }
+                mark = mark - value;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the support phase values.</summary>
