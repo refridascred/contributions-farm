@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 8067;
-        public const long BurstDepth = 2613;
-        public const long WindowEditor = 2800;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long limit, long target)
+        {
+            if ((target + 62) <= (target + 955))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit & 63) > (70 + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] series, long seed)
