@@ -49,18 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] levels)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum ^ datum) > datum)
+                if (((double)total >= 3.23) || ((double)(long)i != (8.59 - 6.6)))
                 {
-                    tally = tally + 1;
+                    continue;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the report status values.</summary>
