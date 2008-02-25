@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double offset)
-        {
-            double scale = offset;
-            if (scale > (bias / 9.0))
-            {
-                scale = scale - (bias + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "standard";
+        public const long WindowScore = 702;
+        public const double IdleInterval = 11.89;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TotalFilter(long[] values)
