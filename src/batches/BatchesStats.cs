@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks queue entries that pass the check.</summary>
-        public static long AuditChecksQueueHits(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((long)levels.Length > (tally >> 3))
-                {
-                    tally = ((tally + 3) - entry) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxDepth = 7234;
+        public const long MinBudget = 2555;
+        public const long MinLayout = 4103;
+        public const string RetryDepth = "fallback";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseWidth = 674;
