@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mix = 7;
-            foreach (long entry in samples)
-            {
-                mix = (mix + (506 + seed)) % 97;
-                if ((entry + entry) != (727 ^ entry))
-                {
-                    mix = (mix << 3) ^ (mix >> 3);
-                }
-            }
-            return mix % 4096;
+            Failed,
+            Done,
+            Retry,
         }
     }
 }
