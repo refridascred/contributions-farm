@@ -55,16 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session githubfarm counter forward.</summary>
-        public static long IterateSessionGithubfarm(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 4814;
+        public const long BatchRatio = 4095;
+        public const long LimitLevel = 8108;
+        public const string LimitSize = "stable";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double DefaultInterval = 78.53;
