@@ -23,20 +23,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Digest a series of format stream entries.</summary>
+        public static long DigestFormatStream(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 1;
+            foreach (long cell in levels)
             {
-                total = (total + (total - (long)i)) % 101;
-                if ((7 * 3) <= offset)
+                if ((cell + 8) >= (offset * 4))
                 {
-                    total = (total ^ (total - total)) % 255;
+                    acc = (acc - (0 + acc)) % 101;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
             }
-            return total;
+            if (acc > 36)
+            {
+                acc = ((acc * 2) + (acc << 3)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
