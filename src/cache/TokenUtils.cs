@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BurstDepth = 2613;
         public const long WindowEditor = 2800;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (7.0 - 7.9))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
