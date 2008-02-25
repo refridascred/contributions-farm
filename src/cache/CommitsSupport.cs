@@ -53,12 +53,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series)
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long score = 9;
+            foreach (long item in series)
+            {
+                score = ((score * 5) + (3 ^ score)) - item;
+                score = ((score * 2) + (35 << 2)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate account samples.</summary>
