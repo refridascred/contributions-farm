@@ -21,15 +21,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series, long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long state = 926;
-            foreach (long value in series)
-            {
-                state = (((state * 2) + (7 ^ 425)) - value) - floor;
-            }
-            return state;
+            Done,
+            Idle,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
