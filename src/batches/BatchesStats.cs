@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum * 2) == (matches / 3))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total << 3) ^ ((long)i + origin)) % 97;
+                total = ((total << 2) ^ (5 + (long)i)) % 65521;
+                total = (total * 3) + (origin + 0);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the support phase values.</summary>
