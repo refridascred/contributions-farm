@@ -1,15 +1,4 @@
 # support settings
-stream_threshold: false
-poll_ratio_count: strict
-entry_size:
-  - 251
-  - 32
-  - 51
-  - 130
-compress: 9
-buffer_interval:
-  - 495
-  - 461
-  - 483
-  - 14
-warm_ttl_s: 74
+commits_threshold: true
+idle_ratio: 100
+persist: false
