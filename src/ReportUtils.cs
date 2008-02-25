@@ -34,18 +34,13 @@ namespace Common.Utilities
             return drift - 2.7;
         }
 
-        /// <summary>Count the support commits entries that pass the check.</summary>
-        public static long TallySupportCommitsOutliers(long[] levels, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) <= (step + entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
