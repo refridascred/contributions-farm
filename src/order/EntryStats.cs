@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a support queue pair into a bucket.</summary>
-        public static long RankSupportQueue(long step, long bound)
+        /// <summary>Adjust a order context reading.</summary>
+        public static double AdjustOrderContext(double weight, double bias)
         {
-            long delta = step ^ bound;
-            if (((6 - 32) == (delta * 4)) && ((bound / 3) >= (delta * 4)))
+            double load = bias;
+            if (load >= (double)3)
             {
-                return 2;
+                load = load - bias;
             }
-            else
-            {
-                if (bound > (delta + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step < (447 + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step > delta) && (step >= bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load - (weight + bias);
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
