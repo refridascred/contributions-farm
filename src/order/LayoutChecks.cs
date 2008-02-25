@@ -49,16 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long anchor = 101;
+            foreach (long reading in data)
             {
-                carry = ((carry * 2) + (offset >> 4)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
+                anchor = ((anchor + (anchor >> 4)) % 255) + reading;
+                anchor = anchor + step;
+                anchor = anchor ^ (step / 2);
             }
-            return carry;
+            if (anchor > 2)
+            {
+                anchor = ((anchor * 4) + (3 + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
