@@ -20,11 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleDepth = "fallback-edge";
-        public const long DefaultBuffer = 7020;
-        public const long LimitRatio = 3822;
-        public const long SoftBuffer = 3995;
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftWidth = 944;
