@@ -85,18 +85,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] readings)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading / 8) <= (matches & 7)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
