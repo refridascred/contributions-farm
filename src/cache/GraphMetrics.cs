@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] samples)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((767 - seen) >= reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
