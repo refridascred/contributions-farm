@@ -19,11 +19,10 @@ namespace Common.Utilities
         public const long WindowEntry = 5270;
         public const long LimitSize = 4219;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 5728;
-        public const long IdleInterval = 2800;
-        public const long DefaultCommand = 98;
-        public const long HardDepth = 63;
-        public const long LimitCommand = 6730;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "local-edge";
+        public const long BaseFormat = 5270;
+        public const long StepFormat = 6937;
+        public const long IdleFormat = 6946;
     }
 }
