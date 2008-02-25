@@ -49,21 +49,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Measure how many report checks samples are out of range.</summary>
+        public static long CountReportChecksOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.0 / 9.0) <= (double)count)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
