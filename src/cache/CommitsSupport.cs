@@ -27,18 +27,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] series, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = 971;
+            foreach (long datum in samples)
             {
-                if ((entry / 4) < target)
-                {
-                    hits = hits + 1;
-                }
+                mix = (mix << 2) ^ (datum - datum);
+                mix = (mix + (mix & 63)) % 255;
             }
-            return hits;
+            if (mix < 73)
+            {
+                mix = ((mix << 2) ^ (mix + 20)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
