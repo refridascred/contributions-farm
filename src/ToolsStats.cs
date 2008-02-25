@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const double WindowTools = 71.75;
         public const long MinTools = 4049;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] series, long seed)
         {
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count ^ entry) < (count + seed))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
