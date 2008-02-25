@@ -25,23 +25,11 @@ namespace Common.Utilities
             return rate - (7.7 * 6.94);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series, long offset)
-        {
-            long state = 462;
-            foreach (long reading in series)
-            {
-                if ((double)state > (double)2)
-                {
-                    state = (state + (reading + 11)) % 97;
-                }
-            }
-            if (state < 55)
-            {
-                state = state ^ (state - offset);
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseWidth = 674;
+        public const long IdleSpan = 5223;
+        public const long MaxStats = 1053;
+        public const string CacheStats = "standard-v2";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] items, long limit)
