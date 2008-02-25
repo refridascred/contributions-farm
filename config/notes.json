@@ -1,5 +1,6 @@
 {
-  "stats_interval": "cached",
-  "base_timeout_count": [126, 84, 211],
-  "poll_ratio": 8772
+  "dry_run": false,
+  "warm_delay": [330, 396, 69],
+  "hard_capacity_count": "primary",
+  "flush_window": ["standard", "local", "strict", "staging"]
 }
