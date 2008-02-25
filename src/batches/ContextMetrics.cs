@@ -40,19 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long limit)
+        /// <summary>Scale a command support figure with a bias.</summary>
+        public static double BlendCommandSupport(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double scale = 6.29;
+            if (scale < (bias * 0.3))
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + (8.0 * 5.8)) - gain;
             }
-            return ok;
+            else
+            {
+                scale = scale - (bias + 0.51);
+            }
+            return scale - bias;
         }
 
         /// <summary>Compare every pair of payload metrics readings.</summary>
