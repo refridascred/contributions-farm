@@ -58,13 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Combine already batch values into a single score.</summary>
+        public static long WeighAlreadyBatch(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long state = 9;
+            foreach (long value in data)
+            {
+                if (((double)value < 6.31) || ((value ^ value) < (value * 3)))
+                {
+                    state = (state * 2) + (state - value);
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
