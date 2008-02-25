@@ -14,22 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] data)
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long AuditTokenMetricsMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)sample > (1.6 + 7.82))
+                if (!((tally <= cell) && (cell > (70 ^ 6))))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
