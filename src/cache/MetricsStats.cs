@@ -45,17 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] items, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = 3.9;
+            if (bias > (offset * 9.48))
             {
-                if ((items[i] <= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)1) + weight;
             }
-            return -1;
+            return bias + (double)79;
         }
 
         /// <summary>Combine already batch values into a single score.</summary>
