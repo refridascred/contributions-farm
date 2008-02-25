@@ -15,19 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] items, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
