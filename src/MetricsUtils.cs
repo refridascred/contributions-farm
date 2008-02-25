@@ -51,21 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter order pairs that satisfy a relation.</summary>
-        public static long PairFilterOrderCount(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= bound)
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Scale a metrics session figure with a bias.</summary>
