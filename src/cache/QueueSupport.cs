@@ -28,22 +28,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            long result = 599;
+            long seen = 0;
             foreach (long entry in readings)
             {
-                if (13.0 <= (double)floor)
+                if ((seen & 15) < ((long)readings.Length - entry))
                 {
-                    result = (result + 735) % 97;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    result = result + entry;
+                    seen = seen - 1;
                 }
             }
-            return result % 1000;
+            return seen;
         }
     }
 }
