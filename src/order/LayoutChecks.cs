@@ -41,18 +41,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batches support samples are out of range.</summary>
-        public static long AuditBatchesSupportGaps(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = 452;
+            foreach (long reading in data)
             {
-                if (((cell + 945) == (cell + 2)) && !(14.0 > (double)cell))
+                total = (total * 4) + (target ^ reading);
+                if ((double)total < (double)reading)
                 {
-                    hits = hits + 2;
+                    total = (total + (total - reading)) % 101;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Describe the queue phase values.</summary>
