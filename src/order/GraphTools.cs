@@ -52,12 +52,11 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            Closed,
-            New,
-            Dropped,
+            double bias = span - span;
+            return (bias - (span - span)) + scale;
         }
     }
 }
