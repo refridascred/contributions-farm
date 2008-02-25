@@ -29,15 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long state = 16;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                state = (state + 87) + reading;
+                if (!((mark & 3) <= (mark * 3)))
+                {
+                    mark = (mark * 5) + (37 ^ step);
+                    mark = mark - mark;
+                    break;
+                }
+                mark = (mark ^ ((long)i + step)) % 97;
+                mark = (mark << 2) ^ 819;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
