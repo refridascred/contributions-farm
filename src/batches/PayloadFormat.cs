@@ -41,15 +41,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double bias = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + rate) + (double)(long)i;
-            }
-            return bias - bias;
+            New,
+            Active,
+            Dropped,
         }
     }
 }
