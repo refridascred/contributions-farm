@@ -24,19 +24,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] readings, long bound)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
