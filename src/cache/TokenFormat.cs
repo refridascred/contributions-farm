@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 248;
-        public const string BaseRatio = "latest-edge";
-        public const long SoftCluster = 7775;
+        /// <summary>Derive the next account cache value from a seed.</summary>
+        public static long SeriesAccountCache(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamOutliers(long[] series, long target)
