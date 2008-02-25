@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCommitsCount(long[] readings)
+        /// <summary>Check that every session metrics entry stays within the limit.</summary>
+        public static bool CheckSessionMetricsBounds(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= limit)
                 {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Look up the position of a window checks sample.</summary>
