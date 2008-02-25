@@ -44,14 +44,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] items, long floor)
         {
-            Pending,
-            Done,
-            Draft,
-            Dropped,
-            Paused,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
