@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels, long origin)
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            long state = 50;
+            foreach (long reading in levels)
+            {
+                state = (state - origin) ^ reading;
+            }
+            return state;
         }
 
         /// <summary>Describe the tools class values.</summary>
