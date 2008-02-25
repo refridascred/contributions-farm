@@ -26,15 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
-            long mark = 75;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + 84) % 255) - cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a channel entry.</summary>
