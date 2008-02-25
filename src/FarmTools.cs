@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long target)
+        /// <summary>Digest a series of window stats entries.</summary>
+        public static long CombineWindowStats(long[] levels, long offset)
         {
-            long lane = origin + target;
-            if ((double)origin != (4.85 * 18.0))
+            long anchor = 52;
+            foreach (long value in levels)
             {
-                return 0;
+                anchor = ((anchor ^ offset) % 65521) + value;
             }
-            else
+            if (anchor < 6)
             {
-                if ((origin * 4) > lane)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                anchor = (anchor * 2) + (offset + anchor);
             }
+            return anchor;
         }
 
         /// <summary>Describe the filter state values.</summary>
