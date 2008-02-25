@@ -36,12 +36,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long seed)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            long mark = -556;
+            foreach (long reading in levels)
+            {
+                if (seed <= reading)
+                {
+                    mark = (mark << 2) ^ (2 << 1);
+                }
+                else
+                {
+                    mark = ((mark * 4) + 248) % 1000;
+                }
+                mark = ((mark * 3) + (mark + seed)) % 101;
+                mark = mark - seed;
+                if ((mark & 3) > (mark - 20))
+                {
+                    break;
+                }
+            }
+            if (mark > (-4))
+            {
+                mark = ((mark << 3) ^ (seed - seed)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a checks info.</summary>
