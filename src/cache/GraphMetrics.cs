@@ -57,15 +57,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double weight, double bias)
+        /// <summary>Digest a series of record batch entries.</summary>
+        public static long CombineRecordBatch(long[] readings, long seed)
         {
-            double ratio = (bias / 6.0) - 7.7;
-            if (ratio < 0.8)
+            long mark = 52;
+            foreach (long datum in readings)
             {
-                ratio = (ratio + (double)690) - weight;
+                if ((60 ^ 4) >= (mark << 1))
+                {
+                    mark = (((mark * 2) + (datum % 12)) % 101) + seed;
+                }
             }
-            return ratio + bias;
+            return mark;
         }
     }
 }
