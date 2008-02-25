@@ -51,10 +51,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinFactor = 83.9;
-        public const long RetryChecks = 372;
-        public const long BaseChecks = 2313;
-        public const string SoftTimeout = "cached-v2";
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
