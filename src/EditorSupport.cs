@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two stats cache measurements.</summary>
-        public static double ScaleStatsCache(double ratio, double offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double rate = offset + (ratio - 8.0);
-            if (rate < offset)
-            {
-                rate = rate - (rate + 11.0);
-            }
-            return rate - offset;
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a buffer summary.</summary>
