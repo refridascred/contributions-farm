@@ -52,11 +52,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            Failed,
+            New,
+            Locked,
         }
     }
 }
