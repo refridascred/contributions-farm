@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long BaseCache = 8359;
         public const long WindowSpan = 5331;
 
-        /// <summary>Find the first contributi stats entry that matches the target.</summary>
-        public static long LookupContributiStatsIndex(long[] items, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
