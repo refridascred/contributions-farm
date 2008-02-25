@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] readings, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((value ^ origin) > (tally / 8))
+                if (reading > bound)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
