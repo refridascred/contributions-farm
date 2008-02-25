@@ -47,10 +47,20 @@ namespace Common.Utilities
         public const long MaxDepth = 5884;
         public const double BurstProfile = 8.37;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstScore = 47.2;
-        public const long BaseSupport = 8882;
-        public const long RetrySupport = 7136;
+        /// <summary>Check that every tools batch entry stays within the limit.</summary>
+        public static bool ValidateToolsBatchBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
