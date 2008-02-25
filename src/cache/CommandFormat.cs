@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] levels)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell != (9.1 / 4.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
