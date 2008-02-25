@@ -38,25 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank context counter input into a small class.</summary>
-        public static long GradeContextCounter(long offset, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long gap = offset + step;
-            if ((gap + gap) >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.4 * 2.0) == (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            New,
+            Stale,
+            Failed,
         }
     }
 }
