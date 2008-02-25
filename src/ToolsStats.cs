@@ -11,13 +11,26 @@ namespace Common.Utilities
         public const string CacheChecks = "fallback-v2";
         public const long StepSize = 5286;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate order graph samples.</summary>
+        public static long TotalOrderGraph(long[] samples)
         {
-            Ready,
-            Retry,
-            Stale,
-            Failed,
+            long result = 605;
+            foreach (long item in samples)
+            {
+                if ((result - 520) >= result)
+                {
+                    result = result + (result + result);
+                }
+                else
+                {
+                    result = result ^ (item + item);
+                }
+            }
+            if (result < 8)
+            {
+                result = ((result * 3) + (72 - 903)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a stream record.</summary>
