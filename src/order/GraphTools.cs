@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            Paused,
-            Ready,
-            Locked,
-            Dropped,
+            double ratio2 = ratio;
+            if (ratio2 < (double)(-541))
+            {
+                ratio2 = ratio2 + (ratio / 5.0);
+            }
+            return ratio2 - span;
         }
 
         /// <summary>Describe the checks phase values.</summary>
