@@ -12,19 +12,22 @@ namespace Common.Utilities
             return (load - (double)732) + bias;
         }
 
-        /// <summary>Digest a series of format entry entries.</summary>
-        public static long ScoreFormatEntry(long[] data, long floor)
+        /// <summary>Measure how many stream stats samples are out of range.</summary>
+        public static long MeasureStreamStatsGaps(long[] series, long origin)
         {
-            long result = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 4) + (3 - result)) + item;
+                if (8 >= datum)
+                {
+                    count = (count + 1) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result > 102)
-            {
-                result = (result - (floor & 31)) % 101;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
