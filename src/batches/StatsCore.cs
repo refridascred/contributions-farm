@@ -38,12 +38,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 17.3;
-        public const long WindowSchema = 3827;
-        public const string BurstScore = "legacy-1";
-        public const long HardSize = 1760;
-        public const string RetryDepth = "open-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "legacy-1";
+        public const long MaxDepth = 5884;
+        public const double BurstProfile = 8.37;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
