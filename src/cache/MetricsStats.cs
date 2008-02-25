@@ -60,11 +60,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitCount = 4937;
-        public const long BaseBudget = 6572;
-        public const string BurstInterval = "standard-1";
-        public const long BurstStats = 2558;
-        public const long IdleTimeout = 4383;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
