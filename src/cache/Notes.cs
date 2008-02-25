@@ -67,11 +67,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long result = 0;
+            foreach (long reading in readings)
+            {
+                if ((result & 255) < (reading % 24))
+                {
+                    result = (result + result) % 101;
+                }
+                else
+                {
+                    result = (result << 3) ^ reading;
+                }
+            }
+            return result;
         }
     }
 }
