@@ -1,7 +1,6 @@
-id,owner,ratio,level
-1,67.31,green,primary
-2,976,69.04,605
-3,legacy,blue,edge
-4,cached,60.27,58.16
-5,eu-west,713,229
-6,317,436,787
+id,ratio,state,weight,owner
+1,cached,latest,96,279
+2,cached,72.8,182,720
+3,448,38.83,125,fallback
+4,eu-west,cached,34.63,50.21
+5,878,edge,705,standard
