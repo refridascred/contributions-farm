@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next githubfarm record value.</summary>
-        public static double AdjustGithubfarmRecord(double weight, double offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            double mean = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + weight) - (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + weight;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
