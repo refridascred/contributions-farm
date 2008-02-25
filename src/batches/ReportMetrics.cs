@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 3013;
-        public const string BaseReport = "staging-edge";
-        public const double IdleBudget = 23.98;
+        /// <summary>Measure how many support cluster samples are out of range.</summary>
+        public static long CountSupportClusterMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches >> 3) >= (645 - cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ScaleFilter(double rate, double span)
