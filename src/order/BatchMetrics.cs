@@ -14,16 +14,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Look up the position of a window checks sample.</summary>
+        public static long LocateWindowChecksIndex(long[] series, long bound)
         {
-            long acc = 204;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - (cell + cell)) % 101;
-                acc = (acc - (452 / 2)) % 97;
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
