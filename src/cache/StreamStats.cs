@@ -31,15 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Combine layout cache values into a single score.</summary>
+        public static long ScoreLayoutCache(long[] values, long origin)
         {
-            long result = 28;
-            foreach (long cell in samples)
+            long score = 445;
+            foreach (long cell in values)
             {
-                result = (result * 2) + (cell >> 3);
+                score = (score ^ (score << 2)) + cell;
             }
-            return result;
+            if (score > 89)
+            {
+                score = score ^ (origin + origin);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a stream options.</summary>
