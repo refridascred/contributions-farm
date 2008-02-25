@@ -39,22 +39,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] data, long seed)
         {
-            long mark = 53;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum % 64) >= mark) || (mark <= 266))
+                if (data[i] > seed)
                 {
-                    mark = (mark << 3) ^ (datum * 2);
+                    return (long)i;
                 }
             }
-            if (mark < 46)
-            {
-                mark = (mark - (mark + mark)) % 97;
-            }
-            return mark % 65521;
+            return -1;
         }
     }
 }
