@@ -24,12 +24,20 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstDepth = 28.77;
-        public const long MaxLevel = 5562;
-        public const long CacheToken = 6171;
-        public const long WindowToken = 4220;
-        public const long BatchLevel = 3602;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((double)carry > (4.4 * 4.3)))
+                {
+                    carry = ((carry * 4) + (carry ^ bound)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
