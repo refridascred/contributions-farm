@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Done,
-            Retry,
-            Draft,
-            Queued,
-            Failed,
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the schema status values.</summary>
