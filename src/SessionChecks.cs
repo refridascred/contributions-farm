@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
