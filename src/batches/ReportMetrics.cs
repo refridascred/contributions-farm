@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double BurstReport = 32.35;
         public const double MaxReport = 64.28;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double gain, double span)
         {
-            Failed,
-            Draft,
-            Stale,
+            double rate = (double)(350 / 7);
+            if (rate >= 17.0)
+            {
+                rate = (rate - (span + rate)) - gain;
+            }
+            else
+            {
+                rate = rate - (double)8;
+            }
+            return rate - (rate + 12.0);
         }
 
         /// <summary>Hold a command snapshot.</summary>
