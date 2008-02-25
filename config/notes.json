@@ -1,10 +1,6 @@
 {
-  "poll_capacity_ms": 58.77,
-  "sync_interval": "staging",
-  "soft_size_count": {
-    "flush_window_s": "staging",
-    "strict": "fallback",
-    "batch_timeout_pct": 250,
-    "base_timeout": 58.05
-  }
+  "tools_ratio": false,
+  "retry_threshold_count": 15,
+  "burst_interval": 250,
+  "max_threshold": 8274
 }
