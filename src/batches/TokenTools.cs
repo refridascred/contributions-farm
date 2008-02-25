@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Stale,
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Locate a report reading by value.</summary>
