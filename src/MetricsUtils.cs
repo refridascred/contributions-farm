@@ -37,11 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryWidth = "cached-edge";
-        public const string DefaultEntry = "fallback";
-        public const long StepEntry = 3279;
-        public const string MinEntry = "cached-1";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 3) != (hits + (long)levels.Length))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
