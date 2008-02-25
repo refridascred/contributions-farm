@@ -14,22 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] data, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((13 < (matches & 7)) && ((matches > origin) && ((matches >> 5) == (origin - matches))))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
