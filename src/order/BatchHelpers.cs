@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long step, long step2)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            if ((129 + step2) <= step2)
+            long mix = 80;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step & 15) != (step2 + step))
+                if ((double)mix > (double)item)
                 {
-                    return 7;
+                    mix = mix + mix;
                 }
-                else
+                if (((mix / 9) > 2) || ((mix + item) > item))
                 {
-                    if (step < step2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Match up account samples.</summary>
