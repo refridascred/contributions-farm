@@ -55,12 +55,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 7464;
-        public const long IdleChannel = 3975;
-        public const long BurstRatio = 2111;
-        public const string WindowRatio = "stable-1";
-        public const double StepFactor = 13.38;
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double offset)
+        {
+            double load = offset;
+            if (load < gain)
+            {
+                load = load + (gain * 0.49);
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (load + gain)) + (double)(long)i;
+            }
+            return load + (load - offset);
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double scale, double offset)
