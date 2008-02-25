@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate cluster command readings against a bound.</summary>
-        public static bool GuardClusterCommandLimits(long[] data, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Paused,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
