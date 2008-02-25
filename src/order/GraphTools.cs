@@ -26,12 +26,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Find the first token commits entry that matches the target.</summary>
-        public static long SeekTokenCommitsIndex(long[] readings, long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= step)
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
