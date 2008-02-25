@@ -43,14 +43,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series)
         {
-            Done,
-            Stale,
-            New,
-            Dropped,
-            Failed,
+            long total = 2;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = ((total - total) % 4096) ^ (long)i;
+                }
+                if ((total >> 3) > (total & 127))
+                {
+                    total = (total << 3) ^ (reading / 5);
+                }
+            }
+            return total;
         }
     }
 }
