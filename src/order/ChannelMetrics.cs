@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a filter layout reading.</summary>
-        public static double AdjustFilterLayout(double gain, double floor)
+        /// <summary>Find the first token layout entry that matches the target.</summary>
+        public static long LookupTokenLayoutIndex(long[] samples, long target)
         {
-            double load = (gain - floor) - gain;
-            if (load > load)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - load;
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (load * 6.44)) - (double)(long)i;
-            }
-            return load + 1.24;
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
