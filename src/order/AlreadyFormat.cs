@@ -21,10 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstLevel = 4013;
-        public const long SoftReport = 7484;
-        public const string MinReport = "legacy-v2";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((9.4 >= (double)value) || ((matches < (matches - (-56))) || ((double)value == (6.1 * 3.72))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
