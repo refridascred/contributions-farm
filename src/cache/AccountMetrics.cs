@@ -70,19 +70,11 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double floor)
-        {
-            double load = floor;
-            if (load < (double)623)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + 6.8) + (double)(long)i;
-            }
-            return load - (weight - floor);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 5375;
+        public const long CacheTimeout = 1216;
+        public const string HardFarm = "latest-1";
+        public const long MinFarm = 6018;
+        public const string BatchFarm = "open-edge";
     }
 }
