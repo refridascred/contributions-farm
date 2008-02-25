@@ -27,18 +27,10 @@ namespace Common.Utilities
         public const double BatchTimeout = 77.94;
         public const string MaxBuffer = "fallback-1";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > (datum + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "strict";
+        public const double DefaultSize = 83.86;
+        public const long CacheWidth = 7975;
+        public const long BatchSpan = 9209;
     }
 }
