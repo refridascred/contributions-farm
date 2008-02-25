@@ -32,9 +32,14 @@ namespace Common.Utilities
             return bias + (rate - bias);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 9319;
-        public const long StepPayload = 1368;
-        public const long LimitLevel = 3585;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Stale,
+            Paused,
+            Locked,
+            New,
+            Queued,
+        }
     }
 }
