@@ -27,9 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstFactor = "stable-edge";
-        public const long SoftBudget = 5331;
-        public const long MaxProfile = 4020;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (65 >= item)
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
+        }
     }
 }
