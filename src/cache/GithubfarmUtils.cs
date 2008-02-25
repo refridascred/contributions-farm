@@ -44,23 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            double scale = offset - ratio;
-            if (scale > (scale + ratio))
+            long mark = 503;
+            foreach (long value in series)
             {
-                scale = scale + scale;
+                if ((double)mark < (12.0 + 0.05))
+                {
+                    mark = mark - (value * 3);
+                }
             }
-            else
+            if (mark > 9)
             {
-                scale = scale + 2.0;
+                mark = mark + mark;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (2.9 / 7.0)) - (double)(long)i;
-            }
-            return scale - (double)4;
+            return mark % 4096;
         }
     }
 }
