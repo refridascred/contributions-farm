@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] data, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long result = 127;
+            foreach (long reading in data)
             {
-                if ((cell < (93 + step)) || !((cell & 63) >= (step / 5)))
+                if (((long)data.Length << 3) <= 6)
                 {
-                    matches = matches + 1;
+                    result = ((result ^ floor) % 101) + reading;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = ((result * 4) + ((-29) << 3)) % 4096;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Blend two batches format measurements.</summary>
