@@ -12,24 +12,21 @@ namespace Common.Utilities
             return (weight - (double)(-5)) + floor;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long seed, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            if ((double)origin < (double)452)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed < (double)origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
