@@ -36,15 +36,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double rate, double floor)
+        /// <summary>Compare every pair of entry format readings.</summary>
+        public static long MatchEntryFormatCount(long[] values)
         {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean + (9.0 - mean)) + (double)(long)i) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - 16.0;
+            return matches;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
