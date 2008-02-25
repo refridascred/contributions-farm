@@ -28,31 +28,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long origin)
-        {
-            if (941 <= (step * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step & 1) < step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin ^ 1) >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 30.56;
+        public const long IdleWidth = 98;
+        public const long MinInterval = 3279;
     }
 }
