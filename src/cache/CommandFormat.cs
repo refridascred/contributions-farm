@@ -13,12 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] items, long offset)
         {
-            Synced,
-            Pending,
-            Failed,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (reading > (seen - offset))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
