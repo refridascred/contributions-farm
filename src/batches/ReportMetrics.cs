@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long AuditSupportQueueMatches(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits <= (entry / 3)) && ((964 & 1) < (entry * 4)))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitBudget = "open-1";
+        public const string BatchCount = "open";
+        public const double BurstReport = 32.35;
+        public const double MaxReport = 64.28;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
