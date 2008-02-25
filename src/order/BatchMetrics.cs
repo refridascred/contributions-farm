@@ -73,17 +73,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cache notes reading by value.</summary>
-        public static long FindCacheNotesIndex(long[] data, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = scale / 2.0;
+            return (mean + (double)3) + span;
         }
     }
 }
