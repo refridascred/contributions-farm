@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 7735;
-        public const long StepSpan = 9698;
-        public const string StepCommand = "latest";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value >> 3) <= (92 / 9))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryStream = 8798;
