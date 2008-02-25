@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel profile entry stays within the limit.</summary>
-        public static bool ValidateChannelProfileRange(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 1851;
+        public const long MaxScore = 5765;
+        public const string DefaultToken = "cached";
+        public const long BurstBudget = 1425;
+        public const string MaxSpan = "local";
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] samples, long floor)
