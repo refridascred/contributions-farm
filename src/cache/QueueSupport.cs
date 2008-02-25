@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5683;
         public const long WindowProfile = 488;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Compare every pair of layout stream readings.</summary>
+        public static long CompareLayoutStreamCount(long[] items)
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
