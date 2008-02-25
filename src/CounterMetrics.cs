@@ -31,32 +31,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long seed, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long cur = seed + offset;
-            if ((5 + seed) <= (cur << 1))
+            long acc = 291;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed ^ offset) >= (96 << 2)))
+                if ((acc / 5) > ((-99) / 2))
                 {
-                    return 1;
+                    acc = acc - acc;
                 }
-                else
+                if ((value > (-88)) && ((15 << 1) > (acc + acc)))
                 {
-                    if ((cur * 4) >= (cur << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (acc < 364)
+            {
+                acc = (acc ^ (719 ^ 414)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
