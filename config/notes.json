@@ -1,8 +1,19 @@
 {
-  "metrics_retries": "staging",
-  "readonly": "cached",
-  "enabled": ["eu-west", "open"],
-  "commits_window": 44.45,
-  "audit": "stable",
-  "context_retries": true
+  "metric_size": 75,
+  "default_ratio_ms": 2671,
+  "soft_ratio_ms": {
+    "context_interval": {
+      "idle_limit_ms": 28,
+      "min_ttl_pct": 9956,
+      "context_interval": 40.13,
+      "min_delay_s": 9209,
+      "enabled": false,
+      "idle_timeout": ["eu-west", "primary", "cached"]
+    },
+    "max_depth_s": "local",
+    "batch_retries_count": false,
+    "batch_capacity": 91.32
+  },
+  "sync_size_s": 8693,
+  "batch_size": 16
 }
