@@ -43,13 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Stale,
-            Idle,
-            Dropped,
-            Active,
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next stream context value from a seed.</summary>
