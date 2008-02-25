@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up filter layout samples.</summary>
-        public static long OverlapFilterLayoutCount(long[] levels)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
