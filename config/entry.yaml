@@ -1,7 +1,9 @@
 # entry settings
-max_threshold_pct: true
-commits_retries: 97.57
-enabled:
-  - 194
-  - 441
-burst_threshold_count: edge
+idle_threshold_s: false
+idle_ratio_ms: staging
+hard_limit: edge
+base_size_s:
+  - 115
+  - 150
+  - 231
+  - 64
