@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long step)
         {
-            long carry = 51;
-            foreach (long value in readings)
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (((carry << 3) ^ carry) % 101) + value;
+                carry = (carry << 2) ^ (step % 8);
+                carry = (carry << 2) ^ (251 - (long)i);
+                carry = (carry + step) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
             return carry;
         }
