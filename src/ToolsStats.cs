@@ -36,14 +36,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            Synced,
-            Draft,
-            Closed,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 6) > (cell & 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
