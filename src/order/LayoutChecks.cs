@@ -50,19 +50,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long limit, long limit2)
         {
-            long total = 452;
-            foreach (long reading in data)
+            long prev = limit ^ limit2;
+            if (limit <= (97 ^ limit))
             {
-                total = (total * 4) + (target ^ reading);
-                if ((double)total < (double)reading)
+                return 5;
+            }
+            else
+            {
+                if ((2.4 >= (double)limit2) || ((limit >> 3) <= (-6)))
                 {
-                    total = (total + (total - reading)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)prev == (3.0 / 5.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4 % 12) > limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Match up stats samples.</summary>
