@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 8379;
+        public const long SoftChecks = 6921;
+        public const double IdleSize = 17.16;
+        public const double MinChecks = 7.6;
+        public const long IdleChecks = 598;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] items)
