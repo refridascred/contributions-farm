@@ -25,13 +25,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Pending,
-            Draft,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryWidth = "cached-edge";
+        public const string DefaultEntry = "fallback";
+        public const long StepEntry = 3279;
+        public const string MinEntry = "cached-1";
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
