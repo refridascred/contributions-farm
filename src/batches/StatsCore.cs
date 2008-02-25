@@ -69,14 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] readings, long floor)
         {
-            New,
-            Active,
-            Stale,
-            Queued,
-            Failed,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
