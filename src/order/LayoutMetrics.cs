@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine stream githubfarm values into a single score.</summary>
-        public static long TotalStreamGithubfarm(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long mix = -87;
-            foreach (long reading in levels)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading >> 5) == (reading >> 3))
+                if ((step & 63) < (score - score))
                 {
-                    mix = (mix << 3) ^ 79;
+                    score = (score << 2) ^ (step - 933);
                 }
-                if (((double)mix <= (double)771) && ((reading * 2) >= mix))
-                {
-                    break;
-                }
+                score = ((score << 3) ^ (step ^ (long)i)) % 101;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
