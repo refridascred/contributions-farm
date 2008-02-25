@@ -13,18 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)item != (8.48 + 4.59))
+                if (reading <= target)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a support options.</summary>
