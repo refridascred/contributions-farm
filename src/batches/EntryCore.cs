@@ -61,15 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double mean = offset;
-            if (mean >= (double)82)
-            {
-                mean = (mean + (17.0 * 8.08)) - bias;
-            }
-            return mean - (offset * 5.51);
+            Dropped,
+            Draft,
+            Retry,
+            Paused,
+            Locked,
         }
     }
 }
