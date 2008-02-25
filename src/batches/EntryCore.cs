@@ -50,17 +50,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] samples, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(-680) + (double)51;
+            if (bias < (scale / 6.0))
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + bias) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (double)3) + (double)(long)i;
+            }
+            return bias + (9.09 / 4.0);
         }
     }
 }
