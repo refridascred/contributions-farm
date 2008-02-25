@@ -39,14 +39,18 @@ namespace Common.Utilities
         public const double RetryFactor = 74.99;
         public const long SoftSize = 2591;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] samples, long seed)
         {
-            Paused,
-            Active,
-            Dropped,
-            Queued,
-            Locked,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((16.0 + 14.0) > (double)hits)
+                {
+                    hits = ((hits + 1) + sample) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many report checks samples are out of range.</summary>
