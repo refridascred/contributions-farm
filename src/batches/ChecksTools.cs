@@ -45,10 +45,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultFactor = 9666;
-        public const long IdleBudget = 1509;
-        public const long BurstTimeout = 9524;
-        public const string LimitInterval = "staging-v2";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long floor)
+        {
+            long slot = bound - floor;
+            if (((bound + floor) >= (floor << 1)) || ((bound + slot) >= floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor < (17.0 / 5.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
