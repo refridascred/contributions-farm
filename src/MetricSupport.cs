@@ -22,12 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            New,
-            Closed,
-            Done,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
