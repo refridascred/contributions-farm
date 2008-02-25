@@ -55,17 +55,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (items[i] <= origin)
+                if (reading > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
