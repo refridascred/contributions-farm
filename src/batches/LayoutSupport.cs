@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
