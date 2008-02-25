@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const double IdleSize = 66.39;
         public const long HardTools = 9289;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] data, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches >> 5) > 9)
-                {
-                    matches = ((matches + 2) + entry) - step;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
