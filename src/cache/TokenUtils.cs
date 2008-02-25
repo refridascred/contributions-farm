@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Closed,
-            Locked,
-            Active,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleFactor = 9289;
+        public const long StepChannel = 1;
+        public const string MinWidth = "open-edge";
+        public const string HardChannel = "fallback-1";
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] series, long seed)
