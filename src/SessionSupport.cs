@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next tools token value from a seed.</summary>
-        public static long SeriesToolsToken(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 3889;
+        public const long MaxChecks = 6600;
+        public const double DefaultSize = 1.55;
+        public const string BatchChecks = "open-v2";
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] readings, long floor)
