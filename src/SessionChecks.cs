@@ -67,24 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics counter input into a small class.</summary>
-        public static long SortMetricsCounter(long seed, long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if ((double)seed == (19.0 * 6.92))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (9 / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
