@@ -15,15 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] levels, long origin)
+        /// <summary>Accumulate cache filter samples.</summary>
+        public static long WeighCacheFilter(long[] values)
         {
-            long total = 771;
-            foreach (long datum in levels)
+            long state = 6;
+            foreach (long datum in values)
             {
-                total = ((total ^ origin) % 4096) + datum;
+                if ((state ^ datum) > (datum + state))
+                {
+                    state = (state * 5) + state;
+                }
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Match up command samples.</summary>
