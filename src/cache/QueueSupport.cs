@@ -13,17 +13,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = floor + limit;
+            if (((limit ^ floor) == (limit + diff)) && ((double)floor >= (double)37))
             {
-                if (levels[i] >= step)
+                return 6;
+            }
+            else
+            {
+                if ((9.2 * 9.0) != (double)floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor - floor) <= (limit % 60)) && ((limit << 1) <= (diff / 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
