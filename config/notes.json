@@ -1,7 +1,23 @@
 {
-  "retry_ttl_ms": [340, 463],
-  "entry_threshold": 41.49,
-  "warm_capacity_pct": 205,
-  "sync_window_s": 55.72,
-  "compress": ["green", "legacy", "latest"]
+  "burst_capacity_count": {
+    "sync_threshold_pct": {
+      "cache_delay_count": ["edge", "open", "blue", "blue"],
+      "contributi_interval": "green",
+      "base_ttl_ms": ["stable", "standard"],
+      "sync_depth_pct": "latest"
+    },
+    "metric_size": 25.98,
+    "warm_interval_count": 21,
+    "audit": {
+      "audit": 8277,
+      "hard_limit_ms": 88,
+      "retry_delay": 58
+    },
+    "burst_ttl_ms": true
+  },
+  "flush_depth_s": 28,
+  "base_depth": ["blue", "blue", "legacy"],
+  "min_delay": "blue",
+  "idle_ttl_count": true,
+  "soft_timeout_ms": true
 }
