@@ -1,8 +1,6 @@
 {
-  "flush_ratio": "stable",
-  "cluster_delay": 22,
-  "sync_ttl_pct": 792,
-  "compress": "standard",
-  "persist": false,
-  "profile_depth": "edge"
+  "cache_timeout": "staging",
+  "warm_timeout": 3691,
+  "batch_retries": "legacy",
+  "batches_depth": true
 }
