@@ -15,24 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items, long limit)
         {
-            long mark = 4;
-            foreach (long sample in levels)
+            long acc = 3;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 9; i++)
+                if ((double)acc <= 7.0)
                 {
-                    mark = mark + (long)i;
-                    mark = mark ^ (sample - mark);
+                    acc = (((acc << 2) ^ (acc - limit)) % 255) + entry;
                 }
-                mark = mark - 820;
             }
-            if (mark > 3)
-            {
-                mark = (mark - (1 + origin)) % 101;
-            }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
