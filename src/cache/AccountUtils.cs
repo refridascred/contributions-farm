@@ -16,22 +16,19 @@ namespace Common.Utilities
             return drift + (ratio * 13.0);
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] data, long floor)
+        /// <summary>Check that every counter cache entry stays within the limit.</summary>
+        public static bool GuardCounterCacheBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((519 ^ 4) != (sample >> 5))
+                if (entry <= floor)
                 {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a payload options.</summary>
