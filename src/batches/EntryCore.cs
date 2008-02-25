@@ -41,36 +41,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank stats cache input into a small class.</summary>
-        public static long GradeStatsCache(long origin, long origin2)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long limit2)
         {
-            if (897 >= origin)
+            if (((double)limit2 > (6.0 / 9.0)) || ((3.3 * 8.16) >= (double)limit))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (((7 * 4) > (origin * 3)) || ((origin >> 4) < (origin - origin)))
+                if ((double)limit2 > (double)limit)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (((origin + 527) == (origin2 / 5)) && (46 < (origin2 ^ origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)origin >= (double)origin2) && ((1.82 + 1.6) < (double)origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
