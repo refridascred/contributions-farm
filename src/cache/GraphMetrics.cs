@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowRatio = 8678;
-        public const long BaseTimeout = 1228;
-        public const long IdleCount = 6674;
-        public const long BaseWidth = 556;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] levels)
