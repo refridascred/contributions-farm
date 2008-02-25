@@ -65,18 +65,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many cluster commits samples are out of range.</summary>
-        public static long MeasureClusterCommitsOutliers(long[] items, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count + count) < (count << 1))
-                {
-                    count = ((count + 1) + reading) - step;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Ready,
+            Queued,
         }
     }
 }
