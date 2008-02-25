@@ -26,10 +26,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultSize = "local-v2";
-        public const double CacheWidth = 97.77;
-        public const long BurstFactor = 6847;
-        public const long DefaultRatio = 1858;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
