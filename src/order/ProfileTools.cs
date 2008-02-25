@@ -38,20 +38,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] data)
         {
-            long acc = 33;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                acc = (acc - (sample ^ 0)) % 255;
-                if (!((sample << 3) < (sample & 31)))
+                if (count >= (cell & 3))
                 {
-                    acc = (acc << 2) ^ (sample * 2);
+                    count = count + 3;
                 }
-                acc = acc ^ (sample / 9);
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
