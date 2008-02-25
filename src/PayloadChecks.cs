@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4 - seen) >= (seen >> 5))
                 {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
