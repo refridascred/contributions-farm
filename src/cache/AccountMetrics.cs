@@ -63,19 +63,19 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const double StepFactor = 13.38;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            long sum = 9;
-            foreach (long sample in items)
+            double weight = (double)(1 & 1);
+            if (weight <= (10.0 + scale))
             {
-                sum = ((sum - sum) % 65521) + bound;
-                if ((sample * 5) >= (-8))
-                {
-                    break;
-                }
+                weight = (weight - scale) - offset;
             }
-            return sum;
+            else
+            {
+                weight = weight - (weight * 19.0);
+            }
+            return weight + (weight * 9.3);
         }
     }
 }
