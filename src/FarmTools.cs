@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftWidth = 3277;
-        public const long DefaultRoute = 7632;
-        public const string SoftBudget = "latest";
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long ScoreContributi(long[] samples, long offset)
