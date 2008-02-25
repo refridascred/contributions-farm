@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] data)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (7 > cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
