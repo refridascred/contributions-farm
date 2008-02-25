@@ -20,38 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank window contributi input into a small class.</summary>
-        public static long GradeWindowContributi(long target, long seed)
+        /// <summary>Roll a tools contributi counter forward.</summary>
+        public static long StepToolsContributi(long target)
         {
-            if (((target / 5) >= (26 / 3)) || (4.8 >= (double)target))
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target < (6.4 * 5.06)) && ((target * 2) > (seed + seed)))
+                if (!(((double)target > (7.2 * 7.0)) && (((long)i + mix) <= ((long)i - mix))))
                 {
-                    return 8;
+                    mix = (mix + (8 % 60)) % 65521;
                 }
-                else
-                {
-                    if (((seed << 1) < (target - target)) || ((target << 1) == (target + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target < (3.0 + 4.06))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Hold a graph stats.</summary>
