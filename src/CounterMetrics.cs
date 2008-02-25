@@ -59,29 +59,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session window pair into a bucket.</summary>
-        public static long ClassifySessionWindow(long limit, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long floor2)
         {
-            long span = limit - floor;
-            if (limit > (span + limit))
+            if (!((floor % 3) < (floor2 * 2)))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((780 - limit) > (span + span))
+                if (!((15 + floor) <= floor2))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((floor + limit) > (floor << 1))
+                    if ((floor >> 1) != (205 * 3))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 0;
+                        return 3;
                     }
                 }
             }
