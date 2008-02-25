@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
             public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
