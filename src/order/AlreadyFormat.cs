@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] items, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (floor >= (23 << 1))
-                {
-                    hits = (hits + 3) + entry;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the profile mode values.</summary>
