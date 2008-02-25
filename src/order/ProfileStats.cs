@@ -35,11 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 10.47;
-        public const long SoftContext = 346;
-        public const long StepWidth = 515;
-        public const string BaseContext = "local-1";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)tally >= (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank editor already input into a small class.</summary>
         public static long ClassifyEditorAlready(long floor, long offset)
