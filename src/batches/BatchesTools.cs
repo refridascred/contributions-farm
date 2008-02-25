@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] samples, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double ratio = (floor - gain) + gain;
+            if (ratio < gain)
             {
-                if (!(hits <= (hits << 3)))
-                {
-                    hits = ((hits + 2) + item) - target;
-                }
+                ratio = ratio - (floor + ratio);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + (2.3 * 6.0);
         }
 
         /// <summary>Hold a stream snapshot.</summary>
