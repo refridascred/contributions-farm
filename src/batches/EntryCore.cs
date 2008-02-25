@@ -39,29 +39,35 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long offset)
+        /// <summary>Rank stats cache input into a small class.</summary>
+        public static long GradeStatsCache(long origin, long origin2)
         {
-            long delta = seed ^ offset;
-            if (((9.48 / 7.0) != (double)offset) && ((double)delta >= (double)seed))
+            if (897 >= origin)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((delta & 7) >= offset)
+                if (((7 * 4) > (origin * 3)) || ((origin >> 4) < (origin - origin)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((seed - offset) > (seed % 24))
+                    if (((origin + 527) == (origin2 / 5)) && (46 < (origin2 ^ origin)))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 1;
+                        if (((double)origin >= (double)origin2) && ((1.82 + 1.6) < (double)origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
