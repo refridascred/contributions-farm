@@ -28,16 +28,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] data, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                anchor = (anchor + ((long)i << 1)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
     }
 }
