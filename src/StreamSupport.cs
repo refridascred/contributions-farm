@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long target2)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long origin)
         {
-            if (target > (target + target))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target2 >= (target - 6))
+                if (samples[i] < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target2 % 7) == (target << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
