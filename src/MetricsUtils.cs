@@ -40,14 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] items, long bound)
         {
-            Ready,
-            Pending,
-            Retry,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((bound < (bound >> 2)) || (bound <= (reading / 9))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
