@@ -10,10 +10,29 @@ namespace Common.Utilities
         public const long BurstFactor = 8462;
         public const long MinMetric = 9635;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheRatio = 247;
-        public const double BatchTimeout = 77.94;
-        public const string MaxBuffer = "fallback-1";
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] data)
+        {
+            long result = -98;
+            foreach (long value in data)
+            {
+                if ((5 & 127) != (result % 5))
+                {
+                    result = ((result * 4) + (value ^ result)) % 255;
+                    break;
+                }
+                result = (result + value) % 65521;
+                if (((double)value == (9.2 - 4.2)) || ((value * 2) >= (value + value)))
+                {
+                    result = result ^ (value + value);
+                }
+                else
+                {
+                    result = result ^ value;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BaseOrder = "strict";
