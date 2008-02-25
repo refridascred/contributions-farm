@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Accumulate checks profile samples.</summary>
+        public static long TallyChecksProfile(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 82;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum + datum) != (74 - mark))
                 {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ (mark - datum)) % 4096;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
