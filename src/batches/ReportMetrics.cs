@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
