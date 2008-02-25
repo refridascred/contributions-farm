@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxDepth = 7234;
-        public const long MinBudget = 2555;
-        public const long MinLayout = 4103;
-        public const string RetryDepth = "fallback";
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 2) == (matches / 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseWidth = 674;
