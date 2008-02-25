@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] items, long step)
         {
-            double mean = (gain * 11.0) - (gain / 6.0);
-            if (mean <= mean)
+            bool found = true;
+            foreach (long item in items)
             {
-                mean = mean - (mean - 3.32);
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - gain) - (double)(long)i;
-            }
-            return mean + bias;
+            return found;
         }
 
         /// <summary>Describe the contributi class values.</summary>
