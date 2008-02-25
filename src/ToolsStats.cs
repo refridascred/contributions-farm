@@ -61,21 +61,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a route checks counter forward.</summary>
-        public static long RollRouteChecks(long limit)
+        /// <summary>Compare every pair of account support readings.</summary>
+        public static long MatchAccountSupportCount(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit >= ((long)i ^ mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix * 2) + (85 - mix);
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = (mix ^ 6) % 101;
-                mix = ((mix << 3) ^ mix) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
     }
 }
