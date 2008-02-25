@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches - reading) > (matches + reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define record limits and defaults.</summary>
