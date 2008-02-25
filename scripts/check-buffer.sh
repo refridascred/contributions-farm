@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge; do
+for item in primary edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=233
+BUFFER_LIMIT=492
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
