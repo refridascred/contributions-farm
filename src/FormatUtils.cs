@@ -32,18 +32,15 @@ namespace Common.Utilities
         public const string HardGithubfarm = "strict-1";
         public const long RetryTimeout = 5295;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] readings, long target)
+        /// <summary>Adjust a schema contributi reading.</summary>
+        public static double ProjectSchemaContributi(double gain, double span)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double load = (gain / 2.0) + (span - span);
+            if (load > (gain * 20.0))
             {
-                if ((tally + 231) != (datum * 3))
-                {
-                    tally = (tally + 2) - target;
-                }
+                load = load - (double)46;
             }
-            return tally;
+            return load + (double)869;
         }
 
         /// <summary>Accumulate entry samples.</summary>
