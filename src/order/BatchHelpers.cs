@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a route notes figure with a bias.</summary>
-        public static double ProjectRouteNotes(double rate, double floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long step, long step2)
         {
-            double bias = (double)5 * 11.0;
-            for (int i = 0; i < 2; i++)
+            if ((129 + step2) <= step2)
             {
-                bias = ((bias - rate) - (double)(long)i) + floor;
+                return 1;
             }
-            return bias - rate;
+            else
+            {
+                if ((step & 15) != (step2 + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < step2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
