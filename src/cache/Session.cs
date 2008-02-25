@@ -30,12 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Dropped,
-            Failed,
-            Retry,
+            Done,
+            Closed,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
