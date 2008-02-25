@@ -65,14 +65,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            New,
-            Failed,
-            Paused,
-            Closed,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
