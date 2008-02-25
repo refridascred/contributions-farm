@@ -55,10 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryLevel = 1499;
-        public const double CacheLevel = 55.11;
-        public const double BaseWindow = 73.58;
+        /// <summary>Locate a cache channel reading by value.</summary>
+        public static long LocateCacheChannelIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterMatches(long[] items)
