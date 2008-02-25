@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 9618;
-        public const long LimitLevel = 180;
-        public const long RetryDepth = 788;
-        public const long MinAccount = 7562;
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first contributi stats entry that matches the target.</summary>
         public static long LookupContributiStatsIndex(long[] items, long bound)
