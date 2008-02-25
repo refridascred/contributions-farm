@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] data, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] series, long seed)
         {
-            long result = 127;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)data.Length << 3) <= 6)
+                if (series[i] > seed)
                 {
-                    result = ((result ^ floor) % 101) + reading;
-                }
-                else
-                {
-                    result = ((result * 4) + ((-29) << 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
