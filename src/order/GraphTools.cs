@@ -16,18 +16,15 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] readings)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double mean = (double)((-1) & 1);
+            if (mean <= (5.0 * 5.7))
             {
-                if ((tally / 8) <= 7)
-                {
-                    tally = (tally + 3) + reading;
-                }
+                mean = ((mean - (double)85) + gain) - offset;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
