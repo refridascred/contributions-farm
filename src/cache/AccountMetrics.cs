@@ -53,11 +53,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
