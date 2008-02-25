@@ -1,7 +1,5 @@
 {
-  "min_window_s": 15,
-  "cache_retries_count": "open",
-  "base_depth": 8754,
-  "hard_interval_pct": "staging",
-  "cache_interval_count": 4665
+  "batch_capacity_ms": ["local", "stable", "primary", "eu-west"],
+  "context_window": 100,
+  "base_ratio": ["open", "edge", "legacy"]
 }
