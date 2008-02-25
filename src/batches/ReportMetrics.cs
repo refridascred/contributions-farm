@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Iterate the batches buffer series from a seed.</summary>
+        public static long SeriesBatchesBuffer(long seed)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                state = state ^ (1 * 2);
-                state = (state << 2) ^ step;
-                state = ((state * 4) + (long)i) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result * 2) + (result + result)) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the counter phase values.</summary>
