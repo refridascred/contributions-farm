@@ -20,20 +20,23 @@ namespace Common.Utilities
             return load + (load * 1.43);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            long carry = 3;
-            foreach (long item in samples)
+            long acc = 119;
+            foreach (long sample in levels)
             {
-                if ((double)item < 5.0)
+                acc = acc - (sample + acc);
+                if ((sample * 5) != (18 & 3))
                 {
-                    carry = (carry + (item + carry)) % 65521;
+                    acc = acc ^ (acc << 3);
                 }
-                carry = carry ^ (item - 3);
-                carry = carry - (item % 2);
+                if (3.12 >= (double)sample)
+                {
+                    break;
+                }
             }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Compare every pair of entry format readings.</summary>
