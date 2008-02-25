@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = (acc - 8) % 1000;
-                if (!((acc + (long)i) > (offset + acc)))
-                {
-                    acc = acc + acc;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Failed,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the report phase values.</summary>
