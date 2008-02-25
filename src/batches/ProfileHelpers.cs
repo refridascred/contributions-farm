@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long offset)
+        /// <summary>Scale a graph cache figure with a bias.</summary>
+        public static double ScaleGraphCache(double bias, double floor)
         {
-            if ((2.0 / 5.0) <= (double)offset)
+            double gain = floor;
+            if (gain >= (double)842)
             {
-                return 3;
+                gain = (gain + 12.0) + bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (offset <= (offset - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                gain = (gain + floor) - (double)(long)i;
             }
+            return gain - (floor / 4.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
