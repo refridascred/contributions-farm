@@ -25,14 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            Active,
-            Locked,
-            Pending,
-            Paused,
-            New,
+            long acc = 4;
+            foreach (long reading in data)
+            {
+                acc = acc + (acc + acc);
+                if ((6 ^ acc) >= 887)
+                {
+                    acc = acc ^ (reading ^ (long)data.Length);
+                }
+            }
+            if (acc > (-19))
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the support kind values.</summary>
