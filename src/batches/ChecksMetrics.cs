@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 2083;
-        public const double StepLevel = 73.26;
-        public const long StepSize = 3844;
-        public const long MinSize = 5118;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Idle,
+            Stale,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordHits(long[] data)
