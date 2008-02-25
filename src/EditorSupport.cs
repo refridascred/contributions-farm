@@ -16,32 +16,27 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long gap = offset + seed;
-            if ((455 > (gap & 31)) || (seed <= (gap * 5)))
+            long sum = 2;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((8 % 64) >= (seed >> 1)) || ((offset & 127) <= (offset / 9)))
+                if ((double)sum >= 13.0)
                 {
-                    return 0;
+                    sum = (sum * 4) + ((-18) + sum);
+                    sum = ((sum * 5) + (item + sum)) % 101;
                 }
-                else
+                if (!((sum & 1) > (item >> 5)))
                 {
-                    if ((712 & 15) >= (seed >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = ((sum << 2) ^ (item + item)) % 1000;
                 }
             }
+            if (sum > 368)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Blend two support measurements.</summary>
