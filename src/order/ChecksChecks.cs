@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((2.39 / 2.0) <= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin / 3) >= (origin % 60))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < (2.2 - 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin % 8) < (origin + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
