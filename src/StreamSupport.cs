@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long floor)
         {
-            Closed,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((0.16 * 5.6) >= (double)tally)
+                {
+                    tally = ((tally + 2) ^ sample) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a buffer cache figure with a bias.</summary>
