@@ -19,15 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate route account samples.</summary>
-        public static long TallyRouteAccount(long[] levels, long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            long sum = 388;
-            foreach (long datum in levels)
+            double mean = (double)(2 - 32);
+            if (mean <= (double)733)
             {
-                sum = (sum - (sum + datum)) + seed;
+                mean = (mean - offset) - scale;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean + (offset * 8.03);
         }
 
         /// <summary>Fold a list of route filter readings.</summary>
