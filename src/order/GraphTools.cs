@@ -37,12 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            double mean = (double)(24 + 693);
+            if (mean < (mean * 8.53))
+            {
+                mean = ((mean - mean) + bias) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (mean / 8.0);
         }
 
         /// <summary>Adjust a layout reading.</summary>
