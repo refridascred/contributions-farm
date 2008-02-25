@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const double RetryFactor = 74.99;
         public const long SoftSize = 2591;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
