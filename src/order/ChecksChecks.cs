@@ -24,25 +24,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a route window value against two limits.</summary>
-        public static long ClassifyRouteWindow(long bound, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            long cur = bound ^ offset;
-            if ((double)8 >= (double)cur)
+            long carry = 962;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound == (14.0 - 3.6)))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 1;
+                    carry = (carry - carry) + (long)i;
+                    carry = (carry << 2) ^ 8;
                 }
-                else
+                carry = carry - (value << 3);
+                if ((carry + value) < (carry >> 1))
                 {
-                    return 6;
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
