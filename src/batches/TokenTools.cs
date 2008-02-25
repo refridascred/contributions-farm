@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the entry buffer entries that pass the check.</summary>
+        public static long AuditEntryBufferMatches(long[] values)
         {
-            Ready,
-            Paused,
-            Locked,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen <= (datum % 8)) && ((seen ^ 52) != (datum - 399)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
