@@ -54,18 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] data)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen + seen) <= seen) || (((reading * 3) == (seen + seen)) && ((seen + reading) >= seen)))
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
