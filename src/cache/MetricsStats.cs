@@ -21,22 +21,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long AuditCommandSupportMatches(long[] items)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((16.0 * 15.0) != (double)tally)
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
