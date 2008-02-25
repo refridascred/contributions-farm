@@ -1,7 +1,7 @@
-id,ratio,weight,count
-1,blue,staging,543
-2,639,latest,local
-3,97.45,53.18,61.35
-4,575,54.62,cached
-5,476,110,708
-6,strict,127,349
+id,region,rank,state
+1,51.06,36.4,994
+2,183,55.74,edge
+3,779,1.57,staging
+4,9.21,97.17,333
+5,standard,96,42.81
+6,850,30.88,877
