@@ -35,10 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftWidth = 944;
-        public const string WindowQueue = "latest-edge";
-        public const double BatchDepth = 85.01;
-        public const double MinRatio = 95.0;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double span)
+        {
+            double scale = span;
+            return (scale - span) + gain;
+        }
     }
 }
