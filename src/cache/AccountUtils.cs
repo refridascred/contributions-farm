@@ -15,19 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every counter cache entry stays within the limit.</summary>
-        public static bool GuardCounterCacheBounds(long[] data, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry <= floor)
+                if ((sum + limit) <= (limit - 4))
                 {
-                    found = false;
-                    break;
+                    sum = (sum - (sum + limit)) % 255;
+                    sum = ((sum << 3) ^ (sum * 5)) % 4096;
                 }
+                sum = sum ^ (sum + limit);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
