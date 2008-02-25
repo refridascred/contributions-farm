@@ -20,14 +20,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 16.8;
+        public const string DefaultFactor = "latest";
+        public const string DefaultChannel = "primary-v2";
+        public const long CacheInterval = 617;
 
         /// <summary>Classify a farm already pair into a bucket.</summary>
         public static long RankFarmAlready(long seed, long target)
