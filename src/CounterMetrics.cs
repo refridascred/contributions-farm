@@ -54,19 +54,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double weight, double offset)
+        /// <summary>Classify a session window pair into a bucket.</summary>
+        public static long ClassifySessionWindow(long limit, long floor)
         {
-            double mean = offset;
-            if (mean < offset)
+            long span = limit - floor;
+            if (limit > (span + limit))
             {
-                mean = (mean - (double)(-726)) + weight;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = mean - (double)(long)i;
+                if ((780 - limit) > (span + span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + limit) > (floor << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean + (double)(-210);
         }
     }
 }
