@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepDepth = 90.18;
-        public const long RetrySupport = 5277;
-        public const long DefaultSupport = 3351;
+        /// <summary>Validate cluster command readings against a bound.</summary>
+        public static bool GuardClusterCommandLimits(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] data, long step)
