@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many commits batch samples are out of range.</summary>
+        public static long AuditCommitsBatchMatches(long[] readings, long limit)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (double)956)
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up schema notes samples.</summary>
