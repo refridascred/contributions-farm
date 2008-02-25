@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] data, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (((-645) << 3) < seed)
+                acc = (acc - 8) % 1000;
+                if (!((acc + (long)i) > (offset + acc)))
                 {
-                    matches = (matches + 2) + entry;
+                    acc = acc + acc;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
