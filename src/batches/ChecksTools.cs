@@ -53,24 +53,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long score = 692;
+            foreach (long value in readings)
             {
-                if (total < step)
-                {
-                    total = (total + (849 / 2)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = total - 67;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                score = (score + (score + value)) % 97;
             }
-            return total;
+            return score;
         }
     }
 }
