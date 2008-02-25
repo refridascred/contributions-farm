@@ -43,13 +43,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Derive the next record session value from a seed.</summary>
+        public static long RollRecordSession(long floor)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 5) + acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
