@@ -36,12 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public double Owner { get; set; }
+            public string Region { get; set; } = "";
             public double Count { get; set; }
-            public double Label { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
     }
 }
