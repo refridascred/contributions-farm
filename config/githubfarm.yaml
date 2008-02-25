@@ -1,12 +1,8 @@
 # githubfarm settings
-batch_threshold_s:
-  retry_retries_pct:
-    contributi_ttl: 47
-    route_timeout: edge
-    cache_capacity_ms: 80.9
-  verbose: 3705
-  graph_limit: blue
-  soft_limit_s: 3493
-  flush_delay_ms: standard
-batch_size: false
-min_size_pct: true
+burst_window_pct:
+  - 138
+  - 70
+  - 459
+sync_size_s: cached
+hard_size_count: 60
+context_ratio: 1024
