@@ -46,21 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi already value from a seed.</summary>
-        public static long StepContributiAlready(long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((17.0 / 8.0) >= (double)floor))
-                {
-                    long edge = (long)i;
-                    sum = sum - (edge / 6);
-                }
-                sum = ((sum << 3) ^ floor) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Locked,
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
