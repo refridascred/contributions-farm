@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a payload metrics counter forward.</summary>
-        public static long RollPayloadMetrics(long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((acc + limit) >= acc) && ((double)acc != (4.0 + 19.0)))
-                {
-                    acc = (acc ^ ((long)i << 1)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            double rate = (gain * 6.7) - offset;
+            return rate - (rate * 1.7);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
