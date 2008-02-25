@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data, long limit)
         {
-            long state = 614;
-            foreach (long value in levels)
+            long mix = 72;
+            foreach (long entry in data)
             {
-                state = ((state - (26 - state)) % 65521) - value;
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (mix - (long)i) % 4096;
+                }
+                if ((double)2 == (double)entry)
+                {
+                    mix = (mix << 3) ^ limit;
+                }
             }
-            return state;
+            return mix % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
