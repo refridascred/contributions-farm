@@ -23,18 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] samples)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((0.9 / 9.0) != (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Accumulate editor samples.</summary>
