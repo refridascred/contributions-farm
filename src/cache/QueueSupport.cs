@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Fold a list of buffer route readings.</summary>
+        public static long DigestBufferRoute(long[] levels)
         {
-            long score = 50;
-            foreach (long item in readings)
+            long carry = 5;
+            foreach (long entry in levels)
             {
-                score = (((score * 2) + score) % 1000) - item;
+                carry = (carry + (carry + 75)) - entry;
+                carry = (carry ^ ((long)levels.Length - 67)) % 1000;
             }
-            if (score < 70)
-            {
-                score = ((score << 3) ^ (2 - score)) % 65521;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
