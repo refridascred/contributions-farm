@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] data, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = ((total << 3) ^ ((long)i + origin)) % 97;
-                total = ((total << 2) ^ (5 + (long)i)) % 65521;
-                total = (total * 3) + (origin + 0);
-                total = ((total * 2) + (long)i) % 1000;
+                if (floor <= (sample % 64))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the support phase values.</summary>
