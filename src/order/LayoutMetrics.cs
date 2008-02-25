@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
