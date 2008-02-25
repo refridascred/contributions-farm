@@ -36,39 +36,21 @@ namespace Common.Utilities
         public const long DefaultChecks = 57;
         public const string WindowLevel = "cached-v2";
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long offset, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long gap = offset + step;
-            if ((offset & 3) > (offset + gap))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - gap) < (offset - offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (gap >= 415)
+                    if ((items[i] - items[j]) == 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)gap >= (1.03 + 7.69))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the command kind values.</summary>
