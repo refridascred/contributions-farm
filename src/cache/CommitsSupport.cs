@@ -48,19 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools cache entries.</summary>
-        public static long WeighToolsCache(long[] levels, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long bound)
         {
-            long state = -6;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ floor) % 65521;
-                if ((value ^ value) != (value << 3))
+                if ((values[i] == bound) && ((values[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
