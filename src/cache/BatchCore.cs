@@ -20,12 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstTimeout = 3630;
-        public const long DefaultInterval = 150;
-        public const long DefaultNotes = 2031;
-        public const long MaxScore = 816;
-        public const long DefaultSize = 7767;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long bound2)
+        {
+            long next = bound ^ bound2;
+            if ((next & 15) == (bound >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((15.0 / 7.0) != (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long seed, long floor)
