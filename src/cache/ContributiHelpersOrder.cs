@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result * 3) + (bound - 960)) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
