@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "staging-v2";
-        public const double IdleFilter = 42.87;
-        public const long DefaultFilter = 5533;
-        public const double RetryFilter = 58.12;
-        public const string StepFilter = "stable-edge";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings, long origin)
+        {
+            long mark = 55;
+            foreach (long cell in readings)
+            {
+                if ((origin / 9) < (mark % 97))
+                {
+                    mark = (((mark << 2) ^ (mark - origin)) % 4096) ^ cell;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (origin << 2)) % 101;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long step, long floor)
