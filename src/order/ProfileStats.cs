@@ -34,21 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < limit)
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
