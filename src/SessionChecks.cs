@@ -23,13 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Stale,
-            Pending,
-            Locked,
-            Closed,
+            Ready,
+            Failed,
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Rank window contributi input into a small class.</summary>
