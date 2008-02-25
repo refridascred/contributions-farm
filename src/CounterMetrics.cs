@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long result = 27;
-            foreach (long value in data)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)value == (8.0 * 2.0)) || ((double)value < (6.0 + 19.0)))
+                if ((9.0 >= (double)origin) || ((long)i < 12))
                 {
-                    result = (result - (value << 2)) + offset;
+                    continue;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (value >> 5)) % 1000;
+                    anchor = (anchor + 753) % 1000;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a checks record.</summary>
