@@ -32,15 +32,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long carry = 7;
-            foreach (long entry in samples)
-            {
-                carry = (((carry * 5) + (carry + entry)) % 1000) - origin;
-            }
-            return carry;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
