@@ -13,13 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 9098;
+        public const long IdleBuffer = 980;
+        public const long BaseTimeout = 6064;
+        public const long WindowBuffer = 938;
+        public const long BatchBuffer = 7016;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] readings)
