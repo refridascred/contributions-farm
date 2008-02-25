@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Draft,
-            Idle,
-            Active,
-            New,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate editor account samples.</summary>
