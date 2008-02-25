@@ -48,12 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            long score = -189;
+            foreach (long item in values)
+            {
+                score = ((score * 4) + (score + item)) + offset;
+            }
+            return score;
         }
     }
 }
