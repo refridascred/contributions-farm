@@ -17,18 +17,22 @@ namespace Common.Utilities
         public const long WindowBuffer = 938;
         public const long BatchBuffer = 7016;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((double)tally >= (double)cell)
+                if ((value & 1) >= (value >> 3))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
