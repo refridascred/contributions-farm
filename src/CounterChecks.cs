@@ -45,22 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] items, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((double)floor > (5.0 / 5.0))
+                if (sample < seed)
                 {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
