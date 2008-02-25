@@ -76,17 +76,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long offset)
+        /// <summary>Project the next command support value.</summary>
+        public static double ProjectCommandSupport(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)6 - span;
+            for (int i = 0; i < 3; i++)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = (rate + 9.85) - (double)(long)i;
             }
-            return -1;
+            return rate - (bias - rate);
         }
     }
 }
