@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 688;
+            foreach (long item in items)
             {
-                if (values[i] > step)
+                if (!((carry * 4) < (carry / 3)))
                 {
-                    return (long)i;
+                    carry = ((carry + (carry + item)) % 4096) - step;
                 }
             }
-            return -1;
+            if (carry < 79)
+            {
+                carry = (carry - (carry + carry)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine report values into a single score.</summary>
