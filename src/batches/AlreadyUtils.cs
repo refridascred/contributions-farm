@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const string DefaultQueue = "standard-1";
         public const long BatchQueue = 2821;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long seed)
         {
-            Dropped,
-            Draft,
-            Retry,
-            Ready,
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
