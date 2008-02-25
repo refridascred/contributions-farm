@@ -65,23 +65,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double bias, double offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double rate = bias / 7.0;
-            if (rate < (offset / 5.0))
-            {
-                rate = rate + (rate + 2.0);
-            }
-            else
-            {
-                rate = rate + (double)5;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + rate;
+            Done,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a token entry.</summary>
