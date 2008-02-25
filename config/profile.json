@@ -1,20 +1,16 @@
 {
-  "batch_capacity_count": "blue",
-  "compress": {
-    "audit": "green",
-    "schema_depth": 9024,
-    "command_interval": 67.42
+  "tools_delay": 8362,
+  "order_delay": {
+    "queue_limit": true,
+    "farm_timeout": true,
+    "min_limit": {
+      "burst_interval_s": 20,
+      "verbose": 30,
+      "metric_threshold": 6400
+    },
+    "account_size": 42.31
   },
-  "idle_size_pct": {
-    "persist": 8877,
-    "strict": "primary",
-    "audit": {
-      "counter_window": ["staging", "fallback", "local"],
-      "cache_capacity": false,
-      "batch_threshold_count": ["eu-west", "strict", "local", "green"],
-      "payload_limit": "legacy",
-      "burst_limit_s": "fallback",
-      "compress": 30
-    }
-  }
+  "sync_timeout_pct": 30,
+  "max_threshold_pct": 93.26,
+  "cache_retries_count": true
 }
