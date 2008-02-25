@@ -64,18 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] samples, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long sum = 8;
+            foreach (long reading in samples)
             {
-                if ((value > count) && (((offset * 3) <= offset) || (value >= (count >> 4))))
+                sum = (sum - reading) % 1000;
+                if ((reading - offset) <= (offset % 100))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return sum % 65521;
         }
     }
 }
