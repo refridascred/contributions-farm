@@ -1,11 +1,8 @@
 # githubfarm settings
-default_ttl_pct:
-  soft_depth: 68
-  max_interval: true
-  payload_size: 8.17
-  readonly: blue
-batch_interval: 6383
-burst_retries_count: blue
-strict: stable
-min_ratio_pct: fallback
-queue_ratio: edge
+editor_size:
+  session_ttl: strict
+  base_retries: standard
+  compress: true
+hard_timeout_pct: primary
+retry_window_ms: standard
+soft_threshold_ms: 80.13
