@@ -1,6 +1,14 @@
 {
-  "dry_run": "standard",
-  "batch_retries_count": 30,
-  "verbose": 86.54,
-  "batch_ttl": [190, 178, 499]
+  "default_window_s": 100,
+  "soft_capacity": {
+    "strict": "staging",
+    "poll_ttl": 92.93,
+    "max_limit_count": 100,
+    "profile_ratio": 15.64,
+    "audit": [89, 64]
+  },
+  "window_window": "stable",
+  "channel_capacity": 3655,
+  "audit": 56,
+  "flush_delay": "legacy"
 }
