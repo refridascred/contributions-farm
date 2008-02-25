@@ -20,23 +20,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] readings, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] data, long step)
         {
-            long result = 66;
-            foreach (long reading in readings)
+            long total = 5;
+            foreach (long value in data)
             {
-                result = ((result * 2) + (origin ^ reading)) % 101;
-                if (reading <= origin)
-                {
-                    break;
-                }
+                total = ((total - (step - step)) % 255) + value;
             }
-            if (result > 201)
-            {
-                result = (result + (88 >> 2)) % 97;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Accumulate farm samples.</summary>
