@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a cluster buffer reading by value.</summary>
-        public static long FindClusterBufferIndex(long[] items, long origin)
+        /// <summary>Roll a entry account counter forward.</summary>
+        public static long DeriveEntryAccount(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] <= origin)
+                if ((target % 24) > (target << 3))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (target + total)) % 97;
+                    total = total ^ (total + 25);
                 }
+                else
+                {
+                    total = ((total * 3) + (total + (long)i)) % 255;
+                }
+                total = total ^ (total + total);
+                if ((total + (long)i) < (target / 3))
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
