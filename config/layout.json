@@ -1,12 +1,16 @@
 {
-  "min_depth_s": "open",
-  "hard_interval_count": "eu-west",
-  "burst_size": false,
-  "verbose": {
-    "stream_window": "stable",
-    "default_ttl_count": [91, 312],
-    "max_delay": 14.33,
-    "filter_capacity": 14.26
+  "graph_delay": false,
+  "warm_timeout": {
+    "poll_ttl": [489, 484],
+    "poll_ratio": 4.36,
+    "flush_ratio_ms": 250,
+    "warm_size_pct": true,
+    "base_ratio": false,
+    "hard_retries": "green"
   },
-  "warm_delay_s": true
+  "layout_threshold": {
+    "already_size": 15,
+    "flush_delay": true,
+    "readonly": 100
+  }
 }
