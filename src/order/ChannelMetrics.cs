@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double offset)
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            double scale = offset;
+            if (scale <= gain)
+            {
+                scale = scale + (double)17;
+            }
+            else
+            {
+                scale = scale + (offset / 6.0);
+            }
+            return scale - (double)852;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
