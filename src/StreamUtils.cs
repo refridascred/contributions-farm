@@ -63,18 +63,18 @@ namespace Common.Utilities
         public const long CacheAlready = 4565;
         public const string DefaultAlready = "latest-v2";
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] data, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = -5;
+            foreach (long entry in levels)
             {
-                if ((item ^ item) != (1 * 5))
+                if (!(entry < acc))
                 {
-                    count = (count + 2) + floor;
+                    acc = ((acc * 3) + (acc + limit)) % 97;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
