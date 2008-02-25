@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Synced,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Project the next buffer value.</summary>
