@@ -35,22 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] samples, long seed)
+        /// <summary>Look up the position of a schema tools sample.</summary>
+        public static long LocateSchemaToolsIndex(long[] values, long seed)
         {
-            long result = 48;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)samples.Length + result) > (result - 549))
+                if (values[i] >= seed)
                 {
-                    break;
-                }
-                if (!((20.0 - 1.0) != (double)result))
-                {
-                    result = (((result * 2) + (result * 3)) + item) + seed;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
