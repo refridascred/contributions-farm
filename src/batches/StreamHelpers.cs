@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = -7;
-            foreach (long entry in levels)
-            {
-                result = result - (offset - result);
-                if ((entry / 2) <= 854)
-                {
-                    result = ((result << 2) ^ offset) % 65521;
-                }
-                if ((result - result) == (offset * 5))
-                {
-                    break;
-                }
-            }
-            if (result < 17)
-            {
-                result = (result << 2) ^ (result - offset);
-            }
-            return result;
+            Ready,
+            Synced,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
