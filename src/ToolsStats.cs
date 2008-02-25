@@ -64,10 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultInterval = 78.53;
-        public const long BatchStream = 7211;
-        public const long MaxBudget = 3411;
-        public const long MaxDepth = 8964;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Queued,
+            Draft,
+            Active,
+            Ready,
+        }
     }
 }
