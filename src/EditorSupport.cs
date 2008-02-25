@@ -46,17 +46,13 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
-        public static long FindGithubfarmContributiIndex(long[] values, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
