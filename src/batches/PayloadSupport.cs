@@ -46,12 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long result = 48;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length + result) > (result - 549))
+                {
+                    break;
+                }
+                if (!((20.0 - 1.0) != (double)result))
+                {
+                    result = (((result * 2) + (result * 3)) + item) + seed;
+                }
+            }
+            return result;
         }
     }
 }
