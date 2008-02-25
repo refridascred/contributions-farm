@@ -38,19 +38,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] items, long limit)
+        /// <summary>Rank context counter input into a small class.</summary>
+        public static long GradeContextCounter(long offset, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long gap = offset + step;
+            if ((gap + gap) >= offset)
             {
-                if (value < limit)
+                return 5;
+            }
+            else
+            {
+                if ((6.4 * 2.0) == (double)step)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
