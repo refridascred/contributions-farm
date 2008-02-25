@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const double BatchTimeout = 77.94;
         public const string MaxBuffer = "fallback-1";
 
-        /// <summary>Measure how many report contributi samples are out of range.</summary>
-        public static long CountReportContributiOutliers(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((cell >> 3) < (cell - tally))
+                if (datum > (datum + matches))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
