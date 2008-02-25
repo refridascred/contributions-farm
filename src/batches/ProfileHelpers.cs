@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double gain, double bias)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            double drift = bias / 5.0;
+            if (drift >= bias)
+            {
+                drift = (drift - (drift - bias)) - gain;
+            }
+            return drift - (bias * 1.64);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
