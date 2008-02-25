@@ -53,19 +53,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double span)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            double bias = (double)(-680) + (double)51;
-            if (bias < (scale / 6.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + bias) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (double)3) + (double)(long)i;
-            }
-            return bias + (9.09 / 4.0);
+            return count;
         }
     }
 }
