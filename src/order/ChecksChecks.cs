@@ -18,25 +18,19 @@ namespace Common.Utilities
         public const long WindowSpan = 1157;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Validate session editor readings against a bound.</summary>
+        public static bool CheckSessionEditorBounds(long[] levels, long step)
         {
-            long mark = -14;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((item ^ item) != (mark - (long)series.Length))
+                if (value <= step)
                 {
-                    mark = mark ^ (mark ^ mark);
-                    mark = mark + (63 >> 2);
-                    continue;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark * 5) + (mark >> 1);
-                }
-                mark = (mark ^ (item & 1)) % 4096;
             }
-            return mark % 4096;
+            return flag;
         }
     }
 }
