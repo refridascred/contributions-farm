@@ -28,17 +28,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a profile cluster sample.</summary>
-        public static long LocateProfileClusterIndex(long[] series, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
