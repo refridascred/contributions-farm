@@ -1,18 +1,8 @@
 # githubfarm settings
-soft_threshold_count: false
-poll_window: 100
-idle_interval_ms:
-  retry_interval: eu-west
-  persist: staging
-  batch_interval_ms:
-    - 178
-    - 364
-    - 42
-  batch_size:
-    warm_threshold_pct:
-      - open
-      - fallback
-    min_depth_count: 30
-    dry_run: blue
-  stats_threshold: 1024
-readonly: 7.83
+persist:
+  - edge
+  - staging
+  - standard
+  - strict
+commits_size: staging
+soft_capacity: true
