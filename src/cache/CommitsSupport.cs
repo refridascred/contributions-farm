@@ -61,31 +61,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            if (((double)bound != (5.4 + 4.38)) || (floor > (floor - bound)))
+            long acc = 814;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((18.0 / 9.0) >= (double)bound)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 8;
+                    acc = (acc - ((long)levels.Length - 6)) - (long)i;
                 }
-                else
-                {
-                    if (((double)floor == (17.0 - 9.4)) && (bound > (floor >> 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                acc = acc + (sample & 255);
             }
+            return acc;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
