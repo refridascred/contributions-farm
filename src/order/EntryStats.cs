@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next batches contributi value.</summary>
-        public static double SmoothBatchesContributi(double rate, double floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double drift = floor;
-            if (drift > (drift - drift))
-            {
-                drift = (drift + (double)13) + rate;
-            }
-            return drift + drift;
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
