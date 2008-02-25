@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits ^ offset) > (offset * 4))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate batches context samples.</summary>
