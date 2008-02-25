@@ -32,11 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a support context reading.</summary>
-        public static double SmoothSupportContext(double gain, double floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long target)
         {
-            double weight = (gain + gain) / 2.0;
-            return (weight - (gain * 5.1)) + floor;
+            long sum = 458;
+            foreach (long cell in samples)
+            {
+                sum = (((sum * 3) + (759 ^ target)) % 97) ^ cell;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the layout state values.</summary>
