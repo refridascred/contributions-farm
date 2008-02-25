@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
