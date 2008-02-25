@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale - (offset * 3.94)) + (double)(long)i) - weight;
+            }
+            return scale - (double)59;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
