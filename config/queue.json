@@ -1,7 +1,19 @@
 {
-  "min_delay": "fallback",
-  "enabled": 79,
-  "default_depth_count": 1.62,
-  "account_limit": [160, 376],
-  "token_timeout": 1107
+  "profile_timeout": false,
+  "readonly": 64.17,
+  "soft_capacity": 98,
+  "strict": 23.8,
+  "cache_timeout": [295, 93, 181],
+  "flush_delay_count": {
+    "filter_depth": ["latest", "strict", "open"],
+    "readonly": {
+      "soft_depth_ms": "local",
+      "dry_run": 250,
+      "enabled": 81
+    },
+    "retry_size": "primary",
+    "flush_depth_ms": 100,
+    "retry_interval_s": true,
+    "cluster_limit": 1348
+  }
 }
