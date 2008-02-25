@@ -41,16 +41,38 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Rank already booking input into a small class.</summary>
+        public static long GradeAlreadyBooking(long step, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            if ((step ^ step) > seed)
             {
-                carry = ((carry << 2) ^ origin) % 255;
-                carry = ((carry * 5) + (long)i) % 101;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (((6.01 / 4.0) == (double)step) || (step < (seed ^ step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 12) < (step / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step >= (686 ^ seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
