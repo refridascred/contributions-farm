@@ -1,19 +1,5 @@
 {
-  "idle_retries_count": "staging",
-  "audit": "edge",
-  "burst_interval": {
-    "warm_delay": {
-      "max_interval": 8,
-      "filter_window": 25,
-      "default_ttl": true,
-      "min_interval_ms": 75,
-      "schema_delay": "cached",
-      "retry_threshold": 2715
-    },
-    "idle_ttl_s": "strict",
-    "max_timeout_s": ["fallback", "local", "open", "green"],
-    "soft_retries": false,
-    "default_threshold_s": 68,
-    "max_retries_count": 33.71
-  }
+  "cache_timeout": 7265,
+  "verbose": 81.08,
+  "hard_size_pct": [52, 111]
 }
