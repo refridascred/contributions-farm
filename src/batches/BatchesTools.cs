@@ -29,18 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seen > (seen ^ datum))
-                {
-                    seen = (seen + 2) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchWidth = "fallback-edge";
+        public const long DefaultLevel = 4468;
+        public const long MaxQueue = 6457;
+        public const long MaxSpan = 6474;
+        public const string RetryQueue = "local-1";
     }
 }
