@@ -31,11 +31,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultRatio = 5.18;
-        public const long BaseCount = 4120;
-        public const long IdleLevel = 8325;
-        public const long HardMetric = 7417;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Synced,
+            Draft,
+            Closed,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
         public static long IterateSessionGithubfarm(long seed)
