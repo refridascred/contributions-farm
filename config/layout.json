@@ -1,20 +1,5 @@
 {
-  "audit": 52.12,
-  "flush_ratio_ms": {
-    "persist": "open",
-    "burst_size": ["open", "edge", "open"],
-    "base_limit_count": [11, 184, 19, 337],
-    "hard_limit_pct": {
-      "max_ratio": "latest",
-      "soft_timeout_pct": "local",
-      "filter_retries": "stable",
-      "poll_depth_pct": "edge"
-    },
-    "hard_threshold_s": [426, 106, 457, 156],
-    "soft_interval_ms": "standard"
-  },
-  "idle_delay": 4971,
-  "compress": "green",
-  "max_depth_ms": "primary",
-  "dry_run": 97.94
+  "persist": 83.85,
+  "order_depth": 8027,
+  "poll_threshold": "local"
 }
