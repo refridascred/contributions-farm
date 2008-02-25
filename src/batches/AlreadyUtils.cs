@@ -16,19 +16,13 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long step)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
