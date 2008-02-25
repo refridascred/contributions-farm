@@ -44,15 +44,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double gain, double floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long origin, long bound)
         {
-            double gain2 = (floor * 1.61) / 4.0;
-            if (gain2 < (double)530)
+            if ((double)9 == (double)bound)
             {
-                gain2 = gain2 - (gain * 6.3);
+                return 8;
             }
-            return gain2 + (double)811;
+            else
+            {
+                if ((origin & 31) >= (-296))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - bound) < origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
