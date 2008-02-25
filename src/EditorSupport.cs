@@ -44,13 +44,13 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Scale a metrics profile figure with a bias.</summary>
