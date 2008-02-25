@@ -24,17 +24,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next record channel value from a seed.</summary>
-        public static long StepRecordChannel(long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] readings, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (step - 83)) % 101;
-                sum = ((sum << 3) ^ (step - step)) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
