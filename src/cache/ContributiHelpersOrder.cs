@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 2835;
-        public const long BurstTimeout = 2536;
-        public const long WindowCount = 8151;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Ready,
+            Failed,
+            Synced,
+            Active,
+            Idle,
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long bound)
