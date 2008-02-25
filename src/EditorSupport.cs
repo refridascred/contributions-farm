@@ -46,11 +46,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double bias, double bias2)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double load = (double)(96 + 27);
-            return (load + bias) + bias2;
+            Queued,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Fold a list of tools order readings.</summary>
