@@ -36,16 +36,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitGithubfarm = "latest-v2";
+        public const long MinScore = 4948;
+        public const string RetryBudget = "local-1";
+        public const long BaseGithubfarm = 9638;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
