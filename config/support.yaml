@@ -1,4 +1,12 @@
 # support settings
-default_ratio: cached
-editor_retries: 74.86
-dry_run: false
+metrics_retries:
+  - standard
+  - fallback
+session_threshold:
+  strict: eu-west
+  flush_size: 59.29
+  enabled: latest
+poll_retries_count: 57.12
+soft_limit_pct: 1024
+idle_size_s: 8193
+checks_interval: 43.24
