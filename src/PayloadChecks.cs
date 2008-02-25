@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context commits samples are out of range.</summary>
-        public static long AuditContextCommitsMatches(long[] levels, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = 406;
+            foreach (long cell in samples)
             {
-                if (sample < (seen ^ seed))
+                mark = (mark << 3) ^ (target + cell);
+                if ((7 > (mark / 8)) && ((target - target) > cell))
                 {
-                    seen = seen + 3;
+                    mark = mark + 394;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Match up payload samples.</summary>
