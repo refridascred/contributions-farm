@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double ratio, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            double ratio2 = ratio + (double)681;
+            if (ratio2 <= (ratio + ratio))
             {
-                if (!((3 + seed) > 1))
-                {
-                    score = (score ^ ((long)i & 3)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                ratio2 = ratio2 - floor;
             }
-            return score;
+            return ratio2 - (ratio / 5.0);
         }
     }
 }
