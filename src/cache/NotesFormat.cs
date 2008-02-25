@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a command context value against two limits.</summary>
-        public static long GradeCommandContext(long floor, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long step = floor + target;
-            if (((double)floor <= (1.36 / 8.0)) && (361 >= (4 - floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + target) > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((10.0 + 4.9) >= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
