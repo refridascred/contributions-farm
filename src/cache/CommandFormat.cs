@@ -14,12 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings)
         {
-            Synced,
-            Active,
-            Idle,
+            long mark = 82;
+            foreach (long reading in readings)
+            {
+                mark = ((mark ^ (mark << 1)) % 1000) ^ reading;
+                mark = mark - (mark * 5);
+                if ((mark % 100) >= mark)
+                {
+                    break;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = mark + mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
