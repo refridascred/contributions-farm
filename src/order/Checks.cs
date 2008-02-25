@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch context counter forward.</summary>
-        public static long DeriveBatchContext(long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
