@@ -95,17 +95,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] data, long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
