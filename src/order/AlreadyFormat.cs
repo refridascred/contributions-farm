@@ -32,17 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = state ^ 9;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
