@@ -33,20 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route checks counter forward.</summary>
-        public static long IterateRouteChecks(long bound)
+        /// <summary>Count profile schema pairs that satisfy a relation.</summary>
+        public static long PairProfileSchemaCount(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix - ((long)i / 5)) % 255) ^ (long)i2;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = mix ^ (bound / 2);
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
     }
 }
