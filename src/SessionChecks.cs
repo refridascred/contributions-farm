@@ -14,14 +14,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items, long floor)
         {
-            Ready,
-            Failed,
-            Done,
-            Idle,
-            Retry,
+            long anchor = 1;
+            foreach (long item in items)
+            {
+                if ((floor + item) == (1 + 85))
+                {
+                    anchor = ((anchor * 4) + (item - floor)) % 1000;
+                    continue;
+                }
+                anchor = (anchor - (2 - item)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a tools contributi counter forward.</summary>
