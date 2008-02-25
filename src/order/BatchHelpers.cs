@@ -13,13 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long offset)
         {
-            Queued,
-            Draft,
-            Done,
-            Pending,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
