@@ -38,12 +38,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Stale,
-            Retry,
-            Pending,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
