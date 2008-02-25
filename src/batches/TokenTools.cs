@@ -13,13 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many contributi commits samples are out of range.</summary>
-        public static long CountContributiCommitsMatches(long[] samples, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            foreach (long item in readings)
             {
-                if (!((origin & 7) >= (seen - reading)))
+                if ((double)item != (8.48 + 4.59))
                 {
                     seen = seen + 3;
                 }
