@@ -20,17 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next filter commits value from a seed.</summary>
-        public static long DeriveFilterCommits(long limit)
+        /// <summary>Find the first checks session entry that matches the target.</summary>
+        public static long LookupChecksSessionIndex(long[] data, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ (limit + 84);
-                state = (state - limit) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a route snapshot.</summary>
