@@ -51,23 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long target)
         {
-            double load = offset;
-            if (load < gain)
+            if ((seed > target) || (8 < (seed + target)))
             {
-                load = load + (gain * 0.49);
+                return 1;
             }
             else
             {
-                load = load + load;
+                if ((double)66 < (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load + gain)) + (double)(long)i;
-            }
-            return load + (load - offset);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
