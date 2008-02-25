@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long result = 735;
-            foreach (long value in samples)
-            {
-                result = (result + (result >> 3)) % 65521;
-                result = (result + (value + result)) % 1000;
-            }
-            if (result > 78)
-            {
-                result = (result << 3) ^ (result * 4);
-            }
-            return result % 97;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
