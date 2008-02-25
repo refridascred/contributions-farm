@@ -1,5 +1,19 @@
 {
-  "default_ttl": ["primary", "latest", "eu-west", "blue"],
-  "batch_interval_ms": true,
-  "format_ttl": false
+  "poll_depth_count": {
+    "verbose": "primary",
+    "batch_delay_s": 663,
+    "metric_timeout": 500,
+    "max_interval": false,
+    "base_limit_count": "local",
+    "idle_delay": "open"
+  },
+  "flush_ratio_count": false,
+  "poll_limit_count": {
+    "burst_interval": 250,
+    "stats_window": 100,
+    "retry_size": 90,
+    "burst_timeout_count": 5338
+  },
+  "max_ratio_count": "blue",
+  "burst_timeout": 96
 }
