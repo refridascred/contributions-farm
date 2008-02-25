@@ -32,18 +32,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] items, long limit)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = 956;
-            foreach (long datum in items)
-            {
-                if ((limit / 8) == (datum - limit))
-                {
-                    mark = ((mark << 3) ^ (limit - datum)) % 101;
-                }
-            }
-            return mark % 4096;
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
