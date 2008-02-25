@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long state = 701;
+            foreach (long datum in items)
+            {
+                state = state ^ datum;
+                state = (state * 3) + (216 - floor);
+                if ((3 + floor) <= 348)
+                {
+                    state = state + (datum & 127);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the tools kind values.</summary>
