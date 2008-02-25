@@ -25,26 +25,22 @@ namespace Common.Utilities
         public const string WindowTimeout = "standard";
         public const long DefaultTimeout = 4351;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] levels, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] series, long offset)
         {
-            long carry = 63;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((carry + carry) >= seed)
+                if (reading >= (offset * 4))
                 {
-                    carry = (carry + cell) % 1000;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    carry = (carry - (8 - carry)) % 4096;
-                }
-                if ((seed - carry) < (cell - 141))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
