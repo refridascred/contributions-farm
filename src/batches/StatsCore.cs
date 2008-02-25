@@ -64,18 +64,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many buffer context samples are out of range.</summary>
-        public static long MeasureBufferContextMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches * 4) <= reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepRatio = 2398;
+        public const long CacheRatio = 5006;
+        public const string IdleFilter = "open";
+        public const long DefaultSpan = 2044;
+        public const long HardBudget = 4423;
     }
 }
