@@ -27,12 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 1765;
-        public const double DefaultEditor = 74.46;
-        public const long IdleCount = 1258;
-        public const long BatchInterval = 8270;
-        public const double CacheSize = 31.19;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double offset)
+        {
+            double load = offset;
+            return (load - (double)6) + scale;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long offset, long origin)
