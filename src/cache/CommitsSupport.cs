@@ -53,16 +53,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long limit)
         {
-            long score = 9;
-            foreach (long item in series)
+            if (!(limit >= (seed / 7)))
             {
-                score = ((score * 5) + (3 ^ score)) - item;
-                score = ((score * 2) + (35 << 2)) % 65521;
+                return 6;
             }
-            return score % 65521;
+            else
+            {
+                if (((-9) ^ (-99)) <= (seed & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit >= (445 / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed > (limit / 5)) && ((4 + limit) > seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
