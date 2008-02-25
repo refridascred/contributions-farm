@@ -36,13 +36,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate batches context samples.</summary>
+        public static long ScoreBatchesContext(long[] items)
         {
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            long total = 0;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total - (item << 1)) % 65521;
+                    total = (total << 2) ^ ((long)i ^ item);
+                }
+                if (total > item)
+                {
+                    total = ((total * 2) + (total * 2)) % 4096;
+                }
+            }
+            return total % 4096;
         }
     }
 }
