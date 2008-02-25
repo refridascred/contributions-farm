@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] series, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 27;
+            foreach (long value in data)
             {
-                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                if (((double)value == (8.0 * 2.0)) || ((double)value < (6.0 + 19.0)))
                 {
-                    return (long)i;
+                    result = (result - (value << 2)) + offset;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (value >> 5)) % 1000;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Describe the editor class values.</summary>
