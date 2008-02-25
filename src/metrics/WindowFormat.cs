@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!(sample > floor))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double rate = bias;
+            return (rate + (double)1) + gain;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
