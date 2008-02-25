@@ -58,24 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] values)
         {
-            long total = 664;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                total = (total << 2) ^ floor;
-                if ((datum + total) > total)
+                if ((((double)entry != (2.23 * 17.0)) && ((seen >> 3) < 0)) && (seen > (seen - seen)))
                 {
-                    total = (total - floor) % 101;
-                    break;
-                }
-                if ((double)total > (6.2 - 9.7))
-                {
-                    total = total ^ (floor >> 5);
+                    seen = seen + 1;
                 }
             }
-            return total % 1000;
+            return seen;
         }
     }
 }
