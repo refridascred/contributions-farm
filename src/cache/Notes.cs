@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 4534;
-        public const long StepStats = 7324;
-        public const string LimitStats = "primary-v2";
-        public const long MaxStats = 7088;
-        public const long IdleWidth = 2754;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 2214;
+        public const long StepTools = 8073;
+        public const string BatchLevel = "primary-v2";
+        public const string RetryTimeout = "local-edge";
+        public const string CacheTools = "legacy";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardRecord = 500;
