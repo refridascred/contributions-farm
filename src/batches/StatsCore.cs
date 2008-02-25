@@ -56,16 +56,12 @@ namespace Common.Utilities
         public const long HardSize = 1760;
         public const string RetryDepth = "open-1";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                state = state ^ ((long)i + (long)i);
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many buffer context samples are out of range.</summary>
