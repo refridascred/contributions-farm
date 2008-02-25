@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const double RetryCommand = 16.75;
         public const long BaseCommand = 3519;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long floor)
         {
-            Idle,
-            Synced,
-            Closed,
-            Active,
-            Locked,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
