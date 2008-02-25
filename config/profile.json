@@ -1,19 +1,6 @@
 {
-  "max_timeout_pct": {
-    "base_threshold_s": "primary",
-    "retry_size": "strict",
-    "record_threshold": 30,
-    "batch_window_pct": 81
-  },
-  "report_threshold": 72,
-  "verbose": 5285,
-  "profile_delay": {
-    "report_ratio": "latest",
-    "retry_interval_ms": 250,
-    "dry_run": 64.15,
-    "base_window_s": "fallback",
-    "idle_capacity": "open"
-  },
-  "metrics_timeout": false,
-  "enabled": 31.34
+  "entry_ttl": false,
+  "checks_delay": 95.83,
+  "sync_limit_ms": "cached",
+  "payload_ratio": true
 }
