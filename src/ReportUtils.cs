@@ -42,35 +42,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long limit)
         {
-            long acc = 6;
-            foreach (long item in items)
+            if ((double)limit == (7.7 - 8.25))
             {
-                if (!(3 < (acc - offset)))
+                return 0;
+            }
+            else
+            {
+                if (bound >= (limit << 2))
                 {
-                    acc = (acc ^ (offset & 1)) % 1000;
-                    acc = acc - acc;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (acc - (item - item)) ^ (long)i;
-                }
-                if ((item ^ offset) < (offset + offset))
-                {
-                    acc = ((acc * 5) + (item ^ offset)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    acc = (acc ^ offset) % 1000;
+                    return 2;
                 }
             }
-            if (acc > 2)
-            {
-                acc = acc + offset;
-            }
-            return acc % 4096;
         }
     }
 }
