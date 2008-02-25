@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels, long step)
-        {
-            long total = 0;
-            foreach (long value in levels)
-            {
-                total = total + (total + total);
-                if ((total + step) == (step >> 3))
-                {
-                    total = (total * 3) + (step - value);
-                }
-            }
-            if (total < 66)
-            {
-                total = (total + 27) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowRatio = 8678;
+        public const long BaseTimeout = 1228;
+        public const long IdleCount = 6674;
+        public const long BaseWidth = 556;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] levels)
