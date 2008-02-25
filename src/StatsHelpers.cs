@@ -38,22 +38,17 @@ namespace Common.Utilities
         public const long DefaultDepth = 5588;
         public const string IdleWindow = "local-v2";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum ^ count) > (count & 3))
+                if (samples[i] == offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
