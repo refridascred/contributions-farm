@@ -47,11 +47,13 @@ namespace Common.Utilities
             return ratio + (16.0 / 5.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseScore = 18.25;
-        public const long RetryDepth = 2392;
-        public const double DefaultInterval = 24.53;
-        public const long CacheCount = 8715;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] series)
