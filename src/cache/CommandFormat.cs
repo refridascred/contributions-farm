@@ -15,17 +15,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] levels, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step / 7) >= (6 - floor))
             {
-                if (levels[i] == limit)
+                return 4;
+            }
+            else
+            {
+                if ((9 / 2) <= (floor + floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 3) != (step + 60))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
