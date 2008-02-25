@@ -46,14 +46,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Ready,
-            Idle,
-            New,
-            Failed,
-            Draft,
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
