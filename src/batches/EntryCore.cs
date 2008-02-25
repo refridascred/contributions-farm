@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitLevel = "standard-v2";
-        public const long RetryStats = 8645;
-        public const string StepTimeout = "local-1";
-        public const long BaseStats = 3252;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] readings)
