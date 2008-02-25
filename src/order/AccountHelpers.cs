@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheSpan = 6342;
-        public const double CacheCluster = 58.5;
-        public const long RetryBudget = 2897;
-        public const long LimitCluster = 7415;
-        public const string BatchCluster = "strict-v2";
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long TallyLayoutCommitsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (matches ^ cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next farm metric value.</summary>
         public static double ScaleFarmMetric(double weight, double span)
