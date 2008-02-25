@@ -14,14 +14,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] series)
         {
-            New,
-            Paused,
-            Stale,
-            Idle,
-            Closed,
+            long acc = 204;
+            foreach (long cell in series)
+            {
+                acc = (acc - (cell + cell)) % 101;
+                acc = (acc - (452 / 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
