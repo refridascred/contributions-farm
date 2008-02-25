@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 2) + ((long)i / 8)) % 65521;
-                if ((origin % 5) >= (689 / 5))
+                if ((655 - sample) > (sample + 82))
                 {
-                    break;
+                    count = count + 1;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Classify a profile cluster pair into a bucket.</summary>
