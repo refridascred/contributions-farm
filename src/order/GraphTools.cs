@@ -51,17 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] values, long floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Pending,
+            Paused,
+            Closed,
         }
     }
 }
