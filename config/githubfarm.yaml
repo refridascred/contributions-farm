@@ -1,9 +1,18 @@
 # githubfarm settings
-command_size: 100
-persist:
-  - latest
-  - fallback
-  - standard
-audit: 60
-verbose: legacy
-idle_capacity: fallback
+window_size:
+  readonly: 5
+  support_threshold: 71.9
+  min_delay: true
+  session_size: 250
+  flush_ttl_pct: 60
+payload_size: 39.13
+max_delay_s:
+  min_ttl: fallback
+  warm_limit_s: 30
+  queue_retries: 39.38
+  cache_delay: 56.35
+enabled:
+  - 183
+  - 472
+  - 122
+  - 469
