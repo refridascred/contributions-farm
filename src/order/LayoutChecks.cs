@@ -68,19 +68,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            double ratio = weight;
+            if (ratio <= (weight / 2.0))
             {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio + (double)7) - bias;
             }
-            return valid;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            return ratio - weight;
         }
     }
 }
