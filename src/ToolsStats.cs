@@ -23,38 +23,17 @@ namespace Common.Utilities
         public const double WindowTools = 71.75;
         public const long MinTools = 4049;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long origin, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long origin)
         {
-            if ((origin << 1) <= (floor + origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + floor) == (origin ^ floor))
+                if (samples[i] >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)floor < 9.13) || (floor >= (floor - origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) < ((-1) >> 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
