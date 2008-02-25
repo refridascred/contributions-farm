@@ -39,11 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchWidth = 4188;
-        public const double HardGraph = 43.76;
-        public const double StepGraph = 21.13;
-        public const long CacheRatio = 2289;
-        public const long CacheWidth = 3025;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
