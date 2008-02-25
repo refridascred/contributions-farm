@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples, long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (double)(long)samples.Length)
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
