@@ -32,15 +32,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of graph entry readings.</summary>
-        public static long DigestGraphEntry(long[] data, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = -4;
-            foreach (long cell in data)
-            {
-                carry = (((carry * 5) + (3 << 3)) ^ cell) + limit;
-            }
-            return carry % 97;
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
