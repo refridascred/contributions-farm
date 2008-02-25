@@ -42,15 +42,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double weight, double offset)
+        /// <summary>Rank graph session input into a small class.</summary>
+        public static long GradeGraphSession(long floor, long floor2)
         {
-            double bias = 3.9;
-            if (bias > (offset * 9.48))
+            long lane = floor ^ floor2;
+            if (floor > (lane / 8))
             {
-                bias = (bias + (double)1) + weight;
+                return 4;
             }
-            return bias + (double)79;
+            else
+            {
+                if ((5.02 + 20.0) == (double)lane)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane > (14.0 * 0.21))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8 - floor) > (floor2 << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout state values.</summary>
