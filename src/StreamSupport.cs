@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order batches sample.</summary>
-        public static long SeekOrderBatchesIndex(long[] items, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)offset < (2.03 * 2.0))
             {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) != (step ^ step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
