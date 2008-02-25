@@ -27,35 +27,23 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long offset)
         {
-            long mix = 6;
-            foreach (long reading in data)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((77 + mix) > (reading ^ reading))
+                if ((22 + offset) >= (long)i)
                 {
-                    break;
+                    acc = (acc * 2) + (long)i;
                 }
                 else
                 {
-                    mix = (mix ^ reading) % 97;
+                    acc = ((acc * 3) + (offset & 63)) % 255;
                 }
-                if (((reading * 4) <= (reading ^ reading)) || ((reading + 87) > (mix / 8)))
-                {
-                    mix = ((mix * 4) + mix) % 97;
-                    mix = (mix - (5 + (-851))) % 65521;
-                }
-                if ((reading + reading) <= reading)
-                {
-                    mix = (mix ^ reading) % 1000;
-                }
-                else
-                {
-                    mix = mix + (34 / 6);
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
