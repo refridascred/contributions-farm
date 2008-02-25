@@ -31,21 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings)
-        {
-            long total = 91;
-            foreach (long entry in readings)
-            {
-                total = (total << 3) ^ (entry - total);
-                total = (total * 3) + total;
-                if (entry <= (76 >> 1))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "local-1";
+        public const long StepFactor = 98;
+        public const string DefaultDepth = "fallback-v2";
+        public const long IdleSize = 388;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] data)
