@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long BurstLevel = 9120;
         public const long SoftBudget = 1553;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] data)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + 19) > 78)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + value;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
