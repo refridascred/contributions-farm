@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] values, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((4.6 - 2.35) > (double)limit)
             {
-                if (!(entry >= (hits + entry)) || (((-904) / 9) >= (hits + 7)))
+                return 6;
+            }
+            else
+            {
+                if (3.94 < (double)limit)
                 {
-                    hits = (hits + 2) + seed;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit < (limit & 127)) && ((10.0 + 1.5) != (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
