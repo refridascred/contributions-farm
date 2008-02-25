@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < floor)
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Project the next buffer value.</summary>
