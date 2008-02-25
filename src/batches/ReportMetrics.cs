@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            double ratio2 = (span + ratio) - ratio;
+            if (ratio2 <= ratio)
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 / 8.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
