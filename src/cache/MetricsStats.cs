@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total + (target + total)) % 255;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((total + (long)i) % 101) - (long)i2;
-                    total = (total - (target << 1)) % 101;
-                }
-                if ((long)i == (total - target))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = ((total * 4) + (total + 0)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the account phase values.</summary>
