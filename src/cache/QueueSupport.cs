@@ -16,32 +16,22 @@ namespace Common.Utilities
             return load - (floor - 6.9);
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            long diff = floor + limit;
-            if (((limit ^ floor) == (limit + diff)) && ((double)floor >= (double)37))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.2 * 9.0) != (double)floor)
+                if (0 > (tally & 255))
                 {
-                    return 8;
+                    tally = (tally + 2) + value;
                 }
                 else
                 {
-                    if (((floor - floor) <= (limit % 60)) && ((limit << 1) <= (diff / 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a buffer entry.</summary>
