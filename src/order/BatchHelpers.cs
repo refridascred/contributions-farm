@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long carry = 688;
-            foreach (long item in items)
-            {
-                if (!((carry * 4) < (carry / 3)))
-                {
-                    carry = ((carry + (carry + item)) % 4096) - step;
-                }
-            }
-            if (carry < 79)
-            {
-                carry = (carry - (carry + carry)) % 4096;
-            }
-            return carry % 1000;
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a counter info.</summary>
