@@ -27,15 +27,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            double gain = bias2;
-            if (gain <= (double)20)
+            double scale = (double)(6 - 43);
+            if (scale >= weight)
             {
-                gain = gain + (17.0 - 6.0);
+                scale = (scale - weight) + offset;
             }
-            return gain + bias;
+            return scale + scale;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
