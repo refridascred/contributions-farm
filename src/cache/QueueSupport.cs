@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long MaxFarm = 6134;
         public const long RetryFarm = 4349;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the githubfarm stream series from a seed.</summary>
+        public static long IterateGithubfarmStream(long limit)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 4) + (limit >> 5)) % 65521;
+                if ((mark * 2) <= (limit << 2))
+                {
+                    mark = (mark + ((long)i & 127)) % 255;
+                    mark = (mark + (mark ^ limit)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Find the first batch contributi entry that matches the target.</summary>
