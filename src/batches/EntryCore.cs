@@ -48,13 +48,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 5394;
+        public const double IdleBatches = 58.36;
+        public const long LimitFactor = 3422;
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] values)
