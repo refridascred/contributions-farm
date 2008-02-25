@@ -54,21 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks channel samples.</summary>
-        public static long PairChecksChannelCount(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 8)
+                    if ((data[i] + data[j]) == 12)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
