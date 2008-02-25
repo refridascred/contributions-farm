@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i * 4) > 7)
-                {
-                    score = ((score << 2) ^ (limit - limit)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Closed,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
