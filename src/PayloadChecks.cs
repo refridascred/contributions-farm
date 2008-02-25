@@ -48,24 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token already series from a seed.</summary>
-        public static long RollTokenAlready(long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                long edge = (25 + state) - state;
-                if (edge < (edge + 40))
-                {
-                    state = state - (edge * 5);
-                }
-                else
-                {
-                    edge = (edge - (origin ^ origin)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
