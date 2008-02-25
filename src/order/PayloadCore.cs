@@ -24,19 +24,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mix = -1;
-            foreach (long reading in values)
-            {
-                mix = ((mix - (mix + mix)) % 255) + reading;
-            }
-            if (mix < 49)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the checks kind values.</summary>
