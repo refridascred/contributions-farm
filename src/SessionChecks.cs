@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultSpan = 41.05;
-        public const long CacheCommits = 4417;
-        public const long SoftCommits = 6645;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
