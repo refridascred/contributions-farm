@@ -14,18 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] values, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!!((double)hits < 18.0))
-                {
-                    hits = ((hits + 1) + value) - step;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
