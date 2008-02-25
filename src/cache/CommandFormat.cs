@@ -22,22 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] series, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((limit >> 3) < sample)
+                if ((datum + datum) == (matches / 3))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a route checks counter forward.</summary>
