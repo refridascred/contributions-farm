@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches tools readings.</summary>
-        public static long OverlapBatchesToolsCount(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item < floor)
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
