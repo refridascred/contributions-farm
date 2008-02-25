@@ -53,21 +53,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a window batches counter forward.</summary>
-        public static long SeriesWindowBatches(long offset)
+        /// <summary>Scale a metrics profile figure with a bias.</summary>
+        public static double AdjustMetricsProfile(double bias, double bias2)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            double scale = bias2;
+            if (scale < bias2)
             {
-                total = total + total;
-                if (!((total - (long)i) == ((long)i + offset)))
-                {
-                    total = total - (50 % 24);
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                scale = scale + (bias + scale);
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)(-34)) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Accumulate command samples.</summary>
