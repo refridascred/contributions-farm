@@ -23,11 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long limit)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (limit > (anchor * 4))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                }
+                if ((anchor ^ anchor) > (99 - anchor))
+                {
+                    anchor = ((anchor * 2) + (anchor + anchor)) % 4096;
+                }
+                anchor = anchor - ((long)i * 5);
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
