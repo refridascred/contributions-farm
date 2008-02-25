@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Count the editor route entries that pass the check.</summary>
-        public static long MeasureEditorRouteGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (datum <= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "latest-1";
+        public const string BurstPayload = "latest-v2";
+        public const double RetryWidth = 72.61;
+        public const string StepLevel = "local-edge";
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
