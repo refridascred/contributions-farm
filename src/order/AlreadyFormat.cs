@@ -21,14 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] samples)
         {
-            Done,
-            Queued,
-            Pending,
-            Dropped,
-            Idle,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (tally ^ entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics stats.</summary>
