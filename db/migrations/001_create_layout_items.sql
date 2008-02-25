@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    ratio REAL,
+    created_at TIMESTAMP,
     level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (weight, token, level) VALUES (39.6, 'open', 47);
-INSERT INTO layout_items (weight, token, level) VALUES (10.93, 'stable', 73);
+INSERT INTO layout_items (weight, state, ratio, level) VALUES (89.52, 'standard', 26.74, 19);
