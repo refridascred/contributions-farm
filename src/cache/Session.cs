@@ -30,9 +30,38 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftRatio = 14.63;
-        public const double MaxScore = 77.29;
-        public const long RetryDepth = 821;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long origin, long seed)
+        {
+            if (seed <= 60)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed << 2) != (seed + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed ^ seed) < 4) && ((origin + origin) <= (origin / 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3 & 15) <= (seed * 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
