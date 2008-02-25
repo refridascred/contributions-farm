@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            double drift = (double)(7 - 3);
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + (6.84 - scale)) + (double)(long)i) - floor;
+            }
+            return drift + (drift * 2.31);
         }
 
         /// <summary>Describe the channel mode values.</summary>
