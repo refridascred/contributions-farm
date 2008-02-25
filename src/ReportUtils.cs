@@ -43,13 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] readings, long seed)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
