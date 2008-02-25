@@ -27,24 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format schema value against two limits.</summary>
-        public static long ClassifyFormatSchema(long bound, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            if ((6 >> 5) != (limit << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.3 + 9.57) <= (1.06 * 1.6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
