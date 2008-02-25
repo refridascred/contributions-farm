@@ -27,15 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long limit)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long origin)
         {
-            long anchor = 922;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor - (0 % 64)) % 4096) ^ entry) - limit;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
