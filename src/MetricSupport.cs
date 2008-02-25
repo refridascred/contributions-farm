@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Idle,
-            Pending,
             Queued,
-            Retry,
-            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the counter status values.</summary>
