@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleFactor = 9289;
-        public const long StepChannel = 1;
-        public const string MinWidth = "open-edge";
-        public const string HardChannel = "fallback-1";
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public double Flag { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] series, long seed)
