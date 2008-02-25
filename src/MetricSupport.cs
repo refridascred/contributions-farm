@@ -38,17 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first cluster cache entry that matches the target.</summary>
-        public static long LookupClusterCacheIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 56.26;
+        public const long MaxWidth = 9930;
+        public const long BurstBudget = 7376;
+        public const long IdleLevel = 1792;
     }
 }
