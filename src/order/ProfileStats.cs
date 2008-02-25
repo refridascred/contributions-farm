@@ -17,21 +17,39 @@ namespace Common.Utilities
         public const long WindowBuffer = 938;
         public const long BatchBuffer = 7016;
 
-        /// <summary>Compare every pair of payload contributi readings.</summary>
-        public static long OverlapPayloadContributiCount(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = limit - origin;
+            if ((lane + origin) >= (lane - lane))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((903 + lane) > limit)
                 {
-                    if ((readings[i] + readings[j]) < 16)
+                    return 7;
+                }
+                else
+                {
+                    if (lane >= (limit + origin))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (double)lane)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
