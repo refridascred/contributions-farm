@@ -86,23 +86,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double weight, double floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
         {
-            double bias = weight;
-            if (bias < (double)161)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                bias = (bias + (9.7 / 2.0)) - floor;
+                long hits = acc * 5;
+                if (origin <= hits)
+                {
+                    hits = hits ^ (hits >> 5);
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (4.5 / 3.0)) + (double)(long)i;
-            }
-            return bias + weight;
+            return acc;
         }
     }
 }
