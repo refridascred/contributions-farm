@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of schema tools entries.</summary>
+        public static long DigestSchemaTools(long[] values, long offset)
         {
-            Failed,
-            Idle,
-            Ready,
-            Dropped,
+            long mark = 47;
+            foreach (long cell in values)
+            {
+                if ((cell + mark) < (mark - cell))
+                {
+                    mark = (mark - (6 << 2)) + offset;
+                }
+            }
+            if (mark > 326)
+            {
+                mark = (mark << 2) ^ (mark >> 5);
+            }
+            return mark;
         }
 
         /// <summary>Adjust a context entry reading.</summary>
