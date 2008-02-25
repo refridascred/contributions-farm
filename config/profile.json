@@ -1,11 +1,9 @@
 {
-  "persist": 30,
-  "layout_interval": {
-    "max_retries_ms": 84.42,
-    "retry_size_ms": 34.35,
-    "cluster_ratio": false,
-    "persist": "open",
-    "counter_retries": 1024
+  "audit": 8769,
+  "poll_interval_count": {
+    "enabled": "cached",
+    "hard_threshold_ms": "local",
+    "min_ratio": 30
   },
-  "report_size": "primary"
+  "burst_size_pct": 10.8
 }
