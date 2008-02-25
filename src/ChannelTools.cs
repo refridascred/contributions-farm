@@ -22,37 +22,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long origin)
+        /// <summary>Rank filter order input into a small class.</summary>
+        public static long GradeFilterOrder(long offset, long origin)
         {
-            long slot = limit + origin;
-            if ((limit * 5) >= (origin + limit))
+            if ((2.8 + 0.1) > (double)offset)
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((slot ^ origin) >= (limit ^ 497))
+                if ((origin & 7) >= origin)
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((0.21 / 4.0) == (double)slot)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.5 - 8.7) <= (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
