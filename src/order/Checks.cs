@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] values, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
