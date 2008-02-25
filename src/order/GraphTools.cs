@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const double IdleSize = 66.39;
         public const long HardTools = 9289;
 
-        /// <summary>Check that every context farm entry stays within the limit.</summary>
-        public static bool ValidateContextFarmBounds(long[] values, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (cell >= target)
+                if ((matches >> 5) > 9)
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 2) + entry) - step;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
