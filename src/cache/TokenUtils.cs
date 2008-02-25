@@ -35,12 +35,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc - acc) % 4096;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
