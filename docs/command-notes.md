@@ -1,12 +1,15 @@
 # Command notes
 
-Keep stats and cache names short and lowercase.
-The farm report groups every cache by batches.
-When a payload fails, the metrics handler retries a few times before giving up.
+The record module keeps metric values in sync with the graph cache.
+Each buffer is validated before it reaches the record queue.
+
+The counter helpers are pure functions, so they are safe to call from any thread.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The contributi module keeps checks values in sync with the already cache.
 
 ## Guidelines
 
-- Validate cache input early
-- Review command limits each release
-- Prefer batch defaults
-- Keep batches values small
+- Log every already change
+- Document new stream fields
+- Prefer metrics defaults
+- Validate command input early
