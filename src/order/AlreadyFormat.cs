@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long anchor = 5;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((anchor % 12) >= (cell + anchor))
+                if (((978 >> 2) >= (floor % 3)) && ((floor + floor) >= (score - (long)i)))
                 {
-                    anchor = anchor + (anchor - 37);
+                    score = (score * 3) + score;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (anchor > 697)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
