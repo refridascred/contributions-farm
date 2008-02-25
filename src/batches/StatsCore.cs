@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] samples, long limit)
+        /// <summary>Look up the position of a route support sample.</summary>
+        public static long LocateRouteSupportIndex(long[] values, long offset)
         {
-            long acc = 728;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.0 - 3.0) <= (double)cell)
+                if (values[i] > offset)
                 {
-                    acc = (acc - (cell & 127)) + limit;
+                    return (long)i;
                 }
             }
-            if (acc < 74)
-            {
-                acc = (acc - 3) % 97;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
