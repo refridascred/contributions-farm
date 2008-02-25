@@ -57,18 +57,18 @@ namespace Common.Utilities
         public const double CacheLevel = 55.11;
         public const double BaseWindow = 73.58;
 
-        /// <summary>Measure how many metrics farm samples are out of range.</summary>
-        public static long AuditMetricsFarmGaps(long[] items)
+        /// <summary>Measure how many cache report samples are out of range.</summary>
+        public static long TallyCacheReportHits(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (((double)entry > (9.5 * 16.0)) || ((34 << 2) > (748 + tally)))
+                if ((hits << 1) > (datum - datum))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
