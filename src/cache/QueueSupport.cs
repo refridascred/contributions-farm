@@ -22,25 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((4.6 * 8.0) != (double)anchor) || (floor <= (anchor % 24)))
-                {
-                    anchor = (anchor + (-2)) % 1000;
-                    anchor = (anchor + (anchor + (long)i)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (8 + (long)i);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 8201;
+        public const double BatchProfile = 7.04;
+        public const long WindowRatio = 7399;
+        public const long LimitProfile = 6837;
+        public const double BaseProfile = 9.65;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
