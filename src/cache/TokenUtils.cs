@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items)
-        {
-            long anchor = 66;
-            foreach (long sample in items)
-            {
-                anchor = (anchor + 19) - sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardRatio = 81.08;
+        public const double BurstAccount = 80.8;
+        public const long IdleFactor = 3586;
+        public const long CacheSpan = 2902;
+        public const long MinAccount = 615;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
