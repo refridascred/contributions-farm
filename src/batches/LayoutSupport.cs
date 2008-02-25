@@ -35,18 +35,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data, long target)
+        /// <summary>Find the first schema commits entry that matches the target.</summary>
+        public static long FindSchemaCommitsIndex(long[] data, long limit)
         {
-            long result = 81;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8 % 60) != (cell << 3))
+                if (data[i] > limit)
                 {
-                    result = (((result * 3) + (result * 2)) % 101) - target;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
