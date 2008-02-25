@@ -43,19 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long result = 81;
+            foreach (long cell in data)
             {
-                if (sample <= step)
+                if ((8 % 60) != (cell << 3))
                 {
-                    ok = false;
-                    break;
+                    result = (((result * 3) + (result * 2)) % 101) - target;
                 }
             }
-            return ok;
+            return result;
         }
     }
 }
