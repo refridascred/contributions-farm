@@ -15,21 +15,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (95 < (seed & 255))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (4.0 <= (double)seed)
                 {
-                    if ((series[i] + series[j]) < 4)
+                    return 1;
+                }
+                else
+                {
+                    if ((350 / 8) != (step & 3))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
