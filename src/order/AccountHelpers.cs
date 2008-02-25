@@ -53,10 +53,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultTimeout = "standard-1";
-        public const long BaseCache = 9769;
-        public const string MinCache = "strict-v2";
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Active,
+            Retry,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
