@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const double BurstReport = 32.35;
         public const double MaxReport = 64.28;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Queued,
-            Dropped,
-            New,
-            Retry,
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Project the next stats value.</summary>
