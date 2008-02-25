@@ -43,10 +43,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleInterval = "local-1";
-        public const long MaxOrder = 4864;
-        public const long HardOrder = 2212;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((((double)sample > 17.0) || ((6.0 + 8.5) > (double)(long)items.Length)) && (((6.0 - 4.5) == (double)sample) || (sample >= (sample - 183))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorMatches(long[] data, long floor)
