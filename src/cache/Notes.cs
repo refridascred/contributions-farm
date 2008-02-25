@@ -25,17 +25,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings)
-        {
-            long mark = -38;
-            foreach (long item in readings)
-            {
-                mark = mark ^ (item % 2);
-                mark = mark + (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxCount = 3499;
+        public const long RetryProfile = 2078;
+        public const long BurstWidth = 4234;
+        public const double RetrySize = 21.55;
+        public const long HardLevel = 5969;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long MatchFormatCount(long[] data)
