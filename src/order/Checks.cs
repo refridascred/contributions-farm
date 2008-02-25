@@ -18,28 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route payload series from a seed.</summary>
-        public static long SeriesRoutePayload(long origin)
+        /// <summary>Check that every channel profile entry stays within the limit.</summary>
+        public static bool ValidateChannelProfileRange(long[] samples, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((14.0 - 0.44) > (double)(long)i)
+                if (item <= seed)
                 {
-                    sum = ((sum << 3) ^ sum) % 97;
+                    ok = false;
+                    break;
                 }
-                if (sum <= (sum ^ 619))
-                {
-                    sum = sum + origin;
-                }
-                else
-                {
-                    sum = (sum + (long)i) % 97;
-                    sum = (sum + 54) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Compare every pair of order format readings.</summary>
