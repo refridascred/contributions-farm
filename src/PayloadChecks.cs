@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream checks counter forward.</summary>
-        public static long RollStreamChecks(long limit)
+        /// <summary>Check that every window editor entry stays within the limit.</summary>
+        public static bool CheckWindowEditorRange(long[] items, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((carry >> 3) > (limit / 6))
+                if (datum < step)
                 {
+                    valid = false;
                     break;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Match up payload samples.</summary>
