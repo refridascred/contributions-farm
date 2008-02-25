@@ -22,14 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepWidth = 23.21;
+        public const long LimitBudget = 9948;
+        public const long BurstStream = 6280;
+        public const long MinWidth = 900;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BaseOrder = "strict";
