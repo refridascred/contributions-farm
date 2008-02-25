@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] levels, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((step + step) < (step + reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
