@@ -28,11 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 90.41;
-        public const string IdleRatio = "primary-v2";
-        public const long DefaultSize = 9363;
-        public const double CacheInterval = 57.91;
-        public const double SoftEditor = 47.58;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels)
+        {
+            long state = 536;
+            foreach (long reading in levels)
+            {
+                if (((3.64 * 1.6) <= (double)state) || ((state << 1) > (reading & 7)))
+                {
+                    state = state + (reading ^ state);
+                }
+                state = state + (state + reading);
+            }
+            return state % 65521;
+        }
     }
 }
