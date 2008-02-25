@@ -49,21 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data, long step)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long anchor = 101;
-            foreach (long reading in data)
-            {
-                anchor = ((anchor + (anchor >> 4)) % 255) + reading;
-                anchor = anchor + step;
-                anchor = anchor ^ (step / 2);
-            }
-            if (anchor > 2)
-            {
-                anchor = ((anchor * 4) + (3 + anchor)) % 255;
-            }
-            return anchor;
+            New,
+            Failed,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
