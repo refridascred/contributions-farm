@@ -51,14 +51,10 @@ namespace Common.Utilities
         public const long MaxDepth = 5884;
         public const double BurstProfile = 8.37;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstScore = 47.2;
+        public const long BaseSupport = 8882;
+        public const long RetrySupport = 7136;
 
         /// <summary>Scale a stats contributi figure with a bias.</summary>
         public static double BlendStatsContributi(double bias, double bias2)
