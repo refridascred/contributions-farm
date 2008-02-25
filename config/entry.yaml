@@ -1,22 +1,6 @@
 # entry settings
-queue_window:
-  base_depth_s: legacy
-  default_limit_pct: true
-  strict:
-    verbose:
-      - 169
-      - 228
-      - 329
-      - 480
-    strict: local
-    soft_timeout_s:
-      - 112
-      - 490
-    report_capacity: 2807
-  poll_ratio_ms: 42.93
-idle_ratio_count: 250
-batches_depth:
-  - local
-  - legacy
-metrics_delay: 5187
-dry_run: 47.46
+batch_interval_ms: 93
+already_threshold: 60
+max_window: 4716
+readonly: 8418
+channel_capacity: 3.41
