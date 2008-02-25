@@ -44,12 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
