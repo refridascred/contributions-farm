@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long StepSize = 3844;
         public const long MinSize = 5118;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] data)
         {
-            long result = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                result = ((result + result) % 255) + value;
+                if ((double)sample > (1.6 + 7.82))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result < 4)
-            {
-                result = ((result * 5) + (origin / 5)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
