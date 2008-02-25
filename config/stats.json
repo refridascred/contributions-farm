@@ -1,19 +1,21 @@
 {
-  "enabled": 42.23,
-  "soft_depth_ms": "stable",
-  "persist": 97.14,
-  "contributi_depth": false,
-  "max_threshold_count": {
-    "buffer_interval": ["fallback", "edge", "fallback", "legacy"],
-    "batches_delay": {
-      "warm_delay": "eu-west",
-      "cache_capacity": "strict",
-      "hard_timeout_pct": true,
-      "schema_interval": 250,
-      "warm_timeout_s": "latest"
-    },
-    "audit": ["standard", "eu-west", "blue", "primary"],
-    "commits_capacity": true,
-    "retry_delay_ms": 3680
+  "enabled": "latest",
+  "burst_threshold_count": ["local", "legacy", "standard"],
+  "githubfarm_depth": "stable",
+  "flush_window_pct": 30,
+  "readonly": {
+    "base_delay": 30,
+    "readonly": "latest",
+    "route_interval": "local",
+    "soft_size": "eu-west",
+    "base_retries_pct": 51.53
+  },
+  "strict": {
+    "buffer_interval": "open",
+    "flush_size": ["green", "primary"],
+    "dry_run": "strict",
+    "max_ttl_count": 100,
+    "warm_depth": "green",
+    "base_capacity_count": 500
   }
 }
