@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of channel counter readings.</summary>
-        public static long FoldChannelCounter(long[] values, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] levels)
         {
-            long state = 894;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                state = ((state ^ (187 - offset)) % 4096) + sample;
+                if (7.0 < (double)datum)
+                {
+                    matches = matches + 3;
+                }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Roll a stream checks counter forward.</summary>
