@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a schema account counter forward.</summary>
-        public static long StepSchemaAccount(long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] series, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result - result) % 97;
-                if (((7.4 - 5.89) != (double)(long)i) || ((long)i <= (result & 255)))
+                if (series[i] > floor)
                 {
-                    result = result - (867 ^ (-8));
-                    result = ((result << 2) ^ 748) % 255;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
