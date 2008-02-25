@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long limit)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i * 4) > 7)
+                {
+                    score = ((score << 2) ^ (limit - limit)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
