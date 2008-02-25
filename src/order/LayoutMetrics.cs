@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long MinSize = 5683;
         public const long LimitInterval = 9271;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
