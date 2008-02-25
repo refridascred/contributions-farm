@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const double WindowFarm = 86.92;
         public const long BatchFarm = 2715;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 82.61;
+        public const long StepFilter = 5795;
+        public const long HardFilter = 8255;
+        public const long StepWidth = 8587;
+        public const double BurstFilter = 35.58;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] samples)
