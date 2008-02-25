@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const double RetryCommand = 16.75;
         public const long BaseCommand = 3519;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double scale = gain;
-            if (scale <= (floor - floor))
-            {
-                scale = scale + 0.3;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - scale;
+            Queued,
+            Dropped,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
