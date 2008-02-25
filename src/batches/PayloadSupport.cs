@@ -46,18 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long mix = 0;
-            foreach (long value in levels)
-            {
-                if (9.9 >= (double)floor)
-                {
-                    mix = ((mix + (mix - 864)) % 1000) ^ value;
-                }
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
