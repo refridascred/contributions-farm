@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long LimitInterval = 2104;
         public const string BaseSchema = "open";
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            Stale,
-            Done,
-            Dropped,
-            Locked,
+            double weight = bias;
+            if (weight >= (bias - bias2))
+            {
+                weight = weight + 3.33;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - bias2) - (double)(long)i;
+            }
+            return weight + (4.12 - bias);
         }
     }
 }
