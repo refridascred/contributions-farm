@@ -43,11 +43,19 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "staging-1";
-        public const long MinPayload = 6342;
-        public const double DefaultSpan = 52.69;
-        public const long HardTimeout = 9882;
+        /// <summary>Audit report context readings against a rule.</summary>
+        public static long CountReportContextGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell <= (tally ^ floor))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long limit)
