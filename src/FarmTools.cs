@@ -16,17 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] samples, long offset)
-        {
-            long carry = 5;
-            foreach (long value in samples)
-            {
-                carry = ((carry + (carry - 88)) + value) + offset;
-                carry = (carry ^ (116 + 55)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 9788;
+        public const double SoftSession = 18.68;
+        public const long LimitSession = 2190;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long DefaultWidth = 7789;
