@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] values)
         {
-            double load = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                load = ((load + (load - floor)) + (double)(long)i) - weight;
+                if ((tally << 2) > 0)
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - (floor - 6.9);
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
