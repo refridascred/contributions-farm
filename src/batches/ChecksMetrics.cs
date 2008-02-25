@@ -43,10 +43,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseScore = 2049;
-        public const string BurstGraph = "open-1";
-        public const long RetryWidth = 1525;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples, long limit)
+        {
+            long anchor = 3;
+            foreach (long value in samples)
+            {
+                if ((240 + 3) < (limit << 3))
+                {
+                    anchor = anchor + limit;
+                    anchor = ((anchor * 3) + (limit % 8)) % 1000;
+                }
+                if ((value >= (value - limit)) || ((anchor >> 2) == ((long)samples.Length + anchor)))
+                {
+                    anchor = ((anchor << 3) ^ value) % 1000;
+                }
+            }
+            if (anchor < 262)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double weight, double span)
