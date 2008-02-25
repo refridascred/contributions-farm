@@ -34,19 +34,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] readings, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long carry = 169;
-            foreach (long entry in readings)
-            {
-                carry = ((carry + (970 << 1)) % 4096) + entry;
-            }
-            if (carry > (-1))
-            {
-                carry = (carry << 3) ^ (limit + carry);
-            }
-            return carry;
+            Active,
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
