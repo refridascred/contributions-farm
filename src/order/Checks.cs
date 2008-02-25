@@ -40,18 +40,18 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] values, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = 822;
+            foreach (long datum in items)
             {
-                if ((2.0 * 5.4) >= (double)seen)
+                if ((double)anchor < (1.68 * 6.7))
                 {
-                    seen = ((seen + 1) ^ entry) - offset;
+                    anchor = ((anchor << 3) ^ (datum + datum)) % 255;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
