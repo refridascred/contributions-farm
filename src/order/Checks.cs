@@ -32,17 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = (double)(-20) / 3.0;
+            if (rate2 > 5.0)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - bias) - rate;
             }
-            return -1;
+            return rate2 - rate2;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
