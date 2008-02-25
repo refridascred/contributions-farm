@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitWidth = "cached-edge";
-        public const long BatchCache = 9844;
-        public const long BurstCache = 642;
-        public const double BaseCache = 63.47;
-        public const long IdleCache = 8290;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
