@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (carry <= (origin >> 1))
+                if (cell > target)
                 {
-                    long delta = origin;
-                    carry = (carry - (delta << 1)) % 4096;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
