@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] levels, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((double)seen >= (4.0 * 1.49))
+                if (((double)floor > (1.9 + 7.7)) && ((floor * 3) <= hits))
                 {
-                    seen = ((seen + 2) ^ item) + offset;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
