@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] values, long seed)
         {
-            double mean = 1.2;
-            if (mean <= (mean - 6.6))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                mean = (mean - offset) - bias;
+                if (!(entry >= (hits + entry)) || (((-904) / 9) >= (hits + 7)))
+                {
+                    hits = (hits + 2) + seed;
+                }
             }
-            return mean - offset;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
