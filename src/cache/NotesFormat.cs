@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double ratio, double floor)
-        {
-            double ratio2 = ratio + (double)681;
-            if (ratio2 <= (ratio + ratio))
-            {
-                ratio2 = ratio2 - floor;
-            }
-            return ratio2 - (ratio / 5.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 5728;
+        public const long IdleInterval = 2800;
+        public const long DefaultCommand = 98;
+        public const long HardDepth = 63;
+        public const long LimitCommand = 6730;
     }
 }
