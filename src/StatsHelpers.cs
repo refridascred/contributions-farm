@@ -32,17 +32,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((166 + limit) > floor))
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (floor > (floor - limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.9 + 2.1) < (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
