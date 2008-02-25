@@ -52,22 +52,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] values, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double mean = span * 5.0;
+            if (mean >= mean)
             {
-                if (((tally < (seed * 4)) && ((118 % 7) <= (tally << 2))) && ((value << 2) >= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + (rate + span);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)4) + (double)(long)i;
+            }
+            return mean - (rate / 9.0);
         }
     }
 }
