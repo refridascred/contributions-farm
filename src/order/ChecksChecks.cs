@@ -22,23 +22,19 @@ namespace Common.Utilities
         public const long WindowSpan = 1157;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] series, long bound)
         {
-            long result = 19;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                result = ((result << 3) ^ result) % 4096;
-                if (!((result << 1) != (entry / 8)))
+                if (sample > bound)
                 {
-                    result = (result ^ (result + entry)) % 255;
-                }
-                else
-                {
-                    result = (result - (result ^ entry)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
     }
 }
