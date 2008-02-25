@@ -35,11 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] values, long bound)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((tally + bound) == (bound + tally)))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
