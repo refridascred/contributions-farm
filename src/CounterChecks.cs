@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSpan = 4947;
-        public const long CacheStats = 3152;
-        public const string BaseSpan = "latest-v2";
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double BlendRoute(double rate, double floor)
