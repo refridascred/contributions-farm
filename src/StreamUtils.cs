@@ -43,12 +43,18 @@ namespace Common.Utilities
         public const long CacheAlready = 4565;
         public const string DefaultAlready = "latest-v2";
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] levels, long seed)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length <= (count + sample)) || ((sample <= count) && ((double)seed <= 2.74)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
