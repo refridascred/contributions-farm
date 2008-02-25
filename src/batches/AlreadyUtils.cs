@@ -49,20 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchWidth = 54.36;
+        public const double HardTools = 40.75;
+        public const double BurstCount = 19.28;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
