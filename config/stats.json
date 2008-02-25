@@ -1,5 +1,7 @@
 {
-  "audit": 3,
-  "session_retries": true,
-  "layout_window": 53
+  "notes_interval": 100,
+  "schema_delay": true,
+  "base_size_count": 3141,
+  "poll_window_pct": 45,
+  "sync_window": "staging"
 }
