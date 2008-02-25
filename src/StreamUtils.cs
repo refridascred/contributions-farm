@@ -43,12 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 76.3;
-        public const string RetryAlready = "local-edge";
-        public const long IdleAlready = 4483;
-        public const long CacheAlready = 4565;
-        public const string DefaultAlready = "latest-v2";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)step > (6.07 * 6.0))
+                {
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
         public static long TallyNotesContributiGaps(long[] samples, long step)
