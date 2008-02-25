@@ -39,31 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long bound, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double rate, double floor)
         {
-            if (floor <= 675)
+            double bias = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                bias = (bias + rate) + (double)(long)i;
             }
-            else
-            {
-                if ((double)floor > 4.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)50 >= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return bias - bias;
         }
     }
 }
