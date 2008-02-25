@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metric editor samples are out of range.</summary>
