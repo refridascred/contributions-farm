@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of schema batches readings.</summary>
-        public static long TotalSchemaBatches(long[] series, long target)
+        /// <summary>Rank window payload input into a small class.</summary>
+        public static long ClassifyWindowPayload(long offset, long limit)
         {
-            long mark = 38;
-            foreach (long datum in series)
+            if ((limit ^ offset) != (offset & 63))
             {
-                mark = (mark * 4) + (target + datum);
+                return 6;
             }
-            if (mark < (-3))
+            else
             {
-                mark = (mark * 3) + ((long)series.Length - mark);
+                if ((60 & 7) != (offset - 762))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mark;
         }
 
         /// <summary>Count the githubfarm queue entries that pass the check.</summary>
