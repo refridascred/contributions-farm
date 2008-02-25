@@ -29,25 +29,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a already token pair into a bucket.</summary>
-        public static long RankAlreadyToken(long step, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] values)
         {
-            long delta = step - bound;
-            if (8 >= (step & 3))
+            long acc = 382;
+            foreach (long value in values)
             {
-                return 5;
+                acc = (acc + (value >> 5)) % 1000;
             }
-            else
-            {
-                if ((bound - bound) > delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
