@@ -44,17 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long floor)
+        /// <summary>Audit record batch readings against a rule.</summary>
+        public static long TallyRecordBatchHits(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] > floor) && ((data[i] % 2) == 0))
+                if ((sample >> 2) != (1 + tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
