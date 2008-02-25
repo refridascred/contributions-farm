@@ -1,6 +1,7 @@
 {
-  "editor_window": 71.0,
-  "strict": "fallback",
-  "checks_depth": 1024,
-  "poll_capacity_count": "blue"
+  "batch_retries": "cached",
+  "schema_size": false,
+  "verbose": "green",
+  "idle_depth": "edge",
+  "default_interval_ms": 94.27
 }
