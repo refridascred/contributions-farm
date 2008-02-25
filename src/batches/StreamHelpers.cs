@@ -28,10 +28,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxFactor = "strict-v2";
-        public const double StepBudget = 22.96;
-        public const long DefaultReport = 1203;
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double rate, double floor)
+        {
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + (9.0 - mean)) + (double)(long)i) + floor;
+            }
+            return mean - 16.0;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ProjectNotes(double weight, double span)
