@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] values, long floor)
         {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((double)floor > 5.49) || ((1 << 2) >= (matches ^ value)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
