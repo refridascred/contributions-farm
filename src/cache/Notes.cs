@@ -45,25 +45,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long origin)
-        {
-            if ((75 - 1) > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ offset) < (1 * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 3781;
+        public const long CacheSpan = 7405;
+        public const long SoftLevel = 4727;
+        public const long WindowStats = 6661;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long DigestProfile(long[] readings)
