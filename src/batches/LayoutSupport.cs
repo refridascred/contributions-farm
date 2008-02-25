@@ -34,13 +34,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels)
         {
-            Active,
-            Queued,
-            Locked,
-            Idle,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item == (double)87)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
