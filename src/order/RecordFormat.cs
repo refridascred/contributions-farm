@@ -36,32 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long seed)
         {
-            long mark = -556;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seed <= reading)
+                if (series[i] <= seed)
                 {
-                    mark = (mark << 2) ^ (2 << 1);
-                }
-                else
-                {
-                    mark = ((mark * 4) + 248) % 1000;
-                }
-                mark = ((mark * 3) + (mark + seed)) % 101;
-                mark = mark - seed;
-                if ((mark & 3) > (mark - 20))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > (-4))
-            {
-                mark = ((mark << 3) ^ (seed - seed)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
