@@ -26,10 +26,13 @@ namespace Common.Utilities
             return weight + (weight * 20.0);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchCount = 97.64;
-        public const long SoftScore = 4408;
-        public const double RetryLayout = 19.95;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
