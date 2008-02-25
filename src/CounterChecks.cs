@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] values, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                carry = carry ^ 478;
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    carry = (((carry << 2) ^ carry) % 1000) - (long)i;
+                }
+                if (carry < 4)
+                {
+                    carry = ((carry << 3) ^ (target >> 3)) % 101;
+                }
+                else
+                {
+                    carry = carry + (value - target);
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Describe the report state values.</summary>
