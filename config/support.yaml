@@ -1,22 +1,4 @@
 # support settings
-cache_ttl_pct: true
-default_retries_pct: 5315
-min_retries: 6317
-batch_limit:
-  warm_delay_s: cached
-  schema_ratio:
-    - 285
-    - 196
-    - 306
-  enabled: 9553
-  audit:
-    format_ttl: primary
-    max_window_s: legacy
-    entry_threshold: false
-    sync_delay_s: latest
-  poll_delay_count:
-    - 1
-    - 159
-    - 244
-    - 24
-  base_limit_pct: 2398
+default_ratio: cached
+editor_retries: 74.86
+dry_run: false
