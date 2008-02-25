@@ -73,19 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long target)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (target < (721 & 3))
+                if (sample <= target)
                 {
-                    score = ((score << 3) ^ (score * 2)) % 255;
+                    valid = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return valid;
         }
     }
 }
