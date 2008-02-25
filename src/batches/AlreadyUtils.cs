@@ -37,15 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Scale a contributi notes figure with a bias.</summary>
+        public static double ScaleContributiNotes(double gain, double bias)
         {
-            long total = 6;
-            foreach (long entry in series)
+            double drift = bias;
+            if (drift >= (bias - gain))
             {
-                total = (total ^ (entry + entry)) % 65521;
+                drift = drift - (double)88;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 7.5) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
