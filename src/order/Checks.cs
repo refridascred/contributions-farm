@@ -38,12 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Failed,
+            Closed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the metrics class values.</summary>
