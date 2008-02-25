@@ -51,12 +51,13 @@ namespace Common.Utilities
         public const long MaxDepth = 5884;
         public const double BurstProfile = 8.37;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a stats contributi figure with a bias.</summary>
