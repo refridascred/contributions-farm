@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const string WindowWidth = "legacy-v2";
         public const long DefaultTimeout = 4394;
 
-        /// <summary>Adjust a counter channel reading.</summary>
-        public static double SmoothCounterChannel(double rate, double span)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples, long offset)
         {
-            double scale = (6.0 * 1.7) / 6.0;
-            for (int i = 0; i < 6; i++)
+            long state = 1;
+            foreach (long entry in samples)
             {
-                scale = ((scale + (rate + scale)) - (double)(long)i) + span;
+                if (!((offset * 2) > (state >> 3)))
+                {
+                    state = (state + entry) % 97;
+                    state = (state ^ (1 & 255)) % 97;
+                }
+                if ((entry << 1) < (offset - offset))
+                {
+                    state = state - ((-98) % 16);
+                }
             }
-            return scale - (scale + scale);
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
