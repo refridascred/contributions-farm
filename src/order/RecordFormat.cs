@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Check that every editor batches entry stays within the limit.</summary>
+        public static bool VerifyEditorBatchesRange(long[] samples, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
