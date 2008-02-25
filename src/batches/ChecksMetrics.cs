@@ -52,23 +52,12 @@ namespace Common.Utilities
         public const string BurstGraph = "open-1";
         public const long RetryWidth = 1525;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double bias)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double mean = bias;
-            if (mean <= 16.0)
-            {
-                mean = (mean - (1.0 / 3.0)) + ratio;
-            }
-            else
-            {
-                mean = mean + (double)1;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - 18.0;
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
