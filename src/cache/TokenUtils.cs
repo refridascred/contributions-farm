@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardRatio = 81.08;
-        public const double BurstAccount = 80.8;
-        public const long IdleFactor = 3586;
-        public const long CacheSpan = 2902;
-        public const long MinAccount = 615;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score + bound;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (((score << 2) ^ (bound / 6)) % 65521) + (long)i2;
+                    score = (score ^ score) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
