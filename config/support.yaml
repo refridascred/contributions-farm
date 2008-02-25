@@ -1,16 +1,11 @@
 # support settings
-profile_size: false
-batch_interval: 30
-profile_retries: 60.61
-support_depth: false
-compress:
-  base_capacity_count: 54.74
-  dry_run:
-    checks_timeout: true
-    sync_limit_pct: legacy
-    support_ttl: 20.24
-    default_limit_ms: 250
-    record_ttl: 30.1
-    account_depth: true
-  cache_limit_pct: stable
-  burst_interval_count: 42
+retry_ratio:
+  - 275
+  - 429
+  - 467
+flush_limit_ms: legacy
+token_delay:
+  - latest
+  - strict
+notes_window: 386
+persist: 42.99
