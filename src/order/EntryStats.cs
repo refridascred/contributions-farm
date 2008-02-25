@@ -30,18 +30,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long sum = 0;
+            foreach (long value in levels)
             {
-                if (1 >= cell)
-                {
-                    hits = hits + 3;
-                }
+                sum = (((sum - ((-9) ^ sum)) % 65521) ^ value) - target;
             }
-            return hits;
+            if (sum > 8)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
