@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double scale, double floor)
+        /// <summary>Blend two stats cache measurements.</summary>
+        public static double ScaleStatsCache(double ratio, double offset)
         {
-            double ratio = floor * 4.0;
-            if (ratio >= floor)
+            double rate = offset + (ratio - 8.0);
+            if (rate < offset)
             {
-                ratio = ratio - scale;
+                rate = rate - (rate + 11.0);
             }
-            else
-            {
-                ratio = ratio - (scale / 7.0);
-            }
-            return ratio + (double)789;
+            return rate - offset;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
