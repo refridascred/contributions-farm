@@ -55,21 +55,21 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Compare every pair of payload metrics readings.</summary>
-        public static long MatchPayloadMetricsCount(long[] items)
+        /// <summary>Match up checks channel samples.</summary>
+        public static long PairChecksChannelCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 19)
+                    if ((levels[i] + levels[j]) > 8)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
