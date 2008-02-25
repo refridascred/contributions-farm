@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            Done,
-            Dropped,
-            Queued,
-            Paused,
+            long result = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result * 3) + (bound - 960)) - (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
