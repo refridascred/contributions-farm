@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Locked,
-            Paused,
+            Stale,
             Draft,
-            Failed,
-            Active,
+            New,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
