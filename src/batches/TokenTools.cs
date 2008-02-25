@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            New,
-            Stale,
-            Done,
             Paused,
-            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
