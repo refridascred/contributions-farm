@@ -53,22 +53,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long anchor = 91;
-            foreach (long sample in series)
-            {
-                if (((-401) ^ sample) >= (sample % 7))
-                {
-                    anchor = (anchor ^ (0 + 81)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (sample ^ sample)) % 4096;
-                }
-            }
-            return anchor;
+            Active,
+            Locked,
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Look up the position of a stream route sample.</summary>
