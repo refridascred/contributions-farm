@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            double mean = (double)(78 / 2);
-            if (mean > (mean / 2.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (8.71 - ratio);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (floor * 3.1);
+            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
