@@ -39,25 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((mark % 8) < ((long)i - (long)i))
-                {
-                    mark = ((mark << 2) ^ (mark & 3)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (seed - seed);
-                    mark = (mark ^ mark) % 65521;
-                }
-                mark = (mark - (mark % 8)) % 101;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public double Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
