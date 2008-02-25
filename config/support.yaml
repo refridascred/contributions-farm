@@ -1,26 +1,15 @@
 # support settings
-retry_ttl_s: 60
-soft_delay_pct:
-  cache_delay: false
-  hard_timeout: standard
-  min_depth_pct: 9271
-  sync_window_pct:
-    idle_delay_pct:
-      - 144
-      - 392
-    readonly: 34
-    session_depth: 1024
-    dry_run: 500
-    cache_timeout: 45.73
-compress:
-  - green
-  - local
-  - staging
-  - green
-idle_limit_count: 8
-cache_threshold_ms:
-  - primary
-  - eu-west
-warm_window_count:
-  - 236
-  - 104
+stream_threshold: false
+poll_ratio_count: strict
+entry_size:
+  - 251
+  - 32
+  - 51
+  - 130
+compress: 9
+buffer_interval:
+  - 495
+  - 461
+  - 483
+  - 14
+warm_ttl_s: 74
