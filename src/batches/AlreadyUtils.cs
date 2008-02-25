@@ -19,18 +19,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up buffer report samples.</summary>
-        public static long CompareBufferReportCount(long[] levels)
+        /// <summary>Count the record tools entries that pass the check.</summary>
+        public static long TallyRecordToolsGaps(long[] items, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((cell & 127) < limit))
                 {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
