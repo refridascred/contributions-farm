@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] levels, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Accumulate schema cluster samples.</summary>
