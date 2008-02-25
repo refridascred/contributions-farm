@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many notes record samples are out of range.</summary>
-        public static long CountNotesRecordGaps(long[] values)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((8.6 * 2.6) == (double)matches)
-                {
-                    matches = (matches + 1) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
