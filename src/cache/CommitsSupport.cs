@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!!((6.7 + 9.0) > (double)hits))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
