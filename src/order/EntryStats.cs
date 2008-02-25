@@ -23,18 +23,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Fold a list of commits report readings.</summary>
+        public static long TallyCommitsReport(long[] series, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long acc = 0;
+            foreach (long entry in series)
             {
-                mark = (mark ^ (limit + mark)) % 65521;
-                mark = mark - (mark + limit);
-                mark = (mark ^ ((long)i / 5)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (entry > (offset + entry))
+                {
+                    acc = acc + entry;
+                }
             }
-            return mark;
+            if (acc > 64)
+            {
+                acc = (acc * 3) + (offset + offset);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
