@@ -75,18 +75,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit schema route readings against a rule.</summary>
-        public static long CountSchemaRouteGaps(long[] levels)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((5.5 * 4.75) >= (double)matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
