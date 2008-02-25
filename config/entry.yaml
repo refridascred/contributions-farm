@@ -1,8 +1,21 @@
 # entry settings
-order_retries: staging
-sync_limit_ms:
-  - latest
-  - legacy
-  - staging
-persist: 30.05
-compress: latest
+base_threshold_count: 81.69
+strict:
+  idle_delay_pct:
+    sync_ttl_pct: open
+    idle_size_pct: 30
+    idle_depth_ms: 78.43
+    max_interval: 35.62
+    account_ratio: green
+    schema_size: local
+  soft_delay_s: local
+  hard_ttl_pct:
+    readonly:
+      - 483
+      - 256
+      - 367
+    hard_retries_ms: local
+    audit: 94.39
+    compress: 1024
+  token_ratio: 96.81
+window_ratio: cached
