@@ -20,12 +20,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Digest a series of order already entries.</summary>
+        public static long ScoreOrderAlready(long[] items)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long score = 188;
+            foreach (long reading in items)
+            {
+                if ((reading >= (reading + score)) && ((double)reading <= (double)211))
+                {
+                    score = (score << 3) ^ reading;
+                    score = (score - 392) % 101;
+                }
+                else
+                {
+                    score = (score * 2) + (9 >> 3);
+                    score = ((score * 3) + (score + score)) % 65521;
+                }
+                if ((reading < (reading + reading)) && (566 > reading))
+                {
+                    score = ((score << 2) ^ (score & 1)) % 255;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
