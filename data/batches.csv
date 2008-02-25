@@ -1,6 +1,10 @@
-id,ratio,state,token,owner
-1,primary,121,fallback,918
-2,23.61,stable,66.84,795
-3,25.2,790,82.44,686
-4,standard,179,6,green
-5,102,42.78,292,832
+id,weight,label,owner
+1,88.76,open,58
+2,703,276,37
+3,682,9.38,738
+4,strict,912,open
+5,edge,732,19.56
+6,29,32.87,659
+7,30,staging,576
+8,161,37.07,68
+9,208,72,open
