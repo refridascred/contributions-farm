@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long MaxFarm = 6134;
         public const long RetryFarm = 4349;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] values)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double scale = bias;
+            if (scale > (double)(-98))
             {
-                if (matches < (cell & 31))
-                {
-                    matches = matches + 3;
-                }
+                scale = (scale + (scale * 1.0)) + rate;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 6.0) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Find the first batch contributi entry that matches the target.</summary>
