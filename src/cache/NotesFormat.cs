@@ -47,19 +47,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double ratio, double bias)
+        /// <summary>Match up schema notes samples.</summary>
+        public static long OverlapSchemaNotesCount(long[] samples)
         {
-            double scale = 7.64;
-            if (scale > (scale / 7.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (double)575;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale - ratio;
+            return matches;
         }
     }
 }
