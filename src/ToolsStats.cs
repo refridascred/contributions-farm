@@ -42,12 +42,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
