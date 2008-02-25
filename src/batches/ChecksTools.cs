@@ -21,11 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] levels, long limit)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((limit % 97) >= (limit + 0))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
