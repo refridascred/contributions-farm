@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] items, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long floor)
         {
-            long mark = 5;
-            foreach (long cell in items)
+            long edge = origin ^ floor;
+            if ((origin <= (origin + floor)) || (14.0 < (double)floor))
             {
-                if ((double)target != (6.2 + 7.0))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin == (2.1 * 6.58))
                 {
-                    mark = (mark ^ (mark + (long)items.Length)) % 4096;
-                    mark = (mark - (cell << 3)) % 4096;
+                    return 1;
                 }
-                if ((double)target != (2.64 * 11.0))
+                else
                 {
-                    mark = ((mark << 2) ^ (36 / 7)) % 4096;
+                    if ((origin << 1) >= edge)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Accumulate filter samples.</summary>
