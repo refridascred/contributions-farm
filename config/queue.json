@@ -1,15 +1,10 @@
 {
-  "buffer_window": ["open", "local", "open"],
-  "graph_size": true,
-  "cache_interval_pct": 100,
-  "verbose": {
-    "max_threshold_pct": 2445,
-    "sync_interval_pct": [423, 120, 189, 160],
-    "batch_interval": 500
+  "idle_ttl_pct": {
+    "base_ttl_count": "open",
+    "default_window_pct": 100,
+    "min_capacity_s": 1024
   },
-  "batch_timeout_count": {
-    "warm_timeout_pct": 381,
-    "strict": false,
-    "burst_depth_count": "standard"
-  }
+  "retry_timeout_s": 8455,
+  "max_retries_pct": "eu-west",
+  "min_size_pct": true
 }
