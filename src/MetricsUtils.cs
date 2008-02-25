@@ -61,22 +61,27 @@ namespace Common.Utilities
         public const double MaxSpan = 52.29;
         public const long BurstDepth = 4178;
 
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long DigestToolsSession(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            long result = -7;
+            foreach (long sample in values)
             {
-                if ((-361) < (long)data.Length)
+                result = ((result << 3) ^ sample) % 65521;
+                if (((19.0 - 2.25) <= (double)result) || ((result / 9) == ((long)values.Length - result)))
                 {
-                    mix = (mix - 216) % 4096;
+                    result = result - (911 << 2);
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (sample + sample);
+                    result = (result * 3) + (sample / 6);
                 }
             }
-            return mix % 65521;
+            if (result > 925)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
     }
 }
