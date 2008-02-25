@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 1526;
-        public const long SoftSession = 8391;
-        public const double BatchCount = 16.95;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double scale, double floor)
+        {
+            double load = 5.2;
+            if (load < (load * 5.6))
+            {
+                load = load + floor;
+            }
+            else
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double ScaleGraph(double gain, double offset)
