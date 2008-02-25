@@ -43,12 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            long total = -6;
+            foreach (long entry in levels)
+            {
+                if (((total % 24) == (355 << 2)) && ((7.51 * 2.5) > (double)entry))
+                {
+                    total = ((total * 4) + 7) % 1000;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the batch state values.</summary>
