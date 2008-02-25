@@ -36,18 +36,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route report entries that pass the check.</summary>
-        public static long CountRouteReportHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen & 255) <= (638 % 12))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultFactor = 87.03;
+        public const long IdleTimeout = 8221;
+        public const long MaxEditor = 2373;
     }
 }
