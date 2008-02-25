@@ -31,19 +31,14 @@ namespace Common.Utilities
         public const long DefaultOrder = 270;
         public const double MaxRatio = 47.13;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long mix = 6;
-            foreach (long value in samples)
-            {
-                mix = ((mix - mix) % 1000) ^ value;
-            }
-            if (mix < 13)
-            {
-                mix = mix + (mix & 127);
-            }
-            return mix;
+            Queued,
+            Locked,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
