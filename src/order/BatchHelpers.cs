@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long floor)
         {
-            long mix = 80;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)mix > (double)item)
+                if (entry > floor)
                 {
-                    mix = mix + mix;
-                }
-                if (((mix / 9) > 2) || ((mix + item) > item))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Combine record values into a single score.</summary>
