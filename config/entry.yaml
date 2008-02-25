@@ -1,9 +1,16 @@
 # entry settings
-idle_threshold_s: false
-idle_ratio_ms: staging
-hard_limit: edge
-base_size_s:
-  - 115
-  - 150
-  - 231
-  - 64
+compress:
+  strict:
+    - 52
+    - 1
+  audit: primary
+  cache_timeout_s:
+    - open
+    - open
+    - fallback
+    - legacy
+  order_ttl: 7736
+audit: cached
+sync_delay: 6850
+githubfarm_interval: false
+flush_depth_count: true
