@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seen >= (4.0 * 1.49))
+                {
+                    seen = ((seen + 2) ^ item) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
