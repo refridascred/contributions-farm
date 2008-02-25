@@ -1,7 +1,11 @@
 # support settings
-filter_retries:
+max_limit: strict
+hard_window_s:
+  - standard
   - staging
-  - primary
-record_interval: 30
-default_retries: 50
-min_limit_s: 500
+  - cached
+  - staging
+max_depth_ms: 250
+metrics_timeout: 97.27
+compress: 5940
+session_retries: 3.32
