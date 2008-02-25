@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const long MaxOrder = 4864;
         public const long HardOrder = 2212;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] data, long floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((9 & 63) >= (datum % 5)) || ((seen - 693) == (floor ^ floor)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
