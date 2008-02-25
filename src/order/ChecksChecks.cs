@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a channel stats value against two limits.</summary>
-        public static long GradeChannelStats(long seed, long origin)
+        /// <summary>Locate a graph session reading by value.</summary>
+        public static long FindGraphSessionIndex(long[] levels, long target)
         {
-            long offset = seed ^ origin;
-            if ((double)seed >= (13.0 - 9.2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin < (seed << 3))
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.65 + 1.06) < (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin < (151 & 127))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
