@@ -21,14 +21,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long target)
         {
-            Done,
-            Pending,
-            Locked,
-            Paused,
-            New,
+            if ((target + floor) != (floor - floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target - floor) > target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((target + 321) != (floor ^ target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6.1 - 6.0) <= (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
