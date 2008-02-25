@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Synced,
-            New,
-            Stale,
-            Queued,
-            Locked,
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next already value.</summary>
