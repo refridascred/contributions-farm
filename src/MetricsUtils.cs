@@ -60,19 +60,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double rate, double span)
+        /// <summary>Scale a metrics session figure with a bias.</summary>
+        public static double ProjectMetricsSession(double gain, double bias)
         {
-            double mean = span * 5.0;
-            if (mean >= mean)
-            {
-                mean = mean + (rate + span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)4) + (double)(long)i;
-            }
-            return mean - (rate / 9.0);
+            double ratio = gain;
+            return (ratio + gain) + bias;
         }
     }
 }
