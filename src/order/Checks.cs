@@ -33,21 +33,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of order format readings.</summary>
-        public static long CompareOrderFormatCount(long[] data)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] <= floor)
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
