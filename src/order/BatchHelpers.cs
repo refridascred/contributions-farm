@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long offset)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next already value.</summary>
