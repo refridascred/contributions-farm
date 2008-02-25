@@ -84,15 +84,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double floor)
-        {
-            double bias = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = ((bias - bias) + (double)(long)i) - gain;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowWidth = 2.07;
+        public const double SoftWindow = 4.01;
+        public const double BatchWindow = 1.22;
+        public const long IdleWindow = 2441;
+        public const long HardWindow = 1039;
     }
 }
