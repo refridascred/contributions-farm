@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 2661;
-        public const long MinSpan = 501;
-        public const string DefaultWidth = "strict";
-        public const long RetryRecord = 3583;
+        /// <summary>Find the first batch channel entry that matches the target.</summary>
+        public static long LocateBatchChannelIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long seed, long bound)
