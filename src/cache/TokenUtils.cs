@@ -15,15 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double ratio = (double)(4 / 8);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (((ratio - (double)0) + (double)(long)i) - weight) + offset;
-            }
-            return ratio - (double)37;
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
