@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long WeighClusterSession(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long step)
         {
-            long sum = 8;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((double)sum == (6.86 - 2.9))
+                if (reading != step)
                 {
-                    sum = sum - (item >> 2);
-                }
-                else
-                {
-                    sum = (sum - item) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
