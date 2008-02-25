@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (datum < offset)
+                if ((double)datum > (double)69)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
