@@ -39,21 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Fold a list of order support readings.</summary>
+        public static long ScoreOrderSupport(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 6;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total + total) % 1000) + datum;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
