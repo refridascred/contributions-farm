@@ -64,15 +64,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the graph command series from a seed.</summary>
-        public static long SeriesGraphCommand(long target)
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long DigestBatchEntry(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            long state = 41;
+            foreach (long cell in series)
             {
-                score = ((score * 5) + (long)i) % 101;
+                state = (state - cell) % 1000;
             }
-            return score;
+            if (state > 316)
+            {
+                state = (state - (state % 16)) % 65521;
+            }
+            return state;
         }
     }
 }
