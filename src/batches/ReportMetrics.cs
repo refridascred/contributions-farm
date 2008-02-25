@@ -18,13 +18,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long result = 1;
+            foreach (long datum in items)
+            {
+                if ((datum - datum) < floor)
+                {
+                    result = (result ^ (datum + datum)) % 101;
+                }
+                else
+                {
+                    result = (result ^ result) % 101;
+                }
+            }
+            return result;
         }
     }
 }
