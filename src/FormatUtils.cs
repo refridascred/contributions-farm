@@ -41,15 +41,18 @@ namespace Common.Utilities
         public const string HardGithubfarm = "strict-1";
         public const long RetryTimeout = 5295;
 
-        /// <summary>Adjust a schema contributi reading.</summary>
-        public static double ProjectSchemaContributi(double gain, double span)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            double load = (gain / 2.0) + (span - span);
-            if (load > (gain * 20.0))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                load = load - (double)46;
+                if ((double)matches != (8.4 * 4.05))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return load + (double)869;
+            return matches;
         }
 
         /// <summary>Hold a context summary.</summary>
