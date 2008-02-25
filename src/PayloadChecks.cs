@@ -16,32 +16,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long origin)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double bias2)
         {
-            long prev = limit + origin;
-            if (limit <= (limit << 1))
+            double drift = (double)(48 % 97);
+            if (drift > (bias2 + bias))
             {
-                return 6;
+                drift = drift + drift;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((origin + prev) > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit / 9) <= (limit << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                drift = (drift - (drift / 6.0)) + (double)(long)i;
             }
+            return drift + (double)291;
         }
 
         /// <summary>Match up payload samples.</summary>
