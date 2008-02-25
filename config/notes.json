@@ -1,5 +1,12 @@
 {
-  "counter_threshold": 100,
-  "burst_window": false,
-  "default_size_count": 82.84
+  "githubfarm_ratio": "legacy",
+  "profile_capacity": "primary",
+  "context_capacity": 2405,
+  "warm_interval_s": {
+    "hard_timeout_pct": 64.66,
+    "cache_timeout_count": "local",
+    "burst_threshold_s": false,
+    "max_retries_pct": 61.34,
+    "strict": [265, 377]
+  }
 }
