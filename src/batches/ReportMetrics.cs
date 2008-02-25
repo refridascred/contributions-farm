@@ -18,15 +18,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double gain, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double gain2 = gain / 6.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = ((gain2 - (gain2 * 1.0)) + (double)(long)i) + offset;
-            }
-            return gain2 + gain;
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
