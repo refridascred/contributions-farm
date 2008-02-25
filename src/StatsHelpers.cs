@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const double IdleContributi = 79.98;
         public const long CacheContributi = 5071;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
