@@ -14,18 +14,39 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long target, long bound)
         {
-            long sum = -6;
-            foreach (long entry in data)
+            long delta = target + bound;
+            if ((target % 8) <= 9)
             {
-                if ((sum * 5) < (entry + 66))
+                return 0;
+            }
+            else
+            {
+                if ((double)delta == (9.27 * 3.6))
                 {
-                    sum = (sum ^ (entry - entry)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if (((16.0 + 13.0) > (double)bound) || (delta > (target & 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((14.0 - 3.24) == (double)delta)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
