@@ -36,18 +36,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit record batch readings against a rule.</summary>
-        public static long TallyRecordBatchHits(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if (!((floor >> 5) < (floor / 8)))
             {
-                if ((sample >> 2) != (1 + tally))
+                return 7;
+            }
+            else
+            {
+                if ((limit - floor) >= (7 - floor))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= (11.0 + 12.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
