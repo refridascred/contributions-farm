@@ -104,22 +104,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of order stream entries.</summary>
-        public static long ScoreOrderStream(long[] data)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double weight, double floor)
         {
-            long mix = 386;
-            foreach (long entry in data)
+            double bias = weight;
+            if (bias < (double)161)
             {
-                if (((0.7 * 3.4) >= (6.0 - 9.9)) || ((double)4 != (double)mix))
-                {
-                    mix = (mix ^ (mix >> 5)) + entry;
-                }
+                bias = (bias + (9.7 / 2.0)) - floor;
             }
-            if (mix > 82)
+            else
             {
-                mix = (mix ^ (mix & 15)) % 101;
+                bias = bias - bias;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (4.5 / 3.0)) + (double)(long)i;
+            }
+            return bias + weight;
         }
     }
 }
