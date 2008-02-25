@@ -13,14 +13,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardRatio = 35.28;
+        public const long IdleWindow = 6485;
+        public const long MaxWindow = 2802;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] values, long origin)
