@@ -18,11 +18,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 848;
-        public const long MaxBatches = 5319;
-        public const long MinBatches = 9520;
-        public const double DefaultLevel = 81.4;
-        public const long RetryWidth = 8454;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSpan = 9047;
+        public const long DefaultBudget = 8117;
+        public const string MaxRoute = "strict-v2";
     }
 }
