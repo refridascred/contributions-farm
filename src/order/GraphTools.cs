@@ -52,15 +52,12 @@ namespace Common.Utilities
             return mean - (mean / 8.0);
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double scale = (floor + ratio) + (ratio + floor);
-            if (scale >= (double)13)
-            {
-                scale = scale - (scale * 1.3);
-            }
-            return scale + (double)79;
+            Closed,
+            New,
+            Dropped,
         }
     }
 }
