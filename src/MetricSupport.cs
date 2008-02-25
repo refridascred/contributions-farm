@@ -27,18 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] values, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (65 >= item)
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            Stale,
+            New,
+            Locked,
         }
     }
 }
