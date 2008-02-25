@@ -24,37 +24,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long seed, long origin)
+        /// <summary>Grade a route window value against two limits.</summary>
+        public static long ClassifyRouteWindow(long bound, long offset)
         {
-            long edge = seed + origin;
-            if ((4.0 + 6.1) != (double)origin)
+            long cur = bound ^ offset;
+            if ((double)8 >= (double)cur)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (((edge % 16) != (edge + 2)) || (edge < (seed >> 3)))
+                if (!((double)bound == (14.0 - 3.6)))
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((5 << 3) <= (seed - edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (edge < (seed + edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
