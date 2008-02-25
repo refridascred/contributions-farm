@@ -1,4 +1,8 @@
 # githubfarm settings
-verbose: 3977
-dry_run: 30
-poll_ratio: staging
+hard_ttl_s: strict
+flush_timeout_ms:
+  - local
+  - latest
+  - latest
+  - strict
+soft_window: 86
