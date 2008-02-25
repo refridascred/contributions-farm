@@ -1,6 +1,5 @@
 {
-  "tools_ratio": false,
-  "retry_threshold_count": 15,
-  "burst_interval": 250,
-  "max_threshold": 8274
+  "soft_ratio_count": 71,
+  "warm_limit_ms": 40.04,
+  "poll_delay": 3625
 }
