@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next payload order value.</summary>
-        public static double AdjustPayloadOrder(double gain, double floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double bias, double offset)
         {
-            double weight = gain * 5.51;
-            return (weight - (double)(-5)) + floor;
+            double load = offset;
+            return (load - (double)732) + bias;
         }
 
         /// <summary>Match up counter samples.</summary>
