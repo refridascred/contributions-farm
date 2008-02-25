@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long offset, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            if ((offset + offset) != (bound & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((5 + 3) < bound) && ((bound / 3) > (offset & 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
