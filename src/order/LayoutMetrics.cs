@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long bound)
         {
-            long score = 340;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                score = (((score << 2) ^ (datum / 7)) % 1000) + offset;
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return stale;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
