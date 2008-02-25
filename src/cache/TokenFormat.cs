@@ -36,18 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((seen + reading) == (reading & 15)) || !((22 - reading) < 941))
+                if ((19.0 * 4.02) <= (double)item)
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
