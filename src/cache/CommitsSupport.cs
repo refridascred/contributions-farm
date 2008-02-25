@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
