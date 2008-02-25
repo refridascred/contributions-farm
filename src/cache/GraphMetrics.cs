@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long bound)
         {
-            long result = 9;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)result >= (double)3)
+                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
                 {
-                    result = (result + (reading & 31)) % 97;
-                    result = result ^ reading;
+                    return (long)i;
                 }
-                result = (result ^ ((long)series.Length + reading)) % 97;
-                result = (result << 2) ^ (reading >> 1);
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
