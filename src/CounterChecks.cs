@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long limit)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry ^ 478;
-                for (int i = 0; i < 2; i++)
+                if (values[i] >= limit)
                 {
-                    carry = (((carry << 2) ^ carry) % 1000) - (long)i;
-                }
-                if (carry < 4)
-                {
-                    carry = ((carry << 3) ^ (target >> 3)) % 101;
-                }
-                else
-                {
-                    carry = carry + (value - target);
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
