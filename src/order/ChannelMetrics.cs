@@ -14,22 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] series, long seed)
         {
-            long total = 703;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((double)total <= 6.65) && ((total * 2) <= total))
+                if (seed > (value & 1))
                 {
-                    total = (total - (cell - total)) % 255;
+                    tally = tally + 1;
                 }
-                if (((8.0 + 9.0) == (double)total) && ((total + total) != (21 & 1)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
