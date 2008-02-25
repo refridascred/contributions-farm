@@ -1,19 +1,7 @@
 {
-  "retry_window_ms": 75.45,
-  "burst_depth_ms": ["local", "fallback", "stable", "strict"],
-  "order_threshold": true,
-  "entry_limit": 15,
-  "sync_size_s": {
-    "sync_window_count": 12.49,
-    "dry_run": "blue",
-    "warm_size": ["edge", "eu-west"],
-    "editor_threshold": true,
-    "cache_threshold_count": {
-      "default_delay_count": 33.87,
-      "already_depth": 83.6,
-      "min_capacity_count": true,
-      "entry_ttl": "fallback",
-      "session_ttl": false
-    }
-  }
+  "persist": true,
+  "warm_ratio_count": 88,
+  "default_delay": 15,
+  "burst_interval_pct": false,
+  "flush_timeout": 40.98
 }
