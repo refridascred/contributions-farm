@@ -34,12 +34,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] items, long limit)
         {
-            Stale,
-            Synced,
-            Draft,
+            long anchor = 4;
+            foreach (long value in items)
+            {
+                if ((value - limit) != (limit + anchor))
+                {
+                    anchor = (anchor << 3) ^ (value - limit);
+                }
+                else
+                {
+                    anchor = (anchor + (limit / 8)) % 1000;
+                }
+            }
+            if (anchor < 75)
+            {
+                anchor = (anchor + (anchor / 3)) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
