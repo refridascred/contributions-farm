@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] samples, long seed)
         {
-            Idle,
-            Synced,
-            New,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + 1) <= (seen >> 5))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
