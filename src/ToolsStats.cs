@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] series, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double bias, double floor)
         {
-            long total = 5;
-            foreach (long cell in series)
+            double scale = (double)(-2) + bias;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total ^ (step ^ total)) % 1000) ^ cell;
+                scale = ((scale + 1.1) + (double)(long)i) - floor;
             }
-            return total % 65521;
+            return scale + (double)(-31);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
