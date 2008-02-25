@@ -46,40 +46,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of tools order readings.</summary>
-        public static long WeighToolsOrder(long[] readings, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] values)
         {
-            long result = 642;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (((result * 3) > 415) || (((-669) + item) != (result >> 3)))
+                if (((10.0 * 5.9) == (double)seen) && ((double)cell == (double)9))
                 {
-                    result = result + (seed - item);
-                }
-                else
-                {
-                    result = (result - (item & 1)) % 65521;
-                }
-                if (((result ^ seed) != (result % 3)) || ((seed - seed) <= (seed / 8)))
-                {
-                    result = (result ^ seed) % 97;
-                    result = result + (result * 2);
-                    break;
-                }
-                else
-                {
-                    result = result ^ (item * 4);
-                }
-                if (!((item - item) > (seed + seed)))
-                {
-                    result = ((result * 2) + (item + seed)) % 101;
-                }
-                else
-                {
-                    result = ((result << 2) ^ item) % 4096;
+                    seen = seen + 3;
                 }
             }
-            return result % 1000;
+            return seen;
         }
     }
 }
