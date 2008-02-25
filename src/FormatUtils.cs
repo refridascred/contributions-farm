@@ -62,22 +62,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(seen >= (2 + sample)))
+                state = (state ^ (floor - floor)) % 101;
+                if (((long)i - state) > (floor - (long)i))
                 {
-                    seen = seen + 1;
+                    state = state ^ ((long)i + (long)i);
+                    continue;
                 }
-                else
+                if ((double)state < (4.0 - 8.9))
                 {
-                    seen = seen - 1;
+                    state = ((state * 4) + (floor >> 3)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
