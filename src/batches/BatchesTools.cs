@@ -13,22 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((reading >= (matches + (long)levels.Length)) || (((reading - 17) > (43 - reading)) && ((4 % 10) <= (reading + (-9)))))
+                if (!(hits <= (hits << 3)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 2) + item) - target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
