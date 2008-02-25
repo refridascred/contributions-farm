@@ -20,11 +20,39 @@ namespace Common.Utilities
             return gain - (floor / 4.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowWidth = "staging-v2";
-        public const long MinSpan = 5758;
-        public const long RetryBuffer = 5108;
-        public const long MinBuffer = 7898;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long target, long offset)
+        {
+            if ((19.0 * 20.0) > (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target <= (2.25 * 10.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target - (-9)) != (offset % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((56 % 97) >= (offset - (-2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
