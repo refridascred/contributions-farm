@@ -7,10 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=98
-log "limit is ${BUFFER_LIMIT}"
+for item in latest legacy primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
