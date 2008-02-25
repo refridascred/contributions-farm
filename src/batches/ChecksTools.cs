@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((hits / 9) <= (hits << 3)))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next token cache value from a seed.</summary>
