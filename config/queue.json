@@ -1,7 +1,15 @@
 {
-  "sync_limit": 250,
-  "cache_interval_ms": 54.15,
-  "cache_depth_count": true,
-  "max_capacity_pct": "eu-west",
-  "max_retries_pct": "blue"
+  "payload_timeout": true,
+  "readonly": 73.9,
+  "warm_depth": "stable",
+  "route_limit": false,
+  "default_threshold_count": 28.88,
+  "flush_capacity_count": {
+    "hard_capacity_count": 23.78,
+    "persist": 57.13,
+    "record_capacity": 250,
+    "verbose": 74,
+    "compress": ["standard", "local"],
+    "max_limit_pct": "legacy"
+  }
 }
