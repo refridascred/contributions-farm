@@ -12,11 +12,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 15.16;
-        public const long MaxDepth = 3472;
-        public const string MinRecord = "strict-1";
-        public const long HardRecord = 1364;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "stable";
+        public const string LimitProfile = "alpha-v2";
+        public const long RetrySpan = 7897;
+        public const string BurstProfile = "cached-1";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] readings, long seed)
