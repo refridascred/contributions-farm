@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] levels, long offset)
+        /// <summary>Combine stream githubfarm values into a single score.</summary>
+        public static long TotalStreamGithubfarm(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = -87;
+            foreach (long reading in levels)
             {
-                if ((8.7 + 17.0) <= (double)count)
+                if ((reading >> 5) == (reading >> 3))
                 {
-                    count = ((count + 1) - item) - offset;
+                    mix = (mix << 3) ^ 79;
+                }
+                if (((double)mix <= (double)771) && ((reading * 2) >= mix))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
