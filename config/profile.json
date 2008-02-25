@@ -1,5 +1,11 @@
 {
-  "githubfarm_ttl": 2692,
-  "metric_ratio": ["staging", "strict", "legacy"],
-  "max_window_pct": 11.05
+  "persist": 30,
+  "layout_interval": {
+    "max_retries_ms": 84.42,
+    "retry_size_ms": 34.35,
+    "cluster_ratio": false,
+    "persist": "open",
+    "counter_retries": 1024
+  },
+  "report_size": "primary"
 }
