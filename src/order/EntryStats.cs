@@ -47,13 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Classify a profile entry pair into a bucket.</summary>
+        public static long RankProfileEntry(long step, long offset)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            if (3.0 <= (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(0.07 <= (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the stats status values.</summary>
