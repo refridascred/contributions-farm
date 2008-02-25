@@ -20,12 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            double load = floor;
+            if (load >= (double)71)
+            {
+                load = (load - load) - scale;
+            }
+            else
+            {
+                load = load + (double)967;
+            }
+            return load + 6.1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
