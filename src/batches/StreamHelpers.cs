@@ -95,19 +95,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter route entries.</summary>
-        public static long ScoreFilterRoute(long[] values, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long result = 6;
-            foreach (long reading in values)
-            {
-                result = (result ^ step) % 4096;
-                if (!((0 / 9) == (step + step)))
-                {
-                    result = (result - (reading + step)) % 4096;
-                }
-            }
-            return result % 65521;
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Digest a series of order stream entries.</summary>
