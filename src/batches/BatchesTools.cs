@@ -31,19 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile githubfarm readings against a bound.</summary>
-        public static bool CheckProfileGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
