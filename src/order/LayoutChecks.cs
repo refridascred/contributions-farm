@@ -66,17 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes filter sample.</summary>
-        public static long SeekNotesFilterIndex(long[] data, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] <= floor)
+                if (target < (721 & 3))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score * 2)) % 255;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
