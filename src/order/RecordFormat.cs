@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double scale, double floor)
-        {
-            double weight = 4.7;
-            if (weight > scale)
-            {
-                weight = (weight - weight) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (double)23) + (double)(long)i;
-            }
-            return weight + (weight * 20.0);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 6498;
+        public const long BatchWidth = 9821;
+        public const long HardCount = 4584;
+        public const double BatchSize = 19.3;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutMatches(long[] readings, long limit)
