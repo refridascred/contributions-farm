@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] samples, long step)
+        /// <summary>Digest a series of route buffer entries.</summary>
+        public static long DigestRouteBuffer(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 3;
+            foreach (long reading in values)
             {
-                if (samples[i] <= step)
+                if ((double)reading >= 17.0)
                 {
-                    return (long)i;
+                    mark = ((mark + (reading ^ reading)) % 101) + target;
                 }
+                mark = mark - reading;
             }
-            return -1;
+            if (mark < 76)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the notes kind values.</summary>
