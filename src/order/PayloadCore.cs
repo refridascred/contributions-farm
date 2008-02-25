@@ -15,32 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a cache batch pair into a bucket.</summary>
-        public static long BucketCacheBatch(long offset, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double scale, double bias)
         {
-            long diff = offset - target;
-            if (target >= (diff + diff))
+            double drift = scale;
+            if (drift > (double)92)
             {
-                return 3;
+                drift = drift - (bias - scale);
             }
             else
             {
-                if (((target * 2) > (1 + 541)) && ((1.5 + 4.0) > (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset >> 3) >= (offset & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                drift = drift + (double)(-803);
             }
+            return drift - (scale + bias);
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
