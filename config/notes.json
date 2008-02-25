@@ -1,5 +1,6 @@
 {
-  "soft_ratio_count": 71,
-  "warm_limit_ms": 40.04,
-  "poll_delay": 3625
+  "warm_interval": false,
+  "base_threshold": "green",
+  "profile_depth": [440, 331, 207],
+  "queue_ratio": 250
 }
