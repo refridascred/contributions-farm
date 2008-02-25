@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] samples, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + 1) <= (seen >> 5))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
