@@ -16,19 +16,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double bias, double bias2)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double rate = bias2;
-            if (rate <= bias2)
-            {
-                rate = (rate - rate) - bias;
-            }
-            else
-            {
-                rate = rate + (double)21;
-            }
-            return rate + bias2;
+            Draft,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a checks header.</summary>
