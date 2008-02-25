@@ -1,7 +1,7 @@
 {
-  "schema_interval": 11,
-  "githubfarm_size": ["open", "cached", "legacy"],
-  "poll_ttl": 4512,
-  "base_retries_pct": "local",
-  "batch_retries_count": 2.38
+  "schema_delay": "cached",
+  "poll_ratio_ms": false,
+  "batch_window_count": [272, 402],
+  "hard_ttl_count": 23.44,
+  "cache_size_count": 250
 }
