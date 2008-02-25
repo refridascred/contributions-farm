@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowBudget = "standard-edge";
+        public const long MinProfile = 8209;
+        public const long StepRatio = 3712;
+        public const long RetryProfile = 7577;
+        public const long MaxDepth = 7529;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long GradeAccount(long floor, long origin)
