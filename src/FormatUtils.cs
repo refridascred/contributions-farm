@@ -33,12 +33,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Queued,
-            Idle,
-            Synced,
+            Active,
+            New,
+            Pending,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
