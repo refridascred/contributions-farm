@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long MaxFarm = 6134;
         public const long RetryFarm = 4349;
 
-        /// <summary>Project the next route window value.</summary>
-        public static double ProjectRouteWindow(double bias, double bias2)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double mean = 2.45 / 7.0;
-            return (mean + (bias2 * 13.0)) + bias;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
