@@ -1,5 +1,5 @@
 {
-  "poll_limit_ms": true,
-  "audit": ["edge", "strict", "standard", "staging"],
-  "cache_limit": 77.94
+  "counter_threshold": 100,
+  "burst_window": false,
+  "default_size_count": 82.84
 }
