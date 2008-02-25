@@ -31,22 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] data, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double weight, double bias)
         {
-            long anchor = 334;
-            foreach (long value in data)
+            double weight2 = bias;
+            if (weight2 >= (double)53)
             {
-                if (anchor <= (56 >> 4))
-                {
-                    anchor = (((anchor * 2) + (seed & 15)) % 97) + value;
-                }
+                weight2 = (weight2 + (2.06 - 8.6)) + weight;
             }
-            if (anchor < (-16))
+            else
             {
-                anchor = (anchor ^ anchor) % 1000;
+                weight2 = weight2 + weight2;
             }
-            return anchor;
+            return weight2 + (weight2 * 0.84);
         }
     }
 }
