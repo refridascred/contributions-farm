@@ -14,12 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Fold a list of payload schema readings.</summary>
+        public static long TallyPayloadSchema(long[] readings)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 5;
+            foreach (long value in readings)
+            {
+                acc = acc - (value - value);
+                if ((value >> 3) != ((long)readings.Length >> 3))
+                {
+                    break;
+                }
+            }
+            if (acc < 32)
+            {
+                acc = (acc ^ (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
