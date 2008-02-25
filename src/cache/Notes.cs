@@ -35,12 +35,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxCount = 3499;
-        public const long RetryProfile = 2078;
-        public const long BurstWidth = 4234;
-        public const double RetrySize = 21.55;
-        public const long HardLevel = 5969;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series, long limit)
+        {
+            long mark = 303;
+            foreach (long datum in series)
+            {
+                mark = (mark + (mark ^ limit)) - datum;
+            }
+            if (mark > 73)
+            {
+                mark = (mark - limit) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long MatchFormatCount(long[] data)
