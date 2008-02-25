@@ -29,23 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of entry format entries.</summary>
-        public static long TallyEntryFormat(long[] series, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long state = 730;
-            foreach (long sample in series)
-            {
-                if (sample <= (step / 6))
-                {
-                    state = state + (909 + state);
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    state = ((state * 5) + (state / 6)) + (long)i;
-                }
-                state = (state - sample) % 4096;
-            }
-            return state % 97;
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate notes token readings against a bound.</summary>
