@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm metric value.</summary>
-        public static double ScaleFarmMetric(double weight, double span)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double bias = weight;
-            if (bias <= (2.12 + span))
-            {
-                bias = bias - (span - weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - weight) - (double)(long)i;
-            }
-            return bias + (weight - weight);
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate report readings against a bound.</summary>
