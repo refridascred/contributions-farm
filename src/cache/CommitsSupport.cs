@@ -86,19 +86,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] data, long offset)
+        /// <summary>Validate window notes readings against a bound.</summary>
+        public static bool VerifyWindowNotesRange(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (cell < offset)
+                if (sample > seed)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
