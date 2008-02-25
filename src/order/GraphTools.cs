@@ -26,12 +26,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 18.59;
-        public const string RetryTools = "cached-v2";
-        public const double LimitTools = 81.73;
-        public const double IdleSize = 66.39;
-        public const long HardTools = 9289;
+        /// <summary>Find the first token commits entry that matches the target.</summary>
+        public static long SeekTokenCommitsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long limit)
