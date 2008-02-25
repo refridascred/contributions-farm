@@ -1,7 +1,23 @@
 {
-  "enabled": "cached",
-  "filter_threshold": "blue",
-  "max_depth_pct": 11,
-  "verbose": 1024,
-  "hard_limit_pct": false
+  "filter_ttl": 7.63,
+  "dry_run": 76.97,
+  "retry_capacity_s": {
+    "dry_run": {
+      "flush_ratio": 2426,
+      "compress": 1024,
+      "route_ratio": ["edge", "latest", "eu-west", "blue"]
+    },
+    "default_retries_s": [308, 200, 127],
+    "verbose": 12,
+    "batch_capacity_count": {
+      "flush_threshold": true,
+      "order_window": false,
+      "cache_depth_s": ["eu-west", "staging", "green"],
+      "token_limit": "staging",
+      "sync_interval_ms": 500,
+      "checks_interval": "fallback"
+    },
+    "hard_limit": true,
+    "warm_delay_pct": "staging"
+  }
 }
