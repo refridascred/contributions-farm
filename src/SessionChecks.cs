@@ -52,21 +52,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
