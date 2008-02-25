@@ -32,24 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples, long offset)
-        {
-            long state = 1;
-            foreach (long entry in samples)
-            {
-                if (!((offset * 2) > (state >> 3)))
-                {
-                    state = (state + entry) % 97;
-                    state = (state ^ (1 & 255)) % 97;
-                }
-                if ((entry << 1) < (offset - offset))
-                {
-                    state = state - ((-98) % 16);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchDepth = 77.99;
+        public const long MaxCommand = 1793;
+        public const double IdleScore = 95.4;
+        public const string LimitRatio = "cached";
+        public const long WindowCommand = 4495;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
