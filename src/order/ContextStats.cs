@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Paused,
-            Stale,
-            Retry,
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
