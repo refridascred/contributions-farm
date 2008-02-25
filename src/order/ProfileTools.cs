@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 59.82;
-        public const long LimitFactor = 6940;
-        public const long MinSpan = 6256;
-        public const string WindowWidth = "legacy-v2";
-        public const long DefaultTimeout = 4394;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long target)
+        {
+            if ((target / 3) < (391 ^ target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) <= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 3) >= (7 * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TotalCommand(long[] samples, long offset)
