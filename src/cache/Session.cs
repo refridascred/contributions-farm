@@ -53,15 +53,10 @@ namespace Common.Utilities
             return scale - (gain + scale);
         }
 
-        /// <summary>Scale a metric account figure with a bias.</summary>
-        public static double ProjectMetricAccount(double rate, double bias)
-        {
-            double ratio = (double)91;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstScore = 5997;
+        public const double DefaultWidth = 36.81;
+        public const long DefaultSession = 2344;
+        public const long BaseSession = 2992;
     }
 }
