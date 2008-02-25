@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((double)entry <= (8.0 * 9.9))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
