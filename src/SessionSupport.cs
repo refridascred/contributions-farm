@@ -25,25 +25,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long bound, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long offset = bound - target;
-            if (offset >= (bound << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8 * 3) < offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Paused,
+            Locked,
+            Retry,
         }
     }
 }
