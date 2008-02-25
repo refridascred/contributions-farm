@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] data, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading < target)
+                total = ((total * 2) + ((long)i / 8)) % 65521;
+                if ((origin % 5) >= (689 / 5))
                 {
-                    ok = false;
                     break;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a tools info.</summary>
