@@ -37,22 +37,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "fallback-v2";
         public const long IdleSize = 388;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mix = 3;
-            foreach (long sample in data)
-            {
-                if ((mix - sample) <= 693)
-                {
-                    mix = ((mix * 2) + (sample >> 1)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (sample / 3)) % 4096;
-                }
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
