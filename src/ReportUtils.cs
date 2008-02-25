@@ -67,11 +67,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 38.58;
-        public const double CacheScore = 82.13;
-        public const double HardSpan = 6.01;
-        public const long BurstFarm = 793;
-        public const long BaseCount = 7180;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long bound, long limit)
+        {
+            if (!((limit / 4) < bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.5 / 7.0) > (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound >> 4) < (limit / 3)) && ((16.0 - 10.0) != (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound < 1.75)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
