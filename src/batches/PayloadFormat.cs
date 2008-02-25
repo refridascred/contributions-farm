@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many metric editor samples are out of range.</summary>
-        public static long TallyMetricEditorHits(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample - sample) == (sample % 8)) || ((double)hits >= (double)695))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
