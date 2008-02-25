@@ -21,21 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 54;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell <= (9.0 / 3.0))
                 {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ (anchor + limit);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
