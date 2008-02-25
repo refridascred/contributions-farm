@@ -20,11 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 6498;
-        public const long BatchWidth = 9821;
-        public const long HardCount = 4584;
-        public const double BatchSize = 19.3;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series, long floor)
+        {
+            long state = 926;
+            foreach (long value in series)
+            {
+                state = (((state * 2) + (7 ^ 425)) - value) - floor;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] samples, long target)
