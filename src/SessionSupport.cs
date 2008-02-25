@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Accumulate metrics route samples.</summary>
-        public static long WeighMetricsRoute(long[] series)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            long mix = 22;
-            foreach (long sample in series)
+            double mean = (gain * 11.0) - (gain / 6.0);
+            if (mean <= mean)
             {
-                if ((mix + sample) != (mix * 5))
-                {
-                    mix = (mix * 3) + (58 - sample);
-                }
+                mean = mean - (mean - 3.32);
             }
-            if (mix < 4)
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix + (mix - mix)) % 4096;
+                mean = (mean - gain) - (double)(long)i;
             }
-            return mix;
+            return mean + bias;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
