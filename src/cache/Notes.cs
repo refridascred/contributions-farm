@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const string SoftGraph = "open";
         public const long BurstGraph = 4806;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] values)
         {
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits - 15) < datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
