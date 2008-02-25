@@ -15,17 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 115;
+            foreach (long sample in data)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                total = (total + (total + sample)) - origin;
+                if (((2.0 + 4.24) >= (double)total) && ((total * 5) < (16 % 24)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
