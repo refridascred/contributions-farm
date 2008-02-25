@@ -55,18 +55,31 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Classify a session farm pair into a bucket.</summary>
+        public static long BucketSessionFarm(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((floor2 ^ 63) <= (97 / 4))
             {
-                if (!((7 / 8) == (178 + value)))
+                return 0;
+            }
+            else
+            {
+                if (floor2 >= floor)
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (3.0 >= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a metrics info.</summary>
