@@ -59,10 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "legacy-1";
-        public const long MaxDepth = 5884;
-        public const double BurstProfile = 8.37;
+        /// <summary>Iterate the format buffer series from a seed.</summary>
+        public static long SeriesFormatBuffer(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every tools batch entry stays within the limit.</summary>
         public static bool ValidateToolsBatchBounds(long[] data, long bound)
