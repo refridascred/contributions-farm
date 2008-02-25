@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a graph stats reading.</summary>
-        public static double SmoothGraphStats(double scale, double offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] levels, long origin)
         {
-            double rate = (7.8 * 17.0) + (offset / 2.0);
-            if (rate > scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (double)4;
+                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (double)727;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
