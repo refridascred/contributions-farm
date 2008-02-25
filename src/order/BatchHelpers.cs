@@ -13,19 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] data, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell >= offset)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    ok = false;
-                    break;
+                    long tally = anchor;
+                    anchor = (anchor ^ tally) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
