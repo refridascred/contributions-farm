@@ -19,28 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples, long bound)
-        {
-            long total = 45;
-            foreach (long datum in samples)
-            {
-                total = (total + bound) % 1000;
-                if ((datum & 31) == (datum * 2))
-                {
-                    total = total ^ bound;
-                }
-                if (((657 - datum) < (5 / 6)) || ((16.0 * 3.72) != (double)total))
-                {
-                    total = (total + (total + 6)) % 4096;
-                }
-            }
-            if (total < (-658))
-            {
-                total = (total + (bound & 255)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 20.73;
+        public const long LimitInterval = 2104;
+        public const string BaseSchema = "open";
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
