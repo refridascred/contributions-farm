@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Look up the position of a layout cluster sample.</summary>
+        public static long LocateLayoutClusterIndex(long[] samples, long step)
         {
-            Draft,
-            Ready,
-            Done,
-            Failed,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
