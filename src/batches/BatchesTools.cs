@@ -30,18 +30,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stats channel entries that pass the check.</summary>
-        public static long TallyStatsChannelHits(long[] levels, long target)
+        /// <summary>Scale a contributi report figure with a bias.</summary>
+        public static double AdjustContributiReport(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double bias = (double)(541 >> 4);
+            if (bias <= (bias + bias))
             {
-                if (((((-6) + target) >= target) && ((target - (long)levels.Length) <= (matches * 5))) && ((matches + cell) <= cell))
-                {
-                    matches = matches + 1;
-                }
+                bias = (bias - (double)13) - scale;
             }
-            return matches;
+            else
+            {
+                bias = bias - (offset - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (double)0;
         }
     }
 }
