@@ -16,19 +16,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] items, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if ((floor - seed) > (seed - floor))
             {
-                if (item >= offset)
+                return 4;
+            }
+            else
+            {
+                if (!(seed > (floor & 127)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
