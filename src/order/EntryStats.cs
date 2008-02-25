@@ -79,13 +79,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data)
         {
-            Draft,
-            Failed,
-            Paused,
-            Idle,
+            long total = 7;
+            foreach (long reading in data)
+            {
+                total = ((total * 3) + total) + reading;
+                if ((total - total) <= (65 + 4))
+                {
+                    total = (total - (total * 3)) % 65521;
+                }
+            }
+            if (total < 98)
+            {
+                total = ((total << 3) ^ (total >> 5)) % 4096;
+            }
+            return total;
         }
     }
 }
