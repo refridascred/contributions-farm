@@ -15,12 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
             Paused,
-            Active,
+            Failed,
             Pending,
+            Closed,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
