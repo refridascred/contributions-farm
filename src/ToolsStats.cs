@@ -55,11 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 4814;
-        public const long BatchRatio = 4095;
-        public const long LimitLevel = 8108;
-        public const string LimitSize = "stable";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches << 3) >= 908)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double DefaultInterval = 78.53;
