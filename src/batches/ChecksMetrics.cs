@@ -68,18 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - tally) == (tally + (long)items.Length))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
