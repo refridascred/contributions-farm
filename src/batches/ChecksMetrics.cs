@@ -32,23 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support stats value.</summary>
-        public static double ProjectSupportStats(double scale, double span)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] series, long target)
         {
-            double rate = span;
-            if (rate > (scale + rate))
+            bool stale = true;
+            foreach (long cell in series)
             {
-                rate = rate - rate;
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + scale) - (double)(long)i;
-            }
-            return rate + (double)2;
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
