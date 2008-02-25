@@ -23,18 +23,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = 17;
-            foreach (long item in levels)
-            {
-                if ((double)acc != (16.0 + 5.0))
-                {
-                    acc = ((acc ^ (7 + (-458))) % 101) - item;
-                }
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
