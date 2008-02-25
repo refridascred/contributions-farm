@@ -47,18 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 19.64;
+        public const long BaseLevel = 605;
+        public const long IdleLevel = 4428;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long SortCounter(long seed, long limit)
