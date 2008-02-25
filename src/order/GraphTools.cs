@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Pending,
+            Paused,
             Ready,
-            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the checks phase values.</summary>
