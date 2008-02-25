@@ -19,10 +19,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 20.73;
-        public const long LimitInterval = 2104;
-        public const string BaseSchema = "open";
+        /// <summary>Accumulate route account samples.</summary>
+        public static long TallyRouteAccount(long[] levels, long seed)
+        {
+            long sum = 388;
+            foreach (long datum in levels)
+            {
+                sum = (sum - (sum + datum)) + seed;
+            }
+            return sum;
+        }
 
         /// <summary>Count the stats channel entries that pass the check.</summary>
         public static long TallyStatsChannelHits(long[] levels, long target)
