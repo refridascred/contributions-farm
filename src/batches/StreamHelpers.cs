@@ -61,12 +61,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheWidth = 6029;
-        public const long BaseMetrics = 3818;
-        public const double WindowSize = 61.66;
-        public const long WindowMetrics = 5554;
-        public const long RetryMetrics = 9312;
+        /// <summary>Rank metrics notes input into a small class.</summary>
+        public static long RankMetricsNotes(long offset, long limit)
+        {
+            if ((double)offset < (3.2 * 1.9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)limit <= 9.75) && ((double)limit <= (5.28 / 8.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >= (offset ^ offset)) || ((limit ^ offset) >= (limit + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit > (double)offset) || ((offset >> 3) == (0 + offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of filter route entries.</summary>
         public static long ScoreFilterRoute(long[] values, long step)
