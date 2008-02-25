@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double offset)
-        {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - (offset * 3.94)) + (double)(long)i) - weight;
-            }
-            return scale - (double)59;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 7735;
+        public const long StepSpan = 9698;
+        public const string StepCommand = "latest";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryStream = 8798;
