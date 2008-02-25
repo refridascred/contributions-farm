@@ -28,12 +28,20 @@ namespace Common.Utilities
         public const double WindowBatch = 64.32;
         public const long BatchSize = 441;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] items)
         {
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            long acc = 33;
+            foreach (long sample in items)
+            {
+                acc = (acc - (sample ^ 0)) % 255;
+                if (!((sample << 3) < (sample & 31)))
+                {
+                    acc = (acc << 2) ^ (sample * 2);
+                }
+                acc = acc ^ (sample / 9);
+            }
+            return acc;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
