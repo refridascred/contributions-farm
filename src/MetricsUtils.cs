@@ -61,19 +61,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (reading <= bound)
+                if (sample < origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
