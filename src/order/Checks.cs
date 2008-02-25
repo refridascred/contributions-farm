@@ -37,10 +37,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleFactor = 3459;
-        public const long BatchQueue = 7082;
-        public const long HardWidth = 2207;
-        public const long IdleWidth = 4976;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
