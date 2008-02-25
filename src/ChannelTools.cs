@@ -15,17 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] values, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix << 2) ^ (3 + mix)) % 255;
-                mix = (mix + bound) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
