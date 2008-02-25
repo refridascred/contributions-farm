@@ -21,20 +21,32 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long diff = origin ^ floor;
+            if ((double)floor <= (2.46 - 7.6))
             {
-                score = (score - (score - (long)i)) % 1000;
-                if ((double)(long)i == (14.0 * 3.55))
-                {
-                    score = (score << 3) ^ (long)i;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((diff - floor) >= (diff - diff)) || (floor >= (floor + diff)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor > (908 + floor)) || (7.0 <= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
