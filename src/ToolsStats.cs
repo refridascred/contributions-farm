@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8537;
-        public const long BaseRatio = 6635;
-        public const string CacheChecks = "fallback-v2";
-        public const long StepSize = 5286;
+        /// <summary>Roll a payload metrics counter forward.</summary>
+        public static long RollPayloadMetrics(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((acc + limit) >= acc) && ((double)acc != (4.0 + 19.0)))
+                {
+                    acc = (acc ^ ((long)i << 1)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double AdjustContributi(double ratio, double bias)
