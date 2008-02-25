@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            Retry,
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Look up the position of a window checks sample.</summary>
