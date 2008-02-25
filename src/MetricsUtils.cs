@@ -25,12 +25,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Paused,
-            Stale,
-            Closed,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a graph info.</summary>
