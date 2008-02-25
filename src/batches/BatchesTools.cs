@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long floor)
+        /// <summary>Check that every stats metric entry stays within the limit.</summary>
+        public static bool ValidateStatsMetricLimits(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (series[i] < floor)
+                if (value >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Derive the next window queue value from a seed.</summary>
