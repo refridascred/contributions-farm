@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double BurstReport = 32.35;
         public const double MaxReport = 64.28;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double gain, double span)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double rate = (double)(350 / 7);
-            if (rate >= 17.0)
-            {
-                rate = (rate - (span + rate)) - gain;
-            }
-            else
-            {
-                rate = rate - (double)8;
-            }
-            return rate - (rate + 12.0);
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
