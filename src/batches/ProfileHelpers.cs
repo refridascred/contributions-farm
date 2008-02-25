@@ -73,17 +73,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first checks stream entry that matches the target.</summary>
-        public static long SeekChecksStreamIndex(long[] values, long bound)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
