@@ -13,21 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count queue profile pairs that satisfy a relation.</summary>
-        public static long PairQueueProfileCount(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
