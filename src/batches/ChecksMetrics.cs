@@ -14,13 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] values, long step)
         {
-            Synced,
-            Retry,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!!((double)hits < 18.0))
+                {
+                    hits = ((hits + 1) + value) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
