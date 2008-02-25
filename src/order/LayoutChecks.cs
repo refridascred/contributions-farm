@@ -67,18 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] items, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (origin <= reading)
-                {
-                    seen = seen + 1;
-                }
+                long edge = 318;
+                long seen = (long)i + edge;
+                edge = edge - ((long)i + seen);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
