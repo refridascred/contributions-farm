@@ -28,12 +28,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFactor = 1469;
-        public const long BaseCount = 6927;
-        public const long BurstFarm = 8924;
-        public const long SoftWidth = 9919;
-        public const string BatchBudget = "open-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)floor > (5.0 / 5.0))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the layout stats entries that pass the check.</summary>
         public static long CountLayoutStatsMatches(long[] samples, long origin)
