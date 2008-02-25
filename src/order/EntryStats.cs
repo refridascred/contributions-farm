@@ -30,32 +30,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long limit, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            long edge = limit + target;
-            if ((limit - edge) <= edge)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target + 290) >= (target % 64)) && ((limit + limit) == (edge - 135)))
+                if (1 >= cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (edge <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
