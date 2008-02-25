@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks report entry that matches the target.</summary>
-        public static long LookupChecksReportIndex(long[] items, long limit)
+        /// <summary>Locate a graph payload reading by value.</summary>
+        public static long LocateGraphPayloadIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                if (samples[i] > floor)
                 {
                     return (long)i;
                 }
