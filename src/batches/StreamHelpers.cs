@@ -65,25 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long seed, long step)
-        {
-            if ((4.9 - 6.1) <= (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 3) != (seed + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheWidth = 6029;
+        public const long BaseMetrics = 3818;
+        public const double WindowSize = 61.66;
+        public const long WindowMetrics = 5554;
+        public const long RetryMetrics = 9312;
 
         /// <summary>Digest a series of filter route entries.</summary>
         public static long ScoreFilterRoute(long[] values, long step)
