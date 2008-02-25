@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series, long target)
+        /// <summary>Audit entry stream readings against a rule.</summary>
+        public static long TallyEntryStreamHits(long[] readings)
         {
-            long score = 904;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (score < (target + score))
+                if ((sample + 226) <= (tally & 255))
                 {
-                    score = ((score << 2) ^ 16) ^ sample;
+                    tally = tally + 2;
                 }
             }
-            if (score > (-6))
-            {
-                score = (score << 3) ^ (target / 9);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
