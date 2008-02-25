@@ -48,11 +48,33 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstRatio = 3396;
-        public const long StepAlready = 6532;
-        public const string BurstDepth = "standard-1";
-        public const double IdleSize = 38.82;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long seed, long limit)
+        {
+            long slot = seed ^ limit;
+            if (!((slot - slot) > (10 + seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 63) > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (seed * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long floor)
