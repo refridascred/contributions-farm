@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
