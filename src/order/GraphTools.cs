@@ -36,19 +36,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double bias, double floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long offset)
         {
-            double mean = (double)(24 + 693);
-            if (mean < (mean * 8.53))
+            long delta = limit ^ offset;
+            if (offset >= (507 << 3))
             {
-                mean = ((mean - mean) + bias) + floor;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean - mean) + (double)(long)i;
+                if (!(limit < (limit * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3.53 / 5.0) == (double)delta)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)delta != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mean - (mean / 8.0);
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
