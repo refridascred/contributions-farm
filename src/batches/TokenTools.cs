@@ -30,19 +30,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of schema route readings.</summary>
-        public static long CombineSchemaRoute(long[] readings)
-        {
-            long acc = 669;
-            foreach (long datum in readings)
-            {
-                acc = ((acc * 3) + (datum / 8)) % 65521;
-            }
-            if (acc > (-8))
-            {
-                acc = (acc ^ ((long)readings.Length - acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 4033;
+        public const string BaseTimeout = "strict-edge";
+        public const long BasePayload = 162;
+        public const string WindowPayload = "standard-edge";
+        public const string MaxCount = "alpha";
     }
 }
