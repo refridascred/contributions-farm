@@ -1,25 +1,5 @@
 # githubfarm settings
-checks_timeout:
-  - 188
-  - 235
-default_size_count: 1024
-flush_ttl_s:
-  - 129
-  - 467
-warm_size_ms:
-  min_ratio: false
-  hard_timeout_pct:
-    - primary
-    - local
-    - blue
-  token_threshold: 36
-  warm_ttl_count: 38
-  sync_window_ms: standard
-cache_ratio_ms:
-  hard_delay_count: open
-  soft_threshold: green
-  filter_ratio: stable
-  compress: 2514
-  session_window: 83.97
-  stats_threshold: 70
-min_ratio_s: 34
+default_window: 100
+payload_size: 250
+compress: false
+readonly: 85
