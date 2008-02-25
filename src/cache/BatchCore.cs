@@ -47,13 +47,17 @@ namespace Common.Utilities
         public const long SoftDepth = 9184;
         public const long CacheCount = 4308;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] series, long seed)
         {
-            Stale,
-            Active,
-            Synced,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
