@@ -77,12 +77,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
