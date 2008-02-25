@@ -28,26 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a farm already pair into a bucket.</summary>
-        public static long RankFarmAlready(long seed, long target)
-        {
-            long bound = seed - target;
-            if ((double)2 < (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheWidth = "latest";
+        public const long StepEntry = 6198;
+        public const double MinSize = 20.9;
+        public const long CacheFactor = 9292;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BatchWidth = 54.36;
