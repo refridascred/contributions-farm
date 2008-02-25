@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] series, long offset)
         {
-            if ((double)target != (2.72 + 9.76))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound * 5) <= (128 - target)) && ((bound + bound) <= (target / 5)))
+                if (sample != offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + target) < (bound % 12)) && ((target >> 1) < (target % 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target / 7) > (bound / 6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the report phase values.</summary>
