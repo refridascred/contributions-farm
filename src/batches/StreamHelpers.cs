@@ -67,11 +67,16 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryEntry = 32.51;
-        public const long WindowInterval = 4615;
-        public const string RetryTimeout = "local-edge";
-        public const long IdleEntry = 1267;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double bias)
+        {
+            double load = (double)(9 + 6);
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load - (load - weight)) + (double)(long)i) + bias;
+            }
+            return load - (weight / 8.0);
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
