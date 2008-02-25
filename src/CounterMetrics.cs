@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long origin)
-        {
-            long gap = bound + origin;
-            if (((9.0 + 3.0) < (double)bound) || ((bound - gap) < (gap - 81)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((gap ^ gap) <= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "staging-edge";
+        public const long BatchSpan = 1135;
+        public const double MaxRoute = 49.19;
+        public const long BaseTimeout = 7573;
+        public const long BatchRoute = 9171;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
