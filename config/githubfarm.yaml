@@ -1,18 +1,7 @@
 # githubfarm settings
-retry_ttl_count:
-  - open
-  - blue
-  - open
-  - legacy
-cache_size_ms: legacy
-default_window_count: 44
-enabled: 79.14
-support_window:
-  batch_limit_count: edge
-  base_ratio_count: 10.31
-  batch_retries: 250
-  poll_window: 23
-route_window:
-  - fallback
-  - open
-  - edge
+format_timeout:
+  - 467
+  - 296
+warm_threshold: true
+min_threshold: false
+default_capacity_s: primary
