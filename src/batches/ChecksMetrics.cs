@@ -14,19 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double scale = (double)9 * 6.6;
-            if (scale < (scale + offset))
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (bias + scale)) - (double)(long)i;
-            }
-            return scale + (double)268;
+            Synced,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
