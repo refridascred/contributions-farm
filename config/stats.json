@@ -1,7 +1,5 @@
 {
-  "metrics_retries": 43.28,
-  "compress": 5415,
-  "sync_retries": ["cached", "open"],
-  "commits_capacity": "stable",
-  "format_ratio": "standard"
+  "audit": 3,
+  "session_retries": true,
+  "layout_window": 53
 }
