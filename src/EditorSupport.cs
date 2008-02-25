@@ -83,14 +83,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Idle,
-            New,
-            Locked,
-            Dropped,
-            Done,
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
     }
 }
