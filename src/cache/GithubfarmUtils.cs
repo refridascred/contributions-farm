@@ -40,22 +40,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples, long bound)
         {
-            long mark = 503;
-            foreach (long value in series)
+            long score = 97;
+            foreach (long entry in samples)
             {
-                if ((double)mark < (12.0 + 0.05))
+                score = score - (entry - bound);
+                if ((12.0 * 7.49) == (double)entry)
                 {
-                    mark = mark - (value * 3);
+                    score = (score - (2 ^ entry)) % 97;
                 }
             }
-            if (mark > 9)
+            if (score < 845)
             {
-                mark = mark + mark;
+                score = ((score << 2) ^ 85) % 65521;
             }
-            return mark % 4096;
+            return score % 65521;
         }
     }
 }
