@@ -58,31 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long floor2)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if (!((floor % 3) < (floor2 * 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((15 + floor) <= floor2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 1) != (205 * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Paused,
         }
     }
 }
