@@ -34,14 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long floor)
         {
-            Synced,
-            Retry,
-            Stale,
-            Idle,
-            Ready,
+            if (!((floor - floor) <= (floor + floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed + seed) > (seed + 6)) || ((seed + 9) > seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
