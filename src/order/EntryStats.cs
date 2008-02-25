@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values, long seed)
+        /// <summary>Classify a support queue pair into a bucket.</summary>
+        public static long RankSupportQueue(long step, long bound)
         {
-            long carry = 566;
-            foreach (long cell in values)
+            long delta = step ^ bound;
+            if (((6 - 32) == (delta * 4)) && ((bound / 3) >= (delta * 4)))
             {
-                if (!((seed >> 3) == (carry - cell)))
+                return 2;
+            }
+            else
+            {
+                if (bound > (delta + step))
                 {
-                    carry = (carry + carry) % 255;
+                    return 7;
                 }
                 else
                 {
-                    carry = ((carry * 4) + (cell ^ carry)) % 1000;
+                    if (step < (447 + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step > delta) && (step >= bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a route record.</summary>
