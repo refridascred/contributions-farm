@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] items)
         {
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((3 / 9) == (entry / 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a token reading by value.</summary>
