@@ -19,19 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double scale, double floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long target)
         {
-            double load = floor;
-            if (load >= (double)71)
+            long cur = offset ^ target;
+            if ((10.0 - 5.16) == (double)cur)
             {
-                load = (load - load) - scale;
+                return 8;
             }
             else
             {
-                load = load + (double)967;
+                if (!((double)offset < (3.8 - 18.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur >> 2) <= (offset >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.59 - 8.0) != (double)cur)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return load + 6.1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
