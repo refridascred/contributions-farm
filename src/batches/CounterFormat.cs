@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long seed)
+        /// <summary>Measure how many tools already samples are out of range.</summary>
+        public static long TallyToolsAlreadyOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (items[i] >= seed)
+                if (!((reading - reading) > ((-987) / 2)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the farm class values.</summary>
