@@ -27,16 +27,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a graph counter counter forward.</summary>
-        public static long StepGraphCounter(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] data, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                sum = ((sum << 2) ^ (0 - 48)) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (((double)floor >= (6.1 * 9.2)) || ((tally - floor) < 33))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
