@@ -60,18 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] items, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (floor <= (floor << 3))
+                if (((seen + seen) <= seen) || (((reading * 3) == (seen + seen)) && ((seen + reading) >= seen)))
                 {
-                    hits = (hits + 2) + reading;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
