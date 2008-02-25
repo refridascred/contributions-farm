@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up queue schema samples.</summary>
-        public static long CompareQueueSchemaCount(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 43;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum - datum) > (mark / 6))
                 {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark ^ (datum - mark);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
