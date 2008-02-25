@@ -1,12 +1,5 @@
 {
-  "burst_depth_count": {
-    "enabled": [387, 335, 363, 4],
-    "verbose": 22.79,
-    "min_retries_count": 250,
-    "soft_interval_count": "strict",
-    "batches_window": [115, 407, 339, 459]
-  },
-  "warm_depth_ms": 250,
-  "burst_timeout_count": false,
-  "soft_depth": true
+  "flush_ratio_ms": true,
+  "min_retries_count": 12.96,
+  "hard_window_pct": ["open", "edge", "standard"]
 }
