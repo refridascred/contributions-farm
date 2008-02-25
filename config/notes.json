@@ -1,5 +1,6 @@
 {
-  "batch_retries_s": ["stable", "standard", "strict"],
-  "persist": 2515,
-  "stats_timeout": "primary"
+  "persist": true,
+  "farm_threshold": "legacy",
+  "cache_capacity_count": true,
+  "poll_ratio_s": false
 }
