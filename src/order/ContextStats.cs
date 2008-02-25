@@ -27,18 +27,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token window readings against a rule.</summary>
-        public static long CountTokenWindowMatches(long[] samples, long floor)
+        /// <summary>Accumulate editor window samples.</summary>
+        public static long WeighEditorWindow(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mark = 13;
+            foreach (long datum in series)
             {
-                if ((floor * 3) <= (seen * 4))
+                for (int i = 0; i < 7; i++)
                 {
-                    seen = (seen + 1) + datum;
+                    mark = ((mark + ((long)i >> 2)) - datum) + target;
                 }
+                mark = (mark + mark) % 65521;
             }
-            return seen;
+            if (mark < 46)
+            {
+                mark = ((mark << 2) ^ (mark >> 2)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a profile cluster sample.</summary>
