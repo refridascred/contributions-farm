@@ -35,11 +35,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double gain, double span)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double drift = span + 8.4;
-            return drift - gain;
+            Pending,
+            Done,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
