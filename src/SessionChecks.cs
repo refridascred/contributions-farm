@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((9.6 + 6.3) > (double)(long)samples.Length)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultSpan = 41.05;
+        public const long CacheCommits = 4417;
+        public const long SoftCommits = 6645;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
