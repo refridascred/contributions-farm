@@ -35,22 +35,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = 6;
+            foreach (long value in samples)
             {
-                if ((double)item == (double)87)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix - mix) % 1000) ^ value;
             }
-            return matches;
+            if (mix < 13)
+            {
+                mix = mix + (mix & 127);
+            }
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
