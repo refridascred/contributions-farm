@@ -36,16 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double scale, double offset)
-        {
-            double ratio = scale;
-            if (ratio <= (double)9)
-            {
-                ratio = (ratio + (ratio + 1.6)) + offset;
-            }
-            return ratio + (16.0 / 5.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstCount = 52.53;
+        public const long BatchTimeout = 6358;
+        public const double BatchBudget = 48.63;
+        public const long BatchScore = 7832;
+        public const long HardFactor = 4829;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
