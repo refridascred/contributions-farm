@@ -27,15 +27,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next token cache value from a seed.</summary>
-        public static long SeriesTokenCache(long bound)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
