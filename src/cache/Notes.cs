@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long MaxStats = 7088;
         public const long IdleWidth = 2754;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Idle,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 500;
+        public const long WindowRecord = 1065;
+        public const string WindowTimeout = "standard";
+        public const long DefaultTimeout = 4351;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long origin)
