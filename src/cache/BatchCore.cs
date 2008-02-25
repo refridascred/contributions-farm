@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] levels, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (sample < hits)
+                if (reading != seed)
                 {
-                    hits = (hits + 3) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Locate a window stats reading by value.</summary>
