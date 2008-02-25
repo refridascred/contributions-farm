@@ -54,14 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Done,
-            New,
-            Idle,
-            Draft,
-            Locked,
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a entry token pair into a bucket.</summary>
