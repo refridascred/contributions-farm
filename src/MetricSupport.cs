@@ -16,13 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            double mean = 15.0;
+            return ((mean - (mean / 6.0)) + gain) + offset;
         }
 
         /// <summary>Accumulate checks samples.</summary>
