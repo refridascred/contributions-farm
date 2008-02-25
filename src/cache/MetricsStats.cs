@@ -30,11 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
