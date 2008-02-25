@@ -24,20 +24,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double gain, double span)
-        {
-            double gain2 = (span + gain) + (15.0 * 1.0);
-            if (gain2 >= gain2)
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - (gain2 - 2.17)) + (double)(long)i;
-            }
-            return gain2 + (double)2;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftRatio = 2130;
+        public const double BaseFactor = 20.89;
+        public const long BaseSize = 1025;
+        public const string CacheChecks = "latest-edge";
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
