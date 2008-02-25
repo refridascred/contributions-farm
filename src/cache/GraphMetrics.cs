@@ -43,12 +43,13 @@ namespace Common.Utilities
         public const double WindowFarm = 86.92;
         public const long BatchFarm = 2715;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 82.61;
-        public const long StepFilter = 5795;
-        public const long HardFilter = 8255;
-        public const long StepWidth = 8587;
-        public const double BurstFilter = 35.58;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Locked,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] samples)
