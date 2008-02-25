@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long step)
         {
-            Queued,
-            Done,
-            Active,
+            long edge = origin + step;
+            if ((origin > (step + step)) || (11.0 > (double)origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.43 - 2.27) > (double)edge)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a buffer summary.</summary>
