@@ -32,13 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the graph level values.</summary>
