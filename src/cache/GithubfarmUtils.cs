@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long floor)
+        /// <summary>Fold a list of counter farm readings.</summary>
+        public static long ScoreCounterFarm(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -2;
+            foreach (long value in data)
             {
-                if (samples[i] > floor)
+                if ((mix & 63) <= (mix - mix))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ ((long)data.Length - value)) % 65521;
                 }
             }
-            return -1;
+            if (mix > 9)
+            {
+                mix = (mix + (mix & 1)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route stats.</summary>
