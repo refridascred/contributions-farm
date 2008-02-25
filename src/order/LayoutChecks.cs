@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const double RetryFactor = 74.99;
         public const long SoftSize = 2591;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] samples, long seed)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((16.0 + 14.0) > (double)hits)
-                {
-                    hits = ((hits + 1) + sample) - seed;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
