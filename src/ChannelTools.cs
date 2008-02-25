@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] values, long origin)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
+            long result = 31;
+            foreach (long reading in values)
+            {
+                result = (result + (827 << 3)) % 65521;
+                if ((result <= (result >> 3)) || ((reading - 28) <= (origin + result)))
+                {
+                    result = (result ^ (result << 3)) % 65521;
+                }
+            }
+            return result;
         }
     }
 }
