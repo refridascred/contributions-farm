@@ -31,18 +31,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series)
+        /// <summary>Combine editor tools values into a single score.</summary>
+        public static long TallyEditorTools(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long state = 83;
+            foreach (long entry in series)
             {
-                if ((datum + datum) == (matches / 3))
+                if ((double)entry < (12.0 - 5.12))
                 {
-                    matches = matches + 3;
+                    state = (state << 3) ^ (entry - entry);
+                }
+                if ((entry >> 4) == (entry << 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 61)
+            {
+                state = ((state * 3) + (state & 3)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count profile schema pairs that satisfy a relation.</summary>
