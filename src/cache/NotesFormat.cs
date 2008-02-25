@@ -33,10 +33,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "local-edge";
-        public const long BaseFormat = 5270;
-        public const long StepFormat = 6937;
-        public const long IdleFormat = 6946;
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double ratio, double bias)
+        {
+            double scale = 7.64;
+            if (scale > (scale / 7.0))
+            {
+                scale = scale - (double)575;
+            }
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale - ratio;
+        }
     }
 }
