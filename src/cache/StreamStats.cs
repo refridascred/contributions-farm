@@ -24,14 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
             Dropped,
             Locked,
-            New,
-            Draft,
-            Failed,
+            Active,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
