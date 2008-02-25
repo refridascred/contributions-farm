@@ -41,19 +41,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            long mark = 989;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (sample * 5)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark > 41)
-            {
-                mark = mark ^ (mark + 905);
-            }
-            return mark;
+            return seen;
         }
     }
 }
