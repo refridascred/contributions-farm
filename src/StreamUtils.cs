@@ -47,14 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchSpan = "standard-1";
+        public const long RetryLayout = 1546;
+        public const long RetrySize = 2680;
+        public const double MaxLayout = 96.57;
+        public const double SoftLayout = 30.98;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] items, long offset)
