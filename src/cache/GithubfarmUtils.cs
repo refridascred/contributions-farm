@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items, long target)
+        /// <summary>Look up the position of a record batch sample.</summary>
+        public static long SeekRecordBatchIndex(long[] levels, long bound)
         {
-            long anchor = 44;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((((anchor * 4) + 520) % 101) - sample) - target;
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
