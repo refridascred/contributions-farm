@@ -1,6 +1,7 @@
 {
-  "record_retries": 36.46,
-  "retry_threshold_s": 30,
-  "session_delay": 64.76,
-  "commits_delay": 7231
+  "metrics_retries": 43.28,
+  "compress": 5415,
+  "sync_retries": ["cached", "open"],
+  "commits_capacity": "stable",
+  "format_ratio": "standard"
 }
