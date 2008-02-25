@@ -1,6 +1,6 @@
 {
-  "retry_timeout_count": 51,
-  "flush_delay_ms": "green",
-  "enabled": "fallback",
-  "record_window": 934
+  "persist": 500,
+  "cluster_ratio": [45, 72, 78, 216],
+  "hard_size_s": true,
+  "hard_timeout": "stable"
 }
