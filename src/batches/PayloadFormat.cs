@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryCount = 37.07;
-        public const long StepCount = 4473;
-        public const long CacheLayout = 4139;
+        /// <summary>Combine githubfarm already values into a single score.</summary>
+        public static long WeighGithubfarmAlready(long[] values)
+        {
+            long acc = 48;
+            foreach (long item in values)
+            {
+                if ((40 - 22) < (long)values.Length)
+                {
+                    acc = (acc ^ (20 % 97)) % 1000;
+                    acc = ((acc * 4) + (item - acc)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ (5 + acc);
+                }
+                if (!((double)item == (double)acc))
+                {
+                    acc = (acc - (item - acc)) % 4096;
+                }
+            }
+            if (acc > 43)
+            {
+                acc = ((acc * 5) + (acc % 100)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many metric editor samples are out of range.</summary>
         public static long TallyMetricEditorHits(long[] series)
