@@ -47,11 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] values, long offset)
         {
-            double gain2 = gain - floor;
-            return gain2 - floor;
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((2.0 * 5.4) >= (double)seen)
+                {
+                    seen = ((seen + 1) ^ entry) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
