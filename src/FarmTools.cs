@@ -26,10 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCount = "latest-v2";
-        public const long WindowCount = 8269;
-        public const string CacheCommand = "open-v2";
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Closed,
+            Stale,
+            Active,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] readings)
