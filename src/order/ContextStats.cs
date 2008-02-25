@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.0 * 20.0) != (double)hits)
                 {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 2) ^ value) - origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the context level values.</summary>
