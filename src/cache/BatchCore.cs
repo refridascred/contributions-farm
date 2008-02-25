@@ -46,19 +46,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double mean = (bias - bias2) + (double)8;
-            if (mean >= bias2)
-            {
-                mean = mean - (bias2 / 2.0);
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (double)(-35);
+            Stale,
+            Active,
+            Synced,
+            Locked,
         }
     }
 }
