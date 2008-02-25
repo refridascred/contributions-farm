@@ -22,13 +22,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading & 7) <= (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the support level values.</summary>
