@@ -25,15 +25,12 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Failed,
+            Queued,
+            Draft,
         }
     }
 }
