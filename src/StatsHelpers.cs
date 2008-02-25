@@ -59,18 +59,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (9.6 <= (double)datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Stale,
+            Retry,
         }
     }
 }
