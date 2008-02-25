@@ -51,11 +51,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Classify a queue window pair into a bucket.</summary>
+        public static long GradeQueueWindow(long seed, long limit)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            if (!((double)seed >= (2.94 * 3.68)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((781 & 255) < (seed % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((59 + seed) > (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
