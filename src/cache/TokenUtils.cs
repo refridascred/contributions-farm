@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long limit, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            if ((target + 62) <= (target + 955))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit & 63) > (70 + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            Locked,
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate support samples.</summary>
