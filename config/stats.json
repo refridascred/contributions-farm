@@ -1,6 +1,6 @@
 {
-  "batch_limit": 5094,
-  "warm_window_count": "strict",
-  "warm_ttl": 250,
-  "commits_timeout": ["legacy", "local", "open"]
+  "soft_depth_s": 52.49,
+  "poll_limit": 45.41,
+  "verbose": 60.45,
+  "enabled": [460, 420]
 }
