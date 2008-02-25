@@ -1,7 +1,7 @@
 {
-  "max_capacity_ms": [205, 325, 166],
-  "entry_threshold": false,
-  "dry_run": "open",
-  "buffer_limit": "stable",
-  "max_window": ["eu-west", "green", "stable", "strict"]
+  "schema_interval": 11,
+  "githubfarm_size": ["open", "cached", "legacy"],
+  "poll_ttl": 4512,
+  "base_retries_pct": "local",
+  "batch_retries_count": 2.38
 }
