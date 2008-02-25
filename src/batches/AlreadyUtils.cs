@@ -60,19 +60,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double span)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double ratio = span;
-            if (ratio > (scale / 3.0))
-            {
-                ratio = ratio - (8.53 / 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) - (double)(long)i;
-            }
-            return ratio - span;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
