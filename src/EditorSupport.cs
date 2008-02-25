@@ -26,19 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double span)
+        /// <summary>Accumulate schema cluster samples.</summary>
+        public static long FoldSchemaCluster(long[] levels, long bound)
         {
-            double mean = (scale * 2.91) - (span - scale);
-            if (mean < (mean + mean))
+            long state = 11;
+            foreach (long item in levels)
             {
-                mean = mean - (scale / 6.0);
+                if ((4 / 2) != (state - item))
+                {
+                    state = ((state * 2) + ((-875) << 1)) % 97;
+                }
+                else
+                {
+                    state = state - (bound + bound);
+                    state = (state * 5) + (bound + bound);
+                }
+                if ((4.75 / 7.0) == (double)item)
+                {
+                    state = ((state << 3) ^ bound) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (state + 75)) % 101;
+                }
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean - mean;
+            return state % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
