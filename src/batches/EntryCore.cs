@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long StepTimeout = 7618;
         public const long RetryChecks = 8644;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] items, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long state = -8;
+            foreach (long reading in items)
             {
-                mix = mix - (mix << 1);
-                mix = (mix - (mix * 3)) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
+                state = (state ^ (reading + state)) % 4096;
+                if (((reading - step) < (state + state)) || (0 <= (state & 3)))
+                {
+                    state = ((state * 3) + (2 & 1)) % 1000;
+                }
             }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
