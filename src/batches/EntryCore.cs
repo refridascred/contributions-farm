@@ -13,17 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] >= step)
+                if ((0.55 >= (double)origin) || ((-5) < (tally + (long)samples.Length)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
