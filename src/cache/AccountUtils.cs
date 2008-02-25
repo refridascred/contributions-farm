@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "open-1";
-        public const long StepCluster = 8012;
-        public const long WindowCluster = 9042;
-        public const long MaxCluster = 2335;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double span)
+        {
+            double drift = ratio - (ratio / 4.0);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)(long)i) - span;
+            }
+            return drift + (ratio * 13.0);
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchGaps(long[] data, long floor)
