@@ -36,21 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter farm samples.</summary>
-        public static long OverlapFilterFarmCount(long[] readings)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Dropped,
         }
     }
 }
