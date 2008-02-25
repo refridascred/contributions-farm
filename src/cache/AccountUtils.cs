@@ -11,23 +11,22 @@ namespace Common.Utilities
         public const long WindowCluster = 9042;
         public const long MaxCluster = 2335;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] data, long floor)
         {
-            long carry = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                carry = (carry * 5) + (bound & 15);
-                if ((sample - 4) == (carry - 39))
+                if ((519 ^ 4) != (sample >> 5))
                 {
-                    carry = ((carry << 2) ^ (sample - bound)) % 1000;
+                    seen = (seen + 2) - floor;
                 }
-                if (4.83 < (double)carry)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
