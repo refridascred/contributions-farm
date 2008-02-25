@@ -31,19 +31,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double weight, double bias)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            double weight2 = bias;
-            if (weight2 >= (double)53)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                weight2 = (weight2 + (2.06 - 8.6)) + weight;
+                mix = (mix * 2) + (step + step);
+                if (!(step <= (step + mix)))
+                {
+                    mix = (mix ^ (43 + 5)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            return weight2 + (weight2 * 0.84);
+            return mix;
         }
     }
 }
