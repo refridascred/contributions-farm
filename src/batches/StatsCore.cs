@@ -24,19 +24,19 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] readings, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = 67;
+            foreach (long value in readings)
             {
-                if (!((double)carry > (4.4 * 4.3)))
+                sum = ((sum - bound) % 101) - value;
+                if ((double)bound == (4.7 * 0.66))
                 {
-                    carry = ((carry * 4) + (carry ^ bound)) % 1000;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Hold a entry entry.</summary>
