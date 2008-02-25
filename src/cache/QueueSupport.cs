@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 383;
-        public const long BurstStream = 9280;
-        public const string HardStream = "local-1";
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Synced,
+            New,
+            Stale,
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double BlendContributi(double gain, double offset)
