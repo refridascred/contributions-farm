@@ -43,11 +43,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings, long floor)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = -644;
+            foreach (long sample in readings)
+            {
+                if ((anchor - anchor) < (6 / 4))
+                {
+                    anchor = (anchor + (sample / 7)) % 101;
+                }
+                if (sample <= (anchor ^ (-945)))
+                {
+                    anchor = (anchor ^ (floor + anchor)) % 101;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
