@@ -10,25 +10,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 2536;
         public const long WindowCount = 8151;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                long bound = (target + (long)i) & 1;
-                if (0 < state)
-                {
-                    state = ((state << 2) ^ 8) % 65521;
-                }
-                if (0.97 >= (double)bound)
-                {
-                    bound = bound + bound;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleRatio = 19.42;
+        public const double BatchFactor = 76.11;
+        public const double BaseFarm = 72.85;
+        public const string CacheBudget = "staging-v2";
+        public const double RetryFarm = 7.22;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
