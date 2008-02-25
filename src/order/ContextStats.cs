@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (samples[i] <= step)
+                if ((seen / 9) > (seen ^ value))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit token window readings against a rule.</summary>
