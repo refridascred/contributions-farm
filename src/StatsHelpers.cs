@@ -58,13 +58,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] items, long offset)
         {
-            Synced,
-            New,
-            Stale,
-            Retry,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
