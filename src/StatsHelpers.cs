@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value >> 3) <= (92 / 9))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
