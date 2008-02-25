@@ -1,5 +1,5 @@
 {
-  "cache_interval": "stable",
-  "verbose": "legacy",
-  "min_delay_count": 6536
+  "session_timeout": 7620,
+  "burst_depth_count": "local",
+  "sync_window_ms": ["eu-west", "strict", "eu-west"]
 }
