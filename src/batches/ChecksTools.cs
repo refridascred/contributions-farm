@@ -21,18 +21,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] levels, long limit)
+        /// <summary>Classify a profile cluster pair into a bucket.</summary>
+        public static long BucketProfileCluster(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long delta = limit ^ bound;
+            if (((delta + delta) > delta) && ((bound >> 4) >= (4 ^ 4)))
             {
-                if ((limit % 97) >= (limit + 0))
+                return 2;
+            }
+            else
+            {
+                if ((bound & 31) >= (bound & 63))
                 {
-                    seen = (seen + 3) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
