@@ -29,21 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seen > (seen ^ datum))
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - seed;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
