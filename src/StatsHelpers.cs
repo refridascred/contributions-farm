@@ -59,18 +59,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((double)hits == (1.16 * 7.0))
+                if (9.6 <= (double)datum)
                 {
-                    hits = (hits + 2) + reading;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
