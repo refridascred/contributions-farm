@@ -58,12 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            Done,
+            Active,
+            Failed,
+            New,
         }
     }
 }
