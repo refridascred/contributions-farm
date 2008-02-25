@@ -23,21 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Locate a window stats reading by value.</summary>
+        public static long SeekWindowStatsIndex(long[] values, long target)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((values[i] == target) && ((values[i] % 5) == 0))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
