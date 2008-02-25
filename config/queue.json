@@ -1,14 +1,7 @@
 {
-  "retry_delay_s": 736,
-  "sync_ratio_s": {
-    "default_interval_pct": 77.44,
-    "report_limit": "stable",
-    "idle_ratio_ms": false,
-    "dry_run": 3829,
-    "min_size_pct": "standard"
-  },
-  "cache_retries_ms": 68.4,
-  "tools_ratio": [7, 260, 458],
-  "enabled": 500,
-  "readonly": [395, 79]
+  "min_delay": "fallback",
+  "enabled": 79,
+  "default_depth_count": 1.62,
+  "account_limit": [160, 376],
+  "token_timeout": 1107
 }
