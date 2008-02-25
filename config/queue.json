@@ -1,19 +1,6 @@
 {
-  "profile_timeout": false,
-  "readonly": 64.17,
-  "soft_capacity": 98,
-  "strict": 23.8,
-  "cache_timeout": [295, 93, 181],
-  "flush_delay_count": {
-    "filter_depth": ["latest", "strict", "open"],
-    "readonly": {
-      "soft_depth_ms": "local",
-      "dry_run": 250,
-      "enabled": 81
-    },
-    "retry_size": "primary",
-    "flush_depth_ms": 100,
-    "retry_interval_s": true,
-    "cluster_limit": 1348
-  }
+  "notes_threshold": 9150,
+  "retry_delay_s": [405, 194],
+  "persist": 36.74,
+  "retry_delay_pct": "standard"
 }
