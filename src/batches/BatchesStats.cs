@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((count + count) > item) && ((double)item <= 2.46))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
