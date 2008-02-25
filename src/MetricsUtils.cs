@@ -57,18 +57,22 @@ namespace Common.Utilities
         public const double MaxSpan = 52.29;
         public const long BurstDepth = 4178;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long DigestToolsSession(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                if (((count / 8) == (109 << 1)) || ((8.0 - 0.39) > (12.0 + 7.0)))
+                if ((-361) < (long)data.Length)
                 {
-                    count = (count + 1) ^ datum;
+                    mix = (mix - 216) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (sample + sample);
                 }
             }
-            return count;
+            return mix % 65521;
         }
     }
 }
