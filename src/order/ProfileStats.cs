@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] values, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
