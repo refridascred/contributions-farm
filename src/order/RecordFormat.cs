@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the stats checks entries that pass the check.</summary>
+        public static long TallyStatsChecksOutliers(long[] items, long step)
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally * 4) >= (cell + tally))
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
