@@ -21,18 +21,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long acc = 3;
-            foreach (long entry in items)
-            {
-                if ((double)acc <= 7.0)
-                {
-                    acc = (((acc << 2) ^ (acc - limit)) % 255) + entry;
-                }
-            }
-            return acc % 4096;
+            Stale,
+            Pending,
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every batch metrics entry stays within the limit.</summary>
