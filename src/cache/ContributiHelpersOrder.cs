@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const long BurstTimeout = 2536;
         public const long WindowCount = 8151;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] readings, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seen > 18.0)
+                long bound = (target + (long)i) & 1;
+                if (0 < state)
                 {
-                    seen = ((seen + 2) - sample) - step;
+                    state = ((state << 2) ^ 8) % 65521;
                 }
-                else
+                if (0.97 >= (double)bound)
                 {
-                    seen = seen - 1;
+                    bound = bound + bound;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
