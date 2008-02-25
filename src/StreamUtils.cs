@@ -47,13 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            New,
-            Done,
-            Paused,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
