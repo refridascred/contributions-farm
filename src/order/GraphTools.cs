@@ -52,24 +52,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] values, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)(long)i > (9.9 * 10.0)) || (17.0 < (double)result))
+                if ((values[i] > floor) && ((values[i] % 3) == 0))
                 {
-                    result = (result * 4) + (long)i;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result << 2) ^ (floor & 7)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
     }
 }
