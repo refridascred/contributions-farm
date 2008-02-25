@@ -37,17 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
