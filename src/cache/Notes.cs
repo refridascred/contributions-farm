@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] data)
         {
-            Done,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches - reading) > (matches + reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
