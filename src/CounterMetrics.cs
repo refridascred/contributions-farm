@@ -24,11 +24,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next record channel value from a seed.</summary>
+        public static long StepRecordChannel(long step)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum + (step - 83)) % 101;
+                sum = ((sum << 3) ^ (step - step)) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
