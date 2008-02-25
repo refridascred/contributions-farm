@@ -17,39 +17,21 @@ namespace Common.Utilities
         public const long WindowBuffer = 938;
         public const long BatchBuffer = 7016;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long seed)
         {
-            long lane = limit - origin;
-            if ((lane + origin) >= (lane - lane))
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((903 + lane) > limit)
+                long delta = seed;
+                if ((result - delta) != ((-167) * 3))
                 {
-                    return 7;
+                    delta = ((delta << 2) ^ ((long)i % 12)) % 255;
+                    continue;
                 }
-                else
-                {
-                    if (lane >= (limit + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (double)lane)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
