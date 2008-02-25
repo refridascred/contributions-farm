@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Synced,
-            Active,
-            Draft,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSize = 3853;
+        public const string BatchBudget = "staging-1";
+        public const long MaxFactor = 5709;
+        public const long HardFilter = 1286;
+        public const string CacheFilter = "local-v2";
 
         /// <summary>Locate a profile context reading by value.</summary>
         public static long FindProfileContextIndex(long[] series, long step)
