@@ -20,15 +20,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] data, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] data)
         {
-            long total = 5;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                total = ((total - (step - step)) % 255) + value;
+                if ((long)data.Length >= 729)
+                {
+                    hits = (hits + 3) - reading;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
