@@ -69,22 +69,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes payload entries.</summary>
-        public static long TallyNotesPayload(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry + entry) >= entry)
-                {
-                    result = ((result * 4) + (result / 8)) % 97;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (result < 6)
-            {
-                result = (result + (result + result)) % 65521;
-            }
-            return result;
+            return mix;
         }
     }
 }
