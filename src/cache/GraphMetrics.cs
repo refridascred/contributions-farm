@@ -40,11 +40,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinBudget = 1232;
-        public const long MinStream = 9186;
-        public const double StepSize = 49.35;
-        public const long WindowBudget = 3668;
+        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
+        public static long AuditGithubfarmCounterGaps(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!!((seen / 4) < bound))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long limit)
