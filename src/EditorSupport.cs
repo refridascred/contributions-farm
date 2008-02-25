@@ -76,15 +76,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Match up route filter samples.</summary>
+        public static long PairRouteFilterCount(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
