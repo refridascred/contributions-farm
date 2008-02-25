@@ -57,11 +57,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCount = 7935;
-        public const long DefaultTimeout = 946;
-        public const long MinWidth = 8956;
-        public const double WindowLevel = 65.13;
-        public const long HardCounter = 407;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen - value) != (seen & 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
