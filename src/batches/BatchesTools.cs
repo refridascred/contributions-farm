@@ -13,38 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long origin, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series)
         {
-            if (((floor % 24) > (origin + floor)) && ((double)floor >= (double)214))
+            long carry = 98;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - floor) != (172 / 7))
+                if (202 >= carry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((96 - origin) > floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin == (7.4 * 12.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = ((carry - 6) % 97) ^ entry;
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
