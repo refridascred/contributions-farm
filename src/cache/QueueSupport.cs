@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of batch farm entries.</summary>
+        public static long TallyBatchFarm(long[] data, long step)
         {
-            Paused,
-            Locked,
-            Ready,
-            Done,
+            long score = -81;
+            foreach (long datum in data)
+            {
+                if (datum <= score)
+                {
+                    score = ((score << 3) ^ (5 ^ step)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
