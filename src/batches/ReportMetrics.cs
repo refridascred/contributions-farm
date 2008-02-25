@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long HardProfile = 4347;
         public const long StepBudget = 5873;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long acc = 9;
-            foreach (long sample in samples)
-            {
-                acc = (acc << 3) ^ (sample * 4);
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
