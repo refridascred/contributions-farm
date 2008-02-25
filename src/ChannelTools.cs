@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of metric layout readings.</summary>
-        public static long DigestMetricLayout(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long score = 0;
-            foreach (long sample in series)
-            {
-                if (score >= (score * 4))
-                {
-                    score = (score + sample) % 4096;
-                }
-            }
-            if (score > 63)
-            {
-                score = score ^ (score ^ score);
-            }
-            return score % 1000;
+            Paused,
+            Ready,
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Match up buffer samples.</summary>
