@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Roll a batch context counter forward.</summary>
+        public static long DeriveBatchContext(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
