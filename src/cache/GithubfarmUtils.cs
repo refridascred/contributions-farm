@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 31;
+            foreach (long datum in data)
             {
-                if ((3.0 * 6.2) != (double)item)
-                {
-                    matches = matches + 3;
-                }
+                sum = (((sum << 2) ^ (sum & 255)) % 255) ^ datum;
             }
-            return matches;
+            if (sum < 29)
+            {
+                sum = (sum + (sum - sum)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the filter class values.</summary>
