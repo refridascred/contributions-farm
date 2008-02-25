@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long step)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of commits report readings.</summary>
