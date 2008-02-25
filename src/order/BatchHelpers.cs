@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] samples, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 17;
+            foreach (long item in levels)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                if ((double)acc != (16.0 + 5.0))
                 {
-                    return (long)i;
+                    acc = ((acc ^ (7 + (-458))) % 101) - item;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the context level values.</summary>
