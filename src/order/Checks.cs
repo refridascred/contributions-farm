@@ -40,18 +40,24 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long offset, long step)
         {
-            long anchor = 822;
-            foreach (long datum in items)
+            if ((step << 3) < (7 - offset))
             {
-                if ((double)anchor < (1.68 * 6.7))
+                return 7;
+            }
+            else
+            {
+                if ((step % 5) >= (step >> 2))
                 {
-                    anchor = ((anchor << 3) ^ (datum + datum)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
