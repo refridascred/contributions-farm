@@ -43,11 +43,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitCount = 961;
-        public const long StepLayout = 6755;
-        public const double RetryTimeout = 71.7;
-        public const long WindowLayout = 9414;
-        public const string BaseLayout = "primary-edge";
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
