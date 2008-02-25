@@ -1,15 +1,6 @@
 {
-  "payload_timeout": true,
-  "readonly": 73.9,
-  "warm_depth": "stable",
-  "route_limit": false,
-  "default_threshold_count": 28.88,
-  "flush_capacity_count": {
-    "hard_capacity_count": 23.78,
-    "persist": 57.13,
-    "record_capacity": 250,
-    "verbose": 74,
-    "compress": ["standard", "local"],
-    "max_limit_pct": "legacy"
-  }
+  "enabled": [218, 466],
+  "base_ratio_pct": 45.0,
+  "sync_delay_ms": "fallback",
+  "sync_capacity": 18.3
 }
