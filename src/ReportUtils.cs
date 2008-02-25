@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long SoftInterval = 4453;
         public const double WindowTimeout = 55.6;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double drift = offset;
+            if (drift > (drift + ratio))
             {
-                if ((cell * 4) <= (tally / 3))
-                {
-                    tally = tally + 1;
-                }
+                drift = drift - ratio;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift - 2.7;
         }
 
         /// <summary>Describe the window state values.</summary>
