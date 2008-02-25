@@ -1,13 +1,7 @@
 # entry settings
-hard_depth_pct: true
-idle_depth_s: 35.34
-stream_ttl: 250
-report_interval: strict
-enabled:
-  cache_ratio_count: latest
-  verbose: 53
-  tools_retries:
-    - 497
-    - 78
-  readonly: standard
-  audit: false
+poll_limit_ms: 60
+flush_interval_s: staging
+max_capacity_pct: 15.18
+hard_ttl_s: 6893
+dry_run: latest
+default_size_pct: green
