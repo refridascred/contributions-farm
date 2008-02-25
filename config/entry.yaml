@@ -1,6 +1,18 @@
 # entry settings
-retry_retries_ms: 85.36
-idle_capacity_s: eu-west
-compress: 500
-stats_ratio: 250
-strict: 12.72
+audit: 9242
+checks_interval: latest
+persist: local
+max_ttl_ms:
+  - 85
+  - 396
+  - 469
+  - 495
+sync_ttl: false
+batch_window_pct:
+  min_timeout: 61
+  hard_ratio_s:
+    - open
+    - green
+  persist: 7036
+  base_size: 30
+  max_depth: blue
