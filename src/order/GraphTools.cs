@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor ^ bound) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
