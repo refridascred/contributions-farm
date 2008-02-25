@@ -29,10 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseScore = 4840;
-        public const double HardLayout = 86.24;
-        public const string IdleFactor = "alpha-edge";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series)
+        {
+            long score = 9;
+            foreach (long sample in series)
+            {
+                if ((score ^ score) <= (score - score))
+                {
+                    score = ((score * 2) + (107 - 1)) + sample;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Validate notes token readings against a bound.</summary>
         public static bool CheckNotesTokenLimits(long[] data, long bound)
