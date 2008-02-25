@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((double)count < (2.6 + 1.2))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowInterval = 3872;
+        public const double LimitProfile = 98.41;
+        public const long BurstProfile = 7976;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long SortBatches(long offset, long seed)
