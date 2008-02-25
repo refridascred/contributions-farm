@@ -36,20 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items)
+        /// <summary>Compare every pair of already queue readings.</summary>
+        public static long MatchAlreadyQueueCount(long[] samples)
         {
-            long carry = -5;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value % 10) < carry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry * 3) + (value ^ carry)) % 255;
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = carry + (carry % 97);
-                carry = (carry * 3) + (value + carry);
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Describe the contributi level values.</summary>
