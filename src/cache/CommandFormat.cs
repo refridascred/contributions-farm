@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long floor)
         {
-            Locked,
-            Queued,
-            Pending,
+            if (((limit + floor) < (floor + floor)) || ((3.29 * 6.01) <= (double)limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit & 31) < (72 << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit > (double)968)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor / 6) <= 7)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout summary.</summary>
